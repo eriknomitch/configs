@@ -1,0 +1,470 @@
+# ------------------------------------------------
+# COLORS -----------------------------------------
+# ------------------------------------------------
+# 30 - black
+# 31 - red
+# 32 - green
+# 33 - yellow
+# 34 - blue
+# 35 - magenta
+# 36 - cyan
+# 37 - white
+# 
+# 0 - normal
+# 1 - bold
+# 2 - normal again
+# 3 - background color
+# 4 - underline the text
+# 5 - blinking
+
+# ------------------------------------------------
+# ZSH --------------------------------------------
+# ------------------------------------------------
+autoload -U compinit
+autoload colors zsh/terminfo
+
+# Allow for functions in the prompt
+setopt promptsubst
+setopt prompt_subst
+
+# Enable auto-execution of functions.
+typeset -ga preexec_functions
+typeset -ga precmd_functions
+typeset -ga chpwd_functions
+
+setopt nohup
+setopt no_check_jobs
+setopt extendedglob
+setopt no_nomatch
+setopt alwaystoend
+
+bindkey -e
+
+HISTSIZE=100
+SAVEHIST=100
+HISTFILE=~/.history
+
+alias resource="source ~/.zshrc"
+
+chpwd()
+{
+    ls -lh --color
+
+    if ( `pwd-is-git-repo --root` ) ; then
+        git-status-display
+    fi
+    
+    if ( `pwd-is-wd` ) ; then
+        echo -e "\033[30;1mpwd:\033[0m \033[33;1m"`pwd-tilde`
+    elif ( `pwd-is-git-repo --root` ) ; then
+        echo -e "\033[30;1mpwd:\033[0m \033[33;2m"`pwd-tilde`
+    fi
+
+}
+
+# ------------------------------------------------
+# PATHS ------------------------------------------
+# ------------------------------------------------
+export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/local/sbin
+export PATH=$PATH:$HOME/.bin
+export PATH=$PATH:$HOME/.bin/shared
+export PATH=$PATH:$HOME/.gexecute
+export PATH=$PATH:$HOME/.android/bin
+export PATH=$PATH:$HOME/.android/platform-tools
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib
+
+# ------------------------------------------------
+# UNIX -------------------------------------------
+# ------------------------------------------------
+alias l="ls -lh --color"
+alias la="ls -lha --color"
+alias ls="ls --color"
+alias lf="ls -lh --color | grep -i"
+alias lfa="ls -lha --color | grep -i"
+alias b="cd .."
+alias f="cd -"
+alias x="exit"
+alias c="clear"
+alias sd="sudo"
+alias s="sudo su"
+alias d="date && cal"
+alias reboot="sudo reboot"
+alias halt="sudo halt"
+alias ts="du -sh"
+alias grep="grep --color"
+alias lsdir="ls -d */"
+alias lsadir="ls -d .*/"
+alias p="pwd"
+
+psg()
+{
+    if [[ -z $1 ]] ; then
+        echo "$0: usage: QUERY"
+    fi
+}
+mw()
+{
+    mv "$@" && cd "${@[-1]}";
+}
+gst()
+{
+    grep -IHiRe $1 ./ ;
+}
+fnd()
+{
+    find ./ -iname "*$1*" ;
+}
+
+# ------------------------------------------------
+# SCREEN -----------------------------------------
+# ------------------------------------------------
+alias torrent="screen -d -R torrent"
+alias music="screen -d -R music"
+alias video="screen -d -R video"
+alias audio="screen -d -R audio"
+alias media="screen -d -R media"
+
+# ------------------------------------------------
+# WORKING-DIRECTORY ------------------------------
+# ------------------------------------------------
+WORKING_DIRECTORY_FILE=$HOME/.zsh-wd
+WORKING_DIRECTORY_SYMBOLIC_LINK=$HOME/.wd
+
+lw()
+{
+    test -e $WORKING_DIRECTORY_FILE && cat $WORKING_DIRECTORY_FILE
+}
+sw()
+{
+    echo $PWD > $WORKING_DIRECTORY_FILE
+
+    # ensure symbolic link is removed
+    test -L $WORKING_DIRECTORY_SYMBOLIC_LINK && rm $WORKING_DIRECTORY_SYMBOLIC_LINK
+
+    # create symbolc link
+    ln -s $PWD $WORKING_DIRECTORY_SYMBOLIC_LINK
+
+    lw
+}
+gw()
+{
+
+    if [[ -e $WORKING_DIRECTORY_FILE ]] ; then
+        clear
+        cd `cat $WORKING_DIRECTORY_FILE`
+    fi
+}
+
+# ------------------------------------------------
+# GIT --------------------------------------------
+# ------------------------------------------------
+git-status-display()
+{
+    # FIX: this says that the dir is clean when we deleted some files and when we git-mv files. probably more
+    git_count_untracked=`git-count-untracked`
+    git_count_diff=`git diff | wc -l`
+    git_count_branches=`git branch | wc -l`
+    git_branch_current=`git-branch-current`
+  
+    # git:
+    echo -en "\033[30;1mgit:\033[0m "
+
+    # branch
+    echo -e "branch:    \033[37;1m"$git_branch_current"\033[0m("$git_count_branches")"
+
+    # status
+    echo -en "     \033[37;mstatus:\033[0m    "
+    if [[ $git_count_untracked == 0 && $git_count_diff == 0 ]] ; then
+        echo -e "\033[32;1mclean\033[0m "
+    else
+        echo -e "\033[31;1munclean\033[0m "
+    fi
+
+    # diff
+    echo -e "     \033[37;mdiff:\033[0m     \033[37;1m"`git diff --shortstat`"\033[0m"
+    git diff --numstat | sed "s/^/                /"
+
+    # untracked
+    echo -e "     \033[37;muntracked:\033[0m \033[37;1m"$git_count_untracked"\033[0m"
+    g lso | sed "s/^/                /"
+}
+
+compctl -k "(ls lso lsd d cm cmp cpdm d s p)" g
+
+g()
+{
+    case "$1" in
+        # list tracked
+        ls)
+        git ls-files
+        ;;
+        # add untracked
+        au)
+        g_lso=`git ls-files --other --exclude-standard`
+
+        if [[ -n $g_lso ]] ; then
+            echo $g_lso
+            echo -en "\033[32;1mAdd these files to be tracked (y/n)?\033[0m "
+            read add_files
+
+            if [[ $add_files == "y" ]] ; then
+                git add .
+            fi
+        fi
+        ;;
+        # remove untracked
+        ru)
+        g_lso=`git ls-files --other --exclude-standard`
+
+        if [[ -n $g_lso ]] ; then
+            echo $g_lso
+            echo -en "\033[31;1mPermanently remove these files (y/n)?\033[0m "
+            read add_files
+
+            if [[ $add_files == "y" ]] ; then
+                echo $g_lso | xargs rm
+            fi
+        fi
+        ;;
+        # list untracked
+        lso)
+        git ls-files --other --exclude-standard
+        ;;
+        # list deleted
+        lsd)
+        git ls-files --deleted
+        ;;
+        # diff
+        d)
+        git diff
+        ;;
+        # commit with message
+        cm)
+        git commit -a -m "$2"
+        ;;
+        # commit with message and push
+        cmp)
+        if [[ -z $2 ]] ; then
+            echo "fatal: No commit message argument"
+            return 1
+        fi
+
+        g_lso=`git ls-files --other --exclude-standard`
+
+        do_commit=false
+
+        if [[ -n $g_lso ]] ; then
+            echo $g_lso
+            echo
+            echo -n "warning: Untracked files exist. Commit anyways (y/n)? "
+            read commit_anyways
+
+            if [[ $commit_anyways == "y" ]] ; then
+                do_commit=true
+            fi
+        else
+            do_commit=true
+        fi
+
+        if ( $do_commit ) ; then
+            git commit -a -m "$2" && git push --all
+            g
+        fi
+
+        ;;
+        # tell git to set the standard default push
+        cpdm)
+        git config push.default matching
+        ;;
+        # status
+        s)
+        git status
+        ;;
+        # push
+        ph)
+        git push
+        ;;
+        # push all
+        pha)
+        git push --all
+        ;;
+        # pull
+        pl)
+        git pull
+        ;;
+        # default
+        "")
+        if ( `pwd-is-git-repo` ) ; then
+            git-status-display
+        fi
+        ;;
+        # usage
+        "--help")
+        echo "usage: g [<aliased g command>|<git command>]"
+        echo 
+        echo "The g git aliases are:"
+        echo "   ls     list tracked files"
+        echo "   lso    list untracked files"
+        echo "   lsd    list deleted files"
+        echo "   d      diff"
+        echo "   cm     commit with message"
+        echo "   cmp    commit with message and push"
+        echo "   cpdm   set the standard branch to push as default"
+        ;;
+        # default
+        *)
+        git $*
+        ;;
+    esac
+}
+
+# ------------------------------------------------
+# SHARED -----------------------------------------
+# ------------------------------------------------
+pull-shared-file()
+{
+    file_owner=$1
+    file_group=$2
+    file_permissions=$3
+    file_shared_name=$4
+    file_end_path=$5
+
+    scp linode:~/.shared/$file_shared_name ~/.shared/tmp-to-mv
+
+    sudo mv ~/.shared/tmp-to-mv $file_end_path
+
+    sudo chmod $file_permissions $file_end_path
+    sudo chown $file_owner:$file_group $file_end_path 
+}
+
+pull-ssh-config()
+{
+    pull-shared-file $USER $USER 0644 ssh-config ~/.ssh/config
+}
+
+pull-zshrc-shared()
+{
+    pull-shared-file root root 0644 zshrc-shared /etc/zshrc-shared
+}
+
+# ------------------------------------------------
+# META -------------------------------------------
+# ------------------------------------------------
+function m()
+{
+    clear
+    cd $HOME/.meta
+}
+function mm()
+{
+    clear
+    cd $HOME/.meta-materials
+}
+
+# ------------------------------------------------
+# OPEN -------------------------------------------
+# ------------------------------------------------
+function o()
+{
+    if [[ -z $1 ]] ; then
+        echo "usage: $0:"
+        return 1
+    fi
+
+    file=$1
+
+    if [[ ! -f $file ]] ; then
+        echo "fatal: File does not exist or is not ordinary (i.e., directory or symbolic link)"
+        return 1
+    fi
+
+    case $file in
+        # evince
+        *.(pdf|png|jpg))
+        evince $file
+        ;;
+        # gimp
+        *.(xcf))
+        gimp $file
+        ;;
+        # dia
+        *.(dia))
+        dia $file
+        ;;
+        # inkscape
+        *.(svg))
+        inkscape $file
+        ;;
+        # default
+        *)
+        echo "fatal: Not a supported filetype"
+        return 1
+        ;;
+    esac
+}
+
+# ------------------------------------------------
+# OTHER ------------------------------------------
+# ------------------------------------------------
+alias t="tree -C"
+alias td="tree -C -d"
+alias update="sudo apt-get update && sudo apt-get dist-upgrade"
+alias apt-get="sudo apt-get"
+alias service="sudo service"
+alias dpkg="sudo dpkg"
+alias mp="mplayer -fs"
+alias r="clear && ./run"
+alias use-opendns="sudo cp /etc/resolv.conf.opendns /etc/resolv.conf"
+alias use-google-dns="sudo cp /etc/resolv.conf.google /etc/resolv.conf"
+alias sync-time-sunnyvale="sudo ntpdate tick.ucla.edu"
+alias sync-time-boulder="sudo ntpdate utcnist.colorado.edu"
+alias sync-time-chicago="sudo ntpdate ntp-1.mcs.anl.gov"
+alias wake="export DISPLAY=:0.0 && xset dpms force on"
+alias blank="export DISPLAY=:0.0 && xset dpms force off"
+alias expdisp="export DISPLAY=:0.0"
+alias v="clear && ./vim-all"
+
+ex()
+{
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xvjf $1        ;;
+            *.tar.gz)    tar xvzf $1     ;;
+            *.bz2)       bunzip2 $1       ;;
+            *.rar)       unrar x $1     ;;
+            *.gz)        gunzip $1     ;;
+            *.tar)       tar xvf $1        ;;
+            *.tbz2)      tar xvjf $1      ;;
+            *.tgz)       tar xvzf $1       ;;
+            *.zip)       unzip $1     ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1    ;;
+            *)           echo "'$1' cannot be extracted via ex()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+        return 1
+    fi
+}
+
+rsync-partial()
+{
+    rsync --partial --progress --rsh=ssh $*
+}
+
+
+# ------------------------------------------------
+# PROMPTS ----------------------------------------
+# ------------------------------------------------
+if [[ $USER == "root" ]] ; then
+    PROMPT=$'%{\e[31m%}%m# %{\e[0m%}'
+else
+    PROMPT=$'%{\e[32m%}%m$ %{\e[0m%}'
+fi
+
+RPROMPT=$''
+
+
