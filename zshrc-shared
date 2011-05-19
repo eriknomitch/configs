@@ -398,6 +398,18 @@ function o()
         *.(svg))
         inkscape $file
         ;;
+        # word
+        *.(doc|docx|docm))
+        word $file
+        ;;
+        # excel
+        *.(xls|xlsx|xlsm))
+        excel $file
+        ;;
+        # powerpoint
+        *.(ppt|pptx|pptm))
+        powerpoint $file
+        ;;
         # default
         *)
         echo "fatal: Not a supported filetype"
