@@ -1,5 +1,5 @@
 #!/bin/zsh
 
-test -d ~/.config/pianobar | mkdir ~/.config/pianobar
-ln -s config/pianobar/config ~/.config/pianobar
+test -d ~/.config/pianobar || mkdir ~/.config/pianobar
+ln -s ~/.configs/config/pianobar/config ~/.config/pianobar
 
