@@ -362,6 +362,10 @@ function mm()
 {
     clear
     cd $HOME/.meta-materials
+
+    if [[ `ps aux | grep -i mm-remote-status-daemon | grep -v grep | wc -l` == 0 ]] ; then
+        echo "warning: mm-remote-status-daemon is not running."
+    fi
 }
 
 # ------------------------------------------------

@@ -22,10 +22,12 @@ source /etc/zshrc-shared
 # META -------------------------------------------
 # ------------------------------------------------
 export PATH=$PATH:$HOME/.meta/executables
+export PATH=$PATH:$HOME/.meta-materials/bin
 export META_PATH_ROOT=$HOME/.meta
 export META_PATH_ASDF=$HOME/.asdf # FIX: You can get rid of this by doing a PUSHNEW on the libraries directory?
 
 compctl -k "(--compile zsh-completion-rules   shell   server   scratch   repository  --developer-api-key --device-name psql   program-new   lines-of-code   edit   chip --dry-run --default --passphrase android  )" meta
+
 
 # ------------------------------------------------
 # OTHER ------------------------------------------
