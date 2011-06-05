@@ -126,6 +126,7 @@ alias music="screen -d -R music"
 alias video="screen -d -R video"
 alias audio="screen -d -R audio"
 alias media="screen -d -R media"
+alias dvd="screen -d -R dvd"
 
 # ------------------------------------------------
 # WORKING-DIRECTORY ------------------------------
