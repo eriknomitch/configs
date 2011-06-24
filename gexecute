@@ -1,0 +1,262 @@
+browser  = "chromium-browser";
+
+commands = 
+(
+    /* ---------------------------------------- */
+    /* DESKTOP SPECIFIC ----------------------- */
+    /* ---------------------------------------- */
+    /* ---------------------------------------- */
+    /* GENERAL -------------------------------- */
+    /* ---------------------------------------- */
+    { 
+        match  = "chat";
+        action = "pidgin & xterm -title irc -e \"sleep 0.1; irc\"";
+    },
+    { 
+        match  = "zsnes";
+        action = "zsnes";
+    },
+    { 
+        match  = "firefox";
+        action = "firefox";
+    },
+    { 
+        match  = "mount-store";
+        action = "mount-store";
+    },
+    { 
+        match  = "map-escape";
+        action = "map-escape";
+    },
+    { 
+        match  = "monitor";
+        action = "xrandr-hdtv && map-escape";
+    },
+    { 
+        match  = "nomonitor";
+        action = "xrandr-laptop && map-escape";
+    },
+    { 
+        match  = "timer";
+        action = "timer_message=`zenity --entry --text=\"message\"` && sleep `zenity --entry --text=\"sleep\"` && notify-send $timer_message && alert";
+    },
+    { 
+        match  = "transmission";
+        action = "transmission";
+    },
+    { 
+        match  = "vmplayer";
+        action = "vmplayer";
+    },
+    { 
+        match  = "gtkam";
+        action = "gtkam";
+    },
+    { 
+        match  = "gtk-chtheme";
+        action = "gtk-chtheme";
+    },
+    { 
+        match  = "gw-dev";
+        action = "gw-dev";
+    },
+    { 
+        match  = "linode-dev";
+        action = "linode-dev";
+    },
+    { 
+        match  = "reconfigure-fluxbox";
+        action = "reconfigure-fluxbox";
+    },
+    { 
+        match  = "lisp-dev";
+        action = "/home/tux/.bin/lisp-dev";
+    },
+    { 
+        match  = "dev";
+        action = "/home/tux/.bin/dev";
+    },
+    { 
+        match  = "vlc";
+        action = "vlc";
+    },
+    { 
+        match  = "emulator";
+        action = "~/.android/bin/emulator -avd Nexus_S";
+    },
+    { 
+        match  = "speakers";
+        action = "use-speakers";
+    },
+    { 
+        match  = "headphones";
+        action = "use-headphones";
+    },
+    { 
+        match  = "sbcl";
+        action = "xterm -e \"sbcl\"";
+    },
+    { 
+        match  = "skype";
+        action = "skype --disable-cleanlooks -style GTK";
+    },
+    { 
+        match  = "pidgin";
+        action = "pidgin";
+    },
+    { 
+        match  = "putty";
+        action = "putty";
+    },
+    { 
+        match  = "xcalc";
+        action = "xcalc";
+    },
+    { 
+        match  = "gimp";
+        action = "gimp";
+    },
+    { 
+        match  = "xmodmap";
+        action = "xmodmap ~/.Xmodmap";
+    },
+    { 
+        match  = "xmind";
+        action = "/usr/local/xmind/xmind";
+    },
+    { 
+        match  = "torrent";
+        action = "xterm -e \"screen -d -R rtorrent \"";
+    },
+    { 
+        match  = "undvd";
+        action = "xterm -e \"screen -d -R undvd \"";
+    },
+    { 
+        match  = "irc";
+        action = "xterm -title irc -e \"sleep 0.1; irc\"";
+    },
+    { 
+        match  = "inkscape";
+        action = "inkscape";
+    },
+    { 
+        match  = "video";
+        action = "xterm -e \"screen -d -R video\"";
+    },
+    { 
+        match  = "webcast";
+        action = "xterm -e \"screen -d -R webcast\"";
+    },
+    { 
+        match  = "audio";
+        action = "xterm -e \"screen -d -R audio\"";
+    },
+    { 
+        match  = "android";
+        action = "~/.android/bin/android";
+    },
+    { 
+        match  = "meta";
+        action = "chromium-browser --app=http://metalaic.com";
+    },
+    { 
+        match  = "arduino";
+        action = "arduino";
+    },
+    { 
+        match  = "ardour2";
+        action = "ardour2";
+    },
+    { 
+        match  = "avidemux";
+        action = "avidemux";
+    },
+    { 
+        match  = "cinelerra";
+        action = "cinelerra";
+    },
+    { 
+        match  = "arduino";
+        action = "/home/tux/.arduino/bin/arduino";
+    },
+    { 
+        match  = "music";
+        action = "xterm -e \"screen -d -R audio\"";
+    },
+    { 
+        match  = "cpmusic";
+        action = "xterm -e \"screen -d -R cpmusic\"";
+    },
+    { 
+        match  = "linode";
+        action = "xterm -e \"ssh linode\"";
+    },
+    { 
+        match  = "laptop";
+        action = "xterm -e \"ssh laptop\"";
+    },
+    { 
+        match  = "gcolor2";
+        action = "gcolor2";
+    },
+    { 
+        match  = "blank";
+        action = "blank";
+    },
+    { 
+        match  = "baobab";
+        action = "baobab";
+    },
+    { 
+        match  = "ardour";
+        action = "ardour2";
+    },
+    { 
+        match  = "color";
+        action = "gcolor2";
+    },
+    { 
+        match  = "eriknomitch-ss";
+        action = "eriknomitch-ss";
+    },
+    { 
+        match  = "ssgimp";
+        action = "sleep 1 && scrot ssgimp.png && gimp ssgimp.png";
+    },
+    { 
+        match  = "minecraft";
+        action = "minecraft";
+    },
+    { 
+        match  = "screenshot";
+        action = "sleep 1 && scrot";
+    },
+    { 
+        match  = "wallpaper";
+        action = "fbsetbg -f ~/.wall";
+    },
+    { 
+        match  = "black";
+        action = "fbsetroot -solid black";
+    },
+    { 
+        match  = "white";
+        action = "fbsetroot -solid white";
+    },
+    { 
+        match  = "virtualbox";
+        action = "VirtualBox";
+    },
+    { 
+        match  = "windows";
+        /* action = "virtualbox --startvm \"Windows XP\""; */
+        action = "vboxgtk";
+    }
+);
+
+links = 
+(
+);
+
+
