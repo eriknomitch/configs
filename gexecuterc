@@ -125,12 +125,16 @@ commands =
         action = "/usr/local/xmind/xmind";
     },
     { 
+        match  = "dvd";
+        action = "xterm -e \"screen -d -R dvd\"";
+    },
+    { 
         match  = "torrent";
-        action = "xterm -e \"screen -d -R rtorrent \"";
+        action = "xterm -e \"screen -d -R rtorrent\"";
     },
     { 
         match  = "undvd";
-        action = "xterm -e \"screen -d -R undvd \"";
+        action = "xterm -e \"screen -d -R undvd\"";
     },
     { 
         match  = "irc";
