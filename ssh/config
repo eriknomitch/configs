@@ -49,3 +49,8 @@ Host linode-meta
     User metalaic
     Port 22
 
+Host linode-fantravel
+    HostName 173.255.252.125
+    User linode
+    Port 22
+
