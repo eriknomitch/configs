@@ -462,7 +462,7 @@ rsync-partial()
 if [[ $USER == "root" ]] ; then
     PROMPT=$'%{\e[31m%}%m# %{\e[0m%}'
 elif [[ $HOST == "linode-personal" ]] ; then
-    PROMPT=$'%{\e[34m%]linode%{\e[1;32m%}(personal)$ %{\e[0m%}'
+    PROMPT=$'%{\e[34m%}linode%{\e[1;32m%}(personal)$ %{\e[0m%}'
 else
     PROMPT=$'%{\e[32m%}%m$ %{\e[0m%}'
 fi
