@@ -17,6 +17,10 @@ commands =
         action = "zsnes";
     },
     { 
+        match  = "spotify";
+        action = "spotify";
+    },
+    { 
         match  = "firefox";
         action = "firefox";
     },
