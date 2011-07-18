@@ -46,7 +46,7 @@ commands =
     },
     { 
         match  = "transmission";
-        action = "transmission";
+        action = "transmission-gtk";
     },
     { 
         match  = "vmplayer";
