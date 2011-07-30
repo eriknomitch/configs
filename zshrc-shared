@@ -427,6 +427,7 @@ alias blank="export DISPLAY=:0.0 && xset dpms force off"
 alias expdisp="export DISPLAY=:0.0"
 alias v="clear && ./vim-all"
 alias emacs="emacs -nw"
+alias slime="emacs -nw -f slime"
 
 ex()
 {
