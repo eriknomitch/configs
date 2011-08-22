@@ -23,6 +23,9 @@
 autoload -U compinit
 autoload colors zsh/terminfo
 
+# initialize for compdef
+compinit
+
 # Allow for functions in the prompt
 setopt promptsubst
 setopt prompt_subst
@@ -194,7 +197,8 @@ git-status-display()
     g lso | sed "s/^/                /"
 }
 
-compctl -k "(ls lso lsd d cm cmp cpdm d s p)" g
+compdef g=git
+compctl -k "(ls lso lsd d cm cmp cpdm d s p)" g # FIX: compdef overrides these
 
 g()
 {
