@@ -4,6 +4,7 @@ colors bluegreen
 
 set autoread
 
+" instant search
 set is
 
 filetype plugin on
@@ -101,4 +102,92 @@ au BufNewFile,BufRead *.mls  set filetype=meta
 
 " Arduino syntax highlighting
 au BufNewFile,BufRead *.pde setf arduino
+
+" Abbreviations
+ab df. (define-function
+ab def. (define-exported-function
+ab dv. (define-variable
+ab dm. (define-macro
+ab de. (define-method
+ab dc. (define-class
+
+" Lisp Mappings
+"map dc <INSERT>(define-class foo ()<ENTER> ()<ENTER>  ())<ESC><CR>
+"map dm input()
+
+function Test()
+  call put("okay")
+endfunction
+
+function LispDefineClass()
+  let class = "foo"
+  let superclasses = "bar baz"
+  let slots = split("id title qux", " ")
+
+  let class        = input("class name: ")
+  let superclasses = input("superclasses: ")
+  let slots        = split(input("slots: "), " ")
+
+  let line         = getline(".")+1
+
+  " dashes
+  let dashes = ""
+
+  let n = 0
+  while n < (47-strlen(class))
+    let dashes = dashes."-"
+    let n=n+1
+  endwhile
+
+  " banner
+  call setline(line, ";; -----------------------------------------------")
+  let line=line+1
+  call setline(line, ";; CLASS->".class." ".dashes)
+  let line=line+1
+  call setline(line, ";; -----------------------------------------------")
+  let line=line+1
+
+  call setline(line, "(define-class ".class." (".superclasses.")")
+  let line=line+1
+
+  let n = 0
+  while n < len(slots)
+  
+    " if it's the first, we need an extra (
+    if n == 0
+      let prefix = "  (("
+    else
+      let prefix = "   ("
+    endif
+
+    " if it's the last, we need an extra )
+    if n == (len(slots)-1)
+      let suffix = ")"
+    else
+      let suffix = ""
+    endif
+
+    " slot
+    call setline(line, prefix.slots[n])
+    let line=line+1
+    
+    " :accessor
+    call setline(line, "    :accessor ".class."-".slots[n])
+    let line=line+1
+
+    " :initarg
+    call setline(line, "    :initarg :".slots[n])
+    let line=line+1
+
+    " :initform
+    call setline(line, "    :initform nil)".suffix)
+    let line=line+1
+
+    let n = n+1
+  endwhile
+endfunction
+
+noremap ldc :call LispDefineClass()<CR>
+
+
 
