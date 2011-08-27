@@ -134,7 +134,7 @@ function LispDefineClass()
   let dashes = ""
 
   let n = 0
-  while n < (47-strlen(class))
+  while n < (39-strlen(class))
     let dashes = dashes."-"
     let n=n+1
   endwhile
@@ -142,7 +142,7 @@ function LispDefineClass()
   " banner
   call setline(line, ";; -----------------------------------------------")
   let line=line+1
-  call setline(line, ";; CLASS->".class." ".dashes)
+  call setline(line, ";; CLASS->".toupper(class)." ".dashes)
   let line=line+1
   call setline(line, ";; -----------------------------------------------")
   let line=line+1
