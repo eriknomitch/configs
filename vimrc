@@ -123,17 +123,25 @@ function LispHeader()
   let title = toupper(input("title: "))
   let line  = line(".")
 
+  if line == 1
+    let line_character = "="
+    let general_line = ";; ==============================================="
+  else
+    let line_character = "-"
+    let general_line = ";; -----------------------------------------------"
+  endif
+
   let suffix = ""
   let n = 0
 
   while n < 46-strlen(title)
-    let suffix = suffix."-"
+    let suffix = suffix.line_character
     let n = n+1
   endwhile
 
-  call setline(line, ";; -----------------------------------------------")
+  call setline(line, general_line)
   call setline(line+1, ";; ".title." ".suffix)
-  call setline(line+2, ";; -----------------------------------------------")
+  call setline(line+2, general_line)
 endfunction
 
 function LispDefineClass()
