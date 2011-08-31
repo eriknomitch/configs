@@ -119,6 +119,10 @@ function Test()
   call put("okay")
 endfunction
 
+function LispHeader()
+  let title = input("title:")
+endfunction
+
 function LispDefineClass()
   let class = "foo"
   let superclasses = "bar baz"
