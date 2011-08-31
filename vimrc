@@ -120,7 +120,20 @@ function Test()
 endfunction
 
 function LispHeader()
-  let title = input("title:")
+  let title = toupper(input("title: "))
+  let line  = line(".")
+
+  let suffix = ""
+  let n = 0
+
+  while n < 46-strlen(title)
+    let suffix = suffix."-"
+    let n = n+1
+  endwhile
+
+  call setline(line, ";; -----------------------------------------------")
+  call setline(line+1, ";; ".title." ".suffix)
+  call setline(line+2, ";; -----------------------------------------------")
 endfunction
 
 function LispDefineClass()
@@ -192,6 +205,7 @@ function LispDefineClass()
 endfunction
 
 noremap ldc :call LispDefineClass()<CR>
+noremap lh :call LispHeader()<CR>
 
 
 
