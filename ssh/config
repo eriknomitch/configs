@@ -11,19 +11,9 @@ Host desktop
     User erik
     Port 2211
 
-Host desktop-tim
-    HostName apartment.metalaic.com
-    User tim
-    Port 2212
-
 Host laptop
     HostName 10.0.0.13
     User tux
-    Port 22
-
-Host laptop-tim
-    HostName 10.0.0.14
-    User tim
     Port 22
 
 Host alarm-clock
