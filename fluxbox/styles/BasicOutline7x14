@@ -1,0 +1,126 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! Miscellaneous settings...!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+style.name:	BasicOutline
+style.author:	joesbox
+style.date:	24 Oct  03
+style.credits:	image from http://www.themexp.org/view_info.php?id=180 created by Denvish
+style.comments:	
+
+!!!!!!!!!!!!!!!!!!!!!!
+! Toolbar settings...!
+!!!!!!!!!!!!!!!!!!!!!!
+
+toolbar.button:			Flat
+toolbar.button.color:   	#000000
+toolbar.button.picColor:	#ffffff
+
+toolbar.button.pressed:		Sunken
+toolbar.button.pressed.color:	#6b6b6b
+
+toolbar.label:			Flat
+toolbar.label.color:		#000000
+toolbar.label.textColor:	#ffffff
+
+toolbar.clock:			Flat
+toolbar.clock.color:		#000000
+toolbar.clock.textColor:	#ffffff
+toolbar.clock.font:		-*-fixed-medium-*-*-*-14-*-*-*-*-*-*-*
+
+toolbar.workspace:		Flat
+toolbar.workspace.color:	#000000
+toolbar.workspace.textColor:	#ffffff
+toolbar.workspace.font:		-*-fixed-medium-*-*-*-14-*-*-*-*-*-*-*
+
+toolbar:			Flat
+toolbar.color:			#000000
+toolbar.textColor:		#ffffff
+toolbar.font:			-*-fixed-medium-*-*-*-14-*-*-*-*-*-*-*
+toolbar.justify:		left
+
+toolbar.iconbar.focused.color: #222222
+toolbar.iconbar.focused.textColor: #ffffff
+toolbar.iconbar.unfocused.color: #000000
+toolbar.iconbar.unfocused.textColor: #444444
+
+
+!!!!!!!!!!!!!!!!!!!
+! Menu settings...!
+!!!!!!!!!!!!!!!!!!!
+
+menu.frame:			Flat
+menu.frame.color:		#000000
+menu.frame.textColor:		#ffffff
+menu.frame.font:		-*-fixed-medium-*-*-*-14-*-*-*-*-*-*-*
+menu.frame.justify:		Left
+
+menu.title:			Flat
+menu.title.color:		#000000
+menu.title.textColor:		#ffffff
+menu.title.font:		-*-fixed-medium-*-*-*-14-*-*-*-*-*-*-*
+menu.title.justify:		Left
+
+menu.hilite:			Flat
+menu.hilite.color:		#424242
+menu.hilite.textColor:		#ffffff
+
+menu.bullet:			square
+menu.bullet.position:		Right
+menu.frame.disableColor:	#ffffff
+
+!!!!!!!!!!!!!!!!!!!!!
+! Window settings...!
+!!!!!!!!!!!!!!!!!!!!!
+
+window.button.focus:		Flat
+window.button.focus.color:	#222222
+window.button.focus.picColor:	#ffffff
+
+window.button.pressed:		Flat
+window.button.pressed.color:	#000000
+window.button.pressed.picColor:	#ffffff
+
+window.button.unfocus:		Flat
+window.button.unfocus.color:	#000000
+window.button.unfocus.picColor:	#ffffff
+
+window.grip.focus:		Flat
+window.grip.focus.color:	#000000
+
+window.grip.unfocus:		Flat
+window.grip.unfocus.color:	#000000
+
+window.handle.focus:		Flat
+window.handle.focus.color:	#000000
+
+window.handle.unfocus:		Flat
+window.handle.unfocus.color:	#000000
+
+window.label.focus:		Flat
+window.label.focus.color:	#222222
+window.label.focus.textColor:	#ffffff
+window.label.focus.font:	-*-fixed-medium-*-*-*-14-*-*-*-*-*-*-*
+window.label.focus.justify:	Center
+
+window.font:			-*-fixed-medium-*-*-*-14-*-*-*-*-*-*-*
+window.justify:			Center
+window.label.unfocus:		Flat
+window.label.unfocus.color:	#000000
+window.label.unfocus.textColor:	#444444
+
+window.title.focus:		Flat
+window.title.focus.color:	#000000
+
+window.title.unfocus:		Flat
+window.title.unfocus.color:	#000000
+window.title.unfocus.colorTo:	#ffffff
+
+window.frame.focusColor:	#444444
+window.frame.unfocusColor:	#444444
+
+handleWidth:			5
+frameWidth:			0
+bevelWidth:			0
+borderWidth:			1
+borderColor:			#222222
+

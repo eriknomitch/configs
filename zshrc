@@ -39,7 +39,11 @@ export EC2_KEYPAIR=prelang
 export EC2_URL=https://ec2.us-west-1.amazonaws.com
 export EC2_PRIVATE_KEY=$HOME/.ec2/pk-7JJ4YP4B73S7OPLJZKFAHZPPS7QL5FG7.pem
 export EC2_CERT=$HOME/.ec2/cert-7JJ4YP4B73S7OPLJZKFAHZPPS7QL5FG7.pem
-export JAVA_HOME=/usr/lib/jvm/java-6-openjdk/
+
+# ------------------------------------------------
+# ANDROID ----------------------------------------
+# ------------------------------------------------
+export JAVA_HOME=/usr/lib/jvm/java-6-sun/
 
 # ------------------------------------------------
 # OTHER ------------------------------------------

@@ -76,6 +76,7 @@ export PATH=$PATH:$HOME/.gexecute
 export PATH=$PATH:$HOME/.android/bin
 export PATH=$PATH:$HOME/.android/platform-tools
 export PATH=$PATH:$HOME/.repositories/pivot/bin
+export PATH=$PATH:$HOME/.neo4j-bin
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib
