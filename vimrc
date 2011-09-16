@@ -103,6 +103,9 @@ au BufNewFile,BufRead *.mls  set filetype=meta
 " Arduino syntax highlighting
 au BufNewFile,BufRead *.pde setf arduino
 
+" Less syntax highlighting
+au BufNewFile,BufRead *.less set filetype=less
+
 " Abbreviations
 ab df. (define-function
 ab def. (define-exported-function
