@@ -28,6 +28,7 @@ source /etc/zshrc-shared
 export PATH=$PATH:$HOME/.meta/executables
 export PATH=$PATH:$HOME/.meta-materials/bin
 export PATH=$PATH:$HOME/.src/mongodb/bin
+export PATH=$PATH:$HOME/.repositories/mkdir-scripts/bin
 export META_PATH_ROOT=$HOME/.meta
 export META_PATH_ASDF=$HOME/.asdf # FIX: You can get rid of this by doing a PUSHNEW on the libraries directory?
 
