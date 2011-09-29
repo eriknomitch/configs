@@ -7,7 +7,7 @@ Host auxiliary
     Port 2210
 
 Host desktop
-    HostName apartment.metalaic.com
+    HostName 10.0.1.20
     User erik
     Port 2211
 
