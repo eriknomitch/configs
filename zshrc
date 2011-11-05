@@ -48,14 +48,20 @@ export EC2_CERT=$HOME/.ec2/cert-7JJ4YP4B73S7OPLJZKFAHZPPS7QL5FG7.pem
 export JAVA_HOME=/usr/lib/jvm/java-6-sun/
 
 # ------------------------------------------------
+# CUDA -------------------------------------------
+# ------------------------------------------------
+export PATH=$PATH:/usr/local/cuda/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/lib:/usr/lib/nvidia-current
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/lib/nvidia-current
+
+# ------------------------------------------------
 # OTHER ------------------------------------------
 # ------------------------------------------------
 #export PATH=$PATH:$HOME/.src/syncfg/
 #export PATH=$PATH:$HOME/.arduino/
 #export SCREENATTACH="irssi ssh -o SendEnv=SCREENATTACH linode@linode"
-export PATH=$PATH:/usr/local/cuda/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/lib:/usr/lib/nvidia-current
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/lib/nvidia-current
+#export C_INCLUDE_PATH=$C_INCLUDE_PATH:$HOME/.nvidia-gpu-computing-sdk/C/common/inc
+#export CPLUS_INCPLUSLUDE_PATH=$CPLUS_INCPLUSLUDE_PATH:$HOME/.nvidia-gpu-computing-sdk/C/common/inc
 
 expdisp
 

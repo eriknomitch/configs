@@ -433,6 +433,9 @@ alias expdisp="export DISPLAY=:0.0"
 alias v="clear && ./vim-all"
 alias emacs="emacs -nw"
 alias slime="emacs -nw -f slime"
+alias pl="./push-live"
+alias rails-env-production="export RAILS_ENV=production"
+alias rails-env-development="export RAILS_ENV=development"
 
 ex()
 {

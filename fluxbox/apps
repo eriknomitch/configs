@@ -264,3 +264,8 @@
   [Dimensions]	{720 423}
   [Position]	(UPPERLEFT)	{467 77}
 [end]
+[app] (name=spotify) (class=Spotify)
+  [Dimensions]	{1280 743}
+  [Position]	(UPPERLEFT)	{0 0}
+  [Maximized]	{yes}
+[end]
