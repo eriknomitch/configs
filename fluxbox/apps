@@ -185,16 +185,16 @@
   [Maximized]	{yes}
 [end]
 [app] (name=gimp) (class=Gimp) (role=gimp-dock)
-  [Dimensions]	{200 1061}
+  [Dimensions]	{200 1181}
   [Position]	(UPPERLEFT)	{1718 -1}
 [end]
 [app] (name=gimp) (class=Gimp) (role=gimp-toolbox)
-  [Dimensions]	{192 1060}
+  [Dimensions]	{192 1181}
   [Position]	(UPPERLEFT)	{0 0}
 [end]
 [group]  (workspace=[current])
  [app] (name=gimp) (class=Gimp) (role=gimp-image-window)
-  [Dimensions]	{1523 1060}
+  [Dimensions]	{1524 1180}
   [Position]	(UPPERLEFT)	{193 0}
 [end]
 [app] (name=Extension) (class=Firefox) (role=Manager)

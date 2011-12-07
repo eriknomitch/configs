@@ -44,3 +44,8 @@ Host linode-fantravel
     User linode
     Port 22
 
+Host linode-fantravel-backup
+    HostName 173.255.202.63
+    User linode
+    Port 22
+
