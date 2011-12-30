@@ -53,16 +53,17 @@ chpwd()
 {
     ls -lh --color
 
-    if ( `pwd-is-git-repo --root` ) ; then
-        git-status-display
+    if [[ `uname` != "Darwin" ]] ; then
+      if ( `pwd-is-git-repo --root` ) ; then
+          git-status-display
+      fi
+      
+      if ( `pwd-is-wd` ) ; then
+          echo -e "\033[30;1mpwd:\033[0m \033[33;1m"`pwd-tilde`
+      elif ( `pwd-is-git-repo --root` ) ; then
+          echo -e "\033[30;1mpwd:\033[0m \033[33;2m"`pwd-tilde`
+      fi
     fi
-    
-    if ( `pwd-is-wd` ) ; then
-        echo -e "\033[30;1mpwd:\033[0m \033[33;1m"`pwd-tilde`
-    elif ( `pwd-is-git-repo --root` ) ; then
-        echo -e "\033[30;1mpwd:\033[0m \033[33;2m"`pwd-tilde`
-    fi
-
 }
 
 # ------------------------------------------------
@@ -84,9 +85,14 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib
 # ------------------------------------------------
 # UNIX -------------------------------------------
 # ------------------------------------------------
-alias l="ls -lh --color"
+if [[ `uname` == "Darwin" ]] ; then
+  alias l="ls -lh"
+else
+  alias l="ls -lh --color"
+  alias ls="ls --color"
+fi
+
 alias la="ls -lha --color"
-alias ls="ls --color"
 alias lf="ls -lh --color | grep -i"
 alias lfa="ls -lha --color | grep -i"
 alias b="cd .."
