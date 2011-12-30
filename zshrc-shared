@@ -51,7 +51,12 @@ alias resource="source ~/.zshrc"
 
 chpwd()
 {
-    ls -lh --color
+  
+    if [[ `uname` == "Darwin" ]] ; then
+      ls -lh
+    else
+      ls -lh --color
+    fi
 
     if [[ `uname` != "Darwin" ]] ; then
       if ( `pwd-is-git-repo --root` ) ; then
@@ -90,11 +95,11 @@ if [[ `uname` == "Darwin" ]] ; then
 else
   alias l="ls -lh --color"
   alias ls="ls --color"
+  alias la="ls -lha --color"
+  alias lf="ls -lh --color | grep -i"
+  alias lfa="ls -lha --color | grep -i"
 fi
 
-alias la="ls -lha --color"
-alias lf="ls -lh --color | grep -i"
-alias lfa="ls -lha --color | grep -i"
 alias b="cd .."
 alias f="cd -"
 alias x="exit"
