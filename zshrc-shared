@@ -53,21 +53,19 @@ chpwd()
 {
   
     if [[ `uname` == "Darwin" ]] ; then
-      ls -lh
+      ls -lh -G
     else
       ls -lh --color
     fi
 
-    if [[ `uname` != "Darwin" ]] ; then
-      if ( `pwd-is-git-repo --root` ) ; then
-          git-status-display
-      fi
-      
-      if ( `pwd-is-wd` ) ; then
-          echo -e "\033[30;1mpwd:\033[0m \033[33;1m"`pwd-tilde`
-      elif ( `pwd-is-git-repo --root` ) ; then
-          echo -e "\033[30;1mpwd:\033[0m \033[33;2m"`pwd-tilde`
-      fi
+    if ( `pwd-is-git-repo --root` ) ; then
+        git-status-display
+    fi
+    
+    if ( `pwd-is-wd` ) ; then
+        echo -e "\033[30;1mpwd:\033[0m \033[33;1m"`pwd-tilde`
+    elif ( `pwd-is-git-repo --root` ) ; then
+        echo -e "\033[30;1mpwd:\033[0m \033[33;2m"`pwd-tilde`
     fi
 }
 
@@ -91,7 +89,11 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib
 # UNIX -------------------------------------------
 # ------------------------------------------------
 if [[ `uname` == "Darwin" ]] ; then
-  alias l="ls -lh"
+  alias l="ls -lh -G"
+  alias ls="ls -G"
+  alias la="ls -lha -G"
+  alias lf="ls -lh -G | grep -i"
+  alias lfa="ls -lha -G | grep -i"
 else
   alias l="ls -lh --color"
   alias ls="ls --color"
@@ -182,8 +184,8 @@ git-status-display()
 {
     # FIX: this says that the dir is clean when we deleted some files and when we git-mv files. probably more
     git_count_untracked=`git-count-untracked`
-    git_count_diff=`git diff | wc -l`
-    git_count_branches=`git branch | wc -l`
+    git_count_diff=`git diff | wc -l | awk '{print $1}'`
+    git_count_branches=`git branch | wc -l | awk '{print $1}'`
     git_branch_current=`git-branch-current`
   
     # git:

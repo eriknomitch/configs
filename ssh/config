@@ -7,9 +7,9 @@ Host auxiliary
     Port 2210
 
 Host desktop
-    HostName 10.0.1.20
+    HostName 69.181.42.19
     User erik
-    Port 2211
+    Port 22
 
 Host laptop
     HostName 10.0.0.21
