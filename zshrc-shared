@@ -201,9 +201,13 @@ git-status-display()
 compdef g=git
 compctl -k "(ls lso lsd d cm cmp cpdm d s p)" g # FIX: compdef overrides these
 
-g()
+function g()
 {
     case "$1" in
+        # log
+        l)
+        git log
+        ;;
         # list tracked
         ls)
         git ls-files
@@ -326,6 +330,35 @@ g()
         git $*
         ;;
     esac
+}
+
+# ------------------------------------------------
+# HEROKU -----------------------------------------
+# ------------------------------------------------
+function h()
+{
+  case "$1" in
+    # console (production)
+    c)
+    heroku run console
+    ;;
+    # console (development)
+    cd)
+    heroku run console RAILS_ENV=development
+    ;;
+    # config
+    co)
+    heroku config
+    ;;
+    # logs
+    l)
+    heroku logs
+    ;;
+    # default
+    *)
+    heroku $*
+    ;;
+  esac
 }
 
 # ------------------------------------------------

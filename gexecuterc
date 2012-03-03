@@ -13,6 +13,14 @@ commands =
         action = "pidgin & xterm -title irc -e \"sleep 0.1; irc\"";
     },
     { 
+        match  = "quicksynergy";
+        action = "quicksynergy";
+    },
+    { 
+        match  = "xlock";
+        action = "xlock";
+    },
+    { 
         match  = "zsnes";
         action = "zsnes";
     },

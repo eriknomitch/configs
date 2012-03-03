@@ -12,8 +12,8 @@ Host desktop
     Port 2211
 
 Host laptop
-    HostName 10.0.0.21
-    User tux
+    HostName 10.0.1.11
+    User eriknomitch
     Port 22
 
 Host alarm-clock
