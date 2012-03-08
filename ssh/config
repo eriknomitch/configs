@@ -12,7 +12,7 @@ Host desktop
     Port 22
 
 Host laptop
-    HostName 10.0.1.11
+    HostName 10.0.1.21
     User eriknomitch
     Port 22
 
