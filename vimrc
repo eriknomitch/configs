@@ -106,6 +106,9 @@ au BufNewFile,BufRead *.pde setf arduino
 " Less syntax highlighting
 au BufNewFile,BufRead *.less set filetype=less
 
+" JSON highlighting
+au! BufRead,BufNewFile *.json set filetype=json
+
 " Abbreviations
 ab df. (define-function
 ab def. (define-exported-function
