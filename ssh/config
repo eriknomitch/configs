@@ -34,6 +34,11 @@ Host linode-personal
     User linode
     Port 22
 
+Host linode-prelang
+    HostName 50.116.4.75
+    User linode
+    Port 22
+
 Host linode-meta
     HostName 173.230.151.168
     User metalaic

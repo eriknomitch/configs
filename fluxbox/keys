@@ -78,6 +78,7 @@ Mod1 65 :ExecCommand ~/.repositories/gExecute/gexecute
 # ------------------------------------------------
 Mod1 Shift l :ExecCommand xterm -e "ssh linode"
 Mod1 Shift 47 :ExecCommand xterm -e "ssh linode-personal"
+Mod1 Shift p :ExecCommand xterm -e "ssh linode-prelang"
 Mod1 Shift a :ExecCommand xterm -e "ssh laptop"
 Mod1 Shift m :ExecCommand xterm -e "ssh linode-meta"
 Mod1 Shift x :ExecCommand xterm -e "ssh desktop-erik"
