@@ -29,6 +29,12 @@ command -nargs=0 TEMPORARY normal i;; TEMPORARY >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " http://vim.wikia.com/wiki/Change_vimrc_with_auto_reload
 " autocmd! bufwritepost .vimrc source %
 
+" Quick switching commands
+command Css :b assets/stylesheets/prelang.css
+command Js :b assets/javascripts/prelang.js
+command App :b prelang.lisp
+" call CmdAlias("css", "Css")
+
 " folding
 set foldmethod=marker
 
@@ -105,6 +111,9 @@ au BufNewFile,BufRead *.pde setf arduino
 
 " Less syntax highlighting
 au BufNewFile,BufRead *.less set filetype=less
+
+" JSON highlighting
+au! BufRead,BufNewFile *.json set filetype=json
 
 " Abbreviations
 ab df. (define-function
@@ -218,5 +227,12 @@ endfunction
 noremap ldc :call LispDefineClass()<CR>
 noremap lh :call LispHeader()<CR>
 
+" Vundle
+"set rtp+=~/.vim/bundle/vundle/
+"call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+"Bundle 'gmarik/vundle'
 
 

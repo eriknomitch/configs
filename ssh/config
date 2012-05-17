@@ -13,7 +13,7 @@ Host desktop
     Port 22
 
 Host laptop
-    HostName 10.0.1.11
+    HostName 10.0.1.21
     User eriknomitch
     Port 22
 
@@ -32,6 +32,11 @@ Host linode
 
 Host linode-personal
     HostName 173.255.244.170
+    User linode
+    Port 22
+
+Host linode-prelang
+    HostName 50.116.4.75
     User linode
     Port 22
 
