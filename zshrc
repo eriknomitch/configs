@@ -13,6 +13,7 @@ fi
 # SOURCE -----------------------------------------
 # ------------------------------------------------
 source /etc/zshrc-shared
+source $HOME/.rvm/scripts/rvm
 source /var/www/dev.prelang/system/shell/prelang.sh
 
 # ------------------------------------------------
@@ -71,3 +72,5 @@ expdisp
 # ------------------------------------------------
 export PATH=$PATH:$HOME/notifier
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

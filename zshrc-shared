@@ -281,6 +281,10 @@ function g()
             fi
         fi
         ;;
+        # branch
+        b)
+        git branch
+        ;;
         # list untracked
         lso)
         git ls-files --other --exclude-standard
