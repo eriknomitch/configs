@@ -228,11 +228,11 @@ noremap ldc :call LispDefineClass()<CR>
 noremap lh :call LispHeader()<CR>
 
 " Vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+"set rtp+=~/.vim/bundle/vundle/
+"call vundle#rc()
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+"Bundle 'gmarik/vundle'
 
 

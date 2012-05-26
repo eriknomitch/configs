@@ -13,6 +13,8 @@ fi
 # SOURCE -----------------------------------------
 # ------------------------------------------------
 source /etc/zshrc-shared
+source $HOME/.rvm/scripts/rvm
+source /var/www/dev.prelang/system/shell/prelang.sh
 
 # ------------------------------------------------
 # NF ---------------------------------------------

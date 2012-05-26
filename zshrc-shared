@@ -281,6 +281,10 @@ function g()
             fi
         fi
         ;;
+        # branch
+        b)
+        git branch
+        ;;
         # list untracked
         lso)
         git ls-files --other --exclude-standard
@@ -510,6 +514,7 @@ alias slime="emacs -nw -f slime"
 alias pl="./push-live"
 alias rails-env-production="export RAILS_ENV=production"
 alias rails-env-development="export RAILS_ENV=development"
+alias rails-env-test="export RAILS_ENV=test"
 
 ex()
 {
