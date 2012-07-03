@@ -514,6 +514,8 @@ alias slime="emacs -nw -f slime"
 alias pl="./push-live"
 alias rails-env-production="export RAILS_ENV=production"
 alias rails-env-development="export RAILS_ENV=development"
+alias re-p="rails-env-production"
+alias re-d="rails-env-development"
 alias rails-env-test="export RAILS_ENV=test"
 
 ex()
