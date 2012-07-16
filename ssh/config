@@ -7,8 +7,7 @@ Host auxiliary
     Port 2210
 
 Host desktop
-    #HostName 69.181.42.19
-    HostName 10.0.1.20
+    HostName 69.181.219.151
     User erik
     Port 22
 

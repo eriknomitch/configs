@@ -281,6 +281,10 @@ function g()
             fi
         fi
         ;;
+        # branch
+        b)
+        git branch
+        ;;
         # list untracked
         lso)
         git ls-files --other --exclude-standard
@@ -510,6 +514,9 @@ alias slime="emacs -nw -f slime"
 alias pl="./push-live"
 alias rails-env-production="export RAILS_ENV=production"
 alias rails-env-development="export RAILS_ENV=development"
+alias re-p="rails-env-production"
+alias re-d="rails-env-development"
+alias rails-env-test="export RAILS_ENV=test"
 
 ex()
 {
@@ -547,6 +554,8 @@ if [[ $USER == "root" ]] ; then
     PROMPT=$'%{\e[31m%}%m# %{\e[0m%}'
 elif [[ $HOST == "linode-personal" ]] ; then
     PROMPT=$'%{\e[34m%}linode%{\e[1;32m%}(personal)$ %{\e[0m%}'
+elif [[ $HOST == "linode-prelang" ]] ; then
+    PROMPT=$'%{\e[34m%}linode%{\e[1;36m%}(prelang)$ %{\e[0m%}'
 else
     PROMPT=$'%{\e[32m%}%m$ %{\e[0m%}'
 fi
