@@ -18,4 +18,5 @@ else
   runtime! syntax/ruby.vim
 endif
 
-syn keyword rubyError prelang
+syntax match evolvereduce /#=!/
+highlight evolvereduce ctermbg=Red guibg=Red cterm=bold
