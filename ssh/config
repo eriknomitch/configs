@@ -1,10 +1,10 @@
 # ------------------------------------------------
 # LAN --------------------------------------------
 # ------------------------------------------------
-Host auxiliary
-    HostName apartment.metalaic.com
-    User metalaic
-    Port 2210
+Host pi
+    HostName 10.0.1.135
+    User pi
+    Port 22
 
 Host desktop
     HostName 69.181.219.151
