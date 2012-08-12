@@ -62,6 +62,25 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/li
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/lib/nvidia-current
 
 # ------------------------------------------------
+# FANTRAVEL --------------------------------------
+# ------------------------------------------------
+alias pl="fantravel push-live"
+alias v="fantravel edit"
+
+_ft_cpl() {
+  reply=()
+  for file in `ls /var/www/dev.fantravel/bin | grep "fantravel-" | sed "s/fantravel-//"`
+  do
+    reply[$(($#reply+1))]=$file
+  done
+}
+
+compctl -K _ft_cpl fantravel
+
+test -d $HOME/.repositories/fantravel && PATH=$PATH:$HOME/.repositories/fantravel/bin
+alias ft="fantravel"
+
+# ------------------------------------------------
 # OTHER ------------------------------------------
 # ------------------------------------------------
 #export PATH=$PATH:$HOME/.src/syncfg/
@@ -69,6 +88,7 @@ export LIBRARY_PATH=$LIBRARY_PATH:/usr/lib/nvidia-current
 #export SCREENATTACH="irssi ssh -o SendEnv=SCREENATTACH linode@linode"
 #export C_INCLUDE_PATH=$C_INCLUDE_PATH:$HOME/.nvidia-gpu-computing-sdk/C/common/inc
 #export CPLUS_INCPLUSLUDE_PATH=$CPLUS_INCPLUSLUDE_PATH:$HOME/.nvidia-gpu-computing-sdk/C/common/inc
+export EDITOR="vim"
 
 expdisp
 
