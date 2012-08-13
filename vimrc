@@ -238,10 +238,3 @@ noremap lh :call LispHeader()<CR>
 " required! 
 "Bundle 'gmarik/vundle'
 
-" Quick switching commands
-command Css :b app/assets/stylesheets/application.css.scss
-command Style :b public/stylesheets/new.application.less
-command Js :b app/assets/javascripts/application.js
-command App :b app/views/layouts/application.html.erb
-" call CmdAlias("css", "Css")
-
