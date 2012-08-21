@@ -7,7 +7,7 @@ Host pi
     Port 22
 
 Host desktop
-    HostName 69.181.219.151
+    HostName 98.210.187.41
     User erik
     Port 22
 
