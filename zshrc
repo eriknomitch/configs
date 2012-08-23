@@ -65,7 +65,7 @@ export LIBRARY_PATH=$LIBRARY_PATH:/usr/lib/nvidia-current
 # FANTRAVEL --------------------------------------
 # ------------------------------------------------
 alias pl="fantravel push-live"
-alias v="fantravel edit"
+#alias v="fantravel edit"
 
 _ft_cpl() {
   reply=()

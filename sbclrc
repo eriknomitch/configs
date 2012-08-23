@@ -1,0 +1,40 @@
+;; ===============================================
+;; LISP->SBCLRC ==================================
+;; ===============================================
+(require :asdf)
+(sb-ext:enable-debugger)
+
+;; -----------------------------------------------
+;; FUNCTIONS -------------------------------------
+;; -----------------------------------------------
+(defun require-and-use (package)
+  (require package)
+  (use-package package))
+
+;; -----------------------------------------------
+;; ALIASES ---------------------------------------
+;; -----------------------------------------------
+(defmacro q (&rest arguments)
+ `(sb-ext:quit ,@arguments))
+
+;; -----------------------------------------------
+;; ASDF ------------------------------------------
+;; -----------------------------------------------
+;; add (require :asdf) and (pushnew "/home/<user>/.asdf/systems/" asdf:*central-registry*) to ~/.sbclrc
+;; layout is ~/.asdf/systems/ and ~/.asdf/sites/
+;; then, you ln -s only the .asd files into 'systems'
+;; ln -s ~/.src/cl-alsa/cl-alsa.asd ~/.asdf/systems/
+;; then, (asdf:operate 'asdf:load-op 'cl-alsa)
+
+(pushnew (merge-pathnames ".asdf/systems/" (user-homedir-pathname)) asdf:*central-registry*)
+
+;; -----------------------------------------------
+;; QUICKLISP -------------------------------------
+;; -----------------------------------------------
+;;; The following lines added by ql:add-to-init-file:
+#-quicklisp
+(let ((quicklisp-init (merge-pathnames ".quicklisp/setup.lisp"
+                                       (user-homedir-pathname))))
+  (when (probe-file quicklisp-init)
+    (load quicklisp-init)))
+
