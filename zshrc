@@ -22,7 +22,7 @@ source-if-exists $HOME/.rvm/scripts/rvm
 # ------------------------------------------------
 # PRELANG ----------------------------------------
 # ------------------------------------------------
-source-if-exists $HOME/.repositories/prelang/system/shell/prelang.sh
+source-if-exists $HOME/.repositories/prelang/system/shell/zsh.sh
 
 # ------------------------------------------------
 # AMAZON -----------------------------------------
