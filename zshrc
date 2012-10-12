@@ -18,7 +18,11 @@ source /etc/zshrc-shared
 
 test -d $HOME/.rvm && source $HOME/.rvm/scripts/rvm
 
-test -d /var/www/dev.prelang && source /var/www/dev.prelang/system/shell/prelang.sh
+# ------------------------------------------------
+# PRELANG ----------------------------------------
+# ------------------------------------------------
+#test -d /var/www/dev.prelang && source /var/www/dev.prelang/system/shell/prelang.sh
+test -d $HOME/.repositories/prelang && export PATH=$PATH:$HOME/.repositories/prelang/bin
 
 # ------------------------------------------------
 # NF ---------------------------------------------

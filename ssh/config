@@ -6,8 +6,13 @@ Host pi
     User pi
     Port 22
 
+#Host desktop
+    #HostName 98.210.187.41
+    #User erik
+    #Port 22
+
 Host desktop
-    HostName 98.210.187.41
+    HostName 10.0.1.20
     User erik
     Port 22
 
