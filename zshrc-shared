@@ -69,6 +69,11 @@ chpwd()
         echo -e "\033[30;1mpwd:\033[0m \033[33;2m"`pwd-tilde`
     fi
 }
+function source-if-exists()
+{
+  _path=$1
+  test -f $_path && source $_path
+}
 
 # ------------------------------------------------
 # PATHS ------------------------------------------

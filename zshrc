@@ -17,12 +17,12 @@ source /etc/zshrc-shared
 # ------------------------------------------------
 # RVM --------------------------------------------
 # ------------------------------------------------
-test -d $HOME/.rvm && source $HOME/.rvm/scripts/rvm
+source-if-exists $HOME/.rvm/scripts/rvm
 
 # ------------------------------------------------
 # PRELANG ----------------------------------------
 # ------------------------------------------------
-test -d $HOME/.repositories/prelang && source $HOME/.repositories/prelang/system/shell/prelang.sh
+source-if-exists $HOME/.repositories/prelang/system/shell/prelang.sh
 
 # ------------------------------------------------
 # AMAZON -----------------------------------------
