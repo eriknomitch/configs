@@ -24,6 +24,8 @@ source-if-exists $HOME/.rvm/scripts/rvm
 # ------------------------------------------------
 source-if-exists $HOME/.repositories/prelang/system/shell/zsh.sh
 
+alias pl="prelang"
+
 # ------------------------------------------------
 # AMAZON -----------------------------------------
 # ------------------------------------------------
