@@ -72,7 +72,10 @@ chpwd()
 function source-if-exists()
 {
   _path=$1
-  test -f $_path && source $_path
+
+  if [[ -f $_path ]] ; then
+    source $_path
+  fi
 }
 
 # ------------------------------------------------
