@@ -107,7 +107,7 @@ au BufNewFile,BufRead *.asd  set filetype=meta
 au BufNewFile,BufRead *.mls  set filetype=meta
 
 " Prelang syntax highlighting
-au BufNewFile,BufRead *.rb set filetype=prelang
+"au BufNewFile,BufRead *.rb set filetype=prelang
 
 " Arduino syntax highlighting
 au BufNewFile,BufRead *.pde setf arduino
