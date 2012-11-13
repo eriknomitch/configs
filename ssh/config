@@ -16,6 +16,11 @@ Host desktop
     User erik
     Port 22
 
+Host desktop-virtual
+    HostName 10.0.1.22
+    User erik
+    Port 22
+
 Host laptop
     HostName 10.0.1.21
     User eriknomitch
