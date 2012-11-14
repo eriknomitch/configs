@@ -126,6 +126,7 @@ alias grep="grep --color"
 alias lsdir="ls -d */"
 alias lsadir="ls -d .*/"
 alias p="pwd"
+alias rs="rspec --format nested"
 
 psg()
 {
