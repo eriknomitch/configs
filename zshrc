@@ -12,6 +12,8 @@ fi
 # ------------------------------------------------
 # SOURCE -----------------------------------------
 # ------------------------------------------------
+source $HOME/.g/g.zsh
+source $HOME/.persistent-working-directory/persistent-working-directory.zsh
 source /etc/zshrc-shared
 
 # ------------------------------------------------
