@@ -15,6 +15,7 @@ fi
 source $HOME/.g/g.zsh
 source $HOME/.persistent-working-directory/persistent-working-directory.zsh
 source /etc/zshrc-shared
+source $HOME/.repositories/fantravel-v2/system/fantravel.sh
 
 # ------------------------------------------------
 # RVM --------------------------------------------
@@ -48,26 +49,6 @@ export JAVA_HOME=/usr/lib/jvm/java-6-sun/
 export PATH=$PATH:/usr/local/cuda/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/lib:/usr/lib/nvidia-current
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/lib/nvidia-current
-
-# ------------------------------------------------
-# FANTRAVEL --------------------------------------
-# ------------------------------------------------
-if [[ $HOST == "linode-fantravel" ]] ; then
-  alias pl="fantravel push-live"
-fi
-
-_ft_cpl() {
-  reply=()
-  for file in `ls /var/www/dev.fantravel/bin | grep "fantravel-" | sed "s/fantravel-//"`
-  do
-    reply[$(($#reply+1))]=$file
-  done
-}
-
-compctl -K _ft_cpl fantravel
-
-test -d $HOME/.repositories/fantravel && PATH=$PATH:$HOME/.repositories/fantravel/bin
-alias ft="fantravel"
 
 # ------------------------------------------------
 # PLEX -------------------------------------------
