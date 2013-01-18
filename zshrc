@@ -15,7 +15,7 @@ fi
 source $HOME/.g/g.zsh
 source $HOME/.persistent-working-directory/persistent-working-directory.zsh
 source /etc/zshrc-shared
-source $HOME/.repositories/fantravel-v2/system/fantravel.sh
+source-if-exists $HOME/.repositories/fantravel-v2/system/fantravel.sh
 
 # ------------------------------------------------
 # RVM --------------------------------------------
