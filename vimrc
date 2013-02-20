@@ -9,6 +9,10 @@ set is
 
 filetype plugin on
 
+" comment wrapping
+set wrap
+set textwidth=80
+
 " commenting
 command! -range -bar -nargs=0 LC <line1>,<line2>s/^/;; /
 command! -range -bar -nargs=0 LUC <line1>,<line2>s/^;; //
