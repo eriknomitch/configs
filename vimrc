@@ -4,10 +4,14 @@ colors bluegreen
 
 set autoread
 
+" pathogen
+execute pathogen#infect()
+
 " instant search
 set is
 
-filetype plugin on
+syntax on
+filetype plugin indent on
 
 " comment wrapping
 set wrap
