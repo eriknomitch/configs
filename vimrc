@@ -7,6 +7,9 @@ set autoread
 " pathogen
 execute pathogen#infect()
 
+" spellcheck
+set spell
+
 " instant search
 set is
 
