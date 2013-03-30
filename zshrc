@@ -23,6 +23,11 @@ source-if-exists $HOME/.repositories/fantravel-v2/system/fantravel.sh
 source-if-exists $HOME/.rvm/scripts/rvm
 
 # ------------------------------------------------
+# PROJECT ----------------------------------------
+# ------------------------------------------------
+source-if-exists $HOME/.repositories/project/bin
+
+# ------------------------------------------------
 # PRELANG ----------------------------------------
 # ------------------------------------------------
 source-if-exists $HOME/.repositories/prelang/system/shell/zsh.sh
