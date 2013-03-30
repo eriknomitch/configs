@@ -25,7 +25,7 @@ source-if-exists $HOME/.rvm/scripts/rvm
 # ------------------------------------------------
 # PROJECT ----------------------------------------
 # ------------------------------------------------
-source-if-exists $HOME/.repositories/project/bin
+export PATH=$PATH:$HOME/.repositories/project/bin
 
 # ------------------------------------------------
 # PRELANG ----------------------------------------
