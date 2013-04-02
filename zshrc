@@ -25,7 +25,7 @@ source-if-exists $HOME/.rvm/scripts/rvm
 # ------------------------------------------------
 # PROJECT ----------------------------------------
 # ------------------------------------------------
-export PATH=$PATH:$HOME/.repositories/project/bin
+source-if-exists $HOME/.repositories/project/project.zsh
 
 # ------------------------------------------------
 # PRELANG ----------------------------------------
@@ -59,6 +59,11 @@ export LIBRARY_PATH=$LIBRARY_PATH:/usr/lib/nvidia-current
 # PLEX -------------------------------------------
 # ------------------------------------------------
 export PLEX_HOME=$HOME/.media/plex
+
+# ------------------------------------------------
+# GIT-FLOW-COMPLETION ----------------------------
+# ------------------------------------------------
+source-if-exists $HOME/.repositories/git-flow-completion/git-flow-completion.zsh
 
 # ------------------------------------------------
 # OTHER ------------------------------------------
