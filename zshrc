@@ -66,6 +66,11 @@ export PLEX_HOME=$HOME/.media/plex
 source-if-exists $HOME/.repositories/git-flow-completion/git-flow-completion.zsh
 
 # ------------------------------------------------
+# TO ---------------------------------------------
+# ------------------------------------------------
+source-if-exists $HOME/.repositories/to/to.sh
+
+# ------------------------------------------------
 # OTHER ------------------------------------------
 # ------------------------------------------------
 export EDITOR="vim"
