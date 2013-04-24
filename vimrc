@@ -124,12 +124,12 @@ au BufNewFile,BufRead *.less set filetype=less
 au! BufRead,BufNewFile *.json set filetype=json
 
 " Abbreviations
-ab df. (define-function
-ab def. (define-exported-function
-ab dv. (define-variable
-ab dm. (define-macro
-ab de. (define-method
-ab dc. (define-class
+"ab df. (define-function
+"ab def. (define-exported-function
+"ab dv. (define-variable
+"ab dm. (define-macro
+"ab de. (define-method
+"ab dc. (define-class
 
 " Lisp Mappings
 "map dc <INSERT>(define-class foo ()<ENTER> ()<ENTER>  ())<ESC><CR>
