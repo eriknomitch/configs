@@ -106,7 +106,7 @@ set wildchar=<Tab>
 autocmd FileType lisp set omnifunc=lispcomplete#Complete
 
 " Various ERB syntax highlighting fixes
-au BufReadPost *.js.coffee.erb set filetype=coffee
+au BufReadPost *.js.coffee.erb set filetype=coffee syntax=coffee
 
 " Meta syntax highlighting
 au BufNewFile,BufRead *.lisp set filetype=meta
