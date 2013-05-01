@@ -136,7 +136,7 @@
   [Position]	(CENTER)	{0 0}
 [end]
 [app] (name=Navigator) (class=Firefox) (role=browser)
-  [Dimensions]	{1440 905}
+  [Dimensions]	{1680 1030}
   [Position]	(UPPERLEFT)	{0 0}
   [Deco]	{NORMAL}
 [end]
