@@ -107,6 +107,7 @@ autocmd FileType lisp set omnifunc=lispcomplete#Complete
 
 " Various ERB syntax highlighting fixes
 au BufReadPost *.js.coffee.erb set filetype=coffee syntax=coffee
+au BufReadPost *.jst.ejs set filetype=html syntax=html
 
 " Meta syntax highlighting
 au BufNewFile,BufRead *.lisp set filetype=meta
