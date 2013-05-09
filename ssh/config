@@ -21,6 +21,11 @@ Host desktop-virtual
     User erik
     Port 22
 
+Host desktop-virtual-work
+    HostName 192.168.19.60
+    User erik
+    Port 22
+
 Host laptop
     HostName 10.0.1.21
     User eriknomitch
