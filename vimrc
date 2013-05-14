@@ -2,7 +2,7 @@ set nocompatible
 syntax enable
 colors bluegreen
 
-let mapleader = ','
+" let mapleader = ','
 
 set autoread
 
