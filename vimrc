@@ -2,6 +2,8 @@ set nocompatible
 syntax enable
 colors bluegreen
 
+let mapleader = ','
+
 set autoread
 
 " pathogen
