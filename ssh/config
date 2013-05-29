@@ -17,7 +17,7 @@ Host desktop
     Port 22
 
 Host desktop-virtual
-    HostName 10.0.1.22
+    HostName 192.168.56.10
     User erik
     Port 22
 
