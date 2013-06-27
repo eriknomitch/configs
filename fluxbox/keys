@@ -70,7 +70,7 @@ Mod4 u :ExecCommand xterm -e "sudo apt-get update && sudo apt-get dist-upgrade &
 Mod4 v :ExecCommand xterm -e "alsamixer"
 Mod4 Shift x :ExecCommand xterm
 Mod4 i :ExecCommand chromium-browser
-Mod4 65 :ExecCommand ~/.repositories/gExecute/gexecute
+Mod4 65 :ExecCommand ~/.repositories/gexecute/gexecute
 
 # ------------------------------------------------
 # SSH --------------------------------------------
