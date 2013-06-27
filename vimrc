@@ -7,7 +7,7 @@ colors bluegreen
 set autoread
 
 " pathogen
-execute pathogen#infect()
+call pathogen#infect()
 
 " spellcheck
 set spell
