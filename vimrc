@@ -238,8 +238,10 @@ function LispDefineClass()
   endwhile
 endfunction
 
-noremap ldc :call LispDefineClass()<CR>
-noremap lh :call LispHeader()<CR>
+let g:vim_markdown_folding_disabled=1
+
+"noremap ldc :call LispDefineClass()<CR>
+"noremap lh :call LispHeader()<CR>
 
 " Vundle
 "set rtp+=~/.vim/bundle/vundle/
