@@ -1,0 +1,3 @@
+[submodule "vim/bundle/Floobits"]
+	path = vim/bundle/Floobits
+	url = https://github.com/Floobits/floobits-vim
