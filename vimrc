@@ -243,7 +243,7 @@ nnoremap <Leader>O :<C-u>call OpenLines(v:count, -1)<CR>S
 function Banner()
 
   " Create a space for the banner to go
-  call OpenLines(v:count, 1)
+  call OpenLines(3, 0)
 
   let title = toupper(input("title: "))
   let line  = line(".")
