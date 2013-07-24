@@ -32,12 +32,6 @@ command! -range -bar -nargs=0 LOWER <line1>,<line2>s/[A-Z]/\L&/g
 " upper case
 command! -range -bar -nargs=0 UPPER <line1>,<line2>s/[a-z]/\U&/g
 
-" some common strings
-command -nargs=0 DASHES normal i;; -----------------------------------------------
-command -nargs=0 DASHED normal i;; - - - - - - - - - - - - - - - - - - - - - - - -
-command -nargs=0 BANNER normal i;; -----------------------------------------------<Enter>;; -----------------------------------------------<Enter>;; -----------------------------------------------
-command -nargs=0 TEMPORARY normal i;; TEMPORARY >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><Enter>;; <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
 " autosource ~/.vimrc after writing
 " http://vim.wikia.com/wiki/Change_vimrc_with_auto_reload
 " autocmd! bufwritepost .vimrc source %
@@ -141,35 +135,6 @@ au! BufRead,BufNewFile *.json set filetype=json
 "map dc <INSERT>(define-class foo ()<ENTER> ()<ENTER>  ())<ESC><CR>
 "map dm input()
 
-function Test()
-  call put("okay")
-endfunction
-
-function LispHeader()
-  let title = toupper(input("title: "))
-  let line  = line(".")
-
-  if line == 1
-    let line_character = "="
-    let general_line = ";; ==============================================="
-  else
-    let line_character = "-"
-    let general_line = ";; -----------------------------------------------"
-  endif
-
-  let suffix = ""
-  let n = 0
-
-  while n < 46-strlen(title)
-    let suffix = suffix.line_character
-    let n = n+1
-  endwhile
-
-  call setline(line, general_line)
-  call setline(line+1, ";; ".title." ".suffix)
-  call setline(line+2, general_line)
-endfunction
-
 function LispDefineClass()
   let class = "foo"
   let superclasses = "bar baz"
@@ -241,7 +206,6 @@ endfunction
 let g:vim_markdown_folding_disabled=1
 
 "noremap ldc :call LispDefineClass()<CR>
-"noremap lh :call LispHeader()<CR>
 
 " Vundle
 "set rtp+=~/.vim/bundle/vundle/
@@ -250,4 +214,61 @@ let g:vim_markdown_folding_disabled=1
 " let Vundle manage Vundle
 " required! 
 "Bundle 'gmarik/vundle'
+
+" ------------------------------------------------
+" UTILITY ----------------------------------------
+" ------------------------------------------------
+" http://vim.wikia.com/wiki/Insert_multiple_lines
+" Open multiple lines (insert empty lines) before or after current line,
+" and position cursor in the new space, with at least one blank line
+" before and after the cursor.
+function! OpenLines(nrlines, dir)
+  let nrlines = a:nrlines < 3 ? 3 : a:nrlines
+  let start = line('.') + a:dir
+  call append(start, repeat([''], nrlines))
+  if a:dir < 0
+    normal! 2k
+  else
+    normal! 2j
+  endif
+endfunction
+
+" Mappings to open multiple lines and enter insert mode.
+nnoremap <Leader>o :<C-u>call OpenLines(v:count, 0)<CR>S
+nnoremap <Leader>O :<C-u>call OpenLines(v:count, -1)<CR>S
+
+" ------------------------------------------------
+" BANNERS ----------------------------------------
+" ------------------------------------------------
+function Banner()
+
+  " Create a space for the banner to go
+  call OpenLines(v:count, 1)
+
+  let title = toupper(input("title: "))
+  let line  = line(".")
+
+  if line == 1
+    let line_character = "="
+    let general_line = "# ================================================"
+  else
+    let line_character = "-"
+    let general_line = "# ------------------------------------------------"
+  endif
+
+  let suffix = ""
+  let n = 0
+
+  while n < 47-strlen(title)
+    let suffix = suffix.line_character
+    let n = n+1
+  endwhile
+
+  call setline(line, general_line)
+  call setline(line+1, "# ".title." ".suffix)
+  call setline(line+2, general_line)
+endfunction
+
+" Map banner functions
+noremap <Leader>t :call Banner()<CR>
 
