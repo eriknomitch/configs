@@ -3,3 +3,5 @@
 	name = Erik Nomitch
 [color]
 	ui = true
+[push]
+	default = current

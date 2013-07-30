@@ -82,7 +82,6 @@ expdisp
 # ------------------------------------------------
 export PATH=$PATH:$HOME/notifier
 
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
