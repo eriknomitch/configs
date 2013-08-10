@@ -86,3 +86,7 @@ export PATH=$PATH:$HOME/notifier
 export PATH="/usr/local/heroku/bin:$PATH"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+export META_PATH_ROOT=$HOME/.meta
+export META_PATH_ASDF=$HOME/.asdf
+
