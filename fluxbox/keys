@@ -67,7 +67,7 @@ Mod4 Shift n c :ExecCommand "$HOME/.bin/xterm-nf-cat"
 Mod4 x :ExecCommand xterm
 Mod4 b :ExecCommand xterm -e "$HOME/.bin/bat && sleep 1"
 Mod4 u :ExecCommand xterm -e "sudo apt-get update && sudo apt-get dist-upgrade && echo done && read"
-Mod4 v :ExecCommand xterm -e "alsamixer"
+#Mod4 v :ExecCommand xterm -e "alsamixer"
 Mod4 Shift x :ExecCommand xterm
 Mod4 i :ExecCommand chromium-browser
 Mod4 65 :ExecCommand ~/.repositories/gexecute/gexecute
