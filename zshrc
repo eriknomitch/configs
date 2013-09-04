@@ -25,7 +25,7 @@ source-if-exists $HOME/.rvm/scripts/rvm
 # ------------------------------------------------
 # PROJECT ----------------------------------------
 # ------------------------------------------------
-source-if-exists $HOME/.repositories/project/project.zsh
+#source-if-exists $HOME/.repositories/project/project.zsh
 
 # ------------------------------------------------
 # PRELANG ----------------------------------------
