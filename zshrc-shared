@@ -267,7 +267,7 @@ function o()
 }
 
 # ------------------------------------------------
-# OTHER ------------------------------------------
+# MISC. ------------------------------------------
 # ------------------------------------------------
 alias t="tree -C"
 alias td="tree -C -d"
@@ -295,6 +295,7 @@ alias re-p="rails-env-production"
 alias re-d="rails-env-development"
 alias rails-env-test="export RAILS_ENV=test"
 alias v="vim-all"
+alias dv="ssh desktop-virtual"
 
 ex()
 {
@@ -323,7 +324,6 @@ rsync-partial()
 {
     rsync --partial --progress --rsh=ssh $*
 }
-
 
 # ------------------------------------------------
 # PROMPTS ----------------------------------------
