@@ -20,3 +20,5 @@ endif
 
 syntax match evolvereduce /#=!/
 highlight evolvereduce ctermbg=Red guibg=Red cterm=bold
+
+syntax match rubyTodo /FIX:/
