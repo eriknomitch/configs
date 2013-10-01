@@ -30,10 +30,9 @@ source-if-exists $HOME/.repositories/project/project.zsh
 # ------------------------------------------------
 # PRELANG ----------------------------------------
 # ------------------------------------------------
-#source-if-exists $HOME/.repositories/prelang/system/shell/zsh.sh
 source-if-exists $HOME/.repositories/prelang/core/system/core.sh
 
-alias pl="prelang"
+alias p="prelang"
 
 # ------------------------------------------------
 # AMAZON -----------------------------------------
