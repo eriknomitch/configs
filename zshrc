@@ -6,7 +6,7 @@ if [[ -n $INITIAL_CWD ]] ; then
 fi
 
 if [[ ! -f $HOME/.zsh-wd ]] ; then
-  echo $HOME > $HOME/.zsh-wd
+  echo "0:0:$HOME" >> $HOME/.zsh-wd
 fi
 
 # ------------------------------------------------
