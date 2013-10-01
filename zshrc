@@ -11,7 +11,12 @@ fi
 source $HOME/.g/g.zsh
 source $HOME/.persistent-working-directory/persistent-working-directory.zsh
 source /etc/zshrc-shared
-source-if-exists $HOME/.repositories/fantravel-v2/system/fantravel.sh
+source $HOME/.repositories/fantravel-v2/system/fantravel.sh
+
+# ------------------------------------------------
+# PWD --------------------------------------------
+# ------------------------------------------------
+PWD_BIND_TO_WORKSPACE=true
 
 # ------------------------------------------------
 # RVM --------------------------------------------
