@@ -295,6 +295,7 @@ alias re-d="rails-env-development"
 alias rails-env-test="export RAILS_ENV=test"
 alias v="vim-all"
 alias dv="ssh desktop-virtual"
+alias docker="sudo docker"
 
 ex()
 {
