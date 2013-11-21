@@ -37,6 +37,8 @@ ratio.min.set=0
 ratio.max.set=1
 ratio.upload.set=1b
 
+system.method.set = group.seeding.ratio.command, d.close=, d.erase=
+
 # Move torrents
 system.method.set_key = event.download.finished,move_complete,"execute=mv,-u,$d.get_base_path=,~/.plex/torrents/;d.set_directory=~/.plex/torrents/"
 
@@ -58,7 +60,7 @@ schedule = low_diskspace,5,60,close_low_diskspace=100M
 
 # The ip address the listening socket and outgoing connections is
 # bound to.
-#bind = 127.0.0.1
+#bind = 127.0.0.2
 #bind = rakshasa.no
 
 # Port range to use for listening.
