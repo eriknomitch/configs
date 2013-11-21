@@ -28,7 +28,20 @@ session = ~/.torrents
 # Watch a directory for new torrents, and stop those that have been
 # deleted.
 schedule = watch_directory,5,5,load_start=~/.torrents/*.torrent
-#schedule = untied_directory,5,5,stop_untied=
+
+# Enable the default ratio group.
+ratio.enable=
+
+# Change the limits, the defaults should be sufficient.
+ratio.min.set=0
+ratio.max.set=1
+ratio.upload.set=1b
+
+# Move torrents
+system.method.set_key = event.download.finished,move_complete,"execute=mv,-u,$d.get_base_path=,~/.plex/torrents/;d.set_directory=~/.plex/torrents/"
+
+# Email
+system.method.set_key = event.download.finished,notify_me,"execute=~/.bin/notify-torrent-completed,$d.get_name="
 
 # Close torrents when diskspace is low.
 schedule = low_diskspace,5,60,close_low_diskspace=100M
