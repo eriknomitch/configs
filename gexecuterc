@@ -37,6 +37,10 @@ commands =
         action = "mount-store";
     },
     { 
+        match  = "sw-prelang";
+        action = "sw-prelang";
+    },
+    { 
         match  = "map-escape";
         action = "map-escape";
     },
