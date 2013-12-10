@@ -46,7 +46,7 @@ commands =
     },
     { 
         match  = "monitor";
-        action = "xrandr-hdtv && map-escape";
+        action = "xrandr-nec";
     },
     { 
         match  = "nomonitor";

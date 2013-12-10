@@ -29,3 +29,7 @@ Provisioners
 ProvisionerClass's
 VOTABLE
 deconstruct
+config
+Heroku
+sqlite3
+app
