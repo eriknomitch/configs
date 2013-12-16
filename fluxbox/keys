@@ -65,6 +65,7 @@ Mod4 Shift n c :ExecCommand "$HOME/.bin/xterm-nf-cat"
 # APPLICATIONS -----------------------------------
 # ------------------------------------------------
 Mod4 x :ExecCommand xterm
+Mod4 g :ExecCommand xterm -e "zsh -i -c 'gw && zsh -i'"
 Mod4 b :ExecCommand xterm -e "$HOME/.bin/bat && sleep 1"
 Mod4 u :ExecCommand xterm -e "sudo apt-get update && sudo apt-get dist-upgrade && echo done && read"
 #Mod4 v :ExecCommand xterm -e "alsamixer"

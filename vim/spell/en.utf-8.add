@@ -33,3 +33,6 @@ config
 Heroku
 sqlite3
 app
+VirtualAttribute
+VirtualModel
+UiButton

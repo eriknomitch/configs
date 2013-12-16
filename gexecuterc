@@ -50,7 +50,7 @@ commands =
     },
     { 
         match  = "nomonitor";
-        action = "xrandr-laptop && map-escape";
+        action = "xrandr-laptop-screen";
     },
     { 
         match  = "timer";
