@@ -2,3 +2,4 @@ XTerm*foreground: white
 XTerm*background: black
 XTerm*font: 7x14
 XTerm*savelines: 15000
+XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
