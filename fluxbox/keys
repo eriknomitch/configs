@@ -10,7 +10,7 @@ Mod4 Tab :NextGroup (workspace=[current]) !! FBCV13 !!
 Mod4 m :Maximize
 Mod4 n :Minimize
 Mod4 w :Close
-Mod4 Shift r :ArrangeWindows
+#Mod4 Shift r :ArrangeWindows
 
 # ------------------------------------------------
 # WORKSPACES -------------------------------------
