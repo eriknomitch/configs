@@ -75,7 +75,7 @@ source-if-exists $HOME/.repositories/to/to.sh
 # OTHER ------------------------------------------
 # ------------------------------------------------
 export EDITOR="vim"
-alias dt="cd ~/Desktop"
+alias dt="cd ~/Desktop && clear"
 
 expdisp
 
