@@ -77,7 +77,7 @@ source-if-exists $HOME/.repositories/to/to.sh
 export EDITOR="vim"
 
 if [[ `uname ` == "Darwin" ]] ; then
-  alias d="cd ~/Desktop && clear"
+  alias d="cd ~/Desktop && clear && pwd && ls -1"
 fi
 
 expdisp
