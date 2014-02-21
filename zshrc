@@ -24,6 +24,16 @@ export PWD_BIND_TO_WORKSPACE=true
 source-if-exists $HOME/.rvm/scripts/rvm
 
 # ------------------------------------------------
+# RBENV ------------------------------------------
+# ------------------------------------------------
+export RBENV_ROOT="${HOME}/.rbenv"
+
+if [ -d "${RBENV_ROOT}" ]; then
+  export PATH="${RBENV_ROOT}/bin:${PATH}"
+  eval "$(rbenv init -)"
+fi
+
+# ------------------------------------------------
 # PROJECT ----------------------------------------
 # ------------------------------------------------
 source-if-exists $HOME/.repositories/project/project.zsh
