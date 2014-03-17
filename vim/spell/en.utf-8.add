@@ -36,3 +36,13 @@ app
 VirtualAttribute
 VirtualModel
 UiButton
+VirtualModels
+VirtualAttributes
+SHOULDA
+USERNAME
+FACEBOOK
+STEPPABLE
+StepSet
+AciConfigure
+ModelConfigure
+ModelConfigureHooks
