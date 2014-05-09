@@ -36,3 +36,5 @@ app
 VirtualAttribute
 VirtualModel
 UiButton
+votable
+json
