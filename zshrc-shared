@@ -109,6 +109,7 @@ else
   alias lfa="ls -lha --color | grep -i"
 fi
 
+alias lc="ls -1 | wc -l"
 alias b="cd .."
 alias f="cd -"
 alias x="exit"

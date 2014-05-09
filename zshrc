@@ -8,9 +8,9 @@ fi
 # ------------------------------------------------
 # SOURCE -----------------------------------------
 # ------------------------------------------------
-source $HOME/.g/g.zsh
-source $HOME/.persistent-working-directory/persistent-working-directory.zsh
 source /etc/zshrc-shared
+source $HOME/.persistent-working-directory/persistent-working-directory.zsh
+source $HOME/.g/g.zsh
 source-if-exists $HOME/.repositories/fantravel-v2/system/fantravel.sh
 
 # ------------------------------------------------
@@ -22,6 +22,16 @@ export PWD_BIND_TO_WORKSPACE=true
 # RVM --------------------------------------------
 # ------------------------------------------------
 source-if-exists $HOME/.rvm/scripts/rvm
+
+# ------------------------------------------------
+# RBENV ------------------------------------------
+# ------------------------------------------------
+export RBENV_ROOT="${HOME}/.rbenv"
+
+if [ -d "${RBENV_ROOT}" ]; then
+  export PATH="${RBENV_ROOT}/bin:${PATH}"
+  eval "$(rbenv init -)"
+fi
 
 # ------------------------------------------------
 # PROJECT ----------------------------------------
