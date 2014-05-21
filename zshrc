@@ -60,13 +60,6 @@ export JAVA_HOME=/usr/lib/jvm/java-6-sun/
 export JAVA_HOME=/usr/lib/jvm/java-6-sun/
 
 # ------------------------------------------------
-# CUDA -------------------------------------------
-# ------------------------------------------------
-export PATH=$PATH:/usr/local/cuda/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/lib:/usr/lib/nvidia-current
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/lib/nvidia-current
-
-# ------------------------------------------------
 # PLEX -------------------------------------------
 # ------------------------------------------------
 export PLEX_HOME=$HOME/.media/plex
