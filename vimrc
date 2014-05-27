@@ -22,6 +22,9 @@ filetype plugin indent on
 set wrap
 set textwidth=80
 
+" Markdown gets different textwidth
+au BufRead,BufNewFile *.md setlocal textwidth=300
+
 " commenting
 command! -range -bar -nargs=0 LC <line1>,<line2>s/^/;; /
 command! -range -bar -nargs=0 LUC <line1>,<line2>s/^;; //
