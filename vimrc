@@ -10,7 +10,7 @@ set autoread
 call pathogen#infect()
 
 " spellcheck
-set spell
+autocmd BufRead,BufNewFile *.md,*.txt setlocal spell
 
 " instant search
 set is
