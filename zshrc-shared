@@ -338,7 +338,7 @@ elif [[ $HOST == "linode-prelang" ]] ; then
 elif [[ $HOST == "desktop-erik" ]] ; then
     PROMPT=$'%{\e[34m%}desktop$ %{\e[0m%}'
 elif [[ $HOST == "eriks-mbp" ]] ; then
-    PROMPT=$'%{\e[34m%}mbp$ %{\e[0m%}'
+    PROMPT=$'%{\e[34m%}%m$ %{\e[0m%}'
 else
     PROMPT=$'%{\e[32m%}%m($RAILS_ENV)$ %{\e[0m%}'
 fi
