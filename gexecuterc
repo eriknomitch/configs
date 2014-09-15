@@ -46,11 +46,11 @@ commands =
     },
     { 
         match  = "monitor";
-        action = "xrandr-nec";
+        action = "display-mode monitor";
     },
     { 
         match  = "nomonitor";
-        action = "xrandr-laptop-screen";
+        action = "display-mode no-monitor";
     },
     { 
         match  = "timer";
@@ -211,10 +211,6 @@ commands =
     { 
         match  = "linode";
         action = "xterm -e \"ssh linode\"";
-    },
-    { 
-        match  = "laptop";
-        action = "xterm -e \"ssh laptop\"";
     },
     { 
         match  = "gcolor2";
