@@ -23,6 +23,7 @@ Mod4 j :Workspace 5
 Mod4 k :Workspace 6
 Mod4 l :Workspace 7
 Mod4 47 :Workspace 8
+Mod4 v :Workspace irc
 
 Mod4 1 :SendToWorkspace 1
 Mod4 2 :SendToWorkspace 2
@@ -32,6 +33,7 @@ Mod4 5 :SendToWorkspace 5
 Mod4 6 :SendToWorkspace 6
 Mod4 7 :SendToWorkspace 7
 Mod4 8 :SendToWorkspace 8
+Mod4 9 :SendToWorkspace irc
 
 Mod4 Left :PrevWorkspace
 Mod4 Right :NextWorkspace
@@ -68,7 +70,6 @@ Mod4 x :ExecCommand xterm
 Mod4 g :ExecCommand xterm -e "zsh -i -c 'gw && zsh -i'"
 Mod4 b :ExecCommand xterm -e "$HOME/.bin/bat && sleep 1"
 Mod4 u :ExecCommand xterm -e "sudo apt-get update && sudo apt-get dist-upgrade && echo done && read"
-#Mod4 v :ExecCommand xterm -e "alsamixer"
 Mod4 Shift x :ExecCommand xterm
 Mod4 i :ExecCommand chromium-browser
 Mod4 65 :ExecCommand ~/.repositories/gexecute/gexecute
