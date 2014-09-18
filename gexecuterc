@@ -3,9 +3,6 @@ browser  = "chromium-browser";
 commands = 
 (
     /* ---------------------------------------- */
-    /* DESKTOP SPECIFIC ----------------------- */
-    /* ---------------------------------------- */
-    /* ---------------------------------------- */
     /* GENERAL -------------------------------- */
     /* ---------------------------------------- */
     { 
@@ -150,7 +147,7 @@ commands =
     },
     { 
         match  = "irc";
-        action = "xterm -title irc -e \"sleep 0.1; irc\"";
+        action = "xterm -title irc -name irc -e \"sleep 0.1; irc\"";
     },
     { 
         match  = "inkscape";
