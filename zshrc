@@ -11,6 +11,7 @@ fi
 source /etc/zshrc-shared
 source $HOME/.persistent-working-directory/persistent-working-directory.zsh
 source $HOME/.g/g.zsh
+source $HOME/.repositories/notes/notes.zsh
 source-if-exists $HOME/.repositories/fantravel-v2/system/fantravel.sh
 
 # ------------------------------------------------
