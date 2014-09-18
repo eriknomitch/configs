@@ -19,8 +19,8 @@ syntax on
 filetype plugin indent on
 
 " comment wrapping
-set wrap
-set textwidth=80
+"set wrap
+"set textwidth=80
 
 " Markdown gets different textwidth
 au BufRead,BufNewFile *.md setlocal textwidth=300
