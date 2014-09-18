@@ -9,10 +9,6 @@ commands =
     /* GENERAL -------------------------------- */
     /* ---------------------------------------- */
     { 
-        match  = "chat";
-        action = "pidgin & xterm -title irc -e \"sleep 0.1; irc\"";
-    },
-    { 
         match  = "quicksynergy";
         action = "quicksynergy";
     },

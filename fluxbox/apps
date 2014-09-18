@@ -109,13 +109,14 @@
   [Dimensions]	{1200 700}
   [Position]	(CENTER)	{0 0}
 [end]
-[app] (name=irc) (class=XTerm)
-  [Dimensions]	{1200 700}
-  [Position]	(CENTER)	{0 0}
+[app] (name=irc) (class=XTerm) (title=irc)
+  [Dimensions]	{1680 1050}
+  [Position]	(UPPERLEFT)	{0 0}
+  [Maximized]	{yes}
 [end]
 [app] (name=xterm) (class=XTerm)
-  [Dimensions]	{900 506}
-  [Position]	(CENTER)	{0 0}
+  [Dimensions]	{63% 57%}
+  [Position]	(UPPERLEFT)	{19% 21%}
 [end]
 [app] (name=glaunch) (class=Glaunch)
   [Position]	(CENTER)	{0 0}
