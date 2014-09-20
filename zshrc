@@ -9,11 +9,13 @@ fi
 # SOURCE -----------------------------------------
 # ------------------------------------------------
 
-# Source zshrc-oh-my-zsh first so we can override the theme/prompt.
+# Source zshrc-oh-my-zsh first so we can override the theme/prompt
 source $HOME/.configs/zshrc-oh-my-zsh
 
+# Source the shared zshrc (shared between users and root)
 source /etc/zshrc-shared
 
+# Source various scripts
 source-if-exists $HOME/.persistent-working-directory/persistent-working-directory.zsh
 source-if-exists $HOME/.g/g.zsh
 source-if-exists $HOME/.repositories/notes/notes.zsh
