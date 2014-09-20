@@ -13,6 +13,8 @@ source $HOME/.persistent-working-directory/persistent-working-directory.zsh
 source $HOME/.g/g.zsh
 source $HOME/.repositories/notes/notes.zsh
 source-if-exists $HOME/.repositories/fantravel-v2/system/fantravel.sh
+source-if-exists $HOME/.repositories/project/project.zsh
+source-if-exists $HOME/.repositories/git-flow-completion/git-flow-completion.zsh
 
 # ------------------------------------------------
 # PWD --------------------------------------------
@@ -22,7 +24,8 @@ export PWD_BIND_TO_WORKSPACE=true
 # ------------------------------------------------
 # RVM --------------------------------------------
 # ------------------------------------------------
-source-if-exists $HOME/.rvm/scripts/rvm
+#source-if-exists $HOME/.rvm/scripts/rvm
+#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # ------------------------------------------------
 # RBENV ------------------------------------------
@@ -33,18 +36,6 @@ if [ -d "${RBENV_ROOT}" ]; then
   export PATH="${RBENV_ROOT}/bin:${PATH}"
   eval "$(rbenv init -)"
 fi
-
-# ------------------------------------------------
-# PROJECT ----------------------------------------
-# ------------------------------------------------
-source-if-exists $HOME/.repositories/project/project.zsh
-
-# ------------------------------------------------
-# PRELANG ----------------------------------------
-# ------------------------------------------------
-source-if-exists $HOME/.repositories/prelang/core/system/core.sh
-
-alias p="prelang"
 
 # ------------------------------------------------
 # AMAZON -----------------------------------------
@@ -66,36 +57,17 @@ export JAVA_HOME=/usr/lib/jvm/java-6-sun/
 export PLEX_HOME=$HOME/.media/plex
 
 # ------------------------------------------------
-# GIT-FLOW-COMPLETION ----------------------------
+# HEROKU -----------------------------------------
 # ------------------------------------------------
-source-if-exists $HOME/.repositories/git-flow-completion/git-flow-completion.zsh
-
-# ------------------------------------------------
-# TO ---------------------------------------------
-# ------------------------------------------------
-source-if-exists $HOME/.repositories/to/to.sh
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 
 # ------------------------------------------------
 # OTHER ------------------------------------------
 # ------------------------------------------------
-export EDITOR="vim"
-
 if [[ `uname ` == "Darwin" ]] ; then
   alias d="cd ~/Desktop && clear && pwd && ls -1"
 fi
 
 expdisp
-
-# ------------------------------------------------
-# TEMPORARY --------------------------------------
-# ------------------------------------------------
-export PATH=$PATH:$HOME/notifier
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-export META_PATH_ROOT=$HOME/.meta
-export META_PATH_ASDF=$HOME/.asdf
 
