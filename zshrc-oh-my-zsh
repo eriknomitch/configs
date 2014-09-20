@@ -1,6 +1,14 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+# Escape from this Zsh config if we don't have Zsh installed.
+if [[ ! -d $ZSH ]] ; then
+  export USE_OH_MY_ZSH=false
+  return
+else
+  export USE_OH_MY_ZSH=true
+fi
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
