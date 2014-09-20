@@ -18,7 +18,7 @@
 # 5 - blinking
 
 # ------------------------------------------------
-# ZSH --------------------------------------------
+# ZSH->CONFIGURATION -----------------------------
 # ------------------------------------------------
 autoload -U compinit
 autoload zsh/terminfo
@@ -49,6 +49,11 @@ HISTSIZE=100
 SAVEHIST=100
 HISTFILE=~/.history
 
+export EDITOR="vim"
+
+# ------------------------------------------------
+# UTILITY->SOURCING ------------------------------
+# ------------------------------------------------
 alias resource="source ~/.zshrc"
 
 function source-if-exists()
@@ -74,11 +79,6 @@ export PATH=$PATH:$HOME/.repositories/mkdir-scripts/bin
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib
-
-# ------------------------------------------------
-# EDITOR -----------------------------------------
-# ------------------------------------------------
-export EDITOR="vim"
 
 # ------------------------------------------------
 # UNIX -------------------------------------------

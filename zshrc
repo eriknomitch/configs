@@ -8,10 +8,15 @@ fi
 # ------------------------------------------------
 # SOURCE -----------------------------------------
 # ------------------------------------------------
+
+# Source zshrc-oh-my-zsh first so we can override the theme/prompt.
+source $HOME/.configs/zshrc-oh-my-zsh
+
 source /etc/zshrc-shared
-source $HOME/.persistent-working-directory/persistent-working-directory.zsh
-source $HOME/.g/g.zsh
-source $HOME/.repositories/notes/notes.zsh
+
+source-if-exists $HOME/.persistent-working-directory/persistent-working-directory.zsh
+source-if-exists $HOME/.g/g.zsh
+source-if-exists $HOME/.repositories/notes/notes.zsh
 source-if-exists $HOME/.repositories/fantravel-v2/system/fantravel.sh
 source-if-exists $HOME/.repositories/project/project.zsh
 source-if-exists $HOME/.repositories/git-flow-completion/git-flow-completion.zsh
@@ -63,11 +68,19 @@ export PLEX_HOME=$HOME/.media/plex
 export PATH="/usr/local/heroku/bin:$PATH"
 
 # ------------------------------------------------
-# OTHER ------------------------------------------
+# SPECIAL->DARWIN --------------------------------
 # ------------------------------------------------
 if [[ `uname ` == "Darwin" ]] ; then
   alias d="cd ~/Desktop && clear && pwd && ls -1"
 fi
 
+# ------------------------------------------------
+# DISPLAY ----------------------------------------
+# ------------------------------------------------
+# For remote sessions
 expdisp
+
+# ------------------------------------------------
+# OH-MY-ZSH --------------------------------------
+# ------------------------------------------------
 
