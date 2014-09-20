@@ -1,6 +1,8 @@
 # ------------------------------------------------
-# INITIAL CWD ------------------------------------
+# INITIAL-CWD ------------------------------------
 # ------------------------------------------------
+
+# This is used in some scripts to force an initial working directory.
 if [[ -n $INITIAL_CWD ]] ; then
   cd $INITIAL_CWD
 fi
