@@ -29,12 +29,6 @@ source-if-exists $HOME/.repositories/git-flow-completion/git-flow-completion.zsh
 export PWD_BIND_TO_WORKSPACE=true
 
 # ------------------------------------------------
-# RVM --------------------------------------------
-# ------------------------------------------------
-#source-if-exists $HOME/.rvm/scripts/rvm
-#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-# ------------------------------------------------
 # RBENV ------------------------------------------
 # ------------------------------------------------
 export RBENV_ROOT="${HOME}/.rbenv"
