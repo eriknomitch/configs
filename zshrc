@@ -75,6 +75,8 @@ fi
 # ------------------------------------------------
 # DISPLAY ----------------------------------------
 # ------------------------------------------------
-# For remote sessions
+
+# For remote sessions, this exports the display to the main
+# display of the machine.
 expdisp
 
