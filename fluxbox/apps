@@ -110,8 +110,8 @@
   [Position]	(CENTER)	{0 0}
 [end]
 [app] (name=xterm) (class=XTerm)
-  [Dimensions]	{63% 55%}
-  [Position]	(UPPERLEFT)	{19% 21%}
+  [Dimensions]	{900 506}
+  [Position]	(CENTER)	{0 0}
 [end]
 [app] (name=irc) (class=XTerm) (title=irc)
   [Dimensions]	{1680 1050}
