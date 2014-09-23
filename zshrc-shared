@@ -81,9 +81,24 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib
 
 # ------------------------------------------------
+# OS ---------------------------------------------
+# ------------------------------------------------
+export ON_DARWIN=false
+export ON_LINUX=false
+
+case `uname` in
+  "Darwin")
+    ON_DARWIN=true
+    ;;
+  "Linux")
+    ON_LINUX=true
+    ;;
+esac
+
+# ------------------------------------------------
 # UNIX -------------------------------------------
 # ------------------------------------------------
-if [[ `uname` == "Darwin" ]] ; then
+if ( $ON_DARWIN ) ; then
   alias l="ls -lh -G"
   alias ls="ls -G"
   alias la="ls -lha -G"
@@ -333,5 +348,10 @@ fi
 
 # Right-hand prompt
 RPROMPT="%{$fg_bold[black]%}%~%{$reset_color%}"
+
+# Terminal.app has problems with bold black (grey).
+if ( $ON_DARWIN ) ; then
+  RPROMPT="%{$fg[white]%}%~%{$reset_color%}"
+fi
 
 
