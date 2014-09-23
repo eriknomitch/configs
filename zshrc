@@ -28,7 +28,7 @@ source-if-exists $HOME/.repositories/git-flow-completion/git-flow-completion.zsh
 # ------------------------------------------------
 # PWD --------------------------------------------
 # ------------------------------------------------
-if [[ `uname` != "Darwin" ]] ; then
+if ( $ON_LINUX ) ; then
   export PWD_BIND_TO_WORKSPACE=true
 fi
 
@@ -70,7 +70,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # ------------------------------------------------
 # SPECIAL->DARWIN --------------------------------
 # ------------------------------------------------
-if [[ `uname ` == "Darwin" ]] ; then
+if ( $ON_DARWIN ) ; then
   alias d="cd ~/Desktop && clear && pwd && ls -1"
 fi
 
