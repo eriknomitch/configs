@@ -28,7 +28,9 @@ source-if-exists $HOME/.repositories/git-flow-completion/git-flow-completion.zsh
 # ------------------------------------------------
 # PWD --------------------------------------------
 # ------------------------------------------------
-export PWD_BIND_TO_WORKSPACE=true
+if [[ `uname` != "Darwin" ]] ; then
+  export PWD_BIND_TO_WORKSPACE=true
+fi
 
 # ------------------------------------------------
 # RBENV ------------------------------------------
