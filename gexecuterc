@@ -38,10 +38,6 @@ commands =
         action = "timer_message=`zenity --entry --text=\"message\"` && sleep `zenity --entry --text=\"sleep\"` && notify-send $timer_message && alert";
     },
     { 
-        match  = "gtk-chtheme";
-        action = "gtk-chtheme";
-    },
-    { 
         match  = "gw-dev";
         action = "gw-dev";
     },
