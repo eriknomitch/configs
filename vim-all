@@ -1,1 +1,0 @@
-vim `find . -type f | grep -v "^\./\.git/"`

@@ -1,0 +1,12 @@
+{
+  "default": {
+    "extensions": [""],
+    "files":      ["ofe.json"]
+  },
+  "zsh": {
+    "files": ["zsh*"]
+  },
+  "git": {
+    "files": [".git/config", ".gitignore"]
+  }
+}
