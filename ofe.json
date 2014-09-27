@@ -14,7 +14,7 @@
     "files": ["ssh/*"]
   },
   "fluxbox": {
-    "files": ["fluxbox/*"]
+    "files": ["fluxbox/**/**"]
   },
   "git": {
     "files": [".git/config", ".gitignore"]
