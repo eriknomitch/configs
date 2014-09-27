@@ -1,1 +1,0 @@
-/home/erik/.repositories/rails-quick-buffers/rails-quick-buffers.vim

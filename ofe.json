@@ -6,6 +6,10 @@
   "zsh": {
     "files": ["zsh*"]
   },
+  "vim": {
+    "files": ["vimrc", "vim/**/**"],
+    "first_file": "vimrc"
+  },
   "ssh": {
     "files": ["ssh/*"]
   },
