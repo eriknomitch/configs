@@ -6,6 +6,12 @@
   "zsh": {
     "files": ["zsh*"]
   },
+  "ssh": {
+    "files": ["ssh/*"]
+  },
+  "fluxbox": {
+    "files": ["fluxbox/*"]
+  },
   "git": {
     "files": [".git/config", ".gitignore"]
   }
