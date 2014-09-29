@@ -22,6 +22,10 @@ commands =
         action = "sw-defaults";
     },
     { 
+        match  = "lw-notify";
+        action = "lw-notify";
+    },
+    { 
         match  = "map-escape";
         action = "map-escape";
     },
