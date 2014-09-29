@@ -23,7 +23,7 @@ commands =
     },
     { 
         match  = "lw-notify";
-        action = "lw-notify";
+        action = "notify-lw";
     },
     { 
         match  = "map-escape";
