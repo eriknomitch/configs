@@ -17,6 +17,6 @@
     "files": ["fluxbox/**/**"]
   },
   "git": {
-    "files": [".git/config", ".gitignore"]
+    "files": [".git/config", ".gitignore", "gitconfig"]
   }
 }
