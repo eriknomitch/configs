@@ -302,6 +302,10 @@ alias dv="ssh desktop-virtual"
 alias docker="sudo docker"
 alias o="ofe"
 
+if ( $ON_DARWIN ) ; then
+  alias htop="sudo htop"
+fi
+
 ex()
 {
     if [ -f $1 ] ; then
