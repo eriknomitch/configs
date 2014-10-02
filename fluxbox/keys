@@ -75,7 +75,7 @@ Mod4 i :ExecCommand chromium-browser
 Mod4 65 :ExecCommand ~/.repositories/gexecute/gexecute
 
 Mod4 Shift k :ExecCommand kill-gw-dev
-Mod4 Shift l :ExecCommand xterm -e "lw-notify --toggle"
+Mod4 Shift l :ExecCommand lw-notify --toggle
 
 # ------------------------------------------------
 # SSH --------------------------------------------
