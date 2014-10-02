@@ -33,56 +33,10 @@
 [end]
 [app] (name=lw-notify) (class=XTerm) (title=lw-notify)
    [Dimensions] {500 50}
-   [Position]   (UPPERLEFT)     {0 0}
+   [Position]   (CENTER)     {0 0}
    [Deco]	{NONE}
    [Hidden]	{yes}
    [FocusHidden]	{yes}
-[end]
-[group]  (workspace=[current])
- [app] (name=term-audio) (class=XTerm) (title=term-audio)
-  [Dimensions]	{1200 700}
-  [Position]	(CENTER)	{0 0}
-[end]
-[app] (name=vim-audio) (class=XTerm) (title=vim-audio)
-  [Dimensions]	{1680 1050}
-  [Position]	(UPPERLEFT)	{0 0}
-  [Maximized]	{yes}
-[end]
-[group]  (workspace=[current])
- [app] (name=term-xreact) (class=XTerm) (title=term-xreact)
-  [Dimensions]	{1200 700}
-  [Position]	(CENTER)	{0 0}
-[end]
-[app] (name=vim-xreact) (class=XTerm) (title=vim-xreact)
-  [Dimensions]	{1680 1050}
-  [Position]	(UPPERLEFT)	{0 0}
-  [Maximized]	{yes}
-[end]
-[group]  (workspace=[current])
- [app] (name=term-linode) (class=XTerm) (title=term-linode)
-  [Dimensions]	{1200 700}
-  [Position]	(CENTER)	{0 0}
-[end]
-[app] (name=vim-linode) (class=XTerm) (title=vim-linode)
-  [Dimensions]	{1680 1050}
-  [Position]	(UPPERLEFT)	{0 0}
-  [Maximized]	{yes}
-[end]
-[app] (name=media) (class=XTerm)
-  [Dimensions]	{1200 700}
-  [Position]	(CENTER)	{0 0}
-[end]
-[app] (name=todo) (class=XTerm)
-  [Dimensions]	{1200 700}
-  [Position]	(CENTER)	{0 0}
-[end]
-[app] (name=torrent) (class=XTerm)
-  [Dimensions]	{1200 700}
-  [Position]	(CENTER)	{0 0}
-[end]
-[app] (name=evolver) (class=XTerm)
-  [Dimensions]	{1200 700}
-  [Position]	(CENTER)	{0 0}
 [end]
 [app] (name=laptop) (class=XTerm)
   [Dimensions]	{1200 700}
@@ -125,22 +79,7 @@
   [Position]	(UPPERLEFT)	{0 0}
   [Maximized]	{yes}
 [end]
-[app] (name=glaunch) (class=Glaunch)
-  [Position]	(CENTER)	{0 0}
-[end]
-[app] (name=thunar) (class=Thunar) (role=Thunar-1197055895-1043493706)
-  [Dimensions]	{800 597}
-  [Position]	(UPPERLEFT)	{469 248}
-[end]
 [app] (name=gexecute) (class=Gexecute)
-  [Position]	(CENTER)	{0 0}
-[end]
-[app] (name=thunar) (class=Thunar)
-  [Dimensions]	{1100 750}
-  [Position]	(CENTER)	{0 0}
-[end]
-[app] (name=xchat) (class=Xchat)
-  [Dimensions]	{1000 700}
   [Position]	(CENTER)	{0 0}
 [end]
 [app] (name=Navigator) (class=Firefox) (role=browser)
@@ -171,20 +110,6 @@
   [Dimensions]	{178 722}
   [Position]	(UPPERLEFT)	{1179 13}
   [Maximized]	{no}
-[end]
-[app] (name=gtktwitter) (class=Gtktwitter)
-  [Dimensions]	{300 904}
-  [Position]	(UPPERLEFT)	{1230 71}
-[end]
-[app] (name=ardour_mixer) (class=Ardour)
-  [Workspace]	{2}
-  [Dimensions]	{1678 1028}
-  [Position]	(UPPERLEFT)	{0 0}
-[end]
-[app] (name=ardour_editor) (class=Ardour)
-  [Workspace]	{1}
-  [Dimensions]	{1678 1028}
-  [Position]	(UPPERLEFT)	{0 0}
 [end]
 [group]  (workspace=[current])
  [app] (name=inkscape) (class=Inkscape)
