@@ -31,10 +31,12 @@
   [Position]	(UPPERLEFT)	{0 0}
   [Maximized]	{yes}
 [end]
-[app] (name=notify-lw) (class=XTerm) (title=notify-lw)
-   [Dimensions] {34% 14%}
-   [Position]   (CENTER)     {0 0}
+[app] (name=lw-notify) (class=XTerm) (title=lw-notify)
+   [Dimensions] {500 50}
+   [Position]   (UPPERLEFT)     {0 0}
    [Deco]	{NONE}
+   [Hidden]	{yes}
+   [FocusHidden]	{yes}
 [end]
 [group]  (workspace=[current])
  [app] (name=term-audio) (class=XTerm) (title=term-audio)
