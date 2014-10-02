@@ -23,7 +23,7 @@ commands =
     },
     { 
         match  = "lw-notify";
-        action = "notify-lw";
+        action = "lw-notify";
     },
     { 
         match  = "map-escape";
@@ -96,10 +96,6 @@ commands =
     { 
         match  = "screenshot";
         action = "sleep 1 && scrot";
-    },
-    { 
-        match  = "wallpaper";
-        action = "fbsetbg -f ~/.wall";
     },
     { 
         match  = "virtualbox";
