@@ -31,7 +31,7 @@
   [Position]	(UPPERLEFT)	{0 0}
   [Maximized]	{yes}
 [end]
-[app] (name=lw-notify) (class=XTerm) (title=lw-notify)
+[app] (class=XTerm) (title=lw-notify)
    [Dimensions] {400 60}
    [Position]   (CENTER)     {0 0}
    [Deco]	{NONE}
