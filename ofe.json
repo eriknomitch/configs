@@ -16,6 +16,9 @@
   "fluxbox": {
     "files": ["fluxbox/**/**"]
   },
+  "diff": {
+    "command": "git diff --name-only"
+  },
   "git": {
     "files": [".git/config", ".gitignore", "gitconfig"],
     "first_file": "gitconfig"
