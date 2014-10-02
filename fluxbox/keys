@@ -74,10 +74,12 @@ Mod4 Shift x :ExecCommand xterm
 Mod4 i :ExecCommand chromium-browser
 Mod4 65 :ExecCommand ~/.repositories/gexecute/gexecute
 
+Mod4 Shift k :ExecCommand kill-gw-dev
+Mod4 Shift l :ExecCommand xterm -e "lw-notify --toggle"
+
 # ------------------------------------------------
 # SSH --------------------------------------------
 # ------------------------------------------------
-Mod4 Shift l :ExecCommand xterm -e "ssh linode"
 Mod4 Shift 47 :ExecCommand xterm -e "ssh linode-personal"
 Mod4 Shift p :ExecCommand xterm -e "ssh linode-prelang"
 Mod4 Shift a :ExecCommand xterm -e "ssh laptop"
