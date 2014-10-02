@@ -15,14 +15,22 @@ Mod4 w :Close
 # ------------------------------------------------
 # WORKSPACES -------------------------------------
 # ------------------------------------------------
-Mod4 a :ExecCommand fluxbox-remote "Workspace 1" && lw-notify 1
-Mod4 s :ExecCommand fluxbox-remote "Workspace 2" && lw-notify 2
-Mod4 d :ExecCommand fluxbox-remote "Workspace 3" && lw-notify 3
-Mod4 f :ExecCommand fluxbox-remote "Workspace 4" && lw-notify 4
-Mod4 j :ExecCommand fluxbox-remote "Workspace 5" && lw-notify 5
-Mod4 k :ExecCommand fluxbox-remote "Workspace 6" && lw-notify 6
-Mod4 l :ExecCommand fluxbox-remote "Workspace 7" && lw-notify 7
-Mod4 47 :ExecCommand fluxbox-remote "Workspace 8" && lw-notify 8
+#Mod4 a :ExecCommand fluxbox-remote "Workspace 1" && lw-notify 0
+#Mod4 s :ExecCommand fluxbox-remote "Workspace 2" && lw-notify 1
+#Mod4 d :ExecCommand fluxbox-remote "Workspace 3" && lw-notify 2
+#Mod4 f :ExecCommand fluxbox-remote "Workspace 4" && lw-notify 3
+#Mod4 j :ExecCommand fluxbox-remote "Workspace 5" && lw-notify 4
+#Mod4 k :ExecCommand fluxbox-remote "Workspace 6" && lw-notify 5
+#Mod4 l :ExecCommand fluxbox-remote "Workspace 7" && lw-notify 6
+#Mod4 47 :ExecCommand fluxbox-remote "Workspace 8" && lw-notify 7
+Mod4 a :ExecCommand fluxbox-remote "Workspace 1" 
+Mod4 s :ExecCommand fluxbox-remote "Workspace 2" 
+Mod4 d :ExecCommand fluxbox-remote "Workspace 3" 
+Mod4 f :ExecCommand fluxbox-remote "Workspace 4" 
+Mod4 j :ExecCommand fluxbox-remote "Workspace 5" 
+Mod4 k :ExecCommand fluxbox-remote "Workspace 6" 
+Mod4 l :ExecCommand fluxbox-remote "Workspace 7" 
+Mod4 47 :ExecCommand fluxbox-remote "Workspace 8" 
 Mod4 v :Workspace irc
 
 Mod4 1 :SendToWorkspace 1
