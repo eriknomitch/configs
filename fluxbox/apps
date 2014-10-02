@@ -22,11 +22,11 @@
   [Maximized]	{yes}
 [end]
 [group]  (workspace=[current])
- [app] (name=gw-term) (class=XTerm) (title=gw-term)
+ [app] (class=XTerm) (title=gw-term)
   [Dimensions]	{900 506}
   [Position]	(CENTER)	{0 0}
 [end]
-[app] (name=gw-vim) (class=XTerm) (title=gw-vim)
+[app] (class=XTerm) (title=gw-vim)
   [Dimensions]	{1680 1050}
   [Position]	(UPPERLEFT)	{0 0}
   [Maximized]	{yes}

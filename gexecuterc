@@ -46,6 +46,10 @@ commands =
         action = "gw-dev";
     },
     { 
+        match  = "gs-dev";
+        action = "gw-dev --force-bookmark-prompt";
+    },
+    { 
         match  = "set-bookmark-defaults";
         action = "set-bookmark-defaults";
     },
