@@ -74,28 +74,8 @@ commands =
         action = "xterm -e \"screen -d -R rtorrent\"";
     },
     { 
-        match  = "undvd";
-        action = "xterm -e \"screen -d -R undvd\"";
-    },
-    { 
         match  = "irc";
         action = "xterm -title irc -name irc -e \"sleep 0.1; irc\"";
-    },
-    { 
-        match  = "video";
-        action = "xterm -e \"screen -d -R video\"";
-    },
-    { 
-        match  = "webcast";
-        action = "xterm -e \"screen -d -R webcast\"";
-    },
-    { 
-        match  = "audio";
-        action = "xterm -e \"screen -d -R audio\"";
-    },
-    { 
-        match  = "music";
-        action = "xterm -e \"screen -d -R audio\"";
     },
     { 
         match  = "blank";
