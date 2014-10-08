@@ -50,6 +50,10 @@ commands =
         action = "gw-dev --force-bookmark-prompt";
     },
     { 
+        match  = "gr-dev";
+        action = "gr-dev";
+    },
+    { 
         match  = "set-bookmark-defaults";
         action = "set-bookmark-defaults";
     },
