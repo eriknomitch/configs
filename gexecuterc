@@ -106,6 +106,10 @@ commands =
         action = "sleep 1 && scrot";
     },
     { 
+        match  = "restart-networking";
+        action = "restart-networking";
+    },
+    { 
         match  = "virtualbox";
         action = "VirtualBox";
     }
