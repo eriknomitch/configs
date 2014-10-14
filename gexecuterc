@@ -66,10 +66,6 @@ commands =
         action = "xterm -e \"sbcl\"";
     },
     { 
-        match  = "skype";
-        action = "skype --disable-cleanlooks -style GTK";
-    },
-    { 
         match  = "xcalc";
         action = "xcalc";
     },
