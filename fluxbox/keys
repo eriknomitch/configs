@@ -66,16 +66,16 @@ Mod4 Shift Down :ExecCommand "$HOME/.bin/brightness-down"
 # ------------------------------------------------
 # NF ---------------------------------------------
 # ------------------------------------------------
-Mod4 Shift n f :ExecCommand "$HOME/.bin/xterm-nf"
-Mod4 Shift n e :ExecCommand "$HOME/.bin/xterm-nf-edit"
-Mod4 Shift n s :ExecCommand "$HOME/.bin/xterm-nf-search"
-Mod4 Shift n c :ExecCommand "$HOME/.bin/xterm-nf-cat"
+#Mod4 Shift n f :ExecCommand "$HOME/.bin/xterm-nf"
+#Mod4 Shift n e :ExecCommand "$HOME/.bin/xterm-nf-edit"
+#Mod4 Shift n s :ExecCommand "$HOME/.bin/xterm-nf-search"
+#Mod4 Shift n c :ExecCommand "$HOME/.bin/xterm-nf-cat"
 
 # ------------------------------------------------
 # APPLICATIONS -----------------------------------
 # ------------------------------------------------
 Mod4 x :ExecCommand xterm
-Mod4 g :ExecCommand xterm -e "zsh -i -c 'gw && zsh -i'"
+#Mod4 g :ExecCommand xterm -e "zsh -i -c 'gw && zsh -i'"
 Mod4 b :ExecCommand xterm -e "$HOME/.bin/bat && sleep 1"
 Mod4 u :ExecCommand xterm -e "sudo apt-get update && sudo apt-get dist-upgrade && echo done && read"
 Mod4 Shift x :ExecCommand xterm
