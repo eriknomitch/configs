@@ -46,13 +46,14 @@ fi
 # G ----------------------------------------------
 # ------------------------------------------------
 
-# Bind ctrl+G to wrap buffer with 'g cmp "<cursor>"'
 function _dump_g_cmp() {
   LBUFFER+='g cmp "'; RBUFFER+='"'
 }
 
+# Bind to wrap buffer with 'g cmp "<cursor>"'
 zle -N _dump_g_cmp
-bindkey '^G' _dump_g_cmp
+#bindkey '^G' _dump_g_cmp
+bindkey '^[g' _dump_g_cmp
 
 # ------------------------------------------------
 # AMAZON -----------------------------------------
