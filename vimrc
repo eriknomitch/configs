@@ -35,6 +35,9 @@ command! -range -bar -nargs=0 LOWER <line1>,<line2>s/[A-Z]/\L&/g
 " upper case
 command! -range -bar -nargs=0 UPPER <line1>,<line2>s/[a-z]/\U&/g
 
+" Write all windows
+command W windo w
+
 " autosource ~/.vimrc after writing
 " http://vim.wikia.com/wiki/Change_vimrc_with_auto_reload
 " autocmd! bufwritepost .vimrc source %
