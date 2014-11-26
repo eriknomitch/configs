@@ -306,6 +306,19 @@ if ( $ON_DARWIN ) ; then
   alias htop="sudo htop"
 fi
 
+# startx
+sx()
+{
+  startx &
+
+  if [[ $1 == "m" ]] ; then
+    display-mode monitor
+  else
+    display-mode no-monitor
+  fi
+}
+
+# extract
 ex()
 {
     if [ -f $1 ] ; then
