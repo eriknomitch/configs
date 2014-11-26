@@ -311,6 +311,10 @@ sx()
 {
   startx &
 
+  sleep 3
+
+  export DISPLAY=:0.0
+
   if [[ $1 == "m" ]] ; then
     display-mode monitor
   else
