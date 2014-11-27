@@ -311,7 +311,7 @@ sx()
 {
   startx &
 
-  sleep 3
+  sleep 1.5
 
   export DISPLAY=:0.0
 
