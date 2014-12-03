@@ -277,22 +277,32 @@ function Banner()
   call setline(line+2, general_line)
 endfunction
 
-function CharUntilPoint()
+function LineUntilPoint()
 
   " Construct line to insert
-  let column = virtcol(".")
   let line = ""
-  let contents = getline(".")." "
-
+  let contents = getline(".")
+ 
+  " Decide on the character. 
   let char = "-"
 
+  " The top 3 rows should be the heavy columns.
   if line(".") < 4
     let char = "="
   endif
 
-  while column < 49
+  " If the line contents does not end in a space, add one.
+  if contents !~ ' $'
+    let contents = contents." "
+  endif
+  
+  let line_length = 50 - len(contents)
+
+  let i = 0
+
+  while i < line_length
     let line = line.char
-    let column = column+1
+    let i = i+1
   endwhile
 
   call setline(line("."), contents.line)
@@ -301,5 +311,5 @@ endfunction
 
 " Map banner functions
 noremap <Leader>t :call Banner()<CR>
-imap <C-L> <ESC>:call CharUntilPoint()<CR>$a<CR>
+imap <C-L> <ESC>:call LineUntilPoint()<CR>$a<CR>
 
