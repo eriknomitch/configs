@@ -34,10 +34,9 @@ function! Banner()
   call setline(line+2, general_line)
 endfunction!
 
-function LineUntilPoint()
+function BarUntilPoint()
   
-  " Construct line to insert
-  let line = ""
+  let bar = ""
   let contents = getline(".")
  
   " Decide on the character. 
@@ -60,21 +59,21 @@ function LineUntilPoint()
     let contents = delimiter.contents
   endif
 
-  " Create the line to insert
-  let line_length = 50 - len(contents)
+  " Create the bar to insert
+  let bar_length = 50 - len(contents)
 
   let i = 0
-  while i < line_length
-    let line = line.char
+  while i < bar_length
+    let bar = bar.char
     let i = i+1
   endwhile
 
-  " Set the current line with the line appended
-  call setline(line("."), contents.line)
+  " Set the current line with the bar appended
+  call setline(line("."), contents.bar)
 
 endfunction
 
 " Map banner functions
 noremap <Leader>t :call Banner()<CR>
-imap <C-L> <ESC>:call LineUntilPoint()<CR>$a<CR>
+imap <C-L> <ESC>:call BarUntilPoint()<CR>$a<CR>
 
