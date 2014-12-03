@@ -3,7 +3,7 @@
 " Version:      0.0
 
 " ------------------------------------------------
-" BANNERS ----------------------------------------
+" BANNER -----------------------------------------
 " ------------------------------------------------
 function Banner()
 
@@ -45,9 +45,18 @@ function BarCharacter()
 
 endfunction
 
+" ------------------------------------------------
+" COMMENT-DELIMITER ------------------------------
+" ------------------------------------------------
+function CommentDelimiter()
+  return b:NERDCommenterDelims["left"]
+endfunction
+
+" ------------------------------------------------
+" BAR --------------------------------------------
+" ------------------------------------------------
 function BarUntilPoint()
   
-  let bar = ""
   let contents = getline(".")
  
   " If the line contents does not end in a space, add one.
@@ -56,7 +65,7 @@ function BarUntilPoint()
   endif
  
   " If the line is not already commented, comment it
-  let delimiter = b:NERDCommenterDelims["left"]
+  let delimiter = CommentDelimiter()
 
   if contents !~ ' *'.delimiter
     let contents = delimiter.contents
@@ -68,6 +77,8 @@ function BarUntilPoint()
   " Decide on the character.
   let char = BarCharacter()
 
+  " Construct the bar
+  let bar = ""
   let i = 0
   while i < bar_length
     let bar = bar.char
@@ -79,7 +90,12 @@ function BarUntilPoint()
 
 endfunction
 
+" ------------------------------------------------
+" MAPPING ----------------------------------------
+" ------------------------------------------------
+
 " Map banner functions
 noremap <Leader>t :call Banner()<CR>
 imap <C-L> <ESC>:call BarUntilPoint()<CR>$a<CR>
+map <C-L> :call BarUntilPoint()<CR>$a<ESC>
 
