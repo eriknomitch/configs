@@ -1,7 +1,12 @@
+" banners.vim - banner creation
+" Maintainer:   Erik Nomitch <http://eriknomitch.com/>
+" Version:      0.0
+sdfij
+
 " ------------------------------------------------
 " BANNERS ----------------------------------------
 " ------------------------------------------------
-function Banner()
+function! Banner()
 
   " Create a space for the banner to go
   call OpenLines(3, 0)
@@ -28,7 +33,7 @@ function Banner()
   call setline(line, general_line)
   call setline(line+1, "# ".title." ".suffix)
   call setline(line+2, general_line)
-endfunction
+endfunction!
 
 function LineUntilPoint()
 
