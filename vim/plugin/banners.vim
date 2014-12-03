@@ -1,7 +1,6 @@
 " banners.vim - banner creation
 " Maintainer:   Erik Nomitch <http://eriknomitch.com/>
 " Version:      0.0
-sdfij
 
 " ------------------------------------------------
 " BANNERS ----------------------------------------
