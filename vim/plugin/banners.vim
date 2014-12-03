@@ -35,7 +35,7 @@ function! Banner()
 endfunction!
 
 function LineUntilPoint()
-
+  
   " Construct line to insert
   let line = ""
   let contents = getline(".")
@@ -51,6 +51,13 @@ function LineUntilPoint()
   " If the line contents does not end in a space, add one.
   if contents !~ ' $'
     let contents = contents." "
+  endif
+ 
+  " If the line is not already commented, comment it
+  let delimiter = b:NERDCommenterDelims["left"]
+
+  if contents !~ ' *'.delimiter
+    let contents = delimiter.contents
   endif
 
   " Create the line to insert
