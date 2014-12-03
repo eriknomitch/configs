@@ -5,7 +5,7 @@
 " ------------------------------------------------
 " BANNERS ----------------------------------------
 " ------------------------------------------------
-function! Banner()
+function Banner()
 
   " Create a space for the banner to go
   call OpenLines(3, 0)
@@ -32,21 +32,24 @@ function! Banner()
   call setline(line, general_line)
   call setline(line+1, "# ".title." ".suffix)
   call setline(line+2, general_line)
-endfunction!
+endfunction
+
+function BarCharacter()
+
+  " The top 3 rows should be the heavy columns.
+  if line(".") < 4
+    return "="
+  endif
+
+  return "-"
+
+endfunction
 
 function BarUntilPoint()
   
   let bar = ""
   let contents = getline(".")
  
-  " Decide on the character. 
-  let char = "-"
-
-  " The top 3 rows should be the heavy columns.
-  if line(".") < 4
-    let char = "="
-  endif
-
   " If the line contents does not end in a space, add one.
   if contents !~ ' $'
     let contents = contents." "
@@ -61,6 +64,9 @@ function BarUntilPoint()
 
   " Create the bar to insert
   let bar_length = 50 - len(contents)
+  
+  " Decide on the character.
+  let char = BarCharacter()
 
   let i = 0
   while i < bar_length
