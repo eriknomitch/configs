@@ -2,6 +2,7 @@ set nocompatible
 syntax enable
 colors bluegreen
 
+" Leader (default is \)
 " let mapleader = ','
 
 set autoread
@@ -276,6 +277,29 @@ function Banner()
   call setline(line+2, general_line)
 endfunction
 
+function CharUntilPoint()
+
+  " Construct line to insert
+  let column = virtcol(".")
+  let line = ""
+  let contents = getline(".")." "
+
+  let char = "-"
+
+  if line(".") < 4
+    let char = "="
+  endif
+
+  while column < 49
+    let line = line.char
+    let column = column+1
+  endwhile
+
+  call setline(line("."), contents.line)
+
+endfunction
+
 " Map banner functions
 noremap <Leader>t :call Banner()<CR>
+imap <C-L> <ESC>:call CharUntilPoint()<CR>$a<CR>
 
