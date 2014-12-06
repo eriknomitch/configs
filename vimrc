@@ -245,3 +245,8 @@ endfunction
 nnoremap <Leader>o :<C-u>call OpenLines(v:count, 0)<CR>S
 nnoremap <Leader>O :<C-u>call OpenLines(v:count, -1)<CR>S
 
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
