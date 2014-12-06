@@ -306,6 +306,10 @@ if ( $ON_DARWIN ) ; then
   alias htop="sudo htop"
 fi
 
+# Prevent C-s from hanging terminal
+# http://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
+stty -ixon
+
 # startx
 sx()
 {
