@@ -2,3 +2,10 @@ snippet defaults
   _.defaults options,
     foo: "bar"
 endsnippet
+
+snippet method
+${1}: (options={}) =>
+  #_.defaults options,
+  this
+
+endsnippet
