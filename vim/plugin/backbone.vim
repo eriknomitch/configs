@@ -5,7 +5,7 @@
 " ------------------------------------------------
 " BANNER -----------------------------------------
 " ------------------------------------------------
-function Btemplate()
+function BackboneTemplate()
   let view_path=expand("%")
 
   let template_path=substitute(view_path, "/views/", "/templates/", "")
@@ -18,9 +18,4 @@ endfunction
 " ------------------------------------------------
 " MAPPING ----------------------------------------
 " ------------------------------------------------
-
-" Map banner functions
-"noremap <Leader>t :call Banner()<CR>
-"imap <C-L> <ESC>:call BarUntilPoint()<CR>$a<CR>
-"map <C-L> :call BarUntilPoint()<CR>$a<ESC>
-
+noremap <Leader>bt :call BackboneTemplate()<CR>
