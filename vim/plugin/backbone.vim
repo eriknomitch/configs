@@ -11,7 +11,7 @@ function Btemplate()
   let template_path=substitute(view_path, "/views/", "/templates/", "")
   let template_path=substitute(template_path, "_view.js.coffee", ".jst.eco", "")
 
-  :b template_path
+  :exec "b ".template_path
 
 endfunction
 
