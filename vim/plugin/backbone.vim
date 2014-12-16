@@ -3,7 +3,7 @@
 " Version:      0.0
 
 " ------------------------------------------------
-" BANNER -----------------------------------------
+" BACKBONE ---------------------------------------
 " ------------------------------------------------
 function BackboneTemplate()
   let view_path=expand("%")
@@ -15,7 +15,18 @@ function BackboneTemplate()
 
 endfunction
 
+function BackboneView()
+  let template_path=expand("%")
+
+  let view_path=substitute(template_path, "/templates/", "/views/", "")
+  let view_path=substitute(view_path, ".jst.eco", "_view.js.coffee", "")
+
+  :exec "b ".view_path
+
+endfunction
+
 " ------------------------------------------------
 " MAPPING ----------------------------------------
 " ------------------------------------------------
 noremap <Leader>bt :call BackboneTemplate()<CR>
+noremap <Leader>bv :call BackboneView()<CR>
