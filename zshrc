@@ -113,7 +113,7 @@ alias startx="echo 'Reminder: use sx next time.'; sleep 3; sx"
 # ------------------------------------------------
 # ------------------------------------------------
 if ( $ON_LINUX && ! x-server-is-running ) ; then
-  echo "Starting X server in:" 2 seconds..."
+  echo "Starting X server in: 2 seconds..."
   sleep 2
   startx
 fi
