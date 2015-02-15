@@ -30,6 +30,10 @@ commands =
         action = "map-escape";
     },
     { 
+        match  = "power-off";
+        action = "zenity --question --text=\"Are you sure you want to power off?\" && power-off";
+    },
+    { 
         match  = "monitor";
         action = "display-mode monitor";
     },
