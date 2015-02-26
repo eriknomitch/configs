@@ -9,6 +9,8 @@
 
 fbsetroot -solid \#2b2b2b &
 
+update-time &
+
 #~/.bin/reset-audio &
 #~/.bin/start-synergy &
 #fbsetroot -solid \#E1FFC0 &
