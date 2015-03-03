@@ -2,9 +2,9 @@
 # INITIAL-CWD ------------------------------------
 # ------------------------------------------------
 
-if [[ -n $ZSHRC_SOURCED ]] ; then
-  return
-fi
+#if [[ -n $ZSHRC_SOURCED ]] ; then
+  #return
+#fi
 
 # This is used in some scripts to force an initial working directory.
 if [[ -n $INITIAL_CWD ]] ; then
