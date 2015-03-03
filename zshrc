@@ -2,6 +2,10 @@
 # INITIAL-CWD ------------------------------------
 # ------------------------------------------------
 
+if [[ -n $ZSHRC_SOURCED ]] ; then
+  return
+fi
+
 # This is used in some scripts to force an initial working directory.
 if [[ -n $INITIAL_CWD ]] ; then
   cd $INITIAL_CWD
@@ -16,6 +20,8 @@ source $HOME/.configs/zshrc-oh-my-zsh
 
 # Source the shared zshrc (shared between users and root)
 source /etc/zshrc-shared
+
+source $HOME/.repositories/prelang/aci/system/shell/development-utility.zsh
 
 # Source various scripts
 source-if-exists $HOME/.persistent-working-directory/persistent-working-directory.zsh
@@ -107,7 +113,12 @@ function tos {
 # ------------------------------------------------
 # ------------------------------------------------
 # ------------------------------------------------
-if ( $ON_LINUX && ! x-server-is-running ) ; then
+export ZSHRC_SOURCED=true
+
+# ------------------------------------------------
+# ------------------------------------------------
+# ------------------------------------------------
+if ( $ON_LINUX && ! x-server-is-running && -z $SSH_CLIENT ) ; then
   echo "Starting X server in: 1 second..."
   sleep 1
   startx
