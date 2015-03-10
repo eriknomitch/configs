@@ -276,7 +276,7 @@ pull-zshrc-shared()
 function r() {
   if [[ ! -x ./run ]] ; then
     echo "fatal: ./run does not exist or is not executable."
-    exit 1
+    return 1
   fi
 
   clear
