@@ -31,7 +31,7 @@ commands =
     },
     { 
         match  = "power-off";
-        action = "zenity --question --text=\"Are you sure you want to power off?\" && power-off";
+        action = "zenity --question --text=\"Are you sure you want to power off?\" && xterm -e \"power-off\"";
     },
     { 
         match  = "monitor";

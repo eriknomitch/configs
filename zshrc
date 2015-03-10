@@ -118,7 +118,7 @@ export ZSHRC_SOURCED=true
 # ------------------------------------------------
 # ------------------------------------------------
 # ------------------------------------------------
-if ( $ON_LINUX && ! x-server-is-running && -z $SSH_CLIENT ) ; then
+if ( $ON_LINUX && ! x-server-is-running && test -z $SSH_CLIENT ) ; then
   echo "Starting X server in: 1 second..."
   sleep 1
   startx
