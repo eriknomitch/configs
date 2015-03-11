@@ -53,6 +53,7 @@ Host linode
     HostName 97.107.140.203
     User linode
     Port 22
+    ServerAliveInterval 60
 
 Host linode-personal
     HostName 173.255.244.170
