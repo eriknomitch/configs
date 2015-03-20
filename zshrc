@@ -21,7 +21,7 @@ source $HOME/.configs/zshrc-oh-my-zsh
 # Source the shared zshrc (shared between users and root)
 source /etc/zshrc-shared
 
-source $HOME/.repositories/prelang/aci/system/shell/development-utility.zsh
+source-if-exists $HOME/.repositories/prelang/aci/system/shell/development-utility.zsh
 
 # Source various scripts
 source-if-exists $HOME/.persistent-working-directory/persistent-working-directory.zsh
