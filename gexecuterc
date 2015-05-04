@@ -87,7 +87,7 @@ commands =
     },
     { 
         match  = "irc";
-        action = "xterm -title irc -name irc -e \"sleep 0.1; irc\"";
+        action = "xterm -title irc -name irc -e \"sleep 0.1; irc-loop\"";
     },
     { 
         match  = "blank";
