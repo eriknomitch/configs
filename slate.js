@@ -12,7 +12,14 @@ var fullscreen = slate.operation("move", {
   "height" : "screenSizeY"
 });
 
-slate.bind("f:ctrl;cmd", fullscreen);
+["right", "left"].forEach(function(direction) {
+  slate.bind(direction+":ctrl;cmd", slate.operation("push", {
+    "direction": direction,
+    "style": "bar-resize:screenSizeX/2"
+  }));
+});
+
+slate.bind("0:ctrl;cmd", fullscreen);
 
 /*
 # Layouts
@@ -35,19 +42,28 @@ slate.bind("8:ctrl", slate.operation("layout", { "name" : laptopLayout }));
 
 slate.default(["2880x1800"], laptopLayout);
 
+/*
 slate.on("appOpened", function(event, app) {
   if (app.name() === "Terminal") {
-    slate.operation("layout", { "name" : "laptopLayout" });
-  }
-});
-
-/*
-slate.on("windowOpened", function(event, win) {
-  if (win.app().name() === "Terminal") {
+    slate.log("OPENED");
     slate.operation("layout", { "name" : "laptopLayout" });
   }
 });
 */
+
+slate.on("windowOpened", function(event, win) {
+  if (win.app().name() === "Terminal") {
+    win.doOperation(fullscreen);
+    //slate.operation("layout", { "name" : "laptopLayout" });
+  }
+  if (win.title() == "Open") {
+    win.doOperation(fullscreen);
+  }
+  if (win.title().match(/.*documents.* total pages\)/)) {
+    win.doOperation(fullscreen);
+    slate.shell("~/.bin/bin/simulate-keypress--preview-zoom-all-to-fit");
+  }
+});
 
 /*
 # Resize Bindings
