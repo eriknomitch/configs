@@ -315,6 +315,7 @@ alias v="vim-all"
 alias dv="ssh desktop-virtual"
 alias docker="sudo docker"
 alias o="ofe"
+alias np="notify-push"
 
 if ( $ON_DARWIN ) ; then
   alias htop="sudo htop"
