@@ -20,6 +20,7 @@ var fullscreen = slate.operation("move", {
 });
 
 slate.bind("0:ctrl;cmd", fullscreen);
+slate.bind("up:ctrl;cmd", fullscreen);
 
 /*
 # Layouts
