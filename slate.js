@@ -5,6 +5,10 @@ slate.configAll({
   "checkDefaultsOnLoad": true
 });
 
+//Window.prototype.isLeftBound = function() {
+  //return (this.topLeft().x == 0);
+//};
+
 var fullscreen = slate.operation("move", {
   "x" : "screenOriginX",
   "y" : "screenOriginY",
@@ -17,6 +21,24 @@ var fullscreen = slate.operation("move", {
     "direction": direction,
     "style": "bar-resize:screenSizeX/2"
   }));
+
+  slate.bind(direction+":ctrl,shift;cmd", function(win) {
+
+    var leftBound = (win.topLeft().x == 0);
+    var anchor    = (leftBound) ? "top-left" : "top-right";
+    var sign      = ((leftBound && direction == "right") || (!leftBound && direction == "left")) ? "+" : "-";
+
+    slate.log(anchor);
+    slate.log(sign);
+  
+    win.doOperation("resize", {
+      "width":  sign+"10%",
+      "height": "-0%",
+      "anchor": "top-left"
+    });
+    
+  });
+
 });
 
 slate.bind("0:ctrl;cmd", fullscreen);
