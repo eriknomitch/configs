@@ -43,7 +43,8 @@ sleep 1
   xrdb ~/.Xdefaults &
   xset dpms 0 0 0 &
   restart-vbox-client &
-  display-mode no-monitor && launch-development-environment 3 &
+  #display-mode no-monitor && launch-development-environment 3 &
+  {sleep 5 && display-mode no-monitor} &
 
 } &
  
