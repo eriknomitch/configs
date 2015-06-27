@@ -91,6 +91,8 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # ------------------------------------------------
 if ( $ON_DARWIN ) ; then
   alias d="cd ~/Desktop && clear && pwd && ls -1"
+
+  source-if-exists /sw/bin/init.sh
 fi
 
 # ------------------------------------------------
