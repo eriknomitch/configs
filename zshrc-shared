@@ -393,6 +393,8 @@ RPROMPT="%{$fg_bold[black]%}%~%{$reset_color%}"
 # Terminal.app has problems with bold black (grey).
 if ( $ON_DARWIN ) ; then
   RPROMPT="%{$fg[white]%}%~%{$reset_color%}"
+
+  alias del="rmtrash"
 fi
 
 
