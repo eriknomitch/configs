@@ -21,9 +21,12 @@ source $HOME/.configs/zshrc-oh-my-zsh
 # Source the shared zshrc (shared between users and root)
 source /etc/zshrc-shared
 
-source-if-exists $HOME/.repositories/prelang/aci/system/shell/development-utility.zsh
+# Source sensitive ENV vars (~/.env)
+source-if-exists $HOME/.env
+
 
 # Source various scripts
+source-if-exists $HOME/.repositories/prelang/aci/system/shell/development-utility.zsh
 source-if-exists $HOME/.persistent-working-directory/persistent-working-directory.zsh
 source-if-exists $HOME/.g/g.zsh
 source-if-exists $HOME/.repositories/notes/notes.zsh
@@ -94,6 +97,10 @@ if ( $ON_DARWIN ) ; then
   alias Do="cd ~/Downloads && clear && pwd && ls -1"
 
   source-if-exists /sw/bin/init.sh
+
+  if [[ -z $ITERM_PROFILE ]] ; then
+    echo "REMINDER: Use iTerm!"
+  fi
 fi
 
 # ------------------------------------------------
