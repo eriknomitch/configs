@@ -7,16 +7,6 @@ IdentityFile ~/.ssh/id_rsa
 # ------------------------------------------------
 # LAN --------------------------------------------
 # ------------------------------------------------
-Host pi
-    HostName 10.0.1.135
-    User pi
-    Port 22
-
-#Host desktop
-    #HostName 98.210.187.41
-    #User erik
-    #Port 22
-
 Host desktop
     HostName 10.0.1.20
     User erik
@@ -37,9 +27,9 @@ Host laptop
     User eriknomitch
     Port 22
 
-Host alarm-clock
-    HostName 10.0.0.15
-    User tux
+Host pi
+    HostName 10.0.1.135
+    User pi
     Port 22
 
 Host vagrant.prelang.com
@@ -57,26 +47,6 @@ Host linode
 
 Host linode-personal
     HostName 173.255.244.170
-    User linode
-    Port 22
-
-Host linode-prelang
-    HostName 50.116.4.75
-    User linode
-    Port 22
-
-Host linode-meta
-    HostName 173.230.151.168
-    User metalaic
-    Port 22
-
-Host linode-fantravel
-    HostName 173.255.252.125
-    User linode
-    Port 22
-
-Host linode-fantravel-backup
-    HostName 173.255.202.63
     User linode
     Port 22
 

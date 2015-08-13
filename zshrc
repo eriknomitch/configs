@@ -99,7 +99,7 @@ if ( $ON_DARWIN ) ; then
   source-if-exists /sw/bin/init.sh
 
   if [[ -z $ITERM_PROFILE ]] ; then
-    echo "REMINDER: Use iTerm!"
+    #echo "REMINDER: Use iTerm!"
   fi
 fi
 
