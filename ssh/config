@@ -8,33 +8,29 @@ IdentityFile ~/.ssh/id_rsa
 # LAN --------------------------------------------
 # ------------------------------------------------
 Host desktop
-    HostName 10.0.1.20
-    User erik
-    Port 22
-
-Host desktop-virtual
-    HostName 192.168.56.10
-    User erik
-    Port 22
-
-Host desktop-virtual-work
-    HostName 192.168.19.60
+    HostName 10.0.0.20
     User erik
     Port 22
 
 Host laptop
-    HostName 10.0.1.21
+    HostName 10.0.0.21
     User eriknomitch
     Port 22
 
-Host pi
-    HostName 10.0.1.135
-    User pi
+Host desktop-virtual
+    HostName 10.0.56.10
+    User erik
     Port 22
 
 Host vagrant.prelang.com
     HostName 127.0.0.1
     Port 2222
+
+Host pi
+    HostName 10.0.0.135
+    User pi
+    Port 22
+    ServerAliveInterval 60
 
 # ------------------------------------------------
 # REMOTE -----------------------------------------
