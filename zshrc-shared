@@ -322,6 +322,12 @@ if ( $ON_DARWIN ) ; then
   alias htop="sudo htop"
 fi
 
+if ( $ON_LINUX ) ; then
+  if [[ $USER != $ROOT ]] ; then
+    alias ifconfig="/sbin/ifconfig"
+  fi
+fi
+
 # Prevent C-s from hanging terminal
 # http://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
 stty -ixon
