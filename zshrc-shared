@@ -382,6 +382,8 @@ elif [[ $HOST == "linode-prelang" ]] ; then
     PROMPT=$'%{\e[34m%}linode%{\e[1;36m%}(prelang)$ %{\e[0m%}'
 elif [[ $HOST == "desktop-erik" ]] ; then
     PROMPT=$'%{\e[35m%}desktop$ %{\e[0m%}'
+elif [[ $HOST == "raspberrypi" ]] ; then
+    PROMPT=$'\xCF\x80 %{\e[35m%}pi$ %{\e[0m%}'
 elif ( $ON_DARWIN ) ; then
     PROMPT=$'\xEF\xA3\xBF %{\e[34m%}%m$ %{\e[0m%}'
 else
