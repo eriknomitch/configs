@@ -95,6 +95,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 if ( $ON_DARWIN ) ; then
   alias d="cd ~/Desktop && clear && pwd && ls -1"
   alias Do="cd ~/Downloads && clear && pwd && ls -1"
+  alias updatedb="sudo /usr/libexec/locate.updatedb"
 
   source-if-exists /sw/bin/init.sh
 
