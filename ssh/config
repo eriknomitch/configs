@@ -22,15 +22,19 @@ Host desktop-virtual
     User erik
     Port 22
 
+Host pi
+    HostName home.nomitch.com
+    #HostName 10.0.0.135
+    User pi
+    Port 22135
+    ServerAliveInterval 60
+
+# ------------------------------------------------
+# ------------------------------------------------
+# ------------------------------------------------
 Host vagrant.prelang.com
     HostName 127.0.0.1
     Port 2222
-
-Host pi
-    HostName 10.0.0.135
-    User pi
-    Port 22
-    ServerAliveInterval 60
 
 # ------------------------------------------------
 # REMOTE -----------------------------------------
