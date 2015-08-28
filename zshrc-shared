@@ -390,8 +390,8 @@ elif [[ $HOST == "desktop-erik" ]] ; then
     PROMPT=$'%{\e[35m%}desktop$ %{\e[0m%}'
 elif [[ $HOST == "raspberrypi" ]] ; then
     PROMPT=$'\xCF\x80 %{\e[35m%}pi$ %{\e[0m%}'
-elif ( $ON_DARWIN ) ; then
-    PROMPT=$'\xEF\xA3\xBF %{\e[34m%}%m$ %{\e[0m%}'
+
+# Other
 else
     PROMPT=$'%{\e[32m%}%m$ %{\e[0m%}'
 fi
