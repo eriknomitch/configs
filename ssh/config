@@ -8,7 +8,7 @@ IdentityFile ~/.ssh/id_rsa
 # LAN --------------------------------------------
 # ------------------------------------------------
 Host desktop
-    HostName 10.0.0.20
+    HostName 10.0.1.20
     User erik
     Port 22
 
