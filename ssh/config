@@ -22,15 +22,45 @@ Host desktop-virtual
     User erik
     Port 22
 
-Host pi
+# ------------------------------------------------
+# LAN->MICROS ------------------------------------
+# ------------------------------------------------
+
+# Raspberry Pi 2 Model B
+# ------------------------------------------------
+# * Location: Great Room
+# * IP: ...135
+#
+# * Peripherals
+#   * Camera
+Host micro-white
     HostName home.nomitch.com
-    #HostName 10.0.0.135
     User pi
     Port 22135
     ServerAliveInterval 60
 
+# Raspberry Pi 2 Model B
 # ------------------------------------------------
+# * Location: Master Bedroom / Proto Station
+# * IP: ...136
+Host micro-green
+    HostName home.nomitch.com
+    User pi
+    Port 22136
+    ServerAliveInterval 60
+
+# Raspberry Pi 1 Model B
 # ------------------------------------------------
+# * Location: Master Bedroom / Proto Station
+# * IP: ...137
+Host micro-orange
+    HostName home.nomitch.com
+    User pi
+    Port 22137
+    ServerAliveInterval 60
+
+# ------------------------------------------------
+# VAGRANT ----------------------------------------
 # ------------------------------------------------
 Host vagrant.prelang.com
     HostName 127.0.0.1
