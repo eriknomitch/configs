@@ -43,6 +43,10 @@ Host micro-white
 # ------------------------------------------------
 # * Location: Master Bedroom / Proto Station
 # * IP: ...136
+#
+# * Peripherals
+#   * Blink(1)
+#   * GPIO Breakout
 Host micro-green
     HostName home.nomitch.com
     User pi
