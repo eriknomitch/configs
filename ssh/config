@@ -5,10 +5,19 @@
 IdentityFile ~/.ssh/id_rsa
 
 # ------------------------------------------------
+# ------------------------------------------------
+# ------------------------------------------------
+# Set the default identity because sometimes we have mutliple keys
+Host *
+ControlMaster auto
+ControlPath /tmp/%r@%h:%p
+
+# ------------------------------------------------
 # LAN --------------------------------------------
 # ------------------------------------------------
 Host desktop
     HostName 10.0.0.20
+    PermitLocalCommand true
     User erik
     Port 22
 
