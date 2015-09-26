@@ -1,4 +1,6 @@
-pi-information
+clear
+
+#pi-information
 
 function precmd() {
   #echo "$(tput setb 5)     $(tput setb 0)"
