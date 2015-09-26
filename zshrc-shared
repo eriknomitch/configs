@@ -379,6 +379,10 @@ else
   fi
 fi
 
+#if ( $ON_DARWIN ) ; then
+  #PROMPT=$'\xEF\xA3\xBF %{$PROMPT%}'
+#fi
+
 # Right-hand prompt
 RPROMPT="%{$fg_bold[black]%}%~%{$reset_color%}"
 
