@@ -361,19 +361,18 @@ rsync-partial()
 # ------------------------------------------------
 if [[ $USER == "root" ]] ; then
     PROMPT=$'%{\e[31m%}%m# %{\e[0m%}'
-elif [[ $HOST == "linode-personal" ]] ; then
-    PROMPT=$'%{\e[34m%}linode%{\e[1;32m%}(personal)$ %{\e[0m%}'
-elif [[ $HOST == "linode-prelang" ]] ; then
-    PROMPT=$'%{\e[34m%}linode%{\e[1;36m%}(prelang)$ %{\e[0m%}'
-elif [[ $HOST == "desktop-erik" ]] ; then
-    PROMPT=$'%{\e[35m%}desktop$ %{\e[0m%}'
-elif [[ $HOST == "raspberrypi" ]] ; then
-    PROMPT=$'\xCF\x80 %{\e[35m%}pi$ %{\e[0m%}'
+#elif [[ $HOST == "linode-personal" ]] ; then
+    #PROMPT=$'%{\e[34m%}linode%{\e[1;32m%}(personal)$ %{\e[0m%}'
+#elif [[ $HOST == "desktop-erik" ]] ; then
+    #PROMPT=$'%{\e[35m%}desktop$ %{\e[0m%}'
+#elif [[ $HOST == "raspberrypi" ]] ; then
+    #PROMPT=$'\xCF\x80 %{\e[35m%}pi$ %{\e[0m%}'
 
 # Default
+# ------------------------------------------------
 else
   if ( $SSHED ) ; then
-    PROMPT=$'-> %{$fg[green]%}%m%{$fg_bold[blue]%}[SSH]%{$reset_color%} -> %{$fg[green]%}$%{$reset_color%} '
+    PROMPT=$'->%{$fg_bold[blue]%}[SSH]%{$reset_color%}->%{$fg[green]%}%m%{$reset_color%}%{$fg[green]%}$%{$reset_color%} '
   else
     PROMPT=$'%{$fg[green]%}%m$%{$reset_color%} '
   fi
