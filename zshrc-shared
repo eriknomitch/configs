@@ -370,10 +370,10 @@ elif [[ $HOST == "desktop-erik" ]] ; then
 elif [[ $HOST == "raspberrypi" ]] ; then
     PROMPT=$'\xCF\x80 %{\e[35m%}pi$ %{\e[0m%}'
 
-# Other
+# Default
 else
   if ( $SSHED ) ; then
-    PROMPT=$'%{$fg[green]%}%m%{$fg_bold[blue]%}[REMOTE]%{$reset_color%}%{$fg[green]%}$%{$reset_color%} '
+    PROMPT=$'-> %{$fg[green]%}%m%{$fg_bold[blue]%}[SSH]%{$reset_color%} -> %{$fg[green]%}$%{$reset_color%} '
   else
     PROMPT=$'%{$fg[green]%}%m$%{$reset_color%} '
   fi
