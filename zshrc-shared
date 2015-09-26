@@ -403,4 +403,9 @@ if ( $ON_DARWIN ) ; then
   }
 fi
 
+function precmd() {
+  #echo -n "=> "
+  #basename `pwd-tilde`
+}
+
 
