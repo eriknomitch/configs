@@ -4,7 +4,7 @@
     "files":      ["ofe.json"]
   },
   "zsh": {
-    "files": ["zsh*"]
+    "files": ["zsh*", "zshrc-host-specific/*"]
   },
   "vim": {
     "files": ["vimrc", "vim/**/**"],

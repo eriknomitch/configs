@@ -1,6 +1,10 @@
 alias airsonos="\cd ~/.repositories/airsonos/ && node ./bin/index.js"
 
-PROMPT=$'\xEF\xA3\xBF %{$fg[green]%}%m$%{$reset_color%} '
+if ( $SSHED ) ; then
+  PROMPT=$'\xEF\xA3\xBF %{$fg[green]%}%m%{$fg_bold[blue]%}[REMOTE]%{$reset_color%}%{$fg[green]%}$%{$reset_color%} '
+else
+  PROMPT=$'\xEF\xA3\xBF %{$fg[green]%}%m$%{$reset_color%} '
+fi
     
 #PROMPT=$'\xEF\xA3\xBF %{$fg[white]%}%m$%{$reset_color%} '
 

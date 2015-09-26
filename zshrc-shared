@@ -372,7 +372,11 @@ elif [[ $HOST == "raspberrypi" ]] ; then
 
 # Other
 else
-    PROMPT=$'%{\e[32m%}%m$ %{\e[0m%}'
+  if ( $SSHED ) ; then
+    PROMPT=$'%{$fg[green]%}%m%{$fg_bold[blue]%}[REMOTE]%{$reset_color%}%{$fg[green]%}$%{$reset_color%} '
+  else
+    PROMPT=$'%{$fg[green]%}%m$%{$reset_color%} '
+  fi
 fi
 
 # Right-hand prompt
