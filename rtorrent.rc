@@ -43,7 +43,7 @@ system.method.set = group.seeding.ratio.command, d.close=, d.erase=
 system.method.set_key = event.download.finished,move_complete,"execute=mv,-u,$d.get_base_path=,~/.plex/torrents/;d.set_directory=~/.plex/torrents/"
 
 # Email
-system.method.set_key = event.download.finished,notify_me,"execute=~/.bin/notify-torrent-completed,$d.get_name="
+system.method.set_key = event.download.finished,notify_me,"execute=~/.bin/bin/notify-torrent-completed,$d.get_name="
 
 # Close torrents when diskspace is low.
 schedule = low_diskspace,5,60,close_low_diskspace=100M

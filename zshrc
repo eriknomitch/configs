@@ -65,6 +65,16 @@ zle -N _dump_g_cmp
 bindkey '^[g' _dump_g_cmp
 
 # ------------------------------------------------
+# ------------------------------------------------
+# ------------------------------------------------
+function _dump_ssh() {
+  LBUFFER+='ssh '; RBUFFER+=''
+}
+
+zle -N _dump_ssh
+bindkey '^[s' _dump_ssh
+
+# ------------------------------------------------
 # AMAZON -----------------------------------------
 # ------------------------------------------------
 export EC2_KEYPAIR=default
@@ -124,15 +134,30 @@ function tos {
 # ------------------------------------------------
 # ------------------------------------------------
 # ------------------------------------------------
-export ZSHRC_SOURCED=true
-
-alias n="notes"
-
 source-if-exists $HOME/.zshrc.host-specific
 
 # ------------------------------------------------
 # ------------------------------------------------
 # ------------------------------------------------
+alias n="notes"
+
+# http://stackoverflow.com/questions/1891797/capturing-groups-from-a-grep-regex
+#
+# Example: echo "Cloning into 'machine'..." | regex-capture "Cloning into '(.*)'\.\.\.$"'
+function regex-capture { gawk 'match($0,/'$1'/, ary) {print ary['${2:-'1'}']}'; }
+
+# FIX: Handle errors
+function repo() {
+  cd $HOME/.repositories
+  local _name=`git clone $* |& regex-capture "Cloning into '(.*)'\.\.\.$.*"`
+  cd $_name
+}
+
+# ------------------------------------------------
+# MAIN -------------------------------------------
+# ------------------------------------------------
+export ZSHRC_SOURCED=true
+
 if ( $ON_LINUX && ! x-server-is-running && test -z $SSH_CLIENT ) ; then
   echo "Starting X server in: 1 second..."
   sleep 1
