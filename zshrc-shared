@@ -82,10 +82,11 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib
 
 # ------------------------------------------------
-# OS ---------------------------------------------
+# SWITCHES ---------------------------------------
 # ------------------------------------------------
 export ON_DARWIN=false
 export ON_LINUX=false
+export SSHED=false
 
 case `uname` in
   "Darwin")
@@ -95,6 +96,9 @@ case `uname` in
     ON_LINUX=true
     ;;
 esac
+
+# http://stackoverflow.com/questions/3601515/how-to-check-if-a-variable-is-set-in-bash
+if [[ -n ${SSH_CLIENT} ]]; then; SSHED=true; fi
 
 # ------------------------------------------------
 # UNIX -------------------------------------------
