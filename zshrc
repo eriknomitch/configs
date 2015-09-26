@@ -52,20 +52,21 @@ if [ -d "${RBENV_ROOT}" ]; then
 fi
 
 # ------------------------------------------------
-# G ----------------------------------------------
+# KEY-BINDINGS->PROMPT-DUMPS----------------------
 # ------------------------------------------------
+
+# 'g'
+# ------------------------------------------------
+# Bind to wrap buffer with 'g cmp "<cursor>"'
 
 function _dump_g_cmp() {
   LBUFFER+='g cmp "'; RBUFFER+='"'
 }
 
-# Bind to wrap buffer with 'g cmp "<cursor>"'
 zle -N _dump_g_cmp
-#bindkey '^G' _dump_g_cmp
 bindkey '^[g' _dump_g_cmp
 
-# ------------------------------------------------
-# ------------------------------------------------
+# 'ssh'
 # ------------------------------------------------
 function _dump_ssh() {
   LBUFFER+='ssh '; RBUFFER+=''
@@ -73,6 +74,15 @@ function _dump_ssh() {
 
 zle -N _dump_ssh
 bindkey '^[s' _dump_ssh
+
+# 'micro'
+# ------------------------------------------------
+function _dump_micro() {
+  LBUFFER+='micro '; RBUFFER+=''
+}
+
+zle -N _dump_micro
+bindkey '^[m' _dump_micro
 
 # ------------------------------------------------
 # AMAZON -----------------------------------------
