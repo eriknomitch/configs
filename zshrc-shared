@@ -189,35 +189,6 @@ function h()
 }
 
 # ------------------------------------------------
-# SHARED -----------------------------------------
-# ------------------------------------------------
-pull-shared-file()
-{
-    file_owner=$1
-    file_group=$2
-    file_permissions=$3
-    file_shared_name=$4
-    file_end_path=$5
-
-    scp linode:~/.shared/$file_shared_name ~/.shared/tmp-to-mv
-
-    sudo mv ~/.shared/tmp-to-mv $file_end_path
-
-    sudo chmod $file_permissions $file_end_path
-    sudo chown $file_owner:$file_group $file_end_path 
-}
-
-pull-ssh-config()
-{
-    pull-shared-file $USER $USER 0644 ssh-config ~/.ssh/config
-}
-
-pull-zshrc-shared()
-{
-    pull-shared-file root root 0644 zshrc-shared /etc/zshrc-shared
-}
-
-# ------------------------------------------------
 # OPEN -------------------------------------------
 # ------------------------------------------------
 #function o()
