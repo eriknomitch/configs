@@ -151,6 +151,7 @@ source-if-exists $HOME/.zshrc.host-specific
 # ------------------------------------------------
 alias n="notes"
 alias e="edit"
+alias rem="reminders"
 
 # http://stackoverflow.com/questions/1891797/capturing-groups-from-a-grep-regex
 #
