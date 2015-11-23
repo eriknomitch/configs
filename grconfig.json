@@ -1,19 +1,14 @@
 {
   "tags": {
+    "system": [
+      "/Users/erik/.configs",
+      "/Users/erik/Scripts"
+    ],
     "personal": [
-      "/Users/erik/.repositories/circlefs",
-      "/Users/erik/.repositories/circular-filesystem-concept",
-      "/Users/erik/.repositories/cl-monome",
-      "/Users/erik/.repositories/expected",
       "/Users/erik/.repositories/g",
-      "/Users/erik/.repositories/gExecute",
       "/Users/erik/.repositories/mkdir-scripts",
-      "/Users/erik/.repositories/monome-serial",
-      "/Users/erik/.repositories/notify-push",
       "/Users/erik/.repositories/ofe",
-      "/Users/erik/.repositories/persistent-working-directory",
-      "/Users/erik/Scripts",
-      "/Users/erik/.configs"
+      "/Users/erik/.repositories/persistent-working-directory"
     ],
     "shell": [
       "/Users/erik/.repositories/g",
