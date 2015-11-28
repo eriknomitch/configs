@@ -153,6 +153,8 @@ alias n="notes"
 alias e="edit"
 alias rem="reminders"
 alias grs="gr status"
+alias G="gr status"
+alias nn="notes notes ${@:2}"
 
 # http://stackoverflow.com/questions/1891797/capturing-groups-from-a-grep-regex
 #
