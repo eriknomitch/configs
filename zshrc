@@ -190,11 +190,12 @@ function G() {
       gr git up && G
       ;;
     *)
-    if [[ $# -gt 0 ]] ; then
-      \gr $* && G
-    else
-      \gr status
-    fi
+      if [[ $# -gt 0 ]] ; then
+        gr $* && G
+      else
+        gr status
+      fi
+      ;;
   esac
 }
 

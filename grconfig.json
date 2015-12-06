@@ -1,28 +1,28 @@
 {
   "tags": {
     "system": [
-      "~/.configs",
-      "~/.bin",
-      "~/Scripts"
+      "/Users/erik/.configs",
+      "/Users/erik/.bin",
+      "/Users/erik/Scripts"
     ],
     "personal": [
-      "~/.repositories/g",
-      "~/.repositories/mpm",
-      "~/.repositories/notes",
-      "~/.repositories/mkdir-scripts",
-      "~/.repositories/ofe",
-      "~/.repositories/persistent-working-directory"
+      "/Users/erik/.repositories/g",
+      "/Users/erik/.repositories/mpm",
+      "/Users/erik/.repositories/notes",
+      "/Users/erik/.repositories/mkdir-scripts",
+      "/Users/erik/.repositories/ofe",
+      "/Users/erik/.repositories/persistent-working-directory"
     ],
     "shell": [
-      "~/.repositories/g",
-      "~/.repositories/mkdir-scripts",
-      "~/.repositories/persistent-working-directory"
+      "/Users/erik/.repositories/g",
+      "/Users/erik/.repositories/mkdir-scripts",
+      "/Users/erik/.repositories/persistent-working-directory"
     ],
     "prelang": [
-      "~/.repositories/prelang"
+      "/Users/erik/.repositories/prelang"
     ],
     "osx": [
-      "~/Scripts"
+      "/Users/erik/Scripts"
     ]
   }
 }
