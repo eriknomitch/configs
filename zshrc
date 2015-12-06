@@ -186,6 +186,9 @@ function G() {
       echo " Done."
       G
       ;;
+    u)
+      gr git up && G
+      ;;
     *)
     if [[ $# -gt 0 ]] ; then
       \gr $* && G
