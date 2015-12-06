@@ -142,6 +142,24 @@ function tos {
 }
 
 # ------------------------------------------------
+# SPINNER ----------------------------------------
+# ------------------------------------------------
+#function spinner()
+#{
+    #local pid=$!
+    #local delay=0.1
+    #local spinstr='|/-\'
+    #while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
+        #local temp=${spinstr#?}
+        #printf " [%c]  " "$spinstr"
+        #local spinstr=$temp${spinstr%"$temp"}
+        #sleep $delay
+        #printf "\b\b\b\b\b\b"
+    #done
+    #printf "    \b\b\b\b"
+#}
+
+# ------------------------------------------------
 # ------------------------------------------------
 # ------------------------------------------------
 source-if-exists $HOME/.zshrc.host-specific
@@ -153,8 +171,29 @@ alias n="notes"
 alias e="edit"
 alias rem="reminders"
 alias grs="gr status"
-alias G="gr status"
 alias nn="notes notes ${@:2}"
+
+# ------------------------------------------------
+# G ----------------------------------------------
+# ------------------------------------------------
+function G() {
+  case $1 in
+    f)
+      local _count_repos=`gr | wc -l | awk '{print $1}'`
+      echo -n "Fetching $_count_repos Repositories..."
+      # FIX: This will not fail with a warning/fatal error.
+      silence gr git fetch
+      echo " Done."
+      G
+      ;;
+    *)
+    if [[ $# -gt 0 ]] ; then
+      gr $*
+    else
+      gr status
+    fi
+  esac
+}
 
 # http://stackoverflow.com/questions/1891797/capturing-groups-from-a-grep-regex
 #
