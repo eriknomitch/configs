@@ -188,9 +188,9 @@ function G() {
       ;;
     *)
     if [[ $# -gt 0 ]] ; then
-      gr $*
+      \gr $*
     else
-      gr status
+      \gr status
     fi
   esac
 }
