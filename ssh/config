@@ -34,8 +34,12 @@ Host desktop-virtual
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
 # ------------------------------------------------
-Host micro-green lan-micro-green micro-white lan-micro-white micro-orange lan-micro-orange
+Host micro-green lan-micro-green micro-white lan-micro-white
   User pi
+  ServerAliveInterval 60
+
+Host micro-orange lan-micro-orange
+  User micro
   ServerAliveInterval 60
 
 Host micro-green micro-white micro-orange
