@@ -363,6 +363,16 @@ command-exists() {
 # ------------------------------------------------
 # PROMPTS ----------------------------------------
 # ------------------------------------------------
+pwd-is-wd-character() {
+  if pwd-is-wd ; then
+    echo "*"
+  elif [[ $PWD == $HOME ]] ; then
+    echo "~"
+  else
+    echo " "
+  fi
+}
+
 if [[ $USER == "root" ]] ; then
     PROMPT=$'%{\e[31m%}%m# %{\e[0m%}'
 #elif [[ $HOST == "linode-personal" ]] ; then
@@ -380,7 +390,10 @@ else
   else
     if ( $ON_DARWIN ) ; then
       #PROMPT=$'->%{$fg_bold[white]%}[.]%{$reset_color%}->\xEF\xA3\xBF %{$fg[green]%}%m$%{$reset_color%} '
-      PROMPT=$'[%{$fg_bold[white]%}*%{$reset_color%}]->%{$fg[green]%}%m$%{$reset_color%} '
+      #pwd_is_wd=`pwd-is-wd`
+      #echo $pwd_is_wd
+      
+      PROMPT=$'[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]->%{$fg[green]%}%m$%{$reset_color%} '
     else
       PROMPT=$'%{$fg[green]%}%m$%{$reset_color%} '
     fi
