@@ -376,16 +376,16 @@ if [[ $USER == "root" ]] ; then
 # ------------------------------------------------
 else
   if ( $SSHED ) ; then
-    PROMPT=$'->%{$fg_bold[blue]%}[SSH]%{$reset_color%}->%{$fg[magenta]%}%m%{$reset_color%}%{$fg[magenta]%}$%{$reset_color%} '
+    PROMPT=$'[*]->%{$fg_bold[blue]%}[SSH]%{$reset_color%}->%{$fg[magenta]%}%m%{$reset_color%}%{$fg[magenta]%}$%{$reset_color%} '
   else
     if ( $ON_DARWIN ) ; then
-      PROMPT=$'\xEF\xA3\xBF %{$fg[green]%}%m$%{$reset_color%} '
+      #PROMPT=$'->%{$fg_bold[white]%}[.]%{$reset_color%}->\xEF\xA3\xBF %{$fg[green]%}%m$%{$reset_color%} '
+      PROMPT=$'[%{$fg_bold[white]%}*%{$reset_color%}]->%{$fg[green]%}%m$%{$reset_color%} '
     else
       PROMPT=$'%{$fg[green]%}%m$%{$reset_color%} '
     fi
   fi
 fi
-
 
 # Right-hand prompt
 RPROMPT="%{$fg_bold[black]%}%~%{$reset_color%}"
