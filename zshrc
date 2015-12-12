@@ -222,6 +222,10 @@ _micro_cpl() {
   done
 }
 
+CD() {
+  cd $* && ls -lh
+}
+
 compctl -K _micro_cpl micro
 
 # ------------------------------------------------
