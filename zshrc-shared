@@ -386,7 +386,7 @@ if [[ $USER == "root" ]] ; then
 # ------------------------------------------------
 else
   if ( $SSHED ) ; then
-    PROMPT=$'[*]->%{$fg_bold[blue]%}[SSH]%{$reset_color%}->%{$fg[magenta]%}%m%{$reset_color%}%{$fg[magenta]%}$%{$reset_color%} '
+    PROMPT=$'->%{$fg_bold[blue]%}[SSH]%{$reset_color%}-[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]->%{$fg[magenta]%}%m%{$reset_color%}%{$fg[magenta]%}$%{$reset_color%} '
   else
     if ( $ON_DARWIN ) ; then
       #PROMPT=$'->%{$fg_bold[white]%}[.]%{$reset_color%}->\xEF\xA3\xBF %{$fg[green]%}%m$%{$reset_color%} '
