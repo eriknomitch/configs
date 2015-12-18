@@ -381,16 +381,18 @@ pwd-is-wd-character() {
 if [[ $USER == "root" ]] ; then
   PROMPT=$'%{\e[31m%}%m# %{\e[0m%}'
 
-# Default
+# Non-Privileged
 # ------------------------------------------------
 else
   if ( $SSHED ) ; then
 
     if ( $ON_MICRO ) ; then
       _suffix_color=`micro-hostname-suffix`
+    else
+      _suffix_color="purple"
     fi
 
-    PROMPT=$'->%{$fg_bold[blue]%}[SSH]%{$reset_color%}-[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]->%{$fg[magenta]%}%m%{$reset_color%}%{$fg[magenta]%}{$fg[$_suffix_color]%}$%{$reset_color%} '
+    PROMPT=$'->%{$fg_bold[blue]%}[SSH]%{$reset_color%}-[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]->%{$fg[magenta]%}%m%{$reset_color%}%{$fg[magenta]%}%{$fg[$_suffix_color]%}$%{$reset_color%} '
   else
     if ( $ON_DARWIN ) ; then
       #PROMPT=$'->%{$fg_bold[white]%}[.]%{$reset_color%}->\xEF\xA3\xBF %{$fg[green]%}%m$%{$reset_color%} '
