@@ -2,8 +2,7 @@
   "tags": {
     "system": [
       "/Users/erik/.configs",
-      "/Users/erik/.bin",
-      "/Users/erik/Scripts"
+      "/Users/erik/.bin"
     ],
     "personal": [
       "/Users/erik/.repositories/g",
@@ -21,9 +20,6 @@
     ],
     "prelang": [
       "/Users/erik/.repositories/prelang"
-    ],
-    "osx": [
-      "/Users/erik/Scripts"
     ]
   }
 }
