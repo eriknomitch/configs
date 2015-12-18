@@ -376,20 +376,21 @@ pwd-is-wd-character() {
   fi
 }
 
+# Root
+# ------------------------------------------------
 if [[ $USER == "root" ]] ; then
-    PROMPT=$'%{\e[31m%}%m# %{\e[0m%}'
-#elif [[ $HOST == "linode-personal" ]] ; then
-    #PROMPT=$'%{\e[34m%}linode%{\e[1;32m%}(personal)$ %{\e[0m%}'
-#elif [[ $HOST == "desktop-erik" ]] ; then
-    #PROMPT=$'%{\e[35m%}desktop$ %{\e[0m%}'
-#elif [[ $HOST == "raspberrypi" ]] ; then
-    #PROMPT=$'\xCF\x80 %{\e[35m%}pi$ %{\e[0m%}'
+  PROMPT=$'%{\e[31m%}%m# %{\e[0m%}'
 
 # Default
 # ------------------------------------------------
 else
   if ( $SSHED ) ; then
-    PROMPT=$'->%{$fg_bold[blue]%}[SSH]%{$reset_color%}-[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]->%{$fg[magenta]%}%m%{$reset_color%}%{$fg[magenta]%}$%{$reset_color%} '
+
+    if ( $ON_MICRO ) ; then
+      _suffix_color=`micro-hostname-suffix`
+    fi
+
+    PROMPT=$'->%{$fg_bold[blue]%}[SSH]%{$reset_color%}-[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]->%{$fg[magenta]%}%m%{$reset_color%}%{$fg[magenta]%}{$fg[$_suffix_color]%}$%{$reset_color%} '
   else
     if ( $ON_DARWIN ) ; then
       #PROMPT=$'->%{$fg_bold[white]%}[.]%{$reset_color%}->\xEF\xA3\xBF %{$fg[green]%}%m$%{$reset_color%} '
