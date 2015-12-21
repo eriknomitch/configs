@@ -431,10 +431,10 @@ fi
 # ------------------------------------------------
 # ------------------------------------------------
 # ------------------------------------------------
-function precmd() {
-  #echo -n "=> "
-  #basename `pwd-tilde`
-}
+#function precmd() {
+  ##echo -n "=> "
+  ##basename `pwd-tilde`
+#}
 
 function chpwd() {
   if [[ $PWD == $HOME ]] ; then
