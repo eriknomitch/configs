@@ -399,7 +399,9 @@ else
       #pwd_is_wd=`pwd-is-wd`
       #echo $pwd_is_wd
       
-      PROMPT=$'[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]->%{$fg[green]%}%m$%{$reset_color%} '
+      _host_char=`echo -e "\xEF\xA3\xBF"`
+      
+      PROMPT=$'[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]-> %{$_host_char%} %{$fg[green]%}%m$%{$reset_color%} '
     else
       PROMPT=$'%{$fg[green]%}%m$%{$reset_color%} '
     fi
@@ -426,6 +428,9 @@ if ( $ON_DARWIN ) ; then
   }
 fi
 
+# ------------------------------------------------
+# ------------------------------------------------
+# ------------------------------------------------
 function precmd() {
   #echo -n "=> "
   #basename `pwd-tilde`
