@@ -16,6 +16,12 @@ ControlPath /tmp/%r@%h:%p
 # LAN --------------------------------------------
 # ------------------------------------------------
 Host desktop
+    HostName home.nomitch.com
+    PermitLocalCommand true
+    User erik
+    Port 2220
+
+Host desktop-lan
     HostName 10.0.0.20
     PermitLocalCommand true
     User erik
