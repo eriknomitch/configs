@@ -94,7 +94,6 @@ Mod4 Shift a :ExecCommand xterm -e "ssh laptop"
 Mod4 Shift m :ExecCommand xterm -e "ssh linode-meta"
 Mod4 Shift x :ExecCommand xterm -e "ssh desktop-erik"
 Mod4 Shift u :ExecCommand xterm -e "ssh auxiliary"
-Mod4 Shift f :ExecCommand xterm -e "ssh linode-fantravel"
 
 # ------------------------------------------------
 # MOUSE ------------------------------------------

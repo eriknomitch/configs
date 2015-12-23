@@ -30,7 +30,6 @@ source-if-exists $HOME/.repositories/prelang/aci/system/shell/development-utilit
 source-if-exists $HOME/.persistent-working-directory/persistent-working-directory.zsh
 source-if-exists $HOME/.g/g.zsh
 source-if-exists $HOME/.repositories/notes/notes.zsh
-source-if-exists $HOME/.repositories/fantravel-v2/system/fantravel.sh
 source-if-exists $HOME/.repositories/project/project.zsh
 source-if-exists $HOME/.repositories/git-flow-completion/git-flow-completion.zsh
 
