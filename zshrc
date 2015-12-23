@@ -177,7 +177,6 @@ source-if-exists $HOME/.zshrc.host-specific
 alias n="notes"
 alias e="edit"
 alias rem="notes-reminders"
-alias grs="gr status"
 alias nn="notes notes ${@:2}"
 
 # ------------------------------------------------
