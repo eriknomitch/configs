@@ -16,12 +16,6 @@ ControlPath /tmp/%r@%h:%p
 # LAN --------------------------------------------
 # ------------------------------------------------
 Host desktop
-    HostName home.nomitch.com
-    PermitLocalCommand true
-    User erik
-    Port 2220
-
-Host desktop-lan
     HostName 10.0.0.20
     PermitLocalCommand true
     User erik
@@ -29,67 +23,38 @@ Host desktop-lan
 
 Host laptop
     HostName 10.0.0.21
-    User eriknomitch
-    Port 22
+    User erik
 
 Host desktop-virtual
     HostName 10.0.56.10
     User erik
-    Port 22
 
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
 # ------------------------------------------------
-Host micro-green lan-micro-green micro-white lan-micro-white
-  User pi
-  ServerAliveInterval 60
-
-Host micro-orange lan-micro-orange
-  User micro
-  ServerAliveInterval 60
-
 Host micro-green micro-white micro-orange
-  HostName home.nomitch.com
+  ServerAliveInterval 60
+
+Host micro-green micro-white
+  User pi
+
+Host micro-orange
+  User micro
 
 # Raspberry Pi 2 Model B
 # ------------------------------------------------
-# * Location: Great Room
-# * IP: ...135
-#
-# * Peripherals
-#   * Camera
 Host micro-white
-    Port 22135
-
-Host lan-micro-white
     HostName 10.0.0.135
-    Port 22
 
 # Raspberry Pi 2 Model B
 # ------------------------------------------------
-# * Location: Master Bedroom / Proto Station
-# * IP: ...136
-#
-# * Peripherals
-#   * Blink(1)
-#   * GPIO Breakout
 Host micro-green
-    Port 22136
-
-Host lan-micro-green
     HostName 10.0.0.136
-    Port 22
 
 # Raspberry Pi 1 Model B
 # ------------------------------------------------
-# * Location: Master Bedroom / Proto Station
-# * IP: ...137
 Host micro-orange
-    Port 22137
-
-Host lan-micro-orange
     HostName 10.0.0.137
-    Port 22
 
 # ------------------------------------------------
 # LAN->DEVICES & HUBS-----------------------------
