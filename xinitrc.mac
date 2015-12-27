@@ -3,10 +3,10 @@ PATH=$PATH:/usr/X11R6/bin:/sw/bin:/usr/local/bin
 export PATH
 
 # Opens up an xterm
-xterm -geometry -250+200 &
+#xterm -geometry -250+200 &
 
 # opens up the oclock clock
-oclock -geometry -100+50 &
+#oclock -geometry -100+50 &
 
 # Runs the fluxbox window manager 
 exec /sw/bin/fluxbox
