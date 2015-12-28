@@ -55,7 +55,7 @@ bind 8:ctrl layout laptopLayout
 */
 
 var laptopLayout = slate.layout("laptopLayout", {
-  "Terminal": {
+  "iTerm": {
     "operations": [fullscreen],
     "repeat": true
   }
@@ -85,6 +85,9 @@ slate.on("windowOpened", function(event, win) {
   if (win.title().match(/.*documents.* total pages\)/)) {
     win.doOperation(fullscreen);
     slate.shell("~/.bin/bin/simulate-keypress--preview-zoom-all-to-fit");
+  }
+  if (win.app().name() === "iTerm") {
+    win.doOperation(fullscreen);
   }
 });
 
