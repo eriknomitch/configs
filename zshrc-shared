@@ -399,7 +399,7 @@ else
       #pwd_is_wd=`pwd-is-wd`
       #echo $pwd_is_wd
       
-      _host_char=`echo -e "\xEF\xA3\xBF"`
+      _host_char=`echo -en "\xEF\xA3\xBF"`
       
       PROMPT=$'[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]-> %{$_host_char%} %{$fg[green]%}%m$%{$reset_color%} '
     else
