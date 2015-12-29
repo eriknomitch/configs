@@ -169,12 +169,12 @@ function tos {
 # ------------------------------------------------
 # SOURCE->HOST-SPECIFIC --------------------------
 # ------------------------------------------------
-source-if-exists $HOME/.configs/zshrc-os-specific/`uname`
-source-if-exists $HOME/.configs/zshrc-host-specific/`hostname`
+source-if-exists $HOME/.configs/zshrc-os-specific/`uname`.zsh
+source-if-exists $HOME/.configs/zshrc-host-specific/`hostname`.zsh
 
 # FIX: Use short hostname?
 if ( $ON_MICRO ) ; then
-  source-if-exists $HOME/.configs/zshrc-host-specific/micro
+  source-if-exists $HOME/.configs/zshrc-host-specific/micro.zsh
 fi
 
 # ------------------------------------------------
