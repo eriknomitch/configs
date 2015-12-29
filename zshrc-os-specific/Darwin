@@ -1,0 +1,9 @@
+function eject-all() {
+  ls -1 /Volumes
+  echo "----------"
+  echo -n "Ejecting... "
+  osascript -e 'tell application "Finder" to eject (every disk whose ejectable is true)'
+  echo "Done.  Your new list of Volumes is:"
+  echo "----------"
+  ls -1 /Volumes
+}

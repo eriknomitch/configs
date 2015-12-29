@@ -169,7 +169,8 @@ function tos {
 # ------------------------------------------------
 # SOURCE->HOST-SPECIFIC --------------------------
 # ------------------------------------------------
-source-if-exists $HOME/.zshrc.host-specific
+source-if-exists $HOME/.configs/zshrc-os-specific/`uname`
+source-if-exists $HOME/.configs/zshrc-host-specific/`hostname`
 
 # ------------------------------------------------
 # ------------------------------------------------
