@@ -172,6 +172,11 @@ function tos {
 source-if-exists $HOME/.configs/zshrc-os-specific/`uname`
 source-if-exists $HOME/.configs/zshrc-host-specific/`hostname`
 
+# FIX: Use short hostname?
+if ( $ON_MICRO ) ; then
+  source-if-exists $HOME/.configs/zshrc-host-specific/micro
+fi
+
 # ------------------------------------------------
 # ------------------------------------------------
 # ------------------------------------------------
