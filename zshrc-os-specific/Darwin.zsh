@@ -1,3 +1,5 @@
+
+
 function eject-all() {
   ls -1 /Volumes
   echo "----------"
