@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+test -e $HOME/.zshrc || ln -s $HOME/.configs/zshrc $HOME/.zshrc
+test -e /etc/zshrc-shared || sudo ln -s $HOME/.configs/zshrc-shared /etc/zshrc-shared

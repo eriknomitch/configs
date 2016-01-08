@@ -59,8 +59,7 @@ Host micro-orange
 # Raspberry Pi Zero
 # ------------------------------------------------
 Host micro-black
-    HostName 10.0.0.138
-
+    HostName 10.0.0.139
 
 # ------------------------------------------------
 # LAN->DEVICES & HUBS-----------------------------
