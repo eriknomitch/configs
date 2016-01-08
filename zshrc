@@ -27,8 +27,8 @@ source-if-exists $HOME/.env
 
 # Source various scripts
 source-if-exists $HOME/.repositories/prelang/aci/system/shell/development-utility.zsh
-source-if-exists $HOME/.persistent-working-directory/persistent-working-directory.zsh
-source-if-exists $HOME/.g/g.zsh
+source-if-exists $HOME/.repositories/persistent-working-directory/persistent-working-directory.zsh
+source-if-exists $HOME/.repositories/g/g.zsh
 source-if-exists $HOME/.repositories/notes/notes.zsh
 source-if-exists $HOME/.repositories/project/project.zsh
 source-if-exists $HOME/.repositories/git-flow-completion/git-flow-completion.zsh
