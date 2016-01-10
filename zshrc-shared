@@ -392,7 +392,7 @@ else
       _suffix_color="purple"
     fi
 
-    if ( $_suffix_color == "black" ) ; then
+    if [[ $_suffix_color == "black" ]] ; then
       _suffix_color="grey"
     fi
 
