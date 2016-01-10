@@ -392,6 +392,10 @@ else
       _suffix_color="purple"
     fi
 
+    if ( $_suffix_color == "black" ) ; then
+      _suffix_color="grey"
+    fi
+
     PROMPT=$'->%{$fg_bold[blue]%}[SSH]%{$reset_color%}-[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]->%{$fg[magenta]%}%m%{$reset_color%}%{$fg[magenta]%}%{$fg[$_suffix_color]%}$%{$reset_color%} '
   else
     PROMPT=$'%{$fg[green]%}%m$%{$reset_color%} '
