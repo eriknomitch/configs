@@ -2,7 +2,7 @@
 # LOADING ----------------------------------------
 # ------------------------------------------------
 if ( $ON_MICRO ) ; then
-  echo "Loading Zsh..."
+  echo -n "Loading Zsh..."
 fi
 
 # ------------------------------------------------
@@ -265,5 +265,7 @@ if ( $ON_LINUX && ! x-server-is-running && test -z $SSH_CLIENT ) ; then
   echo "Starting X server in: 1 second..."
   sleep 1
   startx
+else
+  clear
 fi
 
