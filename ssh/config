@@ -34,12 +34,7 @@ Host desktop-virtual
 # ------------------------------------------------
 Host micro-green micro-white micro-orange micro-black
   ServerAliveInterval 60
-
-Host micro-green micro-white micro-black
   User pi
-
-Host micro-orange
-  User micro
 
 # Raspberry Pi 2 Model B
 # ------------------------------------------------
