@@ -49,12 +49,19 @@ Host micro-green
 # Raspberry Pi 1 Model B
 # ------------------------------------------------
 Host micro-orange
-    HostName 10.0.0.137
+    #HostName 10.0.0.137
+    #HostName micro-orange.local
+    HostName dns-server.local
+
+Host dns-server
+  User pi
+  HostName dns-server.local
 
 # Raspberry Pi Zero
 # ------------------------------------------------
 Host micro-black
-    HostName 10.0.0.139
+    #HostName 10.0.0.139
+    HostName micro-black.local
 
 # ------------------------------------------------
 # LAN->DEVICES & HUBS-----------------------------
