@@ -32,7 +32,7 @@ Host desktop-virtual
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
 # ------------------------------------------------
-Host micro-green micro-white micro-orange micro-black
+Host micro-green micro-white micro-orange micro-black micro-purple
   ServerAliveInterval 60
   User pi
 
@@ -60,8 +60,13 @@ Host dns-server
 # Raspberry Pi Zero
 # ------------------------------------------------
 Host micro-black
-    #HostName 10.0.0.139
+    # [...].139
     HostName micro-black.local
+
+# Raspberry Pi Zero
+# ------------------------------------------------
+Host micro-purple
+    HostName micro-purple.local
 
 # ------------------------------------------------
 # LAN->DEVICES & HUBS-----------------------------
