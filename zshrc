@@ -191,7 +191,7 @@ fi
 # ------------------------------------------------
 # ------------------------------------------------
 alias n="notes"
-alias e="edit"
+alias e="edit-common"
 alias rem="notes-reminders"
 alias nn="notes notes ${@:2}"
 
