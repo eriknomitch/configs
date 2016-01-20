@@ -39,12 +39,12 @@ Host micro-green micro-white micro-orange micro-black micro-purple
 # Raspberry Pi 2 Model B
 # ------------------------------------------------
 Host micro-white
-    HostName 10.0.0.135
+    HostName micro-white.local
 
 # Raspberry Pi 2 Model B
 # ------------------------------------------------
 Host micro-green
-    HostName 10.0.0.136
+    HostName micro-green.local
 
 # Raspberry Pi 1 Model B
 # ------------------------------------------------
