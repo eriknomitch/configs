@@ -1,0 +1,33 @@
+#!/bin/zsh
+
+config='
+{
+  "tags": {
+    "system": [
+      "$HOME/.configs",
+      "$HOME/.bin"
+    ],
+    "personal": [
+      "$HOME/.repositories/g",
+      "$HOME/.repositories/mpm",
+      "$HOME/.repositories/notes",
+      "$HOME/.repositories/mkdir-scripts",
+      "$HOME/.repositories/ofe",
+      "$HOME/.repositories/nomitch-automation-system",
+      "$HOME/.repositories/persistent-working-directory"
+    ],
+    "shell": [
+      "$HOME/.repositories/g",
+      "$HOME/.repositories/mkdir-scripts",
+      "$HOME/.repositories/persistent-working-directory"
+    ],
+    "prelang": [
+      "$HOME/.repositories/prelang"
+    ]
+  }
+}
+'
+
+# FIX: This is stupid... Learn how to use $HOME in the actual string.
+echo $config | sed "s/\$HOME/`home-escaped`/g"
+
