@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+.bin/ensure-symbolic-links
+.bin/generate-grconfig
