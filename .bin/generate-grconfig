@@ -29,5 +29,5 @@ config='
 '
 
 # FIX: This is stupid... Learn how to use $HOME in the actual string.
-echo $config | sed "s/\$HOME/`home-escaped`/g"
+echo $config | sed "s/\$HOME/`home-escaped`/g" > $HOME/.grconfig.json
 
