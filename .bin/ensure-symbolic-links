@@ -3,3 +3,5 @@
 test -h $HOME/.zshrc || ln -s $HOME/.configs/zshrc $HOME/.zshrc
 test -h /etc/zshrc-shared || sudo ln -s $HOME/.configs/zshrc-shared /etc/zshrc-shared
 test -h $HOME/.audio || ln -s ~/.configs/audio ~/.audio
+test -h $HOME/.vim || ln -s ~/.configs/vim ~/.vim
+test -h $HOME/.vimrc || ln -s ~/.configs/vimrc ~/.vimrc
