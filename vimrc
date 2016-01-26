@@ -66,7 +66,11 @@ map <F1> :set paste<CR>
 map <F2> :set nopaste<CR>
 imap <F1> <C-O>:set paste<CR>
 imap <F2> <nop>
-set pastetoggle=<F2>
+
+" http://vim.wikia.com/wiki/Toggle_auto-indenting_for_code_paste
+nnoremap <F3> :set invpaste paste?<CR>
+set pastetoggle=<F3>
+set showmode
 
 " ctrl-h : sets highlighted words to normal
 noremap <C-H> :nohls<CR>
