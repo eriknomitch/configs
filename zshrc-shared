@@ -385,7 +385,17 @@ pwd-is-wd-character() {
 }
 pwd-home-count() {
   if [[ $PWD == $HOME ]] ; then
-    echo -n "-`ls -1 | count-lines`"
+
+    _home_count=`ls -1 | count-lines`
+    
+    if ( $ON_DARWIN ) ; then
+      let _home_count=_home_count-28
+    fi
+
+    if [[ $_home_count > 0 ]] ; then
+      echo -n "+$_home_count"
+    fi
+
   fi
 }
 
@@ -409,7 +419,7 @@ else
       _suffix_color="white"
     fi
 
-    PROMPT=$'->%{$fg_bold[blue]%}[SSH]%{$reset_color%}-[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]->%{$fg[magenta]%}%m%{$reset_color%}%{$fg[magenta]%}%{$fg[$_suffix_color]%}$%{$reset_color%} '
+    PROMPT=$'->%{$fg_bold[blue]%}[SSH]%{$reset_color%}-[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]$(pwd-home-count)->%{$fg[magenta]%}%m%{$reset_color%}%{$fg[magenta]%}%{$fg[$_suffix_color]%}$%{$reset_color%} '
   else
     PROMPT=$'%{$fg[green]%}%m$%{$reset_color%} '
   fi
