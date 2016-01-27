@@ -442,17 +442,30 @@ fi
 # ------------------------------------------------
 # Go to git repository I'm inside.
 gi() {
+  _toplevel=`git rev-parse --show-toplevel || return`
+
+  cd-skip-chpwd $_toplevel
+
+  clear
+  g
+  stylize `pwd-tilde`"\n"
 }
 
 # ------------------------------------------------
 # CHPWD ------------------------------------------
 # ------------------------------------------------
-#function precmd() {
-  ##echo -n "=> "
-  ##basename `pwd-tilde`
-#}
+function cd-skip-chpwd() {
+  SKIP_CHPWD=true
+  cd $*
+  SKIP_CHPWD=false
+}
 
 function chpwd() {
+
+  if [[ $SKIP_CHPWD == true ]] ; then
+    return
+  fi
+
   if [[ $PWD == $HOME ]] ; then
     clear
   else
