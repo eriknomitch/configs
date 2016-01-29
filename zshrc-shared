@@ -307,6 +307,7 @@ alias dv="ssh desktop-virtual"
 alias docker="sudo docker"
 alias o="ofe"
 alias np="notify-push"
+alias p="pwd"
 
 if ( $ON_DARWIN ) ; then
   alias htop="sudo htop"
