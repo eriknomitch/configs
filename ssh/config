@@ -50,8 +50,8 @@ Host micro-green
 # ------------------------------------------------
 Host micro-orange
     #HostName 10.0.0.137
-    #HostName micro-orange.local
-    HostName dns-server.local
+    HostName micro-orange.local
+    #HostName dns-server.local
 
 Host dns-server
   User pi
