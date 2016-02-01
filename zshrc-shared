@@ -448,6 +448,7 @@ gi() {
   cd-skip-chpwd $_toplevel
 
   clear
+  ls -lh
   g
   stylize `pwd-tilde`"\n"
 }
