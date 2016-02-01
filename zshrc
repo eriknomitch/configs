@@ -276,6 +276,6 @@ else
 fi
 
 if [[ -n $PUCK_LOCATION ]] ; then
-  echo "Acting as Puck in '$PUCK_LOCATION'."
+  echo "Acting as Puck in: `stylize $PUCK_LOCATION`"
 fi
 
