@@ -1,15 +1,10 @@
 # ------------------------------------------------
 # ENV->GLOBALS -----------------------------------
 # ------------------------------------------------
-IS_PUCK=false
 
 # ------------------------------------------------
 # INITIAL-CWD ------------------------------------
 # ------------------------------------------------
-
-#if [[ -n $ZSHRC_SOURCED ]] ; then
-  #return
-#fi
 
 # This is used in some scripts to force an initial working directory.
 if [[ -n $INITIAL_CWD ]] ; then
@@ -280,7 +275,7 @@ else
   clear
 fi
 
-if ( $IS_PUCK ) ; then
-  echo "Acting as Puck."
+if [[ -n $PUCK_LOCATION ]] ; then
+  echo "Acting as Puck in '$PUCK_LOCATION'."
 fi
 

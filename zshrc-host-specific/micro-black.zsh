@@ -1,1 +1,1 @@
-export IS_PUCK=true
+export PUCK_LOCATION="Erik's Bedroom"
