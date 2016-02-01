@@ -98,6 +98,15 @@ function _dump_micro() {
 zle -N _dump_micro
 bindkey '^[m' _dump_micro
 
+# 'hosts'
+# ------------------------------------------------
+function _dump_hosts() {
+  LBUFFER+='hosts '; RBUFFER+=''
+}
+
+zle -N _dump_hosts
+bindkey '^[h' _dump_hosts
+
 # ------------------------------------------------
 # AMAZON -----------------------------------------
 # ------------------------------------------------
