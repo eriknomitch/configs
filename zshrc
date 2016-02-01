@@ -276,3 +276,7 @@ else
   clear
 fi
 
+if ( $IS_PUCK ) ; then
+  echo "Acting as Puck."
+fi
+
