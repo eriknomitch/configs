@@ -1,4 +1,9 @@
 # ------------------------------------------------
+# ENV->GLOBALS -----------------------------------
+# ------------------------------------------------
+IS_PUCK=false
+
+# ------------------------------------------------
 # INITIAL-CWD ------------------------------------
 # ------------------------------------------------
 
@@ -23,7 +28,6 @@ source /etc/zshrc-shared
 
 # Source sensitive ENV vars (~/.env)
 source-if-exists $HOME/.env
-
 
 # Source various scripts
 source-if-exists $HOME/.repositories/prelang/aci/system/shell/development-utility.zsh
