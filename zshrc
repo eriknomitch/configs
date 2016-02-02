@@ -24,13 +24,21 @@ source /etc/zshrc-shared
 # Source sensitive ENV vars (~/.env)
 source-if-exists $HOME/.env
 
-# Source various scripts
-source-if-exists $HOME/.repositories/prelang/aci/system/shell/development-utility.zsh
-source-if-exists $HOME/.repositories/persistent-working-directory/persistent-working-directory.zsh
-source-if-exists $HOME/.repositories/g/g.zsh
-source-if-exists $HOME/.repositories/notes/notes.zsh
-source-if-exists $HOME/.repositories/project/project.zsh
-source-if-exists $HOME/.repositories/git-flow-completion/git-flow-completion.zsh
+# Source various scripts embedded in repos
+_repos=(
+  prelang/aci/system/shell/development-utility.zsh
+  persistent-working-directory/persistent-working-directory.zsh
+  g/g.zsh
+  notes/notes.zsh
+  project/project.zsh
+  git-flow-completion/git-flow-completion.zsh
+)
+
+for _repo in $_repos; do
+  source-if-exists $HOME/.repositories/$_repo
+done
+
+unset _repos _repo
 
 # ------------------------------------------------
 # PWD --------------------------------------------
