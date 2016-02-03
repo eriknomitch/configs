@@ -1,12 +1,16 @@
-_suffix_color=`micro-hostname-suffix`
+_suffix_fg=`micro-hostname-suffix`
 
-case $_suffix_color in
+case $_suffix_fg in
   black)
-    _suffix_color="white"
+    _suffix_fg="white"
     ;;
   orange)
-    _suffix_color="red"
+    _suffix_fg="red"
     ;;
 esac
 
-PROMPT=$'->%{$fg_bold[blue]%}[SSH]%{$reset_color%}-[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]$(pwd-home-count)->%{$fg[magenta]%}micro-%{$reset_color%}%{$fg[magenta]%}%{$fg[$_suffix_color]%}%{$suffix_color%}$%{$reset_color%} '
+_suffix_bg="black"
+
+if ( $SSHED ) ; then
+  PROMPT=$'->%{$fg_bold[blue]%}[SSH]%{$reset_color%}-[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]$(pwd-home-count)->%{$fg[black]%}%{$bg[white]%}micro-%{$bg[$_suffix_bg]%}%{$fg[$_suffix_fg]%}$(micro-hostname-suffix)$%{$reset_color%} '
+fi
