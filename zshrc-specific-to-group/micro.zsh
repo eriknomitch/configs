@@ -12,5 +12,5 @@ esac
 _suffix_bg="black"
 
 if ( $SSHED ) ; then
-  PROMPT=$'->%{$fg_bold[blue]%}[SSH]%{$reset_color%}-[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]$(pwd-home-count)->%{$bg[$_suffix_bg]%}%{$fg[$_suffix_fg]%}%m$%{$reset_color%} '
+  PROMPT=$'->%{$fg_bold[blue]%}[SSH]%{$reset_color%}-[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]$(pwd-home-count)->%{$bg[$_suffix_bg]%}%{$fg_bold[$_suffix_fg]%}%m$%{$reset_color%} '
 fi
