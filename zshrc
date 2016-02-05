@@ -220,6 +220,7 @@ alias n="notes"
 alias e="edit-common"
 alias rem="notes-reminders"
 alias nn="notes notes ${@:2}"
+alias arp="sudo arp"
 
 # SSH
 # ------------------------------------------------
