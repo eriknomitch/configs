@@ -285,13 +285,15 @@ compctl -K _micro_cpl micro
 # ------------------------------------------------
 export ZSHRC_SOURCED=true
 
-if ( $ON_LINUX && ! x-server-is-running && test -z $SSH_CLIENT ) ; then
-  echo "Starting X server in: 1 second..."
-  sleep 1
-  startx
-else
-  clear
-fi
+clear
+
+#if ( $ON_LINUX && ! x-server-is-running && test -z $SSH_CLIENT ) ; then
+  #echo "Starting X server in: 1 second..."
+  #sleep 1
+  #startx
+#else
+  #clear
+#fi
 
 if [[ -n $PUCK_LOCATION ]] ; then
   echo "Acting as Puck in: `stylize $PUCK_LOCATION`"

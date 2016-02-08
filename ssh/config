@@ -38,6 +38,7 @@ Host desktop-virtual
 Host motion
     # 10.0.0.25
     HostName motion.nomitch.com
+    User admin
 
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
