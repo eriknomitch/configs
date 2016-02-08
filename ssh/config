@@ -21,6 +21,12 @@ Host desktop
     User erik
     Port 22
 
+Host server
+    HostName 10.0.0.20
+    PermitLocalCommand true
+    User erik
+    Port 22
+
 Host laptop
     HostName 10.0.0.21
     User erik
@@ -28,6 +34,10 @@ Host laptop
 Host desktop-virtual
     HostName 10.0.56.10
     User erik
+
+Host motion
+    # 10.0.0.25
+    HostName motion.nomitch.com
 
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
