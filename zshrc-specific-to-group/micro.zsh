@@ -7,6 +7,9 @@ case $_suffix_fg in
   orange)
     _suffix_fg="red"
     ;;
+  purple)
+    _suffix_fg="blue"
+    ;;
 esac
 
 _suffix_bg="black"

@@ -44,6 +44,8 @@ Host motion
 # LAN->MICROS ------------------------------------
 # ------------------------------------------------
 Host micro-green micro-white micro-orange micro-black micro-purple
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
   ServerAliveInterval 60
   User pi
 
