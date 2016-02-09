@@ -1,1 +1,1 @@
-export PUCK_LOCATION="Living Room"
+export PUCK_LOCATION="Erik's Room"
