@@ -148,16 +148,17 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # SPECIAL->DARWIN --------------------------------
 # ------------------------------------------------
 if ( $ON_DARWIN ) ; then
+
+  # "cd" Aliases
   alias d="cd ~/Desktop && clear && pwd && ls -1"
-  alias Do="cd ~/Downloads && clear && pwd && ls -1"
+  alias dl="cd ~/Downloads && clear && pwd && ls -1"
+
+  # Other Aliases
   alias updatedb="sudo /usr/libexec/locate.updatedb"
   alias il="irc-loop"
 
   source-if-exists /sw/bin/init.sh
 
-  if [[ -z $ITERM_PROFILE ]] ; then
-    #echo "REMINDER: Use iTerm!"
-  fi
 fi
 
 # ------------------------------------------------
