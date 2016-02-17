@@ -161,11 +161,11 @@ is-sshed()
 }
 rex()
 {
-  sudo reboot & exit
+  sudo reboot &>/dev/null exit
 }
 pox() 
 {
-  sudo shutdown -h now & exit
+  sudo shutdown -h now &>/dev/null exit
 }
 
 # ------------------------------------------------
