@@ -8,7 +8,7 @@ case $_suffix_fg in
     _suffix_fg="red"
     ;;
   purple)
-    _suffix_fg="blue"
+    _suffix_fg="magenta"
     ;;
 esac
 
