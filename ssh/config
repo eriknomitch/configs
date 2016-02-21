@@ -78,8 +78,8 @@ Host micro-black
 
 # Raspberry Pi Zero
 # ------------------------------------------------
-Host micro-purple
-    HostName micro-purple.local
+#Host micro-purple
+    #HostName micro-purple.local
 
 # ------------------------------------------------
 # LAN->DEVICES & HUBS-----------------------------

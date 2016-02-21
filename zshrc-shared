@@ -308,6 +308,7 @@ alias docker="sudo docker"
 alias o="ofe"
 alias np="notify-push"
 alias p="pwd"
+alias sshn="ssh -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
 if ( $ON_DARWIN ) ; then
   alias htop="sudo htop"
