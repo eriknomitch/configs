@@ -119,6 +119,15 @@ function _dump_hosts() {
 zle -N _dump_hosts
 bindkey '^[h' _dump_hosts
 
+# '10.0.0.'
+# ------------------------------------------------
+function _dump_local_ip_prefix() {
+  LBUFFER+='10.0.0.'; RBUFFER+=''
+}
+
+zle -N _dump_local_ip_prefix
+bindkey '^[1' _dump_local_ip_prefix
+
 # ------------------------------------------------
 # AMAZON -----------------------------------------
 # ------------------------------------------------
