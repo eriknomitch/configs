@@ -125,14 +125,14 @@ Host dns-server
 
 # Raspberry Pi Zero
 # ------------------------------------------------
-Host micro-black
-    # [...].139
-    HostName micro-black.local
+#Host micro-black
+    ## [...].139
+    #HostName micro-black.local
 
 # Raspberry Pi Zero
 # ------------------------------------------------
-Host micro-purple
-    HostName micro-purple.local
+#Host micro-purple
+    #HostName micro-purple.local
 
 # ------------------------------------------------
 # LAN->DEVICES & HUBS-----------------------------
