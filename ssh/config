@@ -6,7 +6,7 @@
 # MAP->HOSTS -------------------------------------
 # ------------------------------------------------
 
-# micro-pink
+# micro-blue
 # ------------------------------------------------
 # Orange Pi
 #  - Internal Ethernet
@@ -20,15 +20,22 @@
 
 # SonosZB
 # ------------------------------------------------
-# Sonos ...
+# Sonos Bridge
 #  - Internal Ethernet
 #    b8:e9:37:07:12:50
 
 # SonosZP
 # ------------------------------------------------
-# Sonos ...
+# Sonos Play (FIX: Which?)
 #  - Internal Ethernet
 #    b8:e9:37:ef:6f:92
+
+
+# Philips-hue
+# ------------------------------------------------
+# Philips Hue Bridge
+#  - Internal Ethernet
+#    00:22:58:73:A2:7A
 
 # ------------------------------------------------
 # MAP->INTERFACES --------------------------------
@@ -89,6 +96,12 @@ Host micro-green micro-white micro-orange micro-black micro-purple
   ServerAliveInterval 60
   User pi
 
+Host micro-blue
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  ServerAliveInterval 60
+  User micro
+
 # Raspberry Pi 2 Model B
 # ------------------------------------------------
 Host micro-white
@@ -118,8 +131,8 @@ Host micro-black
 
 # Raspberry Pi Zero
 # ------------------------------------------------
-#Host micro-purple
-    #HostName micro-purple.local
+Host micro-purple
+    HostName micro-purple.local
 
 # ------------------------------------------------
 # LAN->DEVICES & HUBS-----------------------------
@@ -127,11 +140,14 @@ Host micro-black
 Host tv
   HostName 10.0.0.152
 
-Host sonos-0
+Host sonos-bridge
   HostName 10.0.0.50
 
 Host sonos-1
   HostName 10.0.0.51
+
+Host hue-bridge
+  HostName 10.0.0.55
 
 # ------------------------------------------------
 # VAGRANT ----------------------------------------

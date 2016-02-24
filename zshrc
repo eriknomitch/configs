@@ -278,7 +278,7 @@ function repo() {
 
 _micro_cpl() {
   reply=()
-  for suffix in `cat ~/.ssh/config | \grep "^Host micro-" | sed "s/Host micro-//"`
+  for suffix in `cat ~/.ssh/config | \grep "^Host micro-[a-z]*$" | sed "s/Host micro-//"`
   do
     reply[$(($#reply+1))]=$suffix
   done
