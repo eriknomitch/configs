@@ -223,6 +223,14 @@ if ( $ON_MICRO ) ; then
   source-if-exists $HOME/.configs/zshrc-specific-to-group/micro.zsh
 fi
 
+if [[ -n $PUCK_LOCATION ]] ; then
+  ON_MICRO_PUCK=true
+fi
+
+if ( $ON_MICRO_PUCK ) ; then
+  source-if-exists $HOME/.configs/zshrc-specific-to-group/micro-puck.zsh
+fi
+
 # ------------------------------------------------
 # ------------------------------------------------
 # ------------------------------------------------
