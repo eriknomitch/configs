@@ -24,6 +24,31 @@ ControlPath /tmp/%r@%h:%p
 # MAP->HOSTS->MICROS -----------------------------
 # ------------------------------------------------
 
+Host micro-*
+  HostName %h.local
+
+# micro-black
+# ------------------------------------------------
+# Raspberry Pi Zero
+#  - Puck
+
+# micro-purple
+# ------------------------------------------------
+# Raspberry Pi Zero
+#  - Puck
+
+# micro-white
+# ------------------------------------------------
+# Raspberry Pi 2 Model B
+
+# micro-green
+# ------------------------------------------------
+# Raspberry Pi 2 Model B
+
+# micro-orange
+# ------------------------------------------------
+# Raspberry Pi 1 Model B
+
 # micro-blue
 # ------------------------------------------------
 # Orange Pi
@@ -45,6 +70,8 @@ ControlPath /tmp/%r@%h:%p
 # Sonos Bridge
 #  - Internal Ethernet
 #    b8:e9:37:07:12:50
+Host sonos-bridge
+  HostName 10.0.0.50
 
 # SonosZP
 # ------------------------------------------------
@@ -97,58 +124,20 @@ Host motion
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
 # ------------------------------------------------
-Host micro-green micro-white micro-orange micro-black micro-purple
+Host micro-green micro-white micro-orange micro-black micro-purple micro-blue
   UserKnownHostsFile /dev/null
   StrictHostKeyChecking no
   ServerAliveInterval 60
   User pi
 
 Host micro-blue
-  UserKnownHostsFile /dev/null
-  StrictHostKeyChecking no
-  ServerAliveInterval 60
   User micro
-
-# Raspberry Pi 2 Model B
-# ------------------------------------------------
-Host micro-white
-    HostName micro-white.local
-
-# Raspberry Pi 2 Model B
-# ------------------------------------------------
-Host micro-green
-    HostName micro-green.local
-
-# Raspberry Pi 1 Model B
-# ------------------------------------------------
-Host micro-orange
-    #HostName 10.0.0.137
-    HostName micro-orange.local
-    #HostName dns-server.local
-
-Host dns-server
-  User pi
-  HostName dns-server.local
-
-# Raspberry Pi Zero
-# ------------------------------------------------
-#Host micro-black
-    ## [...].139
-    #HostName micro-black.local
-
-# Raspberry Pi Zero
-# ------------------------------------------------
-#Host micro-purple
-    #HostName micro-purple.local
 
 # ------------------------------------------------
 # LAN->DEVICES & HUBS-----------------------------
 # ------------------------------------------------
 Host tv
   HostName 10.0.0.152
-
-Host sonos-bridge
-  HostName 10.0.0.50
 
 Host sonos-1
   HostName 10.0.0.51
