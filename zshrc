@@ -78,50 +78,9 @@ command-exists thefuck && eval "$(thefuck --alias)"
 export ANSIBLE_NOCOWS=1
 
 # ------------------------------------------------
-# KEY-BINDINGS->PROMPT-DUMPS----------------------
+# KEY-BINDINGS->PROMPT-DUMPS->DEFINER ------------
 # ------------------------------------------------
-
-# 'g'
-# ------------------------------------------------
-# Bind to wrap buffer with 'g cmp "<cursor>"'
-
-function _dump_g_cmp() {
-  LBUFFER+='g cmp "'; RBUFFER+='"'
-}
-
-zle -N _dump_g_cmp
-bindkey '^[g' _dump_g_cmp
-
-# 'ssh'
-# ------------------------------------------------
-function _dump_ssh() {
-  LBUFFER+='ssh '; RBUFFER+=''
-}
-
-zle -N _dump_ssh
-bindkey '^[s' _dump_ssh
-
-# 'micro'
-# ------------------------------------------------
-function _dump_micro() {
-  LBUFFER+='micro '; RBUFFER+=''
-}
-
-zle -N _dump_micro
-bindkey '^[m' _dump_micro
-
-# 'hosts'
-# ------------------------------------------------
-function _dump_hosts() {
-  LBUFFER+='hosts '; RBUFFER+=''
-}
-
-zle -N _dump_hosts
-bindkey '^[h' _dump_hosts
-
-
 # Meta definer for dump commands
-# ------------------------------------------------
 function _define_buffer_dump() {
 
   local _function_suffix=$1
@@ -144,9 +103,31 @@ bindkey '$_bindkey' $_function_name
 
 }
 
+# ------------------------------------------------
+# KEY-BINDINGS->PROMPT-DUMPS->DEFINITIONS --------
+# ------------------------------------------------
+
+# 'ssh'
+# ------------------------------------------------
+_define_buffer_dump ssh '^[s' "ssh "
+
+# 'g cmp "<cursor>"'
+# ------------------------------------------------
+_define_buffer_dump g_cmp '^[g' "g cmp \"" "\""
+
+# 'micro'
+# ------------------------------------------------
+_define_buffer_dump micro '^[m' "micro "
+_define_buffer_dump micro_looped '^[M' "micro -l "
+
+# 'hosts'
+# ------------------------------------------------
+_define_buffer_dump hosts '^[h' "hosts "
+
+
 # '10.0.0.'
 # ------------------------------------------------
-_define_buffer_dump foo '^[1' "10.0.0."
+_define_buffer_dump ip_lan '^[1' "10.0.0."
 
 # ------------------------------------------------
 # AMAZON -----------------------------------------
