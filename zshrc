@@ -119,14 +119,6 @@ function _dump_hosts() {
 zle -N _dump_hosts
 bindkey '^[h' _dump_hosts
 
-# '10.0.0.'
-# ------------------------------------------------
-function _dump_local_ip_prefix() {
-  LBUFFER+='10.0.0.'; RBUFFER+=''
-}
-
-zle -N _dump_local_ip_prefix
-bindkey '^[1' _dump_local_ip_prefix
 
 # Meta definer for dump commands
 # ------------------------------------------------
@@ -152,7 +144,9 @@ bindkey '$_bindkey' $_function_name
 
 }
 
-_define_buffer_dump foo '^[f' foo bar
+# '10.0.0.'
+# ------------------------------------------------
+_define_buffer_dump foo '^[1' "10.0.0."
 
 # ------------------------------------------------
 # AMAZON -----------------------------------------
