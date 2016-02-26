@@ -54,7 +54,8 @@ Host micro-*
 # Orange Pi
 #  - Internal Ethernet
 #    6e.02.e0.d2.d6.0b
-
+Host micro-blue
+  User micro
 
 # micro-grey
 # ------------------------------------------------
@@ -125,16 +126,12 @@ Host motion
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
 # ------------------------------------------------
-Host micro-green micro-white micro-orange micro-black micro-purple micro-blue
+Host micro-*
   UserKnownHostsFile /dev/null
   StrictHostKeyChecking no
   ServerAliveInterval 60
+  # WARNING
   User pi
-
-Host micro-blue
-  #User micro
-  # TEMPORARY
-  User root
 
 # ------------------------------------------------
 # LAN->DEVICES & HUBS-----------------------------
