@@ -55,6 +55,7 @@ Host micro-*
 #  - Internal Ethernet
 #    6e.02.e0.d2.d6.0b
 
+
 # micro-grey
 # ------------------------------------------------
 # CHIP
@@ -131,7 +132,9 @@ Host micro-green micro-white micro-orange micro-black micro-purple micro-blue
   User pi
 
 Host micro-blue
-  User micro
+  #User micro
+  # TEMPORARY
+  User root
 
 # ------------------------------------------------
 # LAN->DEVICES & HUBS-----------------------------

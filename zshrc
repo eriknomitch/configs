@@ -128,6 +128,32 @@ function _dump_local_ip_prefix() {
 zle -N _dump_local_ip_prefix
 bindkey '^[1' _dump_local_ip_prefix
 
+# Meta definer for dump commands
+# ------------------------------------------------
+function _define_buffer_dump() {
+
+  local _function_suffix=$1
+  local _bindkey=$2
+  local _lbuffer=$3
+  local _rbuffer=$4
+
+  local _function_name="_dump_$_function_suffix"
+
+  test -n $_rbuffer || _rbuffer=''
+
+  eval "
+function $_function_name() {
+  LBUFFER+='$_lbuffer'; RBUFFER+='$_rbuffer'
+}
+
+zle -N $_function_name
+bindkey '$_bindkey' $_function_name
+  "
+
+}
+
+_define_buffer_dump foo '^[f' foo bar
+
 # ------------------------------------------------
 # AMAZON -----------------------------------------
 # ------------------------------------------------
