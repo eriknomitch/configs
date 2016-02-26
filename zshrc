@@ -129,6 +129,10 @@ _define_buffer_dump hosts '^[h' "hosts "
 # ------------------------------------------------
 _define_buffer_dump ip_lan '^[1' "10.0.0."
 
+# 'puck '
+# ------------------------------------------------
+_define_buffer_dump ip_lan '^[p' "puck "
+
 # ------------------------------------------------
 # AMAZON -----------------------------------------
 # ------------------------------------------------
@@ -285,6 +289,13 @@ function repo() {
   cd $_name
 }
 
+CD() {
+  cd $* && ls -lh
+}
+
+# ------------------------------------------------
+# COMPLETIONS->MICRO -----------------------------
+# ------------------------------------------------
 _micro_cpl() {
   reply=()
   for suffix in `micro --ls | sed "s/micro-//"`
@@ -293,11 +304,17 @@ _micro_cpl() {
   done
 }
 
-CD() {
-  cd $* && ls -lh
+compctl -K _micro_cpl micro
+
+_puck_cpl() {
+  reply=()
+  for suffix in `puck --list-completions`
+  do
+    reply[$(($#reply+1))]=$suffix
+  done
 }
 
-compctl -K _micro_cpl micro
+compctl -K _puck_cpl puck
 
 # ------------------------------------------------
 # MAIN -------------------------------------------
