@@ -78,55 +78,60 @@ command-exists thefuck && eval "$(thefuck --alias)"
 export ANSIBLE_NOCOWS=1
 
 # ------------------------------------------------
-# KEY-BINDINGS->PROMPT-DUMPS----------------------
+# KEY-BINDINGS->PROMPT-DUMPS->DEFINER ------------
 # ------------------------------------------------
+# Meta definer for dump commands
+function _define_buffer_dump() {
 
-# 'g'
-# ------------------------------------------------
-# Bind to wrap buffer with 'g cmp "<cursor>"'
+  local _function_suffix=$1
+  local _bindkey=$2
+  local _lbuffer=$3
+  local _rbuffer=$4
 
-function _dump_g_cmp() {
-  LBUFFER+='g cmp "'; RBUFFER+='"'
+  local _function_name="_dump_$_function_suffix"
+
+  test -n $_rbuffer || _rbuffer=''
+
+  eval "
+function $_function_name() {
+  LBUFFER+='$_lbuffer'; RBUFFER+='$_rbuffer'
 }
 
-zle -N _dump_g_cmp
-bindkey '^[g' _dump_g_cmp
+zle -N $_function_name
+bindkey '$_bindkey' $_function_name
+  "
+
+}
+
+# ------------------------------------------------
+# KEY-BINDINGS->PROMPT-DUMPS->DEFINITIONS --------
+# ------------------------------------------------
 
 # 'ssh'
 # ------------------------------------------------
-function _dump_ssh() {
-  LBUFFER+='ssh '; RBUFFER+=''
-}
+_define_buffer_dump ssh '^[s' "ssh "
 
-zle -N _dump_ssh
-bindkey '^[s' _dump_ssh
+# 'g cmp "<cursor>"'
+# ------------------------------------------------
+_define_buffer_dump g_cmp '^[g' "g cmp \"" "\""
 
 # 'micro'
 # ------------------------------------------------
-function _dump_micro() {
-  LBUFFER+='micro '; RBUFFER+=''
-}
-
-zle -N _dump_micro
-bindkey '^[m' _dump_micro
+_define_buffer_dump micro '^[m' "micro "
+_define_buffer_dump micro_looped '^[M' "micro -l "
 
 # 'hosts'
 # ------------------------------------------------
-function _dump_hosts() {
-  LBUFFER+='hosts '; RBUFFER+=''
-}
+_define_buffer_dump hosts '^[h' "hosts "
 
-zle -N _dump_hosts
-bindkey '^[h' _dump_hosts
 
 # '10.0.0.'
 # ------------------------------------------------
-function _dump_local_ip_prefix() {
-  LBUFFER+='10.0.0.'; RBUFFER+=''
-}
+_define_buffer_dump ip_lan '^[1' "10.0.0."
 
-zle -N _dump_local_ip_prefix
-bindkey '^[1' _dump_local_ip_prefix
+# 'puck '
+# ------------------------------------------------
+_define_buffer_dump puck '^[p' "puck "
 
 # ------------------------------------------------
 # AMAZON -----------------------------------------
@@ -284,6 +289,13 @@ function repo() {
   cd $_name
 }
 
+CD() {
+  cd $* && ls -lh
+}
+
+# ------------------------------------------------
+# COMPLETIONS->MICRO -----------------------------
+# ------------------------------------------------
 _micro_cpl() {
   reply=()
   for suffix in `micro --ls | sed "s/micro-//"`
@@ -292,11 +304,17 @@ _micro_cpl() {
   done
 }
 
-CD() {
-  cd $* && ls -lh
+compctl -K _micro_cpl micro
+
+_puck_cpl() {
+  reply=()
+  for suffix in `puck --list-completions`
+  do
+    reply[$(($#reply+1))]=$suffix
+  done
 }
 
-compctl -K _micro_cpl micro
+compctl -K _puck_cpl puck
 
 # ------------------------------------------------
 # MAIN -------------------------------------------
