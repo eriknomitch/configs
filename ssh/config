@@ -98,12 +98,6 @@ Host sonos-bridge
 # ------------------------------------------------
 # LAN --------------------------------------------
 # ------------------------------------------------
-Host desktop
-    HostName 10.0.0.20
-    PermitLocalCommand true
-    User erik
-    Port 22
-
 Host server
     HostName 10.0.0.20
     PermitLocalCommand true
