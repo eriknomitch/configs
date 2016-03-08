@@ -131,7 +131,7 @@ _define_buffer_dump ip_lan '^[1' "10.0.0."
 
 # 'puck '
 # ------------------------------------------------
-_define_buffer_dump puck '^[p' "puck "
+_define_buffer_dump puck '^[p' "puck-ssh "
 
 # ------------------------------------------------
 # AMAZON -----------------------------------------
@@ -308,13 +308,13 @@ compctl -K _micro_cpl micro
 
 _puck_cpl() {
   reply=()
-  for suffix in `puck --list-completions`
+  for suffix in `puck-ssh --list-completions`
   do
     reply[$(($#reply+1))]=$suffix
   done
 }
 
-compctl -K _puck_cpl puck
+compctl -K _puck_cpl puck-ssh
 
 # ------------------------------------------------
 # MAIN -------------------------------------------
