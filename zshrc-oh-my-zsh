@@ -54,7 +54,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git)
-plugins=(zshmarks git-flow-completion)
+plugins=(zshmarks git-flow git-flow-completion)
 
 source $ZSH/oh-my-zsh.sh
 
