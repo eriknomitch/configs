@@ -91,6 +91,7 @@ function _define_buffer_dump() {
   eval "
 function $_function_name() {
   LBUFFER+='$_lbuffer'; RBUFFER+='$_rbuffer'
+  expand-or-complete-with-dots
 }
 
 zle -N $_function_name
