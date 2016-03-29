@@ -259,7 +259,16 @@ function G() {
       G
       ;;
     u)
-      gr git up && G
+      if [[ -z $2 ]] ; then
+        gr git up && G
+        return
+      fi
+
+      _original_pwd=$PWD
+      cd `bookmark-lookup $2`
+      git up
+      cd $_original_pwd
+
       ;;
     *)
 

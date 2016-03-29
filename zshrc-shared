@@ -137,6 +137,7 @@ alias lsdir="ls -d */"
 alias lsadir="ls -d .*/"
 alias rs="clear; rspec --format nested --color $*"
 alias sc="screen"
+alias scl="screen -ls"
 
 psg()
 {
