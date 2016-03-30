@@ -99,7 +99,9 @@ case `uname` in
     ;;
 esac
 
-micro-localhost-is-micro && ON_MICRO=true
+if micro-localhost-is-micro ; then
+  ON_MICRO=true
+fi
 
 # http://stackoverflow.com/questions/3601515/how-to-check-if-a-variable-is-set-in-bash
 if [[ -n ${SSH_CLIENT} ]]; then; SSHED=true; fi

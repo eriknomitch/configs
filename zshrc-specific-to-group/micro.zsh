@@ -1,3 +1,5 @@
+COMPLETION_WAITING_DOTS="false"
+
 _suffix_fg=`micro-hostname-suffix`
 
 case $_suffix_fg in
