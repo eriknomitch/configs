@@ -45,8 +45,8 @@ setopt alwaystoend
 
 bindkey -e
 
-HISTSIZE=100
-SAVEHIST=100
+HISTSIZE=1000
+SAVEHIST=1000
 HISTFILE=~/.history
 
 export EDITOR="vim"
@@ -176,11 +176,6 @@ pox()
 # SCREEN -----------------------------------------
 # ------------------------------------------------
 alias torrent="screen -d -R torrent"
-alias music="screen -d -R music"
-alias video="screen -d -R video"
-alias audio="screen -d -R audio"
-alias media="screen -d -R media"
-alias dvd="screen -d -R dvd"
 
 # ------------------------------------------------
 # HEROKU -----------------------------------------
