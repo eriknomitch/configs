@@ -157,7 +157,9 @@ gst()
 }
 fnd()
 {
-  find ./ -iname "*$1*" ;
+  _name="$1"
+  shift
+  find ./ -iname "*$_name*" $* ;
 }
 is-sshed()
 {
