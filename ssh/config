@@ -20,11 +20,17 @@ ControlPath /tmp/%r@%h:%p
 # MAP->HOSTS -------------------------------------
 # ------------------------------------------------
 
-# router
+# lan-router
 # ------------------------------------------------
 # router.asus.com
-Host router, router.asus.com
+Host lan-router, router, router.asus.com
   HostName router.asus.com
+  User admin
+
+# lan-ap-0
+# ------------------------------------------------
+Host lan-ap-0, ap-0
+  HostName lan-ap-0
   User admin
 
 # ------------------------------------------------
