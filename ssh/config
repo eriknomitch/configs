@@ -32,13 +32,14 @@ Host lan-router, router, router.asus.com
 Host lan-ap-0, ap-0
   HostName lan-ap-0
   User admin
+  CheckHostIP no
 
 # ------------------------------------------------
 # MAP->HOSTS->MICROS -----------------------------
 # ------------------------------------------------
-
 Host micro-*
   HostName %h.local
+  CheckHostIP no
 
 # micro-black
 # ------------------------------------------------
@@ -85,8 +86,8 @@ Host micro-blue
 # Sonos Bridge
 #  - Internal Ethernet
 #    b8:e9:37:07:12:50
-Host sonos-bridge
-  HostName 10.0.0.50
+#Host sonos-bridge
+  #HostName 10.0.0.50
 
 # SonosZP
 # ------------------------------------------------
@@ -118,13 +119,13 @@ Host sonos-bridge
 # LAN --------------------------------------------
 # ------------------------------------------------
 Host server
-    HostName 10.0.0.20
+    HostName server.local
     PermitLocalCommand true
     User erik
     Port 22
 
 Host laptop
-    HostName 10.0.0.21
+    checkhostip no
     User erik
 
 Host desktop-virtual
@@ -143,6 +144,7 @@ Host micro-*
   UserKnownHostsFile /dev/null
   StrictHostKeyChecking no
   ServerAliveInterval 60
+  HostName 10.0.0.21
   # WARNING
   User pi
 
