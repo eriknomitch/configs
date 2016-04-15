@@ -133,7 +133,6 @@ Host desktop-virtual
     User erik
 
 Host motion
-    # 10.0.0.25
     HostName motion.nomitch.com
     User admin
 
@@ -144,21 +143,20 @@ Host micro-*
   UserKnownHostsFile /dev/null
   StrictHostKeyChecking no
   ServerAliveInterval 60
-  HostName 10.0.0.21
   # WARNING
   User pi
 
 # ------------------------------------------------
 # LAN->DEVICES & HUBS-----------------------------
 # ------------------------------------------------
-Host tv
-  HostName 10.0.0.152
+#Host tv
+  #HostName 10.0.0.152
 
-Host sonos-1
-  HostName 10.0.0.51
+#Host sonos-1
+  #HostName 10.0.0.51
 
-Host hue-bridge
-  HostName 10.0.0.55
+#Host hue-bridge
+  #HostName 10.0.0.55
 
 # ------------------------------------------------
 # VAGRANT ----------------------------------------
