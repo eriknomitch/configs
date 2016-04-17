@@ -341,5 +341,13 @@ clear
 
 if [[ -n $PUCK_LOCATION ]] ; then
   echo "Acting as Puck in: `stylize $PUCK_LOCATION`"
+
+  if pulseaudio-is-running ; then
+    echo "       Pulseaudio: Running"
+  else
+    echo "       Pulseaudio: `stylize NOT RUNNING`"
+  fi
+  echo
+
 fi
 
