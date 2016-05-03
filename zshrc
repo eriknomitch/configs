@@ -242,6 +242,7 @@ alias n="notes"
 alias e="edit-common"
 alias rem="notes-reminders"
 alias nn="notes notes ${@:2}"
+alias ng="notes --grep"
 alias arp="sudo arp"
 
 # SSH
