@@ -238,12 +238,16 @@ fi
 # ------------------------------------------------
 # ------------------------------------------------
 # ------------------------------------------------
-alias n="notes"
 alias e="edit-common"
-alias rem="notes-reminders"
+alias arp="sudo arp"
+
+# Notes
+# ------------------------------------------------
+alias n="notes"
 alias nn="notes notes ${@:2}"
 alias ng="notes --grep"
-alias arp="sudo arp"
+alias nls="notes --list"
+alias rem="notes-reminders"
 
 # SSH
 # ------------------------------------------------
