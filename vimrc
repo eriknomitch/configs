@@ -262,3 +262,4 @@ au BufRead,BufNewFile *.ino set filetype=arduino
 " http://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
 cmap w!! w !sudo tee > /dev/null %
 
+set rtp+=~/.fzf

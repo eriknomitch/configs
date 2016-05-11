@@ -357,3 +357,5 @@ if [[ -n $PUCK_LOCATION ]] ; then
 
 fi
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
