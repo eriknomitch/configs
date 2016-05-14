@@ -139,10 +139,11 @@ Host chip
 # LAN --------------------------------------------
 # ------------------------------------------------
 Host server
-    HostName server.local
+    #HostName server.local
+    HostName home.nomitch.com
     PermitLocalCommand true
     User erik
-    Port 22
+    Port 2210
 
 Host laptop
     checkhostip no
