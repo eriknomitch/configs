@@ -169,6 +169,7 @@ if ( $ON_DARWIN ) ; then
   # Other Aliases
   alias updatedb="sudo /usr/libexec/locate.updatedb"
   alias il="irc-loop"
+  alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc"
 
   source-if-exists /sw/bin/init.sh
 
