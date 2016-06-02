@@ -79,7 +79,7 @@ slate.on("windowOpened", function(event, win) {
     win.doOperation(fullscreen);
     //slate.operation("layout", { "name" : "laptopLayout" });
   }
-  if (win.title() == "Open") {
+  if (win.title() === "Open") {
     win.doOperation(fullscreen);
   }
   if (win.title().match(/.*documents.* total pages\)/)) {
@@ -88,6 +88,11 @@ slate.on("windowOpened", function(event, win) {
   }
   if (win.app().name() === "iTerm") {
     win.doOperation(fullscreen);
+  }
+  if (win.app().name() === "VLC") {
+    setTimeout(function() {
+      win.doOperation(fullscreen);
+    }, 1000);
   }
 });
 
