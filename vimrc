@@ -48,8 +48,8 @@ command E windo e
 set foldmethod=marker
 
 " hang fix
-set swapsync=
-set nofsync
+" set swapsync=
+" set nofsync
 
 " tab over settings
 set softtabstop=2
