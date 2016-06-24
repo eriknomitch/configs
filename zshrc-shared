@@ -469,10 +469,11 @@ function chpwd() {
 }
 
 # ------------------------------------------------
-# ENV->EDITOR ------------------------------------
+# ENV->EDITOR/NVIM -------------------------------
 # ------------------------------------------------
 if command-exists nvim; then
   export EDITOR="nvim"
+  alias vim="nvim"
 else
   export EDITOR="vim"
 fi
