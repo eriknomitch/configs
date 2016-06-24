@@ -90,9 +90,10 @@ slate.on("windowOpened", function(event, win) {
     win.doOperation(fullscreen);
   }
   if (win.app().name() === "VLC") {
-    setTimeout(function() {
-      win.doOperation(fullscreen);
-    }, 1000);
+    win.doOperation(fullscreen);
+  }
+  if (win.app().name() === "Soundnode") {
+    win.doOperation(fullscreen);
   }
 });
 
