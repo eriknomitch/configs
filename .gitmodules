@@ -1,3 +1,6 @@
 [submodule "vim/plugged/vim-easy-align"]
 	path = vim/plugged/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align.git
+[submodule "vim/plugged/fzf"]
+	path = vim/plugged/fzf
+	url = https://github.com/junegunn/fzf.git
