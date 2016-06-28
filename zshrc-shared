@@ -312,6 +312,7 @@ alias sshn="ssh -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
 if ( $ON_DARWIN ) ; then
   alias htop="sudo htop"
+  alias op="open"
 fi
 
 if ( $ON_LINUX ) ; then
