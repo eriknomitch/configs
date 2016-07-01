@@ -85,7 +85,11 @@ set pastetoggle=<F3>
 set showmode
 
 " ctrl-h : sets highlighted words to normal
-noremap <C-H> :nohlsearch<CR>
+"noremap <C-H> :nohlsearch<CR>
+
+"nnoremap <silent> <C-h> :nohl<CR><C-h>
+
+nnoremap <leader>h :noh<cr>
 
 " ctrl-n/p : next and previous buffers
 noremap <C-N> :next<CR>
