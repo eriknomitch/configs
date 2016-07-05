@@ -414,9 +414,7 @@ if [[ $USER == "root" ]] ; then
 # ------------------------------------------------
 else
   if ( $SSHED ) ; then
-
-
-    PROMPT=$'->%{$fg_bold[blue]%}[SSH]%{$reset_color%}-[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]$(pwd-home-count)->%{$fg[magenta]%}%m%{$reset_color%}%{$fg[magenta]%}%$%{$reset_color%} '
+    PROMPT=$'->%{$fg_bold[blue]%}[SSH]%{$reset_color%}-[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]$(pwd-home-count)->%{$fg[magenta]%}%m$%{$reset_color%} '
   else
     PROMPT=$'%{$fg[green]%}%m$%{$reset_color%} '
   fi
