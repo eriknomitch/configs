@@ -110,7 +110,7 @@ noremap <Up> gk
 noremap <Down> gj
 
 " yank and drop across multiple vim instances
-set clipboard+=unnamed
+"set clipboard+=unnamed
 
 " make backspace key work
 set bs=2
