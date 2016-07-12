@@ -17,6 +17,7 @@ call pathogen#infect()
 call plug#begin()
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf'
+Plug 'pangloss/vim-javascript'
 call plug#end()
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
