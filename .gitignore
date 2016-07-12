@@ -1,4 +1,5 @@
 .*.swp
 fluxbox/lastwallpaper
-vim/.netrwhist
+vim/.*
 prelang.vim
+
