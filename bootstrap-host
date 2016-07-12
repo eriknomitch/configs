@@ -2,3 +2,7 @@
 
 .bin/ensure-symbolic-links
 .bin/generate-grconfig
+
+if [[ ! -d oh-my-zsh/custom/plugins/zshmarks ]] ; then
+  git clone https://github.com/jocelynmallon/zshmarks.git oh-my-zsh/custom/plugins/zshmarks
+fi
