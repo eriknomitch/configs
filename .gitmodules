@@ -4,3 +4,6 @@
 [submodule "vim/plugged/fzf"]
 	path = vim/plugged/fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "oh-my-zsh"]
+	path = oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
