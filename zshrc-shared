@@ -312,6 +312,11 @@ alias np="notify-push"
 alias p="pwd"
 alias sshn="ssh -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
+function disable-history-for-session() {
+  HISTFILE=/dev/null
+  echo "HISTFILE set to /dev/null."
+}
+
 if ( $ON_DARWIN ) ; then
   alias htop="sudo htop"
   alias op="open"
