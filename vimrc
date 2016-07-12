@@ -1,3 +1,6 @@
+" ================================================
+" VIM->VIMRC =====================================
+" ================================================
 set nocompatible
 syntax enable
 colors bluegreen
@@ -243,9 +246,6 @@ let g:vim_markdown_folding_disabled=1
 " required! 
 "Bundle 'gmarik/vundle'
 
-" ------------------------------------------------
-" UTILITY ----------------------------------------
-" ------------------------------------------------
 " http://vim.wikia.com/wiki/Insert_multiple_lines
 " Open multiple lines (insert empty lines) before or after current line,
 " and position cursor in the new space, with at least one blank line
