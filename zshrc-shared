@@ -382,6 +382,15 @@ command-exists() {
   (command -v $1 >/dev/null 2>&1)
 }
 
+function rm-history() {
+  if [[ -z $HISTFILE ]] ; then
+    echo "fatal: HISTFILE not set."
+    return 1
+  fi
+
+  rm $HISTFILE
+}
+
 # ------------------------------------------------
 # PROMPTS ----------------------------------------
 # ------------------------------------------------
