@@ -279,6 +279,14 @@ function r() {
 alias rr="reset; r"
 
 # ------------------------------------------------
+# HISTORY ----------------------------------------
+# ------------------------------------------------
+function disable-history-for-session() {
+  HISTFILE=/dev/null
+  echo "HISTFILE set to /dev/null."
+}
+
+# ------------------------------------------------
 # MISC. ------------------------------------------
 # ------------------------------------------------
 alias t="tree -C"
@@ -311,11 +319,7 @@ alias o="ofe"
 alias np="notify-push"
 alias p="pwd"
 alias sshn="ssh -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
-
-function disable-history-for-session() {
-  HISTFILE=/dev/null
-  echo "HISTFILE set to /dev/null."
-}
+alias dh="disable-history-for-session"
 
 if ( $ON_DARWIN ) ; then
   alias htop="sudo htop"
