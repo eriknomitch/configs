@@ -48,6 +48,7 @@ bindkey -e
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.history
+ORIGINAL_HISTFILE=$HISTFILE
 
 # ------------------------------------------------
 # UTILITY->SOURCING ------------------------------
@@ -387,6 +388,12 @@ command-exists() {
 }
 
 function rm-history() {
+
+  if [[ $HISTFILE != $ORIGINAL_HISTFILE ]]; then
+    echo "fatal: HISTFILE does not match the originally set HISTFILE location. Exiting."
+    return 1
+  fi
+
   if [[ -z $HISTFILE ]] ; then
     echo "fatal: HISTFILE not set."
     return 1
