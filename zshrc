@@ -351,7 +351,11 @@ compctl -K _puck_cpl puck-ssh
 # ------------------------------------------------
 export ZSHRC_SOURCED=true
 
-clear
+# Check for shell level 1 so we do not clear in 
+# scripts which source this file.
+if [[ $SHLVL == 1 ]] ; then
+  clear
+fi
 
 #if ( $ON_LINUX && ! x-server-is-running && test -z $SSH_CLIENT ) ; then
   #echo "Starting X server in: 1 second..."
