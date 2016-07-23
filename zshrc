@@ -36,7 +36,6 @@ _repos=(
   g/g.zsh
   notes/notes.zsh
   project/project.zsh
-  git-flow-completion/git-flow-completion.zsh
 )
 
 for _repo in $_repos; do
@@ -351,9 +350,10 @@ compctl -K _puck_cpl puck-ssh
 # ------------------------------------------------
 export ZSHRC_SOURCED=true
 
-# Check for shell level 1 so we do not clear in 
-# scripts which source this file.
-if [[ $SHLVL == 1 ]] ; then
+# Check if we're in an interactive shell because
+# we only clear when we are. We don't want to
+# clear when we're sourcing this from a script.
+if [[ $0 == "-zsh" || $0 == "zsh" ]] ; then
   clear
 fi
 
