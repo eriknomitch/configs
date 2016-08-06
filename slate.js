@@ -95,6 +95,9 @@ slate.on("windowOpened", function(event, win) {
   if (win.app().name() === "Soundnode") {
     win.doOperation(fullscreen);
   }
+  if (win.app().name() === "Kiwi for Gmail" || win.title() === "Kiwi for Gmail") {
+    win.doOperation(fullscreen);
+  }
 });
 
 /*

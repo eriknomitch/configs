@@ -280,3 +280,8 @@ au BufRead,BufNewFile *.ino set filetype=arduino
 cmap w!! w !sudo tee > /dev/null %
 
 set rtp+=~/.fzf
+
+" Fix crontab issue
+" http://vi.stackexchange.com/questions/137/how-do-i-edit-crontab-files-with-vim-i-get-the-error-temp-file-must-be-edited
+au FileType crontab setlocal bkc=yes
+
