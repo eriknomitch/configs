@@ -293,9 +293,6 @@ function disable-history-for-session() {
 alias t="tree -C"
 alias td="tree -C -d"
 alias update="sudo apt-get update && sudo apt-get dist-upgrade"
-alias apt-get="sudo apt-get"
-alias service="sudo service"
-alias dpkg="sudo dpkg"
 alias mp="mplayer -fs"
 alias ra="clear && ./reset-all"
 alias use-opendns="sudo cp /etc/resolv.conf.opendns /etc/resolv.conf"
@@ -321,6 +318,13 @@ alias np="notify-push"
 alias p="pwd"
 alias sshn="ssh -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 alias dh="disable-history-for-session"
+
+if [[ "$USER" != "root" ]] ; then
+  alias apt-get="sudo apt-get"
+  alias aptitude="sudo aptitude"
+  alias service="sudo service"
+  alias dpkg="sudo dpkg"
+fi
 
 if ( $ON_DARWIN ) ; then
   alias htop="sudo htop"
