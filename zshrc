@@ -21,7 +21,7 @@ export SUBNET_PREFIX="192.168.1."
 # ------------------------------------------------
 
 # Source zshrc-oh-my-zsh first so we can override the theme/prompt
-source $HOME/.configs/zshrc-oh-my-zsh
+source-if-exists $HOME/.configs/zshrc-oh-my-zsh
 
 # Source the shared zshrc (shared between users and root)
 source /etc/zshrc-shared
