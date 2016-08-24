@@ -78,8 +78,8 @@ Host micro-blue
 # 3d-printercamera (micro-grey)
 # ------------------------------------------------
 # Raspberry Pi Zero v.1.3
-Host 3d-printercamera
-  HostName 3d-printercamera
+Host 3d-printer-camera
+  HostName 3d-printer-camera
   User pi
 
 # chip
