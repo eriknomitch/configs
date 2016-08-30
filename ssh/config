@@ -97,11 +97,6 @@ Host chip
 # MAP->HOSTS->MICROS (ESP8266s) ------------------
 # ------------------------------------------------
 
-# micro-yellow
-# ------------------------------------------------
-# ESP8266 NodeMCU
-#  - Internal Wi-Fi
-
 # micro-
 # ------------------------------------------------
 # ESP8266 NodeMCU
@@ -177,7 +172,7 @@ Host motion
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
 # ------------------------------------------------
-Host micro-*
+Host micro-* tv-controller-master
   UserKnownHostsFile /dev/null
   StrictHostKeyChecking no
   ServerAliveInterval 60
