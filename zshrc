@@ -245,6 +245,7 @@ fi
 # ------------------------------------------------
 alias e="edit-common"
 alias arp="sudo arp"
+alias route="sudo route"
 alias pls="play-live-stream-npr-wbez"
 
 # Notes
