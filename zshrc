@@ -314,6 +314,8 @@ function repo() {
   cd $_name
 }
 
+alias grfm="git rebase-from master --yes"
+
 CD() {
   cd $* && ls -lh
 }
