@@ -3,15 +3,15 @@
 # uncomment the options you wish to enable.
 
 # Maximum and minimum number of peers to connect to per torrent.
-#min_peers = 40
-#max_peers = 100
+min_peers = 1
+max_peers = 100
 
 # Same as above but for seeding completed torrents (-1 = same as downloading)
-#min_peers_seed = 10
-#max_peers_seed = 50
+min_peers_seed = 1
+max_peers_seed = 50
 
 # Maximum number of simultanious uploads per torrent.
-#max_uploads = 15
+max_uploads = 10
 
 # Global upload and download rate in KiB. "0" for unlimited.
 download_rate = 0
@@ -34,10 +34,10 @@ ratio.enable=
 
 # Change the limits, the defaults should be sufficient.
 ratio.min.set=0
-ratio.max.set=1
-ratio.upload.set=1b
+ratio.max.set=0
+ratio.upload.set=0b
 
-system.method.set = group.seeding.ratio.command, d.close=, d.erase=
+system.method.set = group.seeding.ratio.command, d.close=
 
 # Move torrents
 system.method.set_key = event.download.finished,move_complete,"execute=mv,-u,$d.get_base_path=,~/.plex/torrents/;d.set_directory=~/.plex/torrents/"

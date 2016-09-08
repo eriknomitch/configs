@@ -1,16 +1,20 @@
-http {
-  server {
-    listen 80;
-    server_name tv.master.home.nomitch.com;
-    location / {
-      proxy_pass http://tv-controller-master:4567;
-    }
+server {
+  server_name home.nomitch.com;
+  location / {
+    root /var/www;
   }
+}
 
-  server {
-    server_name 3d-printer.camera.home.nomitch.com;
-    location / {
-      proxy_pass http://3d-printer-camera:8080;
-    }
+server {
+  server_name tv.master.home.nomitch.com;
+  location / {
+    proxy_pass http://tv-controller-master.local:4567/;
+  }
+}
+
+server {
+  server_name 3d-printer.camera.home.nomitch.com;
+  location / {
+    proxy_pass http://3d-printer-camera.local:8080/;
   }
 }
