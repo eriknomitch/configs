@@ -1,7 +1,20 @@
+upstream tv-master {
+  server tv-controller-master.local:4567;
+  #server 192.168.1.147:4567;
+  server 127.0.0.1 backup;
+}
+
+upstream 3d-printer-camera {
+  server 3d-printer-camera.local:8080;
+  server 127.0.0.1 backup;
+}
+
 server {
 
-  listen       443 ssl;
-  listen       [::]:443 ssl;
+  listen 80;
+  listen 443 ssl;
+  listen [::]:443 ssl;
+
   server_name home.nomitch.com;
 
   location / {
@@ -23,13 +36,13 @@ server {
 server {
   server_name tv.master.home.nomitch.com;
   location / {
-    proxy_pass http://tv-controller-master.local:4567/;
+    proxy_pass http://tv-master;
   }
 }
 
 server {
   server_name 3d-printer.camera.home.nomitch.com;
   location / {
-    proxy_pass http://3d-printer-camera.local:8080/;
+    proxy_pass http://3d-printer-camera;
   }
 }
