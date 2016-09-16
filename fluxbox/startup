@@ -45,6 +45,7 @@ sleep 1
   restart-vbox-client &
   #display-mode no-monitor && launch-development-environment 3 &
   {sleep 5 && display-mode no-monitor} &
+  {sleep 7 && cp ~/.configs/gtkrc-2.0 ~/.gtkrc-2.0} &
 
 } &
  

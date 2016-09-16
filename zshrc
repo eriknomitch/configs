@@ -368,8 +368,10 @@ export ZSHRC_SOURCED=true
 # Check if we're in an interactive shell because
 # we only clear when we are. We don't want to
 # clear when we're sourcing this from a script.
-if [[ $0 == "-zsh" || $0 == "zsh" ]] ; then
-  clear
+if [[ -z $SKIP_ZSH_CLEAR ]] ; then
+  if [[ $0 == "-zsh" || $0 == "zsh" ]] ; then
+    clear
+  fi
 fi
 
 #if ( $ON_LINUX && ! x-server-is-running && test -z $SSH_CLIENT ) ; then
