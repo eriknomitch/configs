@@ -33,19 +33,21 @@ hs.hotkey.bind(movement, "Right", function()
   win:setFrame(f)
 end)
 
-
-hs.hotkey.bind(movement, "Up", function()
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
+function fullscreen()
+  local win    = hs.window.focusedWindow()
+  local f      = win:frame()
   local screen = win:screen()
-  local max = screen:frame()
+  local max    = screen:frame()
 
   f.x = max.x
   f.y = max.y
   f.w = max.w
   f.h = max.h
+
   win:setFrame(f)
-end)
+end
+
+hs.hotkey.bind(movement, "Up", fullscreen)
 
 -----------------------------------------------
 -- Reload config on write
@@ -89,17 +91,25 @@ function watchWindow(win, initializing)
 end
 
 function handleAppEvent(element, event)
+  hs.alert.show(element)
 
   if event == events.windowCreated then
     watchWindow(element)
   elseif event == events.focusedWindowChanged then
     -- Handle window change
+    
+    --if app.name == "iTerm2" then
+      --fullscreen()
+    --end
+
+
   end
 end
 
 function handleGlobalAppEvent(name, event, app)
   if event == hs.application.watcher.launched then
     hs.alert.show("App launched")
+
     local watcher = app:newWatcher(handleAppEvent)
     watcher:start({events.windowCreated, events.focusedWindowChanged})
   end
