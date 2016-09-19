@@ -43,7 +43,8 @@ setopt extended_glob
 setopt no_nomatch
 setopt alwaystoend
 
-bindkey -e
+# vi mode
+bindkey -v
 
 HISTSIZE=1000
 SAVEHIST=1000

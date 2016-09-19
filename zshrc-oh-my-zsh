@@ -58,7 +58,7 @@ DISABLE_AUTO_UPDATE="true"
 
 # NOTE:
 # git clone https://github.com/bobthecow/git-flow-completion ~/.oh-my-zsh/custom/plugins/git-flow-completion
-plugins=(git-flow-completion zshmarks)
+plugins=(git-flow-completion zshmarks vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
