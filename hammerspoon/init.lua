@@ -108,7 +108,7 @@ end
 
 function handleGlobalAppEvent(name, event, app)
   if event == hs.application.watcher.launched then
-    hs.alert.show("App launched")
+    --hs.alert.show("App launched")
 
     local watcher = app:newWatcher(handleAppEvent)
     watcher:start({events.windowCreated, events.focusedWindowChanged})
