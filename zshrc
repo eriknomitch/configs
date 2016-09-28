@@ -394,3 +394,7 @@ if [[ -n $PUCK_LOCATION ]] ; then
 
 fi
 
+if ( $ON_DARWIN ) ; then
+  source-if-exists ~/.configs/iterm2.zsh
+fi
+
