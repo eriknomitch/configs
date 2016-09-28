@@ -36,6 +36,7 @@ _repos=(
   g/g.zsh
   notes/notes.zsh
   project/project.zsh
+  #auto-fu.zsh/auto-fu.zsh
 )
 
 for _repo in $_repos; do
