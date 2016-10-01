@@ -183,35 +183,6 @@ pox()
 alias torrent="screen -d -R torrent"
 
 # ------------------------------------------------
-# HEROKU -----------------------------------------
-# ------------------------------------------------
-function h()
-{
-  case "$1" in
-    # console (production)
-    c)
-    heroku run console
-    ;;
-    # console (development)
-    cd)
-    heroku run console RAILS_ENV=development
-    ;;
-    # config
-    co)
-    heroku config
-    ;;
-    # logs
-    l)
-    heroku logs
-    ;;
-    # default
-    *)
-    heroku $*
-    ;;
-  esac
-}
-
-# ------------------------------------------------
 # OPEN -------------------------------------------
 # ------------------------------------------------
 #function o()
