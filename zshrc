@@ -399,3 +399,6 @@ if ( $ON_DARWIN ) ; then
   source-if-exists ~/.configs/iterm2.zsh
 fi
 
+command-exists docker-machine && \
+  eval $(docker-machine env default)
+

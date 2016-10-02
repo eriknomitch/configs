@@ -72,6 +72,15 @@ export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:$HOME/.bin/bin
 export PATH=$PATH:$HOME/.bin/.bin
+
+_os_bin_path="$HOME/.bin/bin-`uname`"
+
+if [[ -d $_os_bin_path ]] ; then
+  export PATH=$PATH:$_os_bin_path
+fi
+
+unset _os_bin_path
+
 export PATH=$PATH:$HOME/.gexecute
 export PATH=$PATH:$HOME/.android/bin
 export PATH=$PATH:$HOME/.android/platform-tools
