@@ -18,6 +18,7 @@ call plug#begin()
 Plug 'junegunn/vim-easy-align'
 Plug 'pangloss/vim-javascript'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
