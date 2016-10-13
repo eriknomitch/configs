@@ -36,17 +36,15 @@ fbpid=$!
 
 sleep 1
 {
-   # Applications you want to run after fluxbox has started
-   # MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN & AT THE END.
-   # ipager &
-   # gkrellm2 &
+  # Applications you want to run after fluxbox has started
+  # MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN & AT THE END.
   xrdb ~/.Xdefaults &
   xset dpms 0 0 0 &
+  xset s off &
   restart-vbox-client &
   #display-mode no-monitor && launch-development-environment 3 &
   {sleep 5 && display-mode no-monitor} &
   {sleep 7 && cp ~/.configs/gtkrc-2.0 ~/.gtkrc-2.0} &
-
 } &
  
 wait $fbpid
