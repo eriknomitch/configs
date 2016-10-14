@@ -2,8 +2,8 @@
   --hs.notify.new({title="Hammerspoon", informativeText="Hello World"}):send()
 --end)
 
-local movement = {"cmd", "ctrl"}
-local hyper    = {"shift", "cmd", "alt", "ctrl"}
+local movement  = {"cmd", "ctrl"}
+local movement2 = {"cmd", "ctrl", "shift"}
 
 hs.window.animationDuration = 0
 
@@ -55,73 +55,115 @@ hs.hotkey.bind(movement, "Up", fullscreen)
 function reload_config(files)
   hs.reload()
 end
+
 hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reload_config):start()
 
 -----------------------------------------------
 -- Hyper i to show window hints
 -----------------------------------------------
-
 hs.hotkey.bind(movement, "h", function()
   hs.hints.windowHints()
 end)
 
+-----------------------------------------------
+-- LAYOUTS
+-----------------------------------------------
+hs.hotkey.bind(movement2, "Left", function()
+  local win = hs.window.focusedWindow()
+  local app = win:application()
+  local screen = win:screen()
 
-local layouts = {
-  {
-    name = {"Kiwi for Gmail"},
-    func = function(index, win)
-      win:maximize()
-    end
-  }
-}
+  --hs.alert.show(app:allWindows())
 
-function watchWindow(win, initializing)
-  hs.alert.show("Window")
-  --local appWindows = watchers[win:application():pid()].windows
-  --if win:isStandard() and not appWindows[win:id()] then
-    --local watcher = win:newWatcher(handleWindowEvent, {pid=win:pid(), id=win:id()})
-    --appWindows[win:id()] = watcher
+  if app:title() == "Google Chrome" then
+    local devTools = app:findWindow("Developer Tools")
+    local main = app:mainWindow()
+    main:focus()
+    local chromeDeveloperLayout = {
+      {"Google Chrome", main:title(), screen, hs.layout.left75, nil, nil},
+      {"Google Chrome", devTools:title(), screen, hs.layout.right25, nil, nil}
+    }
 
-    --watcher:start({events.elementDestroyed, events.windowResized, events.windowMoved})
-
-    --if not initializing then
-      --hs.alert.show('window created: '..win:id()..' with title: '..win:title())
-    --end
-  --end
-end
-
-function handleAppEvent(element, event)
-  hs.alert.show(element)
-
-  if event == events.windowCreated then
-    watchWindow(element)
-  elseif event == events.focusedWindowChanged then
-    -- Handle window change
-    
-    --if app.name == "iTerm2" then
-      --fullscreen()
-    --end
-
-
+    hs.layout.apply(chromeDeveloperLayout)
   end
+end)
+
+-----------------------------------------------
+-- WINDOW->MOVEMENT ---------------------------
+-----------------------------------------------
+function moveWindowOneSpace(direction)
+   local mouseOrigin = mouse.getAbsolutePosition()
+   local win = hs.window.focusedWindow()
+   local clickPoint = win:zoomButtonRect()
+
+   clickPoint.x = clickPoint.x + clickPoint.w + 5
+   clickPoint.y = clickPoint.y + (clickPoint.h / 2)
+
+   local mouseClickEvent = hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftmousedown, clickPoint)
+   mouseClickEvent:post()
+   hs.timer.usleep(150000)
+
+   local nextSpaceDownEvent = hs.eventtap.event.newKeyEvent({"ctrl"}, direction, true)
+   nextSpaceDownEvent:post()
+   hs.timer.usleep(150000)
+
+   local nextSpaceUpEvent = hs.eventtap.event.newKeyEvent({"ctrl"}, direction, false)
+   nextSpaceUpEvent:post()
+   hs.timer.usleep(150000)
+
+   local mouseReleaseEvent = hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftmouseup, clickPoint)
+   mouseReleaseEvent:post()
+   hs.timer.usleep(150000)
+
+   mouse.setAbsolutePosition(mouseOrigin)
 end
 
-function handleGlobalAppEvent(name, event, app)
-  if event == hs.application.watcher.launched then
-    --hs.alert.show("App launched")
+-----------------------------------------------
+-- WATCHERS
+-----------------------------------------------
+-- function watchWindow(win, initializing)
+--   hs.alert.show("Window")
+--   --local appWindows = watchers[win:application():pid()].windows
+--   --if win:isStandard() and not appWindows[win:id()] then
+--     --local watcher = win:newWatcher(handleWindowEvent, {pid=win:pid(), id=win:id()})
+--     --appWindows[win:id()] = watcher
+-- 
+--     --watcher:start({events.elementDestroyed, events.windowResized, events.windowMoved})
+-- 
+--     --if not initializing then
+--       --hs.alert.show('window created: '..win:id()..' with title: '..win:title())
+--     --end
+--   --end
+-- end
+-- 
+-- function handleAppEvent(element, event)
+--   hs.alert.show(element)
+-- 
+--   if event == events.windowCreated then
+--     watchWindow(element)
+--   elseif event == events.focusedWindowChanged then
+--     -- Handle window change
+--     
+--     --if app.name == "iTerm2" then
+--       --fullscreen()
+--     --end
+-- 
+-- 
+--   end
+-- end
+-- 
+-- function handleGlobalAppEvent(name, event, app)
+--   if event == hs.application.watcher.launched then
+--     --hs.alert.show("App launched")
+-- 
+--     local watcher = app:newWatcher(handleAppEvent)
+--     watcher:start({events.windowCreated, events.focusedWindowChanged})
+--   end
+-- end
 
-    local watcher = app:newWatcher(handleAppEvent)
-    watcher:start({events.windowCreated, events.focusedWindowChanged})
-  end
-end
 
-
-local watcher = hs.application.watcher.new(handleGlobalAppEvent)
-watcher:start()
-
-
-hs.alert.show("Config loaded")
-
+-- local watcher = hs.application.watcher.new(handleGlobalAppEvent)
+-- watcher:start()
 
 --local events = hs.uielement.watcher
 
@@ -190,4 +232,10 @@ hs.alert.show("Config loaded")
 --end
 
 --init()
+
+
+--------------------------------------------------
+-- ALERT->CONFIG-LOADED --------------------------
+--------------------------------------------------
+hs.alert.show("Config loaded")
 
