@@ -4,10 +4,10 @@ upstream tv-master {
   server 127.0.0.1 backup;
 }
 
-upstream 3d-printer-camera {
-  server 3d-printer-camera.local:8080;
-  server 127.0.0.1 backup;
-}
+#upstream 3d-printer-camera {
+#  server 3d-printer-camera.local:8080;
+#  server 127.0.0.1 backup;
+#}
 
 server {
 
@@ -40,9 +40,9 @@ server {
   }
 }
 
-server {
-  server_name 3d-printer.camera.home.nomitch.com;
-  location / {
-    proxy_pass http://3d-printer-camera;
-  }
-}
+#server {
+#  server_name 3d-printer.camera.home.nomitch.com;
+#  location / {
+#    proxy_pass http://3d-printer-camera;
+#  }
+#}

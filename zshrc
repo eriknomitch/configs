@@ -193,7 +193,8 @@ fi
 
 # For remote sessions, this exports the display to the main
 # display of the machine.
-expdisp
+#
+#expdisp
 
 # ------------------------------------------------
 # ZSHRC-MARKS ------------------------------------
