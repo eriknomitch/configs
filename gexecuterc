@@ -114,6 +114,10 @@ commands =
         action = "restart-networking";
     },
     { 
+        match  = "refresh-swap";
+        action = "refresh-swap";
+    },
+    { 
         match  = "virtualbox";
         action = "VirtualBox";
     }
