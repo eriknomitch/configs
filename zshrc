@@ -402,6 +402,32 @@ fi
 
 #command-exists docker-machine && \
   #eval $(docker-machine env default)
+#
+
+alias doodle="docker run -v $(pwd)/samples:/nd/samples -v $(pwd)/frames:/nd/frames -it alexjc/neural-doodle:gpu"
+
+# ------------------------------------------------
+# TORCH ------------------------------------------
+# ------------------------------------------------
+TORCH_PATH="$HOME/torch"
+
+if [[ -d $TORCH_PATH ]]; then
+  export LUA_PATH="$HOME/.luarocks/share/lua/5.1/?.lua;$HOME/.luarocks/share/lua/5.1/?/init.lua;$HOME/torch/install/share/lua/5.1/?.lua;$HOME/torch/install/share/lua/5.1/?/init.lua;./?.lua;$HOME/torch/install/share/luajit-2.1.0-beta1/?.lua;/usr/local/share/lua/5.1/?.lua;/usr/local/share/lua/5.1/?/init.lua"
+  export LUA_CPATH="$HOME/.luarocks/lib/lua/5.1/?.so;$HOME/torch/install/lib/lua/5.1/?.so;./?.so;/usr/local/lib/lua/5.1/?.so;/usr/local/lib/lua/5.1/loadall.so"
+  export PATH=$HOME/torch/install/bin:$PATH
+  export LD_LIBRARY_PATH=$HOME/torch/install/lib:$LD_LIBRARY_PATH
+  export DYLD_LIBRARY_PATH=$HOME/torch/install/lib:$DYLD_LIBRARY_PATH
+  export LUA_CPATH="$HOME/torch/install/lib/?.so;"$LUA_CPATH
+fi
+
+# ------------------------------------------------
+# TMUX -------------------------------------------
+# ------------------------------------------------
+if command-exists tmux; then
+  case $- in *i*)
+    if [ -z "$TMUX" ]; then exec tmux; fi;;
+  esac
+fi
 
 
 function ls-without-default() {

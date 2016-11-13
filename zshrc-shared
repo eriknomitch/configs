@@ -305,6 +305,8 @@ if [[ "$USER" != "root" ]] ; then
   alias aptitude="sudo aptitude"
   alias service="sudo service"
   alias dpkg="sudo dpkg"
+  alias updatedb="sudo updatedb"
+  alias locate="sudo locate"
 fi
 
 if ( $ON_DARWIN ) ; then
