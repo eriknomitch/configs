@@ -402,3 +402,10 @@ fi
 #command-exists docker-machine && \
   #eval $(docker-machine env default)
 
+
+function ls-without-default() {
+  for file in `ls -1`; do
+    echo $file
+  done
+}
+
