@@ -259,7 +259,7 @@ alias rem="notes-reminders"
 
 # SSH
 # ------------------------------------------------
-alias S="mosh server"
+alias S="ssh server"
 
 # ------------------------------------------------
 # GIT-SUBMODULE-TOOLS ----------------------------
