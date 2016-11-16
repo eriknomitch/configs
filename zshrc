@@ -427,11 +427,11 @@ fi
 # http://askubuntu.com/questions/441744/pressing-enter-produces-m-instead-of-a-newline
 stty sane
 
-if command-exists tmux; then
-  case $- in *i*)
-    if [ -z "$TMUX" ]; then exec tmux; fi;;
-  esac
-fi
+#if command-exists tmux; then
+  #case $- in *i*)
+    #if [ -z "$TMUX" ]; then exec tmux; fi;;
+  #esac
+#fi
 
 
 #function ls-without-default() {
