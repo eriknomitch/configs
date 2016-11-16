@@ -434,9 +434,9 @@ if command-exists tmux; then
 fi
 
 
-function ls-without-default() {
-  for file in `ls -1`; do
-    echo $file
-  done
-}
+#function ls-without-default() {
+  #for file in `ls -1`; do
+    #echo $file
+  #done
+#}
 
