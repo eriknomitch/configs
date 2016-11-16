@@ -149,7 +149,7 @@ alias lsadir="ls -d .*/"
 alias rs="clear; rspec --format nested --color $*"
 alias sc="screen"
 alias scl="screen -ls"
-alias tm="tmux"
+alias t="tmux"
 #alias ccat="pygmentize -g"
 alias ccat="vimcat"
 
@@ -271,8 +271,8 @@ function disable-history-for-session() {
 # ------------------------------------------------
 # MISC. ------------------------------------------
 # ------------------------------------------------
-alias t="tree -C"
-alias td="tree -C -d"
+alias tree="tree -C"
+alias treed="tree -C -d"
 alias update="sudo apt-get update && sudo apt-get dist-upgrade"
 alias mp="mplayer -fs"
 alias ra="clear && ./reset-all"
