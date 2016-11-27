@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+.bin/supplant-system-files
