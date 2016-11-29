@@ -269,7 +269,7 @@ function disable-history-for-session() {
 }
 
 # ------------------------------------------------
-# MISC. ------------------------------------------
+# ALIASES/FUNCTIONS ------------------------------
 # ------------------------------------------------
 alias tree="tree -C"
 alias treed="tree -C -d"
@@ -299,6 +299,8 @@ alias np="notify-push"
 alias p="pwd"
 alias sshn="ssh -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 alias dh="disable-history-for-session"
+alias ht="htop --delay=1"
+alias htn="htop --delay=1 --user=nobody"
 
 if [[ "$USER" != "root" ]] ; then
   alias apt-get="sudo apt-get"
@@ -319,10 +321,6 @@ if ( $ON_LINUX ) ; then
     alias ifconfig="/sbin/ifconfig"
   fi
 fi
-
-# Prevent C-s from hanging terminal
-# http://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
-stty -ixon
 
 # startx
 sx()
@@ -388,6 +386,14 @@ function rm-history() {
 
   rm $HISTFILE
 }
+
+# ------------------------------------------------
+# STTY -------------------------------------------
+# ------------------------------------------------
+
+# Prevent C-s from hanging terminal
+# http://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
+stty -ixon
 
 # ------------------------------------------------
 # PROMPTS ----------------------------------------
