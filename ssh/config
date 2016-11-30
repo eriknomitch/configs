@@ -107,6 +107,8 @@ Host chip
 Host equalizer
     HostName equalizer.local
     PermitLocalCommand true
+    CheckHostIP no
+    
     User chip
     Port 22
 
