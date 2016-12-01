@@ -32,7 +32,7 @@ source-if-exists $HOME/.env
 # Source various scripts embedded in repos
 _repos=(
   prelang/aci/system/shell/development-utility.zsh
-  persistent-working-directory/persistent-working-directory.zsh
+  prwd/prwd.zsh
   g/g.zsh
   notes/notes.zsh
   project/project.zsh
