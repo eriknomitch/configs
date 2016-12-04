@@ -399,6 +399,7 @@ fi
 if ( $ON_DARWIN ) ; then
   source-if-exists ~/.configs/iterm2.zsh
 fi
+
 # ------------------------------------------------
 # TMUX -------------------------------------------
 # ------------------------------------------------
@@ -406,21 +407,21 @@ fi
 # http://askubuntu.com/questions/441744/pressing-enter-produces-m-instead-of-a-newline
 stty sane
 
-#if command-exists tmux; then
-  #case $- in *i*)
-    #if [ -z "$TMUX" ]; then exec tmux; fi;;
-  #esac
-#fi
+if ( $TMUX_EACH_SESSION ) ; then
+  if command-exists tmux; then
+    case $- in *i*)
+      if [ -z "$TMUX" ]; then exec tmux; fi;;
+    esac
+  fi
+fi
 
-
-#function ls-without-default() {
-  #for file in `ls -1`; do
-    #echo $file
-  #done
-#}
-
+# ------------------------------------------------
+# ------------------------------------------------
+# ------------------------------------------------
 export NVM_DIR="$HOME/.nvm"
 
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 export PATH=$PATH:$HOME/.miniconda3/bin
+
+alias gh="tmux new-session -A -s hangups \"hangups --col-scheme solarized-dark --col-palette-colors 256 --time-format '' --col-msg-sender-fg 'light green' --col-msg-self-fg 'light blue' --key-close-tab 'shift meta w'\""
