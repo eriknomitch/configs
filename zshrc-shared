@@ -311,8 +311,8 @@ alias np="notify-push"
 alias p="pwd"
 alias sshn="ssh -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 alias dh="disable-history-for-session"
-alias ht="htop --delay=1"
-alias htn="htop --delay=1 --user=nobody"
+alias ht="htop --delay=2"
+alias htn="htop --delay=2 --user=nobody"
 
 if [[ "$USER" != "root" ]] ; then
   alias apt-get="sudo apt-get"

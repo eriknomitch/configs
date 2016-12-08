@@ -10,4 +10,6 @@
 [mergetool]
 	path = nvim
 [merge]
-	tool = vimdiff2
+	tool = fugitive
+[mergetool "fugitive"]
+	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
