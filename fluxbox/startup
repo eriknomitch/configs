@@ -7,10 +7,6 @@
 # Change your keymap:
 #xmodmap "$HOME/.Xmodmap"
 
-fbsetroot -solid \#2b2b2b &
-
-update-time &
-
 #~/.bin/reset-audio &
 #~/.bin/start-synergy &
 #fbsetroot -solid \#E1FFC0 &
@@ -31,20 +27,30 @@ update-time &
 # or if you want to keep a log:
 # exec fluxbox -log "/home/tux/.fluxbox/log"
 
-fluxbox &
-fbpid=$!
+fbsetroot -solid \#2b2b2b &
 
+exec fluxbox &
+fbpid=$!
+  
 sleep 1
 {
+  update-time &
+
   # Applications you want to run after fluxbox has started
   # MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN & AT THE END.
   xrdb ~/.Xdefaults &
   xset dpms 0 0 0 &
   xset s off &
+
   restart-vbox-client &
-  #display-mode no-monitor && launch-development-environment 3 &
-  {sleep 5 && display-mode no-monitor} &
+
+  # Macbook Pro 2016 size
+  xrandr --size 1680x1050 &
+
   {sleep 7 && cp ~/.configs/gtkrc-2.0 ~/.gtkrc-2.0} &
+
+  #display-mode no-monitor && launch-development-environment 3 &
+  #{sleep 5 && display-mode no-monitor} &
 } &
  
 wait $fbpid
