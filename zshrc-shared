@@ -78,6 +78,10 @@ function source-if-exists()
   fi
 }
 
+command-exists() {
+  (command -v $1 >/dev/null 2>&1)
+}
+
 # ------------------------------------------------
 # PATHS ------------------------------------------
 # ------------------------------------------------
@@ -121,7 +125,7 @@ case `uname` in
     ;;
 esac
 
-if micro-localhost-is-micro ; then
+if command-exists micro-localhost-is-micro && micro-localhost-is-micro ; then
   ON_MICRO=true
 fi
 
@@ -381,10 +385,6 @@ rsync-partial()
     rsync --partial --progress --rsh=ssh $*
 }
 
-command-exists() {
-  (command -v $1 >/dev/null 2>&1)
-}
-
 function rm-history() {
 
   if [[ $HISTFILE != $ORIGINAL_HISTFILE ]]; then
@@ -412,7 +412,7 @@ stty -ixon
 # PROMPTS ----------------------------------------
 # ------------------------------------------------
 pwd-is-wd-character() {
-  if pwd-is-wd ; then
+  if command-exists pwd-is-wd && pwd-is-wd ; then
     echo "*"
   elif [[ $PWD == $HOME ]] ; then
     echo "~"

@@ -11,7 +11,7 @@ colors bluegreen
 set autoread
 
 " pathogen
-call pathogen#infect()
+"call pathogen#infect()
 
 " plug.vim
 call plug#begin()

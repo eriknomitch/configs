@@ -427,3 +427,9 @@ export PATH=$PATH:$HOME/.miniconda3/bin
 alias hu="hangups --col-scheme solarized-dark --col-palette-colors 256 --time-format '' --col-msg-sender-fg 'light green' --col-msg-self-fg 'light blue' --key-close-tab 'shift meta w'"
 
 alias gh="tmux new-session -A -s hangups \"hangups --col-scheme solarized-dark --col-palette-colors 256 --time-format '' --col-msg-sender-fg 'light green' --col-msg-self-fg 'light blue' --key-close-tab 'shift meta w'\""
+eval "$(rbenv init -)"
+export HOMEBREW_GITHUB_API_TOKEN=2af293ecbefc21d9cae3b139ed456ea979adc4a7
+
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+#source $(brew --prefix nvm)/nvm.sh

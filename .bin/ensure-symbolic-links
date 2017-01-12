@@ -5,9 +5,9 @@ _current_script_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 test -h $HOME/.zshrc      || ln -s $HOME/.configs/zshrc $HOME/.zshrc
 test -h /etc/zshrc-shared || sudo ln -s $HOME/.configs/zshrc-shared /etc/zshrc-shared
 test -h $HOME/.audio      || ln -s ~/.configs/audio ~/.audio
-test -h $HOME/.vim        || ln -s ~/.configs/vim ~/.vim
+test -e $HOME/.vim        || ln -s ~/.configs/vim ~/.vim
 test -h $HOME/.vimrc      || ln -s ~/.configs/vimrc ~/.vimrc
 test -h $HOME/.oh-my-zsh  || ln -s ~/.configs/oh-my-zsh ~/.oh-my-zsh
 
-sudo $_current_script_path/ensure-symbolic-links-root $HOME
+sudo $_current_script_path/.bin/ensure-symbolic-links-root $HOME
 
