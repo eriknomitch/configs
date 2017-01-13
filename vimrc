@@ -13,14 +13,23 @@ set autoread
 " pathogen
 "call pathogen#infect()
 
-" plug.vim
+" ------------------------------------------------
+" PLUG -------------------------------------------
+" ------------------------------------------------
 call plug#begin()
 Plug 'junegunn/vim-easy-align'
 Plug 'pangloss/vim-javascript'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-surround'
+Plug 'ctrlpvim/ctrlp'
 call plug#end()
+
+" ------------------------------------------------
+" ------------------------------------------------
+" ------------------------------------------------
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -55,8 +64,8 @@ command! -range -bar -nargs=0 LOWER <line1>,<line2>s/[A-Z]/\L&/g
 command! -range -bar -nargs=0 UPPER <line1>,<line2>s/[a-z]/\U&/g
 
 " Write/edit all windows
-command W windo w
-command E windo e
+command! W windo w
+command! E windo e
 
 " autosource ~/.vimrc after writing
 " http://vim.wikia.com/wiki/Change_vimrc_with_auto_reload
@@ -98,8 +107,8 @@ set showmode
 nnoremap <leader>h :noh<cr>
 
 " ctrl-n/p : next and previous buffers
-noremap <C-N> :next<CR>
-noremap <C-P> :prev<CR>
+"noremap <C-N> :next<CR>
+"noremap <C-P> :prev<CR>
 
 " resize the vertical split easlier
 noremap <C-Right> :vertical resize -2<CR>
@@ -169,7 +178,7 @@ au! BufRead,BufNewFile *.json set filetype=json
 "map dc <INSERT>(define-class foo ()<ENTER> ()<ENTER>  ())<ESC><CR>
 "map dm input()
 
-function LispDefineClass()
+function! LispDefineClass()
   let class = "foo"
   let superclasses = "bar baz"
   let slots = split("id title qux", " ")
@@ -287,3 +296,21 @@ set rtp+=~/.fzf
 " http://vi.stackexchange.com/questions/137/how-do-i-edit-crontab-files-with-vim-i-get-the-error-temp-file-must-be-edited
 au FileType crontab setlocal bkc=yes
 
+
+" ------------------------------------------------
+" CONFIG->SYNTASTIC ------------------------------
+" ------------------------------------------------
+
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
