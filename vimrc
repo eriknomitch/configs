@@ -25,7 +25,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-rails'
+Plug 'mbbill/undotree'
 call plug#end()
 
 " ------------------------------------------------
