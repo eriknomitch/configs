@@ -24,7 +24,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-surround'
-Plug 'ctrlpvim/ctrlp'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-sensible'
 call plug#end()
 
 " ------------------------------------------------
@@ -106,9 +107,9 @@ set showmode
 
 nnoremap <leader>h :noh<cr>
 
-" ctrl-n/p : next and previous buffers
-"noremap <C-N> :next<CR>
-"noremap <C-P> :prev<CR>
+" HOTKEYS next and previous buffers
+noremap <C-N> :next<CR>
+noremap <C-S-N> :prev<CR>
 
 " resize the vertical split easlier
 noremap <C-Right> :vertical resize -2<CR>
