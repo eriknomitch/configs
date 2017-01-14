@@ -25,7 +25,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tpope/vim-sensible'
+"Plug 'tpope/vim-sensible'
 call plug#end()
 
 " ------------------------------------------------
@@ -105,15 +105,20 @@ set showmode
 
 "nnoremap <silent> <C-h> :nohl<CR><C-h>
 
+" ------------------------------------------------
+" HOTKEYS ----------------------------------------
+" ------------------------------------------------
+
+" No Highlight
 nnoremap <leader>h :noh<cr>
 
-" HOTKEYS next and previous buffers
-noremap <C-N> :next<CR>
-noremap <C-S-N> :prev<CR>
+" Next/Previous Buffers
+noremap <C-S-Right> :next<CR>
+noremap <C-S-Left> :prev<CR>
 
 " resize the vertical split easlier
-noremap <C-Right> :vertical resize -2<CR>
-noremap <C-Left> :vertical resize +2<CR>
+"noremap <C-Right> :vertical resize -2<CR>
+"noremap <C-Left> :vertical resize +2<CR>
 
 " page up and page down
 noremap <Space> <PageDown>
