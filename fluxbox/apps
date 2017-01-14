@@ -1,29 +1,20 @@
-[app] (name=lisp-vim) (class=XTerm) (title=lisp-vim)
-  [Dimensions]	{850 790}
-  [Position]	(UPPERLEFT)	{0 0}
-[end]
 [app] (class=XTerm) (title=battery)
   [Dimensions]	{220 30}
   [Position]	(CENTER)	{0 0}
   [Deco]	{NONE}
 [end]
-[app] (name=lisp-ooze) (class=XTerm) (title=lisp-ooze)
-  [Dimensions]	{430 790}
-  [Position]	(UPPERLEFT)	{850 0}
-[end]
 [group]
  [app] (name=aux) (class=XTerm) (title=aux)
-  [Dimensions]	{1200 700}
+  [Dimensions]	{1500 875}
   [Position]	(CENTER)	{0 0}
 [end]
 [app] (name=vim) (class=XTerm) (title=vim)
-  [Dimensions]	{1680 1050}
   [Position]	(UPPERLEFT)	{0 0}
   [Maximized]	{yes}
 [end]
 [group]  (workspace=[current])
  [app] (class=XTerm) (title=gw-term)
-  [Dimensions]	{900 506}
+  [Dimensions]	{1300 730}
   [Position]	(CENTER)	{0 0}
 [end]
 [app] (class=XTerm) (title=gw-vim)
@@ -44,39 +35,39 @@
    [FocusHidden]	{yes}
 [end]
 [app] (name=laptop) (class=XTerm)
-  [Dimensions]	{1200 700}
+  [Dimensions]	{1500 875}
   [Position]	(CENTER)	{0 0}
 [end]
 [app] (name=linode) (class=XTerm)
-  [Dimensions]	{1200 700}
+  [Dimensions]	{1500 875}
   [Position]	(CENTER)	{0 0}
 [end]
 [app] (name=xreact) (class=XTerm)
-  [Dimensions]	{1200 700}
+  [Dimensions]	{1500 875}
   [Position]	(CENTER)	{0 0}
 [end]
 [app] (name=cpmusic) (class=XTerm)
-  [Dimensions]	{1200 700}
+  [Dimensions]	{1500 875}
   [Position]	(CENTER)	{0 0}
 [end]
 [app] (name=video) (class=XTerm)
-  [Dimensions]	{1200 700}
+  [Dimensions]	{1500 875}
   [Position]	(CENTER)	{0 0}
 [end]
 [app] (name=wget) (class=XTerm)
-  [Dimensions]	{1200 700}
+  [Dimensions]	{1500 875}
   [Position]	(CENTER)	{0 0}
 [end]
 [app] (name=mail) (class=XTerm)
-  [Dimensions]	{1200 700}
+  [Dimensions]	{1500 875}
   [Position]	(CENTER)	{0 0}
 [end]
 [app] (name=audio) (class=XTerm)
-  [Dimensions]	{1200 700}
+  [Dimensions]	{1500 875}
   [Position]	(CENTER)	{0 0}
 [end]
 [app] (name=xterm) (class=XTerm)
-  [Dimensions]	{900 506}
+  [Dimensions]	{1300 730}
   [Position]	(CENTER)	{0 0}
 [end]
 [app] (name=irc) (class=XTerm) (title=irc)
