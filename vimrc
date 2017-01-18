@@ -13,6 +13,7 @@ set autoread
 " pathogen
 "call pathogen#infect()
 
+
 " ------------------------------------------------
 " PLUG -------------------------------------------
 " ------------------------------------------------
@@ -27,6 +28,7 @@ Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-rails'
 Plug 'mbbill/undotree'
+Plug 'gioele/vim-autoswap'
 call plug#end()
 
 " ------------------------------------------------
