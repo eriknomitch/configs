@@ -2,6 +2,9 @@
 
 _current_script_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+test -d /etc/zsh || sudo mkdir -p /etc/zsh
+test -f /etc/zsh/colors || sudo ln -s $HOME/.configs/etc/zsh/colors /etc/zsh/colors
+
 test -h $HOME/.zshrc      || ln -s $HOME/.configs/zshrc $HOME/.zshrc
 test -h /etc/zshrc-shared || sudo ln -s $HOME/.configs/zshrc-shared /etc/zshrc-shared
 test -h $HOME/.audio      || ln -s ~/.configs/audio ~/.audio
