@@ -29,6 +29,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-rails'
 Plug 'mbbill/undotree'
 Plug 'gioele/vim-autoswap'
+Plug 'ekalinin/Dockerfile.vim'
 call plug#end()
 
 " ------------------------------------------------
