@@ -416,11 +416,19 @@ if [[ $TMUX_EACH_SESSION = "true" ]] ; then
 fi
 
 # ------------------------------------------------
-# ------------------------------------------------
+# NVM --------------------------------------------
 # ------------------------------------------------
 export NVM_DIR="$HOME/.nvm"
 
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+#source $(brew --prefix nvm)/nvm.sh
+
+# ------------------------------------------------
+# ------------------------------------------------
+# ------------------------------------------------
 
 export PATH=$PATH:$HOME/.miniconda3/bin
 
@@ -430,6 +438,3 @@ alias gh="tmux new-session -A -s hangups \"hangups --col-scheme solarized-dark -
 eval "$(rbenv init -)"
 export HOMEBREW_GITHUB_API_TOKEN=2af293ecbefc21d9cae3b139ed456ea979adc4a7
 
-export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
-#source $(brew --prefix nvm)/nvm.sh

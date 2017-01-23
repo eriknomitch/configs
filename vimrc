@@ -324,3 +324,6 @@ let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+let g:syntastic_quiet_messages = { "regex": 'assigned but unused variable' }
+
