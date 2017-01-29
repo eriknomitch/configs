@@ -140,8 +140,8 @@ noremap <Down> gj
 " make backspace key work
 set bs=2
 
-" use mouse, ruler, hightlight search
-set mouse=a
+" Disable mouse for selecting text without a hotkey
+set mouse=
 set ruler
 set hlsearch
 

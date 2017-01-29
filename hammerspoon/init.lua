@@ -5,7 +5,30 @@
 local movement  = {"cmd", "ctrl"}
 local movement2 = {"cmd", "ctrl", "shift"}
 
+local movementAppplicationLaunchOrFocus = {"cmd", "ctrl"}
+
 hs.window.animationDuration = 0
+
+applicationHotkeyDefinitions = {}
+
+-- applicationHotkeyDefinitions[0] = ["I", "Google Chrome"]
+
+hs.hotkey.bind(movement, "Z", function()
+  hs:appfinder()
+end)
+
+
+function bindApplicationFocus(key, title)
+  hs.hotkey.bind(movementAppplicationLaunchOrFocus, key, function() hs.application.launchOrFocus(title) end)
+end
+
+-- Application shortcuts
+bindApplicationFocus("I", "Google Chrome")
+bindApplicationFocus("M", "Messages")
+bindApplicationFocus("G", "Kiwi for Gmail")
+bindApplicationFocus("E", "Evernote")
+
+hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("Hyper") end)
 
 hs.hotkey.bind(movement, "Left", function()
   local win = hs.window.focusedWindow()
