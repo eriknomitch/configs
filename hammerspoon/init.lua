@@ -27,6 +27,7 @@ bindApplicationFocus("I", "Google Chrome")
 bindApplicationFocus("M", "Messages")
 bindApplicationFocus("G", "Kiwi for Gmail")
 bindApplicationFocus("E", "Evernote")
+bindApplicationFocus("T", "Todoist")
 
 hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("Hyper") end)
 
