@@ -28,8 +28,10 @@ bindApplicationFocus("M", "Messages")
 bindApplicationFocus("G", "Kiwi for Gmail")
 bindApplicationFocus("E", "Evernote")
 bindApplicationFocus("T", "Todoist")
+bindApplicationFocus("S", "Slack")
 
 hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("Hyper") end)
+hs.hotkey.bind({"command", "ctrl", "shift"}, "F", function() hs.application.launchOrFocus("Finder") end)
 
 hs.hotkey.bind(movement, "Left", function()
   local win = hs.window.focusedWindow()
