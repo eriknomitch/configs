@@ -27,7 +27,7 @@ setopt no_nomatch
 setopt alwaystoend
 
 # vi mode
-bindkey -v
+#bindkey -v
 
 HISTSIZE=1000
 SAVEHIST=1000
