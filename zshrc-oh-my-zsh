@@ -57,9 +57,13 @@ DISABLE_AUTO_UPDATE="true"
 #plugins=(git)
 
 # NOTE:
-# git clone https://github.com/bobthecow/git-flow-completion ~/.oh-my-zsh/custom/plugins/git-flow-completion
 # git clone https://github.com/jocelynmallon/zshmarks.git ~/.oh-my-zsh/custom/plugins
-plugins=(git-flow-completion zshmarks)
+#
+plugins=(git-flow git-extras zshmarks npm per-directory-history)
+
+if ( $ON_DARWIN ) ; then
+  plugins=($plugins droplr osx brew)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
