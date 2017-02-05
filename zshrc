@@ -420,8 +420,10 @@ fi
 # ------------------------------------------------
 
 export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
 
+if [[ -d $NVM_DIR ]] ; then
+  . "/usr/local/opt/nvm/nvm.sh"
+fi
 
 #export NVM_DIR="$HOME/.nvm"
 
