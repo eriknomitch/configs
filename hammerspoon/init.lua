@@ -29,6 +29,7 @@ bindApplicationFocus("G", "Kiwi for Gmail")
 bindApplicationFocus("E", "Evernote")
 bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("S", "Slack")
+bindApplicationFocus("Y", "YakYak")
 
 hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("Hyper") end)
 hs.hotkey.bind({"command", "ctrl", "shift"}, "F", function() hs.application.launchOrFocus("Finder") end)
@@ -95,19 +96,21 @@ end)
 -- LAYOUTS
 -----------------------------------------------
 hs.hotkey.bind(movement2, "Left", function()
-  local win = hs.window.focusedWindow()
-  local app = win:application()
+  local win    = hs.window.focusedWindow()
+  local app    = win:application()
   local screen = win:screen()
 
   --hs.alert.show(app:allWindows())
 
   if app:title() == "Google Chrome" then
-    local devTools = app:findWindow("Developer Tools")
-    local main = app:mainWindow()
+    local devTools     = app:findWindow("Developer Tools")
+    local tabsOutliner = app:findWindow("Tabs Outliner")
+    local main         = app:mainWindow()
     main:focus()
     local chromeDeveloperLayout = {
-      {"Google Chrome", main:title(), screen, hs.layout.left75, nil, nil},
-      {"Google Chrome", devTools:title(), screen, hs.layout.right25, nil, nil}
+      {"Google Chrome", main:title(),         screen, hs.layout.left75,  nil, nil},
+      {"Google Chrome", devTools:title(),     screen, hs.layout.right25, nil, nil},
+      {"Google Chrome", tabsOutliner:title(), screen, hs.layout.right25, nil, nil}
     }
 
     hs.layout.apply(chromeDeveloperLayout)
