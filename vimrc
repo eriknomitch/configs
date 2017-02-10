@@ -30,6 +30,9 @@ Plug 'tpope/vim-rails'
 Plug 'mbbill/undotree'
 Plug 'gioele/vim-autoswap'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'elzr/vim-json'
+Plug 'vim-airline/vim-airline'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 call plug#end()
 
 " ------------------------------------------------
@@ -157,12 +160,6 @@ autocmd FileType lisp set omnifunc=lispcomplete#Complete
 " Various ERB syntax highlighting fixes
 au BufReadPost *.js.coffee.erb set filetype=coffee syntax=coffee
 au BufReadPost *.jst.ejs set filetype=html syntax=html
-
-" Meta syntax highlighting
-au BufNewFile,BufRead *.lisp set filetype=meta
-au BufNewFile,BufRead *.prog set filetype=meta
-au BufNewFile,BufRead *.asd  set filetype=meta
-au BufNewFile,BufRead *.mls  set filetype=meta
 
 " Prelang syntax highlighting
 "au BufNewFile,BufRead *.rb set filetype=prelang

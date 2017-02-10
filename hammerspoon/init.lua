@@ -30,6 +30,7 @@ bindApplicationFocus("E", "Evernote")
 bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("S", "Slack")
 bindApplicationFocus("Y", "YakYak")
+bindApplicationFocus("P", "Preview")
 
 hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("Hyper") end)
 hs.hotkey.bind({"command", "ctrl", "shift"}, "F", function() hs.application.launchOrFocus("Finder") end)
