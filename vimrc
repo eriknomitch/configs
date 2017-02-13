@@ -34,6 +34,7 @@ Plug 'elzr/vim-json'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'ntpeters/vim-better-whitespace'
 call plug#end()
 
 " ------------------------------------------------
@@ -95,7 +96,7 @@ set ai
 set laststatus=2
 
 " .lisp gets 2 spaces
-au BufRead,BufNewFile *.lisp setlocal softtabstop=2 shiftwidth=2 
+au BufRead,BufNewFile *.lisp setlocal softtabstop=2 shiftwidth=2
 
 " paste toggle
 map <F1> :set paste<CR>
@@ -149,7 +150,7 @@ set mouse=
 set ruler
 set hlsearch
 
-autocmd BufEnter *.php setlocal indentexpr= 
+autocmd BufEnter *.php setlocal indentexpr=
 
 " wildmenu for better :b tabbing
 set wildmenu
@@ -219,7 +220,7 @@ function! LispDefineClass()
 
   let n = 0
   while n < len(slots)
-  
+
     " if it's the first, we need an extra (
     if n == 0
       let prefix = "  (("
@@ -237,7 +238,7 @@ function! LispDefineClass()
     " slot
     call setline(line, prefix.slots[n])
     let line=line+1
-    
+
     " :accessor
     call setline(line, "    :accessor ".class."-".slots[n])
     let line=line+1
@@ -263,7 +264,7 @@ let g:vim_markdown_folding_disabled=1
 "call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 "Bundle 'gmarik/vundle'
 
 " http://vim.wikia.com/wiki/Insert_multiple_lines
