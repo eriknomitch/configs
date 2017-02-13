@@ -34,6 +34,7 @@ bindApplicationFocus("P", "Preview")
 
 hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("Hyper") end)
 hs.hotkey.bind({"command", "ctrl", "shift"}, "F", function() hs.application.launchOrFocus("Finder") end)
+hs.hotkey.bind({"command", "ctrl", "shift"}, "P", function() hs.application.launchOrFocus("Adobe Photoshop CC 2017") end)
 
 hs.hotkey.bind(movement, "Left", function()
   local win = hs.window.focusedWindow()
@@ -157,35 +158,35 @@ end
 --   --if win:isStandard() and not appWindows[win:id()] then
 --     --local watcher = win:newWatcher(handleWindowEvent, {pid=win:pid(), id=win:id()})
 --     --appWindows[win:id()] = watcher
--- 
+--
 --     --watcher:start({events.elementDestroyed, events.windowResized, events.windowMoved})
--- 
+--
 --     --if not initializing then
 --       --hs.alert.show('window created: '..win:id()..' with title: '..win:title())
 --     --end
 --   --end
 -- end
--- 
+--
 -- function handleAppEvent(element, event)
 --   hs.alert.show(element)
--- 
+--
 --   if event == events.windowCreated then
 --     watchWindow(element)
 --   elseif event == events.focusedWindowChanged then
 --     -- Handle window change
---     
+--
 --     --if app.name == "iTerm2" then
 --       --fullscreen()
 --     --end
--- 
--- 
+--
+--
 --   end
 -- end
--- 
+--
 -- function handleGlobalAppEvent(name, event, app)
 --   if event == hs.application.watcher.launched then
 --     --hs.alert.show("App launched")
--- 
+--
 --     local watcher = app:newWatcher(handleAppEvent)
 --     watcher:start({events.windowCreated, events.focusedWindowChanged})
 --   end
