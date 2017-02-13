@@ -32,6 +32,7 @@ Plug 'gioele/vim-autoswap'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elzr/vim-json'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 call plug#end()
 
@@ -320,8 +321,17 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
 
+let g:syntastic_quiet_messages = { "regex": 'assigned but unused variable' }
+
+" ------------------------------------------------
+" CONFIG->CTRLP ----------------------------------
+" ------------------------------------------------
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
-let g:syntastic_quiet_messages = { "regex": 'assigned but unused variable' }
+" ------------------------------------------------
+" CONFIG->AIRLINE --------------------------------
+" ------------------------------------------------
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+let g:airline_theme='dark'
 
