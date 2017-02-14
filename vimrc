@@ -5,14 +5,7 @@ set nocompatible
 syntax enable
 colors bluegreen
 
-" Leader (default is \)
-" let mapleader = ','
-
 set autoread
-
-" pathogen
-"call pathogen#infect()
-
 
 " ------------------------------------------------
 " PLUG -------------------------------------------
@@ -81,7 +74,7 @@ command! E windo e
 
 " autosource ~/.vimrc after writing
 " http://vim.wikia.com/wiki/Change_vimrc_with_auto_reload
-" autocmd! bufwritepost .vimrc source %
+autocmd! bufwritepost .vimrc source %
 
 " folding
 set foldmethod=marker
@@ -111,11 +104,6 @@ nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
 set showmode
 
-" ctrl-h : sets highlighted words to normal
-"noremap <C-H> :nohlsearch<CR>
-
-"nnoremap <silent> <C-h> :nohl<CR><C-h>
-
 " ------------------------------------------------
 " HOTKEYS ----------------------------------------
 " ------------------------------------------------
@@ -126,10 +114,6 @@ nnoremap <leader>h :noh<cr>
 " Next/Previous Buffers
 noremap <C-S-Right> :next<CR>
 noremap <C-S-Left> :prev<CR>
-
-" resize the vertical split easlier
-"noremap <C-Right> :vertical resize -2<CR>
-"noremap <C-Left> :vertical resize +2<CR>
 
 " page up and page down
 noremap <Space> <PageDown>
@@ -177,97 +161,7 @@ au BufNewFile,BufRead *.less set filetype=less
 " JSON highlighting
 au! BufRead,BufNewFile *.json set filetype=json
 
-" Abbreviations
-"ab df. (define-function
-"ab def. (define-exported-function
-"ab dv. (define-variable
-"ab dm. (define-macro
-"ab de. (define-method
-"ab dc. (define-class
-
-" Lisp Mappings
-"map dc <INSERT>(define-class foo ()<ENTER> ()<ENTER>  ())<ESC><CR>
-"map dm input()
-
-function! LispDefineClass()
-  let class = "foo"
-  let superclasses = "bar baz"
-  let slots = split("id title qux", " ")
-
-  let class        = input("class name: ")
-  let superclasses = input("superclasses: ")
-  let slots        = split(input("slots: "), " ")
-
-  let line         = getline(".")+1
-
-  " dashes
-  let dashes = ""
-
-  let n = 0
-  while n < (39-strlen(class))
-    let dashes = dashes."-"
-    let n=n+1
-  endwhile
-
-  " banner
-  call setline(line, ";; -----------------------------------------------")
-  let line=line+1
-  call setline(line, ";; CLASS->".toupper(class)." ".dashes)
-  let line=line+1
-  call setline(line, ";; -----------------------------------------------")
-  let line=line+1
-
-  call setline(line, "(define-class ".class." (".superclasses.")")
-  let line=line+1
-
-  let n = 0
-  while n < len(slots)
-
-    " if it's the first, we need an extra (
-    if n == 0
-      let prefix = "  (("
-    else
-      let prefix = "   ("
-    endif
-
-    " if it's the last, we need an extra )
-    if n == (len(slots)-1)
-      let suffix = ")"
-    else
-      let suffix = ""
-    endif
-
-    " slot
-    call setline(line, prefix.slots[n])
-    let line=line+1
-
-    " :accessor
-    call setline(line, "    :accessor ".class."-".slots[n])
-    let line=line+1
-
-    " :initarg
-    call setline(line, "    :initarg :".slots[n])
-    let line=line+1
-
-    " :initform
-    call setline(line, "    :initform nil)".suffix)
-    let line=line+1
-
-    let n = n+1
-  endwhile
-endfunction
-
 let g:vim_markdown_folding_disabled=1
-
-"noremap ldc :call LispDefineClass()<CR>
-
-" Vundle
-"set rtp+=~/.vim/bundle/vundle/
-"call vundle#rc()
-
-" let Vundle manage Vundle
-" required!
-"Bundle 'gmarik/vundle'
 
 " http://vim.wikia.com/wiki/Insert_multiple_lines
 " Open multiple lines (insert empty lines) before or after current line,
@@ -306,7 +200,6 @@ set rtp+=~/.fzf
 " Fix crontab issue
 " http://vi.stackexchange.com/questions/137/how-do-i-edit-crontab-files-with-vim-i-get-the-error-temp-file-must-be-edited
 au FileType crontab setlocal bkc=yes
-
 
 " ------------------------------------------------
 " CONFIG->SYNTASTIC ------------------------------
