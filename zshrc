@@ -469,6 +469,6 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 export KEYTIMEOUT=40
 
-export PATH="$PATH:`yarn global bin`"
+command-exists yarn && export PATH="$PATH:`yarn global bin`"
 
 alias GW="gw 2"
