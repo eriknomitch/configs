@@ -35,6 +35,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 " ------------------------------------------------
@@ -336,3 +338,7 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 let g:airline_theme='dark'
 
+" ------------------------------------------------
+" CONFIG->COMMENTARY -----------------------------
+" ------------------------------------------------
+noremap <leader>c :Commentary<cr>
