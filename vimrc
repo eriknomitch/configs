@@ -13,7 +13,6 @@ set autoread
 call plug#begin()
 Plug 'junegunn/vim-easy-align'
 Plug 'pangloss/vim-javascript'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
@@ -26,11 +25,11 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'elzr/vim-json'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdcommenter'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " ------------------------------------------------
@@ -196,7 +195,8 @@ au BufRead,BufNewFile *.ino set filetype=arduino
 " http://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
 cmap w!! w !sudo tee > /dev/null %
 
-set rtp+=~/.fzf
+" fzf
+set rtp+=/usr/local/opt/fzf
 
 " Fix crontab issue
 " http://vi.stackexchange.com/questions/137/how-do-i-edit-crontab-files-with-vim-i-get-the-error-temp-file-must-be-edited
