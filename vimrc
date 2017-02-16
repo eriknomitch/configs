@@ -30,6 +30,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-commentary'
+Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 " ------------------------------------------------
