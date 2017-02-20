@@ -13,7 +13,6 @@ set autoread
 call plug#begin()
 Plug 'junegunn/vim-easy-align'
 Plug 'pangloss/vim-javascript'
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-surround'
@@ -30,6 +29,9 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'mhinz/vim-signify'
 call plug#end()
 
 " ------------------------------------------------
