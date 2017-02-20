@@ -238,3 +238,5 @@ let g:airline_theme='dark'
 " CONFIG->COMMENTARY -----------------------------
 " ------------------------------------------------
 noremap <leader>c :Commentary<cr>
+
+let g:signify_realtime = 1
