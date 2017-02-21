@@ -268,3 +268,9 @@ endfunction
 
 autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
+
+" ------------------------------------------------
+" CONFIG->BETTER-WHITESPACE ----------------------
+" ------------------------------------------------
+let g:better_whitespace_enabled = 0
+"
