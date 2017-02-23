@@ -7,6 +7,9 @@ colors bluegreen
 
 set autoread
 
+" Automatically write buffers when required
+set autowriteall
+
 " ------------------------------------------------
 " PLUG -------------------------------------------
 " ------------------------------------------------
@@ -32,6 +35,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-unimpaired'
 call plug#end()
 
 " ------------------------------------------------
