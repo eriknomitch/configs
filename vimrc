@@ -225,6 +225,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
 
 let g:syntastic_quiet_messages = { "regex": 'assigned but unused variable' }
+let g:syntastic_quiet_messages = { "regex": 'fatal error: .* file not found'}
 
 " ------------------------------------------------
 " CONFIG->CTRLP ----------------------------------
