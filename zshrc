@@ -419,31 +419,13 @@ fi
 # NODE -------------------------------------------
 # ------------------------------------------------
 
+export NODE_PATH="$HOME/.node_modules"
+
 export NVM_DIR="$HOME/.nvm"
 
 if [[ -d $NVM_DIR ]] ; then
   . "/usr/local/opt/nvm/nvm.sh"
 fi
-
-#export NVM_DIR="$HOME/.nvm"
-
-#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
-#source $(brew --prefix nvm)/nvm.sh
-
-#nvm use 0.
-
-# ------------------------------------------------
-# ------------------------------------------------
-# ------------------------------------------------
-
-export PATH=$PATH:$HOME/.miniconda3/bin
-
-alias hu="hangups --col-scheme solarized-dark --col-palette-colors 256 --time-format '' --col-msg-sender-fg 'light green' --col-msg-self-fg 'light blue' --key-close-tab 'shift meta w'"
-
-alias gh="tmux new-session -A -s hangups \"hangups --col-scheme solarized-dark --col-palette-colors 256 --time-format '' --col-msg-sender-fg 'light green' --col-msg-self-fg 'light blue' --key-close-tab 'shift meta w'\""
-eval "$(rbenv init -)"
-export HOMEBREW_GITHUB_API_TOKEN=2af293ecbefc21d9cae3b139ed456ea979adc4a7
 
 # ------------------------------------------------
 # VI-MODE ----------------------------------------
@@ -472,3 +454,16 @@ export KEYTIMEOUT=40
 command-exists yarn && export PATH="$PATH:`yarn global bin`"
 
 alias GW="gw 2"
+
+# ------------------------------------------------
+# ------------------------------------------------
+# ------------------------------------------------
+
+export PATH=$PATH:$HOME/.miniconda3/bin
+
+alias hu="hangups --col-scheme solarized-dark --col-palette-colors 256 --time-format '' --col-msg-sender-fg 'light green' --col-msg-self-fg 'light blue' --key-close-tab 'shift meta w'"
+
+alias gh="tmux new-session -A -s hangups \"hangups --col-scheme solarized-dark --col-palette-colors 256 --time-format '' --col-msg-sender-fg 'light green' --col-msg-self-fg 'light blue' --key-close-tab 'shift meta w'\""
+eval "$(rbenv init -)"
+export HOMEBREW_GITHUB_API_TOKEN=2af293ecbefc21d9cae3b139ed456ea979adc4a7
+
