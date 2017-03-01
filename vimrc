@@ -238,7 +238,7 @@ let g:ctrlp_cmd = 'CtrlP'
 " ------------------------------------------------
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 let g:airline_theme='dark'
-let b:airline_whitespace_checks = [ 'indent', 'mixed-indent-file' ]
+let b:airline_whitespace_checks = []
 
 " ------------------------------------------------
 " CONFIG->COMMENTARY -----------------------------
