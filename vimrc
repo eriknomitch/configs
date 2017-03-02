@@ -5,6 +5,7 @@ set nocompatible
 syntax enable
 colors bluegreen
 
+
 set autoread
 
 " Automatically write buffers when required
