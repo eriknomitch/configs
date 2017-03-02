@@ -239,7 +239,7 @@ let g:ctrlp_cmd = 'CtrlP'
 " ------------------------------------------------
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 let g:airline_theme='dark'
-let b:airline_whitespace_checks = []
+let g:airline#extensions#whitespace#enabled = 0
 
 " ------------------------------------------------
 " CONFIG->COMMENTARY -----------------------------
@@ -280,4 +280,3 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 " CONFIG->BETTER-WHITESPACE ----------------------
 " ------------------------------------------------
 let g:better_whitespace_enabled = 0
-"
