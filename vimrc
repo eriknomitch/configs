@@ -31,6 +31,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdcommenter'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
@@ -233,6 +234,7 @@ let g:syntastic_quiet_messages = {
 " ------------------------------------------------
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " ------------------------------------------------
 " CONFIG->AIRLINE --------------------------------
