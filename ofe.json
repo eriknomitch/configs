@@ -6,6 +6,9 @@
   "zsh": {
     "files": ["zsh*", "zshrc-specific-to-*"]
   },
+  "hyper": {
+    "files": ["hyper.js"]
+  },
   "vim": {
     "files": ["vimrc", "vim/**/**"],
     "first_file": "vimrc"
