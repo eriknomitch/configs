@@ -22,7 +22,6 @@ Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-rails'
 Plug 'mbbill/undotree'
-Plug 'gioele/vim-autoswap'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elzr/vim-json'
 Plug 'vim-airline/vim-airline'
@@ -118,6 +117,7 @@ set showmode
 
 " No Highlight
 nnoremap <leader>h :noh<cr>
+nnoremap <leader>w :wqall<cr>
 
 " Next/Previous Buffers
 noremap <C-S-Right> :next<CR>

@@ -1,7 +1,7 @@
 module.exports = {
   config: {
     // default font size in pixels for all tabs
-    fontSize: 15,
+    fontSize: 16,
 
     // font family with optional fallbacks
     //fontFamily: 'Menlo, "DejaVu Sans Mono", "Lucida Console", monospace',
@@ -17,7 +17,7 @@ module.exports = {
     foregroundColor: '#fff',
 
     // terminal background color
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
     //backgroundColor: 'rgb(0, 0, 0)',
 
     // border color (window, tabs)
