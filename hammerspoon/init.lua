@@ -33,7 +33,7 @@ bindApplicationFocus("Y", "YakYak")
 bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
 
-hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("Hyper") end)
+hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
 hs.hotkey.bind({"command", "ctrl", "shift"}, "P", function() hs.application.launchOrFocus("Adobe Photoshop CC 2017") end)
 
 hs.hotkey.bind(movement, "Left", function()

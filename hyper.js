@@ -1,11 +1,11 @@
 module.exports = {
   config: {
     // default font size in pixels for all tabs
-    fontSize: 16,
+    fontSize: 15,
 
     // font family with optional fallbacks
     //fontFamily: 'Menlo, "DejaVu Sans Mono", "Lucida Console", monospace',
-    fontFamily: 'Inconsolata, Menlo, "DejaVu Sans Mono", "Lucida Console", monospace',
+    fontFamily: 'Fixed, "Roboto Mono Thin for Powerline", "Inconsolata for Powerline", Menlo, Inconsolata, Menlo, "DejaVu Sans Mono", "Lucida Console", monospace',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
     cursorColor: 'rgba(248,28,229,0.7)',
@@ -100,9 +100,8 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: [
-    'hyper-statusline'
-  ],
+    //'hyper-font-smoothing'
+  plugins: ["hyper-tabs"],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here

@@ -36,6 +36,8 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-unimpaired'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ervandew/supertab'
 "Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 call plug#end()
 
@@ -221,7 +223,7 @@ au FileType crontab setlocal bkc=yes
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_loc_list_height = 3
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
@@ -282,3 +284,9 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 " CONFIG->BETTER-WHITESPACE ----------------------
 " ------------------------------------------------
 let g:better_whitespace_enabled = 0
+
+" ------------------------------------------------
+" CONFIG->DEOPLETE -------------------------------
+" ------------------------------------------------
+let g:deoplete#enable_at_startup = 1
+
