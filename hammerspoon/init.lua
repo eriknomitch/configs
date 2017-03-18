@@ -2,12 +2,13 @@
   --hs.notify.new({title="Hammerspoon", informativeText="Hello World"}):send()
 --end)
 
+hs.window.animationDuration = 0
+hs.window.setShadows(false)
+
 local movement  = {"cmd", "ctrl"}
 local movement2 = {"cmd", "ctrl", "shift"}
 
 local movementAppplicationLaunchOrFocus = {"cmd", "ctrl"}
-
-hs.window.animationDuration = 0
 
 applicationHotkeyDefinitions = {}
 
@@ -50,10 +51,10 @@ hs.hotkey.bind(movement, "Left", function()
 end)
 
 hs.hotkey.bind(movement, "Right", function()
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
+  local win    = hs.window.focusedWindow()
+  local f      = win:frame()
   local screen = win:screen()
-  local max = screen:frame()
+  local max    = screen:frame()
 
   f.x = max.x + (max.w / 2)
   f.y = max.y
@@ -76,7 +77,22 @@ function fullscreen()
   win:setFrame(f)
 end
 
+function middle()
+  local win    = hs.window.focusedWindow()
+  local f      = win:frame()
+  local screen = win:screen()
+  local max    = screen:frame()
+
+  f.x = max.x
+  f.y = max.y
+  f.w = max.w * 0.75
+  f.h = max.h
+
+  win:setFrame(f)
+end
+
 hs.hotkey.bind(movement, "Up", fullscreen)
+hs.hotkey.bind(movement, "Down", middle)
 
 -----------------------------------------------
 -- Reload config on write
