@@ -27,7 +27,6 @@ Plug 'elzr/vim-json'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -220,7 +219,8 @@ au FileType crontab setlocal bkc=yes
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_loc_list_height = 3
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
@@ -229,7 +229,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
 
 let g:syntastic_quiet_messages = {
-      \ "regex": ['assigned but unused variable', 'file not found'] }
+      \ "regex": ['assigned but unused variable', 'file not found', 'interpreted as argument prefix'] }
 
 " ------------------------------------------------
 " CONFIG->CTRLP ----------------------------------
