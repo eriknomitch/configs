@@ -35,7 +35,7 @@ bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
 
 hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
-hs.hotkey.bind({"command", "ctrl", "shift"}, "P", function() hs.application.launchOrFocus("Adobe Photoshop CC 2017") end)
+hs.hotkey.bind(movement2, "P", function() hs.application.launchOrFocus("Adobe Photoshop CC 2017") end)
 
 hs.hotkey.bind(movement, "Left", function()
   local win = hs.window.focusedWindow()
@@ -83,9 +83,9 @@ function middle()
   local screen = win:screen()
   local max    = screen:frame()
 
-  f.x = max.x
+  f.x = max.x + (max.w * 1/8)
   f.y = max.y
-  f.w = max.w * 0.75
+  f.w = max.w * 3/4
   f.h = max.h
 
   win:setFrame(f)
