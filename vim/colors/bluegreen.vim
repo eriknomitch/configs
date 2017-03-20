@@ -8,7 +8,7 @@
 " :he highlight-groups
 " :he cterm-colors
 
-set background=dark     "or light
+"set background=dark     "or light
 hi clear
 if exists("syntax_on")
   syntax reset

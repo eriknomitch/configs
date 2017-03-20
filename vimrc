@@ -37,7 +37,8 @@ Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-unimpaired'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ervandew/supertab'
-"Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'Shougo/unite.vim' " vimfiler depends on this
+Plug 'Shougo/vimfiler.vim'
 call plug#end()
 
 " ------------------------------------------------
@@ -290,3 +291,9 @@ let g:better_whitespace_enabled = 0
 " ------------------------------------------------
 let g:deoplete#enable_at_startup = 1
 
+" ------------------------------------------------
+" CONFIG->VIMFILER -------------------------------
+" ------------------------------------------------
+let g:vimfiler_as_default_explorer = 1
+
+nnoremap <leader>f :VimFilerExplorer<cr>
