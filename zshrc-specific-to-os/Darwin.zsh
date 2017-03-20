@@ -23,3 +23,8 @@ function eject-all() {
 #PROMPT=$'[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]-> %{$_host_char%} %{$fg[green]%}%m$%{$reset_color%} '
 
 PROMPT=$'[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]$(pwd-home-count)-> %{$fg[green]%}%m$%{$reset_color%} '
+
+# ------------------------------------------------
+# SYNTAX-HIGHLIGHTING ----------------------------
+# ------------------------------------------------
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

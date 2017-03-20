@@ -14,8 +14,8 @@ if exists("syntax_on")
   syntax reset
 endif
 let g:colors_name="bluegreen"
-  
-hi Normal       ctermfg=White ctermfg=none guifg=White ctermbg=Black guibg=Black cterm=none
+ 
+hi Normal       ctermfg=White ctermfg=none guifg=White ctermbg=none guibg=none cterm=none
 hi NonText      ctermfg=DarkGray guifg=DarkGray  ctermbg=Black guibg=Black
 
 hi Statement    ctermfg=Blue guifg=Blue      ctermbg=Black guibg=Black
