@@ -39,6 +39,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ervandew/supertab'
 Plug 'Shougo/unite.vim' " vimfiler depends on this
 Plug 'Shougo/vimfiler.vim'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'pangloss/vim-javascript'
 call plug#end()
 
 " ------------------------------------------------
@@ -238,6 +240,7 @@ let g:syntastic_quiet_messages = {
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:30,results:30'
 
 " ------------------------------------------------
 " CONFIG->AIRLINE --------------------------------
@@ -297,3 +300,22 @@ let g:deoplete#enable_at_startup = 1
 let g:vimfiler_as_default_explorer = 1
 
 nnoremap <leader>f :VimFilerExplorer<cr>
+
+" ------------------------------------------------
+" CONFIG->FZF ------------------------------------
+" ------------------------------------------------
+let g:fzf_colors =
+      \ { 'fg':      ['fg', 'Normal'],
+      \ 'bg':      ['bg', 'Normal'],
+      \ 'hl':      ['fg', 'Comment'],
+      \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+      \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+      \ 'hl+':     ['fg', 'Statement'],
+      \ 'info':    ['fg', 'PreProc'],
+      \ 'prompt':  ['fg', 'Conditional'],
+      \ 'pointer': ['fg', 'Exception'],
+      \ 'marker':  ['fg', 'Keyword'],
+      \ 'spinner': ['fg', 'Label'],
+      \ 'header':  ['fg', 'Comment'] }
+
+nnoremap <leader>b :Buffers<cr>
