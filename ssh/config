@@ -231,3 +231,9 @@ Host linode-personal
     User linode
     Port 22
 
+Host deep-learning
+    HostName 104.196.188.209
+    User enomitch
+    IdentityFile ~/.ssh/google_compute_engine
+    Port 22
+
