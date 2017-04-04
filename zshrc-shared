@@ -292,6 +292,7 @@ alias gpi="grep --ignore-case"
 
 if [[ "$USER" != "root" ]] ; then
   alias apt-get="sudo apt-get"
+  alias apt="sudo apt"
   alias aptitude="sudo aptitude"
   alias service="sudo service"
   alias dpkg="sudo dpkg"
