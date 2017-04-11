@@ -59,7 +59,7 @@ DISABLE_AUTO_UPDATE="true"
 # NOTE:
 # git clone https://github.com/jocelynmallon/zshmarks.git ~/.oh-my-zsh/custom/plugins
 #
-plugins=(vi-mode git-flow git-extras zshmarks npm per-directory-history zsh-navigation-tools zsh_reload)
+plugins=(vi-mode git-flow git-extras zshmarks npm per-directory-history zsh-navigation-tools zsh_reload docker)
 
 if ( $ON_DARWIN ) ; then
   plugins=($plugins droplr osx brew)
