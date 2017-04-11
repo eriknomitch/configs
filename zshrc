@@ -258,6 +258,7 @@ alias nn="notes notes ${@:2}"
 alias ng="notes --grep"
 alias nls="notes --list"
 alias rem="notes-reminders"
+alias dsp="docker system prune --force"
 
 # SSH
 # ------------------------------------------------
