@@ -121,8 +121,8 @@ _define_buffer_dump g_cmp '^[g' "g cmp \"" "\""
 
 # 'micro'
 # ------------------------------------------------
-_define_buffer_dump micro '^[m' "micro "
-_define_buffer_dump micro_looped '^[M' "micro -l "
+#_define_buffer_dump micro '^[m' "micro "
+#_define_buffer_dump micro_looped '^[M' "micro -l "
 
 # 'hosts'
 # ------------------------------------------------
@@ -458,18 +458,6 @@ command-exists yarn && export PATH="$PATH:`yarn global bin`"
 alias GW="gw 2"
 
 # ------------------------------------------------
-# ------------------------------------------------
-# ------------------------------------------------
-
-export PATH=$PATH:$HOME/.miniconda3/bin
-
-alias hu="hangups --col-scheme solarized-dark --col-palette-colors 256 --time-format '' --col-msg-sender-fg 'light green' --col-msg-self-fg 'light blue' --key-close-tab 'shift meta w'"
-
-alias gh="tmux new-session -A -s hangups \"hangups --col-scheme solarized-dark --col-palette-colors 256 --time-format '' --col-msg-sender-fg 'light green' --col-msg-self-fg 'light blue' --key-close-tab 'shift meta w'\""
-
-export HOMEBREW_GITHUB_API_TOKEN=2af293ecbefc21d9cae3b139ed456ea979adc4a7
-
-# ------------------------------------------------
 # LOCALES ----------------------------------------
 # ------------------------------------------------
 export LANG="en_US.UTF-8"
@@ -482,3 +470,19 @@ export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export LC_TYPE="en_US.UTF-8"
+
+# ------------------------------------------------
+# DEEP-LEARNING ----------------------------------
+# ------------------------------------------------
+export PATH="$PATH:$HOME/.repositories/deep-learning/bin"
+
+# ------------------------------------------------
+# FIX: ORGANIZE ----------------------------------
+# ------------------------------------------------
+export PATH=$PATH:$HOME/.miniconda3/bin
+
+alias hu="hangups --col-scheme solarized-dark --col-palette-colors 256 --time-format '' --col-msg-sender-fg 'light green' --col-msg-self-fg 'light blue' --key-close-tab 'shift meta w'"
+alias gh="tmux new-session -A -s hangups \"hangups --col-scheme solarized-dark --col-palette-colors 256 --time-format '' --col-msg-sender-fg 'light green' --col-msg-self-fg 'light blue' --key-close-tab 'shift meta w'\""
+
+export HOMEBREW_GITHUB_API_TOKEN=2af293ecbefc21d9cae3b139ed456ea979adc4a7
+
