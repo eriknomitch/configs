@@ -1,6 +1,13 @@
---hs.hotkey.bind({"cmd", "alt", "ctrl"}, "W", function()
-  --hs.notify.new({title="Hammerspoon", informativeText="Hello World"}):send()
---end)
+
+function has_value (tab, val)
+  for index, value in ipairs(tab) do
+    if value == val then
+      return true
+    end
+  end
+
+  return false
+end
 
 hs.window.animationDuration = 0
 hs.window.setShadows(false)
@@ -12,12 +19,9 @@ local movementAppplicationLaunchOrFocus = {"cmd", "ctrl"}
 
 applicationHotkeyDefinitions = {}
 
--- applicationHotkeyDefinitions[0] = ["I", "Google Chrome"]
-
 hs.hotkey.bind(movement, "Z", function()
   hs:appfinder()
 end)
-
 
 function bindApplicationFocus(key, title)
   hs.hotkey.bind(movementAppplicationLaunchOrFocus, key, function() hs.application.launchOrFocus(title) end)
@@ -95,30 +99,12 @@ hs.hotkey.bind(movement, "Up", fullscreen)
 hs.hotkey.bind(movement, "Down", middle)
 
 -----------------------------------------------
--- Reload config on write
------------------------------------------------
-function reload_config(files)
-  hs.reload()
-end
-
-hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reload_config):start()
-
------------------------------------------------
--- Hyper i to show window hints
------------------------------------------------
-hs.hotkey.bind(movement, "h", function()
-  hs.hints.windowHints()
-end)
-
------------------------------------------------
 -- LAYOUTS
 -----------------------------------------------
 hs.hotkey.bind(movement2, "Left", function()
   local win    = hs.window.focusedWindow()
   local app    = win:application()
   local screen = win:screen()
-
-  --hs.alert.show(app:allWindows())
 
   if app:title() == "Google Chrome" then
     local devTools     = app:findWindow("Developer Tools")
@@ -166,120 +152,31 @@ function moveWindowOneSpace(direction)
 end
 
 -----------------------------------------------
--- WATCHERS
+-- WINDOW->ON-CREATED -------------------------
 -----------------------------------------------
--- function watchWindow(win, initializing)
---   hs.alert.show("Window")
---   --local appWindows = watchers[win:application():pid()].windows
---   --if win:isStandard() and not appWindows[win:id()] then
---     --local watcher = win:newWatcher(handleWindowEvent, {pid=win:pid(), id=win:id()})
---     --appWindows[win:id()] = watcher
---
---     --watcher:start({events.elementDestroyed, events.windowResized, events.windowMoved})
---
---     --if not initializing then
---       --hs.alert.show('window created: '..win:id()..' with title: '..win:title())
---     --end
---   --end
--- end
---
--- function handleAppEvent(element, event)
---   hs.alert.show(element)
---
---   if event == events.windowCreated then
---     watchWindow(element)
---   elseif event == events.focusedWindowChanged then
---     -- Handle window change
---
---     --if app.name == "iTerm2" then
---       --fullscreen()
---     --end
---
---
---   end
--- end
---
--- function handleGlobalAppEvent(name, event, app)
---   if event == hs.application.watcher.launched then
---     --hs.alert.show("App launched")
---
---     local watcher = app:newWatcher(handleAppEvent)
---     watcher:start({events.windowCreated, events.focusedWindowChanged})
---   end
--- end
+function handleWindowCreated(win, event)
 
+  app = win:application()
 
--- local watcher = hs.application.watcher.new(handleGlobalAppEvent)
--- watcher:start()
+  if app:title() == "Kiwi for Gmail" then
+    fullscreen()
+    return
+  end
 
---local events = hs.uielement.watcher
+  hs.alert.show(win:title())
+end
 
---watchers = {}
+windows = hs.window.filter.new(nil)
+windows:subscribe(hs.window.filter.windowCreated, handleWindowCreated)
 
---function init()
-  --appsWatcher = hs.application.watcher.new(handleGlobalAppEvent)
-  --appsWatcher:start()
+-----------------------------------------------
+-- Reload config on write
+-----------------------------------------------
+function reload_config(files)
+  hs.reload()
+end
 
-  ------ Watch any apps that already exist
-  ----local apps = hs.application.runningApplications()
-  ----for i = 1, #apps do
-    ----if apps[i]:title() ~= "Hammerspoon" then
-      ----watchApp(apps[i], true)
-    ----end
-  ----end
---end
-
---function handleGlobalAppEvent(name, event, app)
-  --if     event == hs.application.watcher.launched then
-    --watchApp(app)
-  --elseif event == hs.application.watcher.terminated then
-    ---- Clean up
-    --local appWatcher = watchers[app:pid()]
-    --if appWatcher then
-      --appWatcher.watcher:stop()
-      --for id, watcher in pairs(appWatcher.windows) do
-        --watcher:stop()
-      --end
-      --watchers[app:pid()] = nil
-    --end
-  --end
---end
-
---function watchApp(app, initializing)
-  --if watchers[app:pid()] then return end
-
-  --local watcher = app:newWatcher(handleAppEvent)
-  --watchers[app:pid()] = {watcher = watcher, windows = {}}
-
-  --watcher:start({events.windowCreated, events.focusedWindowChanged})
-
-  ---- Watch any windows that already exist
-  --for i, window in pairs(app:allWindows()) do
-    --watchWindow(window, initializing)
-  --end
---end
-
---function handleAppEvent(element, event)
-  --if event == events.windowCreated then
-    --watchWindow(element)
-  --elseif event == events.focusedWindowChanged then
-    ---- Handle window change
-  --end
---end
-
-
---function handleWindowEvent(win, event, watcher, info)
-  --if event == events.elementDestroyed then
-    --watcher:stop()
-    --watchers[info.pid].windows[info.id] = nil
-  --else
-    ---- Handle other events...
-  --end
-  --hs.alert.show('window event '..event..' on '..info.id)
---end
-
---init()
-
+hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reload_config):start()
 
 --------------------------------------------------
 -- ALERT->CONFIG-LOADED --------------------------
