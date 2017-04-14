@@ -2,15 +2,56 @@
 
 _current_script_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+# ------------------------------------------------
+# UTILITY ----------------------------------------
+# ------------------------------------------------
+function _ensure_symbolic_link() {
+  _source=$1
+  _destination=$2
+
+  if ! test -e $_source; then
+    echo "fatal: Source '$_source' does not exist."
+    exit 1
+  fi
+
+  # If the symbolic link already exists, remove
+  # it and recreate.
+  test -L $_destination && rm $_destination
+
+  # If our source is a directory, ensure the
+  # paths so we can create the symlink within
+  # them.
+  if test -d $_source; then
+    test -d `dirname $_destination` || mkdir -p `dirname $_destination`
+  fi
+
+  ln -s $_source $_destination
+}
+
+# ------------------------------------------------
+# ------------------------------------------------
+# ------------------------------------------------
 test -d /etc/zsh || sudo mkdir -p /etc/zsh
 test -f /etc/zsh/colors || sudo ln -s $HOME/.configs/etc/zsh/colors /etc/zsh/colors
 
-test -h $HOME/.zshrc      || ln -s $HOME/.configs/zshrc $HOME/.zshrc
+_ensure_symbolic_link ~/.zshrc ~/.configs/zshrc
 test -h /etc/zshrc-shared || sudo ln -s $HOME/.configs/zshrc-shared /etc/zshrc-shared
 test -h $HOME/.audio      || ln -s ~/.configs/audio ~/.audio
-test -e $HOME/.vim        || ln -s ~/.configs/vim ~/.vim
-test -h $HOME/.vimrc      || ln -s ~/.configs/vimrc ~/.vimrc
 test -h $HOME/.oh-my-zsh  || ln -s ~/.configs/oh-my-zsh ~/.oh-my-zsh
 
+# ------------------------------------------------
+# VIM --------------------------------------------
+# ------------------------------------------------
+_ensure_symbolic_link ~/.configs/vim   ~/.vim
+_ensure_symbolic_link ~/.configs/vimrc ~/.vimrc
+
+# ------------------------------------------------
+# NEOVIM ----------------------------------------
+# ------------------------------------------------
+_ensure_symbolic_link ~/.configs/vimrc ~/.config/nvim/init.vim
+
+# ------------------------------------------------
+# CALL-ROOT-HOOK-SCRIPT --------------------------
+# ------------------------------------------------
 sudo $_current_script_path/.bin/ensure-symbolic-links-root $HOME
 
