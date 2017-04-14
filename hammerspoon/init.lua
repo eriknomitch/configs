@@ -163,7 +163,7 @@ function handleWindowCreated(win, event)
     return
   end
 
-  hs.alert.show(win:title())
+  -- hs.alert.show(win:title())
 end
 
 windows = hs.window.filter.new(nil)
