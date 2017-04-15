@@ -454,3 +454,8 @@ alias gh="tmux new-session -A -s hangups \"hangups --col-scheme solarized-dark -
 
 export HOMEBREW_GITHUB_API_TOKEN=2af293ecbefc21d9cae3b139ed456ea979adc4a7
 
+# ------------------------------------------------
+# ALIASES ----------------------------------------
+# ------------------------------------------------
+alias T="tree"
+

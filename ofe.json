@@ -16,6 +16,9 @@
   "ssh": {
     "files": ["ssh/*"]
   },
+  "hammerspoon": {
+    "files": ["hammerspoon/*"]
+  },
   "fluxbox": {
     "files": ["fluxbox/**/**"]
   },

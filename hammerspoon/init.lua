@@ -1,3 +1,10 @@
+function YesNoDialogBox(ActionFunc)
+  test = hs.chooser.new(ActionFunc)
+  test:rows(2)
+  test:choices({{["text"] = "Yes", ["subText"] = "", ["id"] = "yes"},
+  {["text"] = "No", ["subText"] = "", ["id"] = "no"}})
+  test:show()
+end
 
 function has_value (tab, val)
   for index, value in ipairs(tab) do
@@ -37,9 +44,15 @@ bindApplicationFocus("S", "Slack")
 bindApplicationFocus("Y", "YakYak")
 bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
+bindApplicationFocus("U", "Ulysses")
+
+function confirmForPhotoshop()
+  YesNoDialogBox(function() hs.application.launchOrFocus("Adobe Photoshop CC 2017") end)
+end
 
 hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
-hs.hotkey.bind(movement2, "P", function() hs.application.launchOrFocus("Adobe Photoshop CC 2017") end)
+hs.hotkey.bind({"cmd", "ctrl", "shift", "P"}, "P", confirmForPhotoshop)
+
 
 hs.hotkey.bind(movement, "Left", function()
   local win = hs.window.focusedWindow()
