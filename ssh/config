@@ -188,6 +188,10 @@ Host motion
     HostName motion.nomitch.com
     User admin
 
+Host kodi-erik
+    HostName kodi-erik.local
+    User root
+
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
 # ------------------------------------------------

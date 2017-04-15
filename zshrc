@@ -163,39 +163,11 @@ export PLEX_HOME=$HOME/.media/plex
 export PATH="/usr/local/heroku/bin:$PATH"
 
 # ------------------------------------------------
-# SPECIAL->DARWIN --------------------------------
-# ------------------------------------------------
-if ( $ON_DARWIN ) ; then
-
-  # "cd" Aliases
-  alias d="cd ~/Desktop && clear && pwd && ls -1"
-  alias dl="cd ~/Downloads && clear && pwd && ls -1"
-
-  # Other Aliases
-  alias updatedb="sudo /usr/libexec/locate.updatedb"
-  alias il="irc-loop"
-  alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc"
-  alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
-
-  source-if-exists /sw/bin/init.sh
-
-fi
-
-# ------------------------------------------------
 # SPECIAL->MICRO ---------------------------------
 # ------------------------------------------------
 if ( $ON_MICRO ) ; then
   alias raspi-config="sudo raspi-config"
 fi
-
-# ------------------------------------------------
-# DISPLAY ----------------------------------------
-# ------------------------------------------------
-
-# For remote sessions, this exports the display to the main
-# display of the machine.
-#
-#expdisp
 
 # ------------------------------------------------
 # ZSHRC-MARKS ------------------------------------
@@ -396,10 +368,6 @@ if [[ -n $PUCK_LOCATION ]] ; then
   fi
   echo
 
-fi
-
-if ( $ON_DARWIN ) ; then
-  source-if-exists ~/.configs/iterm2.zsh
 fi
 
 # ------------------------------------------------

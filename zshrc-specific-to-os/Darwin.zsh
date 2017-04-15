@@ -28,3 +28,25 @@ PROMPT=$'[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]$(pwd-home-c
 # SYNTAX-HIGHLIGHTING ----------------------------
 # ------------------------------------------------
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# ------------------------------------------------
+# ALIASES ----------------------------------------
+# ------------------------------------------------
+
+# "cd" Aliases
+alias d="cd ~/Desktop && clear && pwd && ls -1"
+alias dl="cd ~/Downloads && clear && pwd && ls -1"
+
+# Other Aliases
+alias updatedb="sudo /usr/libexec/locate.updatedb"
+alias il="irc-loop"
+alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc"
+alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
+
+source-if-exists /sw/bin/init.sh
+
+# ------------------------------------------------
+# FIX: -------------------------------------------
+# ------------------------------------------------
+source-if-exists ~/.configs/iterm2.zsh
+
