@@ -112,6 +112,13 @@ Host equalizer
     User chip
     Port 22
 
+Host lora-*
+
+  User pi
+
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+
 # ------------------------------------------------
 # MAP->HOSTS->MICROS (ESP8266s) ------------------
 # ------------------------------------------------
@@ -213,6 +220,8 @@ Host micro-* tv-controller-master
 
 #Host hue-bridge
   #HostName 10.0.0.55
+# LAN->DEVICES & HUBS-----------------------------
+# ------------------------------------------------
 
 # ------------------------------------------------
 # VAGRANT ----------------------------------------
