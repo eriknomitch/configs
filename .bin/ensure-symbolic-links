@@ -6,7 +6,14 @@ _current_script_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # UTILITY ----------------------------------------
 # ------------------------------------------------
 function _ensure_symbolic_link() {
-  _source=$1
+  _sudo=false
+
+  if [[ $1 == "--sudo" ]] ; then
+    _sudo=true
+    shift
+  fi
+
+  _source="$HOME/.configs/$1"
   _destination=$2
 
   if ! test -e $_source; then
@@ -18,10 +25,10 @@ function _ensure_symbolic_link() {
   # it and recreate.
   test -L $_destination && rm $_destination
 
-  # If our source is a directory, ensure the
+  # If our destination is a directory, ensure the
   # paths so we can create the symlink within
   # them.
-  if test -d $_source; then
+  if test -d $_destination; then
     test -d `dirname $_destination` || mkdir -p `dirname $_destination`
   fi
 
@@ -34,21 +41,18 @@ function _ensure_symbolic_link() {
 test -d /etc/zsh || sudo mkdir -p /etc/zsh
 test -f /etc/zsh/colors || sudo ln -s $HOME/.configs/etc/zsh/colors /etc/zsh/colors
 
-_ensure_symbolic_link ~/.zshrc ~/.configs/zshrc
-test -h /etc/zshrc-shared || sudo ln -s $HOME/.configs/zshrc-shared /etc/zshrc-shared
-test -h $HOME/.audio      || ln -s ~/.configs/audio ~/.audio
-test -h $HOME/.oh-my-zsh  || ln -s ~/.configs/oh-my-zsh ~/.oh-my-zsh
+_ensure_symbolic_link zshrc ~/.zshrc
+#_ensure_symbolic_link --sudo zshrc-shared /etc/zshrc-shared
+_ensure_symbolic_link audio ~/.audio
+_ensure_symbolic_link oh-my-zsh ~/.oh-my-zsh
 
 # ------------------------------------------------
 # VIM --------------------------------------------
 # ------------------------------------------------
-_ensure_symbolic_link ~/.configs/vim   ~/.vim
-_ensure_symbolic_link ~/.configs/vimrc ~/.vimrc
-
-# ------------------------------------------------
-# NEOVIM ----------------------------------------
-# ------------------------------------------------
-_ensure_symbolic_link ~/.configs/vimrc ~/.config/nvim/init.vim
+_ensure_symbolic_link vim   ~/.vim
+_ensure_symbolic_link vim   ~/.config/nvim
+_ensure_symbolic_link vimrc ~/.vimrc
+_ensure_symbolic_link vimrc ~/.config/nvim/init.vim
 
 # ------------------------------------------------
 # CALL-ROOT-HOOK-SCRIPT --------------------------
