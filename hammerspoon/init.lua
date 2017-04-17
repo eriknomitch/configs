@@ -45,6 +45,7 @@ bindApplicationFocus("Y", "YakYak")
 bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("U", "Ulysses")
+bindApplicationFocus("N", "Napkin")
 
 function confirmForPhotoshop()
   YesNoDialogBox(function() hs.application.launchOrFocus("Adobe Photoshop CC 2017") end)
@@ -169,11 +170,19 @@ end
 -----------------------------------------------
 function handleWindowCreated(win, event)
 
-  app = win:application()
+  app_fullscreen = false
+  app        = win:application()
 
   if app:title() == "Kiwi for Gmail" then
+    app_fullscreen = true
+  end
+  
+  if app:title() == "Napkin" then
+    app_fullscreen = true
+  end
+
+  if app_fullscreen == true then
     fullscreen()
-    return
   end
 
   -- hs.alert.show(win:title())
