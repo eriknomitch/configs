@@ -39,20 +39,24 @@ bindApplicationFocus("I", "Google Chrome")
 bindApplicationFocus("M", "Messages")
 bindApplicationFocus("G", "Kiwi for Gmail")
 bindApplicationFocus("E", "Evernote")
+bindApplicationFocus("A", "Alternote")
 bindApplicationFocus("T", "Todoist")
-bindApplicationFocus("S", "Slack")
 bindApplicationFocus("Y", "YakYak")
 bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
-bindApplicationFocus("U", "Ulysses")
-bindApplicationFocus("N", "Napkin")
+
+function confirmThenOpenApplication(name)
+  YesNoDialogBox(function() hs.application.launchOrFocus(name) end)
+end
 
 function confirmForPhotoshop()
   YesNoDialogBox(function() hs.application.launchOrFocus("Adobe Photoshop CC 2017") end)
 end
 
 hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
-hs.hotkey.bind({"cmd", "ctrl", "shift", "P"}, "P", confirmForPhotoshop)
+hs.hotkey.bind({"cmd", "ctrl", "shift", "P"}, "P", function() confirmThenOpenApplication("Adobe Photoshop CC 2017") end)
+
+hs.hotkey.bind({"cmd", "ctrl", "shift", "S"}, "S", function() confirmThenOpenApplication("Slack") end)
 
 
 hs.hotkey.bind(movement, "Left", function()
@@ -178,6 +182,10 @@ function handleWindowCreated(win, event)
   end
   
   if app:title() == "Napkin" then
+    app_fullscreen = true
+  end
+  
+  if app:title() == "Preview" then
     app_fullscreen = true
   end
 

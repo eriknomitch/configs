@@ -249,8 +249,9 @@ Host linode-personal
     User linode
     Port 22
 
-Host deep-learning
-    HostName 104.196.188.209
+Host deep-learning, ai.huntclub.co, hc-ai
+    #HostName 104.196.188.209
+    HostName ai.huntclub.co
     User enomitch
     IdentityFile ~/.ssh/google_compute_engine
     Port 22
