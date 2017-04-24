@@ -41,6 +41,7 @@ Plug 'Shougo/unite.vim' " vimfiler depends on this
 Plug 'Shougo/vimfiler.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'pangloss/vim-javascript'
+Plug 'kana/vim-arpeggio'
 call plug#end()
 
 " ------------------------------------------------
