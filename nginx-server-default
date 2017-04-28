@@ -27,6 +27,23 @@ ssl_certificate_key /etc/letsencrypt/live/home.nomitch.com/privkey.pem; # manage
 
 }
 
+server {
+  server_name tensorflow.ai.home.nomitch.com;
+  location / {
+    proxy_pass http://localhost:6006;
+  }
+}
+
+server {
+  server_name jupyter.ai.home.nomitch.com;
+  location / {
+    proxy_http_version 1.1;
+
+    proxy_pass http://localhost:8888;
+    proxy_pass http://websocket;
+  }
+}
+
 #server {
 #  server_name 3d-printer.camera.home.nomitch.com;
 #  location / {
