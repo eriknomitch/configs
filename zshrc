@@ -386,16 +386,21 @@ if [[ $TMUX_EACH_SESSION = "true" ]] ; then
 fi
 
 # ------------------------------------------------
-# NODE -------------------------------------------
+# NODE/NVM/NPM -----------------------------------
 # ------------------------------------------------
 
 export NODE_PATH="$HOME/.node_modules"
-
 export NVM_DIR="$HOME/.nvm"
 
 if [[ -d $NVM_DIR ]] ; then
-  . "/usr/local/opt/nvm/nvm.sh"
+  if ( $ON_DARWIN ) ; then
+    . "/usr/local/opt/nvm/nvm.sh"
+  elif ( $ON_LINUX ) ; then
+    . $NVM_DIR/nvm.sh
+  fi
 fi
+
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # ------------------------------------------------
 # VI-MODE ----------------------------------------
@@ -459,4 +464,3 @@ export HOMEBREW_GITHUB_API_TOKEN=2af293ecbefc21d9cae3b139ed456ea979adc4a7
 # ------------------------------------------------
 alias T="tree"
 
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
