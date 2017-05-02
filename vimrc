@@ -42,6 +42,7 @@ Plug 'Shougo/vimfiler.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'pangloss/vim-javascript'
 Plug 'kana/vim-arpeggio'
+Plug 'hylang/vim-hy'
 call plug#end()
 
 " ------------------------------------------------
