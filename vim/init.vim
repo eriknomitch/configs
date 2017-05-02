@@ -1,1 +1,1 @@
-/home/erik/.configs/vimrc
+/Users/erik/.configs/vimrc
