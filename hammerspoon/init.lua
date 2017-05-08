@@ -56,8 +56,7 @@ end
 hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
 
 hs.hotkey.bind({"cmd", "ctrl", "shift", "P"}, "P", function() confirmThenOpenApplication("Adobe Photoshop CC 2017") end)
-hs.hotkey.bind({"cmd", "ctrl", "shift", "S"}, "S", function() confirmThenOpenApplication("Slack") end)
-
+hs.hotkey.bind({"cmd", "ctrl", "shift"}, "S", function() hs.application.launchOrFocus("Slack") end)
 hs.hotkey.bind({"cmd", "ctrl", "shift"}, "G", function() hs.application.launchOrFocus("Online Go") end)
 
 hs.hotkey.bind(movement, "Left", function()
