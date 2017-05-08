@@ -1,0 +1,1 @@
+PROMPT=$'[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]$(pwd-home-count)-> %{$_host_char%}%{$_prompt_color%}%m$%{$reset_color%} '
