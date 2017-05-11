@@ -295,7 +295,7 @@ let g:better_whitespace_enabled = 0
 " ------------------------------------------------
 " CONFIG->DEOPLETE -------------------------------
 " ------------------------------------------------
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 
 " ------------------------------------------------
 " CONFIG->VIMFILER -------------------------------
