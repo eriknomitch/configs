@@ -465,6 +465,22 @@ export HOMEBREW_GITHUB_API_TOKEN=2af293ecbefc21d9cae3b139ed456ea979adc4a7
 alias T="tree"
 
 # ------------------------------------------------
+# ZPLUG ------------------------------------------
+# ------------------------------------------------
+if ( $ON_DARWIN ) ; then
+  export ZPLUG_HOME=/usr/local/opt/zplug
+fi
+
+if test -d $ZPLUG_HOME; then
+  source $ZPLUG_HOME/init.zsh
+
+  # ----------------------------------------------
+  # ZPLUG->PLUGINS -------------------------------
+  # ----------------------------------------------
+  zplug "wookayin/anybar-zsh"
+fi
+
+# ------------------------------------------------
 # PROMPT -----------------------------------------
 # ------------------------------------------------
 source $HOME/.configs/zshrc-prompt

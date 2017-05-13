@@ -36,7 +36,7 @@ alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 
 source-if-exists /sw/bin/init.sh
-
+  
 # ------------------------------------------------
 # FIX: -------------------------------------------
 # ------------------------------------------------
