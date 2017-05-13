@@ -469,9 +469,11 @@ alias T="tree"
 # ------------------------------------------------
 if ( $ON_DARWIN ) ; then
   export ZPLUG_HOME=/usr/local/opt/zplug
+elif ( $ON_LINUX ) ; then
+  export ZPLUG_HOME=$HOME/.zplug
 fi
 
-if test -d $ZPLUG_HOME; then
+if test -f $ZPLUG_HOME/init.zsh; then
   source $ZPLUG_HOME/init.zsh
 
   # ----------------------------------------------
