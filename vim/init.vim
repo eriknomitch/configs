@@ -1,1 +1,1 @@
-/home/enomitch/.configs/vimrc
+/Users/erik/.configs/vimrc
