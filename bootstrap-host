@@ -3,6 +3,14 @@
 .bin/ensure-symbolic-links
 .bin/generate-grconfig
 
-if [[ ! -d oh-my-zsh/custom/plugins/zshmarks ]] ; then
-  git clone https://github.com/jocelynmallon/zshmarks.git oh-my-zsh/custom/plugins/zshmarks
+if [[ ! -d ~/.oh-my-zsh ]] ; then
+  echo "fatal: You have to install oh-my-zsh."
+  exit 1
 fi
+
+if [[ ! -d ~/.oh-my-zsh/custom/plugins/zshmarks ]] ; then
+  git clone https://github.com/jocelynmallon/zshmarks.git ~/.oh-my-zsh/custom/plugins/zshmarks
+fi
+
+set-bookmark-defaults
+

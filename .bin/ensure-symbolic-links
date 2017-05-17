@@ -44,7 +44,7 @@ test -f /etc/zsh/colors || sudo ln -s $HOME/.configs/etc/zsh/colors /etc/zsh/col
 _ensure_symbolic_link zshrc ~/.zshrc
 #_ensure_symbolic_link --sudo zshrc-shared /etc/zshrc-shared
 _ensure_symbolic_link audio ~/.audio
-_ensure_symbolic_link oh-my-zsh ~/.oh-my-zsh
+#_ensure_symbolic_link oh-my-zsh ~/.oh-my-zsh
 
 # ------------------------------------------------
 # VIM --------------------------------------------
