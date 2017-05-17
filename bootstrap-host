@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+echo "Bootstrapping host..."
+
 .bin/ensure-symbolic-links
 .bin/generate-grconfig
 
@@ -14,3 +16,4 @@ fi
 
 set-bookmark-defaults
 
+echo "Done.
