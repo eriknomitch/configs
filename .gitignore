@@ -1,6 +1,6 @@
 .*.swp
 fluxbox/lastwallpaper
 vim/.*
+vim/plugged
 prelang.vim
 karabiner.d/log
-
