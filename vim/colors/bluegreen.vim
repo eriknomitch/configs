@@ -13,6 +13,7 @@ hi clear
 if exists("syntax_on")
   syntax reset
 endif
+set t_Co=256
 let g:colors_name="bluegreen"
  
 hi Normal       ctermfg=White ctermfg=none guifg=White ctermbg=none guibg=none cterm=none
@@ -38,6 +39,7 @@ hi Title        ctermfg=White guifg=White     ctermbg=DarkBlue guibg=DarkBlue
 hi StatusLine   term=none cterm=none gui=bold,underline ctermfg=Black guifg=Black ctermbg=White guibg=White
 hi StatusLineNC term=none cterm=none gui=bold,underline ctermfg=Black guifg=Black  ctermbg=Grey guibg=Grey
 hi LineNr       term=bold cterm=bold gui=bold ctermfg=White guifg=White ctermbg=DarkGray guibg=DarkGray
+hi SignColumn ctermbg=235
 
 " if exists("g:bluegreen_transbg")
 "   hi Normal       ctermfg=White guifg=White ctermbg=none
