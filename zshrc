@@ -483,6 +483,16 @@ if test -f $ZPLUG_HOME/init.zsh; then
 fi
 
 # ------------------------------------------------
+# PYENV ------------------------------------------
+# ------------------------------------------------
+export PATH="$HOME/.pyenv/bin:$PATH"
+
+if command-exists pyenv; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+# ------------------------------------------------
 # PROMPT -----------------------------------------
 # ------------------------------------------------
 source $HOME/.configs/zshrc-prompt

@@ -1,1 +1,1 @@
-_prompt_color="$fg_bold[blue]"
+_prompt_color="$fg_bold[white]"
