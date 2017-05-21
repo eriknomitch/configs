@@ -55,6 +55,11 @@ _ensure_symbolic_link vimrc ~/.vimrc
 _ensure_symbolic_link vimrc ~/.config/nvim/init.vim
 
 # ------------------------------------------------
+# OTHER ------------------------------------------
+# ------------------------------------------------
+_ensure_symbolic_link tmux.conf ~/.tmux.conf
+
+# ------------------------------------------------
 # CALL-ROOT-HOOK-SCRIPT --------------------------
 # ------------------------------------------------
 sudo $_current_script_path/.bin/ensure-symbolic-links-root $HOME
