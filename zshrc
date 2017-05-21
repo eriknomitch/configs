@@ -216,27 +216,6 @@ if ( $ON_MICRO_PUCK ) ; then
 fi
 
 # ------------------------------------------------
-# ------------------------------------------------
-# ------------------------------------------------
-alias e="edit-common"
-alias arp="sudo arp"
-alias route="sudo route"
-alias pls="play-live-stream-npr-wbez"
-
-# Notes
-# ------------------------------------------------
-alias n="notes"
-alias nn="notes notes ${@:2}"
-alias ng="notes --grep"
-alias nls="notes --list"
-alias rem="notes-reminders"
-alias dsp="docker system prune --force"
-
-# SSH
-# ------------------------------------------------
-alias S="ssh server"
-
-# ------------------------------------------------
 # GIT-SUBMODULE-TOOLS ----------------------------
 # ------------------------------------------------
 export PATH="$PATH:$HOME/.repositories/git-submodule-tools/bin"
@@ -463,6 +442,24 @@ export HOMEBREW_GITHUB_API_TOKEN=2af293ecbefc21d9cae3b139ed456ea979adc4a7
 # ALIASES ----------------------------------------
 # ------------------------------------------------
 alias T="tree"
+alias e="edit-common"
+alias arp="sudo arp"
+alias route="sudo route"
+alias pls="play-live-stream-npr-wbez"
+
+# Notes
+# ------------------------------------------------
+alias n="notes"
+alias nn="notes notes ${@:2}"
+alias ng="notes --grep"
+alias nls="notes --list"
+alias rem="notes-reminders"
+alias dsp="docker system prune --force"
+
+# SSH
+# ------------------------------------------------
+alias S="ssh server"
+alias A="ssh ai"
 
 # ------------------------------------------------
 # ZPLUG ------------------------------------------
