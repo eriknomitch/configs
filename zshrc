@@ -197,6 +197,24 @@ function tos {
 #}
 
 # ------------------------------------------------
+# ZPLUG ------------------------------------------
+# ------------------------------------------------
+if ( $ON_DARWIN ) ; then
+  export ZPLUG_HOME=/usr/local/opt/zplug
+elif ( $ON_LINUX ) ; then
+  export ZPLUG_HOME=$HOME/.zplug
+fi
+
+ZPLUG_INSTALLED=false
+
+if test -f $ZPLUG_HOME/init.zsh; then
+
+  ZPLUG_INSTALLED=true
+
+  source $ZPLUG_HOME/init.zsh
+fi
+
+# ------------------------------------------------
 # SOURCE->HOST-SPECIFIC --------------------------
 # ------------------------------------------------
 source-if-exists $HOME/.configs/zshrc-specific-to-os/`uname`.zsh

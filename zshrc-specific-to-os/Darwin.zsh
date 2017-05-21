@@ -42,3 +42,9 @@ source-if-exists /sw/bin/init.sh
 # ------------------------------------------------
 source-if-exists ~/.configs/iterm2.zsh
 
+# ------------------------------------------------
+# ZPLUG ------------------------------------------
+# ------------------------------------------------
+if ( $ZPLUG_INSTALLED ) ; then
+  zplug "wookayin/anybar-zsh"
+fi
