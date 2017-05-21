@@ -23,7 +23,7 @@ ControlPath /tmp/%r@%h:%p
 # lan-router
 # ------------------------------------------------
 # router.asus.com
-Host lan-router, router, router.asus.com
+Host lan-router router router.asus.com
   HostName router.asus.com
   User admin
 
@@ -141,6 +141,13 @@ Host server
     PermitLocalCommand true
     User erik
     Port 2210
+
+Host ai
+    HostName ai
+    #HostName ai.home.nomitch.com
+    PermitLocalCommand true
+    User erik
+    Port 22
 
 Host laptop
     checkhostip no
