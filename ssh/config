@@ -136,18 +136,16 @@ Host lora-*
 # LAN --------------------------------------------
 # ------------------------------------------------
 Host server
-    #HostName server.local
     HostName home.nomitch.com
     PermitLocalCommand true
     User erik
     Port 2210
 
 Host ai
-    HostName ai
-    #HostName ai.home.nomitch.com
+    HostName home.nomitch.com
     PermitLocalCommand true
     User erik
-    Port 22
+    Port 2220
 
 Host laptop
     checkhostip no
