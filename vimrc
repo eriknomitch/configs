@@ -61,8 +61,20 @@ autocmd BufRead,BufNewFile *.md,*.txt setlocal spell
 " instant search
 set is
 
-syntax on
+" ------------------------------------------------
+" PATHOGEN ---------------------------------------
+" ------------------------------------------------
+filetype off
+
+call pathogen#infect()
+call pathogen#helptags()
+
 filetype plugin indent on
+syntax on
+
+" ------------------------------------------------
+" ------------------------------------------------
+" ------------------------------------------------
 
 " comment wrapping
 "set wrap
