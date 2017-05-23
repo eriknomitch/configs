@@ -4,5 +4,6 @@ vim/.*
 vim/plugged
 vim/init.vim
 vim/bundle/*
+!vim/bundle/.keep
 prelang.vim
 karabiner.d/log
