@@ -147,6 +147,12 @@ Host ai
     User erik
     Port 2220
 
+#Match host ai exec "dig +short aisfsdf"
+    #HostName ai
+    #PermitLocalCommand true
+    #User erik
+    #Port 22
+
 Host laptop
     checkhostip no
     User erik
