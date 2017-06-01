@@ -453,10 +453,23 @@ gi() {
 # ------------------------------------------------
 # PRECMD -----------------------------------------
 # ------------------------------------------------
-function precmd() {
+function _base_precmd() {
   if [[ $HISTFILE = "/dev/null" ]] ; then
     echo `stylize "History disabled."`
   fi
+
+  if ( $ON_LINUX ) ; then
+    if ! swap-empty; then
+      echo -e "${On_IRed}${BWhi}Swap usage is > 0${RCol}"
+    fi
+  fi
+
+}
+
+# Split these so that if we override precmd elsewhere
+# we can always call _base_precmd.
+function precmd() {
+  _base_precmd
 }
 
 # ------------------------------------------------
