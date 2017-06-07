@@ -285,9 +285,8 @@ alias np="notify-push"
 alias p="pwd"
 alias sshn="ssh -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 alias dh="disable-history-for-session"
-alias ht="htop --delay=4"
-alias htn="htop --delay=4 --user=nobody"
-alias htop="htop --delay=4"
+alias ht="htop"
+alias htn="htop --user=nobody"
 alias gpi="grep --ignore-case"
 
 if [[ "$USER" != "root" ]] ; then
