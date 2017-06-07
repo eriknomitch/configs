@@ -53,6 +53,7 @@ _ensure_symbolic_link vim   ~/.vim
 _ensure_symbolic_link vim   ~/.config/nvim
 _ensure_symbolic_link vimrc ~/.vimrc
 _ensure_symbolic_link vimrc ~/.config/nvim/init.vim
+_ensure_symbolic_link htop  ~/.config/htop
 
 # ------------------------------------------------
 # OTHER ------------------------------------------
