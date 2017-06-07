@@ -524,11 +524,6 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 export PATH=$PATH:/usr/local/cuda/bin
 
 # ------------------------------------------------
-# DINGHY -----------------------------------------
-# ------------------------------------------------
-command-exists dinghy && eval $(dinghy env)
-
-# ------------------------------------------------
 # PROMPT -----------------------------------------
 # ------------------------------------------------
 source $HOME/.configs/zshrc-prompt
