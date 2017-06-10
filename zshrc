@@ -465,6 +465,8 @@ alias arp="sudo arp"
 alias route="sudo route"
 alias pls="play-live-stream-npr-wbez"
 alias yt="youtube-dl"
+alias nd="nvidia-docker"
+alias ndc="nvidia-docker-compose"
 
 # Notes
 # ------------------------------------------------
