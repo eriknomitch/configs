@@ -16,10 +16,10 @@ function! G_Commit_And_Push()
 
   redraw
 
-  echo system("git commit --all --message '" . substitute(a:commit_message, "'", "'\\\\''", 'g') . "' && git push")
+  call system("git commit --all --message '" . substitute(a:commit_message, "'", "'\\\\''", 'g') . "' && git push")
 
   if v:shell_error == 0
-    echom "Committed."
+    echom "\nCommitted."
   else
     echom "Error."
   endif
