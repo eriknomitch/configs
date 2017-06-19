@@ -42,9 +42,11 @@ function! G_Commit_And_Push()
   " Output result
   " ----------------------------------------------
   if v:shell_error == 0
-    echom "Committed."
+    echo ""
+    echo "Committed."
   else
-    echom "Error."
+    echo ""
+    echo "Error."
   endif
 
 endfunction
