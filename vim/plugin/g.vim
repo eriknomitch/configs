@@ -10,6 +10,9 @@
 " ------------------------------------------------
 function! G_Commit_And_Push()
 
+
+  " Check if work tree is already clean
+  " ----------------------------------------------
   call system("$HOME/.repositories/g/bin/git-is-clean-work-tree")
 
   if v:shell_error == 0
@@ -17,14 +20,27 @@ function! G_Commit_And_Push()
     return 0
   endif
 
+  " Get commit message from user
+  " ----------------------------------------------
   call inputsave()
   let a:commit_message = input('Commit Message: ')
   call inputrestore()
 
   redraw
 
+  " Handle blank commit message
+  " ----------------------------------------------
+  if a:commit_message == ""
+    echom ""
+    return 0
+  endif
+
+  " Perform commit
+  " ----------------------------------------------
   echo system("git commit --all --message '" . substitute(a:commit_message, "'", "'\\\\''", 'g') . "' && git push")
 
+  " Output result
+  " ----------------------------------------------
   if v:shell_error == 0
     echom "Committed."
   else
