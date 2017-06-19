@@ -108,7 +108,7 @@ set foldmethod=marker
 " set swapsync=
 " set nofsync
 
-" tab over settings (2 spaces)
+" Tab over settings (2 spaces)
 set softtabstop=2
 set expandtab
 set shiftwidth=2
