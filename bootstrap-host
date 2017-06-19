@@ -19,4 +19,6 @@ set-bookmark-defaults
 chmod 700 $HOME/.ssh
 chmod 600 $HOME/.ssh/config
 
+test -d ~/.vim/bundle/Vundle.vim || git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 echo "Done."
