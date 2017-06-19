@@ -10,6 +10,15 @@ set autoread
 " Automatically write buffers when required
 set autowriteall
 
+" spellcheck
+autocmd BufRead,BufNewFile *.md,*.txt setlocal spell
+
+" instant search
+set is
+
+filetype plugin indent on
+syntax on
+
 " ------------------------------------------------
 " PLUG -------------------------------------------
 " ------------------------------------------------
@@ -46,7 +55,15 @@ Plug 'hylang/vim-hy'
 call plug#end()
 
 " ------------------------------------------------
-" VUNDLE -----------------------------------------
+" PATHOGEN->INIT ---------------------------------
+" ------------------------------------------------
+filetype off
+
+call pathogen#infect()
+call pathogen#helptags()
+
+" ------------------------------------------------
+" VUNDLE->INIT -----------------------------------
 " ------------------------------------------------
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -56,39 +73,13 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " ------------------------------------------------
+" VUNDLE->PLUGINS --------------------------------
 " ------------------------------------------------
-" ------------------------------------------------
-
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-" spellcheck
-autocmd BufRead,BufNewFile *.md,*.txt setlocal spell
-
-" instant search
-set is
+Plugin 'skywind3000/asyncrun.vim'
 
 " ------------------------------------------------
-" PATHOGEN ---------------------------------------
+" CONFIGURE->GENERAL -----------------------------
 " ------------------------------------------------
-filetype off
-
-call pathogen#infect()
-call pathogen#helptags()
-
-filetype plugin indent on
-syntax on
-
-" ------------------------------------------------
-" ------------------------------------------------
-" ------------------------------------------------
-
-" comment wrapping
-"set wrap
-"set textwidth=80
 
 " Markdown gets different textwidth
 au BufRead,BufNewFile *.md setlocal textwidth=300
@@ -113,10 +104,6 @@ autocmd! bufwritepost .vimrc source %
 
 " folding
 set foldmethod=marker
-
-" hang fix
-" set swapsync=
-" set nofsync
 
 " Tab over settings (2 spaces)
 set softtabstop=2
@@ -308,6 +295,16 @@ endfunction
 
 autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
+
+" ------------------------------------------------
+" CONFIG->EASY-ALIGN -----------------------------
+" ------------------------------------------------
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " ------------------------------------------------
 " CONFIG->BETTER-WHITESPACE ----------------------
