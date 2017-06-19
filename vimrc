@@ -16,8 +16,9 @@ autocmd BufRead,BufNewFile *.md,*.txt setlocal spell
 " instant search
 set is
 
+" filetype
+filetype on
 filetype plugin indent on
-syntax on
 
 " ------------------------------------------------
 " PLUG -------------------------------------------
@@ -56,8 +57,6 @@ call plug#end()
 " ------------------------------------------------
 " PATHOGEN->INIT ---------------------------------
 " ------------------------------------------------
-filetype off
-
 call pathogen#infect()
 call pathogen#helptags()
 
