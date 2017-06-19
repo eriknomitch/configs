@@ -10,6 +10,13 @@
 " ------------------------------------------------
 function! G_Commit_And_Push()
 
+  call system("$HOME/.repositories/g/bin/git-is-clean-work-tree")
+
+  if v:shell_error == 0
+    echom "Git work tree is clean"
+    return 0
+  endif
+
   call inputsave()
   let a:commit_message = input('Commit Message: ')
   call inputrestore()
