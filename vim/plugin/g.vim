@@ -10,12 +10,6 @@
 " ------------------------------------------------
 function! G_Commit_And_Push()
 
-  "redraw
-  "let a:commit_message = input('Commit Message: ')
-  "echo ""
-
-  echohl "foo"
-
   call inputsave()
   let a:commit_message = input('Commit Message: ')
   call inputrestore()
@@ -23,6 +17,12 @@ function! G_Commit_And_Push()
   redraw
 
   echo system("git commit --all --message '" . substitute(a:commit_message, "'", "'\\\\''", 'g') . "' && git push")
+
+  if v:shell_error == 0
+    echom "Committed."
+  else
+    echom "Error."
+  endif
 
 endfunction
 
