@@ -19,7 +19,7 @@ function! G_Commit_And_Push()
   call system("git commit --all --message '" . substitute(a:commit_message, "'", "'\\\\''", 'g') . "' && git push")
 
   if v:shell_error == 0
-    echom "\nCommitted."
+    echom "Committed."
   else
     echom "Error."
   endif
