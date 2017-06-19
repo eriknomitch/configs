@@ -44,7 +44,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'mhinz/vim-signify' " (git gutter)
 Plug 'tpope/vim-unimpaired'
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ervandew/supertab'
 Plug 'Shougo/unite.vim' " vimfiler depends on this
 Plug 'Shougo/vimfiler.vim'
