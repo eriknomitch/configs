@@ -45,7 +45,7 @@ Host micro-*
 # ------------------------------------------------
 # Raspberry Pi Zero v.1.3
 Host 3d-printer-camera
-  HostName 3d-printer-camera
+  HostName 3d-printer-camera.local
   User pi
 
 # tv-controller-master
