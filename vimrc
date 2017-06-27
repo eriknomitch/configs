@@ -1,4 +1,4 @@
-" ================================================ foo
+" ================================================ 
 " VIM->VIMRC =====================================
 " ================================================
 set nocompatible
@@ -52,6 +52,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'pangloss/vim-javascript'
 Plug 'kana/vim-arpeggio'
 Plug 'hylang/vim-hy'
+Plug 'rizzatti/dash.vim'
 call plug#end()
 
 " ------------------------------------------------
