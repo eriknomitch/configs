@@ -37,7 +37,7 @@ function! G_Commit_And_Push()
   " Perform commit
   " ----------------------------------------------
   "echo system("git commit --all --message '" . substitute(a:commit_message, "'", "'\\\\''", 'g') . "' && git push")
-  call dispatch#spawn("git commit --all --message '" . substitute(a:commit_message, "'", "'\\\\''", 'g') . "' && git push")
+  call dispatch#start("git commit --all --message '" . substitute(a:commit_message, "'", "'\\\\''", 'g') . "' && git push")
 
   " Output result
   " ----------------------------------------------
