@@ -10,7 +10,6 @@
 " ------------------------------------------------
 function! G_Commit_And_Push()
 
-
   " Check if work tree is already clean
   " ----------------------------------------------
   call system("$HOME/.repositories/g/bin/git-is-clean-work-tree")
@@ -37,7 +36,8 @@ function! G_Commit_And_Push()
 
   " Perform commit
   " ----------------------------------------------
-  echo system("git commit --all --message '" . substitute(a:commit_message, "'", "'\\\\''", 'g') . "' && git push")
+  "echo system("git commit --all --message '" . substitute(a:commit_message, "'", "'\\\\''", 'g') . "' && git push")
+  call dispatch#spawn("git commit --all --message '" . substitute(a:commit_message, "'", "'\\\\''", 'g') . "' && git push")
 
   " Output result
   " ----------------------------------------------

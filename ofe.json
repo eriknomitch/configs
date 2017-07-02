@@ -1,7 +1,8 @@
 {
   "default": {
     "extensions": [""],
-    "files":      ["ofe.json", ".bin/*"]
+    "files":      ["ofe.json", ".bin/*"],
+    "exclusions": ["*.ogg"]
   },
   "zsh": {
     "files": ["zsh*", "zshrc-specific-to-*"]
