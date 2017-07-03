@@ -529,7 +529,7 @@ export PATH=$PATH:/usr/local/cuda/bin
 # MONGOOSE-OS (MOS) ------------------------------
 # ------------------------------------------------
 if [[ -d $HOME/.mos ]] ; then
-  export PATH=$PATH:$HOME.mos/bin
+  export PATH=$PATH:$HOME/.mos/bin
 fi
 
 # ------------------------------------------------
