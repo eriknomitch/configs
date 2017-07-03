@@ -526,6 +526,13 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 export PATH=$PATH:/usr/local/cuda/bin
 
 # ------------------------------------------------
+# MONGOOSE-OS (MOS) ------------------------------
+# ------------------------------------------------
+if [[ -d $HOME/.mos ]] ; then
+  export PATH=$PATH:$HOME.mos/bin
+fi
+
+# ------------------------------------------------
 # PROMPT -----------------------------------------
 # ------------------------------------------------
 source $HOME/.configs/zshrc-prompt
