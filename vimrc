@@ -76,6 +76,10 @@ Plugin 'VundleVim/Vundle.vim'
 " ------------------------------------------------
 Plugin 'skywind3000/asyncrun.vim'
 
+" JSX
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+
 " ------------------------------------------------
 " CONFIGURE->GENERAL -----------------------------
 " ------------------------------------------------

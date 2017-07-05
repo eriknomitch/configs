@@ -529,6 +529,7 @@ export PATH=$PATH:/usr/local/cuda/bin
 # MONGOOSE-OS (MOS) ------------------------------
 # ------------------------------------------------
 if [[ -d $HOME/.mos ]] ; then
+  export MOS_PORT=/dev/tty.SLAB_USBtoUART
   export PATH=$PATH:$HOME/.mos/bin
 fi
 
