@@ -288,6 +288,7 @@ alias dh="disable-history-for-session"
 alias ht="htop"
 alias htn="htop --user=nobody"
 alias gpi="grep --ignore-case"
+alias pgrep="pgrep -il"
 
 if [[ "$USER" != "root" ]] ; then
   alias apt-get="sudo apt-get"
