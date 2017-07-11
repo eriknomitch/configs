@@ -1,6 +1,8 @@
 [user]
   email = enomitch@gmail.com
   name = Erik Nomitch
+[github]
+  user = eriknomitch
 [push]
   default = current
 [mergetool "fugitive"]

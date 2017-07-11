@@ -80,6 +80,9 @@ Plugin 'skywind3000/asyncrun.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 
+" Vim Tmux Navigator
+Bundle 'christoomey/vim-tmux-navigator'
+
 " ------------------------------------------------
 " CONFIGURE->GENERAL -----------------------------
 " ------------------------------------------------
