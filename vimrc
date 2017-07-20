@@ -81,7 +81,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 
 " Vim Tmux Navigator
-Bundle 'christoomey/vim-tmux-navigator'
+Plugin 'christoomey/vim-tmux-navigator'
 
 " ------------------------------------------------
 " CONFIGURE->GENERAL -----------------------------
@@ -242,13 +242,14 @@ au FileType crontab setlocal bkc=yes
 let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_loc_list_height = 3
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
 
 let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
 
-let g:syntastic_javascript_checkers=['eslint']
+"let g:syntastic_javascript_checkers=['eslint']
+"let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
 
 let g:syntastic_quiet_messages = {
       \ "regex": ['assigned but unused variable', 'file not found', 'interpreted as argument prefix'] }
