@@ -37,7 +37,7 @@ end
 -- Application shortcuts
 bindApplicationFocus("I", "Google Chrome")
 bindApplicationFocus("M", "Messages")
-bindApplicationFocus("G", "Kiwi for Gmail")
+-- bindApplicationFocus("G", "Kiwi for Gmail")
 bindApplicationFocus("E", "Evernote")
 bindApplicationFocus("A", "Alternote")
 bindApplicationFocus("T", "Todoist")

@@ -7,6 +7,9 @@
   "zsh": {
     "files": ["zsh*", "zshrc-specific-to-*"]
   },
+  "tmux": {
+    "files": ["tmux.conf"]
+  },
   "hyper": {
     "files": ["hyper.js"]
   },
