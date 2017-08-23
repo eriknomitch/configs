@@ -34,7 +34,7 @@ Plug 'tpope/vim-rails'
 Plug 'mbbill/undotree'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elzr/vim-json'
-Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline', { 'commit': '470e9870f13830580d1938a2dae1be5b6e43d92a' }
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-commentary'
@@ -53,6 +53,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'kana/vim-arpeggio'
 Plug 'hylang/vim-hy'
 Plug 'rizzatti/dash.vim'
+Plug 'Shougo/denite.nvim'
 call plug#end()
 
 " ------------------------------------------------

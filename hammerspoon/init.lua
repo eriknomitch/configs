@@ -38,6 +38,7 @@ end
 bindApplicationFocus("I", "Google Chrome")
 bindApplicationFocus("M", "Messages")
 -- bindApplicationFocus("G", "Kiwi for Gmail")
+bindApplicationFocus("W", "Wavebox")
 bindApplicationFocus("E", "Evernote")
 bindApplicationFocus("A", "Alternote")
 bindApplicationFocus("T", "Todoist")
@@ -56,7 +57,6 @@ end
 hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
 
 hs.hotkey.bind({"cmd", "ctrl", "shift", "P"}, "P", function() confirmThenOpenApplication("Adobe Photoshop CC 2017") end)
-hs.hotkey.bind({"cmd", "ctrl", "shift"}, "S", function() hs.application.launchOrFocus("Slack") end)
 hs.hotkey.bind({"cmd", "ctrl", "shift"}, "G", function() hs.application.launchOrFocus("Online Go") end)
 
 hs.hotkey.bind(movement, "Left", function()
@@ -188,12 +188,15 @@ function handleWindowCreated(win, event)
   if app:title() == "Preview" then
     app_fullscreen = true
   end
+  
+  if app:title() == "LastPass" then
+    app_fullscreen = true
+  end
 
+  -- ---------------------------------------------
   if app_fullscreen == true then
     fullscreen()
   end
-
-  -- hs.alert.show(win:title())
 end
 
 windows = hs.window.filter.new(nil)
