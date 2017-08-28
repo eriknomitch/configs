@@ -226,3 +226,6 @@ Host deep-learning ai.huntclub.co hc-ai
     IdentityFile ~/.ssh/google_compute_engine
     Port 22
 
+Host docker-proxy
+    HostName 45.63.69.132
+    User development

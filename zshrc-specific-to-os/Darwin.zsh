@@ -48,3 +48,8 @@ source-if-exists ~/.configs/iterm2.zsh
 if ( $ZPLUG_INSTALLED ) ; then
   zplug "wookayin/anybar-zsh"
 fi
+
+# ------------------------------------------------
+# BOOT2DOCKER ------------------------------------
+# ------------------------------------------------
+#command-exists boot2docker && eval "$(boot2docker shellinit)"
