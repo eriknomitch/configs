@@ -185,6 +185,10 @@ function handleWindowCreated(win, event)
     app_fullscreen = true
   end
   
+  if app:title() == "Evernote" then
+    app_fullscreen = true
+  end
+  
   if app:title() == "Preview" then
     app_fullscreen = true
   end
