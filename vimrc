@@ -10,13 +10,16 @@ set autoread
 " Automatically write buffers when required
 set autowriteall
 
-" spellcheck
+" Spellcheck
 autocmd BufRead,BufNewFile *.md,*.txt setlocal spell
 
-" instant search
-set is
+" Instant search
+set incsearch
 
-" filetype
+" Smart case search
+set smartcase
+
+" Filetype
 filetype on
 filetype plugin indent on
 
