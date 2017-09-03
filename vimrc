@@ -17,6 +17,7 @@ autocmd BufRead,BufNewFile *.md,*.txt setlocal spell
 set incsearch
 
 " Smart case search
+set ignorecase
 set smartcase
 
 " Filetype
@@ -57,6 +58,10 @@ Plug 'kana/vim-arpeggio'
 Plug 'hylang/vim-hy'
 Plug 'rizzatti/dash.vim'
 Plug 'Shougo/denite.nvim'
+Plug 'rhysd/vim-crystal'
+Plug 'SirVer/ultisnips'
+Plug 'epilande/vim-es2015-snippets'
+Plug 'epilande/vim-react-snippets'
 call plug#end()
 
 " ------------------------------------------------
@@ -266,6 +271,8 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:30,results:30'
+let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
+
 
 " ------------------------------------------------
 " CONFIG->AIRLINE --------------------------------

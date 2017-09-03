@@ -534,6 +534,13 @@ if [[ -d $HOME/.mos ]] ; then
 fi
 
 # ------------------------------------------------
+# MPM (DEVELOPMENT) ------------------------------
+# ------------------------------------------------
+if [[ ! `command-exists mpm` && -d $HOME/.repositories/mpm-cr ]] ; then
+  export PATH=$PATH:$HOME/.repositories/mpm-cr/bin
+fi
+
+# ------------------------------------------------
 # PROMPT -----------------------------------------
 # ------------------------------------------------
 source $HOME/.configs/zshrc-prompt
