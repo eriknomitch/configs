@@ -459,6 +459,7 @@ export HOMEBREW_GITHUB_API_TOKEN=2af293ecbefc21d9cae3b139ed456ea979adc4a7
 # ------------------------------------------------
 # ALIASES ----------------------------------------
 # ------------------------------------------------
+# FIX: Add export -f to some of these for script use
 alias T="tree"
 alias e="edit-common"
 alias arp="sudo arp"
