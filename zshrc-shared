@@ -373,7 +373,16 @@ function rm-history() {
     return 1
   fi
 
+  echo "Removing $HISTFILE"
+
+  _other_history_paths="~/.bash_history ~/.sh_history ~/.zsh_history"
+
   rm $HISTFILE
+
+  if prompt "Also remove other histories?\n  - ~/.bash_history\n  - ~/.directory_history/*\n  - ~/.sh_history\n  - ~/.zsh_history"; then
+    rm $HOME/.bash_history
+    exit
+  fi
 }
 
 # ------------------------------------------------

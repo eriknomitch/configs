@@ -31,7 +31,6 @@ call plug#begin()
 Plug 'junegunn/vim-easy-align'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-rails'
@@ -62,6 +61,12 @@ Plug 'rhysd/vim-crystal'
 Plug 'SirVer/ultisnips'
 Plug 'epilande/vim-es2015-snippets'
 Plug 'epilande/vim-react-snippets'
+Plug 'w0rp/ale'
+Plug 'VundleVim/Vundle.vim'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 " ------------------------------------------------
@@ -73,24 +78,24 @@ call pathogen#helptags()
 " ------------------------------------------------
 " VUNDLE->INIT -----------------------------------
 " ------------------------------------------------
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" " set the runtime path to include Vundle and initialize
+" set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" " let Vundle manage Vundle, required
+" Plugin 'VundleVim/Vundle.vim'
 
-" ------------------------------------------------
-" VUNDLE->PLUGINS --------------------------------
-" ------------------------------------------------
-Plugin 'skywind3000/asyncrun.vim'
+" " ------------------------------------------------
+" " VUNDLE->PLUGINS --------------------------------
+" " ------------------------------------------------
+" Plugin 'skywind3000/asyncrun.vim'
 
-" JSX
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
+" " JSX
+" Plugin 'pangloss/vim-javascript'
+" Plugin 'mxw/vim-jsx'
 
-" Vim Tmux Navigator
-Plugin 'christoomey/vim-tmux-navigator'
+" " Vim Tmux Navigator
+" Plugin 'christoomey/vim-tmux-navigator'
 
 " ------------------------------------------------
 " CONFIGURE->GENERAL -----------------------------
@@ -244,24 +249,16 @@ au FileType crontab setlocal bkc=yes
 " CONFIG->SYNTASTIC ------------------------------
 " ------------------------------------------------
 
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_loc_list_height = 3
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 1
 
-let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_loc_list_height = 3
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+"let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
 
-let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
-
-"let g:syntastic_javascript_checkers=['eslint']
-"let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
-
-let g:syntastic_quiet_messages = {
-      \ "regex": ['assigned but unused variable', 'file not found', 'interpreted as argument prefix'] }
+"let g:syntastic_quiet_messages = {
+      "\ "regex": ['assigned but unused variable', 'file not found', 'interpreted as argument prefix'] }
 
 " ------------------------------------------------
 " CONFIG->CTRLP ----------------------------------
