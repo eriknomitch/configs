@@ -67,6 +67,7 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 " ------------------------------------------------
@@ -358,3 +359,41 @@ let g:fzf_colors =
       \ 'header':  ['fg', 'Comment'] }
 
 nnoremap <leader>b :Buffers<cr>
+
+" ------------------------------------------------
+" CONFIG->VIM-MULTIPLE-CURSORS -------------------
+" ------------------------------------------------
+" See: https://github.com/terryma/vim-multiple-cursors#mapping
+let g:multi_cursor_use_default_mapping=0
+
+" Default mapping
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-k>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
+
+" Default highlighting (see help :highlight and help :highlight-link)
+" See: https://github.com/terryma/vim-multiple-cursors#highlight
+highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
+highlight link multiple_cursors_visual Visual
+
+
+" ------------------------------------------------
+" CONFIG->ALE ------------------------------------
+" ------------------------------------------------
+let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
+let g:ale_linter_aliases = {'jsx': 'css'}
+
+"let g:ale_fixers = {
+"\   'javascript': ['eslint'],
+"\}
+
+" https://github.com/w0rp/ale#5iii-how-can-i-change-the-signs-ale-uses
+let g:airline#extensions#ale#enabled = 1
+
+" https://github.com/prettier/prettier/tree/master/editors/vim#ale
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['prettier', 'eslint']
+
+
