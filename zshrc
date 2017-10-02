@@ -507,6 +507,7 @@ fi
 export PATH=$PATH:$HOME/.pyenv/bin
 
 if command-exists pyenv; then
+  export PYENV_ROOT="$HOME/.pyenv"
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi
@@ -540,6 +541,9 @@ fi
 if [[ ! `command-exists mpm` && -d $HOME/.repositories/mpm-cr ]] ; then
   export PATH=$PATH:$HOME/.repositories/mpm-cr/bin
 fi
+
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # ------------------------------------------------
 # PROMPT -----------------------------------------
