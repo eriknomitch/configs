@@ -15,8 +15,8 @@
   log-tree = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
 [alias]
   changes = "!f() { git diff $1^ $1;  }; f"
-;[core]
-  ;pager = diff-so-fancy | less --tabs=4 -RFX
+[core]
+  pager = diff-so-fancy | less --tabs=4 -RFX
 [rerere]
   enabled = true
 [gui]

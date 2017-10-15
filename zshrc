@@ -542,8 +542,10 @@ if [[ ! `command-exists mpm` && -d $HOME/.repositories/mpm-cr ]] ; then
   export PATH=$PATH:$HOME/.repositories/mpm-cr/bin
 fi
 
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+# ------------------------------------------------
+# CONFIG->PRWD -----------------------------------
+# ------------------------------------------------
+export PRWD_BIND_TO_TMUX=true
 
 # ------------------------------------------------
 # PROMPT -----------------------------------------

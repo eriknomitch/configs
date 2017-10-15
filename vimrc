@@ -68,6 +68,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'jremmen/vim-ripgrep'
 call plug#end()
 
 " ------------------------------------------------
@@ -367,7 +368,7 @@ nnoremap <leader>b :Buffers<cr>
 let g:multi_cursor_use_default_mapping=0
 
 " Default mapping
-let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_next_key='<C-m>'
 let g:multi_cursor_prev_key='<C-k>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
@@ -377,7 +378,6 @@ let g:multi_cursor_quit_key='<Esc>'
 " See: https://github.com/terryma/vim-multiple-cursors#highlight
 highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
 highlight link multiple_cursors_visual Visual
-
 
 " ------------------------------------------------
 " CONFIG->ALE ------------------------------------
@@ -395,5 +395,9 @@ let g:airline#extensions#ale#enabled = 1
 " https://github.com/prettier/prettier/tree/master/editors/vim#ale
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier', 'eslint']
+let g:ale_fixers['ruby'] = ['rubocop']
 
-
+" ------------------------------------------------
+" CONFIG->RG -------------------------------------
+" ------------------------------------------------
+let g:rg_highlight = 1

@@ -181,6 +181,10 @@ function handleWindowCreated(win, event)
     app_fullscreen = true
   end
   
+  if app:title() == "draw.io" then
+    app_fullscreen = true
+  end
+  
   if app:title() == "Napkin" then
     app_fullscreen = true
   end
@@ -193,9 +197,9 @@ function handleWindowCreated(win, event)
     app_fullscreen = true
   end
   
-  if app:title() == "LastPass" then
-    app_fullscreen = true
-  end
+  --if app:title() == "LastPass" then
+    --app_fullscreen = true
+  --end
 
   -- ---------------------------------------------
   if app_fullscreen == true then
