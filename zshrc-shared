@@ -168,7 +168,7 @@ rex()
 {
   sudo reboot &>/dev/null exit
 }
-pox() 
+pox()
 {
   sudo shutdown -h now &>/dev/null exit
 }
@@ -410,7 +410,7 @@ function pwd-home-count() {
   if [[ $PWD == $HOME ]] ; then
 
     _home_count=`ls -1 | count-lines`
-    
+
     if ( $ON_DARWIN ) ; then
       let _home_count=_home_count-28
     fi
@@ -501,7 +501,7 @@ function chpwd() {
   if [[ $SKIP_CHPWD == true ]] ; then
     return
   fi
-  
+
   if [[ $PWD == $HOME ]] ; then
     clear
   fi
