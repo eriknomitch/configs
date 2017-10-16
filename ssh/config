@@ -46,7 +46,7 @@ Host micro-*
 # Raspberry Pi Zero v.1.3
 Host 3d-printer-camera
   HostName 3d-printer-camera.local
- 
+
 # micro-touchscreen
 # ------------------------------------------------
 Host micro-touchscreen
@@ -182,6 +182,9 @@ Host micro-* tv-controller-master
   StrictHostKeyChecking no
   ServerAliveInterval 60
   # WARNING
+  User pi
+
+Host sdr
   User pi
 
 # ------------------------------------------------
