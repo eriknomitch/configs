@@ -70,6 +70,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'jremmen/vim-ripgrep'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " ------------------------------------------------
@@ -415,3 +417,8 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=234
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
 
+" ------------------------------------------------
+" CONFIG->YANKSTACK ------------------------------
+" ------------------------------------------------
+nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
