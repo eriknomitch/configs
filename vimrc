@@ -69,6 +69,7 @@ Plug 'mxw/vim-jsx'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'jremmen/vim-ripgrep'
+Plug 'nathanaelkane/vim-indent-guides'
 call plug#end()
 
 " ------------------------------------------------
@@ -385,6 +386,7 @@ highlight link multiple_cursors_visual Visual
 " CONFIG->ALE ------------------------------------
 " ------------------------------------------------
 let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
+let g:ale_linters = {'js': ['stylelint', 'eslint']}
 let g:ale_linter_aliases = {'jsx': 'css'}
 
 "let g:ale_fixers = {
@@ -403,3 +405,13 @@ let g:ale_fixers['ruby'] = ['rubocop']
 " CONFIG->RG -------------------------------------
 " ------------------------------------------------
 let g:rg_highlight = 1
+
+" ------------------------------------------------
+" CONFIG->VIM-INDENT-GUIDES ----------------------
+" ------------------------------------------------
+let g:indent_guides_enable_on_vim_startup = 1
+
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=234
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
+
