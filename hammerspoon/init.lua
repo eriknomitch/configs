@@ -51,12 +51,12 @@ function confirmThenOpenApplication(name)
 end
 
 function confirmForPhotoshop()
-  YesNoDialogBox(function() hs.application.launchOrFocus("Adobe Photoshop CC 2017") end)
+  YesNoDialogBox(function() hs.application.launchOrFocus("Adobe Photoshop CC 2018") end)
 end
 
 hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
 
-hs.hotkey.bind({"cmd", "ctrl", "shift", "P"}, "P", function() confirmThenOpenApplication("Adobe Photoshop CC 2017") end)
+hs.hotkey.bind({"cmd", "ctrl", "shift", "P"}, "P", function() confirmThenOpenApplication("Adobe Photoshop CC 2018") end)
 hs.hotkey.bind({"cmd", "ctrl", "shift"}, "G", function() hs.application.launchOrFocus("Online Go") end)
 
 hs.hotkey.bind(movement, "Left", function()
