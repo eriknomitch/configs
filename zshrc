@@ -205,13 +205,14 @@ elif ( $ON_LINUX ) ; then
   export ZPLUG_HOME=$HOME/.zplug
 fi
 
-ZPLUG_INSTALLED=false
-
 if test -f $ZPLUG_HOME/init.zsh; then
 
-  ZPLUG_INSTALLED=true
-
   source $ZPLUG_HOME/init.zsh
+  
+  # ----------------------------------------------
+  # ZPLUG->PLUGINS -------------------------------
+  # ----------------------------------------------
+  zplug load --verbose
 fi
 
 # ------------------------------------------------
@@ -484,24 +485,6 @@ alias S="ssh server"
 alias A="ssh ai"
 
 # ------------------------------------------------
-# ZPLUG ------------------------------------------
-# ------------------------------------------------
-if ( $ON_DARWIN ) ; then
-  export ZPLUG_HOME=/usr/local/opt/zplug
-elif ( $ON_LINUX ) ; then
-  export ZPLUG_HOME=$HOME/.zplug
-fi
-
-if test -f $ZPLUG_HOME/init.zsh; then
-  source $ZPLUG_HOME/init.zsh
-
-  # ----------------------------------------------
-  # ZPLUG->PLUGINS -------------------------------
-  # ----------------------------------------------
-  zplug "wookayin/anybar-zsh"
-fi
-
-# ------------------------------------------------
 # PYENV ------------------------------------------
 # ------------------------------------------------
 export PATH=$PATH:$HOME/.pyenv/bin
@@ -551,3 +534,4 @@ export PRWD_BIND_TO_TMUX=true
 # PROMPT -----------------------------------------
 # ------------------------------------------------
 source $HOME/.configs/zshrc-prompt
+

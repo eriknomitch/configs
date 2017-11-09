@@ -72,6 +72,8 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'sheerun/vim-polyglot'
+Plug 'styled-components/vim-styled-components'
+Plug 'brooth/far.vim'
 call plug#end()
 
 " ------------------------------------------------

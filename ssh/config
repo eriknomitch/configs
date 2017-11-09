@@ -58,29 +58,24 @@ Host micro-touchscreen
 #  - Internal Wi-FI
 #    7c:c7:09:b6:f2:1d
 Host chip
-    HostName chip
-    PermitLocalCommand true
-    User chip
-    Port 22
+  HostName chip
+  PermitLocalCommand true
+  User chip
+  Port 22
 
-# odroidc2
+# sdr
+# - odroidc2
 # ------------------------------------------------
-Host odroidc2
-    HostName odroidc2.local
-    PermitLocalCommand true
-    User erik
-    Port 22
+Host sdr
+  PermitLocalCommand true
+  User erik
+  Port 22
 
 # ------------------------------------------------
 # LORA -------------------------------------------
 # ------------------------------------------------
 Host lora-*
-
-  HostName %h.local
-
   User pi
-
-  UserKnownHostsFile /dev/null
   StrictHostKeyChecking no
 
 # ------------------------------------------------
