@@ -156,6 +156,11 @@ gst()
 }
 fnd()
 {
+  if command-exists fd; then
+    fd $*
+    return
+  fi
+
   _name="$1"
   shift
   find ./ -iname "*$_name*" $* ;
