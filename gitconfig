@@ -1,23 +1,24 @@
 [user]
-  email = enomitch@gmail.com
-  name = Erik Nomitch
+	email = enomitch@gmail.com
+	name = Erik Nomitch
 [github]
-  user = eriknomitch
+	user = eriknomitch
 [push]
-  default = current
+	default = current
 [mergetool "fugitive"]
-  cmd = nvim -f -c \"Gvdiff\" \"$MERGED\"
+	cmd = nvim -f -c \"Gvdiff\" \"$MERGED\"
 [merge]
-  tool = fugitive
+	tool = fugitive
+	conflictstyle = diff3
 [alias]
-  last = log -1 HEAD
-  changed-files = diff-tree --no-commit-id --name-only -r
-  log-tree = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
+	last = log -1 HEAD
+	changed-files = diff-tree --no-commit-id --name-only -r
+	log-tree = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
 [alias]
-  changes = "!f() { git diff $1^ $1;  }; f"
+	changes = "!f() { git diff $1^ $1;  }; f"
 [core]
-  pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [rerere]
-  enabled = true
+	enabled = true
 [gui]
-  recentrepo = /Users/erik/.repositories/hc
+	recentrepo = /Users/erik/.repositories/hc
