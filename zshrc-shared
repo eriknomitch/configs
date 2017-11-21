@@ -443,12 +443,12 @@ else
 fi
 
 # Right-hand prompt
-RPROMPT="%{$fg_bold[black]%}%~%{$reset_color%}"
+#RPROMPT="%{$fg_bold[black]%}%~%{$reset_color%}"
 
 if ( $ON_DARWIN ) ; then
 
   # Terminal.app has problems with bold black (grey).
-  RPROMPT="%{$fg[white]%}%~%{$reset_color%}"
+  #RPROMPT="%{$fg[white]%}%~%{$reset_color%}"
 
   alias del="rmtrash"
 

@@ -199,21 +199,21 @@ function tos {
 # ------------------------------------------------
 # ZPLUG ------------------------------------------
 # ------------------------------------------------
-if ( $ON_DARWIN ) ; then
-  export ZPLUG_HOME=/usr/local/opt/zplug
-elif ( $ON_LINUX ) ; then
-  export ZPLUG_HOME=$HOME/.zplug
-fi
+#if ( $ON_DARWIN ) ; then
+  #export ZPLUG_HOME=/usr/local/opt/zplug
+#elif ( $ON_LINUX ) ; then
+  #export ZPLUG_HOME=$HOME/.zplug
+#fi
 
-if test -f $ZPLUG_HOME/init.zsh; then
+#if test -f $ZPLUG_HOME/init.zsh; then
 
-  source $ZPLUG_HOME/init.zsh
-  
-  # ----------------------------------------------
-  # ZPLUG->PLUGINS -------------------------------
-  # ----------------------------------------------
-  zplug load --verbose
-fi
+  #source $ZPLUG_HOME/init.zsh
+
+  ## ----------------------------------------------
+  ## ZPLUG->PLUGINS -------------------------------
+  ## ----------------------------------------------
+  #zplug load
+#fi
 
 # ------------------------------------------------
 # SOURCE->HOST-SPECIFIC --------------------------
@@ -415,18 +415,14 @@ bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
 
 function zle-line-init zle-keymap-select {
-    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-    zle reset-prompt
+  VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+  zle reset-prompt
 }
 
 zle -N zle-line-init
 zle -N zle-keymap-select
 export KEYTIMEOUT=40
-
-command-exists yarn && export PATH="$PATH:`yarn global bin`"
-
-alias GW="gw 2"
 
 # ------------------------------------------------
 # LOCALES ----------------------------------------
@@ -441,21 +437,6 @@ export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export LC_TYPE="en_US.UTF-8"
-
-# ------------------------------------------------
-# DEEP-LEARNING ----------------------------------
-# ------------------------------------------------
-export PATH="$PATH:$HOME/.repositories/deep-learning/bin"
-
-# ------------------------------------------------
-# FIX: ORGANIZE ----------------------------------
-# ------------------------------------------------
-export PATH=$PATH:$HOME/.miniconda3/bin
-
-alias hu="hangups --col-scheme solarized-dark --col-palette-colors 256 --time-format '' --col-msg-sender-fg 'light green' --col-msg-self-fg 'light blue' --key-close-tab 'shift meta w'"
-alias gh="tmux new-session -A -s hangups \"hangups --col-scheme solarized-dark --col-palette-colors 256 --time-format '' --col-msg-sender-fg 'light green' --col-msg-self-fg 'light blue' --key-close-tab 'shift meta w'\""
-
-export HOMEBREW_GITHUB_API_TOKEN=2af293ecbefc21d9cae3b139ed456ea979adc4a7
 
 # ------------------------------------------------
 # ALIASES ----------------------------------------
@@ -483,6 +464,21 @@ alias dsp="docker system prune --force"
 # ------------------------------------------------
 alias S="ssh server"
 alias A="ssh ai"
+
+# ------------------------------------------------
+# YARN -------------------------------------------
+# ------------------------------------------------
+command-exists yarn && export PATH="$PATH:`yarn global bin`"
+
+# ------------------------------------------------
+# DEEP-LEARNING ----------------------------------
+# ------------------------------------------------
+export PATH="$PATH:$HOME/.repositories/deep-learning/bin"
+
+# ------------------------------------------------
+# BREW -------------------------------------------
+# ------------------------------------------------
+export HOMEBREW_GITHUB_API_TOKEN=2af293ecbefc21d9cae3b139ed456ea979adc4a7
 
 # ------------------------------------------------
 # PYENV ------------------------------------------
@@ -534,4 +530,8 @@ export PRWD_BIND_TO_TMUX=true
 # PROMPT -----------------------------------------
 # ------------------------------------------------
 source $HOME/.configs/zshrc-prompt
+
+if command-exists git-radar; then
+  export PROMPT="\$(git-radar --zsh) $PROMPT"
+fi
 

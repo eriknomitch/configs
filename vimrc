@@ -157,10 +157,6 @@ set showmode
 " HOTKEYS ----------------------------------------
 " ------------------------------------------------
 
-" No Highlight
-nnoremap <leader>h :noh<cr>
-nnoremap <leader>w :wqall<cr>
-
 " Next/Previous Buffers
 noremap <C-S-Right> :next<CR>
 noremap <C-S-Left> :prev<CR>
@@ -430,6 +426,11 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 " CONFIG->KEY-MAPPINGS ---------------------------
 " ------------------------------------------------
 
+" general
+nnoremap <leader>q :qall<cr>
+nnoremap <leader>h :noh<cr>
+nnoremap <leader>w :wqall<cr>
+
 " vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -439,3 +440,8 @@ nnoremap <leader>af :ALEFix<cr>
 nnoremap <leader>at :ALEToggle<cr>
 nnoremap <leader>ae :ALEEnable<cr>
 nnoremap <leader>ad :ALEDisable<cr>
+
+" Whitespace
+nnoremap <leader>sr :StripWhitespace<cr>
+
+

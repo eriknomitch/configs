@@ -36,7 +36,7 @@ alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 
 source-if-exists /sw/bin/init.sh
-  
+
 # ------------------------------------------------
 # FIX: -------------------------------------------
 # ------------------------------------------------
@@ -45,9 +45,9 @@ source-if-exists ~/.configs/iterm2.zsh
 # ------------------------------------------------
 # ZPLUG ------------------------------------------
 # ------------------------------------------------
-if ( $ZPLUG_INSTALLED ) ; then
-  zplug "wookayin/anybar-zsh"
-fi
+#if ( $ZPLUG_INSTALLED ) ; then
+  #zplug "wookayin/anybar-zsh"
+#fi
 
 # ------------------------------------------------
 # BOOT2DOCKER ------------------------------------
