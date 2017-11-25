@@ -531,7 +531,3 @@ export PRWD_BIND_TO_TMUX=true
 # ------------------------------------------------
 source $HOME/.configs/zshrc-prompt
 
-if command-exists git-radar; then
-  export PROMPT="\$(git-radar --zsh) $PROMPT"
-fi
-
