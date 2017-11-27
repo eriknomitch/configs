@@ -37,14 +37,13 @@ end
 -- Application shortcuts
 bindApplicationFocus("I", "Google Chrome")
 bindApplicationFocus("M", "Messages")
--- bindApplicationFocus("G", "Kiwi for Gmail")
 bindApplicationFocus("W", "Wavebox")
 bindApplicationFocus("E", "Evernote")
-bindApplicationFocus("A", "Alternote")
 bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("Y", "YakYak")
 bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
+bindApplicationFocus("H", "Helium")
 
 function confirmThenOpenApplication(name)
   YesNoDialogBox(function() hs.application.launchOrFocus(name) end)
@@ -180,23 +179,23 @@ function handleWindowCreated(win, event)
   if app:title() == "Kiwi for Gmail" then
     app_fullscreen = true
   end
-  
+
   if app:title() == "draw.io" then
     app_fullscreen = true
   end
-  
+
   if app:title() == "Napkin" then
     app_fullscreen = true
   end
-  
+
   if app:title() == "Evernote" then
     app_fullscreen = true
   end
-  
+
   if app:title() == "Preview" then
     app_fullscreen = true
   end
-  
+
   --if app:title() == "LastPass" then
     --app_fullscreen = true
   --end
