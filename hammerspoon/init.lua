@@ -23,6 +23,7 @@ local movement  = {"cmd", "ctrl"}
 local movement2 = {"cmd", "ctrl", "shift"}
 
 local movementAppplicationLaunchOrFocus = {"cmd", "ctrl"}
+local movementAppplicationLaunchOrFocusSecondary = {"cmd", "ctrl", "shiift"}
 
 applicationHotkeyDefinitions = {}
 
@@ -34,8 +35,14 @@ function bindApplicationFocus(key, title)
   hs.hotkey.bind(movementAppplicationLaunchOrFocus, key, function() hs.application.launchOrFocus(title) end)
 end
 
--- Application shortcuts
-bindApplicationFocus("I", "Google Chrome")
+function bindApplicationFocusSecondary(key, title)
+  hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, key, function() hs.application.launchOrFocus(title) end)
+end
+
+-- -----------------------------------------------
+-- SHORTCUTS -------------------------------------
+-- -----------------------------------------------
+bindApplicationFocus("i", "Google Chrome")
 bindApplicationFocus("M", "Messages")
 bindApplicationFocus("W", "Wavebox")
 bindApplicationFocus("E", "Evernote")
@@ -45,6 +52,13 @@ bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("H", "Helium")
 
+bindApplicationFocusSecondary("I", "FirefoxDeveloperEdition")
+
+hs.hotkey.bind({"cmd", "ctrl", "shift", "P"}, "P", function() confirmThenOpenApplication("Adobe Photoshop CC 2018") end)
+
+-- -----------------------------------------------
+-- -----------------------------------------------
+-- -----------------------------------------------
 function confirmThenOpenApplication(name)
   YesNoDialogBox(function() hs.application.launchOrFocus(name) end)
 end
@@ -54,9 +68,6 @@ function confirmForPhotoshop()
 end
 
 hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
-
-hs.hotkey.bind({"cmd", "ctrl", "shift", "P"}, "P", function() confirmThenOpenApplication("Adobe Photoshop CC 2018") end)
-hs.hotkey.bind({"cmd", "ctrl", "shift"}, "G", function() hs.application.launchOrFocus("Online Go") end)
 
 hs.hotkey.bind(movement, "Left", function()
   local win = hs.window.focusedWindow()
@@ -175,10 +186,6 @@ function handleWindowCreated(win, event)
 
   app_fullscreen = false
   app        = win:application()
-
-  if app:title() == "Kiwi for Gmail" then
-    app_fullscreen = true
-  end
 
   if app:title() == "draw.io" then
     app_fullscreen = true
