@@ -16,6 +16,8 @@ function _ensure_symbolic_link() {
   _source="$HOME/.configs/$1"
   _destination=$2
 
+  echo "Linking: $source -> $_destination"
+
   if ! test -e $_source; then
     echo "fatal: Source '$_source' does not exist."
     exit 1
@@ -32,19 +34,26 @@ function _ensure_symbolic_link() {
     test -d `dirname $_destination` || mkdir -p `dirname $_destination`
   fi
 
-  ln -s $_source $_destination
+  if ( _sudo ); then
+    sudo ln -s $_source $_destination
+  else
+    ln -s $_source $_destination
+  fi
 }
 
 # ------------------------------------------------
-# ------------------------------------------------
+# ZSH --------------------------------------------
 # ------------------------------------------------
 test -d /etc/zsh || sudo mkdir -p /etc/zsh
-test -f /etc/zsh/colors || sudo ln -s $HOME/.configs/etc/zsh/colors /etc/zsh/colors
 
+# Zsh
+# ------------------------------------------------
 _ensure_symbolic_link zshrc ~/.zshrc
-#_ensure_symbolic_link --sudo zshrc-shared /etc/zshrc-shared
+_ensure_symbolic_link oh-my-zsh ~/.oh-my-zsh
+_ensure_symbolic_link --sudo zshrc-shared /etc/zshrc-shared
+_ensure_symbolic_link --sudo etc/zsh/colors /etc/zsh/colors
+
 _ensure_symbolic_link audio ~/.audio
-#_ensure_symbolic_link oh-my-zsh ~/.oh-my-zsh
 
 # ------------------------------------------------
 # VIM --------------------------------------------
