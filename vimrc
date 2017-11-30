@@ -42,11 +42,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdcommenter'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'mhinz/vim-signify' " (git gutter)
+Plug 'mhinz/vimr-signify' " (git gutter)
 Plug 'tpope/vim-unimpaired'
 Plug 'ervandew/supertab'
 Plug 'Shougo/unite.vim' " vimfiler depends on this
@@ -62,7 +58,6 @@ Plug 'SirVer/ultisnips'
 Plug 'epilande/vim-es2015-snippets'
 Plug 'epilande/vim-react-snippets'
 Plug 'w0rp/ale'
-Plug 'VundleVim/Vundle.vim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -72,7 +67,6 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'sheerun/vim-polyglot'
-"Plug 'styled-components/vim-styled-components'
 Plug 'brooth/far.vim'
 call plug#end()
 
@@ -81,28 +75,6 @@ call plug#end()
 " ------------------------------------------------
 call pathogen#infect()
 call pathogen#helptags()
-
-" ------------------------------------------------
-" VUNDLE->INIT -----------------------------------
-" ------------------------------------------------
-" " set the runtime path to include Vundle and initialize
-" set rtp+=~/.vim/bundle/Vundle.vim
-" call vundle#begin()
-
-" " let Vundle manage Vundle, required
-" Plugin 'VundleVim/Vundle.vim'
-
-" " ------------------------------------------------
-" " VUNDLE->PLUGINS --------------------------------
-" " ------------------------------------------------
-" Plugin 'skywind3000/asyncrun.vim'
-
-" " JSX
-" Plugin 'pangloss/vim-javascript'
-" Plugin 'mxw/vim-jsx'
-
-" " Vim Tmux Navigator
-" Plugin 'christoomey/vim-tmux-navigator'
 
 " ------------------------------------------------
 " CONFIGURE->GENERAL -----------------------------
@@ -442,6 +414,6 @@ nnoremap <leader>ae :ALEEnable<cr>
 nnoremap <leader>ad :ALEDisable<cr>
 
 " Whitespace
-nnoremap <leader>sr :StripWhitespace<cr>
+nnoremap <leader>sw :StripWhitespace<cr>
 
 

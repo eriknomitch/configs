@@ -43,6 +43,7 @@ end
 -- SHORTCUTS -------------------------------------
 -- -----------------------------------------------
 bindApplicationFocus("i", "Google Chrome")
+bindApplicationFocus("d", "FirefoxDeveloperEdition")
 bindApplicationFocus("M", "Messages")
 bindApplicationFocus("W", "Wavebox")
 bindApplicationFocus("E", "Evernote")
@@ -52,7 +53,7 @@ bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("H", "Helium")
 
-bindApplicationFocusSecondary("I", "FirefoxDeveloperEdition")
+--- bindApplicationFocusSecondary("I", "FirefoxDeveloperEdition")
 
 hs.hotkey.bind({"cmd", "ctrl", "shift", "P"}, "P", function() confirmThenOpenApplication("Adobe Photoshop CC 2018") end)
 
