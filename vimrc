@@ -42,8 +42,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdcommenter'
-Plug 'mhinz/vimr-signify' " (git gutter)
-Plug 'tpope/vim-unimpaired'
+Plug 'mhinz/vim-signify' " (git gutter)
+Plug 'tpope/vimr-unimpaired'
 Plug 'ervandew/supertab'
 Plug 'Shougo/unite.vim' " vimfiler depends on this
 Plug 'Shougo/vimfiler.vim'
@@ -389,6 +389,16 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=234
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
 
 " ------------------------------------------------
+" CONFIG->NETRW ----------------------------------
+" ------------------------------------------------
+let g:netrw_liststyle=3
+
+" http://blog.g14n.info/2013/07/my-vim-configuration.html
+" When navigating a directory, pressing <v> opens a window at right side (default
+" is left side)
+let g:netrw_altv = 1
+
+" ------------------------------------------------
 " CONFIG->YANKSTACK ------------------------------
 " ------------------------------------------------
 nmap <leader>p <Plug>yankstack_substitute_older_paste
@@ -399,21 +409,21 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 " ------------------------------------------------
 
 " general
-nnoremap <leader>q :qall<cr>
-nnoremap <leader>h :noh<cr>
-nnoremap <leader>w :wqall<cr>
+nnoremap <unique><leader>q :qall<CR>
+nnoremap <unique><leader>h :noh<CR>
+nnoremap <unique><leader>w :wqall<CR>
 
 " vimrc
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <unique><leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <unique><leader>sv :source $MYVIMRC<CR>
 
 " ALE
-nnoremap <leader>af :ALEFix<cr>
-nnoremap <leader>at :ALEToggle<cr>
-nnoremap <leader>ae :ALEEnable<cr>
-nnoremap <leader>ad :ALEDisable<cr>
+nnoremap <unique><leader>af :ALEFix<CR>
+nnoremap <unique><leader>at :ALEToggle<CR>
+nnoremap <unique><leader>ae :ALEEnable<CR>
+nnoremap <unique><leader>ad :ALEDisable<CR>
 
 " Whitespace
-nnoremap <leader>sw :StripWhitespace<cr>
+nnoremap <unique><leader>sw :StripWhitespace<CR>
 
 
