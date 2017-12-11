@@ -451,4 +451,4 @@ nnoremap <unique><leader>ad :ALEDisable<CR>
 nnoremap <unique><leader>sw :StripWhitespace<CR>
 
 " FZF
-nnoremap <unique><leader>b :FZFLiness<cr>
+nnoremap <unique><leader>b :FZFLines<cr>
