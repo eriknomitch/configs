@@ -382,21 +382,25 @@ highlight link multiple_cursors_visual Visual
 " ------------------------------------------------
 " CONFIG->ALE ------------------------------------
 " ------------------------------------------------
-let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
-let g:ale_linters = {'js': ['stylelint', 'eslint']}
-let g:ale_linter_aliases = {'jsx': 'css'}
 
-"let g:ale_fixers = {
-"\   'javascript': ['eslint'],
-"\}
+" Linters
+let g:ale_linters = {
+      \  'jsx': ['stylelint', 'eslint'],
+      \  'js': ['stylelint', 'eslint'],
+      \  'vim': ['vint']
+      \}
+
+let g:ale_linter_aliases = {'jsx': 'css'}
 
 " https://github.com/w0rp/ale#5iii-how-can-i-change-the-signs-ale-uses
 let g:airline#extensions#ale#enabled = 1
 
+" Fixers
 " https://github.com/prettier/prettier/tree/master/editors/vim#ale
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier', 'eslint']
 let g:ale_fixers['ruby'] = ['rubocop']
+let g:ale_fixers['vim'] = ['vint']
 
 " ------------------------------------------------
 " CONFIG->RG -------------------------------------
