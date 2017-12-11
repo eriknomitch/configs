@@ -213,9 +213,6 @@ au BufRead,BufNewFile *.ino set filetype=arduino
 " http://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
 cmap w!! w !sudo tee > /dev/null %
 
-" fzf
-set rtp+=/usr/local/opt/fzf
-
 " Fix crontab issue
 " http://vi.stackexchange.com/questions/137/how-do-i-edit-crontab-files-with-vim-i-get-the-error-temp-file-must-be-edited
 au FileType crontab setlocal bkc=yes
@@ -321,6 +318,8 @@ nnoremap <leader>f :VimFilerExplorer<cr>
 " ------------------------------------------------
 " CONFIG->FZF ------------------------------------
 " ------------------------------------------------
+set rtp+=/usr/local/opt/fzf
+
 let g:fzf_colors =
       \ { 'fg':      ['fg', 'Normal'],
       \ 'bg':      ['bg', 'Normal'],
@@ -335,7 +334,32 @@ let g:fzf_colors =
       \ 'spinner': ['fg', 'Label'],
       \ 'header':  ['fg', 'Comment'] }
 
-nnoremap <leader>b :Buffers<cr>
+" ------------------------------------------------
+" FZF->BUFFERS ------------------------------------
+" ------------------------------------------------
+
+" https://github.com/junegunn/fzf/wiki/Examples-(vim)#search-lines-in-all-open-vim-buffers
+function! s:line_handler(l)
+  let keys = split(a:l, ':\t')
+  exec 'buf' keys[0]
+  exec keys[1]
+  normal! ^zz
+endfunction
+
+function! s:buffer_lines()
+  let res = []
+  for b in filter(range(1, bufnr('$')), 'buflisted(v:val)')
+    call extend(res, map(getbufline(b,0,"$"), 'b . ":\t" . (v:key + 1) . ":\t" . v:val '))
+  endfor
+  return res
+endfunction
+
+command! FZFLines call fzf#run({
+\  'source':  <sid>buffer_lines(),
+\   'sink':    function('<sid>line_handler'),
+\   'options': '--extended --nth=3..',
+\   'down':    '60%'
+\})
 
 " ------------------------------------------------
 " CONFIG->VIM-MULTIPLE-CURSORS -------------------
@@ -426,4 +450,5 @@ nnoremap <unique><leader>ad :ALEDisable<CR>
 " Whitespace
 nnoremap <unique><leader>sw :StripWhitespace<CR>
 
-
+" FZF
+nnoremap <unique><leader>b :FZFLiness<cr>
