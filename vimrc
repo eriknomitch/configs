@@ -68,6 +68,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'sheerun/vim-polyglot'
 Plug 'brooth/far.vim'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 " ------------------------------------------------
