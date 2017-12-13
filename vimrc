@@ -427,6 +427,11 @@ let g:netrw_liststyle=3
 let g:netrw_altv = 1
 
 " ------------------------------------------------
+" CONFIG->FAR ------------------------------------
+" ------------------------------------------------
+let g:far#source = 'agnvim'
+
+" ------------------------------------------------
 " CONFIG->YANKSTACK ------------------------------
 " ------------------------------------------------
 nmap <leader>p <Plug>yankstack_substitute_older_paste
@@ -456,3 +461,4 @@ nnoremap <unique><leader>sw :StripWhitespace<CR>
 
 " FZF
 nnoremap <unique><leader>b :FZFLines<cr>
+
