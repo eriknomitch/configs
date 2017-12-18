@@ -68,6 +68,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'sheerun/vim-polyglot'
 Plug 'brooth/far.vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-repeat' " Dependency of vim-easyclip
 Plug 'svermeulen/vim-easyclip'
 call plug#end()
 
