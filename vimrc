@@ -65,10 +65,10 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'jremmen/vim-ripgrep'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'sheerun/vim-polyglot'
 Plug 'brooth/far.vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'svermeulen/vim-easyclip'
 call plug#end()
 
 " ------------------------------------------------
