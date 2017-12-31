@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "themer": "^2.2.3",
+    "themer-chrome": "^1.0.2",
+    "themer-iterm": "^1.0.4"
+  }
+}
