@@ -8,3 +8,4 @@ vim/bundle/*
 prelang.vim
 karabiner.d/log
 .DS_Store
+node_modules/
