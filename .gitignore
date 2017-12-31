@@ -7,3 +7,4 @@ vim/bundle/*
 !vim/bundle/.keep
 prelang.vim
 karabiner.d/log
+.DS_Store
