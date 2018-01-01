@@ -1,68 +1,68 @@
 {
   "version": "1.0.2",
   "manifest_version": 2,
-  "name": "Themer Light",
+  "name": "Themer Dark",
   "theme": {
     "colors": {
       "frame": [
-        224,
-        220,
-        224
+        15,
+        15,
+        15
       ],
       "frame_inactive": [
-        255,
-        252,
-        255
+        35,
+        41,
+        45
       ],
       "frame_incognito": [
-        132,
-        126,
-        133
+        97,
+        102,
+        104
       ],
       "frame_incognito_inactive": [
-        162,
-        157,
-        163
+        128,
+        132,
+        134
       ],
       "toolbar": [
-        255,
-        252,
-        255
+        35,
+        41,
+        45
       ],
       "tab_text": [
-        40,
-        38,
-        41
+        253,
+        253,
+        253
       ],
       "tab_background_text": [
-        101,
-        96,
-        102
+        160,
+        162,
+        164
       ],
       "bookmark_text": [
-        71,
-        66,
-        71
-      ],
-      "ntp_background": [
-        255,
-        252,
-        255
-      ],
-      "ntp_text": [
-        71,
-        66,
-        71
-      ],
-      "ntp_section": [
-        193,
-        188,
+        191,
+        192,
         194
       ],
+      "ntp_background": [
+        15,
+        15,
+        15
+      ],
+      "ntp_text": [
+        191,
+        192,
+        194
+      ],
+      "ntp_section": [
+        66,
+        71,
+        75
+      ],
       "ntp_section_text": [
-        40,
-        38,
-        41
+        253,
+        253,
+        253
       ]
     }
   }

@@ -4,22 +4,22 @@
       "textSpacing": 6,
       "subtext": {
         "size": 12,
-        "colorSelected": "#E0DCE0FF",
+        "colorSelected": "#23292DFF",
         "font": "System Light",
-        "color": "#847E85FF"
+        "color": "#808486FF"
       },
       "shortcut": {
         "size": 16,
-        "colorSelected": "#E0DCE0FF",
+        "colorSelected": "#23292DFF",
         "font": "System",
-        "color": "#474247FF"
+        "color": "#BFC0C2FF"
       },
-      "backgroundSelected": "#1FC598FF",
+      "backgroundSelected": "#09B399FF",
       "text": {
         "size": 18,
-        "colorSelected": "#FFFCFFFF",
+        "colorSelected": "#0F0F0FFF",
         "font": "System Light",
-        "color": "#282629FF"
+        "color": "#FDFDFDFF"
       },
       "iconPaddingHorizontal": 6,
       "paddingVertical": 6,
@@ -27,35 +27,35 @@
     },
     "search": {
       "paddingVertical": 8,
-      "background": "#C1BCC27F",
+      "background": "#42474B7F",
       "spacing": 10,
       "text": {
         "size": 22,
-        "colorSelected": "#53A6E1FF",
+        "colorSelected": "#1299ADFF",
         "font": "System",
-        "color": "#282629FF"
+        "color": "#FDFDFDFF"
       },
-      "backgroundSelected": "#EE4EB8FF"
+      "backgroundSelected": "#A067ABFF"
     },
     "window": {
-      "color": "#FFFCFFCC",
+      "color": "#0F0F0FCC",
       "paddingHorizontal": 10,
       "width": 560,
       "borderPadding": 0,
-      "borderColor": "#FFFCFF00",
+      "borderColor": "#0F0F0F00",
       "blur": 15,
       "roundness": 2,
       "paddingVertical": 10
     },
     "credit": "Themer",
     "separator": {
-      "color": "#FFFCFF00",
+      "color": "#0F0F0F00",
       "thickness": 0
     },
     "scrollbar": {
-      "color": "#EEBA21FF",
+      "color": "#F79532FF",
       "thickness": 2
     },
-    "name": "Themer Light"
+    "name": "Themer Dark"
   }
 }

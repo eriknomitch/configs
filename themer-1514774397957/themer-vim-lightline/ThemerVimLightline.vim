@@ -3,47 +3,26 @@
   
   if &background == 'dark'
     
-  let s:shade0 = "#282629"
-  let s:shade1 = "#474247"
-  let s:shade2 = "#656066"
-  let s:shade3 = "#847E85"
-  let s:shade4 = "#A29DA3"
-  let s:shade5 = "#C1BCC2"
-  let s:shade6 = "#E0DCE0"
-  let s:shade7 = "#FFFCFF"
-  let s:accent0 = "#FF4050"
-  let s:accent1 = "#F28144"
-  let s:accent2 = "#FFD24A"
-  let s:accent3 = "#A4CC35"
-  let s:accent4 = "#26C99E"
-  let s:accent5 = "#66BFFF"
-  let s:accent6 = "#CC78FA"
-  let s:accent7 = "#F553BF"
+  let s:shade0 = "#0F0F0F"
+  let s:shade1 = "#23292D"
+  let s:shade2 = "#42474B"
+  let s:shade3 = "#616668"
+  let s:shade4 = "#808486"
+  let s:shade5 = "#A0A2A4"
+  let s:shade6 = "#BFC0C2"
+  let s:shade7 = "#FDFDFD"
+  let s:accent0 = "#EF4E7C"
+  let s:accent1 = "#F37055"
+  let s:accent2 = "#F79532"
+  let s:accent3 = "#6EBB82"
+  let s:accent4 = "#09B399"
+  let s:accent5 = "#1299AD"
+  let s:accent6 = "#5073B8"
+  let s:accent7 = "#A067AB"
   
   endif
   
 
-  
-  if &background == 'light'
-    
-  let s:shade0 = "#FFFCFF"
-  let s:shade1 = "#E0DCE0"
-  let s:shade2 = "#C1BCC2"
-  let s:shade3 = "#A29DA3"
-  let s:shade4 = "#847E85"
-  let s:shade5 = "#656066"
-  let s:shade6 = "#474247"
-  let s:shade7 = "#282629"
-  let s:accent0 = "#F03E4D"
-  let s:accent1 = "#F37735"
-  let s:accent2 = "#EEBA21"
-  let s:accent3 = "#97BD2D"
-  let s:accent4 = "#1FC598"
-  let s:accent5 = "#53A6E1"
-  let s:accent6 = "#BF65F0"
-  let s:accent7 = "#EE4EB8"
-  
-  endif
   
 
   let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
