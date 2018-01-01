@@ -6,11 +6,11 @@ _current_script_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # UTILITY ----------------------------------------
 # ------------------------------------------------
 function _ensure_symbolic_link() {
-  _sudo=false
-
   if [[ $1 == "--sudo" ]] ; then
     _sudo=true
     shift
+  else
+    _sudo=false
   fi
 
   _source="$HOME/.configs/$1"
@@ -34,7 +34,7 @@ function _ensure_symbolic_link() {
     test -d `dirname $_destination` || mkdir -p `dirname $_destination`
   fi
 
-  if ( _sudo ); then
+  if ( $_sudo ); then
     sudo ln -s $_source $_destination
   else
     ln -s $_source $_destination
