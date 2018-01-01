@@ -51,7 +51,7 @@
 <linearGradient id="fill-1" x1="0" y1="0" x2="1" y2="1"><stop offset="25%" stop-color="#F37055" stop-opacity="0"/><stop offset="90%" stop-color="#F37055"/></linearGradient>
 <linearGradient id="fill-2" x1="0" y1="0" x2="1" y2="1"><stop offset="25%" stop-color="#F79532" stop-opacity="0"/><stop offset="90%" stop-color="#F79532"/></linearGradient>
 <linearGradient id="fill-3" x1="0" y1="0" x2="1" y2="1"><stop offset="25%" stop-color="#6EBB82" stop-opacity="0"/><stop offset="90%" stop-color="#6EBB82"/></linearGradient>
-<linearGradient id="fill-4" x1="0" y1="0" x2="1" y2="1"><stop offset="25%" stop-color="#09B399" stop-opacity="0"/><stop offset="90%" stop-color="#09B399"/></linearGradient>
+<linearGradient id="fill-4" x1="0" y1="0" x2="1" y2="1"><stop offset="25%" stop-color="#00F900" stop-opacity="0"/><stop offset="90%" stop-color="#00F900"/></linearGradient>
 <linearGradient id="fill-5" x1="0" y1="0" x2="1" y2="1"><stop offset="25%" stop-color="#1299AD" stop-opacity="0"/><stop offset="90%" stop-color="#1299AD"/></linearGradient>
 <linearGradient id="fill-6" x1="0" y1="0" x2="1" y2="1"><stop offset="25%" stop-color="#5073B8" stop-opacity="0"/><stop offset="90%" stop-color="#5073B8"/></linearGradient>
 <linearGradient id="fill-7" x1="0" y1="0" x2="1" y2="1"><stop offset="25%" stop-color="#A067AB" stop-opacity="0"/><stop offset="90%" stop-color="#A067AB"/></linearGradient>
@@ -64,7 +64,7 @@
 <path d="M 0 -300 L 212.13 -212.13 L 212.13 212.13 Z" stroke="#F37055" stroke-width="0" fill="url(#fill-1)" transform="rotate(-45)"/>
 <path d="M 0 -300 L 212.13 -212.13 L 212.13 212.13 Z" stroke="#F79532" stroke-width="0" fill="url(#fill-2)" transform="rotate(-90)"/>
 <path d="M 0 -300 L 212.13 -212.13 L 212.13 212.13 Z" stroke="#6EBB82" stroke-width="0" fill="url(#fill-3)" transform="rotate(-135)"/>
-<path d="M 0 -300 L 212.13 -212.13 L 212.13 212.13 Z" stroke="#09B399" stroke-width="0" fill="url(#fill-4)" transform="rotate(-180)"/>
+<path d="M 0 -300 L 212.13 -212.13 L 212.13 212.13 Z" stroke="#00F900" stroke-width="0" fill="url(#fill-4)" transform="rotate(-180)"/>
 <path d="M 0 -300 L 212.13 -212.13 L 212.13 212.13 Z" stroke="#1299AD" stroke-width="0" fill="url(#fill-5)" transform="rotate(-225)"/>
 <path d="M 0 -300 L 212.13 -212.13 L 212.13 212.13 Z" stroke="#5073B8" stroke-width="0" fill="url(#fill-6)" transform="rotate(-270)"/>
 <path d="M 0 -300 L 212.13 -212.13 L 212.13 212.13 Z" stroke="#A067AB" stroke-width="0" fill="url(#fill-7)" transform="rotate(-315)"/>

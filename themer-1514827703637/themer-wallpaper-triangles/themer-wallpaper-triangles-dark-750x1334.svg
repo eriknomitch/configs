@@ -27,8 +27,8 @@
                   <stop stop-color="#F79532" offset="100%" />
                 </linearGradient>
                 <linearGradient id="cool-linear" x1="100%" y1="0" x2="0" y2="100%">
-                  <stop stop-color="#09B399" offset="0%" />
-                  <stop stop-color="#09B399" stop-opacity="0" offset="45%" />
+                  <stop stop-color="#00F900" offset="0%" />
+                  <stop stop-color="#00F900" stop-opacity="0" offset="45%" />
                 </linearGradient>
                 <linearGradient id="accent-linear" x1="0" y1="100%" x2="100%" y2="0">
                   <stop stop-color="#EF4E7C" offset="0%" />

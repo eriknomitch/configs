@@ -4,7 +4,7 @@ exports.colors = {
     accent1: '#F37055',
     accent2: '#F79532',
     accent3: '#6EBB82',
-    accent4: '#09B399',
+    accent4: '#00F900',
     accent5: '#1299AD',
     accent6: '#5073B8',
     accent7: '#A067AB',

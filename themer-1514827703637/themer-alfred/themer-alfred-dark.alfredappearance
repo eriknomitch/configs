@@ -14,7 +14,7 @@
         "font": "System",
         "color": "#BFC0C2FF"
       },
-      "backgroundSelected": "#09B399FF",
+      "backgroundSelected": "#00F900FF",
       "text": {
         "size": 18,
         "colorSelected": "#0F0F0FFF",
