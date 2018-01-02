@@ -6,23 +6,39 @@ echo "Bootstrapping host..."
 .bin/generate-grconfig
 
 if [[ ! -d ~/.oh-my-zsh ]] ; then
-  echo "fatal: You have to install oh-my-zsh."
-  exit 1
+  echo "Installing oh-my-zsh..."
+  git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
-if [[ ! -d ~/.oh-my-zsh/custom/plugins/zshmarks ]] ; then
-  git clone https://github.com/jocelynmallon/zshmarks.git ~/.oh-my-zsh/custom/plugins/zshmarks
+# if [[ ! -d ~/.oh-my-zsh/custom/plugins/zshmarks ]] ; then
+#   git clone https://github.com/jocelynmallon/zshmarks.git ~/.oh-my-zsh/custom/plugins/zshmarks
+# fi
+
+test -d ~/.repositories || mkdir ~/.repositories
+
+if [[ ! -d ~/.repositories/g ]] ; then
+  git clone git@github.com:eriknomitch/g.git ~/.repositories/g
 fi
 
+if [[ ! -d ~/.repositories/prwd ]] ; then
+  git clone git@github.com:eriknomitch/prwd.git ~/.repositories/prwd
+fi
+
+# ------------------------------------------------
+# ------------------------------------------------
+# ------------------------------------------------
 set-bookmark-defaults
 
+# ------------------------------------------------
+# ------------------------------------------------
+# ------------------------------------------------
 chmod 700 $HOME/.ssh
 chmod 600 $HOME/.ssh/config
 
 # ------------------------------------------------
 # THEMER -----------------------------------------
 # ------------------------------------------------
-.bin/generate-themer-themes
+#.bin/generate-themer-themes
 
 # ------------------------------------------------
 # PYENV ------------------------------------------
