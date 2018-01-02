@@ -24,6 +24,13 @@ if [[ ! -d ~/.repositories/prwd ]] ; then
   git clone git@github.com:eriknomitch/prwd.git ~/.repositories/prwd
 fi
 
+if [[ ! -d ~/.rbenv ]] ; then
+  echo "Installing rbenv..."
+  git clone https://github.com/rbenv/rbenv.git ~/.rbenv && \
+    mkdir ~/.rbenv/plugins && \
+    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+fi
+
 # ------------------------------------------------
 # ------------------------------------------------
 # ------------------------------------------------
