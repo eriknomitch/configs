@@ -385,6 +385,9 @@ highlight link multiple_cursors_visual Visual
 " CONFIG->ALE ------------------------------------
 " ------------------------------------------------
 
+" Only lint on file open and write - not text change
+let g:ale_lint_on_text_changed = 'never'
+
 " https://github.com/w0rp/ale#5iii-how-can-i-change-the-signs-ale-uses
 let g:airline#extensions#ale#enabled = 1
 

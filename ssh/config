@@ -157,14 +157,6 @@ Host laptop
     checkhostip no
     User erik
 
-Host desktop-virtual
-    HostName 192.168.56.10
-    User erik
-
-Host motion
-    HostName motion.nomitch.com
-    User admin
-
 Host kodi-erik
     HostName kodi-erik.local
     User root
@@ -199,9 +191,9 @@ Host sdr
 # ------------------------------------------------
 # VIRTUAL ----------------------------------------
 # ------------------------------------------------
-Host virtual-linux-main
-    HostName 127.0.0.1
-    Port 3022
+Host virtual-linux
+    HostName virtual-linux.local
+    Port 22
     User erik
 
 # ------------------------------------------------
