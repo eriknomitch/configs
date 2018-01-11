@@ -469,6 +469,7 @@ alias dsp="docker system prune --force"
 # ------------------------------------------------
 alias S="ssh server"
 alias A="ssh ai"
+alias V="ssh virtual-linux"
 
 # ------------------------------------------------
 # YARN -------------------------------------------
