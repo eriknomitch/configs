@@ -396,11 +396,7 @@ export NODE_PATH="$HOME/.node_modules"
 export NVM_DIR="$HOME/.nvm"
 
 if [[ -d $NVM_DIR ]] ; then
-  if ( $ON_DARWIN ) ; then
-    . "/usr/local/opt/nvm/nvm.sh"
-  elif ( $ON_LINUX ) ; then
-    . $NVM_DIR/nvm.sh
-  fi
+  . $NVM_DIR/nvm.sh
 fi
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -43,12 +43,12 @@ end
 -- SHORTCUTS -------------------------------------
 -- -----------------------------------------------
 bindApplicationFocus("i", "Google Chrome")
-bindApplicationFocus("d", "FirefoxDeveloperEdition")
+-- bindApplicationFocus("d", "FirefoxDeveloperEdition")
 bindApplicationFocus("M", "Messages")
-bindApplicationFocus("W", "Wavebox")
-bindApplicationFocus("E", "Evernote")
+-- bindApplicationFocus("W", "Wavebox")
+-- bindApplicationFocus("E", "Evernote")
 bindApplicationFocus("T", "Todoist")
-bindApplicationFocus("Y", "YakYak")
+-- bindApplicationFocus("Y", "YakYak")
 bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("H", "Helium")
