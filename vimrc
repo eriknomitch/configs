@@ -384,34 +384,37 @@ highlight link multiple_cursors_visual Visual
 " ------------------------------------------------
 " CONFIG->ALE ------------------------------------
 " ------------------------------------------------
+let g:ale_javascript_prettier_use_local_config = 1
 
 " Only lint on file open and write - not text change
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_save = 1
 
 " https://github.com/w0rp/ale#5iii-how-can-i-change-the-signs-ale-uses
 let g:airline#extensions#ale#enabled = 1
 
+" This is for stylelint (CSS in .jsx files)
+" let g:ale_linter_aliases = {'jsx': 'css'}
+" let g:ale_linter_aliases = {'jsx': 'js'}
+
 " Linters
 let g:ale_linters = {
-      \  'jsx': ['stylelint', 'prettier', 'eslint'],
-      \  'js': ['stylelint', 'prettier', 'eslint'],
+      \  'javascript.jsx': ['prettier', 'eslint'],
+      \  'jsx': ['prettier', 'eslint'],
+      \  'js': ['prettier', 'eslint'],
+      \  'ruby': ['rubocop'],
       \  'vim': ['vint']
       \}
 
-" This is for stylelint (CSS in .jsx files)
-let g:ale_linter_aliases = {'jsx': 'css'}
-
 " Fixers
 " ------------------------------------------------
-let g:ale_fixers = {}
-
-" https://prettier.io/docs/en/vim.html#ale-usage
-let g:ale_fixers['javascript'] = ['prettier', 'eslint']
-
-let g:ale_fixers['ruby'] = ['rubocop']
-let g:ale_fixers['vim'] = ['vint']
-
-let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_fixers = {
+      \  'javascript.jsx': ['prettier', 'eslint'],
+      \  'jsx': ['prettier', 'eslint'],
+      \  'js': ['prettier', 'eslint'],
+      \  'ruby': ['rubucop'],
+      \  'vim': ['vint']
+      \}
 
 " ------------------------------------------------
 " CONFIG->RG -------------------------------------
@@ -447,23 +450,27 @@ let g:far#source = 'agnvim'
 " ------------------------------------------------
 
 " general
-nnoremap <unique><leader>q :qall<CR>
-nnoremap <unique><leader>h :noh<CR>
-nnoremap <unique><leader>w :wqall<CR>
+nnoremap <leader>q :qall<CR>
+nnoremap <leader>h :noh<CR>
+nnoremap <leader>w :wqall<CR>
 
 " vimrc
-nnoremap <unique><leader>ev :vsplit $MYVIMRC<CR>
-nnoremap <unique><leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " ALE
-nnoremap <unique><leader>af :ALEFix<CR>
-nnoremap <unique><leader>at :ALEToggle<CR>
-nnoremap <unique><leader>ae :ALEEnable<CR>
-nnoremap <unique><leader>ad :ALEDisable<CR>
+" nnoremap <leader>af :ALEFix<CR>
+" nnoremap <leader>at :ALEToggle<CR>
+" nnoremap <leader>ae :ALEEnable<CR>
+" nnoremap <leader>ad :ALEDisable<CR>
+" nnoremap <leader>af <Plug>(ale_fix)<CR>
+
+noremap <leader>af <Plug>(ale_fix)<CR>
+
 
 " Whitespace
-nnoremap <unique><leader>sw :StripWhitespace<CR>
+nnoremap <leader>sw :StripWhitespace<CR>
 
 " FZF
-nnoremap <unique><leader>b :FZFLines<cr>
+nnoremap <leader>b :FZFLines<cr>
 
