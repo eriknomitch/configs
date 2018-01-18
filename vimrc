@@ -459,14 +459,13 @@ nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " ALE
-" nnoremap <leader>af :ALEFix<CR>
-" nnoremap <leader>at :ALEToggle<CR>
-" nnoremap <leader>ae :ALEEnable<CR>
-" nnoremap <leader>ad :ALEDisable<CR>
-" nnoremap <leader>af <Plug>(ale_fix)<CR>
+nnoremap <leader>af :ALEFix<CR>
+nnoremap <leader>at :ALEToggle<CR>
+nnoremap <leader>ae :ALEEnable<CR>
+nnoremap <leader>ad :ALEDisable<CR>
+nnoremap <leader>F :ALEFix<CR>
 
-noremap <leader>af <Plug>(ale_fix)<CR>
-
+" noremap <leader>af <Plug>(ale_fix)<CR>
 
 " Whitespace
 nnoremap <leader>sw :StripWhitespace<CR>

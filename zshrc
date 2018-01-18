@@ -531,8 +531,10 @@ export PRWD_BIND_TO_TMUX=true
 # ------------------------------------------------
 # ASDF -------------------------------------------
 # ------------------------------------------------
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+if [[ -d $HOME/.asdf ]] ; then
+  . $HOME/.asdf/asdf.sh
+  . $HOME/.asdf/completions/asdf.bash
+fi
 
 # ------------------------------------------------
 # PROMPT -----------------------------------------
