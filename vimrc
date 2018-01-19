@@ -109,8 +109,20 @@ set foldmethod=marker
 set softtabstop=2
 set expandtab
 set shiftwidth=2
-set autoindent
 set laststatus=2
+
+" Indentation
+set autoindent
+set smartindent
+
+" Tabbing
+set smarttab
+
+" For regular expressions turn magic on
+set magic
+
+" Maximum amount of memory in Kbyte used for pattern matching
+set maxmempattern=1000
 
 " .lisp gets 2 spaces
 au BufRead,BufNewFile *.lisp setlocal softtabstop=2 shiftwidth=2
