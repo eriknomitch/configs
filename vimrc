@@ -1,7 +1,6 @@
 " ================================================
 " VIM->VIMRC =====================================
 " ================================================
-set nocompatible
 syntax enable
 colors bluegreen
 
@@ -110,7 +109,7 @@ set foldmethod=marker
 set softtabstop=2
 set expandtab
 set shiftwidth=2
-set ai
+set autoindent
 set laststatus=2
 
 " .lisp gets 2 spaces
@@ -135,30 +134,28 @@ set showmode
 noremap <C-S-Right> :next<CR>
 noremap <C-S-Left> :prev<CR>
 
-" page up and page down
+" Page up and page down
 noremap <Space> <PageDown>
 noremap - <PageUp>
 
-" virtual lines
+" Virtual lines
 nmap j gj
 nmap k gk
 noremap <Up> gk
 noremap <Down> gj
 
-" yank and drop across multiple vim instances
+" Yank and drop across multiple vim instances
 " set clipboard+=unnamedplus
 
-" make backspace key work
-set bs=2
+" Make backspace key work
+set backspace=2
 
 " Disable mouse for selecting text without a hotkey
 set mouse=
 set ruler
 set hlsearch
 
-autocmd BufEnter *.php setlocal indentexpr=
-
-" wildmenu for better :b tabbing
+" Wildmenu for better :b tabbing
 set wildmenu
 set wildchar=<Tab>
 
@@ -203,9 +200,9 @@ nnoremap <Leader>o :<C-u>call OpenLines(v:count, 0)<CR>S
 nnoremap <Leader>O :<C-u>call OpenLines(v:count, -1)<CR>S
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-s>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger='<C-s>'
+let g:UltiSnipsJumpForwardTrigger='<C-b>'
+let g:UltiSnipsJumpBackwardTrigger='<C-z>'
 
 " http://grantlucas.com/posts/2012/09/using-vim-arduino-development
 au BufRead,BufNewFile *.pde set filetype=arduino
@@ -217,7 +214,17 @@ cmap w!! w !sudo tee > /dev/null %
 
 " Fix crontab issue
 " http://vi.stackexchange.com/questions/137/how-do-i-edit-crontab-files-with-vim-i-get-the-error-temp-file-must-be-edited
-au FileType crontab setlocal bkc=yes
+augroup cron
+  au FileType crontab setlocal bkc=yes
+augroup END
+
+" Rename title of tmux tab with current filename
+if exists('$TMUX')
+  augroup tmux
+    autocmd BufEnter * call system("tmux rename-window '" . expand("%:t") . "'")
+    autocmd VimLeave * call system("tmux setw automatic-rename")
+  augroup END
+endif
 
 " ------------------------------------------------
 " CONFIG->SYNTASTIC ------------------------------
@@ -320,7 +327,7 @@ nnoremap <leader>f :VimFilerExplorer<cr>
 " ------------------------------------------------
 " CONFIG->FZF ------------------------------------
 " ------------------------------------------------
-set rtp+=/usr/local/opt/fzf
+set runtimepath+=/usr/local/opt/fzf
 
 let g:fzf_colors =
       \ { 'fg':      ['fg', 'Normal'],
@@ -366,6 +373,7 @@ command! FZFLines call fzf#run({
 " ------------------------------------------------
 " CONFIG->VIM-MULTIPLE-CURSORS -------------------
 " ------------------------------------------------
+
 " See: https://github.com/terryma/vim-multiple-cursors#mapping
 let g:multi_cursor_use_default_mapping=0
 
