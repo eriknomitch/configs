@@ -36,7 +36,7 @@ Plug 'tpope/vim-rails'
 Plug 'mbbill/undotree'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elzr/vim-json'
-Plug 'vim-airline/vim-airline', { 'commit': '470e9870f13830580d1938a2dae1be5b6e43d92a' }
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-commentary'
@@ -239,21 +239,6 @@ if exists('$TMUX')
 endif
 
 " ------------------------------------------------
-" CONFIG->SYNTASTIC ------------------------------
-" ------------------------------------------------
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_loc_list_height = 3
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 1
-
-"let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
-
-"let g:syntastic_quiet_messages = {
-      "\ "regex": ['assigned but unused variable', 'file not found', 'interpreted as argument prefix'] }
-
-" ------------------------------------------------
 " CONFIG->CTRLP ----------------------------------
 " ------------------------------------------------
 let g:ctrlp_map = '<c-p>'
@@ -432,9 +417,22 @@ let g:ale_fixers = {
       \  'javascript.jsx': ['prettier', 'eslint'],
       \  'jsx': ['prettier', 'eslint'],
       \  'js': ['prettier', 'eslint'],
-      \  'ruby': ['rubucop'],
-      \  'vim': ['vint']
+      \  'ruby': ['rubucop']
       \}
+
+function! OnALELintPre()
+  echo 'Linting...'
+endfunction
+
+function! OnALELintPost()
+  echo 'Linting: Complete'
+endfunction
+
+augroup ALEWrap
+  autocmd!
+  autocmd User ALELintPre  call OnALELintPre()
+  autocmd User ALELintPost call OnALELintPost()
+augroup END
 
 " ------------------------------------------------
 " CONFIG->RG -------------------------------------
