@@ -483,5 +483,7 @@ nnoremap <leader>F :ALEFix<CR>
 nnoremap <leader>sw :StripWhitespace<CR>
 
 " FZF
-nnoremap <leader>b :FZFLines<cr>
+nnoremap <leader>b :FZFLines<CR>
 
+" vimagit
+nnoremap <leader>g :Magit<CR>
