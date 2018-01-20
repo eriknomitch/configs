@@ -461,7 +461,9 @@ let g:far#source = 'agnvim'
 " ------------------------------------------------
 " CONFIG->VIMAGIT---------------------------------
 " ------------------------------------------------
-autocmd User VimagitBufferInit call system(g:magit_git_cmd . " add -A " . magit#git#top_dir())
+augroup vimagit
+  autocmd User VimagitBufferInit call system(g:magit_git_cmd . " add -A " . magit#git#top_dir())
+augroup END
 
 " ------------------------------------------------
 " CONFIG->KEY-MAPPINGS ---------------------------
