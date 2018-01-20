@@ -1,14 +1,8 @@
 " ================================================
-" VIM->VIMRC =====================================
-" ================================================
 syntax enable
 colors bluegreen
 
-set autoread
-
 " Automatically write buffers when required
-set autowriteall
-
 " Spellcheck
 autocmd BufRead,BufNewFile *.md,*.txt setlocal spell
 
@@ -69,6 +63,7 @@ Plug 'brooth/far.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-repeat' " Dependency of vim-easyclip
 Plug 'svermeulen/vim-easyclip'
+Plug 'jreybert/vimagit'
 call plug#end()
 
 " ------------------------------------------------
@@ -241,9 +236,8 @@ endif
 " ------------------------------------------------
 " CONFIG->CTRLP ----------------------------------
 " ------------------------------------------------
-let g:ctrlp_map = '<c-p>'
-" let g:ctrlp_cmd = 'CtrlPBuffer'
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_map = '<C-p>'
+let g:ctrlp_cmd = 'CtrlPBuffer'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:30,results:30'
 let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
