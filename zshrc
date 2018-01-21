@@ -389,19 +389,6 @@ if [[ $TMUX_EACH_SESSION = "true" ]] ; then
 fi
 
 # ------------------------------------------------
-# NODE/NVM/NPM -----------------------------------
-# ------------------------------------------------
-
-export NODE_PATH="$HOME/.node_modules"
-export NVM_DIR="$HOME/.nvm"
-
-if [[ -d $NVM_DIR ]] ; then
-  . $NVM_DIR/nvm.sh
-fi
-
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# ------------------------------------------------
 # VI-MODE ----------------------------------------
 # ------------------------------------------------
 # NOTE: You probably also have the vi-mode oh-my-zsh plugin.
@@ -534,6 +521,17 @@ export PRWD_BIND_TO_TMUX=true
 if [[ -d $HOME/.asdf ]] ; then
   . $HOME/.asdf/asdf.sh
   . $HOME/.asdf/completions/asdf.bash
+fi
+
+# ------------------------------------------------
+# NODE/NVM/NPM -----------------------------------
+# ------------------------------------------------
+
+export NVM_DIR="$HOME/.nvm"
+
+if [[ -d $NVM_DIR ]] ; then
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
 # ------------------------------------------------
