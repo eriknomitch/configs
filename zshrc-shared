@@ -35,6 +35,45 @@ HISTFILE=~/.history
 ORIGINAL_HISTFILE=$HISTFILE
 
 # ------------------------------------------------
+# VI-MODE ----------------------------------------
+# ------------------------------------------------
+# NOTE: You probably also have the vi-mode oh-my-zsh plugin.
+# https://dougblack.io/words/zsh-vi-mode.html
+bindkey -v
+
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
+function zle-line-init zle-keymap-select {
+  VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+  zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+export KEYTIMEOUT=40
+
+# ------------------------------------------------
+# LOCALES ----------------------------------------
+# ------------------------------------------------
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US.UTF-8"
+export LC_COLLATE="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+export LC_MESSAGES="en_US.UTF-8"
+export LC_MONETARY="en_US.UTF-8"
+export LC_NUMERIC="en_US.UTF-8"
+export LC_TIME="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LC_TYPE="en_US.UTF-8"
+
+
+# ------------------------------------------------
 # UTILITY->SOURCING ------------------------------
 # ------------------------------------------------
 alias resource="unset ZSHRC_SOURCED; source ~/.zshrc"

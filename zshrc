@@ -12,11 +12,6 @@ if [[ -n $INITIAL_CWD ]] ; then
 fi
 
 # ------------------------------------------------
-# ENV --------------------------------------------
-# ------------------------------------------------
-export SUBNET_PREFIX="192.168.1."
-
-# ------------------------------------------------
 # SOURCE -----------------------------------------
 # ------------------------------------------------
 
@@ -25,6 +20,25 @@ test -f $HOME/.configs/zshrc-oh-my-zsh && source $HOME/.configs/zshrc-oh-my-zsh
 
 # Source the shared zshrc (shared between users and root)
 source /etc/zshrc-shared
+
+# ------------------------------------------------
+# NODE/NVM/NPM -----------------------------------
+# ------------------------------------------------
+# Load node here since other things depend on it
+export NVM_DIR="$HOME/.nvm"
+
+if [[ -d $NVM_DIR ]] ; then
+
+  # Load nvm
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+  # Load completion
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+fi
+
+# ------------------------------------------------
+# SOUrCE->USER -----------------------------------
+# ------------------------------------------------
 
 # Source sensitive ENV vars (~/.env)
 source-if-exists $HOME/.env
@@ -389,44 +403,6 @@ if [[ $TMUX_EACH_SESSION = "true" ]] ; then
 fi
 
 # ------------------------------------------------
-# VI-MODE ----------------------------------------
-# ------------------------------------------------
-# NOTE: You probably also have the vi-mode oh-my-zsh plugin.
-# https://dougblack.io/words/zsh-vi-mode.html
-bindkey -v
-
-bindkey '^P' up-history
-bindkey '^N' down-history
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
-bindkey '^w' backward-kill-word
-bindkey '^r' history-incremental-search-backward
-
-function zle-line-init zle-keymap-select {
-  VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-  zle reset-prompt
-}
-
-zle -N zle-line-init
-zle -N zle-keymap-select
-export KEYTIMEOUT=40
-
-# ------------------------------------------------
-# LOCALES ----------------------------------------
-# ------------------------------------------------
-export LANG="en_US.UTF-8"
-export LANGUAGE="en_US.UTF-8"
-export LC_COLLATE="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
-export LC_MESSAGES="en_US.UTF-8"
-export LC_MONETARY="en_US.UTF-8"
-export LC_NUMERIC="en_US.UTF-8"
-export LC_TIME="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
-export LC_TYPE="en_US.UTF-8"
-
-# ------------------------------------------------
 # ALIASES ----------------------------------------
 # ------------------------------------------------
 # FIX: Add export -f to some of these for script use
@@ -521,17 +497,6 @@ export PRWD_BIND_TO_TMUX=true
 if [[ -d $HOME/.asdf ]] ; then
   . $HOME/.asdf/asdf.sh
   . $HOME/.asdf/completions/asdf.bash
-fi
-
-# ------------------------------------------------
-# NODE/NVM/NPM -----------------------------------
-# ------------------------------------------------
-
-export NVM_DIR="$HOME/.nvm"
-
-if [[ -d $NVM_DIR ]] ; then
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
 # ------------------------------------------------

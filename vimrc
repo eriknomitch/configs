@@ -1,4 +1,6 @@
 " ================================================
+" VIMRC ==========================================
+" ================================================
 syntax enable
 colors bluegreen
 
@@ -16,6 +18,9 @@ set smartcase
 " Filetype
 filetype on
 filetype plugin indent on
+
+" Swap
+set noswapfile
 
 " ------------------------------------------------
 " PLUG -------------------------------------------
@@ -65,6 +70,7 @@ Plug 'tpope/vim-repeat' " Dependency of vim-easyclip
 Plug 'svermeulen/vim-easyclip'
 Plug 'jreybert/vimagit'
 Plug 'sjl/gundo.vim'
+" Plug 'joeytwiddle/sexy_scroller.vim'
 call plug#end()
 
 " ------------------------------------------------
@@ -133,6 +139,12 @@ imap <F2> <nop>
 nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
 set showmode
+
+" Navigate 4x faster when holding down Ctrl
+nmap <c-j> 4j
+nmap <c-k> 4k
+nmap <c-h> 4h
+nmap <c-l> 4l
 
 " ------------------------------------------------
 " HOTKEYS ----------------------------------------
@@ -238,7 +250,7 @@ endif
 " CONFIG->CTRLP ----------------------------------
 " ------------------------------------------------
 let g:ctrlp_map = '<C-p>'
-let g:ctrlp_cmd = 'CtrlPBuffer'
+" let g:ctrlp_cmd = 'CtrlPBuffer'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:30,results:30'
 let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
@@ -466,6 +478,11 @@ augroup vimagit
 augroup END
 
 " ------------------------------------------------
+" ------------------------------------------------
+" ------------------------------------------------
+" let g:SexyScroller_EasingStyle = 3
+
+" ------------------------------------------------
 " CONFIG->KEY-MAPPINGS ---------------------------
 " ------------------------------------------------
 
@@ -495,3 +512,4 @@ nnoremap <leader>b :FZFLines<CR>
 
 " vimagit
 nnoremap <leader>g :Magit<CR>
+
