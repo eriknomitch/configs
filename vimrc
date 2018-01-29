@@ -70,6 +70,7 @@ Plug 'tpope/vim-repeat' " Dependency of vim-easyclip
 Plug 'svermeulen/vim-easyclip'
 Plug 'jreybert/vimagit'
 Plug 'sjl/gundo.vim'
+Plug 'suan/vim-instant-markdown'
 " Plug 'joeytwiddle/sexy_scroller.vim'
 call plug#end()
 
