@@ -53,6 +53,7 @@ bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("H", "Helium")
 bindApplicationFocus("S", "Slack")
+bindApplicationFocus("J", "Jira")
 
 --- bindApplicationFocusSecondary("I", "FirefoxDeveloperEdition")
 

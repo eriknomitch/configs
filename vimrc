@@ -491,17 +491,23 @@ augroup END
 " CONFIG->KEY-MAPPINGS ---------------------------
 " ------------------------------------------------
 
-" general
+" General
+" ------------------------------------------------
 nnoremap <leader>q :qall<CR>
 nnoremap <leader>h :noh<CR>
 nnoremap <leader>w :wqall<CR>
 
+" Shift+tab inserts a literal tab
+" https://stackoverflow.com/questions/4781070/how-to-insert-tab-character-when-expandtab-option-is-on-in-vim
+inoremap <S-Tab> <C-V><Tab>
+
 " vimrc
+" ------------------------------------------------
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " ALE
-nnoremap <leader>af :ALEFix<CR>
+" ------------------------------------------------
 nnoremap <leader>at :ALEToggle<CR>
 nnoremap <leader>ae :ALEEnable<CR>
 nnoremap <leader>ad :ALEDisable<CR>
@@ -510,11 +516,14 @@ nnoremap <leader>F :ALEFix<CR>
 " noremap <leader>af <Plug>(ale_fix)<CR>
 
 " Whitespace
+" ------------------------------------------------
 nnoremap <leader>sw :StripWhitespace<CR>
 
 " FZF
+" ------------------------------------------------
 nnoremap <leader>b :FZFLines<CR>
 
 " vimagit
+" ------------------------------------------------
 nnoremap <leader>g :Magit<CR>
 
