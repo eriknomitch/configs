@@ -1,4 +1,11 @@
-function YesNoDialogBox(ActionFunc)
+ -- ==============================================
+ -- HAMMERSPOON->CONFIG ==========================
+ -- ==============================================
+
+-- -----------------------------------------------
+-- UTILITY ---------------------------------------
+-- -----------------------------------------------
+ function YesNoDialogBox(ActionFunc)
   test = hs.chooser.new(ActionFunc)
   test:rows(2)
   test:choices({{["text"] = "Yes", ["subText"] = "", ["id"] = "yes"},
@@ -6,7 +13,7 @@ function YesNoDialogBox(ActionFunc)
   test:show()
 end
 
-function has_value (tab, val)
+function hasValue (tab, val)
   for index, value in ipairs(tab) do
     if value == val then
       return true
@@ -16,9 +23,15 @@ function has_value (tab, val)
   return false
 end
 
+-- -----------------------------------------------
+-- -----------------------------------------------
+-- -----------------------------------------------
 hs.window.animationDuration = 0
 hs.window.setShadows(false)
 
+-- -----------------------------------------------
+-- -----------------------------------------------
+-- -----------------------------------------------
 local movement  = {"cmd", "ctrl"}
 local movement2 = {"cmd", "ctrl", "shift"}
 
@@ -45,7 +58,7 @@ end
 bindApplicationFocus("i", "Google Chrome")
 bindApplicationFocus("C", "Google Calendar")
 bindApplicationFocus("D", "Google Drive")
-bindApplicationFocus("E", "Boxy")
+bindApplicationFocus("E", "Google Inbox")
 bindApplicationFocus("M", "Messages")
 bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("P", "Preview")
