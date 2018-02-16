@@ -30,5 +30,5 @@ promptinit
 # ------------------------------------------------
 # PURE -------------------------------------------
 # ------------------------------------------------
-test -d /usr/local/share/zsh/site-functions/prompt_pure_setup && prompt pure
+test -f /usr/local/share/zsh/site-functions/prompt_pure_setup && prompt pure
 
