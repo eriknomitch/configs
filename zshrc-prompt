@@ -30,7 +30,5 @@ promptinit
 # ------------------------------------------------
 # PURE -------------------------------------------
 # ------------------------------------------------
-if prompt -l | tr ' ' '\n' | grep "^pure$" > /dev/null 2>&1; then
-  prompt pure
-fi
+test -d /usr/local/share/zsh/site-functions/prompt_pure_setup && prompt pure
 
