@@ -23,7 +23,7 @@ local movement  = {"cmd", "ctrl"}
 local movement2 = {"cmd", "ctrl", "shift"}
 
 local movementAppplicationLaunchOrFocus = {"cmd", "ctrl"}
-local movementAppplicationLaunchOrFocusSecondary = {"cmd", "ctrl", "shiift"}
+local movementAppplicationLaunchOrFocusSecondary = {"cmd", "ctrl", "shift"}
 
 applicationHotkeyDefinitions = {}
 
@@ -43,19 +43,20 @@ end
 -- SHORTCUTS -------------------------------------
 -- -----------------------------------------------
 bindApplicationFocus("i", "Google Chrome")
--- bindApplicationFocus("d", "FirefoxDeveloperEdition")
 bindApplicationFocus("M", "Messages")
--- bindApplicationFocus("W", "Wavebox")
-bindApplicationFocusSecondary("E", "Evernote")
 bindApplicationFocus("T", "Todoist")
--- bindApplicationFocus("Y", "YakYak")
 bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("H", "Helium")
 bindApplicationFocus("S", "Slack")
 bindApplicationFocus("J", "Jira")
+bindApplicationFocus("E", "Boxy")
+bindApplicationFocus("C", "Google Calendar")
 
---- bindApplicationFocusSecondary("I", "FirefoxDeveloperEdition")
+-- Secondary
+-- -----------------------------------------------
+bindApplicationFocusSecondary("E", "Evernote")
+bindApplicationFocusSecondary("I", "FirefoxDeveloperEdition")
 
 hs.hotkey.bind({"cmd", "ctrl", "shift", "P"}, "P", function() confirmThenOpenApplication("Adobe Photoshop CC 2018") end)
 
@@ -218,6 +219,12 @@ end
 
 windows = hs.window.filter.new(nil)
 windows:subscribe(hs.window.filter.windowCreated, handleWindowCreated)
+
+--------------------------------------------------
+-- SPOONS ----------------------------------------
+--------------------------------------------------
+hs.loadSpoon("WiFiTransitions")
+spoon.WiFiTransitions:start()
 
 -----------------------------------------------
 -- Reload config on write

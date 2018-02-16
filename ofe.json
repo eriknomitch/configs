@@ -23,6 +23,9 @@
   "hammerspoon": {
     "files": ["hammerspoon/*"]
   },
+  "hs": {
+    "files": ["hammerspoon/*"]
+  },
   "fluxbox": {
     "files": ["fluxbox/**/**"]
   },
