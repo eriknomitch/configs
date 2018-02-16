@@ -43,6 +43,9 @@ end
 -- SHORTCUTS -------------------------------------
 -- -----------------------------------------------
 bindApplicationFocus("i", "Google Chrome")
+bindApplicationFocus("C", "Google Calendar")
+bindApplicationFocus("D", "Google Drive")
+bindApplicationFocus("E", "Boxy")
 bindApplicationFocus("M", "Messages")
 bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("P", "Preview")
@@ -50,8 +53,6 @@ bindApplicationFocus("F", "Finder")
 bindApplicationFocus("H", "Helium")
 bindApplicationFocus("S", "Slack")
 bindApplicationFocus("J", "Jira")
-bindApplicationFocus("E", "Boxy")
-bindApplicationFocus("C", "Google Calendar")
 
 -- Secondary
 -- -----------------------------------------------
