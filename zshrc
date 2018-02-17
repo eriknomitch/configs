@@ -22,6 +22,42 @@ test -f $HOME/.configs/zshrc-oh-my-zsh && source $HOME/.configs/zshrc-oh-my-zsh
 source /etc/zshrc-shared
 
 # ------------------------------------------------
+# ALIASES ----------------------------------------
+# ------------------------------------------------
+# FIX: Add export -f to some of these for script use
+alias T="tree"
+alias e="edit-common"
+alias arp="sudo arp"
+alias route="sudo route"
+alias pls="play-live-stream-npr-wbez"
+alias yt="youtube-dl"
+alias nd="nvidia-docker"
+alias ndc="nvidia-docker-compose"
+
+# Notes
+# ------------------------------------------------
+alias n="notes"
+alias nn="notes notes ${@:2}"
+alias ng="notes --grep"
+alias nls="notes --list"
+alias rem="notes-reminders"
+alias dsp="docker system prune --force"
+
+# SSH
+# ------------------------------------------------
+alias S="ssh server"
+alias A="ssh ai"
+alias V="ssh virtual-linux"
+
+# ------------------------------------------------
+# ASDF -------------------------------------------
+# ------------------------------------------------
+if [[ -d $HOME/.asdf ]] ; then
+  . $HOME/.asdf/asdf.sh
+  . $HOME/.asdf/completions/asdf.bash
+fi
+
+# ------------------------------------------------
 # NODE/NVM/NPM -----------------------------------
 # ------------------------------------------------
 # Load node here since other things depend on it
@@ -403,34 +439,6 @@ if [[ $TMUX_EACH_SESSION = "true" ]] ; then
 fi
 
 # ------------------------------------------------
-# ALIASES ----------------------------------------
-# ------------------------------------------------
-# FIX: Add export -f to some of these for script use
-alias T="tree"
-alias e="edit-common"
-alias arp="sudo arp"
-alias route="sudo route"
-alias pls="play-live-stream-npr-wbez"
-alias yt="youtube-dl"
-alias nd="nvidia-docker"
-alias ndc="nvidia-docker-compose"
-
-# Notes
-# ------------------------------------------------
-alias n="notes"
-alias nn="notes notes ${@:2}"
-alias ng="notes --grep"
-alias nls="notes --list"
-alias rem="notes-reminders"
-alias dsp="docker system prune --force"
-
-# SSH
-# ------------------------------------------------
-alias S="ssh server"
-alias A="ssh ai"
-alias V="ssh virtual-linux"
-
-# ------------------------------------------------
 # YARN -------------------------------------------
 # ------------------------------------------------
 command-exists yarn && export PATH="$PATH:`yarn global bin`"
@@ -490,14 +498,6 @@ fi
 # CONFIG->PRWD -----------------------------------
 # ------------------------------------------------
 export PRWD_BIND_TO_TMUX=true
-
-# ------------------------------------------------
-# ASDF -------------------------------------------
-# ------------------------------------------------
-if [[ -d $HOME/.asdf ]] ; then
-  . $HOME/.asdf/asdf.sh
-  . $HOME/.asdf/completions/asdf.bash
-fi
 
 # ------------------------------------------------
 # PROMPT -----------------------------------------
