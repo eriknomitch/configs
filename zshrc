@@ -16,6 +16,14 @@ test -n $INITIAL_CWD && cd $INITIAL_CWD
 # Source zshrc-oh-my-zsh first so we can override the theme/prompt
 test -f $HOME/.configs/zshrc-oh-my-zsh && source $HOME/.configs/zshrc-oh-my-zsh
 
+# ------------------------------------------------
+# ASDF -------------------------------------------
+# ------------------------------------------------
+if [[ -d $HOME/.asdf ]] ; then
+  . $HOME/.asdf/asdf.sh
+  . $HOME/.asdf/completions/asdf.bash
+fi
+
 # Source the shared zshrc (shared between users and root)
 source /etc/zshrc-shared
 
@@ -46,14 +54,6 @@ alias dsp="docker system prune --force"
 alias S="ssh server"
 alias A="ssh ai"
 alias V="ssh virtual-linux"
-
-# ------------------------------------------------
-# ASDF -------------------------------------------
-# ------------------------------------------------
-if [[ -d $HOME/.asdf ]] ; then
-  . $HOME/.asdf/asdf.sh
-  . $HOME/.asdf/completions/asdf.bash
-fi
 
 # ------------------------------------------------
 # NODE/NVM/NPM -----------------------------------
