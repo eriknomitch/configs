@@ -26,9 +26,6 @@ setopt extended_glob
 setopt no_nomatch
 setopt alwaystoend
 
-# vi mode
-#bindkey -v
-
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.history
@@ -48,6 +45,8 @@ bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
 
+# Prompt settings for vi mode
+# ------------------------------------------------
 function zle-line-init zle-keymap-select {
   VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
   RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
@@ -72,19 +71,13 @@ export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export LC_TYPE="en_US.UTF-8"
 
-
 # ------------------------------------------------
 # UTILITY->SOURCING ------------------------------
 # ------------------------------------------------
 alias resource="unset ZSHRC_SOURCED; source ~/.zshrc"
 
-function source-if-exists()
-{
-  _path=$1
-
-  if [[ -f $_path ]] ; then
-    source $_path
-  fi
+function source-if-exists() {
+  test -f $1 && source $1
 }
 
 command-exists() {
@@ -165,7 +158,6 @@ alias x="exit"
 alias c="clear"
 alias sd="sudo"
 alias s="sudo su"
-#alias d="date && cal"
 alias reboot="sudo reboot"
 alias halt="sudo halt"
 alias ts="du -sh"
@@ -176,7 +168,6 @@ alias rs="clear; rspec --format nested --color $*"
 alias sc="screen"
 alias scl="screen -ls"
 alias t="tmux"
-#alias ccat="pygmentize -g"
 alias ccat="vimcat"
 
 psg()
@@ -347,6 +338,7 @@ fi
 if ( $ON_DARWIN ) ; then
   alias htop="sudo htop"
   alias op="open"
+  alias del="rmtrash"
 fi
 
 if ( $ON_LINUX ) ; then
@@ -375,7 +367,7 @@ function sx()
   fi
 }
 
-# extract
+# Extract
 function ex()
 {
   if [ -f $1 ] ; then
@@ -479,18 +471,6 @@ else
   else
     PROMPT=$'%{$fg[green]%}%m$%{$reset_color%} '
   fi
-fi
-
-# Right-hand prompt
-#RPROMPT="%{$fg_bold[black]%}%~%{$reset_color%}"
-
-if ( $ON_DARWIN ) ; then
-
-  # Terminal.app has problems with bold black (grey).
-  #RPROMPT="%{$fg[white]%}%~%{$reset_color%}"
-
-  alias del="rmtrash"
-
 fi
 
 # ------------------------------------------------

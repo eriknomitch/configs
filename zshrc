@@ -7,9 +7,7 @@
 # ------------------------------------------------
 
 # This is used in some scripts to force an initial working directory.
-if [[ -n $INITIAL_CWD ]] ; then
-  cd $INITIAL_CWD
-fi
+test -n $INITIAL_CWD && cd $INITIAL_CWD
 
 # ------------------------------------------------
 # SOURCE -----------------------------------------
@@ -119,9 +117,9 @@ export PATH="$PATH:$HOME/.repositories/host-setup/bin"
 export ANSIBLE_NOCOWS=1
 
 # ------------------------------------------------
-# PUCK -------------------------------------------
+# TUNNEL -----------------------------------------
 # ------------------------------------------------
-export PATH="$PATH:$HOME/.repositories/puck/bin"
+export PATH="$PATH:$HOME/.repositories/tunnel/bin"
 
 # ------------------------------------------------
 # THEFUCK ----------------------------------------
@@ -215,9 +213,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # ------------------------------------------------
 # SPECIAL->MICRO ---------------------------------
 # ------------------------------------------------
-if ( $ON_MICRO ) ; then
-  alias raspi-config="sudo raspi-config"
-fi
+command-exists raspi-config && alias raspi-config="sudo raspi-config"
 
 # ------------------------------------------------
 # ZSHRC-MARKS ------------------------------------
