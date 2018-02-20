@@ -66,6 +66,7 @@ bindApplicationFocus("F", "Finder")
 bindApplicationFocus("H", "Helium")
 bindApplicationFocus("S", "Slack")
 bindApplicationFocus("J", "Jira")
+bindApplicationFocus("W", "Bear")
 
 -- Secondary
 -- -----------------------------------------------
