@@ -543,3 +543,9 @@ else
   export EDITOR="vim"
 fi
 
+# ------------------------------------------------
+# ASDF -------------------------------------------
+# ------------------------------------------------
+# For some reason, if node is installed via asdf we need to add the shim directory to our path
+# else we'll get an error of 'env: node: No such file or directory' when opening a shell.
+test -f $HOME/.asdf/shims/node && export PATH=$PATH:$HOME/.asdf/shims
