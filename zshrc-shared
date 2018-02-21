@@ -1,14 +1,11 @@
 # ------------------------------------------------
 # ZSH->CONFIGURATION -----------------------------
 # ------------------------------------------------
-autoload -U compinit
+autoload -U compinit; compinit
 autoload zsh/terminfo
-autoload colors && colors
+autoload colors; colors
 
 source /etc/zsh/colors
-
-# Initialize for compdef
-compinit
 
 # Allow for functions in the prompt
 setopt promptsubst
@@ -524,6 +521,7 @@ fi
 # ------------------------------------------------
 # ASDF -------------------------------------------
 # ------------------------------------------------
+
 # For some reason, if node is installed via asdf we need to add the shim directory to our path
 # else we'll get an error of 'env: node: No such file or directory' when opening a shell.
 test -f $HOME/.asdf/shims/node && export PATH=$PATH:$HOME/.asdf/shims

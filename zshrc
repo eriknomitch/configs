@@ -3,6 +3,23 @@
 # ================================================
 
 # ------------------------------------------------
+# INITIAL-CWD ------------------------------------
+# ------------------------------------------------
+
+# This is used in some scripts to force an initial working directory.
+test -n $INITIAL_CWD && cd $INITIAL_CWD
+
+# ------------------------------------------------
+# SOURCE -----------------------------------------
+# ------------------------------------------------
+
+# Source zshrc-oh-my-zsh first so we can override the theme/prompt
+test -f $HOME/.configs/zshrc-oh-my-zsh && source $HOME/.configs/zshrc-oh-my-zsh
+
+# Source the shared zshrc (shared between users and root)
+source /etc/zshrc-shared
+
+# ------------------------------------------------
 # ALIASES ----------------------------------------
 # ------------------------------------------------
 # FIX: Add export -f to some of these for script use
@@ -39,48 +56,15 @@ if [[ -d $HOME/.asdf ]] ; then
 fi
 
 # ------------------------------------------------
-# INITIAL-CWD ------------------------------------
-# ------------------------------------------------
-
-# This is used in some scripts to force an initial working directory.
-test -n $INITIAL_CWD && cd $INITIAL_CWD
-
-# ------------------------------------------------
-# SOURCE -----------------------------------------
-# ------------------------------------------------
-
-# Source zshrc-oh-my-zsh first so we can override the theme/prompt
-test -f $HOME/.configs/zshrc-oh-my-zsh && source $HOME/.configs/zshrc-oh-my-zsh
-
-# Source the shared zshrc (shared between users and root)
-source /etc/zshrc-shared
-
-# ------------------------------------------------
 # ANTIGEN ----------------------------------------
 # ------------------------------------------------
 ANTIGEN_MUTEX=false
 
 source-if-exists /usr/local/share/antigen/antigen.zsh
 
-# Packages
+# REFERENCE: Packages
 # ------------------------------------------------
-antigen bundle lukechilds/zsh-better-npm-completion
-
-# ------------------------------------------------
-# NODE/NVM/NPM -----------------------------------
-# ------------------------------------------------
-
-# Load node here since other things depend on it
-export NVM_DIR="$HOME/.nvm"
-
-if [[ -d $NVM_DIR ]] ; then
-
-  # Load nvm
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-  # Load completion
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-fi
+# lukechilds/zsh-better-npm-completion
 
 # ------------------------------------------------
 # SOURCE->USER -----------------------------------
