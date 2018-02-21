@@ -500,7 +500,3 @@ export PRWD_BIND_TO_TMUX=true
 # ------------------------------------------------
 source $HOME/.configs/zshrc-prompt
 
-
-# Set Spaceship ZSH as a prompt
-# autoload -U promptinit; promptinit
-# prompt spaceship

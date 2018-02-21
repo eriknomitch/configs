@@ -56,7 +56,7 @@ DISABLE_AUTO_UPDATE="true"
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git)
 
-plugins=(vi-mode git-flow git-extras npm per-directory-history zsh-navigation-tools zsh_reload docker)
+plugins=(vi-mode git-flow git-extras per-directory-history zsh-navigation-tools zsh_reload docker)
 
 if ( $ON_DARWIN ) ; then
   plugins=($plugins droplr osx brew)
