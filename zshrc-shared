@@ -48,9 +48,9 @@ bindkey '^r' history-incremental-search-backward
 # Prompt settings for vi mode
 # ------------------------------------------------
 function zle-line-init zle-keymap-select {
-  VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-  zle reset-prompt
+VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+zle reset-prompt
 }
 
 zle -N zle-line-init
@@ -81,7 +81,7 @@ function source-if-exists() {
 }
 
 command-exists() {
-  (command -v $1 >/dev/null 2>&1)
+(command -v $1 >/dev/null 2>&1)
 }
 
 # ------------------------------------------------
@@ -209,65 +209,6 @@ pox()
 }
 
 # ------------------------------------------------
-# SCREEN -----------------------------------------
-# ------------------------------------------------
-alias torrent="screen -d -R torrent"
-
-# ------------------------------------------------
-# OPEN -------------------------------------------
-# ------------------------------------------------
-#function o()
-#{
-    #if [[ -z $1 ]] ; then
-        #echo "usage: $0:"
-        #return 1
-    #fi
-
-    #file=$1
-
-    #if [[ ! -f $file ]] ; then
-        #echo "fatal: File does not exist or is not ordinary (i.e., directory or symbolic link)"
-        #return 1
-    #fi
-
-    #case $file in
-        ## evince
-        #*.(pdf|png|jpg))
-        #evince $file
-        #;;
-        ## gimp
-        #*.(xcf))
-        #gimp $file
-        #;;
-        ## dia
-        #*.(dia))
-        #dia $file
-        #;;
-        ## inkscape
-        #*.(svg))
-        #inkscape $file
-        #;;
-        ## word
-        #*.(doc|docx|docm))
-        #word $file
-        #;;
-        ## excel
-        #*.(xls|xlsx|xlsm))
-        #excel $file
-        #;;
-        ## powerpoint
-        #*.(ppt|pptx|pptm))
-        #powerpoint $file
-        #;;
-        ## default
-        #*)
-        #echo "fatal: Not a supported filetype"
-        #return 1
-        #;;
-    #esac
-#}
-
-# ------------------------------------------------
 # RUN --------------------------------------------
 # ------------------------------------------------
 function r() {
@@ -324,6 +265,7 @@ alias ht="htop"
 alias htn="htop --user=nobody"
 alias gpi="grep --ignore-case"
 alias pgrep="pgrep -il"
+alias torrent="screen -d -R torrent"
 
 if [[ "$USER" != "root" ]] ; then
   alias apt-get="sudo apt-get"
@@ -335,18 +277,25 @@ if [[ "$USER" != "root" ]] ; then
   alias locate="sudo locate"
 fi
 
+# Darwin
+# ------------------------------------------------
 if ( $ON_DARWIN ) ; then
   alias htop="sudo htop"
   alias op="open"
   alias del="rmtrash"
 fi
 
+# Linux
+# ------------------------------------------------
 if ( $ON_LINUX ) ; then
   if [[ $USER != $ROOT ]] ; then
     alias ifconfig="/sbin/ifconfig"
   fi
 fi
 
+# ------------------------------------------------
+# FUNCTIONS --------------------------------------
+# ------------------------------------------------
 function mvw() {
   mv $* && cd $2
 }
@@ -394,7 +343,7 @@ function ex()
 
 function rsync-partial()
 {
-    rsync --partial --progress --rsh=ssh $*
+  rsync --partial --progress --rsh=ssh $*
 }
 
 function rm-history() {
@@ -463,8 +412,8 @@ function pwd-home-count() {
 if [[ $USER == "root" ]] ; then
   PROMPT=$'%{\e[31m%}%m# %{\e[0m%}'
 
-# Non-Privileged
-# ------------------------------------------------
+  # Non-Privileged
+  # ------------------------------------------------
 else
   if ( $SSHED ) ; then
     PROMPT=$'->%{$fg_bold[blue]%}[SSH]%{$reset_color%}-[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color%}]$(pwd-home-count)->%{$fg[magenta]%}%m$%{$reset_color%} '
@@ -487,6 +436,35 @@ function gi() {
   ls -lh
   g
   stylize `pwd-tilde`"\n"
+}
+
+# ------------------------------------------------
+# KEY-BINDINGS->PROMPT-DUMPS->DEFINER ------------
+# ------------------------------------------------
+# Meta definer for dump commands
+function _define_buffer_dump() {
+
+  local _function_suffix=$1
+  local _bindkey=$2
+  local _lbuffer=$3
+  local _rbuffer=$4
+
+  local _function_name="_dump_$_function_suffix"
+
+  test -n $_rbuffer || _rbuffer=''
+
+  eval "
+function $_function_name() {
+  LBUFFER+='$_lbuffer'; RBUFFER+='$_rbuffer'
+  #expand-or-complete-with-dots
+  zle expand-or-complete
+  zle redisplay
+}
+
+zle -N $_function_name
+bindkey '$_bindkey' $_function_name
+  "
+
 }
 
 # ------------------------------------------------

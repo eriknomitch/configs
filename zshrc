@@ -1,31 +1,6 @@
-# ------------------------------------------------
-# ENV->CONFIGURATION -----------------------------
-# ------------------------------------------------
-
-# ------------------------------------------------
-# INITIAL-CWD ------------------------------------
-# ------------------------------------------------
-
-# This is used in some scripts to force an initial working directory.
-test -n $INITIAL_CWD && cd $INITIAL_CWD
-
-# ------------------------------------------------
-# SOURCE -----------------------------------------
-# ------------------------------------------------
-
-# Source zshrc-oh-my-zsh first so we can override the theme/prompt
-test -f $HOME/.configs/zshrc-oh-my-zsh && source $HOME/.configs/zshrc-oh-my-zsh
-
-# ------------------------------------------------
-# ASDF -------------------------------------------
-# ------------------------------------------------
-if [[ -d $HOME/.asdf ]] ; then
-  . $HOME/.asdf/asdf.sh
-  . $HOME/.asdf/completions/asdf.bash
-fi
-
-# Source the shared zshrc (shared between users and root)
-source /etc/zshrc-shared
+# ================================================
+# ZSHRC ==========================================
+# ================================================
 
 # ------------------------------------------------
 # ALIASES ----------------------------------------
@@ -56,8 +31,45 @@ alias A="ssh ai"
 alias V="ssh virtual-linux"
 
 # ------------------------------------------------
+# ASDF -------------------------------------------
+# ------------------------------------------------
+if [[ -d $HOME/.asdf ]] ; then
+  . $HOME/.asdf/asdf.sh
+  . $HOME/.asdf/completions/asdf.bash
+fi
+
+# ------------------------------------------------
+# INITIAL-CWD ------------------------------------
+# ------------------------------------------------
+
+# This is used in some scripts to force an initial working directory.
+test -n $INITIAL_CWD && cd $INITIAL_CWD
+
+# ------------------------------------------------
+# SOURCE -----------------------------------------
+# ------------------------------------------------
+
+# Source zshrc-oh-my-zsh first so we can override the theme/prompt
+test -f $HOME/.configs/zshrc-oh-my-zsh && source $HOME/.configs/zshrc-oh-my-zsh
+
+# Source the shared zshrc (shared between users and root)
+source /etc/zshrc-shared
+
+# ------------------------------------------------
+# ANTIGEN ----------------------------------------
+# ------------------------------------------------
+ANTIGEN_MUTEX=false
+
+source-if-exists /usr/local/share/antigen/antigen.zsh
+
+# Packages
+# ------------------------------------------------
+antigen bundle lukechilds/zsh-better-npm-completion
+
+# ------------------------------------------------
 # NODE/NVM/NPM -----------------------------------
 # ------------------------------------------------
+
 # Load node here since other things depend on it
 export NVM_DIR="$HOME/.nvm"
 
@@ -71,7 +83,7 @@ if [[ -d $NVM_DIR ]] ; then
 fi
 
 # ------------------------------------------------
-# SOUrCE->USER -----------------------------------
+# SOURCE->USER -----------------------------------
 # ------------------------------------------------
 
 # Source sensitive ENV vars (~/.env)
@@ -111,6 +123,11 @@ if [ -d "${RBENV_ROOT}" ]; then
 fi
 
 # ------------------------------------------------
+# THEFUCK ----------------------------------------
+# ------------------------------------------------
+command-exists thefuck && eval "$(thefuck --alias)"
+
+# ------------------------------------------------
 # ANSIBLE ----------------------------------------
 # ------------------------------------------------
 export PATH="$PATH:$HOME/.repositories/host-setup/bin"
@@ -120,40 +137,6 @@ export ANSIBLE_NOCOWS=1
 # TUNNEL -----------------------------------------
 # ------------------------------------------------
 export PATH="$PATH:$HOME/.repositories/tunnel/bin"
-
-# ------------------------------------------------
-# THEFUCK ----------------------------------------
-# ------------------------------------------------
-command-exists thefuck && eval "$(thefuck --alias)"
-
-# ------------------------------------------------
-# KEY-BINDINGS->PROMPT-DUMPS->DEFINER ------------
-# ------------------------------------------------
-# Meta definer for dump commands
-function _define_buffer_dump() {
-
-  local _function_suffix=$1
-  local _bindkey=$2
-  local _lbuffer=$3
-  local _rbuffer=$4
-
-  local _function_name="_dump_$_function_suffix"
-
-  test -n $_rbuffer || _rbuffer=''
-
-  eval "
-function $_function_name() {
-  LBUFFER+='$_lbuffer'; RBUFFER+='$_rbuffer'
-  #expand-or-complete-with-dots
-  zle expand-or-complete
-  zle redisplay
-}
-
-zle -N $_function_name
-bindkey '$_bindkey' $_function_name
-  "
-
-}
 
 # ------------------------------------------------
 # KEY-BINDINGS->PROMPT-DUMPS->DEFINITIONS --------
@@ -186,15 +169,6 @@ _define_buffer_dump ip_lan '^[1' $LAN_PREFIX
 _define_buffer_dump puck '^[p' "puck-ssh "
 
 # ------------------------------------------------
-# AMAZON -----------------------------------------
-# ------------------------------------------------
-export EC2_KEYPAIR=default
-export EC2_URL=https://ec2.us-west-1.amazonaws.com
-export EC2_PRIVATE_KEY=$HOME/.ec2/pk-Y3LLWLPQGW2WN3RIOOKTHRE5MNJFEWNC.pem
-export EC2_CERT=$HOME/.ec2/cert-Y3LLWLPQGW2WN3RIOOKTHRE5MNJFEWNC.pem
-export JAVA_HOME=/usr/lib/jvm/java-6-sun/
-
-# ------------------------------------------------
 # ANDROID ----------------------------------------
 # ------------------------------------------------
 export JAVA_HOME=/usr/lib/jvm/java-6-sun/
@@ -223,24 +197,6 @@ alias to="jump"
 function tos {
   jump $* && sw
 }
-
-# ------------------------------------------------
-# SPINNER ----------------------------------------
-# ------------------------------------------------
-#function spinner()
-#{
-    #local pid=$!
-    #local delay=0.1
-    #local spinstr='|/-\'
-    #while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
-        #local temp=${spinstr#?}
-        #printf " [%c]  " "$spinstr"
-        #local spinstr=$temp${spinstr%"$temp"}
-        #sleep $delay
-        #printf "\b\b\b\b\b\b"
-    #done
-    #printf "    \b\b\b\b"
-#}
 
 # ------------------------------------------------
 # ZPLUG ------------------------------------------
