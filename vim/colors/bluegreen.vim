@@ -1,23 +1,28 @@
 " Vim color file
-" Maintainer:   Shirk <shirk@gmx.net>
-" Last Change:  19 September 2005 - 0.2
-" URL: trinity.gentoofreaks.org
+" Maintainer:   Erik Nomitch <erik@nomitch.com>
+" Last Change:  20 February 2018 - 0.1
+" URL: erik.is
 
-" cool help screens
 " :he group-name
 " :he highlight-groups
 " :he cterm-colors
 
-"set background=dark     "or light
+" ------------------------------------------------
+" ------------------------------------------------
+" ------------------------------------------------
+set background=dark
 hi clear
 if exists("syntax_on")
   syntax reset
 endif
 set t_Co=256
 let g:colors_name="bluegreen"
- 
-hi Normal       ctermfg=White ctermfg=none guifg=White ctermbg=none guibg=none cterm=none
-hi NonText      ctermfg=DarkGray guifg=DarkGray  ctermbg=none guibg=none
+
+" ------------------------------------------------
+" ------------------------------------------------
+" ------------------------------------------------
+hi Normal       ctermfg=White ctermfg=none guifg=White ctermbg=none guibg=Black cterm=none
+hi NonText      ctermfg=DarkGray guifg=DarkGray  ctermbg=none guibg=Black
 
 hi Statement    ctermfg=Blue guifg=Blue      ctermbg=none guibg=none
 hi Comment      ctermfg=Green guifg=Green  ctermbg=none guibg=none cterm=bold gui=bold term=bold
