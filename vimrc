@@ -400,7 +400,8 @@ highlight link multiple_cursors_visual Visual
 let g:ale_javascript_prettier_use_local_config = 1
 
 " Only lint on file open and write - not text change
-let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
 
 " Fix on save
