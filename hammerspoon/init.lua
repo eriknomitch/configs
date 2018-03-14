@@ -1,4 +1,4 @@
- -- ==============================================
+ ZZuu -- ==============================================
  -- HAMMERSPOON->CONFIG ==========================
  -- ==============================================
 
@@ -65,13 +65,12 @@ bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("H", "Helium")
 bindApplicationFocus("S", "Slack")
-bindApplicationFocus("J", "Jira")
-bindApplicationFocus("W", "Ulysses")
 
 -- Secondary
 -- -----------------------------------------------
 bindApplicationFocusSecondary("E", "Evernote")
 bindApplicationFocusSecondary("I", "FirefoxDeveloperEdition")
+bindApplicationFocusSecondary("W", "Ulysses")
 
 hs.hotkey.bind({"cmd", "ctrl", "shift", "P"}, "P", function() confirmThenOpenApplication("Adobe Photoshop CC 2018") end)
 
