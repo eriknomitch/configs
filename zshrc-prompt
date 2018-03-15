@@ -30,41 +30,7 @@ promptinit
 # ------------------------------------------------
 # PURE -------------------------------------------
 # ------------------------------------------------
-prompt pure
-
-# ------------------------------------------------
-# ------------------------------------------------
-# ------------------------------------------------
-# prompt spaceship
-
-SPACESHIP_CHAR_PREFIX=" "
-SPACESHIP_CHAR_SUFFIX=" "
-
-SPACESHIP_USER_SHOW=false
-
-SPACESHIP_RUBY_SHOW=false
-SPACESHIP_NODE_SHOW=false
-
-SPACESHIP_PROMPT_ORDER=(
-  time          # Time stampts section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  hg            # Mercurial section (hg_branch  + hg_status)
-  package       # Package version
-  node          # Node.js section
-  ruby          # Ruby section
-  docker        # Docker section
-  aws           # Amazon Web Services section
-  venv          # virtualenv section
-  conda         # conda virtualenv section
-  pyenv         # Pyenv section
-  kubecontext   # Kubectl context section
-  exec_time     # Execution time
-  line_sep      # Line break
-  vi_mode       # Vi-mode indicator
-  jobs          # Backgound jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
+if prompt -l | tr ' ' '\n' | grep "^pure$" > /dev/null 2>&1; then
+  prompt pure
+fi
 
