@@ -5,53 +5,53 @@ OnTitlebar Mouse1 :MacroCmd {Focus} {Raise} {ActivateTab}
 # ------------------------------------------------
 # WINDOWING --------------------------------------
 # ------------------------------------------------
-Mod4 50 :NextTab
-Mod4 Tab :NextGroup (workspace=[current]) !! FBCV13 !!
-Mod4 m :Maximize
-Mod4 n :Minimize
-Mod4 w :Close
-#Mod4 Shift r :ArrangeWindows
+Mod1 50 :NextTab
+Mod1 Tab :NextGroup (workspace=[current]) !! FBCV13 !!
+Mod1 m :Maximize
+Mod1 n :Minimize
+Mod1 w :Close
+#Mod1 Shift r :ArrangeWindows
 
 # ------------------------------------------------
 # WORKSPACES -------------------------------------
 # ------------------------------------------------
-#Mod4 a :ExecCommand fluxbox-remote "Workspace 1" && lw-notify 0
-#Mod4 s :ExecCommand fluxbox-remote "Workspace 2" && lw-notify 1
-#Mod4 d :ExecCommand fluxbox-remote "Workspace 3" && lw-notify 2
-#Mod4 f :ExecCommand fluxbox-remote "Workspace 4" && lw-notify 3
-#Mod4 j :ExecCommand fluxbox-remote "Workspace 5" && lw-notify 4
-#Mod4 k :ExecCommand fluxbox-remote "Workspace 6" && lw-notify 5
-#Mod4 l :ExecCommand fluxbox-remote "Workspace 7" && lw-notify 6
-#Mod4 47 :ExecCommand fluxbox-remote "Workspace 8" && lw-notify 7
-Mod4 a :ExecCommand fluxbox-remote "Workspace 1" 
-Mod4 s :ExecCommand fluxbox-remote "Workspace 2" 
-Mod4 d :ExecCommand fluxbox-remote "Workspace 3" 
-Mod4 f :ExecCommand fluxbox-remote "Workspace 4" 
-Mod4 j :ExecCommand fluxbox-remote "Workspace 5" 
-Mod4 k :ExecCommand fluxbox-remote "Workspace 6" 
-Mod4 l :ExecCommand fluxbox-remote "Workspace 7" 
-Mod4 47 :ExecCommand fluxbox-remote "Workspace 8" 
-Mod4 v :Workspace irc
+#Mod1 a :ExecCommand fluxbox-remote "Workspace 1" && lw-notify 0
+#Mod1 s :ExecCommand fluxbox-remote "Workspace 2" && lw-notify 1
+#Mod1 d :ExecCommand fluxbox-remote "Workspace 3" && lw-notify 2
+#Mod1 f :ExecCommand fluxbox-remote "Workspace 4" && lw-notify 3
+#Mod1 j :ExecCommand fluxbox-remote "Workspace 5" && lw-notify 4
+#Mod1 k :ExecCommand fluxbox-remote "Workspace 6" && lw-notify 5
+#Mod1 l :ExecCommand fluxbox-remote "Workspace 7" && lw-notify 6
+#Mod1 47 :ExecCommand fluxbox-remote "Workspace 8" && lw-notify 7
+Mod1 a :ExecCommand fluxbox-remote "Workspace 1" 
+Mod1 s :ExecCommand fluxbox-remote "Workspace 2" 
+Mod1 d :ExecCommand fluxbox-remote "Workspace 3" 
+Mod1 f :ExecCommand fluxbox-remote "Workspace 4" 
+Mod1 j :ExecCommand fluxbox-remote "Workspace 5" 
+Mod1 k :ExecCommand fluxbox-remote "Workspace 6" 
+Mod1 l :ExecCommand fluxbox-remote "Workspace 7" 
+Mod1 47 :ExecCommand fluxbox-remote "Workspace 8" 
+Mod1 v :Workspace irc
 
-Mod4 1 :SendToWorkspace 1
-Mod4 2 :SendToWorkspace 2
-Mod4 3 :SendToWorkspace 3
-Mod4 4 :SendToWorkspace 4
-Mod4 5 :SendToWorkspace 5
-Mod4 6 :SendToWorkspace 6
-Mod4 7 :SendToWorkspace 7
-Mod4 8 :SendToWorkspace 8
-Mod4 9 :SendToWorkspace 9
+Mod1 1 :SendToWorkspace 1
+Mod1 2 :SendToWorkspace 2
+Mod1 3 :SendToWorkspace 3
+Mod1 4 :SendToWorkspace 4
+Mod1 5 :SendToWorkspace 5
+Mod1 6 :SendToWorkspace 6
+Mod1 7 :SendToWorkspace 7
+Mod1 8 :SendToWorkspace 8
+Mod1 9 :SendToWorkspace 9
 
-Mod4 Left :PrevWorkspace
-Mod4 Right :NextWorkspace
+Mod1 Left :PrevWorkspace
+Mod1 Right :NextWorkspace
 
 # ------------------------------------------------
 # VOLUME -----------------------------------------
 # ------------------------------------------------
-Mod4 Up :ExecCommand "$HOME/.bin/volume-up"
-Mod4 Down :ExecCommand "$HOME/.bin/volume-down"
-Mod4 End :ExecCommand "$HOME/.bin/volume-toggle-mute"
+Mod1 Up :ExecCommand "$HOME/.bin/volume-up"
+Mod1 Down :ExecCommand "$HOME/.bin/volume-down"
+Mod1 End :ExecCommand "$HOME/.bin/volume-toggle-mute"
 
 F11 :ExecCommand "$HOME/.bin/volume-down"
 F12 :ExecCommand "$HOME/.bin/volume-up"
@@ -60,40 +60,40 @@ F12 :ExecCommand "$HOME/.bin/volume-up"
 # ------------------------------------------------
 # BRIGHTNESS -------------------------------------
 # ------------------------------------------------
-Mod4 Shift Up :ExecCommand "$HOME/.bin/brightness-up"
-Mod4 Shift Down :ExecCommand "$HOME/.bin/brightness-down"
+Mod1 Shift Up :ExecCommand "$HOME/.bin/brightness-up"
+Mod1 Shift Down :ExecCommand "$HOME/.bin/brightness-down"
 
 # ------------------------------------------------
 # NF ---------------------------------------------
 # ------------------------------------------------
-#Mod4 Shift n f :ExecCommand "$HOME/.bin/xterm-nf"
-#Mod4 Shift n e :ExecCommand "$HOME/.bin/xterm-nf-edit"
-#Mod4 Shift n s :ExecCommand "$HOME/.bin/xterm-nf-search"
-#Mod4 Shift n c :ExecCommand "$HOME/.bin/xterm-nf-cat"
+#Mod1 Shift n f :ExecCommand "$HOME/.bin/xterm-nf"
+#Mod1 Shift n e :ExecCommand "$HOME/.bin/xterm-nf-edit"
+#Mod1 Shift n s :ExecCommand "$HOME/.bin/xterm-nf-search"
+#Mod1 Shift n c :ExecCommand "$HOME/.bin/xterm-nf-cat"
 
 # ------------------------------------------------
 # APPLICATIONS -----------------------------------
 # ------------------------------------------------
-Mod4 x :ExecCommand xterm
-#Mod4 g :ExecCommand xterm -e "zsh -i -c 'gw && zsh -i'"
-Mod4 b :ExecCommand xterm -e "$HOME/.bin/bat && sleep 1"
-Mod4 u :ExecCommand xterm -e "sudo apt-get update && sudo apt-get dist-upgrade && echo done && read"
-Mod4 Shift x :ExecCommand xterm
-Mod4 i :ExecCommand chromium-browser
-Mod4 65 :ExecCommand ~/.repositories/gexecute/gexecute
+Mod1 x :ExecCommand xterm
+#Mod1 g :ExecCommand xterm -e "zsh -i -c 'gw && zsh -i'"
+Mod1 b :ExecCommand xterm -e "$HOME/.bin/bat && sleep 1"
+Mod1 u :ExecCommand xterm -e "sudo apt-get update && sudo apt-get dist-upgrade && echo done && read"
+Mod1 Shift x :ExecCommand xterm
+Mod1 i :ExecCommand chromium-browser
+Mod1 65 :ExecCommand ~/.repositories/gexecute/gexecute
 
-Mod4 Shift k :ExecCommand kill-gw-dev
-Mod4 Shift l :ExecCommand lw-notify --toggle
+Mod1 Shift k :ExecCommand kill-gw-dev
+Mod1 Shift l :ExecCommand lw-notify --toggle
 
 # ------------------------------------------------
 # SSH --------------------------------------------
 # ------------------------------------------------
-Mod4 Shift 47 :ExecCommand xterm -e "ssh linode-personal"
-Mod4 Shift p :ExecCommand xterm -e "ssh linode-prelang"
-Mod4 Shift a :ExecCommand xterm -e "ssh laptop"
-Mod4 Shift m :ExecCommand xterm -e "ssh linode-meta"
-Mod4 Shift x :ExecCommand xterm -e "ssh desktop-erik"
-Mod4 Shift u :ExecCommand xterm -e "ssh auxiliary"
+Mod1 Shift 47 :ExecCommand xterm -e "ssh linode-personal"
+Mod1 Shift p :ExecCommand xterm -e "ssh linode-prelang"
+Mod1 Shift a :ExecCommand xterm -e "ssh laptop"
+Mod1 Shift m :ExecCommand xterm -e "ssh linode-meta"
+Mod1 Shift x :ExecCommand xterm -e "ssh desktop-erik"
+Mod1 Shift u :ExecCommand xterm -e "ssh auxiliary"
 
 # ------------------------------------------------
 # MOUSE ------------------------------------------
@@ -104,14 +104,12 @@ OnRightGrip Move1 :StartResizing bottomright
 OnWindowBorder Move1 :StartMoving
 
 OnTitlebar Mouse2 :StartTabbing
-OnToolbar Mouse4 :nextWorkspace
-OnToolbar Mouse5 :prevWorkspace
 
 OnTitlebar Double Mouse1 :Shade
 OnTitlebar Mouse3 :WindowMenu
 
-OnWindow Mod4 Mouse1 :StartMoving
-OnWindow Mod4 Mouse3 :StartResizing BottomRight
+OnWindow Mod1 Mouse1 :StartMoving
+OnWindow Mod1 Mouse3 :StartResizing BottomRight
 
 OnDesktop Mouse1 :HideMenus
 OnDesktop Mouse2 :WorkspaceMenu
@@ -120,7 +118,10 @@ OnDesktop Mouse3 :RootMenu
 # ------------------------------------------------
 # OTHER ------------------------------------------
 # ------------------------------------------------
-Mod4 o :ExecCommand sleep 0.25 && xset dpms force off
+Mod1 o :ExecCommand sleep 0.25 && xset dpms force off
+
+Mod3 r :ExecCommand retroarch
+Mod3 k :ExecCommand kodi
 
 
 
