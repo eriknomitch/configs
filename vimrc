@@ -72,6 +72,7 @@ Plug 'jreybert/vimagit'
 Plug 'sjl/gundo.vim'
 Plug 'suan/vim-instant-markdown'
 " Plug 'joeytwiddle/sexy_scroller.vim'
+Plug 'epeli/slimux'
 call plug#end()
 
 " ------------------------------------------------
