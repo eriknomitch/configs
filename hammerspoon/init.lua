@@ -56,37 +56,31 @@ end
 -- SHORTCUTS -------------------------------------
 -- -----------------------------------------------
 bindApplicationFocus("i", "Google Chrome")
-bindApplicationFocus("C", "Google Calendar")
-bindApplicationFocus("D", "Google Drive")
-bindApplicationFocus("E", "Google Inbox")
+bindApplicationFocus("C", "Wavebox")
+bindApplicationFocus("D", "Wavebox")
+bindApplicationFocus("E", "Wavebox")
+bindApplicationFocus("S", "Wavebox")
 bindApplicationFocus("M", "Messages")
 bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("H", "Helium")
-bindApplicationFocus("S", "Slack")
 
 -- Secondary
 -- -----------------------------------------------
 bindApplicationFocusSecondary("E", "Evernote")
 bindApplicationFocusSecondary("I", "FirefoxDeveloperEdition")
 bindApplicationFocusSecondary("W", "Ulysses")
+bindApplicationFocusSecondary("P", "Adobe Photoshop CC 2018")
 
-hs.hotkey.bind({"cmd", "ctrl", "shift", "P"}, "P", function() confirmThenOpenApplication("Adobe Photoshop CC 2018") end)
 
+-- Special
 -- -----------------------------------------------
--- -----------------------------------------------
--- -----------------------------------------------
-function confirmThenOpenApplication(name)
-  YesNoDialogBox(function() hs.application.launchOrFocus(name) end)
-end
-
-function confirmForPhotoshop()
-  YesNoDialogBox(function() hs.application.launchOrFocus("Adobe Photoshop CC 2018") end)
-end
-
 hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
 
+-- -----------------------------------------------
+-- MOVEMENT --------------------------------------
+-- -----------------------------------------------
 hs.hotkey.bind(movement, "Left", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
@@ -144,9 +138,9 @@ end
 hs.hotkey.bind(movement, "Up", fullscreen)
 hs.hotkey.bind(movement, "Down", middle)
 
------------------------------------------------
--- LAYOUTS
------------------------------------------------
+-------------------------------------------------
+-- LAYOUTS --------------------------------------
+-------------------------------------------------
 hs.hotkey.bind(movement2, "Left", function()
   local win    = hs.window.focusedWindow()
   local app    = win:application()
