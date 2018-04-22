@@ -233,8 +233,6 @@ function disable-history-for-session() {
 # ------------------------------------------------
 alias tree="tree -C"
 alias treed="tree -C -d"
-alias update="sudo apt-get update && sudo apt-get dist-upgrade"
-alias mp="mplayer -fs"
 alias ra="clear && ./reset-all"
 alias use-opendns="sudo cp /etc/resolv.conf.opendns /etc/resolv.conf"
 alias use-google-dns="sudo cp /etc/resolv.conf.google /etc/resolv.conf"
@@ -268,6 +266,7 @@ if [[ "$USER" != "root" ]] ; then
   alias apt-get="sudo apt-get"
   alias apt="sudo apt"
   alias aptitude="sudo aptitude"
+  alias snap="sudo snap"
   alias service="sudo service"
   alias dpkg="sudo dpkg"
   alias updatedb="sudo updatedb"
@@ -293,6 +292,19 @@ fi
 # ------------------------------------------------
 # FUNCTIONS --------------------------------------
 # ------------------------------------------------
+function update() {
+  case $1 in
+    "-y"|"-Y")
+      sudo apt-get update && \
+        sudo apt-get -y upgrade
+      ;;
+    *)
+      sudo apt-get update && \
+        sudo apt-get upgrade
+      ;;
+  esac
+}
+
 function mvw() {
   mv $* && cd $2
 }

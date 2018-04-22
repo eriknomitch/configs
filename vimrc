@@ -421,7 +421,8 @@ let g:ale_linters = {
       \  'jsx': ['prettier', 'eslint'],
       \  'js': ['prettier', 'eslint'],
       \  'ruby': ['rubocop'],
-      \  'vim': ['vint']
+      \  'vim': ['vint'],
+      \  'python': ['add_blank_lines_for_python_control_statements']
       \}
 
 " Fixers
