@@ -55,7 +55,7 @@ end
 -- -----------------------------------------------
 -- SHORTCUTS -------------------------------------
 -- -----------------------------------------------
-bindApplicationFocus("i", "Google Chrome")
+bindApplicationFocus("I", "Google Chrome")
 bindApplicationFocus("C", "Wavebox")
 bindApplicationFocus("D", "Wavebox")
 bindApplicationFocus("E", "Wavebox")
@@ -65,6 +65,7 @@ bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("H", "Helium")
+bindApplicationFocus("J", "JupyterLab")
 
 -- Secondary
 -- -----------------------------------------------
