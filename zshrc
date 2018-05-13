@@ -434,6 +434,12 @@ if [[ ! `command-exists mpm` && -d $HOME/.repositories/mpm-cr ]] ; then
   export PATH=$PATH:$HOME/.repositories/mpm-cr/bin
 fi
 
+
+# ------------------------------------------------
+# GIT-EXTRAS -------------------------------------
+# ------------------------------------------------
+source-if-exists $HOME/.repositories/git-extras/etc/git-extras-completion.zsh
+
 # ------------------------------------------------
 # CONFIG->PRWD -----------------------------------
 # ------------------------------------------------
