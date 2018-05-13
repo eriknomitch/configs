@@ -297,16 +297,6 @@ _micro_cpl() {
 
 compctl -K _micro_cpl micro
 
-_puck_cpl() {
-  reply=()
-  for suffix in `puck-ssh --list-completions`
-  do
-    reply[$(($#reply+1))]=$suffix
-  done
-}
-
-compctl -K _puck_cpl puck-ssh
-
 # ------------------------------------------------
 # FZF --------------------------------------------
 # ------------------------------------------------
