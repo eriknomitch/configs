@@ -213,3 +213,7 @@ Host linode-personal
 Host docker-proxy
     HostName 45.63.69.132
     User development
+
+Host tomo-kami
+    HostName ec2-34-207-108-140.compute-1.amazonaws.com
+    User erik
