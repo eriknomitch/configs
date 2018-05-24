@@ -66,7 +66,6 @@ bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("H", "Helium")
 bindApplicationFocus("J", "JupyterLab")
-bindApplicationFocus("Y", "YakYak")
 
 -- Secondary
 -- -----------------------------------------------
