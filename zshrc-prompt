@@ -21,7 +21,7 @@ vcs_info_wrapper() {
 
 sshed_prefix() {
   if [[ -n $SSH_CONNECTION ]] ; then
-    echo -n "%{$bg_bold[green]%}%{$reset_color%}%{$fg_bold[green]%}@ --SSH--> %{$reset_color%} "
+    echo -n "%{$bg_bold[green]%}%{$reset_color%}%{$fg_bold[green]%}@ SSH %{$reset_color%}"
   fi
 }
 
