@@ -167,6 +167,10 @@ nmap k gk
 noremap <Up> gk
 noremap <Down> gj
 
+" Remap folding hotkeys
+nnoremap zO zR
+nnoremap zC zM
+
 " Yank and drop across multiple vim instances
 " set clipboard+=unnamedplus
 
@@ -424,7 +428,7 @@ let g:ale_linters = {
       \  'js': ['prettier', 'eslint'],
       \  'ruby': ['rubocop'],
       \  'vim': ['vint'],
-      \  'python': ['add_blank_lines_for_python_control_statements']
+      \  'python': ['add_blank_lines_for_python_control_statements', 'yapf']
       \}
 
 " Fixers
@@ -435,7 +439,8 @@ let g:ale_fixers = {
       \  'jsx': ['prettier', 'eslint'],
       \  'js': ['prettier', 'eslint'],
       \  'ruby': ['rubocop'],
-      \  'c': ['clang-format']
+      \  'c': ['clang-format'],
+      \  'python': ['yapf'],
       \}
 
 function! OnALELintPre()
