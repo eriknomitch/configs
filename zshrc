@@ -30,6 +30,7 @@ alias route="sudo route"
 alias pls="play-live-stream-npr-wbez"
 alias nd="nvidia-docker"
 alias ndc="nvidia-docker-compose"
+alias glances="sudo glances"
 
 function yt() {
   youtube-dl $*
