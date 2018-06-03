@@ -21,50 +21,50 @@ let g:colors_name="bluegreen"
 " ------------------------------------------------
 " ------------------------------------------------
 " ------------------------------------------------
-hi Normal       ctermfg=White ctermfg=none guifg=White ctermbg=none guibg=Black cterm=none
-hi NonText      ctermfg=DarkGray guifg=DarkGray  ctermbg=none guibg=Black
+hi Normal       ctermfg=White ctermfg=NONE guifg=White ctermbg=NONE guibg=Black cterm=NONE
+hi NonText      ctermfg=DarkGray guifg=DarkGray  ctermbg=NONE guibg=Black
 
-hi Statement    ctermfg=Blue guifg=Blue      ctermbg=none guibg=none
-hi Comment      ctermfg=Green guifg=Green  ctermbg=none guibg=none cterm=bold gui=bold term=bold
-hi Constant     ctermfg=DarkCyan guifg=DarkCyan  ctermbg=none guibg=none
-hi Identifier   ctermfg=Cyan guifg=Cyan      ctermbg=none guibg=none
-hi Type         ctermfg=DarkGreen guifg=DarkGreen ctermbg=none guibg=none
-hi Folded       ctermfg=DarkGreen guifg=DarkGreen ctermbg=none guibg=none cterm=underline gui=underline term=none
-hi Special      ctermfg=Blue guifg=Blue      ctermbg=none guibg=none
-hi PreProc      ctermfg=LightGray guifg=LightGray ctermbg=none guibg=none cterm=bold gui=bold term=bold
-hi Scrollbar    ctermfg=Blue guifg=Blue      ctermbg=none guibg=none
-hi Cursor       ctermfg=white guifg=white     ctermbg=none guibg=none
-hi ErrorMsg     ctermfg=Red guifg=Red       ctermbg=none guibg=none cterm=bold gui=bold term=bold
-hi WarningMsg   ctermfg=Yellow guifg=Yellow    ctermbg=none guibg=none
-hi VertSplit    cterm=none ctermfg=White guifg=White     ctermbg=none guibg=none
+hi Statement    ctermfg=Blue guifg=Blue      ctermbg=NONE guibg=NONE
+hi Comment      ctermfg=Green guifg=Green  ctermbg=NONE guibg=NONE cterm=bold gui=bold term=bold
+hi Constant     ctermfg=DarkCyan guifg=DarkCyan  ctermbg=NONE guibg=NONE
+hi Identifier   ctermfg=Cyan guifg=Cyan      ctermbg=NONE guibg=NONE
+hi Type         ctermfg=DarkGreen guifg=DarkGreen ctermbg=NONE guibg=NONE
+hi Folded       ctermfg=DarkGreen guifg=DarkGreen ctermbg=NONE guibg=NONE cterm=underline gui=underline term=NONE
+hi Special      ctermfg=Blue guifg=Blue      ctermbg=NONE guibg=NONE
+hi PreProc      ctermfg=LightGray guifg=LightGray ctermbg=NONE guibg=NONE cterm=bold gui=bold term=bold
+hi Scrollbar    ctermfg=Blue guifg=Blue      ctermbg=NONE guibg=NONE
+hi Cursor       ctermfg=white guifg=white     ctermbg=NONE guibg=NONE
+hi ErrorMsg     ctermfg=Red guifg=Red       ctermbg=NONE guibg=NONE cterm=bold gui=bold term=bold
+hi WarningMsg   ctermfg=Yellow guifg=Yellow    ctermbg=NONE guibg=NONE
+hi VertSplit    cterm=NONE ctermfg=White guifg=White     ctermbg=NONE guibg=NONE
 hi Directory    ctermfg=Cyan guifg=Cyan      ctermbg=DarkBlue guibg=DarkBlue
-hi Visual       ctermfg=White guifg=White     ctermbg=DarkGray guibg=DarkGray cterm=underline gui=underline term=none
+hi Visual       ctermfg=White guifg=White     ctermbg=DarkGray guibg=DarkGray cterm=underline gui=underline term=NONE
 hi Title        ctermfg=White guifg=White     ctermbg=DarkBlue guibg=DarkBlue
 
-hi StatusLine   term=none cterm=none gui=bold,underline ctermfg=Black guifg=Black ctermbg=White guibg=White
-hi StatusLineNC term=none cterm=none gui=bold,underline ctermfg=Black guifg=Black  ctermbg=Grey guibg=Grey
+hi StatusLine   term=NONE cterm=NONE gui=bold,underline ctermfg=Black guifg=Black ctermbg=White guibg=White
+hi StatusLineNC term=NONE cterm=NONE gui=bold,underline ctermfg=Black guifg=Black  ctermbg=Grey guibg=Grey
 hi LineNr       term=bold cterm=bold gui=bold ctermfg=White guifg=White ctermbg=DarkGray guibg=DarkGray
 hi SignColumn ctermbg=235
 
 " if exists("g:bluegreen_transbg")
-"   hi Normal       ctermfg=White guifg=White ctermbg=none
-"   hi NonText      ctermfg=DarkGray guifg=DarkGray  ctermbg=none
+"   hi Normal       ctermfg=White guifg=White ctermbg=NONE
+"   hi NonText      ctermfg=DarkGray guifg=DarkGray  ctermbg=NONE
 
-"   hi Statement    ctermfg=Blue guifg=Blue      ctermbg=none
-"   hi Comment      ctermfg=DarkGray guifg=DarkGray  ctermbg=none guibg=Black cterm=bold gui=bold term=bold
-"   hi Constant     ctermfg=DarkCyan guifg=DarkCyan  ctermbg=none guibg=Black
-"   hi Identifier   ctermfg=Cyan guifg=Cyan      ctermbg=none guibg=Black
-"   hi Type         ctermfg=DarkGreen guifg=DarkGreen ctermbg=none guibg=Black
-"   hi Folded       ctermfg=DarkGreen guifg=DarkGreen ctermbg=none guibg=Black cterm=underline gui=underline term=none
-"   hi Special      ctermfg=Blue guifg=Blue      ctermbg=none guibg=Black
-"   hi PreProc      ctermfg=LightGray guifg=LightGray ctermbg=none guibg=Black cterm=bold gui=bold term=bold
-"   hi Scrollbar    ctermfg=Blue guifg=Blue      ctermbg=none guibg=Black
-"   hi Cursor       ctermfg=white guifg=white     ctermbg=none guibg=Black
-"   hi ErrorMsg     ctermfg=Red guifg=Red       ctermbg=none guibg=Black cterm=bold gui=bold term=bold
-"   hi WarningMsg   ctermfg=Yellow guifg=Yellow    ctermbg=none guibg=Black
-"   hi VertSplit    cterm=none ctermfg=White guifg=White     ctermbg=none guibg=DarkGray
+"   hi Statement    ctermfg=Blue guifg=Blue      ctermbg=NONE
+"   hi Comment      ctermfg=DarkGray guifg=DarkGray  ctermbg=NONE guibg=Black cterm=bold gui=bold term=bold
+"   hi Constant     ctermfg=DarkCyan guifg=DarkCyan  ctermbg=NONE guibg=Black
+"   hi Identifier   ctermfg=Cyan guifg=Cyan      ctermbg=NONE guibg=Black
+"   hi Type         ctermfg=DarkGreen guifg=DarkGreen ctermbg=NONE guibg=Black
+"   hi Folded       ctermfg=DarkGreen guifg=DarkGreen ctermbg=NONE guibg=Black cterm=underline gui=underline term=NONE
+"   hi Special      ctermfg=Blue guifg=Blue      ctermbg=NONE guibg=Black
+"   hi PreProc      ctermfg=LightGray guifg=LightGray ctermbg=NONE guibg=Black cterm=bold gui=bold term=bold
+"   hi Scrollbar    ctermfg=Blue guifg=Blue      ctermbg=NONE guibg=Black
+"   hi Cursor       ctermfg=white guifg=white     ctermbg=NONE guibg=Black
+"   hi ErrorMsg     ctermfg=Red guifg=Red       ctermbg=NONE guibg=Black cterm=bold gui=bold term=bold
+"   hi WarningMsg   ctermfg=Yellow guifg=Yellow    ctermbg=NONE guibg=Black
+"   hi VertSplit    cterm=NONE ctermfg=White guifg=White     ctermbg=NONE guibg=DarkGray
 "   hi Directory    ctermfg=Cyan guifg=Cyan      ctermbg=DarkBlue guibg=DarkBlue
-"   hi Visual       ctermfg=White guifg=White     ctermbg=DarkGray guibg=DarkGray cterm=underline gui=underline term=none
+"   hi Visual       ctermfg=White guifg=White     ctermbg=DarkGray guibg=DarkGray cterm=underline gui=underline term=NONE
 "   hi Title        ctermfg=White guifg=White     ctermbg=DarkBlue guibg=DarkBlue
 
 "   hi StatusLine   term=bold cterm=bold gui=bold,underline ctermfg=White guifg=White ctermbg=DarkGray guibg=DarkGray
