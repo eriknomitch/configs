@@ -32,6 +32,8 @@ alias nd="nvidia-docker"
 alias ndc="nvidia-docker-compose"
 alias glances="sudo glances"
 
+function gi() { curl -L -s https://www.gitignore.io/api/\$@ ;}
+
 function yt() {
   youtube-dl $*
   clear

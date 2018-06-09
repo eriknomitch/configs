@@ -147,11 +147,10 @@ Host ai
     User erik
     Port 2220
 
-Host ai
-    HostName home.nomitch.com
+Host ai-local
+    HostName ai.local
     PermitLocalCommand true
     User erik
-    Port 2220
 
 #Match host ai exec "dig +short aisfsdf"
     #HostName ai
