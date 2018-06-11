@@ -32,7 +32,9 @@ alias nd="nvidia-docker"
 alias ndc="nvidia-docker-compose"
 alias glances="sudo glances"
 
-function gi() { curl -L -s https://www.gitignore.io/api/\$@ ;}
+function gitignore-io() {
+  curl -L -s https://www.gitignore.io/api/$@;
+}
 
 function yt() {
   youtube-dl $*
@@ -374,7 +376,7 @@ fi
 # ------------------------------------------------
 # YARN -------------------------------------------
 # ------------------------------------------------
-command-exists yarn && export PATH="$PATH:`yarn global bin`"
+# command-exists yarn && export PATH="$PATH:`yarn global bin`"
 
 # ------------------------------------------------
 # DEEP-LEARNING ----------------------------------
@@ -401,16 +403,6 @@ fi
 # PYTHON->ANACONDA -------------------------------
 # ------------------------------------------------
 export PATH=$PATH:$HOME/.anaconda3/bin
-
-# ------------------------------------------------
-# CUDA -------------------------------------------
-# ------------------------------------------------
-#_cuda_version="7.5"
-
-#export LD_LIBRARY_PATH=/usr/local/cuda-${_cuda_version}/lib64:$LD_LIBRARY_PATH
-#export PATH=$PATH:/usr/local/cuda-${_cuda_version}/bin
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
-export PATH=$PATH:/usr/local/cuda/bin
 
 # ------------------------------------------------
 # MONGOOSE-OS (MOS) ------------------------------
