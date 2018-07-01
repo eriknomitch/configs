@@ -78,7 +78,25 @@ function source-if-exists() {
 }
 
 command-exists() {
-(command -v $1 >/dev/null 2>&1)
+  (command -v $1 >/dev/null 2>&1)
+}
+
+function extend-path() {
+  _path=$1
+
+  if [[ -z $_path ]]; then
+    echo "fatal: $0: No path supplied."
+    return 1
+  fi
+
+  # If it's found append it and echo (we can't assign here)
+  if [[ -d $_path ]] ; then
+    echo "$PATH:$_path"
+    return
+  fi
+
+  # If not, do not strictly require it. Just echo PATH
+  echo $PATH
 }
 
 # ------------------------------------------------
