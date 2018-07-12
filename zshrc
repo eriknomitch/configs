@@ -402,13 +402,13 @@ export HOMEBREW_GITHUB_API_TOKEN=2af293ecbefc21d9cae3b139ed456ea979adc4a7
 # ------------------------------------------------
 # PYENV ------------------------------------------
 # ------------------------------------------------
-export PATH=$PATH:$HOME/.pyenv/bin
+# export PATH=$PATH:$HOME/.pyenv/bin
 
-if command-exists pyenv; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-fi
+# if command-exists pyenv; then
+#   export PYENV_ROOT="$HOME/.pyenv"
+#   eval "$(pyenv init -)"
+#   eval "$(pyenv virtualenv-init -)"
+# fi
 
 # ------------------------------------------------
 # PYTHON->ANACONDA -------------------------------
