@@ -222,3 +222,10 @@ Host docker-proxy
 Host kami
     HostName ec2-34-207-108-140.compute-1.amazonaws.com
     User erik
+
+# ------------------------------------------------
+# LOCAL ------------------------------------------
+# ------------------------------------------------
+host remarkable
+    Hostname 10.11.99.1
+    User root

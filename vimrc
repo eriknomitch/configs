@@ -423,7 +423,6 @@ let g:airline#extensions#ale#enabled = 1
 " Linters
 let g:ale_linters = {
       \  'javascript.jsx': ['prettier', 'eslint'],
-      \  'javascript': ['prettier', 'eslint'],
       \  'jsx': ['prettier', 'eslint'],
       \  'js': ['prettier', 'eslint'],
       \  'ruby': ['rubocop'],
@@ -438,6 +437,8 @@ let g:ale_fixers = {
       \  'javascript': ['prettier', 'eslint'],
       \  'jsx': ['prettier', 'eslint'],
       \  'js': ['prettier', 'eslint'],
+      \  'typescript': ['prettier', 'tslint'],
+      \  'ts': ['prettier', 'tslint'],
       \  'ruby': ['rubocop'],
       \  'c': ['clang-format'],
       \  'python': ['yapf'],
