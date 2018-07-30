@@ -7,14 +7,14 @@ echo "Bootstrapping host..."
 .bin/ensure-symbolic-links
 .bin/generate-grconfig
 
-if [[ ! -d ~/.oh-my-zsh ]] ; then
-  echo "Installing oh-my-zsh..."
-  git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-fi
+# if [[ ! -d ~/.oh-my-zsh ]] ; then
+#   echo "Installing oh-my-zsh..."
+#   git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+# fi
 
-if [[ ! -d ~/.oh-my-zsh/custom/plugins/zshmarks ]] ; then
-  git clone https://github.com/jocelynmallon/zshmarks.git ~/.oh-my-zsh/custom/plugins/zshmarks
-fi
+# if [[ ! -d ~/.oh-my-zsh/custom/plugins/zshmarks ]] ; then
+#   git clone https://github.com/jocelynmallon/zshmarks.git ~/.oh-my-zsh/custom/plugins/zshmarks
+# fi
 
 # ~/.repositories
 # ------------------------------------------------

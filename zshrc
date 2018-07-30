@@ -14,7 +14,7 @@ test -n $INITIAL_CWD && cd $INITIAL_CWD
 # ------------------------------------------------
 
 # Source zshrc-oh-my-zsh first so we can override the theme/prompt
-test -f $HOME/.configs/zshrc-oh-my-zsh && source $HOME/.configs/zshrc-oh-my-zsh
+# test -f $HOME/.configs/zshrc-oh-my-zsh && source $HOME/.configs/zshrc-oh-my-zsh
 
 # Source the shared zshrc (shared between users and root)
 source /etc/zshrc-shared
@@ -214,6 +214,25 @@ function tos {
   ## ----------------------------------------------
   #zplug load
 #fi
+
+
+# zplug from brew
+if [[ -h /usr/local/opt/zplug ]] ; then
+  export ZPLUG_HOME=/usr/local/opt/zplug
+  source $ZPLUG_HOME/init.zsh
+fi
+
+# If we have zplug at all
+if [[ -n $ZPLUG_HOME ]] ; then
+
+  # Plugins
+  # ----------------------------------------------
+  zplug "jocelynmallon/zshmarks"
+
+  # Load
+  # ----------------------------------------------
+  zplug load
+fi
 
 # ------------------------------------------------
 # SOURCE->HOST-SPECIFIC --------------------------
