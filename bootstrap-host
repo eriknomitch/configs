@@ -12,10 +12,12 @@ if [[ ! -d ~/.oh-my-zsh ]] ; then
   git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
-# if [[ ! -d ~/.oh-my-zsh/custom/plugins/zshmarks ]] ; then
-#   git clone https://github.com/jocelynmallon/zshmarks.git ~/.oh-my-zsh/custom/plugins/zshmarks
-# fi
+if [[ ! -d ~/.oh-my-zsh/custom/plugins/zshmarks ]] ; then
+  git clone https://github.com/jocelynmallon/zshmarks.git ~/.oh-my-zsh/custom/plugins/zshmarks
+fi
 
+# ~/.repositories
+# ------------------------------------------------
 test -d ~/.repositories || mkdir ~/.repositories
 
 if [[ ! -d ~/.repositories/g ]] ; then
@@ -24,13 +26,6 @@ fi
 
 if [[ ! -d ~/.repositories/prwd ]] ; then
   git clone git@github.com:eriknomitch/prwd.git ~/.repositories/prwd
-fi
-
-if [[ ! -d ~/.rbenv ]] ; then
-  echo "Installing rbenv..."
-  git clone https://github.com/rbenv/rbenv.git ~/.rbenv && \
-    mkdir ~/.rbenv/plugins && \
-    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
 
 # ------------------------------------------------
@@ -48,20 +43,6 @@ chmod 700 $HOME/.ssh
 chmod 600 $HOME/.ssh/config
 
 # ------------------------------------------------
-# THEMER -----------------------------------------
 # ------------------------------------------------
-#.bin/generate-themer-themes
-
 # ------------------------------------------------
-# PYENV ------------------------------------------
-# ------------------------------------------------
-if [[ ! -d ~/.pyenv ]] ; then
-
-  #sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
-    #libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-    #xz-utils tk-dev
-
-  curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
-fi
-
 echo "Done."
