@@ -89,12 +89,10 @@ source-if-exists $HOME/.env
 
 # Source various scripts embedded in repos
 _repos=(
-  prelang/aci/system/shell/development-utility.zsh
   prwd/prwd.zsh
   g/g.zsh
   notes/notes.zsh
   project/project.zsh
-  #auto-fu.zsh/auto-fu.zsh
 )
 
 for _repo in $_repos; do
@@ -199,31 +197,12 @@ function tos {
 # ------------------------------------------------
 # ZPLUG ------------------------------------------
 # ------------------------------------------------
-#if ( $ON_DARWIN ) ; then
-  #export ZPLUG_HOME=/usr/local/opt/zplug
-#elif ( $ON_LINUX ) ; then
-  #export ZPLUG_HOME=$HOME/.zplug
-#fi
+if [[ -d $HOME/.zplug ]] ; then
+  export ZPLUG_HOME=$HOME/.zplug
 
-#if test -f $ZPLUG_HOME/init.zsh; then
-
-  #source $ZPLUG_HOME/init.zsh
-
-  ## ----------------------------------------------
-  ## ZPLUG->PLUGINS -------------------------------
-  ## ----------------------------------------------
-  #zplug load
-#fi
-
-
-# zplug from brew
-if [[ -h /usr/local/opt/zplug ]] ; then
-  export ZPLUG_HOME=/usr/local/opt/zplug
+  # Source
+  # ----------------------------------------------
   source $ZPLUG_HOME/init.zsh
-fi
-
-# If we have zplug at all
-if [[ -n $ZPLUG_HOME ]] ; then
 
   # Plugins
   # ----------------------------------------------
@@ -240,24 +219,10 @@ fi
 source-if-exists $HOME/.configs/zshrc-specific-to-os/`uname`.zsh
 source-if-exists $HOME/.configs/zshrc-specific-to-host/$HOST.zsh
 
-# FIX: Use short hostname or something else?
-if ( $ON_MICRO ) ; then
-  source-if-exists $HOME/.configs/zshrc-specific-to-group/micro.zsh
-fi
-
-if [[ -n $PUCK_LOCATION ]] ; then
-  ON_MICRO_PUCK=true
-fi
-
-if ( $ON_MICRO_PUCK ) ; then
-  source-if-exists $HOME/.configs/zshrc-specific-to-group/micro-puck.zsh
-fi
-
 # ------------------------------------------------
 # GIT-SUBMODULE-TOOLS ----------------------------
 # ------------------------------------------------
 export PATH="$PATH:$HOME/.repositories/git-submodule-tools/bin"
-
 
 # ------------------------------------------------
 # RUST -------------------------------------------
@@ -345,11 +310,6 @@ compctl -K _micro_cpl micro
 #fi
 
 # ------------------------------------------------
-# NCV --------------------------------------------
-# ------------------------------------------------
-source-if-exists $HOME/.ncv/ncv.zsh
-
-# ------------------------------------------------
 # Z ----------------------------------------------
 # ------------------------------------------------
 source-if-exists $HOME/.repositories/z/z.sh
@@ -404,16 +364,6 @@ if [[ $TMUX_EACH_SESSION = "true" ]] ; then
 fi
 
 # ------------------------------------------------
-# YARN -------------------------------------------
-# ------------------------------------------------
-# command-exists yarn && export PATH="$PATH:`yarn global bin`"
-
-# ------------------------------------------------
-# DEEP-LEARNING ----------------------------------
-# ------------------------------------------------
-export PATH="$PATH:$HOME/.repositories/deep-learning/bin"
-
-# ------------------------------------------------
 # BREW -------------------------------------------
 # ------------------------------------------------
 export HOMEBREW_GITHUB_API_TOKEN=2af293ecbefc21d9cae3b139ed456ea979adc4a7
@@ -430,11 +380,6 @@ export HOMEBREW_GITHUB_API_TOKEN=2af293ecbefc21d9cae3b139ed456ea979adc4a7
 # fi
 
 # ------------------------------------------------
-# PYTHON->ANACONDA -------------------------------
-# ------------------------------------------------
-export PATH=$PATH:$HOME/.anaconda3/bin
-
-# ------------------------------------------------
 # MONGOOSE-OS (MOS) ------------------------------
 # ------------------------------------------------
 if [[ -d $HOME/.mos ]] ; then
@@ -448,7 +393,6 @@ fi
 if [[ ! `command-exists mpm` && -d $HOME/.repositories/mpm-cr ]] ; then
   export PATH=$PATH:$HOME/.repositories/mpm-cr/bin
 fi
-
 
 # ------------------------------------------------
 # GIT-EXTRAS -------------------------------------
