@@ -31,6 +31,9 @@ alias pls="play-live-stream-npr-wbez"
 alias nd="nvidia-docker"
 alias ndc="nvidia-docker-compose"
 alias glances="sudo glances"
+alias rg="rg --smart-case"
+alias tm="tmuxinator"
+alias tms="tmuxinator start"
 
 function gitignore-io() {
   curl -L -s https://www.gitignore.io/api/$@;
@@ -362,6 +365,9 @@ if [[ $TMUX_EACH_SESSION = "true" ]] ; then
     esac
   fi
 fi
+
+# tmuxp
+export DISABLE_AUTO_TITLE='true'
 
 # ------------------------------------------------
 # BREW -------------------------------------------
