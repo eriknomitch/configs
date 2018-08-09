@@ -5,7 +5,7 @@ root: ~/.repositories/mapbooks
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
-# pre: sudo /etc/rc.d/mysqld start
+# pre: sw
 
 # Project hooks
 # Runs on project start, always
@@ -42,11 +42,10 @@ root: ~/.repositories/mapbooks
 
 windows:
   - editor: ofe
+    root: ~/.repositories/mapbooks
   - git-run:
-      layout: main-vertical
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      panes:
-        - ./run j
-        - ./run m
+    root: ~/.repositories/mapbooks
+    layout: main-vertical
+    panes:
+      - echo 1
+      - echo 2

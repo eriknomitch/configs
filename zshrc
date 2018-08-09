@@ -34,6 +34,7 @@ alias glances="sudo glances"
 alias rg="rg --smart-case"
 alias tm="tmuxinator"
 alias tms="tmuxinator start"
+alias lg="lazygit"
 
 function gitignore-io() {
   curl -L -s https://www.gitignore.io/api/$@;
