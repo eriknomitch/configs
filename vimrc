@@ -74,6 +74,7 @@ Plug 'suan/vim-instant-markdown'
 " Plug 'joeytwiddle/sexy_scroller.vim'
 Plug 'epeli/slimux'
 Plug 'goerz/ipynb_notedown.vim'
+Plug 'rizzatti/dash.vim'
 call plug#end()
 
 " ------------------------------------------------
