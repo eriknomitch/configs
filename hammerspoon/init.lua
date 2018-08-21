@@ -56,10 +56,8 @@ end
 -- SHORTCUTS -------------------------------------
 -- -----------------------------------------------
 bindApplicationFocus("I", "Google Chrome")
-bindApplicationFocus("C", "Wavebox")
-bindApplicationFocus("D", "Wavebox")
 bindApplicationFocus("E", "Wavebox")
-bindApplicationFocus("S", "Wavebox")
+bindApplicationFocus("S", "Slack")
 bindApplicationFocus("M", "Messages")
 bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("P", "Preview")
