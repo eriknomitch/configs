@@ -525,6 +525,7 @@ nnoremap <leader>at :ALEToggle<CR>
 nnoremap <leader>ae :ALEEnable<CR>
 nnoremap <leader>ad :ALEDisable<CR>
 nnoremap <leader>F :ALEFix<CR>
+nnoremap <leader>f :ALEFix<CR>
 
 " noremap <leader>af <Plug>(ale_fix)<CR>
 
