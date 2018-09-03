@@ -35,12 +35,16 @@ alias rg="rg --smart-case"
 alias tm="tmuxinator"
 alias tms="tmuxinator start"
 alias lg="lazygit"
+alias ncdu="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+alias ping="prettyping --nolegend"
 
 function gitignore-io() {
   curl -L -s https://www.gitignore.io/api/$@;
 }
 
 function yt() {
+  clear
+  pwd
   youtube-dl $*
   clear
 }

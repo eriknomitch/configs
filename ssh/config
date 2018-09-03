@@ -166,6 +166,10 @@ Host kodi-erik
     HostName kodi-erik.local
     User root
 
+Host dns-filter
+    HostName dns-filter.local
+    User pi
+
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
 # ------------------------------------------------
