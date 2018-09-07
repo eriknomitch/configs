@@ -75,6 +75,7 @@ Plug 'suan/vim-instant-markdown'
 Plug 'epeli/slimux'
 Plug 'goerz/ipynb_notedown.vim'
 Plug 'rizzatti/dash.vim'
+Plug 'https://gitlab.com/Lenovsky/nuake.git'
 call plug#end()
 
 " ------------------------------------------------
@@ -540,4 +541,9 @@ nnoremap <leader>b :FZFLines<CR>
 " vimagit
 " ------------------------------------------------
 nnoremap <leader>g :Magit<CR>
+
+" Nuake
+" ------------------------------------------------
+nnoremap <leader>s :Nuake<CR>
+nnoremap <leader>t :Nuake<CR>
 
