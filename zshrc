@@ -215,6 +215,10 @@ if [[ -d $HOME/.zplug ]] ; then
   # Plugins
   # ----------------------------------------------
   zplug "jocelynmallon/zshmarks"
+  # zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
+
+  # # https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv#Setup
+  # source =virtualenvwrapper.sh
 
   # Load
   # ----------------------------------------------
