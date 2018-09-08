@@ -49,6 +49,27 @@ function yt() {
   clear
 }
 
+# ------------------------------------------------
+# CD ---------------------------------------------
+# ------------------------------------------------
+function cd() {
+  builtin cd $1
+
+  if [[ -n "$VIRTUAL_ENV" && ./venv ]] ; then
+    deactivate
+  fi
+
+  if [[ -n "$VIRTUAL_ENV" && ./env ]] ; then
+    deactivate
+  fi
+
+  if [[ -d ./venv ]] ; then
+    . ./venv/bin/activate
+  elif [[ -d ./env ]] ; then
+    . ./env/bin/activate
+  fi
+}
+
 # Notes
 # ------------------------------------------------
 alias n="notes"
