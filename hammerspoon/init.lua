@@ -56,7 +56,7 @@ end
 -- SHORTCUTS -------------------------------------
 -- -----------------------------------------------
 bindApplicationFocus("I", "Google Chrome")
-bindApplicationFocus("E", "Wavebox")
+bindApplicationFocus("E", "Kiwi for Gmail")
 bindApplicationFocus("S", "Slack")
 bindApplicationFocus("M", "Messages")
 bindApplicationFocus("T", "Todoist")
@@ -215,9 +215,9 @@ function handleWindowCreated(win, event)
     app_fullscreen = true
   end
 
-  --if app:title() == "LastPass" then
-    --app_fullscreen = true
-  --end
+  if app:title() == "Kiwi for Gmail" then
+    app_fullscreen = true
+  end
 
   -- ---------------------------------------------
   if app_fullscreen == true then
