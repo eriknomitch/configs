@@ -227,6 +227,10 @@ Host kami
     HostName ec2-34-207-108-140.compute-1.amazonaws.com
     User erik
 
+Host mapblocks-paperspace
+  HostName 74.82.30.202
+  User paperspace
+
 # ------------------------------------------------
 # LOCAL ------------------------------------------
 # ------------------------------------------------
