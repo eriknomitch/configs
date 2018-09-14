@@ -63,7 +63,7 @@ bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("H", "Helium")
-bindApplicationFocus("J", "JupyterLab")
+bindApplicationFocus("W", "FreeChat")
 
 -- Secondary
 -- -----------------------------------------------
@@ -72,7 +72,6 @@ bindApplicationFocusSecondary("S", "Slack")
 bindApplicationFocusSecondary("I", "FirefoxDeveloperEdition")
 bindApplicationFocusSecondary("W", "Ulysses")
 bindApplicationFocusSecondary("P", "Adobe Photoshop CC 2018")
-
 
 -- Special
 -- -----------------------------------------------
