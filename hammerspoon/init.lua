@@ -230,8 +230,21 @@ windows:subscribe(hs.window.filter.windowCreated, handleWindowCreated)
 --------------------------------------------------
 -- SPOONS ----------------------------------------
 --------------------------------------------------
+
+-- WiFiTransitions
+-- ----------------------------------------------
 hs.loadSpoon("WiFiTransitions")
 spoon.WiFiTransitions:start()
+
+-- HCalendar
+-- ----------------------------------------------
+hs.loadSpoon("HCalendar")
+
+-- HeadphoneAutoPause
+-- ----------------------------------------------
+hs.loadSpoon("HeadphoneAutoPause")
+spoon.HeadphoneAutoPause.autoResume = true
+spoon.HeadphoneAutoPause:start()
 
 -----------------------------------------------
 -- Reload config on write
