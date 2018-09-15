@@ -55,7 +55,7 @@ local function updateHcalCanvas()
 end
 
 function obj:init()
-    local hcalbgcolor = {red=0, blue=0, green=0, alpha=0.3}
+    local hcalbgcolor = {red=0, blue=0, green=0, alpha=0.0}
     local hcaltitlecolor = {red=1, blue=1, green=1, alpha=0.3}
     local todaycolor = {red=1, blue=1, green=1, alpha=0.2}
     local midlinecolor = {red=1, blue=1, green=1, alpha=0.5}
@@ -63,7 +63,7 @@ function obj:init()
     local cres = cscreen:fullFrame()
     obj.canvas = hs.canvas.new({
         x = 40,
-        y = cres.h-obj.hcalh-40,
+        y = cres.h-obj.hcalh-60,
         w = obj.hcalw,
         h = obj.hcalh,
     }):show()
