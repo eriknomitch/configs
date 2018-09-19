@@ -80,7 +80,7 @@ Mod1 b :ExecCommand xterm -e "$HOME/.bin/bat && sleep 1"
 Mod1 u :ExecCommand xterm -e "sudo apt-get update && sudo apt-get dist-upgrade && echo done && read"
 Mod1 Shift x :ExecCommand xterm
 Mod1 i :ExecCommand chromium-browser
-Mod1 65 :ExecCommand ~/.repositories/gexecute/gexecute
+Mod1 65 :ExecCommand gmrun
 
 Mod1 Shift k :ExecCommand kill-gw-dev
 Mod1 Shift l :ExecCommand lw-notify --toggle
@@ -123,6 +123,5 @@ Mod1 o :ExecCommand sleep 0.25 && xset dpms force off
 Mod3 r :ExecCommand retroarch
 Mod3 k :ExecCommand kodi
 
-
-
+Mod1 t :ToggleDecor
 

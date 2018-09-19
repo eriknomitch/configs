@@ -1,6 +1,11 @@
 [begin] ()
 [encoding] {UTF-8}
-      [exec] (halt) {halt-confirmation}
+      [exec] (Retroarch) {retroarch}
+      [exec] (Steam) {steam}
+      [exec] (Kodi) {kodi}
+      [separator]
+      [exec] (720p) {xrandr -s 1280x720}
+      [exec] (1080p) {xrandr -s 1920x1080}
       [separator]
       #[submenu] (cable)
       #      [exec] (mtvu) {channel mtvu}

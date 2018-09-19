@@ -28,11 +28,10 @@
   [Maximized]	{yes}
 [end]
 [app] (class=XTerm) (title=lw-notify)
-   [Dimensions] {400 60}
-   [Position]   (CENTER)     {0 0}
-   [Deco]	{NONE}
-   [Hidden]	{yes}
-   [FocusHidden]	{yes}
+  [Dimensions]	{400 60}
+  [Position]	(CENTER)	{0 0}
+  [Deco]	{NONE}
+  [Hidden]	{yes}
 [end]
 [app] (name=laptop) (class=XTerm)
   [Dimensions]	{1500 875}
@@ -67,8 +66,9 @@
   [Position]	(CENTER)	{0 0}
 [end]
 [app] (name=xterm) (class=XTerm)
-  [Dimensions]	{1300 730}
-  [Position]	(CENTER)	{0 0}
+  [Dimensions]	{101% 104%}
+  [Position]	(UPPERLEFT)	{0% 0%}
+  [Maximized]	{yes}
 [end]
 [app] (name=irc) (class=XTerm) (title=irc)
   [Dimensions]	{1680 1050}

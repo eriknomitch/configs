@@ -40,7 +40,7 @@ ratio.upload.set=0b
 system.method.set = group.seeding.ratio.command, d.close=
 
 # Move torrents
-system.method.set_key = event.download.finished,move_complete,"execute=mv,-u,$d.get_base_path=,~/.plex/torrents/;d.set_directory=~/.plex/torrents/"
+# system.method.set_key = event.download.finished,move_complete,"execute=mv,-u,$d.get_base_path=,~/.plex/torrents/;d.set_directory=~/.plex/torrents/"
 
 # Email
 system.method.set_key = event.download.finished,notify_me,"execute=~/.bin/bin/notify-torrent-completed,$d.get_name="

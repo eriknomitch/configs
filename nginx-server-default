@@ -14,8 +14,14 @@ server {
   location / {
     root /var/www;
   }
-ssl_certificate /etc/letsencrypt/live/home.nomitch.com/fullchain.pem; # managed by Certbot
-ssl_certificate_key /etc/letsencrypt/live/home.nomitch.com/privkey.pem; # managed by Certbot
+
+  location /share {
+    autoindex on;
+    root /var/www;
+  }
+
+  ssl_certificate /etc/letsencrypt/live/home.nomitch.com/fullchain.pem; # managed by Certbot
+  ssl_certificate_key /etc/letsencrypt/live/home.nomitch.com/privkey.pem; # managed by Certbot
   # It is *strongly* recommended to generate unique DH parameters
   # Generate them with: openssl dhparam -out /etc/pki/nginx/dhparams.pem 2048
   #ssl_dhparam "/etc/pki/nginx/dhparams.pem";
