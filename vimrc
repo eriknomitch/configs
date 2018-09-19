@@ -429,7 +429,8 @@ let g:ale_linters = {
       \  'js': ['prettier', 'eslint'],
       \  'ruby': ['rubocop'],
       \  'vim': ['vint'],
-      \  'python': ['add_blank_lines_for_python_control_statements', 'yapf']
+      \  'python': ['add_blank_lines_for_python_control_statements', 'black'],
+      \  'py': ['add_blank_lines_for_python_control_statements', 'black']
       \}
 
 " Fixers
@@ -443,7 +444,8 @@ let g:ale_fixers = {
       \  'ts': ['prettier', 'tslint'],
       \  'ruby': ['rubocop'],
       \  'c': ['clang-format'],
-      \  'python': ['yapf'],
+      \  'python': ['black'],
+      \  'py': ['black']
       \}
 
 function! OnALELintPre()
