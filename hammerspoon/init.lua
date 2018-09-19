@@ -238,7 +238,7 @@ spoon.WiFiTransitions:start()
 
 -- HCalendar
 -- ----------------------------------------------
-hs.loadSpoon("HCalendar")
+-- hs.loadSpoon("HCalendar")
 
 -- HeadphoneAutoPause
 -- ----------------------------------------------
