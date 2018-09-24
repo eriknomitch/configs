@@ -37,6 +37,7 @@ alias tms="tmuxinator start"
 alias lg="lazygit"
 alias ncdu="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias ping="prettyping --nolegend"
+alias rtorrent="nice -n 19 rtorrent"
 
 function gitignore-io() {
   curl -L -s https://www.gitignore.io/api/$@;
