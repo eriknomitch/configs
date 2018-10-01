@@ -56,19 +56,12 @@ function yt() {
 function cd() {
   builtin cd $1
 
-  if [[ -n "$VIRTUAL_ENV" && ./venv ]] ; then
+  if [[ -n "$VIRTUAL_ENV" && ( ! -d ./venv && ! -d ./env )  ]] ; then
     deactivate
   fi
 
-  if [[ -n "$VIRTUAL_ENV" && ./env ]] ; then
-    deactivate
-  fi
-
-  if [[ -d ./venv ]] ; then
-    . ./venv/bin/activate
-  elif [[ -d ./env ]] ; then
-    . ./env/bin/activate
-  fi
+  test -d ./venv && . ./venv/bin/activate
+  test -d ./env && . ./env/bin/activate
 }
 
 # Notes
@@ -82,7 +75,7 @@ alias dsp="docker system prune --force"
 
 # SSH
 # ------------------------------------------------
-alias S="ssh server"
+alias S="ssh server.local || ssh server"
 alias A="ssh ai"
 alias V="ssh virtual-linux"
 
