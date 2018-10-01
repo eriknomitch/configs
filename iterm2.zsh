@@ -32,3 +32,6 @@ color-ssh() {
 compdef _ssh color-ssh=ssh
 
 alias ssh=color-ssh
+
+# Default tab color
+tab-color 255 255 255

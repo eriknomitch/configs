@@ -183,10 +183,6 @@ _define_buffer_dump hosts '^[h' "hosts "
 # ------------------------------------------------
 _define_buffer_dump ip_lan '^[1' $LAN_PREFIX
 
-# 'puck '
-# ------------------------------------------------
-_define_buffer_dump puck '^[p' "puck-ssh "
-
 # ------------------------------------------------
 # ANDROID ----------------------------------------
 # ------------------------------------------------
@@ -363,8 +359,8 @@ fi
   #clear
 #fi
 
-if [[ -n $PUCK_LOCATION ]] ; then
-  echo "Acting as Puck in: `stylize $PUCK_LOCATION`"
+if [[ -n $TUNNEL_LOCATION ]] ; then
+  echo "Acting as Tunnel in: `stylize $TUNNEL_LOCATION`"
 
   if pulseaudio --check; then
     echo "       Pulseaudio: Running"
