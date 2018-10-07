@@ -393,7 +393,8 @@ export DISABLE_AUTO_TITLE='true'
 # BREW -------------------------------------------
 # ------------------------------------------------
 # https://github.com/settings/tokens
-export HOMEBREW_GITHUB_API_TOKEN=a0e3b56eb626aa263ee45be49e7af387f67a3f5
+# export HOMEBREW_GITHUB_API_TOKEN=a5e62b045f2eeaa1320c544a2ff0e6cc0c3b7fb40a
+export HOMEBREW_GITHUB_API_TOKEN=5e62b045f2eeaa1320c544a2ff0e6cc0c3b7fb40
 
 # ------------------------------------------------
 # PYENV ------------------------------------------

@@ -67,7 +67,7 @@ bindApplicationFocus("W", "FreeChat")
 
 -- Secondary
 -- -----------------------------------------------
-bindApplicationFocusSecondary("E", "Evernote")
+bindApplicationFocusSecondary("E", "Tusk")
 bindApplicationFocusSecondary("S", "Slack")
 bindApplicationFocusSecondary("I", "FirefoxDeveloperEdition")
 bindApplicationFocusSecondary("W", "Ulysses")
@@ -206,7 +206,7 @@ function handleWindowCreated(win, event)
     app_fullscreen = true
   end
 
-  if app:title() == "Evernote" then
+  if app:title() == "Tusk" then
     app_fullscreen = true
   end
 
