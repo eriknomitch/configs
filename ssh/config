@@ -84,6 +84,7 @@ Host lora-*
 Host tunnel-*
   User pi
   StrictHostKeyChecking no
+  HostName %h.local
 
 # ------------------------------------------------
 # MAP->HOSTS->MICROS (ESP8266s) ------------------
@@ -169,10 +170,6 @@ Host laptop
     checkhostip no
     User erik
 
-Host kodi-erik
-    HostName kodi-erik.local
-    User root
-
 Host dns-filter
     HostName dns-filter.local
     User pi
@@ -180,7 +177,7 @@ Host dns-filter
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
 # ------------------------------------------------
-Host micro-* tv-controller-master
+Host micro-*
   UserKnownHostsFile /dev/null
   StrictHostKeyChecking no
   ServerAliveInterval 60
@@ -189,20 +186,6 @@ Host micro-* tv-controller-master
 
 Host sdr
   User pi
-
-# ------------------------------------------------
-# LAN->DEVICES & HUBS-----------------------------
-# ------------------------------------------------
-#Host tv
-  #HostName 10.0.0.152
-
-#Host sonos-1
-  #HostName 10.0.0.51
-
-#Host hue-bridge
-  #HostName 10.0.0.55
-# LAN->DEVICES & HUBS-----------------------------
-# ------------------------------------------------
 
 # ------------------------------------------------
 # VIRTUAL ----------------------------------------
@@ -230,6 +213,20 @@ Host docker-proxy
     HostName 45.63.69.132
     User development
 
+# ------------------------------------------------
+# DEVICES ----------------------------------------
+# ------------------------------------------------
+host remarkable
+    Hostname 10.11.99.1
+    User root
+
+# ================================================
+# WORK ===========================================
+# ================================================
+
+# ------------------------------------------------
+# MLW-AI -----------------------------------------
+# ------------------------------------------------
 Host kami
     HostName ec2-34-207-108-140.compute-1.amazonaws.com
     User erik
@@ -238,9 +235,3 @@ Host mapblocks-paperspace
   HostName 74.82.30.202
   User paperspace
 
-# ------------------------------------------------
-# LOCAL ------------------------------------------
-# ------------------------------------------------
-host remarkable
-    Hostname 10.11.99.1
-    User root
