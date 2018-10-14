@@ -259,11 +259,10 @@ endif
 " CONFIG->CTRLP ----------------------------------
 " ------------------------------------------------
 let g:ctrlp_map = '<C-p>'
-" let g:ctrlp_cmd = 'CtrlPBuffer'
+let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:30,results:30'
 let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
-
 
 " ------------------------------------------------
 " CONFIG->AIRLINE --------------------------------

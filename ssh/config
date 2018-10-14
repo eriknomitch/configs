@@ -86,6 +86,10 @@ Host tunnel-*
   StrictHostKeyChecking no
   HostName %h.local
 
+Host tunnel-*.local
+  User pi
+  StrictHostKeyChecking no
+
 # ------------------------------------------------
 # MAP->HOSTS->MICROS (ESP8266s) ------------------
 # ------------------------------------------------
