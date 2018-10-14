@@ -71,7 +71,19 @@ export LC_TYPE="en_US.UTF-8"
 # ------------------------------------------------
 # UTILITY->SOURCING ------------------------------
 # ------------------------------------------------
-alias resource="unset ZSHRC_SOURCED; source ~/.zshrc"
+function resource() {
+  _current_pwd=$PWD
+
+  unset ZSHRC_SOURCED
+  source $HOME/.zshrc
+
+  clear
+
+  cd $_current_pwd
+}
+
+alias src="resource"
+alias rh="rehash"
 
 function source-if-exists() {
   test -f $1 && source $1
