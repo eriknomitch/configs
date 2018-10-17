@@ -239,3 +239,7 @@ Host mapblocks-paperspace
   HostName 74.82.30.202
   User paperspace
 
+Host mapblocks-paperspace-fastai
+  HostName 65.49.54.240
+  User paperspace
+

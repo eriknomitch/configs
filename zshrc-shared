@@ -89,8 +89,8 @@ function source-if-exists() {
   test -f $1 && source $1
 }
 
-command-exists() {
-  (command -v $1 >/dev/null 2>&1)
+function command-exists() {
+  typeset -f $1 > /dev/null || command -v $1 > /dev/null 2>&1
 }
 
 function extend-path() {
