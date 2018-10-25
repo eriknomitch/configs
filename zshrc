@@ -82,10 +82,7 @@ alias V="ssh virtual-linux"
 # ------------------------------------------------
 # ASDF -------------------------------------------
 # ------------------------------------------------
-if [[ -d $HOME/.asdf ]] ; then
-  . $HOME/.asdf/asdf.sh
-  . $HOME/.asdf/completions/asdf.bash
-fi
+source-if-exists $HOME/.configs/zshrc-asdf
 
 # ------------------------------------------------
 # AUTOJUMP ---------------------------------------
@@ -100,11 +97,10 @@ ANTIGEN_MUTEX=false
 source-if-exists /usr/local/share/antigen/antigen.zsh
 
 if command-exists antigen; then
-  antigen use oh-my-zsh
-  antigen bundle zsh-navigation-tools
-  antigen bundle zsh-users/zsh-syntax-highlighting
-  antigen bundle zsh-users/zsh-completions
-  antigen apply
+  source $HOME/.configs/zshrc-antigen
+else
+  echo "Warning: antigen not installed."
+  sleep 0.5
 fi
 
 # REFERENCE: Packages
