@@ -76,6 +76,9 @@ Plug 'epeli/slimux'
 Plug 'goerz/ipynb_notedown.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'https://gitlab.com/Lenovsky/nuake.git'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
 call plug#end()
 
 " ------------------------------------------------
