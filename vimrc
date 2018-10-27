@@ -27,7 +27,6 @@ set noswapfile
 " ------------------------------------------------
 call plug#begin()
 Plug 'junegunn/vim-easy-align'
-Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -46,7 +45,6 @@ Plug 'ervandew/supertab'
 Plug 'Shougo/unite.vim' " vimfiler depends on this
 Plug 'Shougo/vimfiler.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'pangloss/vim-javascript'
 Plug 'kana/vim-arpeggio'
 Plug 'hylang/vim-hy'
 Plug 'rizzatti/dash.vim'
@@ -57,7 +55,6 @@ Plug 'epilande/vim-es2015-snippets'
 Plug 'epilande/vim-react-snippets'
 Plug 'w0rp/ale'
 Plug 'skywind3000/asyncrun.vim'
-Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'terryma/vim-multiple-cursors'
@@ -71,7 +68,6 @@ Plug 'svermeulen/vim-easyclip'
 Plug 'jreybert/vimagit'
 Plug 'sjl/gundo.vim'
 Plug 'suan/vim-instant-markdown'
-" Plug 'joeytwiddle/sexy_scroller.vim'
 Plug 'epeli/slimux'
 Plug 'goerz/ipynb_notedown.vim'
 Plug 'rizzatti/dash.vim'
@@ -79,6 +75,14 @@ Plug 'https://gitlab.com/Lenovsky/nuake.git'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
 call plug#end()
 
 " ------------------------------------------------
@@ -210,6 +214,9 @@ au BufNewFile,BufRead *.less set filetype=less
 " JSON highlighting
 au! BufRead,BufNewFile *.json set filetype=json
 
+" Typescript
+autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+
 let g:vim_markdown_folding_disabled=1
 
 " http://vim.wikia.com/wiki/Insert_multiple_lines
@@ -330,7 +337,7 @@ nmap ga <Plug>(EasyAlign)
 " ------------------------------------------------
 " CONFIG->DEOPLETE -------------------------------
 " ------------------------------------------------
-"let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 
 " ------------------------------------------------
 " CONFIG->VIMFILER -------------------------------
@@ -501,9 +508,9 @@ augroup vimagit
 augroup END
 
 " ------------------------------------------------
+" CONFIG->VIM-JSX-PRETTY -------------------------
 " ------------------------------------------------
-" ------------------------------------------------
-" let g:SexyScroller_EasingStyle = 3
+let g:vim_jsx_pretty_colorful_config = 1
 
 " ------------------------------------------------
 " CONFIG->KEY-MAPPINGS ---------------------------
