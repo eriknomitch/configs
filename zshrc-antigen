@@ -1,7 +1,0 @@
-antibody bundle robbyrussell/oh-my-zsh path:plugins/zsh-navigation-tools
-antibody bundle zsh-users/zsh-syntax-highlighting
-antibody bundle zsh-users/zsh-completions
-antibody bundle psprint/zsh-navigation-tools
-antibody bundle rupa/z
-
-antibody apply

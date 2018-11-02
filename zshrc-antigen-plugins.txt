@@ -1,0 +1,5 @@
+robbyrussell/oh-my-zsh path:plugins/zsh-navigation-tools
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-completions
+psprint/zsh-navigation-tools
+rupa/z

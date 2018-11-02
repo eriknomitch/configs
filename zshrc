@@ -94,12 +94,7 @@ source-if-exists $HOME/.configs/zshrc-asdf
 # ------------------------------------------------
 if command-exists antibody; then
   source <(antibody init)
-
-  antibody bundle robbyrussell/oh-my-zsh path:plugins/zsh-navigation-tools
-  antibody bundle zsh-users/zsh-syntax-highlighting
-  antibody bundle zsh-users/zsh-completions
-  antibody bundle psprint/zsh-navigation-tools
-  antibody bundle rupa/z
+  antibody bundle  < $HOME/.configs/zshrc-antibody-plugins.txt
 else
   echo "Warning: antibody not installed."
   sleep 0.5
