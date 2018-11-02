@@ -539,13 +539,11 @@ function cd-skip-chpwd() {
 
 function chpwd() {
 
-  if [[ $SKIP_CHPWD == true ]] ; then
-    return
-  fi
+  test $SKIP_CHPWD == true && return
 
-  if [[ $PWD == $HOME ]] ; then
-    clear
-  fi
+  test -f .ls-ignore && return
+
+  test $PWD == $HOME && clear
 
   command-exists _g_chpwd && _g_chpwd
 }
