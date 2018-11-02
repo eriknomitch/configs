@@ -15,7 +15,7 @@
     "files": ["hyper.js"]
   },
   "vim": {
-    "files": ["vimrc", "vim/**/**"],
+    "files": ["vimrc"],
     "first_file": "vimrc"
   },
   "ssh": {

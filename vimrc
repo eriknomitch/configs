@@ -48,7 +48,6 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'kana/vim-arpeggio'
 Plug 'hylang/vim-hy'
 Plug 'rizzatti/dash.vim'
-Plug 'Shougo/denite.nvim'
 Plug 'rhysd/vim-crystal'
 Plug 'SirVer/ultisnips'
 Plug 'epilande/vim-es2015-snippets'
@@ -75,14 +74,8 @@ Plug 'https://gitlab.com/Lenovsky/nuake.git'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
 call plug#end()
 
 " ------------------------------------------------
@@ -202,9 +195,6 @@ autocmd FileType lisp set omnifunc=lispcomplete#Complete
 au BufReadPost *.js.coffee.erb set filetype=coffee syntax=coffee
 au BufReadPost *.jst.ejs set filetype=html syntax=html
 
-" Prelang syntax highlighting
-"au BufNewFile,BufRead *.rb set filetype=prelang
-
 " Arduino syntax highlighting
 au BufNewFile,BufRead *.pde setf arduino
 
@@ -269,7 +259,7 @@ endif
 " CONFIG->CTRLP ----------------------------------
 " ------------------------------------------------
 let g:ctrlp_map = '<C-p>'
-let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:30,results:30'
 let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
@@ -333,6 +323,12 @@ nmap ga <Plug>(EasyAlign)
 " let g:better_whitespace_enabled = 0
 
 " autocmd BufEnter * EnableStripWhitespaceOnSave
+
+" ------------------------------------------------
+" CONFIG->PYTHON ---------------------------------
+" ------------------------------------------------
+" let g:python_host_prog = '~/.asdf/shims/python'
+" let g:python3_host_prog = '~/.asdf/shims/python'
 
 " ------------------------------------------------
 " CONFIG->DEOPLETE -------------------------------
