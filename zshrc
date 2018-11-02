@@ -90,22 +90,20 @@ source-if-exists $HOME/.configs/zshrc-asdf
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # ------------------------------------------------
-# ANTIGEN ----------------------------------------
+# ANTIBODY ---------------------------------------
 # ------------------------------------------------
-ANTIGEN_MUTEX=false
+if command-exists antibody; then
+  source <(antibody init)
 
-source-if-exists /usr/local/share/antigen/antigen.zsh
-
-if command-exists antigen; then
-  source $HOME/.configs/zshrc-antigen
+  antibody bundle robbyrussell/oh-my-zsh path:plugins/zsh-navigation-tools
+  antibody bundle zsh-users/zsh-syntax-highlighting
+  antibody bundle zsh-users/zsh-completions
+  antibody bundle psprint/zsh-navigation-tools
+  antibody bundle rupa/z
 else
-  echo "Warning: antigen not installed."
+  echo "Warning: antibody not installed."
   sleep 0.5
 fi
-
-# REFERENCE: Packages
-# ------------------------------------------------
-# lukechilds/zsh-better-npm-completion
 
 # ------------------------------------------------
 # SOURCE->USER -----------------------------------

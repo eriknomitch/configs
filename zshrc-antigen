@@ -1,6 +1,7 @@
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-completions
-antigen bundle psprint/zsh-navigation-tools
-antigen bundle rupa/z
+antibody bundle robbyrussell/oh-my-zsh path:plugins/zsh-navigation-tools
+antibody bundle zsh-users/zsh-syntax-highlighting
+antibody bundle zsh-users/zsh-completions
+antibody bundle psprint/zsh-navigation-tools
+antibody bundle rupa/z
 
-antigen apply
+antibody apply
