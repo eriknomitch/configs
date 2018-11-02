@@ -539,7 +539,7 @@ function cd-skip-chpwd() {
 
 function chpwd() {
 
-  test $SKIP_CHPWD == true && return
+  if (( $SKIP_CHPWD )) ; then; return; fi
 
   test -f .ls-ignore && return
 
