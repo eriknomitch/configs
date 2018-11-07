@@ -76,6 +76,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
+Plug 'zxqfl/tabnine-vim'
 call plug#end()
 
 " ------------------------------------------------
