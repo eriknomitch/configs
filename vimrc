@@ -435,8 +435,8 @@ let g:ale_linters = {
       \  'js': ['prettier', 'eslint'],
       \  'ruby': ['rubocop'],
       \  'vim': ['vint'],
-      \  'python': ['add_blank_lines_for_python_control_statements', 'black'],
-      \  'py': ['add_blank_lines_for_python_control_statements', 'black']
+      \  'python': ['add_blank_lines_for_python_control_statements', 'black', 'flake8'],
+      \  'py': ['add_blank_lines_for_python_control_statements', 'black', 'flake8']
       \}
 
 " Fixers
