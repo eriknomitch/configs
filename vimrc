@@ -238,6 +238,9 @@ let g:UltiSnipsJumpBackwardTrigger='<C-z>'
 au BufRead,BufNewFile *.pde set filetype=arduino
 au BufRead,BufNewFile *.ino set filetype=arduino
 
+" flake8
+au BufRead,BufNewFile .flake8 set filetype=yaml
+
 " Command for writing with sudo
 " http://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
 cmap w!! w !sudo tee > /dev/null %
