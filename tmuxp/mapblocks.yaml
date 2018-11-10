@@ -1,0 +1,16 @@
+session_name: mb
+windows:
+- window_name: edit
+  shell_command_before:
+    - cd ~/.repositories/mapblocks/
+    - sw
+  panes:
+    - ofe
+- window_name: git/run
+  layout: main-vertical
+  shell_command_before:
+    - cd ~/.repositories/mapblocks/
+  panes:
+    - ''
+    - ./run j
+    - ./run m
