@@ -12,5 +12,5 @@ windows:
     - cd ~/.repositories/mapblocks/
   panes:
     - ''
-    - ./run j
+    - sleep 5; ./run j
     - ./run m
