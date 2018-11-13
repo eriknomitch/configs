@@ -41,7 +41,7 @@ Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mhinz/vim-signify' " (git gutter)
 Plug 'tpope/vim-unimpaired'
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 Plug 'Shougo/unite.vim' " vimfiler depends on this
 Plug 'Shougo/vimfiler.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
