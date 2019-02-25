@@ -53,3 +53,8 @@ source-if-exists ~/.configs/iterm2.zsh
 # BOOT2DOCKER ------------------------------------
 # ------------------------------------------------
 #command-exists boot2docker && eval "$(boot2docker shellinit)"
+
+# ------------------------------------------------
+# POSTGRES ---------------------------------------
+# ------------------------------------------------
+test -d /Applications/Postgres.app/Contents/Versions/latest/bin && export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin

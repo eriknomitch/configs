@@ -67,7 +67,7 @@ bindApplicationFocus("W", "FreeChat")
 
 -- Secondary
 -- -----------------------------------------------
-bindApplicationFocusSecondary("E", "Tusk")
+bindApplicationFocusSecondary("E", "Evernote")
 bindApplicationFocusSecondary("S", "Slack")
 bindApplicationFocusSecondary("I", "FirefoxDeveloperEdition")
 bindApplicationFocusSecondary("W", "Ulysses")
@@ -211,11 +211,25 @@ function handleWindowCreated(win, event)
   end
 
   if app:title() == "Preview" then
-    app_fullscreen = true
+    local win    = hs.window.focusedWindow()
+    local f      = win:frame()
+    local screen = win:screen()
+    local max    = screen:frame()
+
+    f.w = max.w / 2
+    f.h = max.h
+
+    f.x = (max.x - f.w) / 2
+    f.y = max.y
+
+    win:setFrame(f)
   end
 
   if app:title() == "Kiwi for Gmail" then
     app_fullscreen = true
+  end
+
+  if app:title() == "Todoist" then
   end
 
   -- ---------------------------------------------

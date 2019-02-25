@@ -1,0 +1,15 @@
+session_name: fulcrum-frontend
+windows:
+- window_name: edit
+  shell_command_before:
+    - cd ~/.repositories/fulcrum-frontend/
+    - sw
+  panes:
+    - ofe
+- window_name: git/run
+  layout: main-vertical
+  shell_command_before:
+    - cd ~/.repositories/fulcrum-frontend/
+  panes:
+    - ''
+    - ./run
