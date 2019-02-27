@@ -546,6 +546,7 @@ function chpwd() {
   test $PWD == $HOME && clear
 
   command-exists _g_chpwd && _g_chpwd
+  command-exists _virtualenv_chpwd && _virtualenv_chpwd
 }
 
 # ------------------------------------------------

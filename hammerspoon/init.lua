@@ -211,6 +211,14 @@ function handleWindowCreated(win, event)
   end
 
   if app:title() == "Preview" then
+    app_fullscreen = true
+  end
+
+  if app:title() == "Kiwi for Gmail" then
+    app_fullscreen = true
+  end
+
+  if app:title() == "Todoist" then
     local win    = hs.window.focusedWindow()
     local f      = win:frame()
     local screen = win:screen()
@@ -219,17 +227,10 @@ function handleWindowCreated(win, event)
     f.w = max.w / 2
     f.h = max.h
 
-    f.x = (max.x - f.w) / 2
+    f.x = max.x - (max.x - f.w) / 2
     f.y = max.y
 
     win:setFrame(f)
-  end
-
-  if app:title() == "Kiwi for Gmail" then
-    app_fullscreen = true
-  end
-
-  if app:title() == "Todoist" then
   end
 
   -- ---------------------------------------------

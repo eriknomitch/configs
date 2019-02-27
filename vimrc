@@ -74,7 +74,13 @@ Plug 'https://gitlab.com/Lenovsky/nuake.git'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 Plug 'zchee/deoplete-jedi'
 call plug#end()
 
@@ -338,6 +344,18 @@ nmap ga <Plug>(EasyAlign)
 " ------------------------------------------------
 let g:deoplete#enable_at_startup = 1
 
+" Completion with tab
+" FROM: https://github.com/Shougo/deoplete.nvim/issues/816#issuecomment-409119635
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ deoplete#manual_complete()
+
 " ------------------------------------------------
 " CONFIG->VIMFILER -------------------------------
 " ------------------------------------------------
@@ -414,6 +432,7 @@ highlight link multiple_cursors_visual Visual
 " CONFIG->ALE ------------------------------------
 " ------------------------------------------------
 let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_javascript_eslint_use_local_config = 1
 
 " Only lint on file open and write - not text change
 let g:ale_lint_on_text_changed = 'normal'

@@ -53,15 +53,13 @@ function yt() {
 # ------------------------------------------------
 # CD ---------------------------------------------
 # ------------------------------------------------
-function cd() {
-  builtin cd $1
-
-  if [[ -n "$VIRTUAL_ENV" && ( ! -d ./venv && ! -d ./env )  ]] ; then
+function _virtualenv_chpwd() {
+  if [[ -n "$VIRTUAL_ENV" && "$VIRTUAL_ENV" != $PWD ]] ; then
     deactivate
   fi
 
-  test -d ./venv && . ./venv/bin/activate
-  test -d ./env && . ./env/bin/activate
+  test -f ./venv/bin/activate && . ./venv/bin/activate
+  test -f ./env/bin/activate && . ./env/bin/activate
 }
 
 # Notes
