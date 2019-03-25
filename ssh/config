@@ -217,6 +217,10 @@ Host docker-proxy
     HostName 45.63.69.132
     User development
 
+Host paperspace-general
+  HostName 184.105.190.70
+  User paperspace
+
 # ------------------------------------------------
 # DEVICES ----------------------------------------
 # ------------------------------------------------
