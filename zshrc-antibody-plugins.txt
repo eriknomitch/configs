@@ -1,4 +1,6 @@
 robbyrussell/oh-my-zsh path:plugins/zsh-navigation-tools
+robbyrussell/oh-my-zsh path:plugins/docker
+robbyrussell/oh-my-zsh path:plugins/docker-compose
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-completions
 psprint/zsh-navigation-tools
