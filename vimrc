@@ -63,7 +63,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'brooth/far.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-repeat' " Dependency of vim-easyclip
-Plug 'svermeulen/vim-easyclip'
+" Plug 'svermeulen/vim-easyclip'
 Plug 'jreybert/vimagit'
 Plug 'sjl/gundo.vim'
 Plug 'suan/vim-instant-markdown'
@@ -73,7 +73,12 @@ Plug 'rizzatti/dash.vim'
 Plug 'https://gitlab.com/Lenovsky/nuake.git'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
+" Syntax
+" ------------------------------------------------
 Plug 'maxmellon/vim-jsx-pretty'
+" Autocompletion
+" ------------------------------------------------
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
