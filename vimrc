@@ -63,7 +63,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'brooth/far.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-repeat' " Dependency of vim-easyclip
-" Plug 'svermeulen/vim-easyclip'
+Plug 'svermeulen/vim-easyclip'
 Plug 'jreybert/vimagit'
 Plug 'sjl/gundo.vim'
 Plug 'suan/vim-instant-markdown'
