@@ -71,7 +71,7 @@ bindApplicationFocusSecondary("E", "Evernote")
 bindApplicationFocusSecondary("S", "Slack")
 bindApplicationFocusSecondary("I", "FirefoxDeveloperEdition")
 bindApplicationFocusSecondary("W", "Ulysses")
-bindApplicationFocusSecondary("P", "Adobe Photoshop CC 2018")
+bindApplicationFocusSecondary("P", "Adobe Photoshop CC 2019")
 
 -- Special
 -- -----------------------------------------------
