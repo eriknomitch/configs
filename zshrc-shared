@@ -1,9 +1,9 @@
 # ------------------------------------------------
 # ZSH->CONFIGURATION -----------------------------
 # ------------------------------------------------
-autoload -U compinit; compinit
-autoload zsh/terminfo
-autoload colors; colors
+autoload -Uz compinit; compinit
+autoload -Uz zsh/terminfo
+autoload -Uz colors; colors
 
 source /etc/zsh/colors
 
