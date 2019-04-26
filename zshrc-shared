@@ -258,6 +258,36 @@ function disable-history-for-session() {
   echo "HISTFILE set to /dev/null."
 }
 
+function rm-history() {
+
+  if [[ $HISTFILE != $ORIGINAL_HISTFILE ]]; then
+    echo "fatal: HISTFILE does not match the originally set HISTFILE location. Exiting."
+    return 1
+  fi
+
+  if test -f $HISTFILE ; then
+    echo "Removing '$HISTFILE'"
+    rm $HISTFILE
+  fi
+
+  _directory_history_path="$HOME/.directory_history"
+
+  if test -d $_directory_history_path; then
+    echo "Removing '$_directory_history_path'"
+    rm -rf $_directory_history_path
+  fi
+
+  _z_history="$HOME/.z"
+
+  if test -f $_z_history; then
+    echo "Removing '$_z_history'"
+    rm $_z_history
+  fi
+
+  # _other_history_paths="~/.bash_history ~/.sh_history ~/.zsh_history"
+}
+
+
 # ------------------------------------------------
 # ALIASES/FUNCTIONS ------------------------------
 # ------------------------------------------------
@@ -383,30 +413,6 @@ function ex()
 function rsync-partial()
 {
   rsync --partial --progress --rsh=ssh $*
-}
-
-function rm-history() {
-
-  if [[ $HISTFILE != $ORIGINAL_HISTFILE ]]; then
-    echo "fatal: HISTFILE does not match the originally set HISTFILE location. Exiting."
-    return 1
-  fi
-
-  if [[ -z $HISTFILE ]] ; then
-    echo "fatal: HISTFILE not set."
-    return 1
-  fi
-
-  echo "Removing $HISTFILE"
-
-  _other_history_paths="~/.bash_history ~/.sh_history ~/.zsh_history"
-
-  rm $HISTFILE
-
-  if prompt "Also remove other histories?\n  - ~/.bash_history\n  - ~/.directory_history/*\n  - ~/.sh_history\n  - ~/.zsh_history"; then
-    rm $HOME/.bash_history
-    exit
-  fi
 }
 
 # ------------------------------------------------
