@@ -69,7 +69,7 @@ bindApplicationFocus("W", "FreeChat")
 -- -----------------------------------------------
 bindApplicationFocusSecondary("E", "Evernote")
 bindApplicationFocusSecondary("S", "Slack")
-bindApplicationFocusSecondary("I", "FirefoxDeveloperEdition")
+bindApplicationFocusSecondary("I", "Firefox")
 bindApplicationFocusSecondary("W", "Ulysses")
 bindApplicationFocusSecondary("P", "Adobe Photoshop CC 2019")
 
