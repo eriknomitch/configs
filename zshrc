@@ -410,6 +410,13 @@ if [[ -d $HOME/.mos ]] ; then
 fi
 
 # ------------------------------------------------
+# FLUTTER ----------------------------------------
+# ------------------------------------------------
+if [[ -d $HOME/.repositories/flutter ]] ; then
+  export PATH=$PATH:$HOME/.repositories/flutter/bin
+fi
+
+# ------------------------------------------------
 # MPM (DEVELOPMENT) ------------------------------
 # ------------------------------------------------
 if [[ ! `command-exists mpm` && -d $HOME/.repositories/mpm-cr ]] ; then
