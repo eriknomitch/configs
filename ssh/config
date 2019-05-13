@@ -159,7 +159,7 @@ Host ai
     User erik
     Port 2220
 
-Host ai-local
+Host ai exec "~/.bin/bin/are-on-personal-lan"
     HostName ai.local
     PermitLocalCommand true
     User erik
