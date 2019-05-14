@@ -21,8 +21,6 @@
 [rerere]
 	enabled = true
 	autoupdate = true
-[gui]
-	recentrepo = /Users/erik/.repositories/hc
 [color]
 	ui = true
 [color "diff-highlight"]
