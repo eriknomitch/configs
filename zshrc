@@ -430,6 +430,11 @@ fi
 source-if-exists $HOME/.repositories/git-extras/etc/git-extras-completion.zsh
 
 # ------------------------------------------------
+# DLDC -------------------------------------------
+# ------------------------------------------------
+export PATH=`extend-path "$HOME/.repositories/dldc/bin"`
+
+# ------------------------------------------------
 # CONFIG->PRWD -----------------------------------
 # ------------------------------------------------
 export PRWD_BIND_TO_TMUX=true
