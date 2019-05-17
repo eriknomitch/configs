@@ -335,6 +335,7 @@ source-if-exists $HOME/.repositories/z/z.sh
 # MAIN -------------------------------------------
 # ------------------------------------------------
 export ZSHRC_SOURCED=true
+export SKIP_ZSH_CLEAR=true
 
 # Check if we're in an interactive shell because
 # we only clear when we are. We don't want to
