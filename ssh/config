@@ -153,11 +153,11 @@ Host server
     User erik
     Port 2210
 
-Host ai
-    HostName home.nomitch.com
-    PermitLocalCommand true
-    User erik
-    Port 2220
+# Host ai
+#     HostName home.nomitch.com
+#     PermitLocalCommand true
+#     User erik
+#     Port 2220
 
 Host ai exec "~/.bin/bin/are-on-personal-lan"
     HostName ai.local
@@ -220,6 +220,11 @@ Host docker-proxy
 Host paperspace-general
   HostName 184.105.190.70
   User paperspace
+
+Host seedbox
+    HostName 83.149.73.78
+    User user
+    Port 2222
 
 # ------------------------------------------------
 # DEVICES ----------------------------------------

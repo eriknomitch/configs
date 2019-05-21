@@ -74,6 +74,8 @@ Plug 'rizzatti/dash.vim'
 Plug 'https://gitlab.com/Lenovsky/nuake.git'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
+Plug 'robertbasic/vim-hugo-helper'
+
 " Syntax
 " ------------------------------------------------
 Plug 'maxmellon/vim-jsx-pretty'
