@@ -344,8 +344,10 @@ nmap ga <Plug>(EasyAlign)
 " ------------------------------------------------
 " CONFIG->PYTHON ---------------------------------
 " ------------------------------------------------
-" let g:python_host_prog = '~/.asdf/shims/python'
-" let g:python3_host_prog = '~/.asdf/shims/python'
+let g:python_host_prog = '~/.asdf/shims/python'
+let g:python3_host_prog = '~/.asdf/shims/python'
+" let g:python_host_prog = '/homefull/path/to/.pyenv/versions/neovim2/bin/python'
+" let g:python3_host_prog = '/full/path/to/.pyenv/versions/neovim3/bin/python'
 
 " ------------------------------------------------
 " CONFIG->DEOPLETE -------------------------------
