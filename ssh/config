@@ -223,7 +223,7 @@ Host paperspace-general
 
 Host seedbox
     HostName 83.149.73.78
-    User user
+    User root
     Port 2222
 
 # ------------------------------------------------
