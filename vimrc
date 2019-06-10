@@ -25,8 +25,12 @@ set noswapfile
 " ------------------------------------------------
 " CONFIG->PYTHON ---------------------------------
 " ------------------------------------------------
+"  NOTE: I think this is actually deoplete-specific?
 " let g:python_host_prog = $HOME + '/.asdf/shims/python'
-let g:python_host_prog = $HOME + '/.asdf/shims/python3.7'
+" let g:python_host_prog = $HOME + '/.asdf/shims/python3.7'
+let g:python3_host_prog = expand('~/.asdf/shims/python')
+let g:python_host_prog = expand('~/.asdf/shims/python')
+
 
 " ------------------------------------------------
 " PLUG -------------------------------------------
