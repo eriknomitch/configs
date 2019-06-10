@@ -63,7 +63,7 @@ bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("H", "Helium")
-bindApplicationFocus("W", "FreeChat")
+bindApplicationFocus("W", "WhatsApp")
 
 -- Secondary
 -- -----------------------------------------------
