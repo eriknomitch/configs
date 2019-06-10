@@ -23,6 +23,12 @@ filetype plugin indent on
 set noswapfile
 
 " ------------------------------------------------
+" CONFIG->PYTHON ---------------------------------
+" ------------------------------------------------
+" let g:python_host_prog = $HOME + '/.asdf/shims/python'
+let g:python_host_prog = $HOME + '/.asdf/shims/python3.7'
+
+" ------------------------------------------------
 " PLUG -------------------------------------------
 " ------------------------------------------------
 call plug#begin()
@@ -340,14 +346,6 @@ nmap ga <Plug>(EasyAlign)
 " let g:better_whitespace_enabled = 0
 
 " autocmd BufEnter * EnableStripWhitespaceOnSave
-
-" ------------------------------------------------
-" CONFIG->PYTHON ---------------------------------
-" ------------------------------------------------
-let g:python_host_prog = '~/.asdf/shims/python'
-let g:python3_host_prog = '~/.asdf/shims/python'
-" let g:python_host_prog = '/homefull/path/to/.pyenv/versions/neovim2/bin/python'
-" let g:python3_host_prog = '/full/path/to/.pyenv/versions/neovim3/bin/python'
 
 " ------------------------------------------------
 " CONFIG->DEOPLETE -------------------------------
