@@ -64,6 +64,7 @@ bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("H", "Helium")
 bindApplicationFocus("W", "WhatsApp")
+bindApplicationFocus("Z", "zoom.us")
 
 -- Secondary
 -- -----------------------------------------------
