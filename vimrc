@@ -23,16 +23,6 @@ filetype plugin indent on
 set noswapfile
 
 " ------------------------------------------------
-" CONFIG->PYTHON ---------------------------------
-" ------------------------------------------------
-"  NOTE: I think this is actually deoplete-specific?
-" let g:python_host_prog = $HOME + '/.asdf/shims/python'
-" let g:python_host_prog = $HOME + '/.asdf/shims/python3.7'
-let g:python3_host_prog = expand('~/.asdf/shims/python')
-let g:python_host_prog = expand('~/.asdf/shims/python')
-
-
-" ------------------------------------------------
 " PLUG -------------------------------------------
 " ------------------------------------------------
 call plug#begin()
@@ -99,8 +89,15 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-Plug 'zchee/deoplete-jedi'
+" Plug 'zchee/deoplete-jedi'
 call plug#end()
+
+" ------------------------------------------------
+" CONFIG->DEOPLETE -------------------------------
+" ------------------------------------------------
+" let g:python3_host_prog = expand('~/.asdf/shims/python3')
+" let g:python_host_prog = expand('~/.asdf/shims/python')
+let g:deoplete#enable_at_startup = 1
 
 " ------------------------------------------------
 " PATHOGEN->INIT ---------------------------------
@@ -354,7 +351,6 @@ nmap ga <Plug>(EasyAlign)
 " ------------------------------------------------
 " CONFIG->DEOPLETE -------------------------------
 " ------------------------------------------------
-let g:deoplete#enable_at_startup = 1
 
 " Completion with tab
 " FROM: https://github.com/Shougo/deoplete.nvim/issues/816#issuecomment-409119635
