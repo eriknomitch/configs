@@ -174,8 +174,8 @@ Host laptop
     checkhostip no
     User erik
 
-Host dns-filter
-    HostName dns-filter.local
+Host pi-hole pi-hole.local
+    HostName pi-hole.local
     User pi
 
 # ------------------------------------------------

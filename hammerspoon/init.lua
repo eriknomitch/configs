@@ -57,7 +57,7 @@ end
 -- -----------------------------------------------
 bindApplicationFocus("I", "Google Chrome")
 bindApplicationFocus("E", "Kiwi for Gmail")
-bindApplicationFocus("S", "Slack")
+bindApplicationFocus("S", "Signal")
 bindApplicationFocus("M", "Messages")
 bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("P", "Preview")
@@ -65,6 +65,7 @@ bindApplicationFocus("F", "Finder")
 bindApplicationFocus("H", "Helium")
 bindApplicationFocus("W", "WhatsApp")
 bindApplicationFocus("Z", "zoom.us")
+bindApplicationFocus("G", "Go")
 
 -- Secondary
 -- -----------------------------------------------

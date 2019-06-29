@@ -33,10 +33,12 @@ alias ndc="nvidia-docker-compose"
 alias rg="rg --smart-case"
 alias tm="tmuxinator"
 alias tms="tmuxinator start"
+alias k="kubectl"
 alias lg="lazygit"
 alias ncdu="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias ping="prettyping --nolegend"
 alias rtorrent="nice -n 19 rtorrent"
+alias dsp="docker system prune --force"
 
 function gitignore-io() {
   curl -L -s https://www.gitignore.io/api/$@;
@@ -68,7 +70,6 @@ alias nn="notes notes ${@:2}"
 alias ng="notes --grep"
 alias nls="notes --list"
 alias rem="notes-reminders"
-alias dsp="docker system prune --force"
 
 # SSH
 # ------------------------------------------------
@@ -388,19 +389,7 @@ export DISABLE_AUTO_TITLE='true'
 # BREW -------------------------------------------
 # ------------------------------------------------
 # https://github.com/settings/tokens
-# export HOMEBREW_GITHUB_API_TOKEN=a5e62b045f2eeaa1320c544a2ff0e6cc0c3b7fb40a
 export HOMEBREW_GITHUB_API_TOKEN=5e62b045f2eeaa1320c544a2ff0e6cc0c3b7fb40
-
-# ------------------------------------------------
-# PYENV ------------------------------------------
-# ------------------------------------------------
-# export PATH=$PATH:$HOME/.pyenv/bin
-
-# if command-exists pyenv; then
-#   export PYENV_ROOT="$HOME/.pyenv"
-#   eval "$(pyenv init -)"
-#   eval "$(pyenv virtualenv-init -)"
-# fi
 
 # ------------------------------------------------
 # MONGOOSE-OS (MOS) ------------------------------
