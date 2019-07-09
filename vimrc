@@ -41,7 +41,6 @@ Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mhinz/vim-signify' " (git gutter)
 Plug 'tpope/vim-unimpaired'
-" Plug 'ervandew/supertab'
 Plug 'Shougo/unite.vim' " vimfiler depends on this
 Plug 'Shougo/vimfiler.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -49,9 +48,6 @@ Plug 'kana/vim-arpeggio'
 Plug 'hylang/vim-hy'
 Plug 'rizzatti/dash.vim'
 Plug 'rhysd/vim-crystal'
-Plug 'SirVer/ultisnips'
-Plug 'epilande/vim-es2015-snippets'
-Plug 'epilande/vim-react-snippets'
 Plug 'w0rp/ale'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'mxw/vim-jsx'
@@ -79,9 +75,13 @@ Plug 'robertbasic/vim-hugo-helper'
 " Syntax
 " ------------------------------------------------
 Plug 'maxmellon/vim-jsx-pretty'
-" Autocompletion
+
 " ------------------------------------------------
-" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+" PLUG->DEOPLETE ---------------------------------
+" ------------------------------------------------
+
+" Initialize
+" ------------------------------------------------
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -89,15 +89,23 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-" Plug 'zchee/deoplete-jedi'
+
+let g:deoplete#enable_at_startup = 1
+
+" Deoplete Packages
+" ================================================
+Plug 'zchee/deoplete-jedi'
+
+" Snippets
+" ------------------------------------------------
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+
 call plug#end()
 
 " ------------------------------------------------
 " CONFIG->DEOPLETE -------------------------------
 " ------------------------------------------------
-" let g:python3_host_prog = expand('~/.asdf/shims/python3')
-" let g:python_host_prog = expand('~/.asdf/shims/python')
-let g:deoplete#enable_at_startup = 1
 
 " ------------------------------------------------
 " PATHOGEN->INIT ---------------------------------
@@ -566,8 +574,6 @@ nnoremap <leader>ae :ALEEnable<CR>
 nnoremap <leader>ad :ALEDisable<CR>
 nnoremap <leader>F :ALEFix<CR>
 nnoremap <leader>f :ALEFix<CR>
-
-" noremap <leader>af <Plug>(ale_fix)<CR>
 
 " Whitespace
 " ------------------------------------------------
