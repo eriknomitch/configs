@@ -257,11 +257,6 @@ endfunction
 nnoremap <Leader>o :<C-u>call OpenLines(v:count, 0)<CR>S
 nnoremap <Leader>O :<C-u>call OpenLines(v:count, -1)<CR>S
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger='<C-s>'
-let g:UltiSnipsJumpForwardTrigger='<C-b>'
-let g:UltiSnipsJumpBackwardTrigger='<C-z>'
-
 " http://grantlucas.com/posts/2012/09/using-vim-arduino-development
 au BufRead,BufNewFile *.pde set filetype=arduino
 au BufRead,BufNewFile *.ino set filetype=arduino
@@ -285,6 +280,29 @@ if exists('$TMUX')
     autocmd BufEnter * call system("tmux rename-window '" . expand("%:t") . "'")
     autocmd VimLeave * call system("tmux setw automatic-rename")
   augroup END
+endif
+
+" ------------------------------------------------
+" CONFIG->NEOSNIP --------------------------------
+" ------------------------------------------------
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
 endif
 
 " ------------------------------------------------
