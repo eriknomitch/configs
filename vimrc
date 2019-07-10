@@ -51,6 +51,7 @@ Plug 'rhysd/vim-crystal'
 Plug 'w0rp/ale'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'mxw/vim-jsx'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -67,14 +68,9 @@ Plug 'suan/vim-instant-markdown'
 Plug 'epeli/slimux'
 Plug 'goerz/ipynb_notedown.vim'
 Plug 'rizzatti/dash.vim'
-Plug 'https://gitlab.com/Lenovsky/nuake.git'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'robertbasic/vim-hugo-helper'
-
-" Syntax
-" ------------------------------------------------
-Plug 'maxmellon/vim-jsx-pretty'
 
 " ------------------------------------------------
 " PLUG->DEOPLETE ---------------------------------
@@ -175,10 +171,10 @@ set pastetoggle=<F3>
 set showmode
 
 " Navigate 4x faster when holding down Ctrl
-nmap <c-j> 4j
-nmap <c-k> 4k
-nmap <c-h> 4h
-nmap <c-l> 4l
+nmap <C-j> 4j
+nmap <C-k> 4k
+nmap <C-h> 4h
+nmap <C-l> 4l
 
 " ------------------------------------------------
 " HOTKEYS ----------------------------------------
@@ -294,12 +290,12 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 " SuperTab like snippets behavior.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <expr><TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ neosnippet#expandable_or_jumpable() ?
-  \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+\ pumvisible() ? "\<C-n>" :
+\ neosnippet#expandable_or_jumpable() ?
+\    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-  \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " For conceal markers.
 if has('conceal')
@@ -456,10 +452,10 @@ command! FZFLines call fzf#run({
 let g:multi_cursor_use_default_mapping=0
 
 " Default mapping
-let g:multi_cursor_next_key='<C-m>'
-let g:multi_cursor_prev_key='<C-k>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
+" let g:multi_cursor_next_key='<C-m>'
+" let g:multi_cursor_prev_key='<C-k>'
+" let g:multi_cursor_skip_key='<C-x>'
+" let g:multi_cursor_quit_key='<Esc>'
 
 
 " Default highlighting (see help :highlight and help :highlight-link)
@@ -609,9 +605,4 @@ nnoremap <leader>b :FZFLines<CR>
 " vimagit
 " ------------------------------------------------
 nnoremap <leader>g :Magit<CR>
-
-" Nuake
-" ------------------------------------------------
-nnoremap <leader>s :Nuake<CR>
-nnoremap <leader>t :Nuake<CR>
 
