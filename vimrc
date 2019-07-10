@@ -99,7 +99,7 @@ Plug 'zchee/deoplete-jedi'
 " Snippets
 " ------------------------------------------------
 Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
