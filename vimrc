@@ -305,6 +305,10 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
+" https://github.com/Shougo/neosnippet.vim#configuration
+let g:neosnippet#snippets_directory = expand("~/.vim/plugged/vim-snippets/snippets")
+let g:neosnippet#enable_snipmate_compatibility = 1
+
 " ------------------------------------------------
 " CONFIG->CTRLP ----------------------------------
 " ------------------------------------------------
