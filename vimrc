@@ -26,10 +26,34 @@ set noswapfile
 " PLUG -------------------------------------------
 " ------------------------------------------------
 call plug#begin()
-Plug 'junegunn/vim-easy-align'
+
+" deoplete
+" ================================================
+
+" Initialize
+" ------------------------------------------------
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+let g:deoplete#enable_at_startup = 1
+
+" Packages
+" ================================================
+" For jedi (python) https://github.com/davidhalter/jedi
+" Plug 'zchee/deoplete-jedi'
+
+" Autocompletion/Snippets
+" ------------------------------------------------
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" ------------------------------------------------
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-rails'
 Plug 'mbbill/undotree'
 Plug 'ekalinin/Dockerfile.vim'
@@ -48,22 +72,33 @@ Plug 'rizzatti/dash.vim'
 Plug 'w0rp/ale'
 Plug 'skywind3000/asyncrun.vim'
 
+" Vim Interaction
+" ------------------------------------------------
 Plug 'terryma/vim-multiple-cursors'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'sheerun/vim-polyglot'
-Plug 'brooth/far.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-repeat' " Dependency of vim-easyclip
 Plug 'svermeulen/vim-easyclip'
-Plug 'jreybert/vimagit'
 Plug 'sjl/gundo.vim'
+
+" Formatting
+" ------------------------------------------------
+Plug 'junegunn/vim-easy-align'
+Plug 'nathanaelkane/vim-indent-guides'
+
+Plug 'sheerun/vim-polyglot'
+Plug 'jreybert/vimagit'
 Plug 'suan/vim-instant-markdown'
 Plug 'epeli/slimux'
 Plug 'goerz/ipynb_notedown.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'robertbasic/vim-hugo-helper'
+
+" Searching
+" ------------------------------------------------
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'brooth/far.vim'
 
 " tmux
 " ------------------------------------------------
@@ -78,37 +113,23 @@ Plug 'leafgarland/typescript-vim'
 Plug 'mxw/vim-jsx'
 Plug 'maxmellon/vim-jsx-pretty'
 
-" ------------------------------------------------
-" PLUG->DEOPLETE ---------------------------------
-" ------------------------------------------------
-
-" Initialize
-" ------------------------------------------------
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
-let g:deoplete#enable_at_startup = 1
-
-" Deoplete Packages
-" ================================================
-" For jedi (python) https://github.com/davidhalter/jedi
-" Plug 'zchee/deoplete-jedi'
-
-" Snippets
-" ------------------------------------------------
-" Plug 'Shougo/neosnippet.vim'
-" Plug 'honza/vim-snippets'
-
 call plug#end()
 
 " ------------------------------------------------
-" CONFIG->DEOPLETE -------------------------------
+" CONFIG->COC ------------------------------------
 " ------------------------------------------------
+" use <tab> for trigger completion and navigate to the next complete item
+"
+" :verbose imap <tab>
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
 
 " ------------------------------------------------
 " PATHOGEN->INIT ---------------------------------
@@ -386,17 +407,17 @@ nmap ga <Plug>(EasyAlign)
 " CONFIG->DEOPLETE -------------------------------
 " ------------------------------------------------
 
-" Completion with tab
-" FROM: https://github.com/Shougo/deoplete.nvim/issues/816#issuecomment-409119635
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#manual_complete()
+" " Completion with tab
+" " FROM: https://github.com/Shougo/deoplete.nvim/issues/816#issuecomment-409119635
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~ '\s'
+" endfunction
+"
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ deoplete#manual_complete()
 
 " ------------------------------------------------
 " CONFIG->VIMFILER -------------------------------
