@@ -211,25 +211,25 @@ function tos {
 # ------------------------------------------------
 # ZPLUG ------------------------------------------
 # ------------------------------------------------
-if [[ -d $HOME/.zplug ]] ; then
-  export ZPLUG_HOME=$HOME/.zplug
-
-  # Source
-  # ----------------------------------------------
-  source $ZPLUG_HOME/init.zsh
-
-  # Plugins
-  # ----------------------------------------------
-  zplug "jocelynmallon/zshmarks"
-  # zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
-
-  # # https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv#Setup
-  # source =virtualenvwrapper.sh
-
-  # Load
-  # ----------------------------------------------
-  zplug load
-fi
+# if [[ -d $HOME/.zplug ]] ; then
+#   export ZPLUG_HOME=$HOME/.zplug
+# 
+#   # Source
+#   # ----------------------------------------------
+#   source $ZPLUG_HOME/init.zsh
+# 
+#   # Plugins
+#   # ----------------------------------------------
+#   zplug "jocelynmallon/zshmarks"
+#   # zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
+# 
+#   # # https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv#Setup
+#   # source =virtualenvwrapper.sh
+# 
+#   # Load
+#   # ----------------------------------------------
+#   zplug load
+# fi
 
 # ------------------------------------------------
 # SOURCE->HOST-SPECIFIC --------------------------

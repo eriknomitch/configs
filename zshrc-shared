@@ -1,6 +1,11 @@
 # ------------------------------------------------
 # ZSH->CONFIGURATION -----------------------------
 # ------------------------------------------------
+
+# Required for Zsh installed with brew
+test -d "/usr/local/share/zsh/functions" && \
+  export FPATH="/usr/local/share/zsh/functions:$FPATH"
+
 autoload -Uz compinit; compinit
 autoload -Uz zsh/terminfo
 autoload -Uz colors; colors
