@@ -33,7 +33,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-rails'
 Plug 'mbbill/undotree'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'elzr/vim-json'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-better-whitespace'
@@ -43,16 +42,12 @@ Plug 'mhinz/vim-signify' " (git gutter)
 Plug 'tpope/vim-unimpaired'
 Plug 'Shougo/unite.vim' " vimfiler depends on this
 Plug 'Shougo/vimfiler.vim'
-Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'kana/vim-arpeggio'
 Plug 'hylang/vim-hy'
 Plug 'rizzatti/dash.vim'
-Plug 'rhysd/vim-crystal'
 Plug 'w0rp/ale'
 Plug 'skywind3000/asyncrun.vim'
-Plug 'mxw/vim-jsx'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'christoomey/vim-tmux-navigator'
+
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -68,9 +63,20 @@ Plug 'suan/vim-instant-markdown'
 Plug 'epeli/slimux'
 Plug 'goerz/ipynb_notedown.vim'
 Plug 'rizzatti/dash.vim'
+Plug 'robertbasic/vim-hugo-helper'
+
+" tmux
+" ------------------------------------------------
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'christoomey/vim-tmux-navigator'
+
+" JavaScript/JSX/JSON
+" ------------------------------------------------
+Plug 'elzr/vim-json'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
-Plug 'robertbasic/vim-hugo-helper'
+Plug 'mxw/vim-jsx'
+Plug 'maxmellon/vim-jsx-pretty'
 
 " ------------------------------------------------
 " PLUG->DEOPLETE ---------------------------------
@@ -90,12 +96,13 @@ let g:deoplete#enable_at_startup = 1
 
 " Deoplete Packages
 " ================================================
-Plug 'zchee/deoplete-jedi'
+" For jedi (python) https://github.com/davidhalter/jedi
+" Plug 'zchee/deoplete-jedi'
 
 " Snippets
 " ------------------------------------------------
-Plug 'Shougo/neosnippet.vim'
-Plug 'honza/vim-snippets'
+" Plug 'Shougo/neosnippet.vim'
+" Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -281,30 +288,30 @@ endif
 " ------------------------------------------------
 " CONFIG->NEOSNIP --------------------------------
 " ------------------------------------------------
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <expr><TAB>
-\ pumvisible() ? "\<C-n>" :
-\ neosnippet#expandable_or_jumpable() ?
-\    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-
-" https://github.com/Shougo/neosnippet.vim#configuration
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#snippets_directory = expand("~/.vim/plugged/vim-snippets/snippets")
+" " Plugin key-mappings.
+" " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k>     <Plug>(neosnippet_expand_target)
+"
+" " SuperTab like snippets behavior.
+" " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+" imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+"
+" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"       \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+"
+" " For conceal markers.
+" if has('conceal')
+"   set conceallevel=2 concealcursor=niv
+" endif
+"
+" " https://github.com/Shougo/neosnippet.vim#configuration
+" let g:neosnippet#enable_snipmate_compatibility = 1
+" let g:neosnippet#snippets_directory = expand("~/.vim/plugged/vim-snippets/snippets")
 
 " ------------------------------------------------
 " CONFIG->CTRLP ----------------------------------
