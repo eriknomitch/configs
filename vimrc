@@ -1,6 +1,10 @@
 " ================================================
 " VIMRC ==========================================
 " ================================================
+
+" ------------------------------------------------
+" CONFIGURE->GENERAL -----------------------------
+" ------------------------------------------------
 syntax enable
 colors bluegreen
 
@@ -21,125 +25,6 @@ filetype plugin indent on
 
 " Swap
 set noswapfile
-
-" ------------------------------------------------
-" PLUG -------------------------------------------
-" ------------------------------------------------
-call plug#begin()
-
-" deoplete
-" ================================================
-
-" Initialize
-" ------------------------------------------------
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
-let g:deoplete#enable_at_startup = 1
-
-" Packages
-" ================================================
-" For jedi (python) https://github.com/davidhalter/jedi
-" Plug 'zchee/deoplete-jedi'
-
-" Autocompletion/Snippets
-" ------------------------------------------------
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" ------------------------------------------------
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-rails'
-Plug 'mbbill/undotree'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'tpope/vim-commentary'
-Plug 'scrooloose/nerdcommenter'
-Plug 'mhinz/vim-signify' " (git gutter)
-Plug 'tpope/vim-unimpaired'
-Plug 'Shougo/unite.vim' " vimfiler depends on this
-Plug 'Shougo/vimfiler.vim'
-Plug 'kana/vim-arpeggio'
-Plug 'hylang/vim-hy'
-Plug 'rizzatti/dash.vim'
-Plug 'w0rp/ale'
-Plug 'skywind3000/asyncrun.vim'
-
-" Vim Interaction
-" ------------------------------------------------
-Plug 'terryma/vim-multiple-cursors'
-Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-repeat' " Dependency of vim-easyclip
-Plug 'svermeulen/vim-easyclip'
-Plug 'sjl/gundo.vim'
-
-" Formatting
-" ------------------------------------------------
-Plug 'junegunn/vim-easy-align'
-Plug 'nathanaelkane/vim-indent-guides'
-
-Plug 'sheerun/vim-polyglot'
-Plug 'jreybert/vimagit'
-Plug 'suan/vim-instant-markdown'
-Plug 'epeli/slimux'
-Plug 'goerz/ipynb_notedown.vim'
-Plug 'rizzatti/dash.vim'
-Plug 'robertbasic/vim-hugo-helper'
-
-" Searching
-" ------------------------------------------------
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'brooth/far.vim'
-
-" tmux
-" ------------------------------------------------
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'christoomey/vim-tmux-navigator'
-
-" JavaScript/JSX/JSON
-" ------------------------------------------------
-Plug 'elzr/vim-json'
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'mxw/vim-jsx'
-Plug 'maxmellon/vim-jsx-pretty'
-
-call plug#end()
-
-" ------------------------------------------------
-" CONFIG->COC ------------------------------------
-" ------------------------------------------------
-" use <tab> for trigger completion and navigate to the next complete item
-"
-" :verbose imap <tab>
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
-
-" ------------------------------------------------
-" PATHOGEN->INIT ---------------------------------
-" ------------------------------------------------
-call pathogen#infect()
-call pathogen#helptags()
-
-" ------------------------------------------------
-" CONFIGURE->GENERAL -----------------------------
-" ------------------------------------------------
 
 " Markdown gets different textwidth
 au BufRead,BufNewFile *.md setlocal textwidth=300
@@ -305,6 +190,124 @@ if exists('$TMUX')
     autocmd VimLeave * call system("tmux setw automatic-rename")
   augroup END
 endif
+
+" ------------------------------------------------
+" PLUG -------------------------------------------
+" ------------------------------------------------
+call plug#begin()
+
+" deoplete
+" ================================================
+
+" Initialize
+" ------------------------------------------------
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+let g:deoplete#enable_at_startup = 0
+
+" Packages
+" ================================================
+" For jedi (python) https://github.com/davidhalter/jedi
+" Plug 'zchee/deoplete-jedi'
+
+" Autocompletion/Snippets
+" ------------------------------------------------
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" ------------------------------------------------
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-rails'
+Plug 'mbbill/undotree'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'tpope/vim-commentary'
+Plug 'scrooloose/nerdcommenter'
+Plug 'mhinz/vim-signify' " (git gutter)
+Plug 'tpope/vim-unimpaired'
+Plug 'Shougo/unite.vim' " vimfiler depends on this
+Plug 'Shougo/vimfiler.vim'
+Plug 'kana/vim-arpeggio'
+Plug 'hylang/vim-hy'
+Plug 'rizzatti/dash.vim'
+Plug 'w0rp/ale'
+Plug 'skywind3000/asyncrun.vim'
+
+" Vim Interaction
+" ------------------------------------------------
+Plug 'terryma/vim-multiple-cursors'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-repeat' " Dependency of vim-easyclip
+Plug 'svermeulen/vim-easyclip'
+Plug 'sjl/gundo.vim'
+
+" Formatting
+" ------------------------------------------------
+Plug 'junegunn/vim-easy-align'
+Plug 'nathanaelkane/vim-indent-guides'
+
+Plug 'sheerun/vim-polyglot'
+Plug 'jreybert/vimagit'
+Plug 'suan/vim-instant-markdown'
+Plug 'epeli/slimux'
+Plug 'goerz/ipynb_notedown.vim'
+Plug 'rizzatti/dash.vim'
+Plug 'robertbasic/vim-hugo-helper'
+
+" Searching
+" ------------------------------------------------
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'brooth/far.vim'
+
+" tmux
+" ------------------------------------------------
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'christoomey/vim-tmux-navigator'
+
+" JavaScript/JSX/JSON
+" ------------------------------------------------
+Plug 'elzr/vim-json'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'mxw/vim-jsx'
+Plug 'maxmellon/vim-jsx-pretty'
+
+call plug#end()
+
+" ------------------------------------------------
+" CONFIG->COC ------------------------------------
+" ------------------------------------------------
+" use <tab> for trigger completion and navigate to the next complete item
+"
+" :verbose imap <tab>
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+	\ pumvisible() ? "\<C-n>" :
+	\ <SID>check_back_space() ? "\<Tab>" :
+	\ coc#refresh()
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
+	\ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" ------------------------------------------------
+" PATHOGEN->INIT ---------------------------------
+" ------------------------------------------------
+call pathogen#infect()
+call pathogen#helptags()
 
 " ------------------------------------------------
 " CONFIG->NEOSNIP --------------------------------
