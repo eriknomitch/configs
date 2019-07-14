@@ -502,16 +502,18 @@ highlight link multiple_cursors_visual Visual
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_javascript_eslint_use_local_config = 1
 
+let g:ale_enabled = 0
+
 " Only lint on file open and write - not text change
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_enter = 1
-let g:ale_lint_on_save = 1
+" let g:ale_lint_on_text_changed = 'normal'
+" let g:ale_lint_on_enter = 1
+" let g:ale_lint_on_save = 1
 
 " Fix on save
-" let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 1
 
 " https://github.com/w0rp/ale#5iii-how-can-i-change-the-signs-ale-uses
-let g:airline#extensions#ale#enabled = 1
+" let g:airline#extensions#ale#enabled = 1
 
 " This is for stylelint (CSS in .jsx files)
 " let g:ale_linter_aliases = {'jsx': 'css'}
