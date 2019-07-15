@@ -510,7 +510,7 @@ let g:ale_enabled = 0
 " let g:ale_lint_on_save = 1
 
 " Fix on save
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 
 " https://github.com/w0rp/ale#5iii-how-can-i-change-the-signs-ale-uses
 " let g:airline#extensions#ale#enabled = 1
