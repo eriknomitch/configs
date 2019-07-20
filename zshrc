@@ -33,12 +33,16 @@ alias ndc="nvidia-docker-compose"
 alias rg="rg --smart-case"
 alias tm="tmuxinator"
 alias tms="tmuxinator start"
-alias k="kubectl"
 alias lg="lazygit"
 alias ncdu="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias ping="prettyping --nolegend"
 alias rtorrent="nice -n 19 rtorrent"
 alias dsp="docker system prune --force"
+
+# Kubernetes
+# ------------------------------------------------
+alias kc="kubectl"
+alias kp="kube-prompt"
 
 function gitignore-io() {
   curl -L -s https://www.gitignore.io/api/$@;
