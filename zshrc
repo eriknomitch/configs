@@ -131,16 +131,6 @@ if ( $ON_LINUX ) ; then
 fi
 
 # ------------------------------------------------
-# RBENV ------------------------------------------
-# ------------------------------------------------
-export RBENV_ROOT="${HOME}/.rbenv"
-
-if [ -d "${RBENV_ROOT}" ]; then
-  export PATH="${RBENV_ROOT}/bin:${PATH}"
-  eval "$(rbenv init -)"
-fi
-
-# ------------------------------------------------
 # THEFUCK ----------------------------------------
 # ------------------------------------------------
 command-exists thefuck && eval "$(thefuck --alias)"
@@ -416,6 +406,11 @@ fi
 if [[ ! `command-exists mpm` && -d $HOME/.repositories/mpm-cr ]] ; then
   export PATH=$PATH:$HOME/.repositories/mpm-cr/bin
 fi
+
+# ------------------------------------------------
+# KUBECTL ----------------------------------------
+# ------------------------------------------------
+command-exists kubectl && source <(kubectl completion zsh)
 
 # ------------------------------------------------
 # GIT-EXTRAS -------------------------------------
