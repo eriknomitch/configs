@@ -608,6 +608,11 @@ highlight link multiple_cursors_visual Visual
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_javascript_eslint_use_local_config = 1
 
+let g:ale_typescript_tslint_use_global = 0
+let g:ale_typescript_tslint_use_local = 1
+let g:ale_typescript_tslint_config_path="tslint.json"
+let g:ale_typescript_tslint_executable = expand(".asdf/shims/tslint")
+
 let g:ale_enabled = 0
 
 " Only lint on file open and write - not text change
@@ -668,8 +673,6 @@ augroup ALEWrap
   autocmd User ALELintPost call OnALELintPost()
 augroup END
 
-let g:ale_typescript_tslint_use_global = 0
-let g:ale_typescript_tslint_executable = expand(".asdf/shims/tslint")
 
 " ------------------------------------------------
 " CONFIG->RG -------------------------------------
