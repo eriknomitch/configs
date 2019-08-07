@@ -63,12 +63,12 @@ Host chip
   User chip
   Port 22
 
-# sdr
-# - odroidc2
+# odroidc2
 # ------------------------------------------------
-Host sdr
+Host odroid, odroid.local
+  HostName odroid.local
   PermitLocalCommand true
-  User erik
+  User odroid
   Port 22
 
 # ------------------------------------------------
