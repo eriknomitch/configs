@@ -9,6 +9,7 @@ test -d "/usr/local/share/zsh/functions" && \
 autoload -Uz compinit; compinit
 autoload -Uz zsh/terminfo
 autoload -Uz colors; colors
+autoload -Uz add-zsh-hook
 
 source /etc/zsh/colors
 
@@ -50,9 +51,9 @@ bindkey '^r' history-incremental-search-backward
 # Prompt settings for vi mode
 # ------------------------------------------------
 function zle-line-init zle-keymap-select {
-VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-zle reset-prompt
+  VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+  zle reset-prompt
 }
 
 zle -N zle-line-init
@@ -77,7 +78,7 @@ export LC_TYPE="en_US.UTF-8"
 # UTILITY->SOURCING ------------------------------
 # ------------------------------------------------
 function resource() {
-  _current_pwd=$PWD
+  _current_pwd=`pwd`
 
   unset ZSHRC_SOURCED
   source $HOME/.zshrc

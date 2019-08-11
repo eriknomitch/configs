@@ -6,3 +6,5 @@ zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-completions
 psprint/zsh-navigation-tools
 rupa/z
+mafredri/zsh-async
+sindresorhus/pure

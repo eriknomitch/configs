@@ -30,11 +30,27 @@ PROMPT=$'$(sshed_prefix)[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color
 # ------------------------------------------------
 # PROMPTINIT -------------------------------------
 # ------------------------------------------------
-autoload -U promptinit
-promptinit
+autoload -U promptinit; promptinit
 
 # ------------------------------------------------
 # PURE -------------------------------------------
 # ------------------------------------------------
-test -f /usr/local/share/zsh/site-functions/prompt_pure_setup && prompt pure
+_tmux_count() {
+  tmux ls -F "#{session_name}" | wc -l | sed "s/ *//"
+}
 
+_tmux_prompt_info() {
+  _tmux_count
+}
+
+# add-zsh-hook precmd _tmux_prompt_info
+
+prompt pure
+
+# Colorize based on return status
+PROMPT='%(?.%F{green}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
+
+# PROMPT='$(pwd-is-wd-character) '$PROMPT
+
+# PROMPT="\$_tmux_count ${PROMPT}"
+# test -f /usr/local/share/zsh/site-functions/prompt_pure_setup && prompt pure
