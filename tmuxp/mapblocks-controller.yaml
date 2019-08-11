@@ -1,15 +1,15 @@
-session_name: mb-backend
+session_name: mb-controller
 windows:
 - window_name: edit
   shell_command_before:
-    - cd ~/.repositories/mapblocks-backend
+    - cd ~/.repositories/mapblocks/controller
     - sw
   panes:
     - ofe
 - window_name: git/run
   layout: main-vertical
   shell_command_before:
-    - cd ~/.repositories/mapblocks-backend
+    - cd ~/.repositories/mapblocks/controller
   panes:
     - ''
-    - ./run
+    - ''
