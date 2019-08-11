@@ -94,9 +94,13 @@ source-if-exists $HOME/.configs/zshrc-asdf
 # ------------------------------------------------
 # ANTIBODY ---------------------------------------
 # ------------------------------------------------
+# function antibody-install() {
+#   antibody bundle < $HOME/.configs/zshrc-antibody-plugins.txt > $HOME/.configs/zshrc-antibody-plugins.sh
+# }
+
 if command-exists antibody; then
   source <(antibody init)
-  antibody bundle  < $HOME/.configs/zshrc-antibody-plugins.txt
+  antibody bundle < $HOME/.configs/zshrc-antibody-plugins.txt
 else
   echo "Warning: antibody not installed."
   sleep 0.5
@@ -129,11 +133,6 @@ unset _repos _repo
 if ( $ON_LINUX ) ; then
   export PWD_BIND_TO_WORKSPACE=true
 fi
-
-# ------------------------------------------------
-# THEFUCK ----------------------------------------
-# ------------------------------------------------
-command-exists thefuck && eval "$(thefuck --alias)"
 
 # ------------------------------------------------
 # ANSIBLE ----------------------------------------
@@ -201,29 +200,6 @@ alias to="jump"
 function tos {
   jump $* && sw
 }
-
-# ------------------------------------------------
-# ZPLUG ------------------------------------------
-# ------------------------------------------------
-# if [[ -d $HOME/.zplug ]] ; then
-#   export ZPLUG_HOME=$HOME/.zplug
-# 
-#   # Source
-#   # ----------------------------------------------
-#   source $ZPLUG_HOME/init.zsh
-# 
-#   # Plugins
-#   # ----------------------------------------------
-#   zplug "jocelynmallon/zshmarks"
-#   # zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
-# 
-#   # # https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv#Setup
-#   # source =virtualenvwrapper.sh
-# 
-#   # Load
-#   # ----------------------------------------------
-#   zplug load
-# fi
 
 # ------------------------------------------------
 # SOURCE->HOST-SPECIFIC --------------------------
@@ -320,11 +296,6 @@ compctl -K _micro_cpl micro
 #if command-exists hub; then
   #alias git="hub"
 #fi
-
-# ------------------------------------------------
-# Z ----------------------------------------------
-# ------------------------------------------------
-source-if-exists $HOME/.repositories/z/z.sh
 
 # ------------------------------------------------
 # MAIN -------------------------------------------
@@ -437,4 +408,3 @@ export PRWD_BIND_TO_TMUX=true
 # PROMPT -----------------------------------------
 # ------------------------------------------------
 source $HOME/.configs/zshrc-prompt
-
