@@ -43,18 +43,6 @@ source-if-exists /sw/bin/init.sh
 source-if-exists ~/.configs/iterm2.zsh
 
 # ------------------------------------------------
-# ZPLUG ------------------------------------------
-# ------------------------------------------------
-#if ( $ZPLUG_INSTALLED ) ; then
-  #zplug "wookayin/anybar-zsh"
-#fi
-
-# ------------------------------------------------
-# BOOT2DOCKER ------------------------------------
-# ------------------------------------------------
-#command-exists boot2docker && eval "$(boot2docker shellinit)"
-
-# ------------------------------------------------
 # POSTGRES ---------------------------------------
 # ------------------------------------------------
 test -d /Applications/Postgres.app/Contents/Versions/latest/bin && export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin

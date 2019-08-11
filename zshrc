@@ -10,14 +10,9 @@
 test -n $INITIAL_CWD && cd $INITIAL_CWD
 
 # ------------------------------------------------
-# SOURCE -----------------------------------------
+# SOURCE->SHARED ---------------------------------
 # ------------------------------------------------
-
-# Source zshrc-oh-my-zsh first so we can override the theme/prompt
-# test -f $HOME/.configs/zshrc-oh-my-zsh && source $HOME/.configs/zshrc-oh-my-zsh
-
-# Source the shared zshrc (shared between users and root)
-source /etc/zshrc-shared
+source /etc/zsh/shared
 
 # ------------------------------------------------
 # ALIASES ----------------------------------------
@@ -27,16 +22,12 @@ alias T="tree"
 alias e="edit-common"
 alias arp="sudo arp"
 alias route="sudo route"
-alias pls="play-live-stream-npr-wbez"
-alias nd="nvidia-docker"
-alias ndc="nvidia-docker-compose"
 alias rg="rg --smart-case"
 alias tm="tmuxinator"
 alias tms="tmuxinator start"
 alias lg="lazygit"
 alias ncdu="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias ping="prettyping --nolegend"
-alias rtorrent="nice -n 19 rtorrent"
 alias dsp="docker system prune --force"
 
 # Kubernetes
