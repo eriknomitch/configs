@@ -50,7 +50,7 @@ test -d /etc/zsh || sudo mkdir -p /etc/zsh
 # ------------------------------------------------
 _ensure_symbolic_link zshrc ~/.zshrc
 #_ensure_symbolic_link oh-my-zsh ~/.oh-my-zsh
-_ensure_symbolic_link --sudo zshrc-shared /etc/zshrc-shared
+_ensure_symbolic_link --sudo zshrc-shared /etc/zsh/shared
 _ensure_symbolic_link --sudo etc/zsh/colors /etc/zsh/colors
 
 _ensure_symbolic_link audio ~/.audio
