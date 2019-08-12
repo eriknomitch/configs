@@ -1,4 +1,0 @@
-#!/bin/zsh
-
-themer -c themer/colors.js -t themer-iterm -o gen/
-themer -c themer/colors.js -t themer-chrome -o gen/

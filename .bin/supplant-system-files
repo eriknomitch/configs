@@ -1,4 +1,0 @@
-#!/bin/zsh
-
-sudo cp ~/.configs/transmission-daemon-settings.json /var/lib/transmission-daemon/info/settings.json
-sudo chown debian-transmission:debian-transmission /var/lib/transmission-daemon/info/settings.json
