@@ -27,12 +27,22 @@ function _ensure_symbolic_link() {
   # it and recreate.
   test -L $_destination && rm $_destination
 
+  if test -d $_source && test -d $_destination; then
+    echo "fatal: Destination '$_destination' is a directory and already exists."
+    exit 1
+  fi
+
+  if test -f $_source && test -f $_destination; then
+    echo "fatal: Destination '$_destination' is a file and already exists."
+    exit 1
+  fi
+
   # If our destination is a directory, ensure the
   # paths so we can create the symlink within
   # them.
-  if test -d $_destination; then
-    test -d `dirname $_destination` || mkdir -p `dirname $_destination`
-  fi
+  # if test -d $_destination; then
+  #   test -d `dirname $_destination` || mkdir -p `dirname $_destination`
+  # fi
 
   if ( $_sudo ); then
     sudo ln -s $_source $_destination
@@ -49,7 +59,7 @@ test -d /etc/zsh || sudo mkdir -p /etc/zsh
 # Zsh
 # ------------------------------------------------
 _ensure_symbolic_link zshrc ~/.zshrc
-_ensure_symbolic_link --sudo zshrc-shared /etc/zsh/shared
+_ensure_symbolic_link --sudo etc/zsh/shared /etc/zsh/shared
 _ensure_symbolic_link --sudo etc/zsh/colors /etc/zsh/colors
 
 _ensure_symbolic_link audio ~/.audio
