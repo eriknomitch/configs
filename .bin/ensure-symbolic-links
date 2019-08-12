@@ -25,7 +25,13 @@ function _ensure_symbolic_link() {
 
   # If the symbolic link already exists, remove
   # it and recreate.
-  test -L $_destination && rm $_destination
+  if test -L $_destination; then
+    if ( $_sudo ); then
+      sudo rm $_destination
+    else
+      rm $_destination
+    fi
+  fi
 
   if test -d $_source && test -d $_destination; then
     echo "fatal: Destination '$_destination' is a directory and already exists."
@@ -54,14 +60,16 @@ function _ensure_symbolic_link() {
 # ------------------------------------------------
 # ZSH --------------------------------------------
 # ------------------------------------------------
-test -d /etc/zsh || sudo mkdir -p /etc/zsh
 
 # Zsh
 # ------------------------------------------------
 _ensure_symbolic_link zshrc ~/.zshrc
+
+test -d /etc/zsh || sudo mkdir /etc/zsh
 _ensure_symbolic_link --sudo etc/zsh/shared /etc/zsh/shared
 _ensure_symbolic_link --sudo etc/zsh/colors /etc/zsh/colors
 
+# ------------------------------------------------
 _ensure_symbolic_link audio ~/.audio
 
 # ------------------------------------------------
@@ -77,9 +85,4 @@ _ensure_symbolic_link htop  ~/.config/htop
 # OTHER ------------------------------------------
 # ------------------------------------------------
 _ensure_symbolic_link tmux.conf ~/.tmux.conf
-
-# ------------------------------------------------
-# CALL-ROOT-HOOK-SCRIPT --------------------------
-# ------------------------------------------------
-sudo $_current_script_path/.bin/ensure-symbolic-links-root $HOME
 
