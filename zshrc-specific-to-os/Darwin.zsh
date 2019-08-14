@@ -19,7 +19,7 @@ _prompt_color="$fg_bold[green]"
 # ------------------------------------------------
 # SYNTAX-HIGHLIGHTING ----------------------------
 # ------------------------------------------------
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source-if-exists /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # ------------------------------------------------
 # ALIASES ----------------------------------------
