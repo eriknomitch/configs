@@ -5,7 +5,7 @@
 ## Setup
 
 ```Shell
-$ git clone https://github.com/eriknomitch/configs.git ~/.configs
+$ git clone git@github.com:eriknomitch/configs.git ~/.configs
 $ cd ~/.configs
 $ ./bootstrap-host
 ```
