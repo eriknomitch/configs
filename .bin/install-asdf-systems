@@ -1,0 +1,25 @@
+#!/bin/zsh
+
+set -e
+
+# NOTE: Check https://asdf-vm.com/#/core-manage-asdf-vm?id=install-asdf-vm for the latest
+_branch="v0.7.4"
+_nodejs_version="10.16.2"
+
+
+if ! test -d $HOME/.asdf; then
+
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch $_branch
+
+  source $HOME/.configs/zshrc-asdf
+fi
+
+# ------------------------------------------------
+asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+
+bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+
+asdf install nodejs $_nodejs_version
+
+echo "nodejs 10.16.2" >> $HOME/.tool-versions
+
