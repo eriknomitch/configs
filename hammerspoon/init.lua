@@ -76,9 +76,8 @@ end
 -- -----------------------------------------------
 -- SHORTCUTS -------------------------------------
 -- -----------------------------------------------
-hs.hotkey.bind(movement, "Z", function()
-  hs:appfinder()
-end)
+hs.hotkey.bind({"cmd", "shift"}, "Up", changeVolume(3))
+hs.hotkey.bind({"cmd", "shift"}, "Down", changeVolume(-3))
 
 bindApplicationFocus("I", default_browser_name)
 bindApplicationFocus("E", "Kiwi for Gmail")
@@ -263,8 +262,8 @@ function handleWindowCreated(win, event)
   end
 end
 
-windows = hs.window.filter.new(nil)
-windows:subscribe(hs.window.filter.windowCreated, handleWindowCreated)
+-- windows = hs.window.filter.new(nil)
+-- windows:subscribe(hs.window.filter.windowCreated, handleWindowCreated)
 
 --------------------------------------------------
 -- SPOONS ----------------------------------------
@@ -272,8 +271,8 @@ windows:subscribe(hs.window.filter.windowCreated, handleWindowCreated)
 
 -- WiFiTransitions
 -- ----------------------------------------------
-hs.loadSpoon("WiFiTransitions")
-spoon.WiFiTransitions:start()
+-- hs.loadSpoon("WiFiTransitions")
+-- spoon.WiFiTransitions:start()
 
 -- HCalendar
 -- ----------------------------------------------
@@ -297,4 +296,4 @@ end
 --------------------------------------------------
 -- ALERT->CONFIG-LOADED --------------------------
 --------------------------------------------------
--- notify("Hammerspoon", "Config Loaded")
+notify("Hammerspoon", "Config Loaded")

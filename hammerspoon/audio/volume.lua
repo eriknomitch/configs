@@ -12,5 +12,3 @@ function changeVolume(diff)
   end
 end
 
-hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'Down', changeVolume(-3))
-hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'Up', changeVolume(3))
