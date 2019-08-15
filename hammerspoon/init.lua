@@ -1,11 +1,36 @@
- -- ==============================================
- -- HAMMERSPOON->CONFIG ==========================
- -- ==============================================
+-- ==============================================
+-- HAMMERSPOON->CONFIG ==========================
+-- ==============================================
+
+-- -----------------------------------------------
+-- -----------------------------------------------
+-- -----------------------------------------------
+ require("audio.volume")
+
+-- Display a notification
+function notify(title, message)
+  hs.notify.new({title=title, informativeText=message}):send()
+end
+
+-- Some useful global variables
+hostname = hs.host.localizedName()
+logger = hs.logger.new('main')
+hs_config_dir = os.getenv("HOME") .. "/.hammerspoon/"
+
+-- -----------------------------------------------
+-- -----------------------------------------------
+-- -----------------------------------------------
+default_browser_name = "Firefox"
+-- if hostname == "Erik's MacBook Air" then
+-- else
+--   default_browser_name = "Google Chrome"
+-- end
+
 
 -- -----------------------------------------------
 -- UTILITY ---------------------------------------
 -- -----------------------------------------------
- function YesNoDialogBox(ActionFunc)
+function YesNoDialogBox(ActionFunc)
   test = hs.chooser.new(ActionFunc)
   test:rows(2)
   test:choices({{["text"] = "Yes", ["subText"] = "", ["id"] = "yes"},
@@ -40,10 +65,6 @@ local movementAppplicationLaunchOrFocusSecondary = {"cmd", "ctrl", "shift"}
 
 applicationHotkeyDefinitions = {}
 
-hs.hotkey.bind(movement, "Z", function()
-  hs:appfinder()
-end)
-
 function bindApplicationFocus(key, title)
   hs.hotkey.bind(movementAppplicationLaunchOrFocus, key, function() hs.application.launchOrFocus(title) end)
 end
@@ -55,15 +76,16 @@ end
 -- -----------------------------------------------
 -- SHORTCUTS -------------------------------------
 -- -----------------------------------------------
-bindApplicationFocus("I", "Google Chrome")
+hs.hotkey.bind(movement, "Z", function()
+  hs:appfinder()
+end)
+
+bindApplicationFocus("I", default_browser_name)
 bindApplicationFocus("E", "Kiwi for Gmail")
-bindApplicationFocus("S", "Signal")
 bindApplicationFocus("M", "Messages")
 bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
-bindApplicationFocus("H", "Helium")
-bindApplicationFocus("W", "WhatsApp")
 bindApplicationFocus("Z", "zoom.us")
 bindApplicationFocus("G", "OGS")
 
@@ -77,7 +99,7 @@ bindApplicationFocusSecondary("P", "Adobe Photoshop CC 2019")
 
 -- Special
 -- -----------------------------------------------
-hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
+-- hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
 
 -- -----------------------------------------------
 -- MOVEMENT --------------------------------------
@@ -142,25 +164,25 @@ hs.hotkey.bind(movement, "Down", middle)
 -------------------------------------------------
 -- LAYOUTS --------------------------------------
 -------------------------------------------------
-hs.hotkey.bind(movement2, "Left", function()
-  local win    = hs.window.focusedWindow()
-  local app    = win:application()
-  local screen = win:screen()
+-- hs.hotkey.bind(movement2, "Left", function()
+--   local win    = hs.window.focusedWindow()
+--   local app    = win:application()
+--   local screen = win:screen()
 
-  if app:title() == "Google Chrome" then
-    local devTools     = app:findWindow("Developer Tools")
-    local tabsOutliner = app:findWindow("Tabs Outliner")
-    local main         = app:mainWindow()
-    main:focus()
-    local chromeDeveloperLayout = {
-      {"Google Chrome", main:title(),         screen, hs.layout.left75,  nil, nil},
-      {"Google Chrome", devTools:title(),     screen, hs.layout.right25, nil, nil},
-      {"Google Chrome", tabsOutliner:title(), screen, hs.layout.right25, nil, nil}
-    }
+--   if app:title() == "Google Chrome" then
+--     local devTools     = app:findWindow("Developer Tools")
+--     local tabsOutliner = app:findWindow("Tabs Outliner")
+--     local main         = app:mainWindow()
+--     main:focus()
+--     local chromeDeveloperLayout = {
+--       {"Google Chrome", main:title(),         screen, hs.layout.left75,  nil, nil},
+--       {"Google Chrome", devTools:title(),     screen, hs.layout.right25, nil, nil},
+--       {"Google Chrome", tabsOutliner:title(), screen, hs.layout.right25, nil, nil}
+--     }
 
-    hs.layout.apply(chromeDeveloperLayout)
-  end
-end)
+--     hs.layout.apply(chromeDeveloperLayout)
+--   end
+-- end)
 
 -----------------------------------------------
 -- WINDOW->MOVEMENT ---------------------------
@@ -259,9 +281,9 @@ spoon.WiFiTransitions:start()
 
 -- HeadphoneAutoPause
 -- ----------------------------------------------
-hs.loadSpoon("HeadphoneAutoPause")
-spoon.HeadphoneAutoPause.autoResume = true
-spoon.HeadphoneAutoPause:start()
+-- hs.loadSpoon("HeadphoneAutoPause")
+-- spoon.HeadphoneAutoPause.autoResume = true
+-- spoon.HeadphoneAutoPause:start()
 
 -----------------------------------------------
 -- Reload config on write
@@ -270,10 +292,9 @@ function reload_config(files)
   hs.reload()
 end
 
-hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reload_config):start()
+-- hs.pathwatcher.new(hs_config_dir, reload_config):start()
 
 --------------------------------------------------
 -- ALERT->CONFIG-LOADED --------------------------
 --------------------------------------------------
-hs.alert.show("Config loaded")
-
+-- notify("Hammerspoon", "Config Loaded")

@@ -396,6 +396,18 @@ export PRWD_BIND_TO_TMUX=true
 # bindkey "^G" gw
 
 # ------------------------------------------------
+# ------------------------------------------------
+# ------------------------------------------------
+source-if-exists /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+if [[ -f /usr/local/share-/zsh-completions ]] ; then
+  fpath=(/usr/local/share/zsh-completions $fpath)
+fi
+
+# chmod go-w '/usr/local/share'
+
+
+# ------------------------------------------------
 # PROMPT -----------------------------------------
 # ------------------------------------------------
 source $HOME/.configs/zshrc-prompt
