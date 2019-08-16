@@ -34,12 +34,12 @@ alias updatedb="sudo /usr/libexec/locate.updatedb"
 alias il="irc-loop"
 alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc"
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
-
-source-if-exists /sw/bin/init.sh
+alias airport="/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport"
 
 # ------------------------------------------------
 # FIX: -------------------------------------------
 # ------------------------------------------------
+source-if-exists /sw/bin/init.sh
 source-if-exists ~/.configs/iterm2.zsh
 
 # ------------------------------------------------
