@@ -8,3 +8,4 @@ psprint/zsh-navigation-tools
 rupa/z
 mafredri/zsh-async
 sindresorhus/pure
+jocelynmallon/zshmarks
