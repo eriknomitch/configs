@@ -21,11 +21,12 @@ hs_config_dir = os.getenv("HOME") .. "/.hammerspoon/"
 -- -----------------------------------------------
 -- -----------------------------------------------
 default_browser_name = "Firefox"
--- if hostname == "Erik's MacBook Air" then
--- else
---   default_browser_name = "Google Chrome"
--- end
 
+if hostname == "laptop-pro" then
+  default_browser_name = "Google Chrome"
+end
+
+notify("Hostname", default_browser_name)
 
 -- -----------------------------------------------
 -- UTILITY ---------------------------------------
@@ -76,6 +77,8 @@ end
 -- -----------------------------------------------
 -- SHORTCUTS -------------------------------------
 -- -----------------------------------------------
+hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
+
 hs.hotkey.bind({"cmd", "shift"}, "Up", changeVolume(3))
 hs.hotkey.bind({"cmd", "shift"}, "Down", changeVolume(-3))
 
