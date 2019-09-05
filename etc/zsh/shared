@@ -93,6 +93,7 @@ function resource() {
 
 alias src="resource"
 alias rh="rehash"
+alias reset-compinit="rm $HOME/.zshcompdump*; compinit"
 
 function source-if-exists() {
   test -f $1 && source $1
