@@ -85,10 +85,10 @@ set pastetoggle=<F3>
 set showmode
 
 " Navigate 4x faster when holding down Ctrl
-nmap <C-j> 4j
-nmap <C-k> 4k
-nmap <C-h> 4h
-nmap <C-l> 4l
+" nmap <C-j> 4j
+" nmap <C-k> 4k
+" nmap <C-h> 4h
+" nmap <C-l> 4l
 
 " ------------------------------------------------
 " HOTKEYS ----------------------------------------
@@ -111,6 +111,10 @@ noremap <Down> gj
 " Remap folding hotkeys
 nnoremap zO zR
 nnoremap zC zM
+
+" Allow quit via single keypress (Q)
+" FROM: https://unix.stackexchange.com/a/93239
+map Q :qa<CR>
 
 " Yank and drop across multiple vim instances
 " set clipboard+=unnamedplus
