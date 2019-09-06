@@ -12,4 +12,4 @@ windows:
     - cd ~/.mapblocks/controller
   panes:
     - null
-    - null
+    - './run'
