@@ -40,13 +40,14 @@ PROMPT=$'$(sshed_prefix)[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color
 # PURE -------------------------------------------
 # ------------------------------------------------
 _tmux_count() {
-  # tmux ls -F "#{pane_current_path}" | xargs -n1 basename | tr '\n' ' '
   tmux ls -F "#{session_name}" | wc -l | sed "s/ *//"
 }
 
 _tmux_prompt_info() {
+  tmux info &> /dev/null || return
 
   _tmux_count
+  # tmux ls -F "#{pane_current_path}" | xargs -n1 basename | tr '\n' ' '
 }
 
 # add-zsh-hook precmd _tmux_prompt_info
@@ -57,7 +58,7 @@ prompt pure
 PROMPT='%(?.%F{green}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
 
 # Add tmux
-PROMPT=$'%{$fg_bold[black]%}'"T: "$'%{$fg[green]%}'"\$(_tmux_count)"$'%{$reset_color%}\n'"${PROMPT}"
+PROMPT=$'%{$fg_bold[black]%}'"T: "$'%{$fg[green]%}'"\$(_tmux_prompt_info)"$'%{$reset_color%}\n'"${PROMPT}"
 
 # PROMPT='$(pwd-is-wd-character) '$PROMPT
 

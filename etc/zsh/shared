@@ -425,6 +425,10 @@ function rsync-partial()
   rsync --partial --progress --rsh=ssh $*
 }
 
+function tmux-is-running() {
+  tmux info &> /dev/null
+}
+
 # ------------------------------------------------
 # STTY -------------------------------------------
 # ------------------------------------------------
