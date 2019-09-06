@@ -1,15 +1,15 @@
-session_name: mb-controller
+session_name: mb-gateway
 windows:
 - window_name: edit
   shell_command_before:
-    - cd ~/.mapblocks/controller
+    - cd ~/.mapblocks/gateway
     - sw
   panes:
     - ofe
 - window_name: git/run
   layout: main-vertical
   shell_command_before:
-    - cd ~/.mapblocks/controller
+    - cd ~/.mapblocks/gateway
   panes:
     - ''
     - ''
