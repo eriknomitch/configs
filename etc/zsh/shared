@@ -426,7 +426,7 @@ function rsync-partial()
 }
 
 function tmux-is-running() {
-  tmux info &> /dev/null
+  tmux ls > /dev/null 2>&1
 }
 
 # ------------------------------------------------
