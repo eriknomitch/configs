@@ -7,7 +7,7 @@ windows:
   panes:
     - ofe
 - window_name: git/run
-  layout: main-vertical
+  layout: even-horizontal
   shell_command_before:
     - cd ~/.repositories/fulcrum-backend
   panes:

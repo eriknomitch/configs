@@ -40,13 +40,16 @@ PROMPT=$'$(sshed_prefix)[%{$fg_bold[white]%}$(pwd-is-wd-character)%{$reset_color
 # PURE -------------------------------------------
 # ------------------------------------------------
 _tmux_count() {
-  tmux ls -F "#{session_name}" | wc -l | sed "s/ *//"
+  if tmux info &> /dev/null; then
+    tmux ls -F "#{session_name}" | wc -l | sed "s/ *//"
+  else
+    echo -n "0"
+  fi
 }
 
 _tmux_prompt_info() {
-  tmux info &> /dev/null || return
-
   _tmux_count
+
   # tmux ls -F "#{pane_current_path}" | xargs -n1 basename | tr '\n' ' '
 }
 
