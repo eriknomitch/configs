@@ -20,11 +20,11 @@ hs_config_dir = os.getenv("HOME") .. "/.hammerspoon/"
 -- -----------------------------------------------
 -- -----------------------------------------------
 -- -----------------------------------------------
-default_browser_name = "Firefox"
+default_browser_name = "Google Chrome"
 
-if hostname == "laptop-pro" then
-  default_browser_name = "Google Chrome"
-end
+-- if hostname == "laptop-pro" then
+--   default_browser_name = "Google Chrome"
+-- end
 
 notify("Hostname", default_browser_name)
 
