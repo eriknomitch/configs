@@ -145,7 +145,7 @@ Host tunnel-*.local
 # 00:e0:4c:53:44:58
 
 # ------------------------------------------------
-# LAN --------------------------------------------
+# LOCAL/LAN --------------------------------------
 # ------------------------------------------------
 Host server
     HostName home.nomitch.com
@@ -178,6 +178,14 @@ Host pi-hole pi-hole.local
     HostName pi-hole.local
     User pi
 
+Host tortuga tortuga.local
+    HostName tortuga.local
+    User pi
+
+Host volumio volumio.local
+  HostName volumio.local
+  User volumio
+
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
 # ------------------------------------------------
@@ -186,9 +194,6 @@ Host micro-*
   StrictHostKeyChecking no
   ServerAliveInterval 60
   # WARNING
-  User pi
-
-Host sdr
   User pi
 
 # ------------------------------------------------
