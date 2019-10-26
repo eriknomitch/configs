@@ -98,6 +98,7 @@ bindApplicationFocusSecondary("S", "Slack")
 bindApplicationFocusSecondary("I", "Firefox")
 bindApplicationFocusSecondary("W", "Ulysses")
 bindApplicationFocusSecondary("P", "Adobe Photoshop CC 2019")
+bindApplicationFocusSecondary("H", "Home Assistant")
 
 -- Special
 -- -----------------------------------------------
