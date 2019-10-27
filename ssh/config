@@ -186,6 +186,10 @@ Host volumio volumio.local
   HostName volumio.local
   User volumio
 
+Host hassio hassio.local
+  HostName hassio.local
+  User root
+
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
 # ------------------------------------------------
