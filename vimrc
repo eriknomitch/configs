@@ -228,7 +228,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " ------------------------------------------------
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-rails'
 Plug 'mbbill/undotree'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'vim-airline/vim-airline'
@@ -241,7 +240,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'Shougo/unite.vim' " vimfiler depends on this
 Plug 'Shougo/vimfiler.vim'
 Plug 'kana/vim-arpeggio'
-Plug 'hylang/vim-hy'
 Plug 'rizzatti/dash.vim'
 Plug 'w0rp/ale'
 Plug 'skywind3000/asyncrun.vim'
@@ -252,20 +250,18 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-repeat' " Dependency of vim-easyclip
 Plug 'svermeulen/vim-easyclip'
-Plug 'sjl/gundo.vim'
 
 " Formatting
 " ------------------------------------------------
 Plug 'junegunn/vim-easy-align'
 Plug 'nathanaelkane/vim-indent-guides'
 
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 Plug 'jreybert/vimagit'
 Plug 'suan/vim-instant-markdown'
 Plug 'epeli/slimux'
 Plug 'goerz/ipynb_notedown.vim'
 Plug 'rizzatti/dash.vim'
-Plug 'robertbasic/vim-hugo-helper'
 
 " Searching
 " ------------------------------------------------
