@@ -417,7 +417,7 @@ elif [ -d $_anaconda_path ] ; then
   export PATH="$_anaconda_path/bin:$PATH"
 fi
 
-unset $_anaconda_path
+unset _anaconda_path
 
 # ------------------------------------------------
 # PROMPT -----------------------------------------
