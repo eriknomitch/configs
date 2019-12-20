@@ -406,6 +406,18 @@ fi
 
 # chmod go-w '/usr/local/share'
 
+# ------------------------------------------------
+# ANACONDA ---------------------------------------
+# ------------------------------------------------
+_anaconda_path="$HOME/.anaconda3"
+
+if [ -f "$_anaconda_path/etc/profile.d/conda.sh" ]; then
+  . "$_anaconda_path/etc/profile.d/conda.sh"
+elif [ -d $_anaconda_path ] ; then
+  export PATH="$_anaconda_path/bin:$PATH"
+fi
+
+unset $_anaconda_path
 
 # ------------------------------------------------
 # PROMPT -----------------------------------------
