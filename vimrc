@@ -150,6 +150,9 @@ au! BufRead,BufNewFile *.json set filetype=json
 " Typescript
 autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
 
+" JavaScript
+au! BufNewFile,BufRead *.js set filetype=javascript
+
 let g:vim_markdown_folding_disabled=1
 
 " http://vim.wikia.com/wiki/Insert_multiple_lines
@@ -297,7 +300,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'elzr/vim-json'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
 Plug 'maxmellon/vim-jsx-pretty'
 
 call plug#end()
