@@ -7,6 +7,17 @@
 -- -----------------------------------------------
  require("audio.volume")
 
+-- -----------------------------------------------
+-- -----------------------------------------------
+-- -----------------------------------------------
+-- Make the alerts look nicer.
+hs.alert.defaultStyle.strokeColor =  {white = 1, alpha = 0}
+hs.alert.defaultStyle.fillColor =  {white = 0.05, alpha = 0.75}
+hs.alert.defaultStyle.radius =  10
+
+-- Disable the slow default window animations.
+hs.window.animationDuration = 0
+
 -- Display a notification
 function notify(title, message)
   hs.notify.new({title=title, informativeText=message}):send()
@@ -25,8 +36,6 @@ default_browser_name = "Google Chrome"
 -- if hostname == "laptop-pro" then
 --   default_browser_name = "Google Chrome"
 -- end
-
-notify("Hostname", default_browser_name)
 
 -- -----------------------------------------------
 -- UTILITY ---------------------------------------
@@ -77,6 +86,41 @@ end
 -- -----------------------------------------------
 -- SHORTCUTS -------------------------------------
 -- -----------------------------------------------
+function triggerAfterConfirmation(question, action)
+    hs.timer.doAfter(0, function()
+        hs.focus()
+
+        local answer = hs.dialog.blockAlert(question, "", "Confirm", "Cancel")
+
+        if answer == "Confirm" then action() end
+    end)
+end
+
+function launchOrFocusIfRunning(hint)
+  local app = hs.application.find(hint)
+
+  if not app then return end
+
+  hs.application.launchOrFocus(app)
+end
+
+function confirmOnEnter()
+  message = "Launch?"
+  informativeText = "info"
+
+  if not hs.application.find("Messages") then
+    triggerAfterConfirmation("Messages", function() hs.application.launchOrFocus("Messages") end)
+  else
+    hs.application.launchOrFocus("Messages")
+  end
+
+  -- hs.dialog.blockAlert(message, informativeText)
+  -- hs.alert.show("Messages")
+  -- hs.timer.doAfter(0, function() hs.focus(); hs.dialog.textPrompt("Main message.", "Please enter something:") end)
+end
+
+hs.hotkey.bind(movementAppplicationLaunchOrFocus, "M", confirmOnEnter)
+
 hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
 
 hs.hotkey.bind({"cmd", "shift"}, "Up", changeVolume(3))
@@ -84,7 +128,7 @@ hs.hotkey.bind({"cmd", "shift"}, "Down", changeVolume(-3))
 
 bindApplicationFocus("I", default_browser_name)
 bindApplicationFocus("E", "Kiwi for Gmail")
-bindApplicationFocus("M", "Messages")
+-- bindApplicationFocus("M", "Messages")
 bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
@@ -295,7 +339,7 @@ function reload_config(files)
   hs.reload()
 end
 
--- hs.pathwatcher.new(hs_config_dir, reload_config):start()
+hs.pathwatcher.new(hs_config_dir, reload_config):start()
 
 --------------------------------------------------
 -- ALERT->CONFIG-LOADED --------------------------
