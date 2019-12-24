@@ -11,12 +11,17 @@
 -- -----------------------------------------------
 -- -----------------------------------------------
 -- Make the alerts look nicer.
-hs.alert.defaultStyle.strokeColor =  {white = 1, alpha = 0}
-hs.alert.defaultStyle.fillColor =  {white = 0.05, alpha = 0.75}
-hs.alert.defaultStyle.radius =  10
+hs.alert.defaultStyle.strokeColor = {white = 1, alpha = 0}
+hs.alert.defaultStyle.fillColor = {white = 0.05, alpha = 0.75}
+hs.alert.defaultStyle.radius = 5
 
 -- Disable the slow default window animations.
 hs.window.animationDuration = 0
+hs.window.setShadows(false)
+
+-- -----------------------------------------------
+-- -----------------------------------------------
+-- -----------------------------------------------
 
 -- Display a notification
 function notify(title, message)
@@ -27,27 +32,11 @@ end
 hostname = hs.host.localizedName()
 logger = hs.logger.new('main')
 hs_config_dir = os.getenv("HOME") .. "/.hammerspoon/"
-
--- -----------------------------------------------
--- -----------------------------------------------
--- -----------------------------------------------
 default_browser_name = "Google Chrome"
-
--- if hostname == "laptop-pro" then
---   default_browser_name = "Google Chrome"
--- end
 
 -- -----------------------------------------------
 -- UTILITY ---------------------------------------
 -- -----------------------------------------------
-function YesNoDialogBox(ActionFunc)
-  test = hs.chooser.new(ActionFunc)
-  test:rows(2)
-  test:choices({{["text"] = "Yes", ["subText"] = "", ["id"] = "yes"},
-  {["text"] = "No", ["subText"] = "", ["id"] = "no"}})
-  test:show()
-end
-
 function hasValue (tab, val)
   for index, value in ipairs(tab) do
     if value == val then
@@ -57,12 +46,6 @@ function hasValue (tab, val)
 
   return false
 end
-
--- -----------------------------------------------
--- -----------------------------------------------
--- -----------------------------------------------
-hs.window.animationDuration = 0
-hs.window.setShadows(false)
 
 -- -----------------------------------------------
 -- -----------------------------------------------
@@ -104,14 +87,14 @@ function launchOrFocusIfRunning(hint)
   hs.application.launchOrFocus(app)
 end
 
-function confirmOnEnter()
+function confirmOnEnter(appName)
   message = "Launch?"
   informativeText = "info"
 
-  if not hs.application.find("Messages") then
-    triggerAfterConfirmation("Messages", function() hs.application.launchOrFocus("Messages") end)
+  if not hs.application.find(appName) then
+    triggerAfterConfirmation(appName, function() hs.application.launchOrFocus(appName) end)
   else
-    hs.application.launchOrFocus("Messages")
+    hs.application.launchOrFocus(appName)
   end
 
   -- hs.dialog.blockAlert(message, informativeText)
@@ -119,7 +102,11 @@ function confirmOnEnter()
   -- hs.timer.doAfter(0, function() hs.focus(); hs.dialog.textPrompt("Main message.", "Please enter something:") end)
 end
 
-hs.hotkey.bind(movementAppplicationLaunchOrFocus, "M", confirmOnEnter)
+-- -----------------------------------------------
+-- -----------------------------------------------
+-- -----------------------------------------------
+hs.hotkey.bind(movementAppplicationLaunchOrFocus, "M", function() confirmOnEnter("Messages") end)
+hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "S", function() confirmOnEnter("Slack") end)
 
 hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
 
@@ -127,18 +114,14 @@ hs.hotkey.bind({"cmd", "shift"}, "Up", changeVolume(3))
 hs.hotkey.bind({"cmd", "shift"}, "Down", changeVolume(-3))
 
 bindApplicationFocus("I", default_browser_name)
-bindApplicationFocus("E", "Kiwi for Gmail")
--- bindApplicationFocus("M", "Messages")
 bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("Z", "zoom.us")
-bindApplicationFocus("G", "OGS")
 
 -- Secondary
 -- -----------------------------------------------
 bindApplicationFocusSecondary("E", "Evernote")
-bindApplicationFocusSecondary("S", "Slack")
 bindApplicationFocusSecondary("I", "Firefox")
 bindApplicationFocusSecondary("W", "Ulysses")
 bindApplicationFocusSecondary("P", "Adobe Photoshop CC 2019")
@@ -310,28 +293,6 @@ function handleWindowCreated(win, event)
   end
 end
 
--- windows = hs.window.filter.new(nil)
--- windows:subscribe(hs.window.filter.windowCreated, handleWindowCreated)
-
---------------------------------------------------
--- SPOONS ----------------------------------------
---------------------------------------------------
-
--- WiFiTransitions
--- ----------------------------------------------
--- hs.loadSpoon("WiFiTransitions")
--- spoon.WiFiTransitions:start()
-
--- HCalendar
--- ----------------------------------------------
--- hs.loadSpoon("HCalendar")
-
--- HeadphoneAutoPause
--- ----------------------------------------------
--- hs.loadSpoon("HeadphoneAutoPause")
--- spoon.HeadphoneAutoPause.autoResume = true
--- spoon.HeadphoneAutoPause:start()
-
 -----------------------------------------------
 -- Reload config on write
 -----------------------------------------------
@@ -344,4 +305,4 @@ hs.pathwatcher.new(hs_config_dir, reload_config):start()
 --------------------------------------------------
 -- ALERT->CONFIG-LOADED --------------------------
 --------------------------------------------------
-notify("Hammerspoon", "Config Loaded")
+hs.alert("Hammerspon Config Loaded")
