@@ -54,13 +54,18 @@ _tmux_prompt_info() {
 
 # add-zsh-hook precmd _tmux_prompt_info
 
+_conda_prompt_info() {
+    test -z $CONDA_PROMPT_MODIFIER && return
+    echo " conda:$CONDA_PROMPT_MODIFIER"
+}
+
 prompt pure
 
 # Colorize based on return status
 PROMPT='%(?.%F{green}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
 
 # Add tmux
-PROMPT=$'%{$fg_bold[black]%}'"T: "$'%{$fg[green]%}'"\$(_tmux_prompt_info)"$'%{$reset_color%}\n'"${PROMPT}"
+PROMPT=$'%{$fg_bold[black]%}'"T: "$'%{$fg[green]%}'"\$(_tmux_prompt_info)\$(_conda_prompt_info)"$'%{$reset_color%}\n'"${PROMPT}"
 
 # PROMPT='$(pwd-is-wd-character) '$PROMPT
 
