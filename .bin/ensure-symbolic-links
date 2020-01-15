@@ -86,4 +86,5 @@ _ensure_symbolic_link htop  ~/.config/htop
 # OTHER ------------------------------------------
 # ------------------------------------------------
 _ensure_symbolic_link tmux.conf ~/.tmux.conf
+_ensure_symbolic_link gitconfig ~/.gitconfig
 
