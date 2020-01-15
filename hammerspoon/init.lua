@@ -124,7 +124,7 @@ bindApplicationFocus("Z", "zoom.us")
 bindApplicationFocusSecondary("E", "Evernote")
 bindApplicationFocusSecondary("I", "Firefox")
 bindApplicationFocusSecondary("W", "Ulysses")
-bindApplicationFocusSecondary("P", "Adobe Photoshop CC 2019")
+bindApplicationFocusSecondary("P", "Adobe Photoshop 2020")
 bindApplicationFocusSecondary("H", "Home Assistant")
 
 -- Special
