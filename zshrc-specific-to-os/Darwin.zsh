@@ -47,10 +47,3 @@ source-if-exists ~/.configs/iterm2.zsh
 # ------------------------------------------------
 test -d /Applications/Postgres.app/Contents/Versions/latest/bin && export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 
-# ------------------------------------------------
-# GCLOUD -----------------------------------------
-# ------------------------------------------------
-if test -d "$(brew --prefix)/Caskroom/google-cloud-sdk"; then
-  source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-  source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-fi

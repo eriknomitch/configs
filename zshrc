@@ -420,6 +420,21 @@ fi
 unset _anaconda_path
 
 # ------------------------------------------------
+# GCLOUD -----------------------------------------
+# ------------------------------------------------
+_google_cloud_sdk_path="$HOME/.google-cloud-sdk"
+
+if test -d $_google_cloud_sdk_path; then
+  # The next line updates PATH for the Google Cloud SDK.
+  . "${_google_cloud_sdk_path}/path.zsh.inc"
+
+  # The next line enables shell command completion for gcloud.
+  . "${_google_cloud_sdk_path}/completion.zsh.inc"
+fi
+
+
+# ------------------------------------------------
 # PROMPT -----------------------------------------
 # ------------------------------------------------
 source $HOME/.configs/zshrc-prompt
+
