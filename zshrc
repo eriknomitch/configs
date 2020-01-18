@@ -163,11 +163,6 @@ _define_buffer_dump hosts '^[h' "hosts "
 _define_buffer_dump ip_lan '^[1' $LAN_PREFIX
 
 # ------------------------------------------------
-# ANDROID ----------------------------------------
-# ------------------------------------------------
-export JAVA_HOME=/usr/lib/jvm/java-6-sun/
-
-# ------------------------------------------------
 # PLEX -------------------------------------------
 # ------------------------------------------------
 export PLEX_HOME=$HOME/.media/plex
@@ -432,6 +427,12 @@ if test -d $_google_cloud_sdk_path; then
   . "${_google_cloud_sdk_path}/completion.zsh.inc"
 fi
 
+# ------------------------------------------------
+# ------------------------------------------------
+# ------------------------------------------------
+# export PATH="${PATH}:${HOME}/Library/Android/sdk/platform-tools"
+# export PATH="${PATH}:${HOME}/Library/Android/sdk/tools"
+# export PATH="${PATH}:${HOME}/Library/Android/sdk/emulator"
 
 # ------------------------------------------------
 # PROMPT -----------------------------------------
