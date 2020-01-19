@@ -114,7 +114,7 @@ hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm
 -- hs.hotkey.bind({"cmd", "shift"}, "Down", changeVolume(-3))
 
 bindApplicationFocus("I", default_browser_name)
-bindApplicationFocus("T", "Todoist")
+bindApplicationFocus("T", "TickTick")
 bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("Z", "zoom.us")
@@ -272,20 +272,20 @@ function handleWindowCreated(win, event)
     app_fullscreen = true
   end
 
-  if app:title() == "Todoist" then
-    local win    = hs.window.focusedWindow()
-    local f      = win:frame()
-    local screen = win:screen()
-    local max    = screen:frame()
+  -- if app:title() == "Todoist" then
+  --   local win    = hs.window.focusedWindow()
+  --   local f      = win:frame()
+  --   local screen = win:screen()
+  --   local max    = screen:frame()
 
-    f.w = max.w / 2
-    f.h = max.h
+  --   f.w = max.w / 2
+  --   f.h = max.h
 
-    f.x = max.x - (max.x - f.w) / 2
-    f.y = max.y
+  --   f.x = max.x - (max.x - f.w) / 2
+  --   f.y = max.y
 
-    win:setFrame(f)
-  end
+  --   win:setFrame(f)
+  -- end
 
   -- ---------------------------------------------
   if app_fullscreen == true then
