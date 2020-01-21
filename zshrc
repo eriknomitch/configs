@@ -34,6 +34,7 @@ alias dsp="docker system prune --force"
 # ------------------------------------------------
 alias kc="kubectl"
 alias kp="kube-prompt"
+alias mk="minikube"
 
 function gitignore-io() {
   curl -L -s https://www.gitignore.io/api/$@;
