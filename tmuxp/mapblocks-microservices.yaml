@@ -1,0 +1,15 @@
+session_name: mb-ms
+windows:
+- window_name: edit
+  shell_command_before:
+    - cd ~/.mapblocks:microservices
+    - sw
+  panes:
+    - ofe
+- window_name: git/run
+  layout: even-horizontal
+  shell_command_before:
+    - cd ~/.mapblocks:microservices
+  panes:
+    - null
+    - null
