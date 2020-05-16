@@ -116,7 +116,7 @@ hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm
 bindApplicationFocus("I", default_browser_name)
 bindApplicationFocus("T", "TickTick")
 bindApplicationFocus("P", "Preview")
-bindApplicationFocus("F", "Finder")
+bindApplicationFocus("F", "Path Finder")
 bindApplicationFocus("Z", "zoom.us")
 
 -- Secondary
