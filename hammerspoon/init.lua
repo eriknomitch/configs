@@ -118,6 +118,7 @@ bindApplicationFocus("T", "TickTick")
 bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Path Finder")
 bindApplicationFocus("Z", "zoom.us")
+bindApplicationFocus("D", "Discord")
 
 -- Secondary
 -- -----------------------------------------------
