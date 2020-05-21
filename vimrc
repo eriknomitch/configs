@@ -303,13 +303,14 @@ Plug 'leafgarland/typescript-vim'
 " Plug 'mxw/vim-jsx'
 Plug 'maxmellon/vim-jsx-pretty'
 
+Plug 'samoshkin/vim-mergetool'
+
+call plug#end()
 
 "
 " ------------------------------------------------
 set nocompatible
 filetype plugin indent on
-
-Plug 'samoshkin/vim-mergetool'
 
 let g:mergetool_layout = 'mr'
 let g:mergetool_prefer_revision = 'local'
