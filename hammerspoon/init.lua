@@ -116,7 +116,7 @@ hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm
 bindApplicationFocus("I", default_browser_name)
 bindApplicationFocus("T", "TickTick")
 bindApplicationFocus("P", "Preview")
-bindApplicationFocus("F", "Path Finder")
+bindApplicationFocus("F", "Finder")
 bindApplicationFocus("Z", "zoom.us")
 bindApplicationFocus("D", "Discord")
 
@@ -127,7 +127,8 @@ bindApplicationFocusSecondary("I", "Firefox")
 bindApplicationFocusSecondary("W", "Ulysses")
 bindApplicationFocusSecondary("P", "Adobe Photoshop 2020")
 bindApplicationFocusSecondary("H", "Home Assistant")
-bindApplicationFocusSecondary("F", "FaceTime")
+bindApplicationFocusSecondary("F", "Path Finder")
+-- bindApplicationFocusSecondary("F", "FaceTime")
 
 -- Special
 -- -----------------------------------------------
