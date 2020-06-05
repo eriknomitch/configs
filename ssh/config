@@ -190,6 +190,10 @@ Host hassio hassio.local
   HostName hassio.local
   User root
 
+Host optiplex-linux optiplex-linux.local
+  HostName optiplex-linux.local
+  User erik
+
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
 # ------------------------------------------------
@@ -230,15 +234,10 @@ Host paperspace-general
   HostName 184.105.190.70
   User paperspace
 
-Host seedbox
-    HostName 83.149.73.78
-    User root
-    Port 2222
-
 # ------------------------------------------------
 # DEVICES ----------------------------------------
 # ------------------------------------------------
-host remarkable
+Host remarkable
     Hostname 10.11.99.1
     User root
 
