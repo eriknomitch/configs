@@ -289,6 +289,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'brooth/far.vim'
+Plug 'wincent/command-t'
 
 " tmux
 " ------------------------------------------------
