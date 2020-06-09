@@ -190,8 +190,8 @@ Host hassio hassio.local
   HostName hassio.local
   User root
 
-Host optiplex-linux optiplex-linux.local
-  HostName optiplex-linux.local
+Host optiplex optiplex.local
+  HostName optiplex.local
   User erik
 
 # ------------------------------------------------
