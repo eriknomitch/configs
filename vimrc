@@ -778,8 +778,9 @@ nnoremap <leader>sw :StripWhitespace<CR>
 
 " FZF
 " ------------------------------------------------
-nnoremap <leader>s :FZF<CR>
-nnoremap <leader>S :FZFLines<CR>
+" https://github.com/junegunn/fzf.vim#commands
+nnoremap <leader>s :Rg<CR>
+nnoremap <leader>sc :Commits<CR>
 
 " vimagit
 " ------------------------------------------------
