@@ -778,6 +778,9 @@ nnoremap <leader>sw :StripWhitespace<CR>
 
 " FZF
 " ------------------------------------------------
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --smartcase'
+
+
 " https://github.com/junegunn/fzf.vim#commands
 nnoremap <leader>s :Rg<CR>
 nnoremap <leader>sc :Commits<CR>
