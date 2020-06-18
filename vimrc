@@ -285,11 +285,10 @@ Plug 'rizzatti/dash.vim'
 
 " Searching
 " ------------------------------------------------
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'brooth/far.vim'
-Plug 'wincent/command-t'
 
 " tmux
 " ------------------------------------------------
@@ -784,4 +783,3 @@ nnoremap <leader>b :FZFLines<CR>
 " vimagit
 " ------------------------------------------------
 nnoremap <leader>g :Magit<CR>
-
