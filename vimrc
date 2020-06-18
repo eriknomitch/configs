@@ -778,7 +778,8 @@ nnoremap <leader>sw :StripWhitespace<CR>
 
 " FZF
 " ------------------------------------------------
-nnoremap <leader>b :FZFLines<CR>
+nnoremap <leader>s :FZF<CR>
+nnoremap <leader>S :FZFLines<CR>
 
 " vimagit
 " ------------------------------------------------
