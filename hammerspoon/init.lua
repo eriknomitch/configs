@@ -119,6 +119,7 @@ bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("Z", "zoom.us")
 bindApplicationFocus("D", "Discord")
+bindApplicationFocus("E", "Joplin")
 
 -- Secondary
 -- -----------------------------------------------
