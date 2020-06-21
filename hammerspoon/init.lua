@@ -114,7 +114,7 @@ hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm
 -- hs.hotkey.bind({"cmd", "shift"}, "Down", changeVolume(-3))
 
 bindApplicationFocus("I", default_browser_name)
-bindApplicationFocus("T", "TickTick")
+bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("P", "Preview")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("Z", "zoom.us")
@@ -269,10 +269,6 @@ function handleWindowCreated(win, event)
   end
 
   if app:title() == "Preview" then
-    app_fullscreen = true
-  end
-
-  if app:title() == "Kiwi for Gmail" then
     app_fullscreen = true
   end
 
