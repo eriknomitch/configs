@@ -217,6 +217,7 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
+
 let g:deoplete#enable_at_startup = 0
 
 " Packages
@@ -303,7 +304,10 @@ Plug 'leafgarland/typescript-vim'
 " Plug 'mxw/vim-jsx'
 Plug 'maxmellon/vim-jsx-pretty'
 
+" Other
+" ------------------------------------------------
 Plug 'samoshkin/vim-mergetool'
+Plug 'avakhov/vim-yaml'
 
 call plug#end()
 
