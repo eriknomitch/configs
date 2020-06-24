@@ -307,7 +307,6 @@ Plug 'maxmellon/vim-jsx-pretty'
 " Other
 " ------------------------------------------------
 Plug 'samoshkin/vim-mergetool'
-Plug 'avakhov/vim-yaml'
 
 call plug#end()
 
@@ -670,6 +669,7 @@ let g:ale_linters = {
       \  'json':  ['jq'],
       \  'jsx': ['prettier', 'eslint'],
       \  'js': ['prettier', 'eslint'],
+      \  'yaml': ['yamllint'],
       \  'ruby': ['rubocop'],
       \  'vim': ['vint'],
       \  'python': ['flake8'],
@@ -685,6 +685,7 @@ let g:ale_fixers = {
       \  'json':  ['jq'],
       \  'jsx': ['prettier', 'eslint'],
       \  'js': ['prettier', 'eslint'],
+      \  'yaml': ['prettier'],
       \  'typescript': ['prettier', 'tslint'],
       \  'ts': ['prettier', 'tslint'],
       \  'ruby': ['rubocop'],
