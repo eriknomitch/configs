@@ -117,6 +117,13 @@ nnoremap zC zM
 map Q :qa<CR>
 
 " Yank and drop across multiple vim instances
+
+" FIX: For macOS...
+" https://stackoverflow.com/a/38969251/1764073
+set clipboard+=unnamed
+
+" FIX: For Linux...
+" https://stackoverflow.com/a/10979533/1764073
 " set clipboard+=unnamedplus
 
 " Make backspace key work
