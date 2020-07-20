@@ -50,6 +50,26 @@ end
 -- -----------------------------------------------
 -- -----------------------------------------------
 -- -----------------------------------------------
+function setMute(state)
+  device = hs.audiodevice.defaultOutputDevice()
+  device:setOutputVolume(0)
+  -- for _, device in pairs(hs.audiodevice.allInputDevices()) do
+  --   device:setInputMuted(state)
+  -- end
+
+  hs.alert("Muted")
+end
+
+hs.audiodevice.watcher.setCallback(function()
+  setMute(true)
+end)
+
+hs.audiodevice.watcher.stop()
+hs.audiodevice.watcher.start()
+
+-- -----------------------------------------------
+-- -----------------------------------------------
+-- -----------------------------------------------
 local movement  = {"cmd", "ctrl"}
 local movement2 = {"cmd", "ctrl", "shift"}
 
