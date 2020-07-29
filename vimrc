@@ -801,6 +801,7 @@ let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --smartcase'
 
 " https://github.com/junegunn/fzf.vim#commands
 nnoremap <leader>s :Rg<CR>
+nnoremap <leader>S :Lines<CR>
 nnoremap <leader>sc :Commits<CR>
 
 " vimagit
