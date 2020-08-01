@@ -314,6 +314,8 @@ Plug 'maxmellon/vim-jsx-pretty'
 " Other
 " ------------------------------------------------
 Plug 'samoshkin/vim-mergetool'
+Plug 'ryanoasis/vim-devicons'
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 
 call plug#end()
 
