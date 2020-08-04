@@ -149,7 +149,7 @@ bindApplicationFocusSecondary("I", "Firefox")
 bindApplicationFocusSecondary("W", "Ulysses")
 bindApplicationFocusSecondary("P", "Adobe Photoshop 2020")
 bindApplicationFocusSecondary("H", "Home Assistant")
--- bindApplicationFocusSecondary("F", "Path Finder")
+bindApplicationFocusSecondary("F", "FIgma")
 -- bindApplicationFocusSecondary("F", "FaceTime")
 
 -- Special
