@@ -317,7 +317,45 @@ Plug 'samoshkin/vim-mergetool'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 
+" https://github.com/bignimbus/you-are-here.vim
+Plug 'bignimbus/you-are-here.vim'
+
 call plug#end()
+
+" Add a map of your choice.  I prefer to  use
+" <leader>here.  My leader key is set to the
+" backslash (\), so by typing \here in normal
+" mode, I activate you-are-here.vim. Pressing
+" <ESC> will close the popups.
+
+nnoremap <silent> <leader>here :call you_are_here#YouAreHere()<CR>
+
+" top, right, bottom, left border in popups
+let g:youarehere_border = [1, 1, 1, 1]
+
+" top, right, bottom, left padding in popups
+let g:youarehere_padding = [1, 1, 1, 1]
+
+" g:content is passed to expand to render the filename.
+" see :help expand for more options
+let g:content = "%"
+
+" Customize the look of you-are-here.vim by using
+" the following highlight groups.
+
+" inactive splits:
+"
+" YouAreHereText
+" YouAreHereBorder
+" YouAreHereScrollbar
+" YouAreHereThumb
+
+" active split:
+"
+" YouAreHereActiveText
+" YouAreHereActiveBorder
+" YouAreHereActiveScrollbar
+" YouAreHereActiveThumb
 
 "
 " ------------------------------------------------
