@@ -236,9 +236,6 @@ let g:deoplete#enable_at_startup = 0
 " ------------------------------------------------
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" npm install -g neovim && nvim -c 'CocInstall coc-json coc-tsserver coc-css coc-eslint coc-fzf-preview coc-git coc-highlight coc-json coc-markdownlint coc-sh coc-styled-components coc-react-refactor'
-" nvim -c 'CocUpdateSync|q'
-
 Plug 'prettier/vim-prettier', {
   \ 'for': [
     \ 'javascript',
@@ -372,6 +369,16 @@ let g:mergetool_prefer_revision = 'local'
 " ------------------------------------------------
 " CONFIG->COC ------------------------------------
 " ------------------------------------------------
+
+" npm install -g neovim && nvim -c 'CocInstall coc-json coc-tsserver coc-css coc-eslint coc-fzf-preview coc-git coc-highlight coc-json coc-markdownlint coc-sh coc-styled-components coc-react-refactor'
+" nvim -c 'CocUpdateSync|q'
+
+" ------------------------------------------------
+
+" Change the Pmenu color
+" https://vi.stackexchange.com/a/12665
+highlight Pmenu ctermbg=235
+ " highlight PmenuSel ctermbg=235 ctermfg=7
 
 " if hidden is not set, TextEdit might fail.
 set hidden
