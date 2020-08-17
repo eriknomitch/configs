@@ -235,6 +235,10 @@ let g:deoplete#enable_at_startup = 0
 " Autocompletion/Snippets
 " ------------------------------------------------
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" npm install -g neovim && nvim -c 'CocInstall coc-json coc-tsserver coc-css coc-eslint coc-fzf-preview coc-git coc-highlight coc-json coc-markdownlint coc-sh coc-styled-components coc-react-refactor'
+" nvim -c 'CocUpdateSync|q'
+
 Plug 'prettier/vim-prettier', {
   \ 'for': [
     \ 'javascript',
