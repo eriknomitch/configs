@@ -15,7 +15,7 @@
     "files": ["hyper.js"]
   },
   "vim": {
-    "files": ["vimrc"],
+    "files": ["vimrc", "vim/coc-settings.json", "vim/after/plugin/*", "vim/colors/*"],
     "first_file": "vimrc"
   },
   "ssh": {
