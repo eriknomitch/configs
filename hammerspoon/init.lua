@@ -142,7 +142,7 @@ bindApplicationFocus("P", "Preview")
 -- bindApplicationFocus("F", "Path Finder")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("Z", "zoom.us")
-bindApplicationFocus("D", "Discord")
+hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "D", function() confirmOnEnter("Discord") end)
 bindApplicationFocus("E", "Joplin")
 
 -- Secondary
