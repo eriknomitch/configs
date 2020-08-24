@@ -7,8 +7,8 @@
 -- -----------------------------------------------
 require("audio.volume")
 
--- hs.loadSpoon("ReloadConfiguration")
--- spoon.ReloadConfiguration:start()
+hs.loadSpoon("ReloadConfiguration")
+spoon.ReloadConfiguration:start()
 
 -- -----------------------------------------------
 -- -----------------------------------------------
@@ -316,15 +316,6 @@ function handleWindowCreated(win, event)
     fullscreen()
   end
 end
-
------------------------------------------------
--- Reload config on write
------------------------------------------------
-function reload_config(files)
-  hs.reload()
-end
-
-hs.pathwatcher.new(hs_config_dir, reload_config):start()
 
 --------------------------------------------------
 -- ALERT->CONFIG-LOADED --------------------------
