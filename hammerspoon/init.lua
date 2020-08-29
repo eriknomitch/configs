@@ -133,17 +133,13 @@ hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "S", function() confi
 
 hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
 
--- hs.hotkey.bind({"cmd", "shift"}, "Up", changeVolume(3))
--- hs.hotkey.bind({"cmd", "shift"}, "Down", changeVolume(-3))
-
 bindApplicationFocus("I", default_browser_name)
 bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("P", "Preview")
--- bindApplicationFocus("F", "Path Finder")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("Z", "zoom.us")
 hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "D", function() confirmOnEnter("Discord") end)
-bindApplicationFocus("E", "Joplin")
+bindApplicationFocus("E", "Evernote")
 
 -- Secondary
 -- -----------------------------------------------
