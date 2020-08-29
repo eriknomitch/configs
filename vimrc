@@ -264,7 +264,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdcommenter'
-Plug 'mhinz/vim-signify' " (git gutter)
+" Plug 'mhinz/vim-signify' " (git gutter)
 Plug 'tpope/vim-unimpaired'
 Plug 'Shougo/unite.vim' " vimfiler depends on this
 Plug 'Shougo/vimfiler.vim'
