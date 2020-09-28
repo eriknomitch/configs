@@ -318,7 +318,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'samoshkin/vim-mergetool'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 
 " https://github.com/bignimbus/you-are-here.vim
 Plug 'bignimbus/you-are-here.vim'
