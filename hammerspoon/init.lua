@@ -140,6 +140,7 @@ bindApplicationFocus("F", "Finder")
 bindApplicationFocus("Z", "zoom.us")
 hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "D", function() confirmOnEnter("Discord") end)
 bindApplicationFocus("E", "Evernote")
+bindApplicationFocus("C", "Remote Control")
 
 -- Secondary
 -- -----------------------------------------------
