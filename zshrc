@@ -337,21 +337,6 @@ export DISABLE_AUTO_TITLE='true'
 export HOMEBREW_GITHUB_API_TOKEN=5e62b045f2eeaa1320c544a2ff0e6cc0c3b7fb40
 
 # ------------------------------------------------
-# MONGOOSE-OS (MOS) ------------------------------
-# ------------------------------------------------
-if [[ -d $HOME/.mos ]] ; then
-  export MOS_PORT=/dev/tty.SLAB_USBtoUART
-  export PATH=$PATH:$HOME/.mos/bin
-fi
-
-# ------------------------------------------------
-# FLUTTER ----------------------------------------
-# ------------------------------------------------
-if [[ -d $HOME/.repositories/flutter ]] ; then
-  export PATH=$PATH:$HOME/.repositories/flutter/bin
-fi
-
-# ------------------------------------------------
 # MPM (DEVELOPMENT) ------------------------------
 # ------------------------------------------------
 if [[ ! `command-exists mpm` && -d $HOME/.repositories/mpm-cr ]] ; then
