@@ -285,12 +285,15 @@ Plug 'svermeulen/vim-easyclip'
 Plug 'junegunn/vim-easy-align'
 Plug 'nathanaelkane/vim-indent-guides'
 
-" Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 Plug 'jreybert/vimagit'
 Plug 'suan/vim-instant-markdown'
 Plug 'epeli/slimux'
 Plug 'goerz/ipynb_notedown.vim'
 Plug 'rizzatti/dash.vim'
+
+" ------------------------------------------------
+Plug 'keith/swift.vim'
 
 " Searching
 " ------------------------------------------------
@@ -679,6 +682,13 @@ augroup END
 " CONFIG->VIM-JSX-PRETTY -------------------------
 " ------------------------------------------------
 let g:vim_jsx_pretty_colorful_config = 1
+
+" ------------------------------------------------
+" CONFIG->VIM-POLYGLOT ---------------------------
+" ------------------------------------------------
+" https://github.com/sheerun/vim-polyglot#troubleshooting
+" let g:polyglot_disabled = ['markdown']
+" let g:polyglot_disabled = ['autoindent']
 
 " ------------------------------------------------
 " CONFIG->KEY-MAPPINGS ---------------------------
