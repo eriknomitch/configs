@@ -194,6 +194,11 @@ Host optiplex optiplex.local
   HostName optiplex.local
   User erik
 
+Host rpi-*
+  HostName %h.local
+  CheckHostIP no
+  User pi
+
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
 # ------------------------------------------------
