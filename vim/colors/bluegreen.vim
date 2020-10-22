@@ -1,11 +1,20 @@
 " Vim color file
 " Maintainer:   Erik Nomitch <erik@nomitch.com>
-" Last Change:  20 February 2018 - 0.1
-" URL: erik.is
+" Last Change:  22 October 2020 - 0.2
+" URL: https://erik.is
+
+" ------------------------------------------------
+" REFERENCE --------------------------------------
+" ------------------------------------------------
 
 " :he group-name
 " :he highlight-groups
 " :he cterm-colors
+
+
+"  Colors
+" ------------------------------------------------
+" SEE: https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 
 " ------------------------------------------------
 " ------------------------------------------------
@@ -19,7 +28,7 @@ set t_Co=256
 let g:colors_name="bluegreen"
 
 " ------------------------------------------------
-" ------------------------------------------------
+" GENERAL ----------------------------------------
 " ------------------------------------------------
 hi Normal       ctermfg=White ctermfg=NONE guifg=White ctermbg=NONE guibg=Black cterm=NONE
 hi NonText      ctermfg=DarkGray guifg=DarkGray  ctermbg=NONE guibg=Black
@@ -44,35 +53,14 @@ hi Title        ctermfg=White guifg=White     ctermbg=DarkBlue guibg=DarkBlue
 hi StatusLine   term=NONE cterm=NONE gui=bold,underline ctermfg=Black guifg=Black ctermbg=White guibg=White
 hi StatusLineNC term=NONE cterm=NONE gui=bold,underline ctermfg=Black guifg=Black  ctermbg=Grey guibg=Grey
 hi LineNr       term=bold cterm=bold gui=bold ctermfg=White guifg=White ctermbg=DarkGray guibg=DarkGray
+
 hi SignColumn ctermbg=235
 
-" if exists("g:bluegreen_transbg")
-"   hi Normal       ctermfg=White guifg=White ctermbg=NONE
-"   hi NonText      ctermfg=DarkGray guifg=DarkGray  ctermbg=NONE
-
-"   hi Statement    ctermfg=Blue guifg=Blue      ctermbg=NONE
-"   hi Comment      ctermfg=DarkGray guifg=DarkGray  ctermbg=NONE guibg=Black cterm=bold gui=bold term=bold
-"   hi Constant     ctermfg=DarkCyan guifg=DarkCyan  ctermbg=NONE guibg=Black
-"   hi Identifier   ctermfg=Cyan guifg=Cyan      ctermbg=NONE guibg=Black
-"   hi Type         ctermfg=DarkGreen guifg=DarkGreen ctermbg=NONE guibg=Black
-"   hi Folded       ctermfg=DarkGreen guifg=DarkGreen ctermbg=NONE guibg=Black cterm=underline gui=underline term=NONE
-"   hi Special      ctermfg=Blue guifg=Blue      ctermbg=NONE guibg=Black
-"   hi PreProc      ctermfg=LightGray guifg=LightGray ctermbg=NONE guibg=Black cterm=bold gui=bold term=bold
-"   hi Scrollbar    ctermfg=Blue guifg=Blue      ctermbg=NONE guibg=Black
-"   hi Cursor       ctermfg=white guifg=white     ctermbg=NONE guibg=Black
-"   hi ErrorMsg     ctermfg=Red guifg=Red       ctermbg=NONE guibg=Black cterm=bold gui=bold term=bold
-"   hi WarningMsg   ctermfg=Yellow guifg=Yellow    ctermbg=NONE guibg=Black
-"   hi VertSplit    cterm=NONE ctermfg=White guifg=White     ctermbg=NONE guibg=DarkGray
-"   hi Directory    ctermfg=Cyan guifg=Cyan      ctermbg=DarkBlue guibg=DarkBlue
-"   hi Visual       ctermfg=White guifg=White     ctermbg=DarkGray guibg=DarkGray cterm=underline gui=underline term=NONE
-"   hi Title        ctermfg=White guifg=White     ctermbg=DarkBlue guibg=DarkBlue
-
-"   hi StatusLine   term=bold cterm=bold gui=bold,underline ctermfg=White guifg=White ctermbg=DarkGray guibg=DarkGray
-"   hi StatusLineNC term=bold cterm=bold gui=bold,underline ctermfg=Gray guifg=Gray  ctermbg=Black guibg=Black
-"   hi LineNr       term=bold cterm=bold gui=bold ctermfg=White guifg=White ctermbg=DarkGray guibg=DarkGray
-" else
-"endif
-
-
-
-
+" ------------------------------------------------
+" PMENU ------------------------------------------
+" ------------------------------------------------
+" FROM: https://vi.stackexchange.com/a/24382
+hi Pmenu ctermfg=White ctermbg=237
+hi PmenuSel ctermbg=Blue ctermfg=White cterm=bold
+hi PmenuSbar ctermbg=DarkGray
+hi PmenuThumb ctermbg=LightGray
