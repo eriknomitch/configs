@@ -147,40 +147,10 @@ Host tunnel-*.local
 # ------------------------------------------------
 # LOCAL/LAN --------------------------------------
 # ------------------------------------------------
-Host server
-    HostName home.nomitch.com
-    PermitLocalCommand true
+Host unraid unraid.local
+    HostName unraid.local
     User erik
-    Port 2210
-
-# Host ai
-#     HostName home.nomitch.com
-#     PermitLocalCommand true
-#     User erik
-#     Port 2220
-
-Host ai exec "~/.bin/bin/are-on-personal-lan"
-    HostName ai.local
-    PermitLocalCommand true
-    User erik
-
-#Match host ai exec "dig +short aisfsdf"
-    #HostName ai
-    #PermitLocalCommand true
-    #User erik
-    #Port 22
-
-Host laptop
-    checkhostip no
-    User erik
-
-Host pi-hole pi-hole.local
-    HostName pi-hole.local
-    User pi
-
-Host tortuga tortuga.local
-    HostName tortuga.local
-    User pi
+    Port 2222
 
 Host volumio volumio.local
   HostName volumio.local
@@ -189,10 +159,6 @@ Host volumio volumio.local
 Host hassio hassio.local
   HostName hassio.local
   User root
-
-Host optiplex optiplex.local
-  HostName optiplex.local
-  User erik
 
 Host rpi-*
   HostName %h.local

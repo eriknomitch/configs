@@ -12,4 +12,4 @@ windows:
     - cd ~/.mapblocks:microservices
   panes:
     - null
-    - null
+    - ./run
