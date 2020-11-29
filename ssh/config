@@ -148,7 +148,12 @@ Host tunnel-*.local
 # LOCAL/LAN --------------------------------------
 # ------------------------------------------------
 Host unraid unraid.local
-    HostName unraid.local
+    HostName unraid.zerotier.nomitch.com
+    User root
+    Port 22
+
+Host unraid-ssh-container
+    HostName unraid.zerotier.nomitch.com
     User erik
     Port 2222
 
