@@ -44,7 +44,7 @@ Plug 'prettier/vim-prettier', {
     \ 'swift' ] }
 
 " ------------------------------------------------
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'mbbill/undotree'
 Plug 'ekalinin/Dockerfile.vim'
@@ -75,7 +75,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'sheerun/vim-polyglot'
-Plug 'jreybert/vimagit'
+" Plug 'jreybert/vimagit'
 Plug 'suan/vim-instant-markdown'
 Plug 'epeli/slimux'
 Plug 'goerz/ipynb_notedown.vim'
