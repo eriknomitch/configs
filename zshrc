@@ -83,13 +83,25 @@ source-if-exists $HOME/.configs/zshrc-asdf
 #   antibody bundle < $HOME/.configs/zshrc-antibody-plugins.txt > $HOME/.configs/zshrc-antibody-plugins.sh
 # }
 
-if command-exists antibody; then
-  source <(antibody init)
-  antibody bundle < $HOME/.configs/zshrc-antibody-plugins.txt
+_antigen_path="/usr/local/share/antigen/antigen.zsh"
+
+if [[ -f $_antigen_path ]]; then
+  source $_antigen_path
+
+  source $HOME/.configs/zshrc-antigen-init.sh
 else
-  echo "Warning: antibody not installed."
+  echo "Warning: antigen not installed."
   sleep 0.5
 fi
+
+
+# if command-exists antibody; then
+#   source <(antibody init)
+#   antibody bundle < $HOME/.configs/zshrc-antibody-plugins.txt
+# else
+#   echo "Warning: antibody not installed."
+#   sleep 0.5
+# fi
 
 # ------------------------------------------------
 # SOURCE->USER -----------------------------------
