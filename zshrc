@@ -74,7 +74,7 @@ source-if-exists $HOME/.configs/zshrc-asdf
 # ------------------------------------------------
 # AUTOJUMP ---------------------------------------
 # ------------------------------------------------
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+# [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # ------------------------------------------------
 # ANTIBODY ---------------------------------------
@@ -83,14 +83,10 @@ source-if-exists $HOME/.configs/zshrc-asdf
 #   antibody bundle < $HOME/.configs/zshrc-antibody-plugins.txt > $HOME/.configs/zshrc-antibody-plugins.sh
 # }
 
-_antigen_path="/usr/local/share/antigen/antigen.zsh"
-
-if [[ -f $_antigen_path ]]; then
-  source $_antigen_path
-
-  source $HOME/.configs/zshrc-antigen-init.sh
+if [[ -f ~/.zplug/init.zsh ]]; then
+  source $HOME/.configs/zshrc-zplug-init.sh
 else
-  echo "Warning: antigen not installed."
+  echo "Warning: zplug not installed."
   sleep 0.5
 fi
 

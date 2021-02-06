@@ -17,8 +17,11 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 antigen bundle psprint/zsh-navigation-tools
 antigen bundle rupa/z
-antigen bundle mafredri/zsh-async
 antigen bundle jocelynmallon/zshmarks
+
+antigen bundle mafredri/zsh-async
+antigen bundle sindresorhus/pure
+
 
 # Tell Antigen that you're done.
 antigen apply
