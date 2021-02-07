@@ -27,41 +27,18 @@ Host lan-router router router.asus.com
   HostName router.asus.com
   User admin
 
-# lan-ap-0
-# ------------------------------------------------
-Host lan-ap-0, ap-0
-  HostName lan-ap-0
-  User admin
-  CheckHostIP no
-
 # ------------------------------------------------
 # MAP->HOSTS->MICROS -----------------------------
 # ------------------------------------------------
-Host micro-*
-  HostName %h.local
-  CheckHostIP no
+# Host micro-*
+#   HostName %h.local
+#   CheckHostIP no
 
 # 3d-printercamera (micro-grey)
 # ------------------------------------------------
 # Raspberry Pi Zero v.1.3
 Host 3d-printer-camera
   HostName 3d-printer-camera.local
-
-# micro-touchscreen
-# ------------------------------------------------
-Host micro-touchscreen
-  User pi
-
-# chip
-# ------------------------------------------------
-# CHIP
-#  - Internal Wi-FI
-#    7c:c7:09:b6:f2:1d
-Host chip
-  HostName chip
-  PermitLocalCommand true
-  User chip
-  Port 22
 
 # odroidc2
 # ------------------------------------------------
@@ -167,8 +144,15 @@ Host hassio hassio.local
 
 Host rpi-*
   HostName %h.local
+  User pi
+  CheckHostIP no
+  StrictHostKeyChecking no
+
+Host rpi-*.local
   CheckHostIP no
   User pi
+  CheckHostIP no
+  StrictHostKeyChecking no
 
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
@@ -177,16 +161,6 @@ Host micro-*
   UserKnownHostsFile /dev/null
   StrictHostKeyChecking no
   ServerAliveInterval 60
-  # WARNING
-  User pi
-
-# ------------------------------------------------
-# VIRTUAL ----------------------------------------
-# ------------------------------------------------
-Host virtual-linux
-    HostName virtual-linux.local
-    Port 22
-    User erik
 
 # ------------------------------------------------
 # REMOTE -----------------------------------------
