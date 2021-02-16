@@ -35,7 +35,7 @@ end
 hostname = hs.host.localizedName()
 logger = hs.logger.new('main')
 hs_config_dir = os.getenv("HOME") .. "/.hammerspoon/"
-default_browser_name = "Google Chrome"
+default_browser_name = "Google Chrome Beta"
 
 -- -----------------------------------------------
 -- UTILITY ---------------------------------------
