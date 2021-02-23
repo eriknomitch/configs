@@ -27,6 +27,7 @@ filetype plugin indent on
 " Swap
 set noswapfile
 
+
 " Markdown gets different textwidth
 au BufRead,BufNewFile *.md setlocal textwidth=300
 
@@ -249,6 +250,7 @@ let g:content = "%"
 "
 " ------------------------------------------------
 set nocompatible
+filetype plugin on
 filetype plugin indent on
 
 let g:mergetool_layout = 'mr'
