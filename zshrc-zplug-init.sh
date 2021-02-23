@@ -38,7 +38,5 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-echo -ne 'Loading zplug...\r'
 #zplug load --verbose
 zplug load
-clear
