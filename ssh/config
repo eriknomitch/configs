@@ -142,17 +142,17 @@ Host hassio hassio.local
   HostName hassio.local
   User root
 
-Host rpi-*
-  HostName %h.local
-  User pi
-  CheckHostIP no
-  StrictHostKeyChecking no
-
 Host rpi-*.local
   CheckHostIP no
   User pi
   CheckHostIP no
   StrictHostKeyChecking no
+
+# Host rpi-*
+#   HostName %h.local
+#   User pi
+#   CheckHostIP no
+#   StrictHostKeyChecking no
 
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
