@@ -116,7 +116,7 @@ Plug 'zenbro/mirror.vim'
 " https://github.com/bignimbus/you-are-here.vim
 Plug 'bignimbus/you-are-here.vim'
 
-Plug 'blueyed/vim-diminactive'
+" Plug 'blueyed/vim-diminactive'
 
 " Plug 'kyazdani42/nvim-web-devicons'
 " " Plug 'romgrk/lib.kom' -- removed! You can remove it from your vimrc
