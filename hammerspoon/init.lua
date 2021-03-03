@@ -148,7 +148,7 @@ bindApplicationFocus("V", "IINA")
 -- Secondary
 -- -----------------------------------------------
 bindApplicationFocusSecondary("E", "Evernote")
-bindApplicationFocusSecondary("I", "Firefox")
+-- bindApplicationFocusSecondary("I", "Firefox")
 bindApplicationFocusSecondary("W", "Ulysses")
 bindApplicationFocusSecondary("P", "Adobe Photoshop 2021")
 bindApplicationFocusSecondary("H", "Home Assistant")
