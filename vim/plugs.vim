@@ -69,7 +69,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-repeat' " Dependency of vim-easyclip
 Plug 'svermeulen/vim-easyclip'
 
-" Formatting
+" Syntax/Formatting
 " ------------------------------------------------
 Plug 'junegunn/vim-easy-align'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -80,6 +80,7 @@ Plug 'suan/vim-instant-markdown'
 Plug 'epeli/slimux'
 Plug 'goerz/ipynb_notedown.vim'
 Plug 'rizzatti/dash.vim'
+Plug 'cappyzawa/starlark.vim'
 
 " ------------------------------------------------
 Plug 'keith/swift.vim'
