@@ -44,7 +44,7 @@ Plug 'prettier/vim-prettier', {
     \ 'swift' ] }
 
 " ------------------------------------------------
-" Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'mbbill/undotree'
 Plug 'ekalinin/Dockerfile.vim'
