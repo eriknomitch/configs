@@ -13,7 +13,6 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-
 let g:deoplete#enable_at_startup = 0
 
 " Packages
@@ -55,8 +54,6 @@ Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdcommenter'
 " Plug 'mhinz/vim-signify' " (git gutter)
 Plug 'tpope/vim-unimpaired'
-Plug 'Shougo/unite.vim' " vimfiler depends on this
-Plug 'Shougo/vimfiler.vim'
 Plug 'kana/vim-arpeggio'
 Plug 'rizzatti/dash.vim'
 Plug 'w0rp/ale'
@@ -68,6 +65,16 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-repeat' " Dependency of vim-easyclip
 Plug 'svermeulen/vim-easyclip'
+
+" defx (File Browser)
+" ------------------------------------------------
+if has('nvim')
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/defx.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 " Syntax/Formatting
 " ------------------------------------------------
