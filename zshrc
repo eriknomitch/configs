@@ -29,6 +29,7 @@ alias lg="lazygit"
 alias ncdu="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias ping="prettyping --nolegend"
 alias dsp="docker system prune --force"
+alias ob="tmuxp load obsidian"
 
 # Kubernetes
 # ------------------------------------------------
