@@ -1,0 +1,8 @@
+session_name: obsidian
+windows:
+- window_name: main
+  shell_command_before:
+    - cd ~/.obsidian-vault
+    - sw
+  panes:
+    - ofe
