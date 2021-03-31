@@ -24,8 +24,8 @@ let g:deoplete#enable_at_startup = 0
 " LSP
 " ------------------------------------------------
 " FROM: https://www.chrisatmachine.com/Neovim/27-native-lsp/
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'hrsh7th/nvim-compe'
 
 " Autocompletion/Snippets
 " ------------------------------------------------

@@ -637,7 +637,9 @@ endfor
 " ------------------------------------------------
 " LSP --------------------------------------------
 " ------------------------------------------------
-lua << EOF
-require'lspconfig'.pyright.setup{}
-local utils = require('lsp-config')
-EOF
+" SEE: LSP
+
+" lua << EOF
+" require'lspconfig'.pyright.setup{}
+" local utils = require('lsp-config')
+" EOF
