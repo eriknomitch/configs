@@ -210,7 +210,7 @@ endif
 " ------------------------------------------------
 " PLUG -------------------------------------------
 " ------------------------------------------------
-source $HOME/.vim/plugs.vim
+source $HOME/.config/nvim/plugs.vim
 
 " Add a map of your choice.  I prefer to  use
 " <leader>here.  My leader key is set to the
