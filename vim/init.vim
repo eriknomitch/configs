@@ -27,7 +27,6 @@ filetype plugin indent on
 " Swap
 set noswapfile
 
-
 " Markdown gets different textwidth
 au BufRead,BufNewFile *.md setlocal textwidth=300
 

@@ -104,8 +104,6 @@ Plug 'keith/swift.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'brooth/far.vim'
-Plug 'wsdjeg/FlyGrep.vim'
 
 " tmux
 " ------------------------------------------------
