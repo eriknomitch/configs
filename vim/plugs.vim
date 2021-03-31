@@ -20,6 +20,13 @@ let g:deoplete#enable_at_startup = 0
 " For jedi (python) https://github.com/davidhalter/jedi
 " Plug 'zchee/deoplete-jedi'
 
+
+" LSP
+" ------------------------------------------------
+" FROM: https://www.chrisatmachine.com/Neovim/27-native-lsp/
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+
 " Autocompletion/Snippets
 " ------------------------------------------------
 Plug 'neoclide/coc.nvim', {'branch': 'release'}

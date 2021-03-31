@@ -633,3 +633,11 @@ let s:config_home = stdpath('config')
 for s:f in split(glob(s:config_home . '/pluginrc.d/*.vim'), '\n')
   execute 'source' fnameescape(s:f)
 endfor
+
+" ------------------------------------------------
+" LSP --------------------------------------------
+" ------------------------------------------------
+lua << EOF
+require'lspconfig'.pyright.setup{}
+local utils = require('lsp-config')
+EOF
