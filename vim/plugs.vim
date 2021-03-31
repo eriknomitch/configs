@@ -61,6 +61,7 @@ Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdcommenter'
 " Plug 'mhinz/vim-signify' " (git gutter)
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-abolish'
 Plug 'kana/vim-arpeggio'
 Plug 'rizzatti/dash.vim'
 Plug 'w0rp/ale'
