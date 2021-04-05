@@ -61,7 +61,6 @@ Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdcommenter'
 " Plug 'mhinz/vim-signify' " (git gutter)
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-abolish'
 Plug 'kana/vim-arpeggio'
 Plug 'rizzatti/dash.vim'
 Plug 'w0rp/ale'
@@ -100,8 +99,9 @@ Plug 'cappyzawa/starlark.vim'
 " ------------------------------------------------
 Plug 'keith/swift.vim'
 
-" Searching
+" Searching/Replacing
 " ------------------------------------------------
+Plug 'tpope/vim-abolish'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'ctrlpvim/ctrlp.vim'
