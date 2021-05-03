@@ -3,9 +3,10 @@
   "tslint.autoFixOnSave": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
-    "markdown",
     "typescript",
     "typescriptreact",
+    "markdown",
     "json"
-  ]
+  ],
+  "eslint.autoFixOnSave": true
 }

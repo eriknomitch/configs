@@ -595,11 +595,11 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " ALE
 " ------------------------------------------------
-nnoremap <leader>at :ALEToggle<CR>
-nnoremap <leader>ae :ALEEnable<CR>
-nnoremap <leader>ad :ALEDisable<CR>
-nnoremap <leader>F :ALEFix<CR>
-nnoremap <leader>f :ALEFix<CR>
+" nnoremap <leader>at :ALEToggle<CR>
+" nnoremap <leader>ae :ALEEnable<CR>
+" nnoremap <leader>ad :ALEDisable<CR>
+nnoremap <leader>F :CocCommand prettier.formatFile<CR>
+nnoremap <leader>f :CocCommand prettier.formatFile<CR>
 
 " Whitespace
 " ------------------------------------------------
