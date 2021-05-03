@@ -28,6 +28,13 @@ Host lan-router router router.asus.com
   User admin
 
 # ------------------------------------------------
+# HOMEASSISTANT ----------------------------------
+# ------------------------------------------------
+Host homeassistant.local, homeassistant, ha
+  HostName homeassistant.local
+  User root
+
+# ------------------------------------------------
 # MAP->HOSTS->MICROS -----------------------------
 # ------------------------------------------------
 # Host micro-*
@@ -209,4 +216,3 @@ Host mapblocks-paperspace
 Host mapblocks-paperspace-fastai
   HostName 65.49.54.240
   User paperspace
-
