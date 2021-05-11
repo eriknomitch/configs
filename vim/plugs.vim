@@ -125,6 +125,10 @@ Plug 'samoshkin/vim-mergetool'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 Plug 'zenbro/mirror.vim'
+
+" FROM: https://github.com/unisonweb/unisonweb-org/blob/master/src/data/docs/editor-setup.md#vim
+Plug 'unisonweb/unison', { 'branch': 'trunk', 'rtp': 'editor-support/vim' }
+
 " Plug 'ludovicchabant/vim-gutentags'
 
 " https://github.com/bignimbus/you-are-here.vim
