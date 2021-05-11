@@ -33,6 +33,7 @@ Host lan-router router router.asus.com
 Host homeassistant.local, homeassistant, ha
   HostName homeassistant.local
   User root
+  IdentityFile ~/.ssh/id_rsa_home_assistant
 
 # ------------------------------------------------
 # MAP->HOSTS->MICROS -----------------------------
