@@ -66,6 +66,9 @@ Plug 'rizzatti/dash.vim'
 Plug 'w0rp/ale'
 Plug 'skywind3000/asyncrun.vim'
 
+" Tabnine https://www.tabnine.com/install/vim
+Plug 'codota/tabnine-vim'
+
 " Vim Interaction
 " ------------------------------------------------
 Plug 'terryma/vim-multiple-cursors'
