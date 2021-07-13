@@ -21,7 +21,7 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 # ------------------------------------------------
 zplug "psprint/zsh-navigation-tools"
 zplug "mafredri/zsh-async"
-zplug "sindresorhus/pure"
+# zplug "sindresorhus/pure"
 zplug "jocelynmallon/zshmarks"
 zplug "rupa/z"
 
