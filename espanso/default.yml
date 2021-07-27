@@ -18,7 +18,8 @@ matches:
       - name: mydate
         type: date
         params:
-          format: "%m/%d/%Y"
+          # format: "%m/%d/%Y"
+          format: "%Y-%m-%d"
 
   # Shell commands
   - trigger: ":shell"
@@ -29,16 +30,31 @@ matches:
         params:
           cmd: "echo Hello from your shell"
 
+  # ----------------------------------------------
+  - trigger: ":mb-daily-title"
+    replace: "Updates - Daily - {{mbdate}}"
+    vars:
+      - name: mbdate
+        type: date
+        params:
+          format: "%Y-%m-%d"
+
   - trigger: ":mb-updates"
     replace: >
-      **{{ghdate}}**
+      GitHub Issues - [Updated](https://github.com/mapblocks/microservices/issues?q=updated%3A{{ghdate}}) / [Closed](https://github.com/mapblocks/microservices/issues?q=closed%3A{{ghdate}}) on {ghdate}
 
-      - [GitHub MapBlocks Issues / Updated](https://github.com/mapblocks/microservices/issues?q=updated%3A%3E%3D{{ghdate}})
 
-      [GitHub MapBlocks Issues / Closed](https://github.com/mapblocks/microservices/issues?q=closed%3A%3E%3D{{ghdate}})
+      ---
+
+
+      ## Summary
+
+
+
+      ## Notes
+
     vars:
       - name: ghdate
         type: date
         params:
           format: "%Y-%m-%d"
-
