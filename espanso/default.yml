@@ -32,16 +32,26 @@ matches:
 
   # ----------------------------------------------
   - trigger: ":mb-daily-title"
-    replace: "Updates - Daily - {{mbdate}}"
     vars:
       - name: mbdate
         type: date
         params:
           format: "%Y-%m-%d"
+    replace: "MapBlocks / Updates / Daily - {{mbdate}}"
 
   - trigger: ":mb-updates"
-    replace: >
-      GitHub Issues - [Updated](https://github.com/mapblocks/microservices/issues?q=updated%3A{{ghdate}}) / [Closed](https://github.com/mapblocks/microservices/issues?q=closed%3A{{ghdate}}) on {ghdate}
+    vars:
+      - name: mbdate
+        type: date
+        params:
+          format: "%Y-%m-%d"
+    replace: |
+      # MapBlocks / Updates / Daily / {{mbdate}}
+
+      ## GitHub Issues on {{mbdate}}
+
+      - [Updated](https://github.com/mapblocks/microservices/issues?q=updated%3A{{mbdate}})
+      - [Closed](https://github.com/mapblocks/microservices/issues?q=closed%3A{{mbdate}})
 
 
       ---
@@ -53,8 +63,12 @@ matches:
 
       ## Notes
 
-    vars:
-      - name: ghdate
-        type: date
-        params:
-          format: "%Y-%m-%d"
+  # ----------------------------------------------
+  - trigger: ":greet"
+    form: |
+      Hey {{name}},
+      {{text}}
+      Happy Birthday!
+    form_fields:
+      text:
+        multiline: true
