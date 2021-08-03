@@ -48,14 +48,16 @@ matches:
     replace: |
       # MapBlocks / Updates / Daily / {{mbdate}}
 
-      ## GitHub Issues on {{mbdate}}
-
-      - [Updated](https://github.com/mapblocks/microservices/issues?q=updated%3A{{mbdate}})
-      - [Closed](https://github.com/mapblocks/microservices/issues?q=closed%3A{{mbdate}})
-
+      `{{mbdate}}-daily.md`
 
       ---
 
+      ## GitHub Issues on {{mbdate}}
+
+      - [Updated](https://github.com/mapblocks/microservices/issues?q=updated%3A{{mbdate}})
+      [Closed](https://github.com/mapblocks/microservices/issues?q=closed%3A{{mbdate}})
+
+      ---
 
       ## Summary
 
