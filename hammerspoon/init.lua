@@ -131,6 +131,71 @@ end
 hs.hotkey.bind(movementAppplicationLaunchOrFocus, "M", function() confirmOnEnter("Messages") end)
 hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "S", function() confirmOnEnter("Slack") end)
 
+hs.hotkey.bind(movementAppplicationLaunchOrFocus, ";", function()
+    hs.hints.windowHints()
+end)
+
+-- -----------------------------------------------
+-- WINDOW-HINTS ----------------------------------
+-- -----------------------------------------------
+hs.hotkey.bind(movementAppplicationLaunchOrFocus, ";", function()
+    hs.hints.windowHints()
+end)
+
+-- -----------------------------------------------
+-- EXPOSE ----------------------------------------
+-- -----------------------------------------------
+hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary,';', function()
+  local options = {
+    showThumbnails = true,
+    showTitles = false,
+    includeOtherSpaces=false,
+    includeNonVisible=false,
+    highlightThumbnailAlpha = 1,
+    highlightThumbnailStrokeWidth = 4,
+    highlightColor = {0.9,0.9,0.9,0.5},
+    backgroundColor = {0, 0, 0, 0.8},
+  }
+
+  local filter = hs.window.filter.new(false):setAppFilter('iTerm2', false)
+
+  -- filter.ignoreAlways['iTerm'] = true
+  -- filter:rejectApp('iTerm')
+
+  local expose = hs.expose.new(filter, options)
+
+  expose:toggleShow()
+end)
+
+-- -----------------------------------------------
+-- SWITCHER --------------------------------------
+-- -----------------------------------------------
+
+-- set up your windowfilter
+local filter = hs.window.filter.new(false):setAppFilter('iTerm2', false)
+
+local switcher = hs.window.switcher.new() -- default windowfilter: only visible windows, all Spaces
+
+switcher.ui.highlightColor = {0,0,0,0.5}
+-- switcher.ui.thumbnailSize = 128
+switcher.ui.thumbnailSize = 400
+-- switcher.ui.selectedThumbnailSize = 384
+switcher.ui.selectedThumbnailSize = 500
+switcher.ui.backgroundColor = {0.125, 0.125, 0.125, 0.8}
+-- switcher.ui.textSize = 12
+switcher.ui.fontName = 'SF Pro'
+switcher.ui.titleBackgroundColor = {0,0,0,0.2}
+switcher.ui.showTitles = false
+switcher.ui.showSelectedTitle = false
+switcher.ui.showSelectedThumbnail = false
+
+-- bind to hotkeys; WARNING: at least one modifier key is required!
+hs.hotkey.bind({"cmd", "ctrl"}, ";", function()switcher:next()end)
+hs.hotkey.bind({"cmd", "ctrl", "shift"}, ";", function()switcher:previous()end)
+
+-- -----------------------------------------------
+-- -----------------------------------------------
+-- -----------------------------------------------
 hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
 
 bindApplicationFocus("I", default_browser_name)
