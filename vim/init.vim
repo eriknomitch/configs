@@ -12,6 +12,7 @@ colors bluegreen
 " Automatically write buffers when required
 " Spellcheck
 autocmd BufRead,BufNewFile *.md,*.txt setlocal spell
+autocmd BufRead .del.txt setlocal nospell
 
 " Instant search
 set incsearch
