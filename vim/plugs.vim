@@ -93,9 +93,9 @@ Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'sheerun/vim-polyglot'
 " Plug 'jreybert/vimagit'
-Plug 'suan/vim-instant-markdown'
-Plug 'epeli/slimux'
-Plug 'goerz/ipynb_notedown.vim'
+" Plug 'suan/vim-instant-markdown'
+" Plug 'epeli/slimux'
+" Plug 'goerz/ipynb_notedown.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'cappyzawa/starlark.vim'
 
