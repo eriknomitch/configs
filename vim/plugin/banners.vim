@@ -49,6 +49,7 @@ endfunction
 " COMMENT-DELIMITER ------------------------------
 " ------------------------------------------------
 function CommentDelimiter()
+  " return split(&commentstring, '%s')
   return b:NERDCommenterDelims["left"]
 endfunction
 
@@ -56,14 +57,14 @@ endfunction
 " BAR --------------------------------------------
 " ------------------------------------------------
 function BarUntilPoint()
-  
+
   let contents = getline(".")
- 
+
   " If the line contents does not end in a space, add one.
   if contents !~ ' $'
     let contents = contents." "
   endif
- 
+
   " If the line is not already commented, comment it
   let delimiter = CommentDelimiter()
 
@@ -73,7 +74,7 @@ function BarUntilPoint()
 
   " Create the bar to insert
   let bar_length = 50 - len(contents)
-  
+
   " Decide on the character.
   let char = BarCharacter()
 
