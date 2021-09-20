@@ -15,17 +15,9 @@ endif
 
 let g:deoplete#enable_at_startup = 0
 
-" Packages
 " ================================================
-" For jedi (python) https://github.com/davidhalter/jedi
-" Plug 'zchee/deoplete-jedi'
-
-
-" LSP
-" ------------------------------------------------
-" FROM: https://www.chrisatmachine.com/Neovim/27-native-lsp/
-" Plug 'neovim/nvim-lspconfig'
-" Plug 'hrsh7th/nvim-compe'
+" PACKAGES =======================================
+" ================================================
 
 " Autocompletion/Snippets
 " ------------------------------------------------
@@ -59,15 +51,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdcommenter'
-" Plug 'mhinz/vim-signify' " (git gutter)
 Plug 'tpope/vim-unimpaired'
 Plug 'kana/vim-arpeggio'
 Plug 'rizzatti/dash.vim'
 Plug 'w0rp/ale'
 Plug 'skywind3000/asyncrun.vim'
-
-" Tabnine https://www.tabnine.com/install/vim
-" Plug 'codota/tabnine-vim'
 
 " Vim Interaction
 " ------------------------------------------------
@@ -92,10 +80,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'sheerun/vim-polyglot'
-" Plug 'jreybert/vimagit'
-" Plug 'suan/vim-instant-markdown'
-" Plug 'epeli/slimux'
-" Plug 'goerz/ipynb_notedown.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'cappyzawa/starlark.vim'
 
@@ -119,7 +103,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'elzr/vim-json'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
-" Plug 'mxw/vim-jsx'
 Plug 'maxmellon/vim-jsx-pretty'
 
 " Other
@@ -132,16 +115,8 @@ Plug 'zenbro/mirror.vim'
 " FROM: https://github.com/unisonweb/unisonweb-org/blob/master/src/data/docs/editor-setup.md#vim
 Plug 'unisonweb/unison', { 'branch': 'trunk', 'rtp': 'editor-support/vim' }
 
-" Plug 'ludovicchabant/vim-gutentags'
-
 " https://github.com/bignimbus/you-are-here.vim
 Plug 'bignimbus/you-are-here.vim'
-
-" Plug 'blueyed/vim-diminactive'
-
-" Plug 'kyazdani42/nvim-web-devicons'
-" " Plug 'romgrk/lib.kom' -- removed! You can remove it from your vimrc
-" Plug 'romgrk/barbar.nvim'
 
 call plug#end()
 
