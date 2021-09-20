@@ -46,8 +46,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'mbbill/undotree'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdcommenter'
@@ -56,6 +54,16 @@ Plug 'kana/vim-arpeggio'
 Plug 'rizzatti/dash.vim'
 Plug 'w0rp/ale'
 Plug 'skywind3000/asyncrun.vim'
+
+" Status Bars
+" -----------------------------------------------
+
+" https://github.com/vim-airline/vim-airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" https://github.com/hoob3rt/lualine.nvim
+Plug 'hoob3rt/lualine.nvim'
 
 " Vim Interaction
 " ------------------------------------------------
