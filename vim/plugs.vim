@@ -63,7 +63,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " https://github.com/hoob3rt/lualine.nvim
-Plug 'hoob3rt/lualine.nvim'
+" Plug 'hoob3rt/lualine.nvim'
 
 " Vim Interaction
 " ------------------------------------------------
