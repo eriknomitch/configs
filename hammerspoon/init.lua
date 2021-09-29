@@ -55,6 +55,8 @@ end
 -- -----------------------------------------------
 function setMute(state)
   device = hs.audiodevice.defaultOutputDevice()
+
+  hs.alert(device:name())
   device:setOutputVolume(0)
   -- for _, device in pairs(hs.audiodevice.allInputDevices()) do
   --   device:setInputMuted(state)
