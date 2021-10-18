@@ -43,7 +43,8 @@ Plug 'prettier/vim-prettier', {
 
 " ------------------------------------------------
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-endwise'
 Plug 'mbbill/undotree'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'ntpeters/vim-better-whitespace'
