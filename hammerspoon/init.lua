@@ -211,6 +211,7 @@ bindApplicationFocus("O", "Obsidian")
 bindApplicationFocus("C", "Remote Control")
 bindApplicationFocus("R", "Remote Control")
 bindApplicationFocus("V", "IINA")
+bindApplicationFocus("G", "Gmail")
 
 -- Secondary
 -- -----------------------------------------------
