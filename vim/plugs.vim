@@ -42,18 +42,15 @@ Plug 'prettier/vim-prettier', {
     \ 'swift' ] }
 
 " ------------------------------------------------
-Plug 'tpope/vim-fugitive'
-" Plug 'tpope/vim-surround'
-" Plug 'tpope/vim-endwise'
 Plug 'mbbill/undotree'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-unimpaired'
 Plug 'kana/vim-arpeggio'
 Plug 'rizzatti/dash.vim'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 Plug 'skywind3000/asyncrun.vim'
 
 " Status Bars
@@ -68,8 +65,6 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Vim Interaction
 " ------------------------------------------------
-Plug 'terryma/vim-multiple-cursors'
-Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-repeat' " Dependency of vim-easyclip
 Plug 'svermeulen/vim-easyclip'
 
