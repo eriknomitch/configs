@@ -63,9 +63,15 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
 Plug 'scrooloose/nerdcommenter'
-Plug 'kana/vim-arpeggio'
 Plug 'rizzatti/dash.vim'
 Plug 'skywind3000/asyncrun.vim'
+
+" Interface
+" ------------------------------------------------
+
+" Adds font icons to many plugins
+" https://github.com/ryanoasis/vim-devicons
+Plug 'ryanoasis/vim-devicons'
 
 " Status Bars
 " -----------------------------------------------
@@ -126,9 +132,10 @@ Plug 'maxmellon/vim-jsx-pretty'
 
 " Other
 " ------------------------------------------------
+Plug 'kana/vim-arpeggio'
 Plug 'samoshkin/vim-mergetool'
-Plug 'ryanoasis/vim-devicons'
-Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
+
+" Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 Plug 'zenbro/mirror.vim'
 
 " FROM: https://github.com/unisonweb/unisonweb-org/blob/master/src/data/docs/editor-setup.md#vim
