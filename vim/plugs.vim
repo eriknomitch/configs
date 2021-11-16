@@ -42,15 +42,29 @@ Plug 'prettier/vim-prettier', {
     \ 'swift' ] }
 
 " ------------------------------------------------
+
+" Visualize undo history
+" https://github.com/mbbill/undotree
 Plug 'mbbill/undotree'
-Plug 'ekalinin/Dockerfile.vim'
+
+" Whitespace tools
+" https://github.com/ntpeters/vim-better-whitespace
 Plug 'ntpeters/vim-better-whitespace'
-" Plug 'tpope/vim-commentary'
-Plug 'scrooloose/nerdcommenter'
+
+" Comment Line(s)
+" https://github.com/tpope/vim-commentary
+Plug 'tpope/vim-commentary'
+
+" Hotkeys for surrounding strings, etc with anything
+" https://github.com/tpope/vim-surround
+Plug 'tpope/vim-surround'
+
+" https://github.com/tpope/vim-unimpaired
 Plug 'tpope/vim-unimpaired'
+
+Plug 'scrooloose/nerdcommenter'
 Plug 'kana/vim-arpeggio'
 Plug 'rizzatti/dash.vim'
-" Plug 'w0rp/ale'
 Plug 'skywind3000/asyncrun.vim'
 
 " Status Bars
@@ -80,6 +94,7 @@ endif
 
 " Syntax/Formatting
 " ------------------------------------------------
+Plug 'ekalinin/Dockerfile.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'nathanaelkane/vim-indent-guides'
 
