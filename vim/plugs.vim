@@ -41,6 +41,7 @@ Plug 'prettier/vim-prettier', {
     \ 'html',
     \ 'swift' ] }
 
+" Utility
 " ------------------------------------------------
 
 " Visualize undo history
@@ -55,6 +56,9 @@ Plug 'ntpeters/vim-better-whitespace'
 " https://github.com/tpope/vim-commentary
 Plug 'tpope/vim-commentary'
 
+" Comment Line(s)
+Plug 'scrooloose/nerdcommenter'
+
 " Hotkeys for surrounding strings, etc with anything
 " https://github.com/tpope/vim-surround
 Plug 'tpope/vim-surround'
@@ -62,12 +66,13 @@ Plug 'tpope/vim-surround'
 " https://github.com/tpope/vim-unimpaired
 Plug 'tpope/vim-unimpaired'
 
-Plug 'scrooloose/nerdcommenter'
-Plug 'rizzatti/dash.vim'
-Plug 'skywind3000/asyncrun.vim'
-
 " Interface
 " ------------------------------------------------
+
+" Extended fuzzy finder UI
+" https://github.com/nvim-telescope/telescope.nvim
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Adds font icons to many plugins
 " https://github.com/ryanoasis/vim-devicons
@@ -132,17 +137,29 @@ Plug 'maxmellon/vim-jsx-pretty'
 
 " Other
 " ------------------------------------------------
-Plug 'kana/vim-arpeggio'
+
+" https://github.com/kana/vim-arpeggio
+" Mappings for simultaneously pressed keys
+" Plug 'kana/vim-arpeggio'
+
 Plug 'samoshkin/vim-mergetool'
+Plug 'rizzatti/dash.vim'
+Plug 'skywind3000/asyncrun.vim'
+
 
 " Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
-Plug 'zenbro/mirror.vim'
+
+" Remote file editing
+" https://github.com/zenbro/mirror.vim
+" Plug 'zenbro/mirror.vim'
 
 " FROM: https://github.com/unisonweb/unisonweb-org/blob/master/src/data/docs/editor-setup.md#vim
-Plug 'unisonweb/unison', { 'branch': 'trunk', 'rtp': 'editor-support/vim' }
+" Plug 'unisonweb/unison', { 'branch': 'trunk', 'rtp': 'editor-support/vim' }
 
 " https://github.com/bignimbus/you-are-here.vim
-Plug 'bignimbus/you-are-here.vim'
+" Plug 'bignimbus/you-are-here.vim'
+
+" nnoremap <silent> <leader>here :call you_are_here#Toggle()<CR>
 
 call plug#end()
 

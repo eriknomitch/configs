@@ -1,7 +1,7 @@
 {
   "default": {
     "extensions": [""],
-    "files":      ["ofe.json", ".bin/*"],
+    "files": ["ofe.json", ".bin/*"],
     "exclusions": ["*.ogg"]
   },
   "zsh": {
@@ -15,7 +15,14 @@
     "files": ["hyper.js"]
   },
   "vim": {
-    "files": ["vim/init.vim", "vim/coc-settings.json", "vim/after/plugin/*", "vim/colors/*", "vim/**/*.lua"],
+    "files": [
+      "vim/init.vim",
+      "vim/coc-settings.json",
+      "vim/after/plugin/*",
+      "vim/pluginrc.d/*",
+      "vim/colors/*",
+      "vim/**/*.lua"
+    ],
     "first_file": "vim/init.vim"
   },
   "ssh": {
