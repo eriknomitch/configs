@@ -5,13 +5,13 @@ call plug#begin()
 
 " Initialize
 " ------------------------------------------------
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
 
 let g:deoplete#enable_at_startup = 0
 
@@ -64,7 +64,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 
 " https://github.com/tpope/vim-unimpaired
-Plug 'tpope/vim-unimpaired'
+" Plug 'tpope/vim-unimpaired'
 
 " Interface
 " ------------------------------------------------
@@ -95,13 +95,13 @@ Plug 'svermeulen/vim-easyclip'
 
 " defx (File Browser)
 " ------------------------------------------------
-if has('nvim')
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/defx.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" if has('nvim')
+"   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/defx.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
 
 " Syntax/Formatting
 " ------------------------------------------------
