@@ -1,3 +1,9 @@
+" ================================================
+" PLUGINS.d->NVIM-LSPCONFIG ======================
+" ================================================
+
+" FROM: (edited) https://github.com/neovim/nvim-lspconfig#readme
+
 lua << EOF
 require'lspconfig'.pyright.setup{}
 

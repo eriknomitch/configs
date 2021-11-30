@@ -1,11 +1,16 @@
 call plug#begin()
 
 " ================================================
-" PACKAGES =======================================
+" PLUG->PACKAGES =================================
 " ================================================
 
 " LSP
 " ------------------------------------------------
+" SEE: LSP
+
+" NOTE: REQUIRES:
+" $ npm install -g pyright typescript typescript-language-server
+" $ asdf reshim
 Plug 'neovim/nvim-lspconfig'
 
 " Autocompletion/Snippets
@@ -82,17 +87,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-repeat' " Dependency of vim-easyclip
 Plug 'svermeulen/vim-easyclip'
 
-" defx (File Browser)
-" ------------------------------------------------
-" if has('nvim')
-"   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-"   Plug 'Shougo/defx.nvim'
-"   Plug 'roxma/nvim-yarp'
-"   Plug 'roxma/vim-hug-neovim-rpc'
-" endif
-
-" Syntax/Formatting
+ Syntax/Formatting
 " ------------------------------------------------
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'junegunn/vim-easy-align'
@@ -134,21 +129,6 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'samoshkin/vim-mergetool'
 Plug 'rizzatti/dash.vim'
 Plug 'skywind3000/asyncrun.vim'
-
-
-" Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
-
-" Remote file editing
-" https://github.com/zenbro/mirror.vim
-" Plug 'zenbro/mirror.vim'
-
-" FROM: https://github.com/unisonweb/unisonweb-org/blob/master/src/data/docs/editor-setup.md#vim
-" Plug 'unisonweb/unison', { 'branch': 'trunk', 'rtp': 'editor-support/vim' }
-
-" https://github.com/bignimbus/you-are-here.vim
-" Plug 'bignimbus/you-are-here.vim'
-
-" nnoremap <silent> <leader>here :call you_are_here#Toggle()<CR>
 
 call plug#end()
 
