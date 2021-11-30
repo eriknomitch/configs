@@ -4,10 +4,13 @@ call plug#begin()
 " PLUG->PACKAGES =================================
 " ================================================
 
-" LSP
+" ------------------------------------------------
+" LSP --------------------------------------------
 " ------------------------------------------------
 " SEE: LSP
 
+" LSP Servers
+" ------------------------------------------------
 " NOTE: Requires LSP server(s)
 " https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 "
@@ -16,7 +19,30 @@ call plug#begin()
 "
 " Python:
 " $ npm install -g pyright
+"
+" Vim:
+" $ npm install -g vim-language-server
+
+
+" SEE: LSP_SERVER_INITIALIZATION
+" ------------------------------------------------
+" Additionally, for each server, pluginrc.d/nvim-lspconfig.vim needs to be
+" edited. Add the server's executable hname to 'servers'.
+
+" Packages
+" ------------------------------------------------
+
+" Quickstart configurations for the Nvim LSP client
+" https://github.com/neovim/nvim-lspconfig
 Plug 'neovim/nvim-lspconfig'
+
+" Companion plugin to install language servers automatically
+" https://github.com/williamboman/nvim-lsp-installer
+Plug 'williamboman/nvim-lsp-installer'
+
+" ------------------------------------------------
+" REST -------------------------------------------
+" ------------------------------------------------
 
 " Utility
 " ------------------------------------------------
@@ -64,7 +90,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-repeat' " Dependency of vim-easyclip
 Plug 'svermeulen/vim-easyclip'
 
- Syntax/Formatting
+" Syntax/Formatting
 " ------------------------------------------------
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'junegunn/vim-easy-align'
