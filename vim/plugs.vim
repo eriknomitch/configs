@@ -8,32 +8,15 @@ call plug#begin()
 " ------------------------------------------------
 " SEE: LSP
 
-" NOTE: REQUIRES:
-" $ npm install -g pyright typescript typescript-language-server
-" $ asdf reshim
+" NOTE: Requires LSP server(s)
+" https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+"
+" TypeScript:
+" $ npm install -g typescript typescript-language-server
+"
+" Python:
+" $ npm install -g pyright
 Plug 'neovim/nvim-lspconfig'
-
-" Autocompletion/Snippets
-" ------------------------------------------------
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Plug 'prettier/vim-prettier', {
-"   \ 'for': [
-"     \ 'javascript',
-"     \ 'typescript',
-"     \ 'css',
-"     \ 'less',
-"     \ 'scss',
-"     \ 'json',
-"     \ 'graphql',
-"     \ 'markdown',
-"     \ 'vue',
-"     \ 'lua',
-"     \ 'php',
-"     \ 'python',
-"     \ 'ruby',
-"     \ 'html',
-"     \ 'swift' ] }
 
 " Utility
 " ------------------------------------------------
@@ -57,9 +40,6 @@ Plug 'scrooloose/nerdcommenter'
 " https://github.com/tpope/vim-surround
 Plug 'tpope/vim-surround'
 
-" https://github.com/tpope/vim-unimpaired
-" Plug 'tpope/vim-unimpaired'
-
 " Interface
 " ------------------------------------------------
 
@@ -78,9 +58,6 @@ Plug 'ryanoasis/vim-devicons'
 " https://github.com/vim-airline/vim-airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-" https://github.com/hoob3rt/lualine.nvim
-" Plug 'hoob3rt/lualine.nvim'
 
 " Vim Interaction
 " ------------------------------------------------
@@ -121,14 +98,8 @@ Plug 'maxmellon/vim-jsx-pretty'
 
 " Other
 " ------------------------------------------------
-
-" https://github.com/kana/vim-arpeggio
-" Mappings for simultaneously pressed keys
-" Plug 'kana/vim-arpeggio'
-
 Plug 'samoshkin/vim-mergetool'
 Plug 'rizzatti/dash.vim'
 Plug 'skywind3000/asyncrun.vim'
 
 call plug#end()
-
