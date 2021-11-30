@@ -13,7 +13,7 @@ call plug#begin()
 "   Plug 'roxma/vim-hug-neovim-rpc'
 " endif
 
-let g:deoplete#enable_at_startup = 0
+" let g:deoplete#enable_at_startup = 0
 
 " ================================================
 " PACKAGES =======================================
@@ -21,25 +21,25 @@ let g:deoplete#enable_at_startup = 0
 
 " Autocompletion/Snippets
 " ------------------------------------------------
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'prettier/vim-prettier', {
-  \ 'for': [
-    \ 'javascript',
-    \ 'typescript',
-    \ 'css',
-    \ 'less',
-    \ 'scss',
-    \ 'json',
-    \ 'graphql',
-    \ 'markdown',
-    \ 'vue',
-    \ 'lua',
-    \ 'php',
-    \ 'python',
-    \ 'ruby',
-    \ 'html',
-    \ 'swift' ] }
+" Plug 'prettier/vim-prettier', {
+"   \ 'for': [
+"     \ 'javascript',
+"     \ 'typescript',
+"     \ 'css',
+"     \ 'less',
+"     \ 'scss',
+"     \ 'json',
+"     \ 'graphql',
+"     \ 'markdown',
+"     \ 'vue',
+"     \ 'lua',
+"     \ 'php',
+"     \ 'python',
+"     \ 'ruby',
+"     \ 'html',
+"     \ 'swift' ] }
 
 " Utility
 " ------------------------------------------------
