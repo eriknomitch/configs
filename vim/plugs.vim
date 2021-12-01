@@ -26,6 +26,7 @@ call plug#begin()
 
 " SEE: LSP_SERVER_INITIALIZATION
 " ------------------------------------------------
+" FIX: I don't think this is true...?
 " Additionally, for each server, pluginrc.d/nvim-lspconfig.vim needs to be
 " edited. Add the server's executable hname to 'servers'.
 
@@ -39,6 +40,19 @@ Plug 'neovim/nvim-lspconfig'
 " Companion plugin to install language servers automatically
 " https://github.com/williamboman/nvim-lsp-installer
 Plug 'williamboman/nvim-lsp-installer'
+
+" A completion plugin for neovim coded in Lua
+" https://github.com/hrsh7th/nvim-cmp
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
+" ------------------------------------------------
+" GITHUB-COPILOT ---------------------------------
+" ------------------------------------------------
+Plug 'github/copilot.vim'
 
 " ------------------------------------------------
 " REST -------------------------------------------
