@@ -262,35 +262,7 @@ let g:mergetool_prefer_revision = 'local'
 call pathogen#infect()
 call pathogen#helptags()
 
-" ------------------------------------------------
-" CONFIG->NEOSNIP --------------------------------
-" ------------------------------------------------
-" " Plugin key-mappings.
-" " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" xmap <C-k>     <Plug>(neosnippet_expand_target)
-"
-" " SuperTab like snippets behavior.
-" " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-" imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-"
-" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-"       \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-"
-" " For conceal markers.
-" if has('conceal')
-"   set conceallevel=2 concealcursor=niv
-" endif
-"
-" " https://github.com/Shougo/neosnippet.vim#configuration
-" let g:neosnippet#enable_snipmate_compatibility = 1
-" let g:neosnippet#snippets_directory = expand("~/.vim/plugged/vim-snippets/snippets")
-
-" ------------------------------------------------
+ ------------------------------------------------
 " CONFIG->CTRLP ----------------------------------
 " ------------------------------------------------
 let g:ctrlp_map = '<C-p>'
@@ -327,31 +299,7 @@ noremap <leader>c :Commentary<cr>
 let g:signify_realtime = 1
 let g:signify_vcs_list = [ 'git' ]
 
-" ------------------------------------------------
-" CONFIG->GOYO -----------------------------------
-" ------------------------------------------------
-function! s:goyo_enter()
-  let b:quitting = 0
-  let b:quitting_bang = 0
-  autocmd QuitPre <buffer> let b:quitting = 1
-  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
-endfunction
-
-function! s:goyo_leave()
-  " Quit Vim if this is the only remaining buffer
-  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-    if b:quitting_bang
-      qa!
-    else
-      qa
-    endif
-  endif
-endfunction
-
-autocmd! User GoyoEnter call <SID>goyo_enter()
-autocmd! User GoyoLeave call <SID>goyo_leave()
-
-" ------------------------------------------------
+ ------------------------------------------------
 " CONFIG->EASY-ALIGN -----------------------------
 " ------------------------------------------------
 
@@ -360,13 +308,6 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-" ------------------------------------------------
-" CONFIG->BETTER-WHITESPACE ----------------------
-" ------------------------------------------------
-" let g:better_whitespace_enabled = 0
-
-" autocmd BufEnter * EnableStripWhitespaceOnSave
 
 " ------------------------------------------------
 " CONFIG->DEOPLETE -------------------------------
@@ -613,7 +554,6 @@ nnoremap <leader>sw :StripWhitespace<CR>
 " ------------------------------------------------
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --smartcase'
 
-
 " https://github.com/junegunn/fzf.vim#commands
 nnoremap <leader>s :Rg<CR>
 nnoremap <leader>S :Lines<CR>
@@ -636,13 +576,3 @@ let s:config_home = stdpath('config')
 for s:f in split(glob(s:config_home . '/pluginrc.d/*.vim'), '\n')
   execute 'source' fnameescape(s:f)
 endfor
-
-" ------------------------------------------------
-" LSP --------------------------------------------
-" ------------------------------------------------
-" SEE: LSP
-
-" lua << EOF
-" require'lspconfig'.pyright.setup{}
-" local utils = require('lsp-config')
-" EOF
