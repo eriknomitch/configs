@@ -7,6 +7,7 @@
 " ------------------------------------------------
 "  NOTE: Also see CONFIG->COC configuration since some are general
 syntax enable
+
 colors bluegreen
 
 " Automatically write buffers when required
@@ -459,10 +460,15 @@ nnoremap <leader>g :Magit<CR>
 
 let s:config_home = stdpath('config')
 
-
 " FROM: https://github.com/xu-cheng/dotfiles/blob/master/home/.config/nvim/init.vim#L42
 
 " Load plugins settings
 for s:f in split(glob(s:config_home . '/pluginrc.d/*.vim'), '\n')
   execute 'source' fnameescape(s:f)
 endfor
+
+
+" ------------------------------------------------
+" ------------------------------------------------
+" ------------------------------------------------
+lua require("bluegreen")

@@ -102,6 +102,9 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 
+" REPO: https://github.com/pangloss/vim-javascript
+Plug 'pangloss/vim-javascript'
+
 "}}}
 
 " ------------------------------------------------
@@ -170,5 +173,15 @@ Plug 'christoomey/vim-tmux-navigator'
 " ------------------------------------------------
 Plug 'samoshkin/vim-mergetool'
 Plug 'skywind3000/asyncrun.vim'
+
+" ------------------------------------------------
+" COLORSCHEMES -----------------------------------
+" ------------------------------------------------
+Plug 'tjdevries/colorbuddy.nvim'
+
+" REPO: https://github.com/Iron-E/nvim-highlite
+Plug 'Iron-E/nvim-highlite'
+
+" Plug 'colors/onedark.vim'
 
 call plug#end()
