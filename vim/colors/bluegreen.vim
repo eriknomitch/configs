@@ -19,10 +19,10 @@
 set termguicolors
 
 " Correct RGB escape codes for vim inside tmux
-if !has('nvim') && $TERM ==# 'screen-256color'
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
+" if !has('nvim') && $TERM ==# 'screen-256color'
+"   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" endif
 
 " ------------------------------------------------
 " ------------------------------------------------
@@ -41,27 +41,38 @@ let g:colors_name="bluegreen"
 hi Normal       ctermfg=White ctermfg=NONE guifg=White ctermbg=NONE guibg=Black cterm=NONE
 hi NonText      ctermfg=DarkGray guifg=DarkGray  ctermbg=NONE guibg=Black
 
+" ------------------------------------------------
+" PALETTE ----------------------------------------
+" ------------------------------------------------
 " #67FF68
 " #1EC703
 " #6868FF
 " #1FB7B7
+" #FF2B2B
+" #FF4C4C
+" #7D29EE
+" #945AE2
+" #6DFFB5
 
+" ------------------------------------------------
+" DEFINITIONS ------------------------------------
+" ------------------------------------------------
 hi Statement    ctermfg=Blue guifg=#6868FF      ctermbg=NONE guibg=NONE
 " hi Comment      ctermfg=Green guifg=#00ff00  ctermbg=NONE guibg=NONE cterm=bold gui=bold term=bold
 hi Comment      ctermfg=Green guifg=#67FF68  ctermbg=NONE guibg=NONE cterm=bold gui=bold term=bold
-hi Constant     ctermfg=DarkCyan guifg=DarkCyan  ctermbg=NONE guibg=NONE
+hi Constant     ctermfg=DarkCyan guifg=#1FB7B7  ctermbg=NONE guibg=NONE
 hi Identifier   ctermfg=Cyan guifg=Cyan      ctermbg=NONE guibg=NONE
 hi Type         ctermfg=DarkGreen guifg=#00aa00 ctermbg=NONE guibg=NONE
 hi Folded       ctermfg=DarkGreen guifg=#00aa00 ctermbg=NONE guibg=NONE cterm=underline gui=underline term=NONE
 hi Special      ctermfg=Blue guifg=#6868FF      ctermbg=NONE guibg=NONE
 " hi PreProc      ctermfg=LightGray guifg=LightGray ctermbg=NONE guibg=NONE cterm=bold gui=bold term=bold
-hi PreProc      ctermfg=LightGray guifg=LightGray ctermbg=NONE guibg=NONE
+hi PreProc      ctermfg=LightGray guifg=#999999 gui=bold ctermbg=NONE guibg=NONE
 hi Scrollbar    ctermfg=Blue guifg=#6868FF      ctermbg=NONE guibg=NONE
 hi Cursor       ctermfg=white guifg=white     ctermbg=NONE guibg=NONE
-hi ErrorMsg     ctermfg=Red guifg=Red       ctermbg=NONE guibg=NONE cterm=bold gui=bold term=bold
+hi ErrorMsg     ctermfg=Red guifg=#FF4C4C       ctermbg=NONE guibg=NONE cterm=bold gui=bold term=bold
 hi WarningMsg   ctermfg=Yellow guifg=Yellow    ctermbg=NONE guibg=NONE
-hi VertSplit    cterm=NONE ctermfg=White guifg=White     ctermbg=NONE guibg=NONE
-hi Directory    ctermfg=Cyan guifg=Cyan      ctermbg=DarkBlue guibg=DarkBlue
+hi VertSplit    cterm=NONE ctermfg=White guifg=#222222     ctermbg=NONE guibg=#000000
+hi Directory    ctermfg=Cyan guifg=#1FB7B7      ctermbg=DarkBlue guibg=DarkBlue
 hi Visual       ctermfg=White guifg=White     ctermbg=DarkGray guibg=DarkGray cterm=underline gui=underline term=NONE
 hi Title        ctermfg=White guifg=White     ctermbg=DarkBlue guibg=DarkBlue
 
@@ -69,13 +80,14 @@ hi StatusLine   term=NONE cterm=NONE gui=bold,underline ctermfg=Black guifg=Blac
 hi StatusLineNC term=NONE cterm=NONE gui=bold,underline ctermfg=Black guifg=Black  ctermbg=Grey guibg=Grey
 hi LineNr       term=bold cterm=bold gui=bold ctermfg=White guifg=White ctermbg=DarkGray guibg=DarkGray
 
-hi SignColumn ctermbg=235
+" Git Gutter
+hi SignColumn ctermbg=235 guibg=#222222
 
 " ------------------------------------------------
 " PMENU ------------------------------------------
 " ------------------------------------------------
 " FROM: https://vi.stackexchange.com/a/24382
-hi Pmenu ctermfg=White ctermbg=237
+hi Pmenu ctermfg=White ctermbg=237 guibg=#444444
 hi PmenuSel ctermbg=Blue ctermfg=White cterm=bold
 hi PmenuSbar ctermbg=DarkGray
 hi PmenuThumb ctermbg=LightGray
@@ -83,18 +95,15 @@ hi PmenuThumb ctermbg=LightGray
 " ------------------------------------------------
 " ------------------------------------------------
 " ------------------------------------------------
-" dark red
-hi tsxTagName guifg=#E06C75
-hi tsxComponentName guifg=#E06C75
-hi tsxCloseComponentName guifg=#E06C75
+hi tsxTagName guifg=#6DFFB5 gui=bold
+hi tsxComponentName guifg=#6DFFB5 gui=bold
+hi tsxCloseComponentName guifg=#6DFFB5 gui=bold
 
-" orange
-hi tsxCloseString guifg=#F99575
-hi tsxCloseTag guifg=#F99575
-hi tsxCloseTagName guifg=#F99575
-hi tsxAttributeBraces guifg=#F99575
-hi tsxEqual guifg=#F99575
+hi tsxCloseString guifg=#945AE2
+hi tsxCloseTag guifg=#6DFFB5 gui=bold
+hi tsxCloseTagName guifg=#945AE2 gui=bold
+hi tsxAttributeBraces guifg=#945AE2
+hi tsxEqual guifg=#945AE2
 
 " yellow
-hi tsxAttrib guifg=#F8BD7F cterm=italic
-
+hi tsxAttrib guifg=#1EC703 cterm=italic
