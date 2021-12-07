@@ -1,4 +1,4 @@
-print('Loading bluegreen...')
+-- print('Loading bluegreen...')
 
 -- Import nvim-highlite
 local highlite = require('highlite')

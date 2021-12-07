@@ -463,12 +463,18 @@ let s:config_home = stdpath('config')
 " FROM: https://github.com/xu-cheng/dotfiles/blob/master/home/.config/nvim/init.vim#L42
 
 " Load plugins settings
+" ------------------------------------------------
 for s:f in split(glob(s:config_home . '/pluginrc.d/*.vim'), '\n')
   execute 'source' fnameescape(s:f)
 endfor
 
+" lua require('plugins.init')
+
+" for s:f in split(glob(s:config_home . '/lua/plugins/*.lua'), '\n')
+"   execute 'lua' 'require' fnameescape(s:f)
+" endfor
 
 " ------------------------------------------------
 " ------------------------------------------------
 " ------------------------------------------------
-lua require("bluegreen")
+" lua require("bluegreen")
