@@ -86,6 +86,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " General
 " ------------------------------------------------
+
+" REPO: https://github.com/sheerun/vim-polyglot
+" A collection of language packs for Vim.
+Plug 'sheerun/vim-polyglot'
+
+" Utility
+" ------------------------------------------------
 Plug 'junegunn/vim-easy-align'
 Plug 'nathanaelkane/vim-indent-guides'
 

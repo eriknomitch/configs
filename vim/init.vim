@@ -156,7 +156,7 @@ au BufNewFile,BufRead *.less set filetype=less
 au! BufRead,BufNewFile *.json set filetype=json
 
 " Typescript
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+" autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 " autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 
 " JavaScript
@@ -257,13 +257,7 @@ filetype plugin indent on
 let g:mergetool_layout = 'mr'
 let g:mergetool_prefer_revision = 'local'
 
-" ------------------------------------------------
-" PATHOGEN->INIT ---------------------------------
-" ------------------------------------------------
-call pathogen#infect()
-call pathogen#helptags()
-
-" ------------------------------------------------
+" -----------------------------------------------
 " CONFIG->CTRLP ----------------------------------
 " ------------------------------------------------
 let g:ctrlp_map = '<C-p>'
@@ -309,22 +303,6 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-" ------------------------------------------------
-" CONFIG->DEOPLETE -------------------------------
-" ------------------------------------------------
-
-" " Completion with tab
-" " FROM: https://github.com/Shougo/deoplete.nvim/issues/816#issuecomment-409119635
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~ '\s'
-" endfunction
-"
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ deoplete#manual_complete()
 
 " ------------------------------------------------
 " CONFIG->VIMFILER -------------------------------
@@ -399,80 +377,6 @@ highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
 highlight link multiple_cursors_visual Visual
 
 " ------------------------------------------------
-" CONFIG->ALE ------------------------------------
-" ------------------------------------------------
-" let g:ale_javascript_prettier_use_local_config = 1
-" let g:ale_javascript_eslint_use_local_config = 1
-
-" let g:ale_typescript_tslint_use_global = 0
-" let g:ale_typescript_tslint_use_local = 1
-" let g:ale_typescript_tslint_config_path="tslint.json"
-" let g:ale_typescript_tslint_executable = expand(".asdf/shims/tslint")
-
-" let g:ale_enabled = 0
-
-" " Only lint on file open and write - not text change
-" " let g:ale_lint_on_text_changed = 'normal'
-" " let g:ale_lint_on_enter = 1
-" " let g:ale_lint_on_save = 1
-
-" " Fix on save
-" let g:ale_fix_on_save = 0
-
-" " https://github.com/w0rp/ale#5iii-how-can-i-change-the-signs-ale-uses
-" " let g:airline#extensions#ale#enabled = 1
-
-" " This is for stylelint (CSS in .jsx files)
-" " let g:ale_linter_aliases = {'jsx': 'css'}
-" " let g:ale_linter_aliases = {'jsx': 'js'}
-
-" " Linters
-" let g:ale_linters = {
-"       \  'javascript.jsx': ['prettier', 'eslint'],
-"       \  'json':  ['jq'],
-"       \  'jsx': ['prettier', 'eslint'],
-"       \  'js': ['prettier', 'eslint'],
-"       \  'yaml': ['yamllint'],
-"       \  'ruby': ['rubocop'],
-"       \  'vim': ['vint'],
-"       \  'python': ['flake8'],
-"       \  'py': ['flake8']
-"       \}
-
-" " Fixers
-" " ------------------------------------------------
-" let g:ale_fixers = {
-"       \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-"       \  'javascript.jsx': ['prettier', 'eslint'],
-"       \  'javascript': ['prettier', 'eslint'],
-"       \  'json':  ['jq'],
-"       \  'jsx': ['prettier', 'eslint'],
-"       \  'js': ['prettier', 'eslint'],
-"       \  'yaml': ['prettier'],
-"       \  'typescript': ['prettier', 'tslint'],
-"       \  'ts': ['prettier', 'tslint'],
-"       \  'ruby': ['rubocop'],
-"       \  'c': ['clang-format'],
-"       \  'python': ['black'],
-"       \  'py': ['black']
-"       \}
-
-" function! OnALELintPre()
-"   echo 'Linting...'
-" endfunction
-
-" function! OnALELintPost()
-"   echo 'Linting: Complete'
-" endfunction
-
-" augroup ALEWrap
-"   autocmd!
-"   autocmd User ALELintPre  call OnALELintPre()
-"   autocmd User ALELintPost call OnALELintPost()
-" augroup END
-
-
-" ------------------------------------------------
 " CONFIG->RG -------------------------------------
 " ------------------------------------------------
 let g:rg_highlight = 1
@@ -513,16 +417,9 @@ augroup END
 " ------------------------------------------------
 let g:vim_jsx_pretty_colorful_config = 1
 
-" ------------------------------------------------
-" CONFIG->VIM-POLYGLOT ---------------------------
-" ------------------------------------------------
-" https://github.com/sheerun/vim-polyglot#troubleshooting
-" let g:polyglot_disabled = ['markdown']
-" let g:polyglot_disabled = ['autoindent']
-
-" ------------------------------------------------
-" CONFIG->KEY-MAPPINGS ---------------------------
-" ------------------------------------------------
+" ================================================
+" CONFIG->KEY-MAPPINGS ===========================
+" ================================================
 
 " General
 " ------------------------------------------------
@@ -538,16 +435,6 @@ inoremap <S-Tab> <C-V><Tab>
 " ------------------------------------------------
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
-
-" ALE
-" ------------------------------------------------
-" nnoremap <leader>at :ALEToggle<CR>
-" nnoremap <leader>ae :ALEEnable<CR>
-" nnoremap <leader>ad :ALEDisable<CR>
-" nnoremap <leader>F :CocCommand prettier.formatFile<CR>
-" nnoremap <leader>f :CocCommand prettier.formatFile<CR>
-" nnoremap <leader>F :Prettier<CR>
-" nnoremap <leader>f :Prettier<CR>
 
 " Whitespace
 " ------------------------------------------------

@@ -10,3 +10,4 @@ karabiner.d/log
 .DS_Store
 node_modules/
 *.zwc
+scratch
