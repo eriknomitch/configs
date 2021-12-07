@@ -211,8 +211,8 @@ bindApplicationFocus("E", "Obsidian")
 bindApplicationFocus("O", "Obsidian")
 bindApplicationFocus("C", "Remote Control")
 bindApplicationFocus("R", "Remote Control")
-bindApplicationFocus("V", "Visual Studio Code")
-bindApplicationFocusSecondary("V", "IINA")
+bindApplicationFocusSecondary("V", "Visual Studio Code")
+bindApplicationFocus("V", "IINA")
 bindApplicationFocus("G", "Gmail")
 
 -- Secondary
