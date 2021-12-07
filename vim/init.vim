@@ -156,7 +156,8 @@ au BufNewFile,BufRead *.less set filetype=less
 au! BufRead,BufNewFile *.json set filetype=json
 
 " Typescript
-autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+" autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 
 " JavaScript
 au! BufNewFile,BufRead *.js set filetype=javascript

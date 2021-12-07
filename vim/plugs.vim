@@ -7,6 +7,7 @@ call plug#begin()
 " ------------------------------------------------
 " LSP --------------------------------------------
 " ------------------------------------------------
+"{{{
 " SEE: LSP
 
 " LSP Servers
@@ -48,6 +49,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+"}}}
 
 " ------------------------------------------------
 " SNIPPETS ---------------------------------------
@@ -65,19 +67,38 @@ Plug 'github/copilot.vim'
 " ------------------------------------------------
 " COC.NVIM ---------------------------------------
 " ------------------------------------------------
-
+"{{{
 " NOTE: Only use coc.nvim for these select plugins:
 " - coc-marketplace
 " - coc-prettier
+" - coc-git
+" - coc-highlight
+" - coc-react-refactor
 
 " https://github.com/neoclide/coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"}}}
+
+" ------------------------------------------------
+" SYNTAX-HIGHLIGHTING ----------------------------
+" ------------------------------------------------
+"{{{
+
+" General
+" ------------------------------------------------
+Plug 'junegunn/vim-easy-align'
+Plug 'nathanaelkane/vim-indent-guides'
+
+" Language-Specific
+" ------------------------------------------------
+" REPO: https://github.com/peitalin/vim-jsx-typescript
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
+"}}}
 
 " ------------------------------------------------
 " ------------------------------------------------
-" ------------------------------------------------
-
-" Utility
 " ------------------------------------------------
 
 " Visualize undo history
@@ -123,11 +144,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-repeat' " Dependency of vim-easyclip
 Plug 'svermeulen/vim-easyclip'
 
-" Syntax/Formatting
-" ------------------------------------------------
-Plug 'junegunn/vim-easy-align'
-Plug 'nathanaelkane/vim-indent-guides'
-
 " ------------------------------------------------
 Plug 'keith/swift.vim'
 
@@ -142,13 +158,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 " ------------------------------------------------
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
-
-" JavaScript/JSX/JSON
-" ------------------------------------------------
-" Plug 'elzr/vim-json'
-" Plug 'pangloss/vim-javascript'
-" Plug 'leafgarland/typescript-vim'
-" Plug 'maxmellon/vim-jsx-pretty'
 
 " Other
 " ------------------------------------------------
