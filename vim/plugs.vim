@@ -63,7 +63,18 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'github/copilot.vim'
 
 " ------------------------------------------------
-" REST -------------------------------------------
+" COC.NVIM ---------------------------------------
+" ------------------------------------------------
+
+" NOTE: Only use coc.nvim for these select plugins:
+" - coc-marketplace
+" - coc-prettier
+
+" https://github.com/neoclide/coc.nvim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" ------------------------------------------------
+" ------------------------------------------------
 " ------------------------------------------------
 
 " Utility
@@ -114,13 +125,8 @@ Plug 'svermeulen/vim-easyclip'
 
 " Syntax/Formatting
 " ------------------------------------------------
-Plug 'ekalinin/Dockerfile.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'nathanaelkane/vim-indent-guides'
-
-Plug 'sheerun/vim-polyglot'
-Plug 'rizzatti/dash.vim'
-Plug 'cappyzawa/starlark.vim'
 
 " ------------------------------------------------
 Plug 'keith/swift.vim'
@@ -139,15 +145,14 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " JavaScript/JSX/JSON
 " ------------------------------------------------
-Plug 'elzr/vim-json'
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'maxmellon/vim-jsx-pretty'
+" Plug 'elzr/vim-json'
+" Plug 'pangloss/vim-javascript'
+" Plug 'leafgarland/typescript-vim'
+" Plug 'maxmellon/vim-jsx-pretty'
 
 " Other
 " ------------------------------------------------
 Plug 'samoshkin/vim-mergetool'
-Plug 'rizzatti/dash.vim'
 Plug 'skywind3000/asyncrun.vim'
 
 call plug#end()
