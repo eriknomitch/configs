@@ -1,4 +1,2 @@
-print("init.vim")
-
-require 'plugins'
-require 'bluegreen'
+require('plugins')
+-- require 'bluegreen'
