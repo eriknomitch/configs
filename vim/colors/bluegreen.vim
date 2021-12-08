@@ -36,12 +36,6 @@ endif
 let g:colors_name="bluegreen"
 
 " ------------------------------------------------
-" GENERAL ----------------------------------------
-" ------------------------------------------------
-hi Normal       ctermfg=White ctermfg=NONE guifg=White ctermbg=NONE guibg=Black cterm=NONE
-hi NonText      ctermfg=DarkGray guifg=DarkGray  ctermbg=NONE guibg=Black
-
-" ------------------------------------------------
 " PALETTE ----------------------------------------
 " ------------------------------------------------
 " #67FF68
@@ -53,6 +47,13 @@ hi NonText      ctermfg=DarkGray guifg=DarkGray  ctermbg=NONE guibg=Black
 " #7D29EE
 " #945AE2
 " #6DFFB5
+" #685E79
+
+" ------------------------------------------------
+" GENERAL ----------------------------------------
+" ------------------------------------------------
+hi Normal       ctermfg=White ctermfg=NONE guifg=White ctermbg=NONE guibg=Black cterm=NONE
+hi NonText      ctermfg=DarkGray guifg=DarkGray  ctermbg=NONE guibg=Black
 
 " ------------------------------------------------
 " DEFINITIONS ------------------------------------
@@ -76,9 +77,9 @@ hi Directory    ctermfg=Cyan guifg=#1FB7B7      ctermbg=DarkBlue guibg=DarkBlue
 hi Visual       ctermfg=White guifg=White     ctermbg=DarkGray guibg=DarkGray cterm=underline gui=underline term=NONE
 hi Title        ctermfg=White guifg=White     ctermbg=DarkBlue guibg=DarkBlue
 
-hi StatusLine   term=NONE cterm=NONE gui=bold,underline ctermfg=Black guifg=Black ctermbg=White guibg=White
-hi StatusLineNC term=NONE cterm=NONE gui=bold,underline ctermfg=Black guifg=Black  ctermbg=Grey guibg=Grey
-hi LineNr       term=bold cterm=bold gui=bold ctermfg=White guifg=White ctermbg=DarkGray guibg=DarkGray
+hi StatusLine   term=NONE cterm=NONE gui=bold,underline ctermfg=Black guifg=Black ctermbg=White guibg=#ff0000
+hi StatusLineNC term=NONE cterm=NONE gui=bold,underline ctermfg=Black guifg=#ffffff  ctermbg=Grey guibg=#444444
+hi LineNr       term=bold cterm=bold gui=bold ctermfg=White guifg=White ctermbg=DarkGray guibg=#00ff00
 
 " Git Gutter
 hi SignColumn ctermbg=235 guibg=#222222
@@ -87,13 +88,22 @@ hi SignColumn ctermbg=235 guibg=#222222
 " PMENU ------------------------------------------
 " ------------------------------------------------
 " FROM: https://vi.stackexchange.com/a/24382
-hi Pmenu ctermfg=White ctermbg=237 guibg=#222222
+hi Pmenu guibg=#222222 guifg=#ffffff
 hi PmenuSel guibg=#222222 gui=bold
-hi PmenuSbar ctermbg=DarkGray
-hi PmenuThumb ctermbg=LightGray
+hi PmenuSbar guibg=#222222
+hi PmenuThumb guibg=#444444
 
 " ------------------------------------------------
+" TELESCOPE --------------------------------------
 " ------------------------------------------------
+hi TelescopeMatching guibg=#945AE2
+" TelescopeBorder
+" TelescopePromptPrefix
+hi TelescopeSelection guibg=#7D29EE gui=bold
+
+
+" ------------------------------------------------
+" TSX --------------------------------------------
 " ------------------------------------------------
 hi tsxTagName guifg=#6DFFB5 gui=bold
 hi tsxComponentName guifg=#6DFFB5 gui=bold
