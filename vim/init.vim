@@ -214,42 +214,8 @@ endif
 " ------------------------------------------------
 source $HOME/.config/nvim/plugs.vim
 
-" Add a map of your choice.  I prefer to  use
-" <leader>here.  My leader key is set to the
-" backslash (\), so by typing \here in normal
-" mode, I activate you-are-here.vim. Pressing
-" <ESC> will close the popups.
-
-nnoremap <silent> <leader>here :call you_are_here#YouAreHere()<CR>
-
-" top, right, bottom, left border in popups
-let g:youarehere_border = [1, 1, 1, 1]
-
-" top, right, bottom, left padding in popups
-let g:youarehere_padding = [1, 1, 1, 1]
-
-" g:content is passed to expand to render the filename.
-" see :help expand for more options
-let g:content = "%"
-
-" Customize the look of you-are-here.vim by using
-" the following highlight groups.
-
-" inactive splits:
-"
-" YouAreHereText
-" YouAreHereBorder
-" YouAreHereScrollbar
-" YouAreHereThumb
-
-" active split:
-"
-" YouAreHereActiveText
-" YouAreHereActiveBorder
-" YouAreHereActiveScrollbar
-" YouAreHereActiveThumb
-
-"
+" ------------------------------------------------
+" ------------------------------------------------
 " ------------------------------------------------
 set nocompatible
 filetype plugin on
@@ -359,25 +325,6 @@ command! FZFLines call fzf#run({
 \})
 
 " ------------------------------------------------
-" CONFIG->VIM-MULTIPLE-CURSORS -------------------
-" ------------------------------------------------
-
-" See: https://github.com/terryma/vim-multiple-cursors#mapping
-let g:multi_cursor_use_default_mapping=0
-
-" Default mapping
-" let g:multi_cursor_next_key='<C-m>'
-" let g:multi_cursor_prev_key='<C-k>'
-" let g:multi_cursor_skip_key='<C-x>'
-" let g:multi_cursor_quit_key='<Esc>'
-
-
-" Default highlighting (see help :highlight and help :highlight-link)
-" See: https://github.com/terryma/vim-multiple-cursors#highlight
-highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
-highlight link multiple_cursors_visual Visual
-
-" ------------------------------------------------
 " CONFIG->RG -------------------------------------
 " ------------------------------------------------
 let g:rg_highlight = 1
@@ -405,18 +352,6 @@ let g:netrw_altv = 1
 " CONFIG->FAR ------------------------------------
 " ------------------------------------------------
 let g:far#source = 'agnvim'
-
-" ------------------------------------------------
-" CONFIG->VIMAGIT---------------------------------
-" ------------------------------------------------
-augroup vimagit
-  autocmd User VimagitBufferInit call system(g:magit_git_cmd . " add -A " . magit#git#top_dir())
-augroup END
-
-" ------------------------------------------------
-" CONFIG->VIM-JSX-PRETTY -------------------------
-" ------------------------------------------------
-let g:vim_jsx_pretty_colorful_config = 1
 
 " ================================================
 " CONFIG->KEY-MAPPINGS ===========================
@@ -450,14 +385,9 @@ nnoremap <leader>s :Rg<CR>
 nnoremap <leader>S :Lines<CR>
 nnoremap <leader>sc :Commits<CR>
 
-" vimagit
 " ------------------------------------------------
-nnoremap <leader>g :Magit<CR>
-
+" PLUGIN-CONFIG ----------------------------------
 " ------------------------------------------------
-" ------------------------------------------------
-" ------------------------------------------------
-
 let s:config_home = stdpath('config')
 
 " FROM: https://github.com/xu-cheng/dotfiles/blob/master/home/.config/nvim/init.vim#L42
@@ -468,13 +398,7 @@ for s:f in split(glob(s:config_home . '/pluginrc.d/*.vim'), '\n')
   execute 'source' fnameescape(s:f)
 endfor
 
-" lua require('plugins.init')
-
-" for s:f in split(glob(s:config_home . '/lua/plugins/*.lua'), '\n')
-"   execute 'lua' 'require' fnameescape(s:f)
-" endfor
-
 " ------------------------------------------------
-" ------------------------------------------------
+" LUA->INIT --------------------------------------
 " ------------------------------------------------
 lua require("init")

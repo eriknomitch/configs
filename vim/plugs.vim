@@ -126,9 +126,6 @@ Plug 'ntpeters/vim-better-whitespace'
 " https://github.com/tpope/vim-commentary
 Plug 'tpope/vim-commentary'
 
-" Comment Line(s)
-Plug 'scrooloose/nerdcommenter'
-
 " Hotkeys for surrounding strings, etc with anything
 " https://github.com/tpope/vim-surround
 Plug 'tpope/vim-surround'
