@@ -49,11 +49,14 @@ let g:colors_name="bluegreen"
 " #6DFFB5
 " #685E79
 
+" #8736ff ("active purple")
+" #5AFA6E ("attention green" - same as tmux)
+
 " ------------------------------------------------
 " GENERAL ----------------------------------------
 " ------------------------------------------------
-hi Normal       ctermfg=White ctermfg=NONE guifg=White ctermbg=NONE guibg=Black cterm=NONE
-hi NonText      ctermfg=DarkGray guifg=DarkGray  ctermbg=NONE guibg=Black
+hi Normal       ctermfg=White ctermfg=NONE guifg=#eeeeee ctermbg=NONE guibg=#000000 cterm=NONE
+hi NonText      ctermfg=DarkGray guifg=DarkGray  ctermbg=NONE guibg=#000000
 
 " ------------------------------------------------
 " DEFINITIONS ------------------------------------
@@ -77,7 +80,7 @@ hi Directory    ctermfg=Cyan guifg=#1FB7B7      ctermbg=DarkBlue guibg=DarkBlue
 hi Visual       ctermfg=White guifg=White     ctermbg=DarkGray guibg=DarkGray cterm=underline gui=underline term=NONE
 hi Title        ctermfg=White guifg=White     ctermbg=DarkBlue guibg=DarkBlue
 
-hi StatusLine   term=NONE cterm=NONE gui=bold,underline ctermfg=Black guifg=Black ctermbg=White guibg=#ff0000
+hi StatusLine   term=NONE cterm=NONE gui=bold,underline ctermfg=Black guifg=#a9a9a9 ctermbg=White guibg=#444444
 hi StatusLineNC term=NONE cterm=NONE gui=bold,underline ctermfg=Black guifg=#ffffff  ctermbg=Grey guibg=#444444
 hi LineNr       term=bold cterm=bold gui=bold ctermfg=White guifg=White ctermbg=DarkGray guibg=#00ff00
 
@@ -89,18 +92,17 @@ hi SignColumn ctermbg=235 guibg=#222222
 " ------------------------------------------------
 " FROM: https://vi.stackexchange.com/a/24382
 hi Pmenu guibg=#222222 guifg=#ffffff
-hi PmenuSel guibg=#222222 gui=bold
+hi PmenuSel guibg=#8736ff gui=bold
 hi PmenuSbar guibg=#222222
 hi PmenuThumb guibg=#444444
 
 " ------------------------------------------------
 " TELESCOPE --------------------------------------
 " ------------------------------------------------
-" TelescopeBorder
-" TelescopePromptPrefix
-hi TelescopeMatching guibg=#945AE2
-hi TelescopeSelection guibg=#7D29EE gui=bold
-
+hi TelescopeBorder guibg=#222222 guifg=#777777
+hi TelescopePromptPrefix guibg=#5AFA6E guifg=#000000 gui=bold
+hi TelescopeMatching guibg=#b380ff
+hi TelescopeSelection guibg=#8736ff gui=bold
 
 " ------------------------------------------------
 " TSX --------------------------------------------
