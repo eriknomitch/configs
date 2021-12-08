@@ -118,6 +118,10 @@ Plug 'pangloss/vim-javascript'
 " REPO: https://github.com/b0o/mapx.nvim
 Plug 'b0o/mapx.nvim'
 
+" REPO: https://github.com/folke/which-key.nvim
+" > Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
+Plug 'folke/which-key.nvim'
+
 " Visualize undo history
 " https://github.com/mbbill/undotree
 Plug 'mbbill/undotree'
@@ -142,9 +146,9 @@ Plug 'tpope/vim-surround'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-" Adds font icons to many plugins
-" https://github.com/ryanoasis/vim-devicons
-Plug 'ryanoasis/vim-devicons'
+" REPO: https://github.com/kyazdani42/nvim-web-devicons
+" > A lua fork of vim-devicons. This plugin provides the same icons as well as colors for each icon.
+Plug 'kyazdani42/nvim-web-devicons'
 
 " Status Bars
 " -----------------------------------------------

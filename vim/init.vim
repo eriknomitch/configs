@@ -184,10 +184,6 @@ endfunction
 nnoremap <Leader>o :<C-u>call OpenLines(v:count, 0)<CR>S
 nnoremap <Leader>O :<C-u>call OpenLines(v:count, -1)<CR>S
 
-" http://grantlucas.com/posts/2012/09/using-vim-arduino-development
-au BufRead,BufNewFile *.pde set filetype=arduino
-au BufRead,BufNewFile *.ino set filetype=arduino
-
 " flake8
 au BufRead,BufNewFile .flake8 set filetype=yaml
 

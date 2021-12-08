@@ -23,7 +23,8 @@
       "vim/colors/*",
       "vim/**/*.lua"
     ],
-    "first_file": "vim/init.vim"
+    "first_file": "vim/init.vim",
+    "exclusions": ["vim/plugged"]
   },
   "ssh": {
     "files": ["ssh/*"]
