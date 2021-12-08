@@ -96,9 +96,9 @@ hi PmenuThumb guibg=#444444
 " ------------------------------------------------
 " TELESCOPE --------------------------------------
 " ------------------------------------------------
-hi TelescopeMatching guibg=#945AE2
 " TelescopeBorder
 " TelescopePromptPrefix
+hi TelescopeMatching guibg=#945AE2
 hi TelescopeSelection guibg=#7D29EE gui=bold
 
 
@@ -115,5 +115,4 @@ hi tsxCloseTagName guifg=#945AE2 gui=bold
 hi tsxAttributeBraces guifg=#945AE2
 hi tsxEqual guifg=#945AE2
 
-" yellow
 hi tsxAttrib guifg=#1EC703 cterm=italic
