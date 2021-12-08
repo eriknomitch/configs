@@ -75,7 +75,7 @@ hi Scrollbar    ctermfg=Blue guifg=#6868FF      ctermbg=NONE guibg=NONE
 hi Cursor       ctermfg=white guifg=white     ctermbg=NONE guibg=NONE
 hi ErrorMsg     ctermfg=Red guifg=#FF4C4C       ctermbg=NONE guibg=NONE cterm=bold gui=bold term=bold
 hi WarningMsg   ctermfg=Yellow guifg=Yellow    ctermbg=NONE guibg=NONE
-hi VertSplit    cterm=NONE ctermfg=White guifg=#222222     ctermbg=NONE guibg=#000000
+hi VertSplit    guifg=#161616 guibg=#000000
 hi Directory    ctermfg=Cyan guifg=#1FB7B7      ctermbg=DarkBlue guibg=DarkBlue
 hi Visual       ctermfg=White guifg=White     ctermbg=DarkGray guibg=DarkGray cterm=underline gui=underline term=NONE
 hi Title        ctermfg=White guifg=White     ctermbg=DarkBlue guibg=DarkBlue
@@ -85,7 +85,7 @@ hi StatusLineNC term=NONE cterm=NONE gui=bold,underline ctermfg=Black guifg=#fff
 hi LineNr       term=bold cterm=bold gui=bold ctermfg=White guifg=White ctermbg=DarkGray guibg=#00ff00
 
 " Git Gutter
-hi SignColumn ctermbg=235 guibg=#222222
+hi SignColumn ctermbg=235 guibg=#000000
 
 " ------------------------------------------------
 " PMENU ------------------------------------------
