@@ -111,8 +111,12 @@ Plug 'pangloss/vim-javascript'
 "}}}
 
 " ------------------------------------------------
+" UTILITY ----------------------------------------
 " ------------------------------------------------
-" ------------------------------------------------
+
+" A better way to create key mappings in Neovim
+" REPO: https://github.com/b0o/mapx.nvim
+Plug 'b0o/mapx.nvim'
 
 " Visualize undo history
 " https://github.com/mbbill/undotree
