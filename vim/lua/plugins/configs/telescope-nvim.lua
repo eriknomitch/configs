@@ -1,3 +1,13 @@
+-- " ------------------------------------------------
+-- " ------------------------------------------------
+-- " ------------------------------------------------
+-- " Find files using Telescope command-line sugar.
+-- " Using Lua functions
+-- " nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+-- " nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+-- " nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+-- " nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
 print("plugins/configs/telescope-nvim.lua...")
 
 -- FROM: https://github.com/nvim-telescope/telescope.nvim#customization
@@ -8,7 +18,8 @@ require('telescope').setup{
     mappings = {
       i = {
         ["<C-/>"] = require('telescope.builtin').buffers,
-        ["<Leader>b"] = require('telescope.builtin').buffers(),
+        ["<Leader>b"] = require('telescope.builtin').buffers,
+        ["<Leader>e"] = 'telescope.builtin.buffers',
 
         -- map actions.which_key to <C-h> (default: <C-/>)
         -- actions.which_key shows the mappings for your picker,
