@@ -12,3 +12,15 @@ nnoremap({"<Leader>fb", "<Leader>b" }, ":lua require('telescope.builtin').buffer
 nnoremap({"<Leader>ff", "<Leader>f" }, ":lua require('telescope.builtin').find_files()<Cr>", "silent")
 nnoremap({"<Leader>fg", "<Leader>g"}, ":lua require('telescope.builtin').live_grep()<Cr>", "silent")
 
+require('telescope').setup({
+  defaults = {
+    layout_config = {
+      vertical = { width = 0.25 },
+      horizontal = { width = 0.5, height = 0.7 },
+      -- other layout configuration here
+    },
+    -- other defaults configuration here
+  },
+  -- other configuration values here
+})
+
