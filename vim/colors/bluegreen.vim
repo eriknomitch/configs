@@ -87,8 +87,8 @@ hi SignColumn ctermbg=235 guibg=#222222
 " PMENU ------------------------------------------
 " ------------------------------------------------
 " FROM: https://vi.stackexchange.com/a/24382
-hi Pmenu ctermfg=White ctermbg=237 guibg=#444444
-hi PmenuSel ctermbg=Blue ctermfg=White cterm=bold
+hi Pmenu ctermfg=White ctermbg=237 guibg=#222222
+hi PmenuSel guibg=#222222 gui=bold
 hi PmenuSbar ctermbg=DarkGray
 hi PmenuThumb ctermbg=LightGray
 

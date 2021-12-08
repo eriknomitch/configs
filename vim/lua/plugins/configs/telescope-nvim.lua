@@ -8,7 +8,7 @@
 -- " nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 -- " nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
-print("plugins/configs/telescope-nvim.lua...")
+nnoremap({"<C-f><C-f>", "<C-f>f"}, ":lua require('telescope.builtin').find_files()<Cr>", "silent")
 
 -- FROM: https://github.com/nvim-telescope/telescope.nvim#customization
 require('telescope').setup{
