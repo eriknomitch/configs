@@ -11,7 +11,7 @@ autoload -Uz zsh/terminfo
 autoload -Uz colors; colors
 autoload -Uz add-zsh-hook
 
-source /etc/zsh/colors
+source /etc/zsh/colors.zsh
 
 # Allow for functions in the prompt
 setopt promptsubst
