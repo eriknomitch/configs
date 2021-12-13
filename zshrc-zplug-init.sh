@@ -3,9 +3,7 @@ source ~/.zplug/init.zsh
 
 # ------------------------------------------------
 zplug "plugins/zsh-navigation-tools", from:oh-my-zsh
-zplug "plugins/docker", from:oh-my-zsh
-zplug "plugins/docker-compose", from:oh-my-zsh
-zplug "plugins/jump", from:oh-my-zsh
+# zplug "plugins/jump", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
 
 # ------------------------------------------------
@@ -39,4 +37,5 @@ fi
 
 # Then, source plugins and add commands to $PATH
 #zplug load --verbose
-zplug load
+zplug load --verbose
+clear

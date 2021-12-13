@@ -1,0 +1,15 @@
+session_name: configs
+windows:
+- window_name: edit
+  shell_command_before:
+    - cd ~/.configs
+    - sw
+  panes:
+    - null
+- window_name: git/run
+  layout: even-horizontal
+  shell_command_before:
+    - cd ~/.configs
+  panes:
+    - null
+    - null
