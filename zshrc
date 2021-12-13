@@ -413,13 +413,6 @@ if test -d $_google_cloud_sdk_path; then
 fi
 
 # ------------------------------------------------
-# ------------------------------------------------
-# ------------------------------------------------
-# export PATH="${PATH}:${HOME}/Library/Android/sdk/platform-tools"
-# export PATH="${PATH}:${HOME}/Library/Android/sdk/tools"
-# export PATH="${PATH}:${HOME}/Library/Android/sdk/emulator"
-
-# ------------------------------------------------
 # PROMPT -----------------------------------------
 # ------------------------------------------------
 source $HOME/.configs/zshrc-prompt
