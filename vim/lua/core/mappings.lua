@@ -9,3 +9,7 @@ nnoremap("<Leader>M", ":messages<CR>")
 
 nnoremap("<Leader>vs", ":vsplit<Cr>", "silent")
 nnoremap("<Leader>sp", ":split<Cr>", "silent")
+
+-- Plugins
+-- FIX: Move?
+nnoremap("<Leader>c", ":Commentary<Cr>", "silent")

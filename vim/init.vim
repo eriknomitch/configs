@@ -159,11 +159,6 @@ endif
 source $HOME/.config/nvim/plugs.vim
 
 " ------------------------------------------------
-" CONFIG->COMMENTARY -----------------------------
-" ------------------------------------------------
-" noremap <leader>c :Commentary<cr>
-
-" ------------------------------------------------
 " CONFIG->EASY-ALIGN -----------------------------
 " ------------------------------------------------
 
@@ -172,13 +167,6 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-" ------------------------------------------------
-" CONFIG->VIMFILER -------------------------------
-" ------------------------------------------------
-let g:vimfiler_as_default_explorer = 1
-
-nnoremap <leader>f :VimFilerExplorer<cr>
 
 " ------------------------------------------------
 " CONFIG->FZF ------------------------------------
