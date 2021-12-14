@@ -220,15 +220,6 @@ filetype plugin indent on
 let g:mergetool_layout = 'mr'
 let g:mergetool_prefer_revision = 'local'
 
-" -----------------------------------------------
-" CONFIG->CTRLP ----------------------------------
-" ------------------------------------------------
-let g:ctrlp_map = '<C-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:30,results:30'
-let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
-
 " ------------------------------------------------
 " CONFIG->AIRLINE --------------------------------
 " ------------------------------------------------
@@ -242,7 +233,6 @@ let g:airline_theme='dark'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tmuxline#enabled = 1
 let g:airline#extensions#coc#enabled = 1
-let g:airline#extensions#ctrlp#enabled = 1
 let g:airline#extensions#fzf#enabled = 1
 let g:airline#extensions#fugitivep#enabled = 0
 

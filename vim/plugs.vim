@@ -174,7 +174,6 @@ Plug 'keith/swift.vim'
 Plug 'tpope/vim-abolish'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'ctrlpvim/ctrlp.vim'
 
 " tmux
 " ------------------------------------------------
