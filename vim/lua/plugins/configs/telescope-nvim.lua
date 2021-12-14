@@ -24,16 +24,22 @@ require('telescope').setup({
     },
     mappings = {
       -- FROM: https://github.com/folke/trouble.nvim#telescope
-      i = { ["<C-t>"] = trouble.open_with_trouble },
+      i = {
+        ["<C-t>"] = trouble.open_with_trouble,
+        -- FROM: https://github.com/nvim-telescope/telescope.nvim/issues/919#issue-923575521
+        ["<C-j>"]   = actions.move_selection_next,
+        ["<C-k>"]   = actions.move_selection_previous,
+        ["<ESC>"]   = actions.close
+      },
       n = { ["<C-t>"] = trouble.open_with_trouble },
     },
     -- other defaults configuration here
   },
-  pickers = {
-    find_files = {
-      theme = "dropdown",
-    }
-  },
+  -- pickers = {
+  --   find_files = {
+  --     theme = "dropdown",
+  --   }
+  -- },
   -- other configuration values here
 })
 

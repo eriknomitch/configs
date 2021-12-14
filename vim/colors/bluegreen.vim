@@ -101,8 +101,8 @@ hi PmenuThumb guibg=#444444
 " ------------------------------------------------
 hi TelescopeBorder guibg=#000000 guifg=#a9a9a9
 hi TelescopePromptPrefix guibg=#5AFA6E guifg=#000000 gui=bold
-hi TelescopeMatching guibg=#b380ff
-hi TelescopeSelection guibg=#8736ff gui=bold
+hi TelescopeMatching guibg=#8736ff gui=bold
+hi TelescopeSelection guifg=#ffffff guibg=#444444 gui=bold
 
 " ------------------------------------------------
 " TSX --------------------------------------------
