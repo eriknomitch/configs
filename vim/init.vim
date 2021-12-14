@@ -121,8 +121,6 @@ noremap <Down> gj
 nnoremap zO zR
 nnoremap zC zM
 
-" General
-" ------------------------------------------------
 nnoremap <leader>q :qall<CR>
 nnoremap <leader>h :noh<CR>
 nnoremap <leader>w :wqall<CR>
@@ -176,7 +174,6 @@ for s:f in split(glob(s:config_home . '/pluginrc.d/*.vim'), '\n')
   execute 'source' fnameescape(s:f)
 endfor
 
-
 " ------------------------------------------------
 " CONFIG->EASY-ALIGN -----------------------------
 " ------------------------------------------------
@@ -205,11 +202,6 @@ let g:netrw_liststyle=3
 " When navigating a directory, pressing <v> opens a window at right side (default
 " is left side)
 let g:netrw_altv = 1
-
-" ------------------------------------------------
-" CONFIG->FAR ------------------------------------
-" ------------------------------------------------
-let g:far#source = 'agnvim'
 
 " ================================================
 " CONFIG->KEY-MAPPINGS ===========================
