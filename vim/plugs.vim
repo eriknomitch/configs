@@ -172,6 +172,8 @@ Plug 'svermeulen/vim-easyclip'
 " ------------------------------------------------
 Plug 'keith/swift.vim'
 
+Plug 'bfredl/nvim-luadev'
+
 " Searching/Replacing
 " ------------------------------------------------
 Plug 'tpope/vim-abolish'
