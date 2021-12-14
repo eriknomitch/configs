@@ -12,4 +12,11 @@ nnoremap("<Leader>sp", ":split<Cr>", "silent")
 
 -- Plugins
 -- FIX: Move?
-nnoremap("<Leader>c", ":Commentary<Cr>", "silent")
+-- nmap("gc", ":Commentary<Cr>", "silent")
+
+-- " Allow quit via single keypress (Q)
+-- " FROM: https://unix.stackexchange.com/a/93239
+map("Q", ":qa<CR>", "silent")
+
+-- StripWhitespace
+nnoremap("<Leader>sw", ":StripWhitespace<CR>", "silent")

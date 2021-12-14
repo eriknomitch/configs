@@ -78,6 +78,9 @@ set clipboard+=unnamed
 " https://stackoverflow.com/a/10979533/1764073
 " set clipboard+=unnamedplus
 
+" Yank and drop across multiple vim instances
+" FIX:
+
 " Make backspace key work
 set backspace=2
 
@@ -100,7 +103,6 @@ nmap <S-k> 4k
 nmap <S-h> 4h
 nmap <S-l> 4l
 
-
 " Next/Previous Buffers
 noremap <C-S-Right> :next<CR>
 noremap <C-S-Left> :prev<CR>
@@ -119,11 +121,15 @@ noremap <Down> gj
 nnoremap zO zR
 nnoremap zC zM
 
-" Allow quit via single keypress (Q)
-" FROM: https://unix.stackexchange.com/a/93239
-map Q :qa<CR>
+" General
+" ------------------------------------------------
+nnoremap <leader>q :qall<CR>
+nnoremap <leader>h :noh<CR>
+nnoremap <leader>w :wqall<CR>
 
-" Yank and drop across multiple vim instances
+" Shift+tab inserts a literal tab
+" https://stackoverflow.com/questions/4781070/how-to-insert-tab-character-when-expandtab-option-is-on-in-vim
+inoremap <S-Tab> <C-V><Tab>
 
 " ------------------------------------------------
 " FIXES ------------------------------------------
@@ -133,7 +139,6 @@ map Q :qa<CR>
 augroup cron
   au FileType crontab setlocal bkc=yes
 augroup END
-
 
 " ------------------------------------------------
 " COMMANDS ---------------------------------------
@@ -159,6 +164,20 @@ endif
 source $HOME/.config/nvim/plugs.vim
 
 " ------------------------------------------------
+" PLUGIN-CONFIG ----------------------------------
+" ------------------------------------------------
+let s:config_home = stdpath('config')
+
+" FROM: https://github.com/xu-cheng/dotfiles/blob/master/home/.config/nvim/init.vim#L42
+
+" Load plugins settings
+" ------------------------------------------------
+for s:f in split(glob(s:config_home . '/pluginrc.d/*.vim'), '\n')
+  execute 'source' fnameescape(s:f)
+endfor
+
+
+" ------------------------------------------------
 " CONFIG->EASY-ALIGN -----------------------------
 " ------------------------------------------------
 
@@ -167,11 +186,6 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-" ------------------------------------------------
-" CONFIG->RG -------------------------------------
-" ------------------------------------------------
-let g:rg_highlight = 1
 
 " ------------------------------------------------
 " CONFIG->VIM-INDENT-GUIDES ----------------------
@@ -200,38 +214,6 @@ let g:far#source = 'agnvim'
 " ================================================
 " CONFIG->KEY-MAPPINGS ===========================
 " ================================================
-
-" General
-" ------------------------------------------------
-nnoremap <leader>q :qall<CR>
-nnoremap <leader>h :noh<CR>
-nnoremap <leader>w :wqall<CR>
-
-" Shift+tab inserts a literal tab
-" https://stackoverflow.com/questions/4781070/how-to-insert-tab-character-when-expandtab-option-is-on-in-vim
-inoremap <S-Tab> <C-V><Tab>
-
-" vimrc
-" ------------------------------------------------
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
-
-" Whitespace
-" ------------------------------------------------
-nnoremap <leader>sw :StripWhitespace<CR>
-
-" ------------------------------------------------
-" PLUGIN-CONFIG ----------------------------------
-" ------------------------------------------------
-let s:config_home = stdpath('config')
-
-" FROM: https://github.com/xu-cheng/dotfiles/blob/master/home/.config/nvim/init.vim#L42
-
-" Load plugins settings
-" ------------------------------------------------
-for s:f in split(glob(s:config_home . '/pluginrc.d/*.vim'), '\n')
-  execute 'source' fnameescape(s:f)
-endfor
 
 " ------------------------------------------------
 " COLORSCHEME ------------------------------------
