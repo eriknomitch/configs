@@ -75,27 +75,14 @@ source-if-exists $HOME/.configs/zshrc-asdf
 # [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # ------------------------------------------------
-# ANTIBODY ---------------------------------------
+# ZPLUG ------------------------------------------
 # ------------------------------------------------
-# function antibody-install() {
-#   antibody bundle < $HOME/.configs/zshrc-antibody-plugins.txt > $HOME/.configs/zshrc-antibody-plugins.sh
-# }
-
 if [[ -f ~/.zplug/init.zsh ]]; then
   source $HOME/.configs/zshrc-zplug-init.sh
 else
   echo "Warning: zplug not installed."
   sleep 0.5
 fi
-
-
-# if command-exists antibody; then
-#   source <(antibody init)
-#   antibody bundle < $HOME/.configs/zshrc-antibody-plugins.txt
-# else
-#   echo "Warning: antibody not installed."
-#   sleep 0.5
-# fi
 
 # ------------------------------------------------
 # SOURCE->USER -----------------------------------

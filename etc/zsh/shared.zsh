@@ -204,8 +204,15 @@ alias lsadir="ls -d .*/"
 alias rs="clear; rspec --format nested --color $*"
 alias sc="screen"
 alias scl="screen -ls"
-alias t="tmux"
 alias ccat="vimcat"
+
+t() {
+  if [[ -z $1 ]]; then
+    tmux
+  else
+    tmuxp load $1
+  fi
+}
 
 psg()
 {
