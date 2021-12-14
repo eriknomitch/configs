@@ -11,6 +11,6 @@ let g:airline_theme='dark'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tmuxline#enabled = 1
 let g:airline#extensions#coc#enabled = 1
-let g:airline#extensions#fzf#enabled = 1
+let g:airline#extensions#fzf#enabled = 0
 let g:airline#extensions#fugitivep#enabled = 0
 

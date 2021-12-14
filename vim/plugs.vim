@@ -175,8 +175,6 @@ Plug 'keith/swift.vim'
 " Searching/Replacing
 " ------------------------------------------------
 Plug 'tpope/vim-abolish'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 
 " tmux
 " ------------------------------------------------

@@ -169,57 +169,6 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " ------------------------------------------------
-" CONFIG->FZF ------------------------------------
-" ------------------------------------------------
-set runtimepath+=/usr/local/opt/fzf
-
-let g:fzf_colors =
-      \ { 'fg':      ['fg', 'Normal'],
-      \ 'bg':      ['bg', 'Normal'],
-      \ 'hl':      ['fg', 'Comment'],
-      \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-      \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-      \ 'hl+':     ['fg', 'Statement'],
-      \ 'info':    ['fg', 'PreProc'],
-      \ 'prompt':  ['fg', 'Conditional'],
-      \ 'pointer': ['fg', 'Exception'],
-      \ 'marker':  ['fg', 'Keyword'],
-      \ 'spinner': ['fg', 'Label'],
-      \ 'header':  ['fg', 'Comment'] }
-
-" ------------------------------------------------
-" FZF->BUFFERS ------------------------------------
-" ------------------------------------------------
-
-" https://github.com/junegunn/fzf/wiki/Examples-(vim)#search-lines-in-all-open-vim-buffers
-function! s:line_handler(l)
-  let keys = split(a:l, ':\t')
-  exec 'buf' keys[0]
-  exec keys[1]
-  normal! ^zz
-endfunction
-
-function! s:buffer_lines()
-  let res = []
-  for b in filter(range(1, bufnr('$')), 'buflisted(v:val)')
-    call extend(res, map(getbufline(b,0,"$"), 'b . ":\t" . (v:key + 1) . ":\t" . v:val '))
-  endfor
-  return res
-endfunction
-
-command! FZFLines call fzf#run({
-\  'source':  <sid>buffer_lines(),
-\   'sink':    function('<sid>line_handler'),
-\   'options': '--extended --nth=3..',
-\   'down':    '60%'
-\})
-
-" ------------------------------------------------
-" CONFIG->RG -------------------------------------
-" ------------------------------------------------
-let g:rg_highlight = 1
-
-" ------------------------------------------------
 " CONFIG->VIM-INDENT-GUIDES ----------------------
 " ------------------------------------------------
 let g:indent_guides_enable_on_vim_startup = 1
@@ -265,15 +214,6 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " Whitespace
 " ------------------------------------------------
 nnoremap <leader>sw :StripWhitespace<CR>
-
-" FZF
-" ------------------------------------------------
-" let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --smartcase'
-
-" https://github.com/junegunn/fzf.vim#commands
-" nnoremap <leader>s :Rg<CR>
-" nnoremap <leader>S :Lines<CR>
-" nnoremap <leader>sc :Commits<CR>
 
 " ------------------------------------------------
 " PLUGIN-CONFIG ----------------------------------
