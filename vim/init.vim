@@ -86,11 +86,11 @@ nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
 set showmode
 
-" Navigate 4x faster when holding down Ctrl
-" nmap <C-j> 4j
-" nmap <C-k> 4k
-" nmap <C-h> 4h
-" nmap <C-l> 4l
+" Navigate 4x faster when holding down Shift
+nmap <S-j> 4j
+nmap <S-k> 4k
+nmap <S-h> 4h
+nmap <S-l> 4l
 
 " ------------------------------------------------
 " HOTKEYS ----------------------------------------
