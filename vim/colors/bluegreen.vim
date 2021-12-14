@@ -47,6 +47,7 @@ let g:colors_name="bluegreen"
 " #945AE2
 " #6DFFB5
 " #685E79
+" #4D21ED
 
 " #8736ff ("active purple")
 " #5AFA6E ("attention green" - same as tmux)
@@ -75,9 +76,9 @@ hi Cursor       ctermfg=white guifg=white     ctermbg=NONE guibg=NONE
 hi ErrorMsg     ctermfg=Red guifg=#FF4C4C       ctermbg=NONE guibg=NONE cterm=bold gui=bold term=bold
 hi WarningMsg   ctermfg=Yellow guifg=Yellow    ctermbg=NONE guibg=NONE
 hi VertSplit    guifg=#161616 guibg=#000000
-hi Directory    ctermfg=Cyan guifg=#1FB7B7      ctermbg=DarkBlue guibg=DarkBlue
+hi Directory    guifg=#1FB7B7 guibg=#4D21ED
 hi Visual       ctermfg=White guifg=White     ctermbg=DarkGray guibg=DarkGray cterm=underline gui=underline term=NONE
-hi Title        ctermfg=White guifg=White     ctermbg=DarkBlue guibg=DarkBlue
+hi Title        guifg=White guibg=#4D21ED
 
 hi StatusLine   term=NONE cterm=NONE gui=bold,underline ctermfg=Black guifg=#a9a9a9 ctermbg=White guibg=#444444
 hi StatusLineNC term=NONE cterm=NONE gui=bold,underline ctermfg=Black guifg=#ffffff  ctermbg=Grey guibg=#444444

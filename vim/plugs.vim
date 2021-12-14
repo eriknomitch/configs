@@ -90,6 +90,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " REPO: https://github.com/nvim-treesitter/nvim-treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+" REPO: https://github.com/nvim-treesitter/playground
+" Plug 'nvim-treesitter/playground'
+
 " REPO: https://github.com/sheerun/vim-polyglot
 " A collection of language packs for Vim.
 Plug 'sheerun/vim-polyglot'
