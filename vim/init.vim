@@ -8,8 +8,6 @@
 "  NOTE: Also see CONFIG->COC configuration since some are general
 syntax enable
 
-colors bluegreen
-
 " Automatically write buffers when required
 " Spellcheck
 autocmd BufRead,BufNewFile *.md,*.txt setlocal spell
@@ -22,8 +20,11 @@ set incsearch
 set ignorecase
 set smartcase
 
+set nocompatible
+
 " Filetype
 filetype on
+filetype plugin on
 filetype plugin indent on
 
 " Swap
@@ -32,23 +33,9 @@ set noswapfile
 " Markdown gets different textwidth
 au BufRead,BufNewFile *.md setlocal textwidth=300
 
-" commenting
-command! -range -bar -nargs=0 LC <line1>,<line2>s/^/;; /
-command! -range -bar -nargs=0 LUC <line1>,<line2>s/^;; //
-
-" lower case
-command! -range -bar -nargs=0 LOWER <line1>,<line2>s/[A-Z]/\L&/g
-
-" upper case
-command! -range -bar -nargs=0 UPPER <line1>,<line2>s/[a-z]/\U&/g
-
 " Write/edit all windows
 command! W windo w
 command! E windo e
-
-" autosource ~/.vimrc after writing
-" http://vim.wikia.com/wiki/Change_vimrc_with_auto_reload
-autocmd! bufwritepost .vimrc source %
 
 " folding
 set foldmethod=marker
@@ -72,9 +59,6 @@ set magic
 " Maximum amount of memory in Kbyte used for pattern matching
 set maxmempattern=1000
 
-" .lisp gets 2 spaces
-au BufRead,BufNewFile *.lisp setlocal softtabstop=2 shiftwidth=2
-
 " paste toggle
 map <F1> :set paste<CR>
 map <F2> :set nopaste<CR>
@@ -86,15 +70,36 @@ nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
 set showmode
 
+" FIX: For macOS...
+" https://stackoverflow.com/a/38969251/1764073
+set clipboard+=unnamed
+
+" FIX: For Linux...
+" https://stackoverflow.com/a/10979533/1764073
+" set clipboard+=unnamedplus
+
+" Make backspace key work
+set backspace=2
+
+" Disable mouse for selecting text without a hotkey
+set mouse=
+set ruler
+set hlsearch
+
+" Wildmenu for better :b tabbing
+set wildmenu
+set wildchar=<Tab>
+
+" ------------------------------------------------
+" MAPPINGS ---------------------------------------
+" ------------------------------------------------
+
 " Navigate 4x faster when holding down Shift
 nmap <S-j> 4j
 nmap <S-k> 4k
 nmap <S-h> 4h
 nmap <S-l> 4l
 
-" ------------------------------------------------
-" HOTKEYS ----------------------------------------
-" ------------------------------------------------
 
 " Next/Previous Buffers
 noremap <C-S-Right> :next<CR>
@@ -120,83 +125,26 @@ map Q :qa<CR>
 
 " Yank and drop across multiple vim instances
 
-" FIX: For macOS...
-" https://stackoverflow.com/a/38969251/1764073
-set clipboard+=unnamed
-
-" FIX: For Linux...
-" https://stackoverflow.com/a/10979533/1764073
-" set clipboard+=unnamedplus
-
-" Make backspace key work
-set backspace=2
-
-" Disable mouse for selecting text without a hotkey
-set mouse=
-set ruler
-set hlsearch
-
-" Wildmenu for better :b tabbing
-set wildmenu
-set wildchar=<Tab>
-
-" omnicomplete
-autocmd FileType lisp set omnifunc=lispcomplete#Complete
-
-" Various ERB syntax highlighting fixes
-au BufReadPost *.js.coffee.erb set filetype=coffee syntax=coffee
-au BufReadPost *.jst.ejs set filetype=html syntax=html
-
-" Arduino syntax highlighting
-au BufNewFile,BufRead *.pde setf arduino
-
-" Less syntax highlighting
-au BufNewFile,BufRead *.less set filetype=less
-
-" JSON highlighting
-au! BufRead,BufNewFile *.json set filetype=json
-
-" Typescript
-" autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
-" autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
-
-" JavaScript
-au! BufNewFile,BufRead *.js set filetype=javascript
-
-let g:vim_markdown_folding_disabled=1
-
-" http://vim.wikia.com/wiki/Insert_multiple_lines
-" Open multiple lines (insert empty lines) before or after current line,
-" and position cursor in the new space, with at least one blank line
-" before and after the cursor.
-function! OpenLines(nrlines, dir)
-  let nrlines = a:nrlines < 3 ? 3 : a:nrlines
-  let start = line('.') + a:dir
-  call append(start, repeat([''], nrlines))
-  if a:dir < 0
-    normal! 2k
-  else
-    normal! 2j
-  endif
-endfunction
-
-" Mappings to open multiple lines and enter insert mode.
-nnoremap <Leader>o :<C-u>call OpenLines(v:count, 0)<CR>S
-nnoremap <Leader>O :<C-u>call OpenLines(v:count, -1)<CR>S
-
-" flake8
-au BufRead,BufNewFile .flake8 set filetype=yaml
-
-" Command for writing with sudo
-" http://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
-cmap w!! w !sudo tee > /dev/null %
-
+" ------------------------------------------------
+" FIXES ------------------------------------------
+" ------------------------------------------------
 " Fix crontab issue
 " http://vi.stackexchange.com/questions/137/how-do-i-edit-crontab-files-with-vim-i-get-the-error-temp-file-must-be-edited
 augroup cron
   au FileType crontab setlocal bkc=yes
 augroup END
 
+
+" ------------------------------------------------
+" COMMANDS ---------------------------------------
+" ------------------------------------------------
+" Command for writing with sudo
+" http://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
+cmap w!! w !sudo tee > /dev/null %
+
+" ------------------------------------------------
+" TMUX -------------------------------------------
+" ------------------------------------------------
 " Rename title of tmux tab with current filename
 if exists('$TMUX')
   augroup tmux
@@ -205,47 +153,15 @@ if exists('$TMUX')
   augroup END
 endif
 
-" ------------------------------------------------
-" PLUG -------------------------------------------
-" ------------------------------------------------
+" ================================================
+" PLUG ===========================================
+" ================================================
 source $HOME/.config/nvim/plugs.vim
-
-" ------------------------------------------------
-" ------------------------------------------------
-" ------------------------------------------------
-set nocompatible
-filetype plugin on
-filetype plugin indent on
-
-let g:mergetool_layout = 'mr'
-let g:mergetool_prefer_revision = 'local'
-
-" ------------------------------------------------
-" CONFIG->AIRLINE --------------------------------
-" ------------------------------------------------
-let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-" SEE: https://github.com/vim-airline/vim-airline/wiki/Screenshots
-let g:airline_theme='dark'
-
-  " an empty list disables all extensions
-  let g:airline_extensions = []
-
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#tmuxline#enabled = 1
-let g:airline#extensions#coc#enabled = 1
-let g:airline#extensions#fzf#enabled = 1
-let g:airline#extensions#fugitivep#enabled = 0
 
 " ------------------------------------------------
 " CONFIG->COMMENTARY -----------------------------
 " ------------------------------------------------
-noremap <leader>c :Commentary<cr>
-
-" ------------------------------------------------
-" CONFIG->SIGNIFY --------------------------------
-" ------------------------------------------------
-let g:signify_realtime = 1
-let g:signify_vcs_list = [ 'git' ]
+" noremap <leader>c :Commentary<cr>
 
 " ------------------------------------------------
 " CONFIG->EASY-ALIGN -----------------------------
@@ -383,6 +299,11 @@ let s:config_home = stdpath('config')
 for s:f in split(glob(s:config_home . '/pluginrc.d/*.vim'), '\n')
   execute 'source' fnameescape(s:f)
 endfor
+
+" ------------------------------------------------
+" COLORSCHEME ------------------------------------
+" ------------------------------------------------
+colors bluegreen
 
 " ------------------------------------------------
 " LUA->INIT --------------------------------------
