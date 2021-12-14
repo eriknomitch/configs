@@ -3,11 +3,16 @@
 -- ===============================================
 local Color, colors, Group, groups, styles = require('colorbuddy').setup()
 
--- " -----------------------------------------------
--- " PALETTE ----------------------------------------
--- " ------------------------------------------------
-Color.new('background_0', '#000000')
+-- -----------------------------------------------
+-- PALETTE ---------------------------------------
+-- -----------------------------------------------
+Color.new('background', '#000000')
+Color.new('background_light', '#222222')
+Color.new('background_lighter', '#444444')
+
 Color.new('foreground', '#FFFFFF')
+Color.new('foreground', '#EEEEEE')
+Color.new('foreground_darker', '#A9A9A9')
 
 Color.new('primary', '#67FF68')
 Color.new('primary_dark', '#1EC703')

@@ -55,34 +55,34 @@ let g:colors_name="bluegreen"
 " ------------------------------------------------
 " GENERAL ----------------------------------------
 " ------------------------------------------------
-hi Normal       ctermfg=White ctermfg=NONE guifg=#eeeeee ctermbg=NONE guibg=#000000 cterm=NONE
-hi NonText      ctermfg=DarkGray guifg=DarkGray  ctermbg=NONE guibg=#000000
+hi Normal       guifg=#eeeeee guibg=#000000 cterm=NONE
+hi NonText      guifg=DarkGray  guibg=#000000
 
 " ------------------------------------------------
 " DEFINITIONS ------------------------------------
 " ------------------------------------------------
-hi Statement    ctermfg=Blue guifg=#6868FF      ctermbg=NONE guibg=NONE
-" hi Comment      ctermfg=Green guifg=#00ff00  ctermbg=NONE guibg=NONE cterm=bold gui=bold term=bold
-hi Comment      ctermfg=Green guifg=#67FF68  ctermbg=NONE guibg=NONE cterm=bold gui=bold term=bold
-hi Constant     ctermfg=DarkCyan guifg=#1FB7B7  ctermbg=NONE guibg=NONE
-hi Identifier   ctermfg=Cyan guifg=Cyan      ctermbg=NONE guibg=NONE
-hi Type         ctermfg=DarkGreen guifg=#00aa00 ctermbg=NONE guibg=NONE
-hi Folded       ctermfg=DarkGreen guifg=#00aa00 ctermbg=NONE guibg=NONE cterm=underline gui=underline term=NONE
-hi Special      ctermfg=Blue guifg=#6868FF      ctermbg=NONE guibg=NONE
-" hi PreProc      ctermfg=LightGray guifg=LightGray ctermbg=NONE guibg=NONE cterm=bold gui=bold term=bold
-hi PreProc      ctermfg=LightGray guifg=#999999 gui=bold ctermbg=NONE guibg=NONE
-hi Scrollbar    ctermfg=Blue guifg=#6868FF      ctermbg=NONE guibg=NONE
-hi Cursor       ctermfg=white guifg=white     ctermbg=NONE guibg=NONE
-hi ErrorMsg     ctermfg=Red guifg=#FF4C4C       ctermbg=NONE guibg=NONE cterm=bold gui=bold term=bold
-hi WarningMsg   ctermfg=Yellow guifg=Yellow    ctermbg=NONE guibg=NONE
+hi Statement    guifg=#6868FF      guibg=NONE
+" hi Comment      guifg=#00ff00  guibg=NONE cterm=bold gui=bold term=bold
+hi Comment      guifg=#67FF68  guibg=NONE cterm=bold gui=bold term=bold
+hi Constant     guifg=#1FB7B7  guibg=NONE
+hi Identifier   guifg=Cyan      guibg=NONE
+hi Type         guifg=#00aa00 guibg=NONE
+hi Folded       guifg=#00aa00 guibg=NONE cterm=underline gui=underline term=NONE
+hi Special      guifg=#6868FF      guibg=NONE
+" hi PreProc      guifg=LightGray guibg=NONE cterm=bold gui=bold term=bold
+hi PreProc      guifg=#999999 gui=bold guibg=NONE
+hi Scrollbar    guifg=#6868FF      guibg=NONE
+hi Cursor       guifg=white     guibg=NONE
+hi ErrorMsg     guifg=#FF4C4C       guibg=NONE cterm=bold gui=bold term=bold
+hi WarningMsg   guifg=Yellow    guibg=NONE
 hi VertSplit    guifg=#161616 guibg=#000000
 hi Directory    guifg=#1FB7B7 guibg=#4D21ED
-hi Visual       ctermfg=White guifg=White     ctermbg=DarkGray guibg=DarkGray cterm=underline gui=underline term=NONE
+hi Visual       guifg=White     guibg=DarkGray cterm=underline gui=underline term=NONE
 hi Title        guifg=White guibg=#4D21ED
 
-hi StatusLine   term=NONE cterm=NONE gui=bold,underline ctermfg=Black guifg=#a9a9a9 ctermbg=White guibg=#444444
-hi StatusLineNC term=NONE cterm=NONE gui=bold,underline ctermfg=Black guifg=#ffffff  ctermbg=Grey guibg=#444444
-hi LineNr       term=bold cterm=bold gui=bold ctermfg=White guifg=White ctermbg=DarkGray guibg=#00ff00
+hi StatusLine   term=NONE cterm=NONE gui=bold,underline guifg=#a9a9a9 guibg=#444444
+hi StatusLineNC term=NONE cterm=NONE gui=bold,underline guifg=#ffffff  guibg=#444444
+hi LineNr       term=bold cterm=bold gui=bold guifg=White guibg=#00ff00
 
 " Git Gutter
 hi SignColumn ctermbg=235 guibg=#000000
