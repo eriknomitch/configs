@@ -1,6 +1,6 @@
 " Vim color file
 " Maintainer:   Erik Nomitch <erik@nomitch.com>
-" Last Change:  22 October 2020 - 0.2
+" Last Change:  2021-12-13
 " URL: https://erik.is
 
 " ------------------------------------------------
@@ -10,7 +10,6 @@
 " :he group-name
 " :he highlight-groups
 " :he cterm-colors
-
 
 "  Colors
 " ------------------------------------------------
@@ -99,7 +98,7 @@ hi PmenuThumb guibg=#444444
 " ------------------------------------------------
 " TELESCOPE --------------------------------------
 " ------------------------------------------------
-hi TelescopeBorder guibg=#222222 guifg=#777777
+hi TelescopeBorder guibg=#000000 guifg=#a9a9a9
 hi TelescopePromptPrefix guibg=#5AFA6E guifg=#000000 gui=bold
 hi TelescopeMatching guibg=#b380ff
 hi TelescopeSelection guibg=#8736ff gui=bold

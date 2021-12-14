@@ -16,7 +16,7 @@
   },
   "vim": {
     "files": [
-      "vim/init.vim",
+      "vim/*.vim",
       "vim/coc-settings.json",
       "vim/after/plugin/*",
       "vim/pluginrc.d/*",
