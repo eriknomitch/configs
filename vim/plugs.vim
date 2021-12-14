@@ -150,6 +150,10 @@ Plug 'nvim-telescope/telescope.nvim'
 " > A lua fork of vim-devicons. This plugin provides the same icons as well as colors for each icon.
 Plug 'kyazdani42/nvim-web-devicons'
 
+" REPO: https://github.com/folke/trouble.nvim
+" > A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
+Plug 'folke/trouble.nvim'
+
 " Status Bars
 " -----------------------------------------------
 
@@ -185,11 +189,19 @@ Plug 'skywind3000/asyncrun.vim'
 " ------------------------------------------------
 " COLORSCHEMES -----------------------------------
 " ------------------------------------------------
+
+" REPO: https://github.com/folke/lsp-colors.nvim-lua
+" > 🌈 Plugin that creates missing LSP diagnostics highlight groups for color schemes that don't yet support the Neovim 0.5 builtin LSP client.
+Plug 'folke/lsp-colors.nvim'
+
+" REPO: https://github.com/tjdevries/colorbuddy.nvim
 Plug 'tjdevries/colorbuddy.nvim'
 
 " REPO: https://github.com/Iron-E/nvim-highlite
 Plug 'Iron-E/nvim-highlite'
 
-" Plug 'colors/onedark.vim'
+" ================================================
+" END ============================================
+" ================================================
 
 call plug#end()
