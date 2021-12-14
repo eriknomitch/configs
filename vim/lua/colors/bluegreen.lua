@@ -1,49 +1,27 @@
--- print('Loading bluegreen...')
+-- ===============================================
+-- COLORS->BLUEGREEN =============================
+-- ===============================================
+local Color, colors, Group, groups, styles = require('colorbuddy').setup()
 
--- Import nvim-highlite
-local highlite = require('highlite')
+-- " -----------------------------------------------
+-- " PALETTE ----------------------------------------
+-- " ------------------------------------------------
+Color.new('background_0', '#000000')
+Color.new('foreground', '#FFFFFF')
 
--- First, define some colors
--- local red = {'#FF0000', 1, 'red'}
--- local black = {'#000000', 0, 'black'}
--- local white = {'#FFFFFF', 255, 'white'}
+Color.new('primary', '#67FF68')
+Color.new('primary_dark', '#1EC703')
+Color.new('primary_darker', '#1FB7B7')
+Color.new('primary_special', '#6DFFB5')
 
--- highlite.highlight('htmlTag', {bg=red, fg=black, style='bold'})
--- highlite.highlight('htmlTagName', {bg=red, fg=black, style='bold'})
--- highlite.highlight('tsxTag', {bg=red, fg=black, style='bold'})
--- highlite.highlight('tsxTagName', {bg=red, fg=black, style='bold'})
+Color.new('secondary', '#6868FF')
+Color.new('secondary_light', '#7D29EE')
+Color.new('secondary_lighter', '#945AE2')
+Color.new('secondary_dark', '#4D21ED')
+Color.new('secondary_special', '#685E79')
 
--- Highlight 'Identifier'
--- highlite.highlight('Identifier', {bg=red, fg=black, style='bold'})
+Color.new('error', '#FF2B2B', nil, styles.bold)
+Color.new('error_light', '#FF4C4C')
 
--- -- Highlight 'Function' conditionally according to background color.
--- highlite.highlight('Function', {bg=black, fg=red, light={bg=white}})
-
--- -- Link 'Example' to 'Identifier'
--- highlite.highlight('Example', 'Identifier')
-
--- -- You can also reference specific attributes of another highlight group.
--- highlite.highlight('AnotherExample', {bg=highlite.group'SpellBad'.bg, fg=white})
-
--- print('bluegreen')
--- require("colorbuddy").setup()
-
--- local Color = require('colorbuddy').Color
-
--- Color.new('white',     '#f2e5bc')
--- Color.new('red',       '#cc6666')
--- Color.new('pink',      '#fef601')
--- Color.new('green',     '#99cc99')
--- Color.new('yellow',    '#f8fe7a')
--- Color.new('blue',      '#81a2be')
--- Color.new('aqua',      '#8ec07c')
--- Color.new('cyan',      '#8abeb7')
--- Color.new('purple',    '#8e6fbd')
--- Color.new('violet',    '#b294bb')
--- Color.new('orange',    '#de935f')
--- Color.new('brown',     '#a3685a')
-
--- Color.new('seagreen',  '#698b69')
--- Color.new('turquoise', '#698b69')
-
-
+Color.new('active', '#8736ff')
+Color.new('attention', '#5AFA6E') -- same as tmux
