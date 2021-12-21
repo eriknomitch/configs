@@ -20,6 +20,14 @@ matches:
         params:
           # format: "%m/%d/%Y"
           format: "%Y-%m-%d"
+  # uuidgen
+  - trigger: ":uuid"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "uuidgen"
 
   # Shell commands
   - trigger: ":shell"
