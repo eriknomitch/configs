@@ -371,8 +371,6 @@ if [[ -f /usr/local/share-/zsh-completions ]] ; then
   fpath=(/usr/local/share/zsh-completions $fpath)
 fi
 
-# chmod go-w '/usr/local/share'
-
 # ------------------------------------------------
 # ANACONDA ---------------------------------------
 # ------------------------------------------------
@@ -402,9 +400,13 @@ fi
 # ------------------------------------------------
 # ZOXIDE -----------------------------------------
 # ------------------------------------------------
-eval "$(zoxide init zsh)"
+if ( command-exists zoxide ) ; then
+  eval "$(zoxide init zsh)"
 
-export _ZO_EXCLUDE_DIRS="$HOME:$HOME/.enct-*"
+  export _ZO_EXCLUDE_DIRS="$HOME:$HOME/.enct-*"
+
+  alias cd="z"
+fi
 
 # ------------------------------------------------
 # PROMPT -----------------------------------------
