@@ -206,12 +206,21 @@ alias sc="screen"
 alias scl="screen -ls"
 alias ccat="vimcat"
 
-t() {
+function t() {
   if [[ -z $1 ]]; then
     tmux
-  else
-    tmuxp load $1
+    return
   fi
+
+  # For each line of output
+  for valid in `tmuxp ls`; do
+    if [[ $valid == $1 ]]; then
+      tmuxp load $1
+      return
+    fi
+  done
+
+  tmux $*
 }
 
 psg()
