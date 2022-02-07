@@ -1,0 +1,14 @@
+session_name: development
+windows:
+- window_name: edit
+  shell_command_before:
+    - cd
+  panes:
+    - null
+- window_name: git/run
+  layout: even-horizontal
+  shell_command_before:
+    - cd
+  panes:
+    - null
+    - null

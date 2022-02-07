@@ -66,12 +66,17 @@ function setMute(state)
   hs.alert("Muted")
 end
 
+-- -----------------------------------------------
+-- -----------------------------------------------
+-- -----------------------------------------------
+if not hs.audiodevice.watcher.isRunning() then
 hs.audiodevice.watcher.setCallback(function()
   setMute(true)
 end)
 
 hs.audiodevice.watcher.stop()
 hs.audiodevice.watcher.start()
+end
 
 -- -----------------------------------------------
 -- -----------------------------------------------
