@@ -55,9 +55,11 @@ Plug 'hrsh7th/nvim-cmp'
 " SNIPPETS ---------------------------------------
 " ------------------------------------------------
 
+Plug 'L3MON4D3/LuaSnip'
+
 " https://github.com/hrsh7th/vim-vsnip
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
+" Plug 'hrsh7th/vim-vsnip'
+" Plug 'hrsh7th/vim-vsnip-integ'
 
 " ------------------------------------------------
 " GITHUB-COPILOT ---------------------------------
