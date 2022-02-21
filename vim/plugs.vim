@@ -116,6 +116,23 @@ Plug 'pangloss/vim-javascript'
 "}}}
 
 " ------------------------------------------------
+" COMMENTING -------------------------------------
+" ------------------------------------------------
+
+" Comment Line(s)
+" REPO: https://github.com/tpope/vim-commentary
+Plug 'tpope/vim-commentary'
+
+" REPO: https://github.com/preservim/nerdcommenter
+Plug 'preservim/nerdcommenter'
+
+" REPO: https://github.com/suy/vim-context-commentstring
+Plug 'suy/vim-context-commentstring'
+
+" REPO: https://github.com/MaxMEllon/vim-jsx-pretty
+Plug 'MaxMEllon/vim-jsx-pretty'
+
+" ------------------------------------------------
 " UTILITY ----------------------------------------
 " ------------------------------------------------
 
@@ -134,13 +151,6 @@ Plug 'mbbill/undotree'
 " Whitespace tools
 " https://github.com/ntpeters/vim-better-whitespace
 Plug 'ntpeters/vim-better-whitespace'
-
-" Comment Line(s)
-" REPO: https://github.com/tpope/vim-commentary
-Plug 'tpope/vim-commentary'
-
-" REPO: https://github.com/preservim/nerdcommenter
-Plug 'preservim/nerdcommenter'
 
 " Hotkeys for surrounding strings, etc with anything
 " https://github.com/tpope/vim-surround

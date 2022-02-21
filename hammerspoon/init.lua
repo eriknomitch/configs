@@ -223,8 +223,8 @@ bindApplicationFocus("G", "Gmail")
 -- Secondary
 -- -----------------------------------------------
 -- bindApplicationFocusSecondary("E", "Evernote")
--- bindApplicationFocusSecondary("E", "Element")
-bindApplicationFocusSecondary("E", "Epiphany")
+bindApplicationFocusSecondary("E", "Element")
+-- bindApplicationFocusSecondary("E", "Epiphany")
 -- bindApplicationFocusSecondary("I", "Firefox")
 -- bindApplicationFocusSecondary("W", "Ulysses")
 bindApplicationFocusSecondary("P", "Adobe Photoshop 2022")
