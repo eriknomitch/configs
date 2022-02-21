@@ -136,8 +136,11 @@ Plug 'mbbill/undotree'
 Plug 'ntpeters/vim-better-whitespace'
 
 " Comment Line(s)
-" https://github.com/tpope/vim-commentary
+" REPO: https://github.com/tpope/vim-commentary
 Plug 'tpope/vim-commentary'
+
+" REPO: https://github.com/preservim/nerdcommenter
+Plug 'preservim/nerdcommenter'
 
 " Hotkeys for surrounding strings, etc with anything
 " https://github.com/tpope/vim-surround
