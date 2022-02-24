@@ -234,7 +234,7 @@ bindApplicationFocusSecondary("E", "Element")
 bindApplicationFocusSecondary("P", "Adobe Photoshop 2022")
 bindApplicationFocusSecondary("H", "Home Assistant")
 -- bindApplicationFocusSecondary("F", "FIgma")
-bindApplicationFocusSecondary("F", "FaceTime")
+-- bindApplicationFocusSecondary("F", "FaceTime")
 
 -- Special
 -- -----------------------------------------------
