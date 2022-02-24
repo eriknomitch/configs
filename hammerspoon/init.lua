@@ -54,7 +54,7 @@ end
 -- -----------------------------------------------
 -- -----------------------------------------------
 -- -----------------------------------------------
-function setMute(state)
+function setMute()
   device = hs.audiodevice.defaultOutputDevice()
   level = 0
 
@@ -75,7 +75,7 @@ end
 -- -----------------------------------------------
 if not hs.audiodevice.watcher.isRunning() then
   hs.audiodevice.watcher.setCallback(function()
-    setMute(true)
+    setLevel()
   end)
 
   hs.audiodevice.watcher.stop()
