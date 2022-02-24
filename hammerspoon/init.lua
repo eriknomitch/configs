@@ -56,26 +56,30 @@ end
 -- -----------------------------------------------
 function setMute(state)
   device = hs.audiodevice.defaultOutputDevice()
+  level = 0
 
-  hs.alert(device:name())
-  device:setOutputVolume(0)
+  if device:name() == "FiiO BTR5" then
+    level = 100
+  end
+
+  device:setOutputVolume(level)
+  hs.alert(device:name() .. ": " .. level .. "%")
   -- for _, device in pairs(hs.audiodevice.allInputDevices()) do
   --   device:setInputMuted(state)
   -- end
 
-  hs.alert("Muted")
 end
 
 -- -----------------------------------------------
 -- -----------------------------------------------
 -- -----------------------------------------------
 if not hs.audiodevice.watcher.isRunning() then
-hs.audiodevice.watcher.setCallback(function()
-  setMute(true)
-end)
+  hs.audiodevice.watcher.setCallback(function()
+    setMute(true)
+  end)
 
-hs.audiodevice.watcher.stop()
-hs.audiodevice.watcher.start()
+  hs.audiodevice.watcher.stop()
+  hs.audiodevice.watcher.start()
 end
 
 -- -----------------------------------------------
