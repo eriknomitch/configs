@@ -6,6 +6,7 @@ nnoremap({"<Leader>t"}, ":Telescope<Cr>", "silent")
 nnoremap({"<Leader>b", "<C-p>" }, ":lua require('telescope.builtin').buffers()<Cr>", "silent")
 nnoremap({"<Leader>f" }, ":lua require('telescope.builtin').find_files()<Cr>", "silent")
 -- nnoremap({"<Leader>fg", "<Leader>g"}, ":lua require('telescope.builtin').live_grep()<Cr>", "silent")
+nnoremap({"<Leader>gd", "<Leader>gs"}, ":lua require('telescope.builtin').git_status()<Cr>", "silent")
 nnoremap({"<Leader>s"}, ":lua require('telescope.builtin').live_grep({grep_open_files=true})<Cr>", "silent")
 -- nnoremap({"<Leader>fh", "<Leader>th"}, ":lua require('telescope.builtin').help_tags()<Cr>", "silent")
 
