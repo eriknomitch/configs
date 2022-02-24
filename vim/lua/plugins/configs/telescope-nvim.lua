@@ -3,11 +3,11 @@
 -- ===============================================
 nnoremap({"<Leader>t"}, ":Telescope<Cr>", "silent")
 
-nnoremap({"<Leader>fb", "<Leader>b", "<C-p>" }, ":lua require('telescope.builtin').buffers()<Cr>", "silent")
-nnoremap({"<Leader>ff", "<Leader>f" }, ":lua require('telescope.builtin').find_files()<Cr>", "silent")
-nnoremap({"<Leader>fg", "<Leader>g"}, ":lua require('telescope.builtin').live_grep()<Cr>", "silent")
+nnoremap({"<Leader>b", "<C-p>" }, ":lua require('telescope.builtin').buffers()<Cr>", "silent")
+nnoremap({"<Leader>f" }, ":lua require('telescope.builtin').find_files()<Cr>", "silent")
+-- nnoremap({"<Leader>fg", "<Leader>g"}, ":lua require('telescope.builtin').live_grep()<Cr>", "silent")
 nnoremap({"<Leader>s"}, ":lua require('telescope.builtin').live_grep({grep_open_files=true})<Cr>", "silent")
-nnoremap({"<Leader>fh", "<Leader>th"}, ":lua require('telescope.builtin').help_tags()<Cr>", "silent")
+-- nnoremap({"<Leader>fh", "<Leader>th"}, ":lua require('telescope.builtin').help_tags()<Cr>", "silent")
 
 nnoremap({"<Leader>/"}, ":lua require('telescope.builtin').current_buffer_fuzzy_find()<Cr>", "silent")
 

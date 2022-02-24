@@ -121,10 +121,6 @@ noremap <Down> gj
 nnoremap zO zR
 nnoremap zC zM
 
-nnoremap <leader>q :qall<CR>
-nnoremap <leader>h :noh<CR>
-nnoremap <leader>w :wqall<CR>
-
 " Shift+tab inserts a literal tab
 " https://stackoverflow.com/questions/4781070/how-to-insert-tab-character-when-expandtab-option-is-on-in-vim
 inoremap <S-Tab> <C-V><Tab>
