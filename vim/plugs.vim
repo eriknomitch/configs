@@ -160,9 +160,12 @@ Plug 'tpope/vim-surround'
 " ------------------------------------------------
 
 " Extended fuzzy finder UI
-" https://github.com/nvim-telescope/telescope.nvim
+" REPO: https://github.com/nvim-telescope/telescope.nvim
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+" REPO: https://github.com/nvim-telescope/telescope-github.nvim
+Plug 'nvim-telescope/telescope-github.nvim'
 
 " REPO: https://github.com/kyazdani42/nvim-web-devicons
 " > A lua fork of vim-devicons. This plugin provides the same icons as well as colors for each icon.
