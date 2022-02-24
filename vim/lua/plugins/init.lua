@@ -8,10 +8,13 @@ require'mapx'.setup{ global = true }
 -- -----------------------------------------------
 require("plugins.configs.nvim-lspconfig")
 require("plugins.configs.nvim-cmp")
-require("plugins.configs.telescope-nvim")
 require("plugins.configs.coc-nvim")
 require("plugins.configs.trouble")
 require("plugins.configs.nvim-luadev")
+
+-- Telescope
+require("plugins.configs.telescope-nvim")
+require("plugins.configs.telescope-command-palette")
 
 -- Require all .lua files in the plugins/configs directory
 -- local files = vim.split(vim.fn.glob('plugins/configs/*.lua'), "\n")
