@@ -33,15 +33,18 @@ end
 
 -- Some useful global variables
 hostname = hs.host.localizedName()
+
 logger = hs.logger.new('main')
+-- logger:setLogLevel('info')
+
 hs_config_dir = os.getenv("HOME") .. "/.hammerspoon/"
--- default_browser_name = "Google Chrome Beta"
+
 default_browser_name = "Google Chrome"
 
 -- -----------------------------------------------
 -- UTILITY ---------------------------------------
 -- -----------------------------------------------
-function hasValue (tab, val)
+function hasValue(tab, val)
   for index, value in ipairs(tab) do
     if value == val then
       return true
@@ -54,19 +57,36 @@ end
 -- -----------------------------------------------
 -- -----------------------------------------------
 -- -----------------------------------------------
-function setMute()
-  device = hs.audiodevice.defaultOutputDevice()
-  level = 0
+function handleAudioDeviceChange(data)
 
-  if device:name() == "FiiO BTR5" then
-    level = 100
+  -- https://www.hammerspoon.org/docs/hs.audiodevice.watcher.html#setCallback
+  if data == "dOut" then
+    logger:w("Audio device changed: " .. data)
+
+    device = hs.audiodevice.defaultOutputDevice()
+    level = 0
+
+    if device:name() == "FiiO BTR5" then
+      level = 100
+    end
+
+    device:setMuted(false)
+    device:setOutputVolume(level)
+    device:setBalance(0.5)
+
+    hs.inspect.inspect(device)
+
+    local text = hs.styledtext.new("Output\n" .. device:name(), {
+        color = { hex = "#FFFFFF", alpha = 1},
+        font = { size = 30 },
+    })
+
+    hs.alert(text) -- "OUTPUT: " .. device:name())
+
+    -- for _, device in pairs(hs.audiodevice.allInputDevices()) do
+    --   device:setInputMuted(state)
+    -- end
   end
-
-  device:setOutputVolume(level)
-  hs.alert(device:name() .. ": " .. level .. "%")
-  -- for _, device in pairs(hs.audiodevice.allInputDevices()) do
-  --   device:setInputMuted(state)
-  -- end
 
 end
 
@@ -74,8 +94,8 @@ end
 -- -----------------------------------------------
 -- -----------------------------------------------
 if not hs.audiodevice.watcher.isRunning() then
-  hs.audiodevice.watcher.setCallback(function()
-    setLevel()
+  hs.audiodevice.watcher.setCallback(function(data)
+    handleAudioDeviceChange(data)
   end)
 
   hs.audiodevice.watcher.stop()
