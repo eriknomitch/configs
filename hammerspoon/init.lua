@@ -243,6 +243,7 @@ bindApplicationFocus("R", "Remote Control")
 bindApplicationFocusSecondary("V", "Visual Studio Code")
 bindApplicationFocus("V", "IINA")
 bindApplicationFocus("G", "Gmail")
+bindApplicationFocus("U", "Unraid")
 
 -- Secondary
 -- -----------------------------------------------
