@@ -67,7 +67,9 @@ function handleAudioDeviceChange(data)
     level = 0
 
     if device:name() == "FiiO BTR5" then
-      level = 100
+      hs.alert("Skipping: FiiO BTR5")
+      return
+      -- level = 100
     end
 
     device:setMuted(false)
