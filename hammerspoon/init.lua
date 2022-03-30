@@ -7,7 +7,46 @@
 -- -----------------------------------------------
 require("audio.volume")
 
+
+hs.loadSpoon("SpoonInstall")
+
+spoon.SpoonInstall.use_syncinstall = true
+local Install=spoon.SpoonInstall
+
+Install:updateRepo('default')
+
+Install:installSpoonFromRepo('ReloadConfiguration')
+Install:installSpoonFromRepo('Emojis')
+Install:installSpoonFromRepo('WindowHalfsAndThirds')
+
+hs.loadSpoon("Emojis")
 hs.loadSpoon("ReloadConfiguration")
+hs.loadSpoon("WindowHalfsAndThirds")
+
+-- spoon.SpoonInstall:andUse("AppLauncher", {
+--   hotkeys = {
+--     c = "Calendar",
+--     d = "Discord",
+--     f = "Firefox Developer Edition",
+--     n = "Notes",
+--     p = "1Password 7",
+--     r = "Reeder",
+--     t = "Kitty",
+--     z = "Zoom.us",
+--   }
+-- })
+
+-- spoon.AppLauncher.bindHotkeys({'ctrl', 'alt', 'shift'}, {
+--   c = "Calendar",
+--   d = "Discord",
+--   f = "Firefox Developer Edition",
+--   n = "Notes",
+--   p = "1Password 7",
+--   r = "Reeder",
+--   t = "Kitty",
+--   z = "Zoom.us",
+-- })
+
 spoon.ReloadConfiguration:start()
 
 -- -----------------------------------------------
@@ -230,15 +269,16 @@ hs.hotkey.bind({"cmd", "ctrl", "shift"}, ";", function()switcher:previous()end)
 -- -----------------------------------------------
 -- -----------------------------------------------
 -- -----------------------------------------------
-hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
 
 bindApplicationFocus("I", default_browser_name)
 bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("P", "Preview")
+bindApplicationFocusSecondary("P", "Adobe Photoshop 2022")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("Z", "zoom.us")
 hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "D", function() confirmOnEnter("Discord") end)
 bindApplicationFocus("E", "Obsidian")
+bindApplicationFocusSecondary("E", "Element")
 bindApplicationFocus("O", "Obsidian")
 bindApplicationFocus("C", "Remote Control")
 bindApplicationFocus("R", "Remote Control")
@@ -246,26 +286,22 @@ bindApplicationFocusSecondary("V", "Visual Studio Code")
 bindApplicationFocus("V", "IINA")
 bindApplicationFocus("G", "Gmail")
 bindApplicationFocus("U", "Unraid")
-
--- Secondary
--- -----------------------------------------------
--- bindApplicationFocusSecondary("E", "Evernote")
-bindApplicationFocusSecondary("E", "Element")
--- bindApplicationFocusSecondary("E", "Epiphany")
--- bindApplicationFocusSecondary("I", "Firefox")
--- bindApplicationFocusSecondary("W", "Ulysses")
-bindApplicationFocusSecondary("P", "Adobe Photoshop 2022")
+bindApplicationFocus("H", "Home Assistant")
 bindApplicationFocusSecondary("H", "Home Assistant")
--- bindApplicationFocusSecondary("F", "FIgma")
--- bindApplicationFocusSecondary("F", "FaceTime")
 
 -- Special
 -- -----------------------------------------------
--- hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
+hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
 
 -- -----------------------------------------------
 -- MOVEMENT --------------------------------------
 -- -----------------------------------------------
+spoon.WindowHalfsAndThirds:bindHotkeys({
+  third_left = {{"ctrl", "cmd"}, "1"},
+  larger = {{"ctrl", "cmd"}, "="},
+  smaller = {{"ctrl", "cmd"}, "-"}
+})
+
 hs.hotkey.bind(movement, "Left", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()

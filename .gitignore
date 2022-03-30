@@ -11,3 +11,4 @@ karabiner.d/log
 node_modules/
 *.zwc
 scratch
+hammerspoon/Spoons/
