@@ -24,4 +24,4 @@ map("!", ":wqall!<CR>", "silent")
 nnoremap("<Leader>sw", ":StripWhitespace<CR>", "silent")
 
 -- No Highlight
-nnoremap("<Leader>h", ":NoHighlight<CR>", "silent")
+nnoremap("<Leader>h", ":nohlsearch<CR>", "silent")
