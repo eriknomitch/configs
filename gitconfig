@@ -5,11 +5,11 @@
 	user = eriknomitch
 [push]
 	default = current
-[mergetool "fugitive"]
-	cmd = nvim -f -c \"Gvdiff\" \"$MERGED\"
-[merge]
-	tool = fugitive
-	conflictstyle = diff3
+; [mergetool "fugitive"]
+; 	cmd = nvim -f -c \"Gvdiff\" \"$MERGED\"
+; [merge]
+; 	tool = fugitive
+; 	conflictstyle = diff3
 [alias]
 	last = log -1 HEAD
 	changed-files = diff-tree --no-commit-id --name-only -r
@@ -17,7 +17,15 @@
 [alias]
 	changes = "!f() { git diff $1^ $1;  }; f"
 [core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true  # use n and N to move between diff sections
+[merge]
+	conflictstyle = diff3
+[diff]
+	colorMoved = default
 [rerere]
 	enabled = true
 	autoupdate = true
