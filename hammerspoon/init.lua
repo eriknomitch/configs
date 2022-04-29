@@ -2,11 +2,12 @@
 -- HAMMERSPOON->CONFIG ==========================
 -- ==============================================
 
+hs.alert("Hammerspon Config Loading...")
+
 -- -----------------------------------------------
 -- -----------------------------------------------
 -- -----------------------------------------------
 require("audio.volume")
-
 
 hs.loadSpoon("SpoonInstall")
 
@@ -280,9 +281,9 @@ bindApplicationFocus("Z", "zoom.us")
 hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "D", function() confirmOnEnter("Discord") end)
 bindApplicationFocus("E", "Obsidian")
 bindApplicationFocusSecondary("E", "Element")
-bindApplicationFocus("O", "Obsidian")
-bindApplicationFocus("C", "Remote Control")
-bindApplicationFocus("R", "Remote Control")
+-- bindApplicationFocus("O", "Obsidian")
+-- bindApplicationFocus("C", "Remote Control")
+-- bindApplicationFocus("R", "Remote Control")
 bindApplicationFocusSecondary("V", "Visual Studio Code")
 bindApplicationFocus("V", "IINA")
 bindApplicationFocus("G", "Gmail")
@@ -299,9 +300,17 @@ hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm
 -- -----------------------------------------------
 spoon.WindowHalfsAndThirds:bindHotkeys({
   third_left = {{"ctrl", "cmd"}, "1"},
+  third_right = {{"ctrl", "cmd"}, "3"},
   larger = {{"ctrl", "cmd"}, "="},
   smaller = {{"ctrl", "cmd"}, "-"}
 })
+
+-- Center window
+hs.hotkey.bind({"ctrl", "cmd"}, "0", function()
+  toScreen = nil
+  inBounds = true
+  hs.window.focusedWindow():centerOnScreen(toScreen, inBounds)
+end)
 
 hs.hotkey.bind(movement, "Left", function()
   local win = hs.window.focusedWindow()
