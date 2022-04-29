@@ -208,6 +208,12 @@ Plug 'tpope/vim-abolish'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
 
+" notify
+" ------------------------------------------------
+" Notifier
+" REPO: https://github.com/rcarriga/nvim-notify
+Plug 'rcarriga/nvim-notify'
+
 " Other
 " ------------------------------------------------
 Plug 'samoshkin/vim-mergetool'
