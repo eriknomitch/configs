@@ -11,6 +11,7 @@ require("plugins.configs.nvim-cmp")
 require("plugins.configs.coc-nvim")
 require("plugins.configs.trouble")
 require("plugins.configs.nvim-luadev")
+require("plugins.configs.nvim-notify")
 
 -- -----------------------------------------------
 -- TELESCOPE -------------------------------------
@@ -21,6 +22,11 @@ require("plugins.configs.telescope-command-palette")
 -- Extensions
 require('telescope').load_extension('gh')
 require('telescope').load_extension('command_palette')
+require('telescope').load_extension('notify')
+
+-- -----------------------------------------------
+-- -----------------------------------------------
+-- -----------------------------------------------
 
 -- Require all .lua files in the plugins/configs directory
 -- local files = vim.split(vim.fn.glob('plugins/configs/*.lua'), "\n")
