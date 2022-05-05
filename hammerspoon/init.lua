@@ -1,22 +1,38 @@
 -- ==============================================
 -- HAMMERSPOON->CONFIG ==========================
 -- ==============================================
-
 hs.alert("Hammerspon Config Loading...")
 
 -- -----------------------------------------------
+-- APP-CONFIG ------------------------------------
 -- -----------------------------------------------
+
+-- Apps
 -- -----------------------------------------------
-local appsToCenter = { "Finder", "Home Assistant", "Messages" }
+local appsToCenter = { "Finder", "Home Assistant", "Messages", "Gmail" }
+
+-- Adjustments
+-- -----------------------------------------------
+local windowAdjustmentDelta = 100
+
+-- Hotkey Prefixes
+-- -----------------------------------------------
+local movement  = {"cmd", "ctrl"}
+local movementSecondary = {"cmd", "ctrl", "shift"}
+local movementWindowAdjustment = {"cmd", "ctrl", "alt"}
+
+local movementAppplicationLaunchOrFocus = {"cmd", "ctrl"}
+local movementAppplicationLaunchOrFocusSecondary = {"cmd", "ctrl", "shift"}
 
 -- -----------------------------------------------
 -- -----------------------------------------------
 -- -----------------------------------------------
-require("audio.volume")
-
 local application = {}
-application.watcher = require "hs.application.watcher"
+
+local audioVolume = require("audio.volume")
 local fnutils = require "hs.fnutils"
+
+application.watcher = require "hs.application.watcher"
 
 -- -----------------------------------------------
 -- SPOONS ----------------------------------------
@@ -189,15 +205,10 @@ end
 
 -- -----------------------------------------------
 -- -----------------------------------------------
+
 -- -----------------------------------------------
-local movement  = {"cmd", "ctrl"}
-local movement2 = {"cmd", "ctrl", "shift"}
-
-local movementAppplicationLaunchOrFocus = {"cmd", "ctrl"}
-local movementAppplicationLaunchOrFocusSecondary = {"cmd", "ctrl", "shift"}
-
-applicationHotkeyDefinitions = {}
-
+-- -----------------------------------------------
+-- -----------------------------------------------
 function bindApplicationFocus(key, title)
   hs.hotkey.bind(movementAppplicationLaunchOrFocus, key, function() hs.application.launchOrFocus(title) end)
 end
@@ -344,8 +355,8 @@ hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm
 spoon.WindowHalfsAndThirds:bindHotkeys({
   third_left = {{"ctrl", "cmd"}, "1"},
   third_right = {{"ctrl", "cmd"}, "3"},
-  larger = {{"ctrl", "cmd"}, "="},
-  smaller = {{"ctrl", "cmd"}, "-"}
+  -- larger = {{"ctrl", "cmd"}, "="},
+  -- smaller = {{"ctrl", "cmd"}, "-"}
 })
 
 -- Center window
@@ -409,8 +420,68 @@ function middle()
   win:setFrame(f)
 end
 
+function modifyWindowHeight(delta)
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.y = f.y + math.floor(delta/2)
+  f.h = f.h - delta
+  win:setFrame(f)
+end
+
+function modifyWindowWidth(delta)
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = f.x + math.floor(delta/2)
+  f.w = f.w - delta
+  win:setFrame(f)
+end
+
+function modifyWindowSize(delta)
+  modifyWindowWidth(delta)
+  modifyWindowHeight(delta)
+end
+
+-- -----------------------------------------------
+-- -----------------------------------------------
+-- -----------------------------------------------
 hs.hotkey.bind(movement, "Up", fullscreen)
 hs.hotkey.bind(movement, "Down", middle)
+
+hs.hotkey.bind({"ctrl", "cmd"}, "0", function()
+  toScreen = nil
+  inBounds = true
+  hs.window.focusedWindow():centerOnScreen(toScreen, inBounds)
+end)
+
+hs.hotkey.bind(movementWindowAdjustment, "Left", function()
+  modifyWindowWidth(windowAdjustmentDelta)
+end)
+
+hs.hotkey.bind(movementWindowAdjustment, "Right", function()
+  modifyWindowWidth(-windowAdjustmentDelta)
+end)
+
+hs.hotkey.bind(movementWindowAdjustment, "Up", function()
+  modifyWindowHeight(-windowAdjustmentDelta)
+end)
+
+hs.hotkey.bind(movementWindowAdjustment, "Down", function()
+  modifyWindowHeight(windowAdjustmentDelta)
+end)
+
+hs.hotkey.bind(movementWindowAdjustment, "=", function()
+  modifyWindowSize(windowAdjustmentDelta)
+end)
+
+hs.hotkey.bind(movementWindowAdjustment, "-", function()
+  modifyWindowSize(-windowAdjustmentDelta)
+end)
 
 -----------------------------------------------
 -- WINDOW->MOVEMENT ---------------------------
