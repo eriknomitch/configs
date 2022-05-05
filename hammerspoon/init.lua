@@ -9,6 +9,13 @@ hs.alert("Hammerspon Config Loading...")
 -- -----------------------------------------------
 require("audio.volume")
 
+local application = {}
+application.watcher = require "hs.application.watcher"
+local fnutils = require "hs.fnutils"
+
+-- -----------------------------------------------
+-- SPOONS ----------------------------------------
+-- -----------------------------------------------
 hs.loadSpoon("SpoonInstall")
 
 spoon.SpoonInstall.use_syncinstall = true
@@ -75,7 +82,6 @@ end
 hostname = hs.host.localizedName()
 
 logger = hs.logger.new('main')
--- logger:setLogLevel('info')
 
 hs_config_dir = os.getenv("HOME") .. "/.hammerspoon/"
 
@@ -142,6 +148,28 @@ if not hs.audiodevice.watcher.isRunning() then
 
   hs.audiodevice.watcher.stop()
   hs.audiodevice.watcher.start()
+end
+
+
+local appWatchers = {}
+
+local function appCallback(name, event, app)
+  if event == hs.application.watcher.activated then
+    logger:w("App activated: " .. name)
+
+    if name == "Home Assistant" then
+      toScreen = nil
+      inBounds = true
+      hs.window.focusedWindow():centerOnScreen(toScreen, inBounds)
+    end
+  end
+end
+
+globalAppWatcher = false
+
+if not globalAppWatcher then
+  globalAppWatcher = application.watcher.new(appCallback)
+  globalAppWatcher:start()
 end
 
 -- -----------------------------------------------
@@ -428,7 +456,7 @@ end
 function handleWindowCreated(win, event)
 
   app_fullscreen = false
-  app        = win:application()
+  app = win:application()
 
   if app:title() == "draw.io" then
     app_fullscreen = true
