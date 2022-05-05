@@ -426,8 +426,8 @@ function modifyWindowHeight(delta)
   local screen = win:screen()
   local max = screen:frame()
 
-  f.y = f.y + math.floor(delta/2)
-  f.h = f.h - delta
+  -- f.y = f.y + math.floor(delta/2)
+  f.h = f.h + delta
   win:setFrame(f)
 end
 
@@ -437,8 +437,8 @@ function modifyWindowWidth(delta)
   local screen = win:screen()
   local max = screen:frame()
 
-  f.x = f.x + math.floor(delta/2)
-  f.w = f.w - delta
+  -- f.x = f.x + math.floor(delta/2)
+  f.w = f.w + delta
   win:setFrame(f)
 end
 
@@ -458,6 +458,20 @@ hs.hotkey.bind({"ctrl", "cmd"}, "0", function()
   inBounds = true
   hs.window.focusedWindow():centerOnScreen(toScreen, inBounds)
 end)
+
+function getWindowAdjustmentDelta(delta)
+  local win = hs.window.focusedWindow()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  local screenWidth = max.w;
+  local screenHeight = max.h;
+
+  local deltaWidth = screenWidth / windowAdjustmentDelta;
+  local deltaHeight = screenHeight / windowAdjustmentDelta;
+
+  return deltaWidth, deltaHeight;
+end
 
 hs.hotkey.bind(movementWindowAdjustment, "Left", function()
   modifyWindowWidth(windowAdjustmentDelta)
