@@ -7,6 +7,11 @@ hs.alert("Hammerspon Config Loading...")
 -- -----------------------------------------------
 -- -----------------------------------------------
 -- -----------------------------------------------
+local appsToCenter = { "Finder", "Home Assistant", "Messages" }
+
+-- -----------------------------------------------
+-- -----------------------------------------------
+-- -----------------------------------------------
 require("audio.volume")
 
 local application = {}
@@ -139,7 +144,10 @@ function handleAudioDeviceChange(data)
 end
 
 -- -----------------------------------------------
+-- WATCHERS --------------------------------------
 -- -----------------------------------------------
+
+-- Audio Device
 -- -----------------------------------------------
 if not hs.audiodevice.watcher.isRunning() then
   hs.audiodevice.watcher.setCallback(function(data)
@@ -151,13 +159,17 @@ if not hs.audiodevice.watcher.isRunning() then
 end
 
 
-local appWatchers = {}
+-- Application
+-- -----------------------------------------------
+globalAppWatcher = false
 
 local function appCallback(name, event, app)
   if event == hs.application.watcher.activated then
     logger:w("App activated: " .. name)
 
-    if name == "Home Assistant" then
+    if hasValue(appsToCenter, name) then
+      logger:w("Centering: " .. name)
+
       toScreen = nil
       inBounds = true
       hs.window.focusedWindow():centerOnScreen(toScreen, inBounds)
@@ -165,10 +177,13 @@ local function appCallback(name, event, app)
   end
 end
 
-globalAppWatcher = false
-
 if not globalAppWatcher then
   globalAppWatcher = application.watcher.new(appCallback)
+
+  if globalAppWatcher.isRunning then
+    globalAppWatcher:stop()
+  end
+
   globalAppWatcher:start()
 end
 
@@ -397,29 +412,6 @@ end
 hs.hotkey.bind(movement, "Up", fullscreen)
 hs.hotkey.bind(movement, "Down", middle)
 
--------------------------------------------------
--- LAYOUTS --------------------------------------
--------------------------------------------------
--- hs.hotkey.bind(movement2, "Left", function()
---   local win    = hs.window.focusedWindow()
---   local app    = win:application()
---   local screen = win:screen()
-
---   if app:title() == "Google Chrome" then
---     local devTools     = app:findWindow("Developer Tools")
---     local tabsOutliner = app:findWindow("Tabs Outliner")
---     local main         = app:mainWindow()
---     main:focus()
---     local chromeDeveloperLayout = {
---       {"Google Chrome", main:title(),         screen, hs.layout.left75,  nil, nil},
---       {"Google Chrome", devTools:title(),     screen, hs.layout.right25, nil, nil},
---       {"Google Chrome", tabsOutliner:title(), screen, hs.layout.right25, nil, nil}
---     }
-
---     hs.layout.apply(chromeDeveloperLayout)
---   end
--- end)
-
 -----------------------------------------------
 -- WINDOW->MOVEMENT ---------------------------
 -----------------------------------------------
@@ -448,51 +440,6 @@ function moveWindowOneSpace(direction)
    hs.timer.usleep(150000)
 
    mouse.setAbsolutePosition(mouseOrigin)
-end
-
------------------------------------------------
--- WINDOW->ON-CREATED -------------------------
------------------------------------------------
-function handleWindowCreated(win, event)
-
-  app_fullscreen = false
-  app = win:application()
-
-  if app:title() == "draw.io" then
-    app_fullscreen = true
-  end
-
-  if app:title() == "Napkin" then
-    app_fullscreen = true
-  end
-
-  if app:title() == "Tusk" then
-    app_fullscreen = true
-  end
-
-  if app:title() == "Preview" then
-    app_fullscreen = true
-  end
-
-  -- if app:title() == "Todoist" then
-  --   local win    = hs.window.focusedWindow()
-  --   local f      = win:frame()
-  --   local screen = win:screen()
-  --   local max    = screen:frame()
-
-  --   f.w = max.w / 2
-  --   f.h = max.h
-
-  --   f.x = max.x - (max.x - f.w) / 2
-  --   f.y = max.y
-
-  --   win:setFrame(f)
-  -- end
-
-  -- ---------------------------------------------
-  if app_fullscreen == true then
-    fullscreen()
-  end
 end
 
 --------------------------------------------------
