@@ -1,7 +1,6 @@
 -- ==============================================
 -- HAMMERSPOON->CONFIG ==========================
 -- ==============================================
-hs.alert("Hammerspon Config Loading...")
 
 -- -----------------------------------------------
 -- APP-CONFIG ------------------------------------
@@ -13,7 +12,7 @@ local appsToCenter = { "Finder", "Home Assistant", "Messages", "Gmail" }
 
 -- Adjustments
 -- -----------------------------------------------
-local windowAdjustmentDelta = 100
+local windowAdjustmentDelta = 80
 
 -- Hotkey Prefixes
 -- -----------------------------------------------
@@ -42,41 +41,13 @@ hs.loadSpoon("SpoonInstall")
 spoon.SpoonInstall.use_syncinstall = true
 local Install=spoon.SpoonInstall
 
-Install:updateRepo('default')
+-- Install:updateRepo('default')
 
-Install:installSpoonFromRepo('ReloadConfiguration')
-Install:installSpoonFromRepo('Emojis')
-Install:installSpoonFromRepo('WindowHalfsAndThirds')
+-- Install:installSpoonFromRepo('ReloadConfiguration')
+-- Install:installSpoonFromRepo('Emojis')
 
 hs.loadSpoon("Emojis")
 hs.loadSpoon("ReloadConfiguration")
-hs.loadSpoon("WindowHalfsAndThirds")
-
--- spoon.SpoonInstall:andUse("AppLauncher", {
---   hotkeys = {
---     c = "Calendar",
---     d = "Discord",
---     f = "Firefox Developer Edition",
---     n = "Notes",
---     p = "1Password 7",
---     r = "Reeder",
---     t = "Kitty",
---     z = "Zoom.us",
---   }
--- })
-
--- spoon.AppLauncher.bindHotkeys({'ctrl', 'alt', 'shift'}, {
---   c = "Calendar",
---   d = "Discord",
---   f = "Firefox Developer Edition",
---   n = "Notes",
---   p = "1Password 7",
---   r = "Reeder",
---   t = "Kitty",
---   z = "Zoom.us",
--- })
-
-spoon.ReloadConfiguration:start()
 
 -- -----------------------------------------------
 -- -----------------------------------------------
@@ -203,8 +174,9 @@ if not globalAppWatcher then
   globalAppWatcher:start()
 end
 
+-- ReloadConfiguration
 -- -----------------------------------------------
--- -----------------------------------------------
+spoon.ReloadConfiguration:start()
 
 -- -----------------------------------------------
 -- -----------------------------------------------
@@ -266,9 +238,7 @@ end)
 -- -----------------------------------------------
 -- WINDOW-HINTS ----------------------------------
 -- -----------------------------------------------
-hs.hotkey.bind(movementAppplicationLaunchOrFocus, ";", function()
-    hs.hints.windowHints()
-end)
+hs.hotkey.bind(movementAppplicationLaunchOrFocus, ";", hs.hints.windowHints)
 
 -- -----------------------------------------------
 -- EXPOSE ----------------------------------------
@@ -298,10 +268,10 @@ end)
 -- -----------------------------------------------
 -- SWITCHER --------------------------------------
 -- -----------------------------------------------
-
+--{{{
 -- set up your windowfilter
-local filter = hs.window.filter.new(false):setAppFilter('iTerm2', false)
 
+local filter = hs.window.filter.new(false):setAppFilter('iTerm2', false)
 local switcher = hs.window.switcher.new() -- default windowfilter: only visible windows, all Spaces
 
 switcher.ui.highlightColor = {0,0,0,0.5}
@@ -317,47 +287,38 @@ switcher.ui.showTitles = false
 switcher.ui.showSelectedTitle = false
 switcher.ui.showSelectedThumbnail = false
 
--- bind to hotkeys; WARNING: at least one modifier key is required!
-hs.hotkey.bind({"cmd", "ctrl"}, ";", function()switcher:next()end)
-hs.hotkey.bind({"cmd", "ctrl", "shift"}, ";", function()switcher:previous()end)
+--}}}
 
--- -----------------------------------------------
--- -----------------------------------------------
--- -----------------------------------------------
+-----------------------------------------------
+-- WINDOW->MOVEMENT ---------------------------
+-----------------------------------------------
+function moveWindowOneSpace(direction)
+   local mouseOrigin = mouse.getAbsolutePosition()
+   local win = hs.window.focusedWindow()
+   local clickPoint = win:zoomButtonRect()
 
-bindApplicationFocus("I", default_browser_name)
-bindApplicationFocus("T", "Todoist")
-bindApplicationFocus("P", "Preview")
-bindApplicationFocusSecondary("P", "Adobe Photoshop 2022")
-bindApplicationFocus("F", "Finder")
-bindApplicationFocusSecondary("F", "Figma")
-bindApplicationFocus("Z", "zoom.us")
-hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "D", function() confirmOnEnter("Discord") end)
-bindApplicationFocus("E", "Obsidian")
-bindApplicationFocusSecondary("E", "Element")
--- bindApplicationFocus("O", "Obsidian")
--- bindApplicationFocus("C", "Remote Control")
--- bindApplicationFocus("R", "Remote Control")
-bindApplicationFocusSecondary("V", "Visual Studio Code")
-bindApplicationFocus("V", "IINA")
-bindApplicationFocus("G", "Gmail")
-bindApplicationFocus("U", "Unraid")
-bindApplicationFocus("H", "Home Assistant")
-bindApplicationFocusSecondary("H", "Home Assistant")
+   clickPoint.x = clickPoint.x + clickPoint.w + 5
+   clickPoint.y = clickPoint.y + (clickPoint.h / 2)
 
--- Special
--- -----------------------------------------------
-hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
+   local mouseClickEvent = hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftmousedown, clickPoint)
+   mouseClickEvent:post()
+   hs.timer.usleep(150000)
 
--- -----------------------------------------------
--- MOVEMENT --------------------------------------
--- -----------------------------------------------
-spoon.WindowHalfsAndThirds:bindHotkeys({
-  third_left = {{"ctrl", "cmd"}, "1"},
-  third_right = {{"ctrl", "cmd"}, "3"},
-  -- larger = {{"ctrl", "cmd"}, "="},
-  -- smaller = {{"ctrl", "cmd"}, "-"}
-})
+   local nextSpaceDownEvent = hs.eventtap.event.newKeyEvent({"ctrl"}, direction, true)
+   nextSpaceDownEvent:post()
+   hs.timer.usleep(150000)
+
+   local nextSpaceUpEvent = hs.eventtap.event.newKeyEvent({"ctrl"}, direction, false)
+   nextSpaceUpEvent:post()
+   hs.timer.usleep(150000)
+
+   local mouseReleaseEvent = hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftmouseup, clickPoint)
+   mouseReleaseEvent:post()
+   hs.timer.usleep(150000)
+
+   mouse.setAbsolutePosition(mouseOrigin)
+end
+
 
 -- Center window
 hs.hotkey.bind({"ctrl", "cmd"}, "0", function()
@@ -406,6 +367,12 @@ function fullscreen()
   win:setFrame(f)
 end
 
+function centerOnScreen()
+  toScreen = nil
+  inBounds = true
+  hs.window.focusedWindow():centerOnScreen(toScreen, inBounds)
+end
+
 function middle()
   local win    = hs.window.focusedWindow()
   local f      = win:frame()
@@ -420,13 +387,16 @@ function middle()
   win:setFrame(f)
 end
 
+-- -----------------------------------------------
+-- WINDOW-ADJUSTMENT -----------------------------
+-- -----------------------------------------------
 function modifyWindowHeight(delta)
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
 
-  -- f.y = f.y + math.floor(delta/2)
+  f.y = f.y - math.floor(delta/2)
   f.h = f.h + delta
   win:setFrame(f)
 end
@@ -437,7 +407,7 @@ function modifyWindowWidth(delta)
   local screen = win:screen()
   local max = screen:frame()
 
-  -- f.x = f.x + math.floor(delta/2)
+  f.x = f.x - math.floor(delta/2)
   f.w = f.w + delta
   win:setFrame(f)
 end
@@ -446,18 +416,6 @@ function modifyWindowSize(delta)
   modifyWindowWidth(delta)
   modifyWindowHeight(delta)
 end
-
--- -----------------------------------------------
--- -----------------------------------------------
--- -----------------------------------------------
-hs.hotkey.bind(movement, "Up", fullscreen)
-hs.hotkey.bind(movement, "Down", middle)
-
-hs.hotkey.bind({"ctrl", "cmd"}, "0", function()
-  toScreen = nil
-  inBounds = true
-  hs.window.focusedWindow():centerOnScreen(toScreen, inBounds)
-end)
 
 function getWindowAdjustmentDelta(delta)
   local win = hs.window.focusedWindow()
@@ -475,20 +433,61 @@ end
 
 -- local values = {getWindowAdjustmentDelta(windowAdjustmentDelta)}
 
-hs.hotkey.bind(movementWindowAdjustment, "Left", function()
-  modifyWindowWidth(windowAdjustmentDelta)
-end)
+-- -----------------------------------------------
+-- HOTKEYS ---------------------------------------
+-- -----------------------------------------------
 
-hs.hotkey.bind(movementWindowAdjustment, "Right", function()
+-- Applications
+-- -----------------------------------------------
+bindApplicationFocus("I", default_browser_name)
+bindApplicationFocus("T", "Todoist")
+bindApplicationFocus("P", "Preview")
+bindApplicationFocusSecondary("P", "Adobe Photoshop 2022")
+bindApplicationFocus("F", "Finder")
+bindApplicationFocusSecondary("F", "Figma")
+bindApplicationFocus("Z", "zoom.us")
+hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "D", function() confirmOnEnter("Discord") end)
+bindApplicationFocus("E", "Obsidian")
+bindApplicationFocusSecondary("E", "Element")
+bindApplicationFocusSecondary("V", "Visual Studio Code")
+bindApplicationFocus("V", "IINA")
+bindApplicationFocus("G", "Gmail")
+bindApplicationFocus("U", "Unraid")
+bindApplicationFocus("H", "Home Assistant")
+bindApplicationFocusSecondary("H", "Home Assistant")
+
+-- Special
+-- -----------------------------------------------
+hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm") end)
+
+-- Switcher
+-- -----------------------------------------------
+hs.hotkey.bind({"cmd", "ctrl"}, ";", function()switcher:next()end)
+hs.hotkey.bind({"cmd", "ctrl", "shift"}, ";", function()switcher:previous()end)
+
+
+-- -----------------------------------------------
+-- -----------------------------------------------
+-- -----------------------------------------------
+hs.hotkey.bind(movement, "Up", fullscreen)
+hs.hotkey.bind(movement, "Down", middle)
+
+hs.hotkey.bind({"ctrl", "cmd"}, "0", centerOnScreen)
+
+hs.hotkey.bind(movementWindowAdjustment, "Left", function()
   modifyWindowWidth(-windowAdjustmentDelta)
 end)
 
+hs.hotkey.bind(movementWindowAdjustment, "Right", function()
+  modifyWindowWidth(windowAdjustmentDelta)
+end)
+
 hs.hotkey.bind(movementWindowAdjustment, "Up", function()
-  modifyWindowHeight(-windowAdjustmentDelta)
+  modifyWindowHeight(windowAdjustmentDelta)
 end)
 
 hs.hotkey.bind(movementWindowAdjustment, "Down", function()
-  modifyWindowHeight(windowAdjustmentDelta)
+  modifyWindowHeight(-windowAdjustmentDelta)
 end)
 
 hs.hotkey.bind(movementWindowAdjustment, "=", function()
@@ -498,36 +497,6 @@ end)
 hs.hotkey.bind(movementWindowAdjustment, "-", function()
   modifyWindowSize(-windowAdjustmentDelta)
 end)
-
------------------------------------------------
--- WINDOW->MOVEMENT ---------------------------
------------------------------------------------
-function moveWindowOneSpace(direction)
-   local mouseOrigin = mouse.getAbsolutePosition()
-   local win = hs.window.focusedWindow()
-   local clickPoint = win:zoomButtonRect()
-
-   clickPoint.x = clickPoint.x + clickPoint.w + 5
-   clickPoint.y = clickPoint.y + (clickPoint.h / 2)
-
-   local mouseClickEvent = hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftmousedown, clickPoint)
-   mouseClickEvent:post()
-   hs.timer.usleep(150000)
-
-   local nextSpaceDownEvent = hs.eventtap.event.newKeyEvent({"ctrl"}, direction, true)
-   nextSpaceDownEvent:post()
-   hs.timer.usleep(150000)
-
-   local nextSpaceUpEvent = hs.eventtap.event.newKeyEvent({"ctrl"}, direction, false)
-   nextSpaceUpEvent:post()
-   hs.timer.usleep(150000)
-
-   local mouseReleaseEvent = hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftmouseup, clickPoint)
-   mouseReleaseEvent:post()
-   hs.timer.usleep(150000)
-
-   mouse.setAbsolutePosition(mouseOrigin)
-end
 
 --------------------------------------------------
 -- ALERT->CONFIG-LOADED --------------------------
