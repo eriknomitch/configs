@@ -9,6 +9,7 @@
 -- Apps
 -- -----------------------------------------------
 local appsToCenter = { "Finder", "Home Assistant", "Messages", "Gmail" }
+local default_browser_name = "Google Chrome"
 
 -- Adjustments
 -- -----------------------------------------------
@@ -24,12 +25,18 @@ local movementAppplicationLaunchOrFocus = {"cmd", "ctrl"}
 local movementAppplicationLaunchOrFocusSecondary = {"cmd", "ctrl", "shift"}
 
 -- -----------------------------------------------
--- -----------------------------------------------
+-- GLOBALS ---------------------------------------
 -- -----------------------------------------------
 local application = {}
 
 local audioVolume = require("audio.volume")
 local fnutils = require "hs.fnutils"
+
+hostname = hs.host.localizedName()
+
+logger = hs.logger.new('main')
+
+hs_config_dir = os.getenv("HOME") .. "/.hammerspoon/"
 
 application.watcher = require "hs.application.watcher"
 
@@ -41,17 +48,21 @@ hs.loadSpoon("SpoonInstall")
 spoon.SpoonInstall.use_syncinstall = true
 local Install=spoon.SpoonInstall
 
--- Install:updateRepo('default')
+function installAll()
+  Install:updateRepo('default')
 
--- Install:installSpoonFromRepo('ReloadConfiguration')
--- Install:installSpoonFromRepo('Emojis')
+  Install:installSpoonFromRepo('ReloadConfiguration')
+  Install:installSpoonFromRepo('Emojis')
+end
+
 
 hs.loadSpoon("Emojis")
 hs.loadSpoon("ReloadConfiguration")
 
 -- -----------------------------------------------
+-- STYLING ---------------------------------------
 -- -----------------------------------------------
--- -----------------------------------------------
+--{{{
 -- Make the alerts look nicer.
 hs.alert.defaultStyle.strokeColor = {white = 1, alpha = 0}
 hs.alert.defaultStyle.fillColor = {white = 0.05, alpha = 0.75}
@@ -61,23 +72,16 @@ hs.alert.defaultStyle.radius = 5
 hs.window.animationDuration = 0
 hs.window.setShadows(false)
 
+--}}}
+
 -- -----------------------------------------------
--- -----------------------------------------------
+-- UTILITY ---------------------------------------
 -- -----------------------------------------------
 
 -- Display a notification
 function notify(title, message)
   hs.notify.new({title=title, informativeText=message}):send()
 end
-
--- Some useful global variables
-hostname = hs.host.localizedName()
-
-logger = hs.logger.new('main')
-
-hs_config_dir = os.getenv("HOME") .. "/.hammerspoon/"
-
-default_browser_name = "Google Chrome"
 
 -- -----------------------------------------------
 -- UTILITY ---------------------------------------
