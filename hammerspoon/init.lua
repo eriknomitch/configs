@@ -473,6 +473,8 @@ function getWindowAdjustmentDelta(delta)
   return deltaWidth, deltaHeight;
 end
 
+-- local values = {getWindowAdjustmentDelta(windowAdjustmentDelta)}
+
 hs.hotkey.bind(movementWindowAdjustment, "Left", function()
   modifyWindowWidth(windowAdjustmentDelta)
 end)
