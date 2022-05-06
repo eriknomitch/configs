@@ -43,11 +43,6 @@ application.watcher = require "hs.application.watcher"
 -- -----------------------------------------------
 -- SPOONS ----------------------------------------
 -- -----------------------------------------------
-hs.loadSpoon("SpoonInstall")
-
-spoon.SpoonInstall.use_syncinstall = true
-local Install=spoon.SpoonInstall
-
 function installAll()
   Install:updateRepo('default')
 
@@ -55,6 +50,12 @@ function installAll()
   Install:installSpoonFromRepo('Emojis')
 end
 
+-- Load Spoons
+-- -----------------------------------------------
+hs.loadSpoon("SpoonInstall")
+
+spoon.SpoonInstall.use_syncinstall = true
+local Install=spoon.SpoonInstall
 
 hs.loadSpoon("Emojis")
 hs.loadSpoon("ReloadConfiguration")
