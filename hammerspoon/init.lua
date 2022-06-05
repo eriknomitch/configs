@@ -10,6 +10,7 @@
 -- -----------------------------------------------
 local appsToCenter = { "Finder", "Home Assistant", "Messages", "Gmail", "Unraid" }
 local default_browser_name = "Google Chrome"
+local secondary_browser_name = "Firefox Developer Edition"
 
 -- Adjustments
 -- -----------------------------------------------
@@ -445,6 +446,7 @@ end
 -- Applications
 -- -----------------------------------------------
 bindApplicationFocus("I", default_browser_name)
+bindApplicationFocusSecondary("I", secondary_browser_name)
 bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("P", "Preview")
 hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "P", function() confirmOnEnter("Adobe Photoshop 2022") end)
