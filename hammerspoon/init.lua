@@ -9,7 +9,7 @@
 -- Apps
 -- -----------------------------------------------
 local appsToCenter = { "Finder", "Home Assistant", "Messages", "Gmail", "Unraid" }
-local default_browser_name = "Google Chrome"
+local default_browser_name = "Google Chrome Beta"
 local secondary_browser_name = "Firefox Developer Edition"
 
 -- Adjustments
