@@ -140,6 +140,14 @@ end
 -- WATCHERS --------------------------------------
 -- -----------------------------------------------
 
+-- Get list of screens and refresh that list whenever screens are (un)plugged
+local screens = hs.screen.allScreens()
+local screenwatcher = hs.screen.watcher.new(function()
+    screens = hs.screen.allScreens()
+    logger:w("screens: " .. screens)
+end)
+screenwatcher:start()
+
 -- Audio Device
 -- -----------------------------------------------
 if not hs.audiodevice.watcher.isRunning() then
