@@ -132,19 +132,16 @@ Host tunnel-*.local
 # ------------------------------------------------
 # LOCAL/LAN --------------------------------------
 # ------------------------------------------------
- Host unraid-nas unraid.local
-  HostName unraid.local
-# unraid.zerotier.nomitch.com
-     User root
-     Port 22
+Host unraid-nas unraid-nas.local # unraid.zerotier.nomitch.com
+  HostName unraid-nas.local
+  User root
 
 # Host unraid-ssh-container
 #     HostName unraid.zerotier.nomitch.com
 #     User erik
 #     Port 2222
 
-
-Host pc unraid unraid-pc unraid-pc.local
+Host unraid-pc unraid-pc.local
   HostName pc.local
   User root
 
