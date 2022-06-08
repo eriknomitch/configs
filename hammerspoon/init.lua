@@ -162,9 +162,7 @@ end
 
 -- Application
 -- -----------------------------------------------
-globalAppWatcher = false
-
-local function appCallback(name, event, app)
+local function appWatcherCallback(name, event, app)
   if event == hs.application.watcher.activated then
     logger:w("App activated: " .. name)
 
@@ -178,15 +176,15 @@ local function appCallback(name, event, app)
   end
 end
 
-if not globalAppWatcher then
-  globalAppWatcher = application.watcher.new(appCallback)
+local globalAppWatcher = application.watcher.new(appWatcherCallback)
 
-  if globalAppWatcher.isRunning then
-    globalAppWatcher:stop()
-  end
-
-  globalAppWatcher:start()
+if globalAppWatcher.isRunning then
+  globalAppWatcher:stop()
 end
+
+globalAppWatcher:start()
+-- if not globalAppWatcher then
+-- end
 
 -- ReloadConfiguration
 -- -----------------------------------------------
