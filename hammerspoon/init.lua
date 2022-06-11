@@ -223,9 +223,7 @@ local function appWatcherCallback(name, event, app)
     if hasValue(appsToCenter, name) then
       logger:w("Centering: " .. name)
 
-      toScreen = nil
-      inBounds = true
-      hs.window.focusedWindow():centerOnScreen(toScreen, inBounds)
+      hs.window.focusedWindow():centerOnScreen(nil, true)
     end
   end
 end
@@ -330,9 +328,7 @@ end)
 
 -- Center window
 hs.hotkey.bind({"ctrl", "cmd"}, "0", function()
-  toScreen = nil
-  inBounds = true
-  hs.window.focusedWindow():centerOnScreen(toScreen, inBounds)
+  hs.window.focusedWindow():centerOnScreen(nil, true)
 end)
 
 hs.hotkey.bind(movement, "Left", function()
@@ -421,7 +417,13 @@ hs.hotkey.bind({"cmd", "ctrl", "shift"}, ";", function()switcher:previous()end)
 hs.hotkey.bind(movement, "Up", fullscreen)
 hs.hotkey.bind(movement, "Down", middle)
 
-hs.hotkey.bind({"ctrl", "cmd"}, "0", centerOnScreen)
+hs.hotkey.bind({"ctrl", "cmd"}, "0", function()
+  hs.window.focusedWindow():centerOnScreen(nil, true)
+end)
+
+hs.hotkey.bind({"ctrl", "cmd", "alt"}, "0", function()
+  hs.window.focusedWindow():centerOnScreen(nil, true)
+end)
 
 hs.hotkey.bind(movementWindowAdjustment, "Left", function()
   modifyWindowWidth(-windowAdjustmentDelta)
