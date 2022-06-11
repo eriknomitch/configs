@@ -2,15 +2,25 @@
 -- HAMMERSPOON->CONFIG ==========================
 -- ==============================================
 
--- -----------------------------------------------
--- APP-CONFIG ------------------------------------
--- -----------------------------------------------
+-- ------------------------------------------------
+-- REQUIRE->LOCAL ---------------------------------
+-- ------------------------------------------------
+--{{{
+
+require("utility")
+
+--}}}
+
+-- ===============================================
+-- CONFIGURATION =================================
+-- ===============================================
+--{{{
 
 -- Apps
 -- -----------------------------------------------
 local appsToCenter = { "Finder", "Home Assistant", "Messages", "Gmail", "Unraid" }
-local default_browser_name = "Google Chrome Beta"
-local secondary_browser_name = "Firefox Developer Edition"
+local defaultBrowserName = "Google Chrome Beta"
+local secondaryBrowserName = "Firefox Developer Edition"
 
 -- Adjustments
 -- -----------------------------------------------
@@ -25,31 +35,62 @@ local movementWindowAdjustment = {"cmd", "ctrl", "alt"}
 local movementAppplicationLaunchOrFocus = {"cmd", "ctrl"}
 local movementAppplicationLaunchOrFocusSecondary = {"cmd", "ctrl", "shift"}
 
+-- Spoons
 -- -----------------------------------------------
--- GLOBALS ---------------------------------------
+local spoonNames = {
+    "SpoonInstall",
+    "ReloadConfiguration",
+    "Emojis"
+}
+
+-- Inferrable
 -- -----------------------------------------------
+local hostname = hs.host.localizedName()
+
+local logger = hs.logger.new('main')
+
+--}}}
+
+-- -----------------------------------------------
+-- SET-CONFIG ------------------------------------
+-- -----------------------------------------------
+--{{{
+
+setConfigForUtility({
+  windowAdjustmentDelta = windowAdjustmentDelta,
+  appsToCenter = appsToCenter,
+  defaultBrowserName = defaultBrowserName,
+  secondaryBrowserName = secondaryBrowserName,
+  movement = movement,
+  movementSecondary = movementSecondary,
+  movementWindowAdjustment = movementWindowAdjustment,
+  movementAppplicationLaunchOrFocus = movementAppplicationLaunchOrFocus,
+  movementAppplicationLaunchOrFocusSecondary = movementAppplicationLaunchOrFocusSecondary,
+  spoonNames = spoonNames
+})
+
+--}}}
+
+-- -----------------------------------------------
+-- DEPENDENCIES ----------------------------------
+-- -----------------------------------------------
+--{{{
+
 local application = {}
 
 local audioVolume = require("audio.volume")
-local fnutils = require "hs.fnutils"
+local fnutils = require("hs.fnutils")
 
-hostname = hs.host.localizedName()
+hammerspoonConfigDir = os.getenv("HOME") .. "/.hammerspoon/"
 
-logger = hs.logger.new('main')
+application.watcher = require("hs.application.watcher")
 
-hs_config_dir = os.getenv("HOME") .. "/.hammerspoon/"
-
-application.watcher = require "hs.application.watcher"
+--}}}
 
 -- -----------------------------------------------
 -- SPOONS ----------------------------------------
 -- -----------------------------------------------
-function installAll()
-  Install:updateRepo('default')
-
-  Install:installSpoonFromRepo('ReloadConfiguration')
-  Install:installSpoonFromRepo('Emojis')
-end
+--{{{
 
 -- Load Spoons
 -- -----------------------------------------------
@@ -60,6 +101,16 @@ local Install=spoon.SpoonInstall
 
 hs.loadSpoon("Emojis")
 hs.loadSpoon("ReloadConfiguration")
+
+function installSpoons(spoonNames)
+  Install:updateRepo('default')
+
+  for _, spoonName in ipairs(spoonNames) do
+    Install:installSpoon(spoonName)
+  end
+end
+
+--}}}
 
 -- -----------------------------------------------
 -- STYLING ---------------------------------------
@@ -77,29 +128,46 @@ hs.window.setShadows(false)
 --}}}
 
 -- -----------------------------------------------
--- UTILITY ---------------------------------------
+-- STYLING->SWITCHER -----------------------------
 -- -----------------------------------------------
+--{{{
 
--- Display a notification
-function notify(title, message)
-  hs.notify.new({title=title, informativeText=message}):send()
-end
+local filter = hs.window.filter.new(false):setAppFilter('iTerm2', false)
+local switcher = hs.window.switcher.new() -- default windowfilter: only visible windows, all Spaces
+
+switcher.ui.highlightColor = {0,0,0,0.5}
+-- switcher.ui.thumbnailSize = 128
+switcher.ui.thumbnailSize = 400
+-- switcher.ui.selectedThumbnailSize = 384
+switcher.ui.selectedThumbnailSize = 500
+switcher.ui.backgroundColor = {0.125, 0.125, 0.125, 0.8}
+-- switcher.ui.textSize = 12
+switcher.ui.fontName = 'SF Pro'
+switcher.ui.titleBackgroundColor = {0,0,0,0.2}
+switcher.ui.showTitles = false
+switcher.ui.showSelectedTitle = false
+switcher.ui.showSelectedThumbnail = false
+
+--}}}
 
 -- -----------------------------------------------
--- UTILITY ---------------------------------------
+-- WATCHERS --------------------------------------
 -- -----------------------------------------------
-function hasValue(tab, val)
-  for index, value in ipairs(tab) do
-    if value == val then
-      return true
-    end
-  end
+--{{{
 
-  return false
-end
+-- Screen Watcher
+-- -----------------------------------------------
+-- Get list of screens and refresh that list whenever screens are (un)plugged
+local screens = hs.screen.allScreens()
 
--- -----------------------------------------------
--- -----------------------------------------------
+local screenwatcher = hs.screen.watcher.new(function()
+    screens = hs.screen.allScreens()
+    logger:w("screens: " .. screens)
+end)
+
+screenwatcher:start()
+
+-- Audio Device Watcher
 -- -----------------------------------------------
 function handleAudioDeviceChange(data)
 
@@ -136,20 +204,7 @@ function handleAudioDeviceChange(data)
 
 end
 
--- -----------------------------------------------
--- WATCHERS --------------------------------------
--- -----------------------------------------------
 
--- Get list of screens and refresh that list whenever screens are (un)plugged
-local screens = hs.screen.allScreens()
-local screenwatcher = hs.screen.watcher.new(function()
-    screens = hs.screen.allScreens()
-    logger:w("screens: " .. screens)
-end)
-screenwatcher:start()
-
--- Audio Device
--- -----------------------------------------------
 if not hs.audiodevice.watcher.isRunning() then
   hs.audiodevice.watcher.setCallback(function(data)
     handleAudioDeviceChange(data)
@@ -159,8 +214,7 @@ if not hs.audiodevice.watcher.isRunning() then
   hs.audiodevice.watcher.start()
 end
 
-
--- Application
+-- Application Watcher
 -- -----------------------------------------------
 local function appWatcherCallback(name, event, app)
   if event == hs.application.watcher.activated then
@@ -183,16 +237,18 @@ if globalAppWatcher.isRunning then
 end
 
 globalAppWatcher:start()
--- if not globalAppWatcher then
--- end
 
 -- ReloadConfiguration
 -- -----------------------------------------------
 spoon.ReloadConfiguration:start()
 
+--}}}
+
 -- -----------------------------------------------
+-- SHORTCUTS -------------------------------------
 -- -----------------------------------------------
--- -----------------------------------------------
+--{{{
+
 function bindApplicationFocus(key, title)
   hs.hotkey.bind(movementAppplicationLaunchOrFocus, key, function() hs.application.launchOrFocus(title) end)
 end
@@ -201,9 +257,6 @@ function bindApplicationFocusSecondary(key, title)
   hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, key, function() hs.application.launchOrFocus(title) end)
 end
 
--- -----------------------------------------------
--- SHORTCUTS -------------------------------------
--- -----------------------------------------------
 function triggerAfterConfirmation(question, action)
     hs.timer.doAfter(0, function()
         hs.focus()
@@ -237,9 +290,13 @@ function confirmOnEnter(appName)
   -- hs.timer.doAfter(0, function() hs.focus(); hs.dialog.textPrompt("Main message.", "Please enter something:") end)
 end
 
+--}}}
+
 -- -----------------------------------------------
+-- SHORTCUTS->BINDINGS ---------------------------
 -- -----------------------------------------------
--- -----------------------------------------------
+--{{{
+
 hs.hotkey.bind(movementAppplicationLaunchOrFocus, "M", function() confirmOnEnter("Messages") end)
 hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "S", function() confirmOnEnter("Slack") end)
 
@@ -247,14 +304,8 @@ hs.hotkey.bind(movementAppplicationLaunchOrFocus, ";", function()
     hs.hints.windowHints()
 end)
 
--- -----------------------------------------------
--- WINDOW-HINTS ----------------------------------
--- -----------------------------------------------
-hs.hotkey.bind(movementAppplicationLaunchOrFocus, ";", hs.hints.windowHints)
+hs.hotkey.bind(movementAppplicationLaunchOrFocus, "'", hs.hints.windowHints)
 
--- -----------------------------------------------
--- EXPOSE ----------------------------------------
--- -----------------------------------------------
 hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary,';', function()
   local options = {
     showThumbnails = true,
@@ -276,61 +327,6 @@ hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary,';', function()
 
   expose:toggleShow()
 end)
-
--- -----------------------------------------------
--- SWITCHER --------------------------------------
--- -----------------------------------------------
---{{{
--- set up your windowfilter
-
-local filter = hs.window.filter.new(false):setAppFilter('iTerm2', false)
-local switcher = hs.window.switcher.new() -- default windowfilter: only visible windows, all Spaces
-
-switcher.ui.highlightColor = {0,0,0,0.5}
--- switcher.ui.thumbnailSize = 128
-switcher.ui.thumbnailSize = 400
--- switcher.ui.selectedThumbnailSize = 384
-switcher.ui.selectedThumbnailSize = 500
-switcher.ui.backgroundColor = {0.125, 0.125, 0.125, 0.8}
--- switcher.ui.textSize = 12
-switcher.ui.fontName = 'SF Pro'
-switcher.ui.titleBackgroundColor = {0,0,0,0.2}
-switcher.ui.showTitles = false
-switcher.ui.showSelectedTitle = false
-switcher.ui.showSelectedThumbnail = false
-
---}}}
-
------------------------------------------------
--- WINDOW->MOVEMENT ---------------------------
------------------------------------------------
-function moveWindowOneSpace(direction)
-   local mouseOrigin = mouse.getAbsolutePosition()
-   local win = hs.window.focusedWindow()
-   local clickPoint = win:zoomButtonRect()
-
-   clickPoint.x = clickPoint.x + clickPoint.w + 5
-   clickPoint.y = clickPoint.y + (clickPoint.h / 2)
-
-   local mouseClickEvent = hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftmousedown, clickPoint)
-   mouseClickEvent:post()
-   hs.timer.usleep(150000)
-
-   local nextSpaceDownEvent = hs.eventtap.event.newKeyEvent({"ctrl"}, direction, true)
-   nextSpaceDownEvent:post()
-   hs.timer.usleep(150000)
-
-   local nextSpaceUpEvent = hs.eventtap.event.newKeyEvent({"ctrl"}, direction, false)
-   nextSpaceUpEvent:post()
-   hs.timer.usleep(150000)
-
-   local mouseReleaseEvent = hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftmouseup, clickPoint)
-   mouseReleaseEvent:post()
-   hs.timer.usleep(150000)
-
-   mouse.setAbsolutePosition(mouseOrigin)
-end
-
 
 -- Center window
 hs.hotkey.bind({"ctrl", "cmd"}, "0", function()
@@ -379,80 +375,17 @@ function fullscreen()
   win:setFrame(f)
 end
 
-function centerOnScreen()
-  toScreen = nil
-  inBounds = true
-  hs.window.focusedWindow():centerOnScreen(toScreen, inBounds)
-end
-
-function middle()
-  local win    = hs.window.focusedWindow()
-  local f      = win:frame()
-  local screen = win:screen()
-  local max    = screen:frame()
-
-  f.x = max.x + (max.w * 1/8)
-  f.y = max.y
-  f.w = max.w * 3/4
-  f.h = max.h
-
-  win:setFrame(f)
-end
-
--- -----------------------------------------------
--- WINDOW-ADJUSTMENT -----------------------------
--- -----------------------------------------------
-function modifyWindowHeight(delta)
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.y = f.y - math.floor(delta/2)
-  f.h = f.h + delta
-  win:setFrame(f)
-end
-
-function modifyWindowWidth(delta)
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.x = f.x - math.floor(delta/2)
-  f.w = f.w + delta
-  win:setFrame(f)
-end
-
-function modifyWindowSize(delta)
-  modifyWindowWidth(delta)
-  modifyWindowHeight(delta)
-end
-
-function getWindowAdjustmentDelta(delta)
-  local win = hs.window.focusedWindow()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  local screenWidth = max.w;
-  local screenHeight = max.h;
-
-  local deltaWidth = screenWidth / windowAdjustmentDelta;
-  local deltaHeight = screenHeight / windowAdjustmentDelta;
-
-  return deltaWidth, deltaHeight;
-end
-
--- local values = {getWindowAdjustmentDelta(windowAdjustmentDelta)}
+--}}}
 
 -- -----------------------------------------------
 -- HOTKEYS ---------------------------------------
 -- -----------------------------------------------
+-- {{{
 
 -- Applications
 -- -----------------------------------------------
-bindApplicationFocus("I", default_browser_name)
-bindApplicationFocusSecondary("I", secondary_browser_name)
+bindApplicationFocus("I", defaultBrowserName)
+bindApplicationFocusSecondary("I", secondaryBrowserName)
 bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("P", "Preview")
 hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "P", function() confirmOnEnter("Adobe Photoshop 2022") end)
@@ -478,10 +411,13 @@ hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm
 hs.hotkey.bind({"cmd", "ctrl"}, ";", function()switcher:next()end)
 hs.hotkey.bind({"cmd", "ctrl", "shift"}, ";", function()switcher:previous()end)
 
+-- }}}
 
 -- -----------------------------------------------
+-- HOTKEYS->WINDOW -------------------------------
 -- -----------------------------------------------
--- -----------------------------------------------
+-- {{{
+
 hs.hotkey.bind(movement, "Up", fullscreen)
 hs.hotkey.bind(movement, "Down", middle)
 
@@ -511,7 +447,13 @@ hs.hotkey.bind(movementWindowAdjustment, "-", function()
   modifyWindowSize(-windowAdjustmentDelta)
 end)
 
+--}}}
+
 --------------------------------------------------
 -- ALERT->CONFIG-LOADED --------------------------
 --------------------------------------------------
+--{{{
+
 hs.alert("Hammerspon Config Loaded")
+
+--}}}
