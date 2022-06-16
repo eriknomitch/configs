@@ -159,6 +159,10 @@ Host rpi-*.local
   CheckHostIP no
   StrictHostKeyChecking no
 
+Host micro-touchscreen
+  HostName micro-touchscreen.local
+  User erik
+
 # Host rpi-*
 #   HostName %h.local
 #   User pi
