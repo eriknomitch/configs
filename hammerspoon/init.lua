@@ -298,6 +298,19 @@ end
 hs.hotkey.bind(movementAppplicationLaunchOrFocus, "M", function() confirmOnEnter("Messages") end)
 hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "S", function() confirmOnEnter("Slack") end)
 
+hs.hints.fontSize = 34
+hs.hints.style = "vimperator"
+
+-- hs.hints.hintChars = {
+--   'A', 'S', 'D', 'F',
+--   'H', 'J', 'K', 'L',
+--   '1', '2', '3', '4',
+--   '5', '6', '7', '8',
+--   '9', '0', '-', '='
+-- }
+
+hs.hints.iconAlpha = 1
+
 hs.hotkey.bind(movementAppplicationLaunchOrFocus, ";", function()
     hs.hints.windowHints()
 end)
