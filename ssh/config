@@ -163,6 +163,10 @@ Host micro-touchscreen
   HostName micro-touchscreen.local
   User erik
 
+Host thinkpad thinkpad.local
+  HostName thinkpad.local
+  User kali
+
 # Host rpi-*
 #   HostName %h.local
 #   User pi
