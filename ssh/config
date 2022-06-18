@@ -164,7 +164,7 @@ Host micro-touchscreen
   User erik
 
 Host thinkpad thinkpad.local
-  HostName thinkpad.local
+  HostName 192.168.50.32
   User kali
 
 # Host rpi-*
