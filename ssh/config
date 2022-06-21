@@ -163,8 +163,16 @@ Host micro-touchscreen
   HostName micro-touchscreen.local
   User erik
 
-Host thinkpad thinkpad.local
-  HostName 192.168.50.32
+Host micro-case micro-case.local
+  HostName micro-case.local
+  User pi
+
+# Host thinkpad thinkpad.local
+#   HostName 192.168.50.32
+#   User kali
+
+Host kali kali.local
+  HostName kali.local
   User kali
 
 # Host rpi-*
@@ -176,10 +184,10 @@ Host thinkpad thinkpad.local
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
 # ------------------------------------------------
-Host micro-*
-  UserKnownHostsFile /dev/null
-  StrictHostKeyChecking no
-  ServerAliveInterval 60
+# Host micro-*
+#   UserKnownHostsFile /dev/null
+#   StrictHostKeyChecking no
+#   ServerAliveInterval 60
 
 # ------------------------------------------------
 # REMOTE -----------------------------------------
