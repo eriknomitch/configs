@@ -220,7 +220,7 @@ Plug 'samoshkin/vim-mergetool'
 Plug 'skywind3000/asyncrun.vim'
 
 " ------------------------------------------------
-" COLORSCHEMES -----------------------------------
+" COLORS/COLORSCHEMES ----------------------------
 " ------------------------------------------------
 
 " REPO: https://github.com/folke/lsp-colors.nvim-lua
@@ -232,6 +232,9 @@ Plug 'tjdevries/colorbuddy.nvim'
 
 " REPO: https://github.com/Iron-E/nvim-highlite
 Plug 'Iron-E/nvim-highlite'
+
+" REPO: https://github.com/ziontee113/color-picker.nvim
+Plug 'ziontee113/color-picker.nvim'
 
 " ================================================
 " END ============================================
