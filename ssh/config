@@ -159,6 +159,12 @@ Host rpi-*.local
   CheckHostIP no
   StrictHostKeyChecking no
 
+Host rpi-*
+  HostName %h.local
+  User pi
+  CheckHostIP no
+  StrictHostKeyChecking no
+
 Host micro-touchscreen
   HostName micro-touchscreen.local
   User erik
@@ -167,19 +173,17 @@ Host micro-case micro-case.local
   HostName micro-case.local
   User pi
 
-# Host thinkpad thinkpad.local
-#   HostName 192.168.50.32
-#   User kali
+Host thinkpad thinkpad.local
+  HostName 192.168.50.32
+  User kali
 
 Host kali kali.local
   HostName kali.local
   User kali
 
-# Host rpi-*
-#   HostName %h.local
-#   User pi
-#   CheckHostIP no
-#   StrictHostKeyChecking no
+Host blackarch blackarch.local
+  HostName 192.168.50.22
+  User arch
 
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
@@ -192,24 +196,9 @@ Host kali kali.local
 # ------------------------------------------------
 # REMOTE -----------------------------------------
 # ------------------------------------------------
-Host linode
-    HostName 97.107.140.203
-    User linode
-    Port 22
-    ServerAliveInterval 60
-
-Host linode-personal
-    HostName 173.255.244.170
-    User linode
-    Port 22
-
 Host docker-proxy
     HostName 45.63.69.132
     User development
-
-Host paperspace-general
-  HostName 184.105.190.70
-  User paperspace
 
 # ------------------------------------------------
 # DEVICES ----------------------------------------
@@ -217,7 +206,6 @@ Host paperspace-general
 Host remarkable remarkable.local
     Hostname 192.168.50.19
     User root
-
 
 # ================================================
 # WORK ===========================================
