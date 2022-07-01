@@ -11,6 +11,22 @@ require("utility")
 
 --}}}
 
+-- ------------------------------------------------
+-- WHAMMY -----------------------------------------
+-- ------------------------------------------------
+--{{{
+
+local wm = {}
+
+-- require('wm.os').setup()
+
+-- local controller = require('wm.controller')
+
+-- wm.controller = controller:new()
+
+--}}}
+
+
 -- ===============================================
 -- CONFIGURATION =================================
 -- ===============================================
@@ -54,6 +70,18 @@ local logger = hs.logger.new("main")
 logger.defaultLogLevel = "debug"
 
 --}}}
+
+local windowtracker = require('wm..windowtracker')
+
+wm.windowtracker = windowtracker:new({
+  windowtracker.windowCreated,
+  windowtracker.windowDestroyed,
+  windowtracker.mainWindowChanged
+}, function(win, event)
+  logger:w(win)
+  logger:w(event)
+end)
+
 
 -- -----------------------------------------------
 -- SET-CONFIG ------------------------------------
