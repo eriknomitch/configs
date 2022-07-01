@@ -47,7 +47,11 @@ local spoonNames = {
 -- -----------------------------------------------
 local hostname = hs.host.localizedName()
 
-local logger = hs.logger.new('main')
+-- Logger
+-- -----------------------------------------------
+local logger = hs.logger.new("main")
+
+logger.defaultLogLevel = "debug"
 
 --}}}
 
@@ -77,6 +81,7 @@ setConfigForUtility({
 --{{{
 
 local application = {}
+local uielement = {}
 
 local audioVolume = require("audio.volume")
 local fnutils = require("hs.fnutils")
@@ -84,6 +89,7 @@ local fnutils = require("hs.fnutils")
 hammerspoonConfigDir = os.getenv("HOME") .. "/.hammerspoon/"
 
 application.watcher = require("hs.application.watcher")
+uielement.watcher = require("hs.uielement.watcher")
 
 --}}}
 
@@ -217,13 +223,17 @@ end
 -- Application Watcher
 -- -----------------------------------------------
 local function appWatcherCallback(name, event, app)
+  logger:w(event)
   if event == hs.application.watcher.activated then
     logger:w("App activated: " .. name)
 
     if hasValue(appsToCenter, name) then
       logger:w("Centering: " .. name)
 
-      hs.window.focusedWindow():centerOnScreen(nil, true)
+      local win = hs.window.focusedWindow()
+      if win then
+        win:centerOnScreen(nil, true)
+      end
     end
   end
 end
@@ -235,6 +245,20 @@ if globalAppWatcher.isRunning then
 end
 
 globalAppWatcher:start()
+
+--
+-- -----------------------------------------------
+-- local function uiElementWatcherCallback(name, event, element)
+--   logger:d(event)
+-- end
+
+-- local globalUiElementWatcher = uielement.watcher.new(uiElementWatcherCallback)
+
+-- if globalUiElementWatcher.isRunning then
+--   globalUiElementWatcher:stop()
+-- end
+
+-- globalUiElementWatcher:start()
 
 -- ReloadConfiguration
 -- -----------------------------------------------
