@@ -26,7 +26,6 @@ local wm = {}
 
 --}}}
 
-
 -- ===============================================
 -- CONFIGURATION =================================
 -- ===============================================
@@ -67,11 +66,10 @@ local hostname = hs.host.localizedName()
 -- -----------------------------------------------
 hs.application.enableSpotlightForNameSearches(true)
 
--- Logger
+-- log
 -- -----------------------------------------------
-local logger = hs.logger.new("main")
-
-logger.defaultLogLevel = "debug"
+log = hs.logger.new("Hammerspoon")
+log.setLogLevel("debug")
 
 --}}}
 
@@ -79,16 +77,16 @@ logger.defaultLogLevel = "debug"
 -- WINDOW-TRACKER --------------------------------
 -- -----------------------------------------------
 --{{{
-local windowtracker = require('wm..windowtracker')
+-- local windowtracker = require('wm.windowtracker')
 
-wm.windowtracker = windowtracker:new({
-  windowtracker.windowCreated,
-  windowtracker.windowDestroyed,
-  windowtracker.mainWindowChanged
-}, function(win, event)
-  logger:w(win)
-  logger:w(event)
-end)
+-- wm.windowtracker = windowtracker:new(
+--   {windowtracker.windowCreated, windowtracker.windowDestroyed, windowtracker.mainWindowChanged},
+-- function(win, event)
+--     log:d(win)
+--     log:d(event)
+-- end)
+
+-- windowtracker:start()
 --}}}
 
 -- -----------------------------------------------
@@ -204,7 +202,7 @@ local screens = hs.screen.allScreens()
 
 local screenwatcher = hs.screen.watcher.new(function()
     screens = hs.screen.allScreens()
-    logger:w("screens: " .. screens)
+    log:d("screens: " .. screens)
 end)
 
 screenwatcher:start()
@@ -215,7 +213,7 @@ function handleAudioDeviceChange(data)
 
   -- https://www.hammerspoon.org/docs/hs.audiodevice.watcher.html#setCallback
   if data == "dOut" then
-    logger:w("Audio device changed: " .. data)
+    log:d("Audio device changed: " .. data)
 
     device = hs.audiodevice.defaultOutputDevice()
     level = 0
@@ -259,12 +257,12 @@ end
 -- Application Watcher
 -- -----------------------------------------------
 local function appWatcherCallback(name, event, app)
-  logger:w(event)
+  log:d(event)
   if event == hs.application.watcher.activated then
-    logger:w("App activated: " .. name)
+    log:d("App activated: " .. name)
 
     if hasValue(appsToCenter, name) then
-      logger:w("Centering: " .. name)
+      log:d("Centering: " .. name)
 
       local win = hs.window.focusedWindow()
       if win then
@@ -285,7 +283,7 @@ globalAppWatcher:start()
 --
 -- -----------------------------------------------
 -- local function uiElementWatcherCallback(name, event, element)
---   logger:d(event)
+--   log:d(event)
 -- end
 
 -- local globalUiElementWatcher = uielement.watcher.new(uiElementWatcherCallback)
