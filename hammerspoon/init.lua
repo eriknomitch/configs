@@ -63,6 +63,10 @@ local spoonNames = {
 -- -----------------------------------------------
 local hostname = hs.host.localizedName()
 
+-- Hammerspoon
+-- -----------------------------------------------
+hs.application.enableSpotlightForNameSearches(true)
+
 -- Logger
 -- -----------------------------------------------
 local logger = hs.logger.new("main")
