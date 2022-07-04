@@ -71,6 +71,10 @@ logger.defaultLogLevel = "debug"
 
 --}}}
 
+-- -----------------------------------------------
+-- WINDOW-TRACKER --------------------------------
+-- -----------------------------------------------
+--{{{
 local windowtracker = require('wm..windowtracker')
 
 wm.windowtracker = windowtracker:new({
@@ -81,7 +85,7 @@ wm.windowtracker = windowtracker:new({
   logger:w(win)
   logger:w(event)
 end)
-
+--}}}
 
 -- -----------------------------------------------
 -- SET-CONFIG ------------------------------------
