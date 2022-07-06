@@ -219,6 +219,8 @@ Plug 'rcarriga/nvim-notify'
 Plug 'samoshkin/vim-mergetool'
 Plug 'skywind3000/asyncrun.vim'
 
+Plug 'chipsenkbeil/distant.nvim'
+
 " ------------------------------------------------
 " COLORS/COLORSCHEMES ----------------------------
 " ------------------------------------------------
