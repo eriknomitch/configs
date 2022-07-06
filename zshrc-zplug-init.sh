@@ -17,10 +17,9 @@ zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # ------------------------------------------------
-zplug "mafredri/zsh-async"
 # zplug "sindresorhus/pure"
-zplug "jocelynmallon/zshmarks"
-zplug "rupa/z"
+
+zplug "mafredri/zsh-async", from:"github", use:"async.zsh"
 
 # ------------------------------------------------
 # ------------------------------------------------
