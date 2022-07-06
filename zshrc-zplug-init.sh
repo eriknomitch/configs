@@ -36,4 +36,5 @@ fi
 # Then, source plugins and add commands to $PATH
 #zplug load --verbose
 zplug load
-clear
+
+#clear
