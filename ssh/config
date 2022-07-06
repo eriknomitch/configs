@@ -132,6 +132,11 @@ Host tunnel-*.local
 # ------------------------------------------------
 # LOCAL/LAN --------------------------------------
 # ------------------------------------------------
+
+Host nixos nixos.local
+  HostName 192.168.50.14
+  User erik
+
 Host unraid-nas unraid-nas.local # unraid.zerotier.nomitch.com
   HostName unraid-nas.local
   User root
