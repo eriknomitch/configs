@@ -24,7 +24,7 @@ alias arp="sudo arp"
 alias route="sudo route"
 alias rg="rg --smart-case"
 alias lg="lazygit"
-alias ncdu="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+alias ncdu="ncdu --color dark-bg -e --exclude .git --exclude node_modules"
 alias ping="prettyping --nolegend"
 alias dsp="docker system prune --force"
 
