@@ -47,6 +47,20 @@ _tmux_count() {
   fi
 }
 
+_vm_prompt_info() {
+  # if nixos-vm status-quiet; then
+  #   echo -en "\xE2\x9C\x94"
+  #   # echo -en '\u2705'
+  #   # echo -n "%{$fg[green]%}VM%{$reset_color%}"
+  # else
+  #   echo -n "0"
+  # fi
+
+  _vm_count=`\pgrep "vmware-vmx" | grep -c ''`
+
+  echo -n $_vm_count
+}
+
 _tmux_prompt_info() {
   # tmux ls -F "#{pane_current_path}" | xargs -n1 basename | tr '\n' ' '
   _tmux_count
@@ -62,10 +76,17 @@ _conda_prompt_info() {
 prompt pure
 
 # Colorize based on return status
-PROMPT='%(?.%F{green}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
+PROMPT_BASE='%(?.%F{green}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
 
 # Add tmux
-PROMPT=$'%{$fg_bold[black]%}'"T: "$'%{$fg[green]%}'"\$(_tmux_prompt_info)\$(_conda_prompt_info)"$'%{$reset_color%}\n'"${PROMPT}"
+#PROMPT=$'%{$fg_bold[black]%}'"T: "$'%{$fg[green]%}'"\$(_tmux_prompt_info)\$(_conda_prompt_info)"$'%{$reset_color%}\n'"${PROMPT}"
+PROMPT_TMUX=$'%{$fg_bold[black]%}'"TM:"$'%{$fg[green]%}'"\$(_tmux_prompt_info)"$'%{$reset_color%}'
+PROMPT_VM=$'%{$fg_bold[black]%}'"VM:"$'%{$fg[white]%}'"\$(_vm_prompt_info)"$'%{$reset_color%}'
+
+
+PROMPT_STATUSES="${PROMPT_TMUX} ${PROMPT_VM}"$'\n'
+
+PROMPT=${PROMPT_STATUSES}${PROMPT_BASE}
 
 # PROMPT='$(pwd-is-wd-character) '$PROMPT
 
