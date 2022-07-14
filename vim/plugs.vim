@@ -152,9 +152,28 @@ Plug 'mbbill/undotree'
 " https://github.com/ntpeters/vim-better-whitespace
 Plug 'ntpeters/vim-better-whitespace'
 
-" Hotkeys for surrounding strings, etc with anything
-" https://github.com/tpope/vim-surround
-Plug 'tpope/vim-surround'
+" Neovim plugin with collection of minimal, independent, and fast Lua modules dedicated to improve Neovim (version 0.5 and higher) experience
+" mini.base16
+" mini.bufremove
+" mini.comment
+" mini.completion
+" mini.cursorword
+" mini.doc
+" mini.fuzzy
+" mini.indentscope
+" mini.jump
+" mini.jump2d
+" mini.misc
+" mini.pairs
+" mini.sessions
+" mini.starter
+" mini.statusline
+" mini.surround
+" mini.tabline
+" mini.test
+" mini.trailspace
+" REPO: https://github.com/echasnovski/mini.nvim
+Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
 
 " Interface
 " ------------------------------------------------
