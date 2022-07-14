@@ -83,7 +83,6 @@ PROMPT_BASE='%(?.%F{green}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
 PROMPT_TMUX=$'%{$fg_bold[black]%}'"TM:"$'%{$fg[green]%}'"\$(_tmux_prompt_info)"$'%{$reset_color%}'
 PROMPT_VM=$'%{$fg_bold[black]%}'"VM:"$'%{$fg[white]%}'"\$(_vm_prompt_info)"$'%{$reset_color%}'
 
-
 PROMPT_STATUSES="${PROMPT_TMUX} ${PROMPT_VM}"$'\n'
 
 PROMPT=${PROMPT_STATUSES}${PROMPT_BASE}
