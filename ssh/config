@@ -134,7 +134,8 @@ Host tunnel-*.local
 # ------------------------------------------------
 
 Host nixos nixos.local
-  HostName 192.168.50.14
+  HostName 192.168.198.150
+  Port 2222
   User erik
 
 Host unraid-nas unraid-nas.local # unraid.zerotier.nomitch.com
