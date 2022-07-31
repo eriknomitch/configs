@@ -192,11 +192,10 @@ switcher.ui.showSelectedThumbnail = false
 
 hs.hints.fontSize = 34
 hs.hints.style = "vimperator"
--- hs.hints.showTitleThreshold = 2
--- hs.hints.titleMaxSize = 20
-hs.hints.titleMaxSize = -1
-
-hs.hints.iconAlpha = 0.5
+-- hs.hints.showTitleThreshold = 1
+-- -- hs.hints.titleMaxSize = 20
+-- hs.hints.titleMaxSize = -1
+-- hs.hints.iconAlpha = 0.8
 
 hs.hotkey.bind(movementAppplicationLaunchOrFocus, ";", function()
   hs.hints.windowHints()
