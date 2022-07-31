@@ -445,6 +445,22 @@ function tmux-is-running() {
   tmux ls > /dev/null 2>&1
 }
 
+function list-commands() {
+  # SEE: https://stackoverflow.com/a/949006/1764073
+
+  # If no argument, default to ALL
+  if [[ $# -eq 0 ]] ; then
+    compgen  -abckA function | sort
+    return
+  fi
+
+  compgen $* | sort
+}
+
+function find-command() {
+  list-commands | fzf
+}
+
 # ------------------------------------------------
 # STTY -------------------------------------------
 # ------------------------------------------------
