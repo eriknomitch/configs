@@ -190,6 +190,41 @@ switcher.ui.showSelectedThumbnail = false
 
 --}}}
 
+hs.hints.fontSize = 34
+hs.hints.style = "vimperator"
+-- hs.hints.showTitleThreshold = 2
+-- hs.hints.titleMaxSize = 20
+hs.hints.titleMaxSize = -1
+
+hs.hints.iconAlpha = 0.5
+
+hs.hotkey.bind(movementAppplicationLaunchOrFocus, ";", function()
+  hs.hints.windowHints()
+end)
+
+hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary,"'", function()
+  local options = {
+    showThumbnails = true,
+    showTitles = false,
+    includeOtherSpaces=false,
+    includeNonVisible=false,
+    highlightThumbnailAlpha = 1,
+    highlightThumbnailStrokeWidth = 4,
+    highlightColor = {0.9,0.9,0.9,0.5},
+    backgroundColor = {0, 0, 0, 0.8},
+  }
+
+  local filter = hs.window.filter.new(false):setAppFilter('iTerm2', false)
+
+  -- filter.ignoreAlways['iTerm'] = true
+  -- filter:rejectApp('iTerm')
+
+  local expose = hs.expose.new(filter, options)
+
+  expose:toggleShow()
+end)
+
+
 -- -----------------------------------------------
 -- WATCHERS --------------------------------------
 -- -----------------------------------------------
@@ -356,39 +391,6 @@ end
 hs.hotkey.bind(movementAppplicationLaunchOrFocus, "M", function() confirmOnEnter("Messages") end)
 hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "S", function() confirmOnEnter("Slack") end)
 
-hs.hints.fontSize = 34
-hs.hints.style = "vimperator"
-
-hs.hints.iconAlpha = 1
-
-hs.hotkey.bind(movementAppplicationLaunchOrFocus, ";", function()
-    hs.hints.windowHints()
-end)
-
-hs.hotkey.bind(movementAppplicationLaunchOrFocus, "'", hs.hints.windowHints)
-
-hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary,';', function()
-  local options = {
-    showThumbnails = true,
-    showTitles = false,
-    includeOtherSpaces=false,
-    includeNonVisible=false,
-    highlightThumbnailAlpha = 1,
-    highlightThumbnailStrokeWidth = 4,
-    highlightColor = {0.9,0.9,0.9,0.5},
-    backgroundColor = {0, 0, 0, 0.8},
-  }
-
-  local filter = hs.window.filter.new(false):setAppFilter('iTerm2', false)
-
-  -- filter.ignoreAlways['iTerm'] = true
-  -- filter:rejectApp('iTerm')
-
-  local expose = hs.expose.new(filter, options)
-
-  expose:toggleShow()
-end)
-
 -- Center window
 hs.hotkey.bind({"ctrl", "cmd"}, "0", function()
   hs.window.focusedWindow():centerOnScreen(nil, true)
@@ -467,8 +469,8 @@ hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm
 
 -- Switcher
 -- -----------------------------------------------
-hs.hotkey.bind({"cmd", "ctrl"}, ";", function()switcher:next()end)
-hs.hotkey.bind({"cmd", "ctrl", "shift"}, ";", function()switcher:previous()end)
+hs.hotkey.bind({"cmd", "ctrl"}, "'", function()switcher:next()end)
+hs.hotkey.bind({"cmd", "ctrl", "shift"}, "'", function()switcher:previous()end)
 
 -- }}}
 
