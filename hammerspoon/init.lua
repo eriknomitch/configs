@@ -39,7 +39,7 @@ local secondaryBrowserName = "Firefox Developer Edition"
 
 -- Adjustments
 -- -----------------------------------------------
-local windowAdjustmentDelta = 80
+local sizeDelta = 0.07
 
 -- Hotkey Prefixes
 -- -----------------------------------------------
@@ -95,7 +95,7 @@ log.setLogLevel("debug")
 --{{{
 
 setConfigForUtility({
-  windowAdjustmentDelta = windowAdjustmentDelta,
+  sizeDelta = sizeDelta,
   appsToCenter = appsToCenter,
   defaultBrowserName = defaultBrowserName,
   secondaryBrowserName = secondaryBrowserName,
@@ -484,6 +484,63 @@ hs.hotkey.bind({"cmd", "ctrl", "shift"}, "'", function()switcher:previous()end)
 -- -----------------------------------------------
 -- {{{
 
+function getAdjustmentSizes()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  local sizes = {
+    w = max.w * sizeDelta,
+    h = max.h * sizeDelta
+  }
+
+  return sizes
+end
+
+function modifyWindowHeight(delta, direction)
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  local sizes = getAdjustmentSizes()
+
+  if direction == "shrink" then
+    f.h = f.h - sizes.h
+  else
+    f.h = f.h + sizes.h
+  end
+
+  win:setFrame(f)
+  win:centerOnScreen(nil, true)
+end
+
+function modifyWindowWidth(delta, direction)
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  local sizes = getAdjustmentSizes()
+
+  if direction == "shrink" then
+    f.w = f.w - sizes.w
+  else
+    f.w = f.w + sizes.w
+  end
+
+  win:setFrame(f)
+  win:centerOnScreen(nil, true)
+end
+
+function modifyWindowSize(delta, direction)
+  modifyWindowHeight(delta, direction)
+  modifyWindowWidth(delta, direction)
+end
+
+-- -----------------------------------------------
+
 hs.hotkey.bind(movement, "Up", fullscreen)
 hs.hotkey.bind(movement, "Down", middle)
 
@@ -496,32 +553,32 @@ hs.hotkey.bind({"ctrl", "cmd", "alt"}, "0", function()
 end)
 
 hs.hotkey.bind(movementWindowAdjustment, "Left", function()
-  modifyWindowWidth(-windowAdjustmentDelta)
+  modifyWindowWidth(sizeDelta, "shrink")
 end)
 
 hs.hotkey.bind(movementWindowAdjustment, "Right", function()
-  modifyWindowWidth(windowAdjustmentDelta)
+  modifyWindowWidth(sizeDelta, "expand")
 end)
 
 hs.hotkey.bind(movementWindowAdjustment, "Up", function()
-  modifyWindowHeight(windowAdjustmentDelta)
+  modifyWindowHeight(sizeDelta, "expand")
 end)
 
 hs.hotkey.bind(movementWindowAdjustment, "Down", function()
-  modifyWindowHeight(-windowAdjustmentDelta)
+  modifyWindowHeight(sizeDelta, "shrink")
 end)
 
 -- Shrink Window
 hs.hotkey.bind(movementWindowAdjustment, "-", function()
   -- Shrink the current window by a percentage of the original size
   -- in proportion to the screen size
-  local delta = 0.05
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
-  f.w = f.w - max.w * delta
-  f.h = f.h - max.h * delta
+
+  f.w = f.w - max.w * sizeDelta
+  f.h = f.h - max.h * sizeDelta
 
   f.x = max.x + (max.w - f.w) / 2
   f.y = max.y + (max.h - f.h) / 2
@@ -533,13 +590,13 @@ end)
 hs.hotkey.bind(movementWindowAdjustment, "=", function()
   -- Expand the current window by a percentage of the original size
   -- in proportion to the screen size
-  local delta = 0.05
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
-  f.w = f.w + max.w * delta
-  f.h = f.h + max.h * delta
+
+  f.w = f.w + max.w * sizeDelta
+  f.h = f.h + max.h * sizeDelta
 
   f.x = max.x + (max.w - f.w) / 2
   f.y = max.y + (max.h - f.h) / 2
