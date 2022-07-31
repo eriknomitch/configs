@@ -190,10 +190,15 @@ switcher.ui.showSelectedThumbnail = false
 
 --}}}
 
+-- -----------------------------------------------
+-- HINTS/EXPOSE ----------------------------------
+-- -----------------------------------------------
+--{{{
+
 hs.hints.fontSize = 34
 hs.hints.style = "vimperator"
 -- hs.hints.showTitleThreshold = 1
--- -- hs.hints.titleMaxSize = 20
+-- hs.hints.titleMaxSize = 20
 -- hs.hints.titleMaxSize = -1
 -- hs.hints.iconAlpha = 0.8
 
@@ -223,6 +228,7 @@ hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary,"'", function()
   expose:toggleShow()
 end)
 
+--}}}
 
 -- -----------------------------------------------
 -- WATCHERS --------------------------------------
