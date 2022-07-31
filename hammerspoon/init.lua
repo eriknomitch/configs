@@ -505,13 +505,53 @@ hs.hotkey.bind(movementWindowAdjustment, "Down", function()
   modifyWindowHeight(-windowAdjustmentDelta)
 end)
 
-hs.hotkey.bind(movementWindowAdjustment, "=", function()
-  modifyWindowSize(windowAdjustmentDelta)
+-- Shrink Window
+hs.hotkey.bind(movementWindowAdjustment, "-", function()
+  -- Shrink the current window by a percentage of the original size
+  -- in proportion to the screen size
+  local delta = 0.05
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+  f.w = f.w - max.w * delta
+  f.h = f.h - max.h * delta
+
+  f.x = max.x + (max.w - f.w) / 2
+  f.y = max.y + (max.h - f.h) / 2
+
+  win:setFrame(f)
 end)
 
-hs.hotkey.bind(movementWindowAdjustment, "-", function()
-  modifyWindowSize(-windowAdjustmentDelta)
+-- Expand Window
+hs.hotkey.bind(movementWindowAdjustment, "=", function()
+  -- Expand the current window by a percentage of the original size
+  -- in proportion to the screen size
+  local delta = 0.05
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+  f.w = f.w + max.w * delta
+  f.h = f.h + max.h * delta
+
+  f.x = max.x + (max.w - f.w) / 2
+  f.y = max.y + (max.h - f.h) / 2
+
+  -- If the new window size exceeds the screen size, fit it to the screen
+  if f.w > max.w then
+    f.w = max.w
+    f.x = 0
+  end
+
+  if f.h > max.h then
+    f.h = max.h
+    f.y = 0
+  end
+
+  win:setFrame(f)
 end)
+
 
 --}}}
 
