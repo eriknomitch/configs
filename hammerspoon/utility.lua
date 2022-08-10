@@ -35,9 +35,21 @@ end
 -- -----------------------------------------------
 
 -- Display a notification
-function notify(title, message)
-  hs.notify.new({title=title, informativeText=message}):send()
+-- function notify(title, message)
+--   hs.notify.new({title=title, informativeText=message}):send()
+-- end
+
+function notify(title, message, icon, stayActive)
+  icon = icon or ''
+  duration = stayActive and 0 or 5
+  hs.notify.new({
+    title=title,
+    informativeText=message,
+    setIdImage=icon,
+    withdrawAfter=duration
+  }):send()
 end
+
 
 -----------------------------------------------
 -- WINDOW->MOVEMENT ---------------------------

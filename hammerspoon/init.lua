@@ -58,6 +58,18 @@ local spoonNames = {
     "Emojis"
 }
 
+-- FROM: https://github.com/stephlm2dev/wildcard.conf/blob/71c17a660d25cfad6a5a4664065c62938db77d26/configuration/hammerspoon/init.lua#L8-L16
+icons = {
+  default = "/Applications/Hammerspoon.app/Contents/Resources/AppIcon.icns",
+  alert = "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/Actions.icns",
+  mac = "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/com.apple.macbookpro-15-retina-touchid-silver.icns",
+  network = "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/AirDrop.icns",
+  photo = "/Applications/Polarr Photo Editor.app/Contents/Resources/AppIcon-Lite.icns",
+  skype = "/Applications/Skype.app/Contents/Resources/Skype.icns",
+  zoom = "/Applications/zoom.us.app/Contents/Resources/ZPLogo.icns"
+}
+
+
 -- Inferrable
 -- -----------------------------------------------
 local hostname = hs.host.localizedName()
@@ -234,6 +246,30 @@ end)
 -- WATCHERS --------------------------------------
 -- -----------------------------------------------
 --{{{
+
+-- Wi-Fi Watcher
+-- -----------------------------------------------
+-- When the Wi-Fi network changes, display the name of the new one
+function wifiListener(watcher, message, interface)
+  local currentNetwork = hs.wifi.currentNetwork(interface)
+  log:d("Wi-Fi network changed to " .. currentNetwork)
+
+  if (not currentNetwork) then return end
+
+  notify("Wi-Fi", currentNetwork, icons.network, true)
+
+  -- hs.alert("Wi-Fi: " .. currentNetwork)
+end
+
+wifiWatcher = hs.wifi.watcher.new(wifiListener)
+wifiWatcher:watchingFor({ "SSIDChange" })
+
+wifiWatcher:stop()
+wifiWatcher:start()
+
+
+
+
 
 -- Screen Watcher
 -- -----------------------------------------------
