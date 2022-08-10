@@ -516,6 +516,17 @@ hs.hotkey.bind({"cmd", "ctrl", "shift"}, "'", function()switcher:previous()end)
 -- }}}
 
 -- -----------------------------------------------
+-- HOTKEYS->VOLUME -------------------------------
+-- -----------------------------------------------
+hs.hotkey.bind({"shift", "cmd", "ctrl"}, "Up", function()
+  setVolumeOfCurrent(10.0)
+end)
+
+hs.hotkey.bind({"shift", "cmd", "ctrl"}, "Down", function()
+  setVolumeOfCurrent(-10.0)
+end)
+
+-- -----------------------------------------------
 -- HOTKEYS->WINDOW -------------------------------
 -- -----------------------------------------------
 -- {{{

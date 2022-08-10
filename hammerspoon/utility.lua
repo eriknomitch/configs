@@ -104,3 +104,29 @@ function middle()
   win:setFrame(f)
 end
 
+-- local function sendSystemKey(key)
+--     hs.eventtap.event.newSystemKeyEvent(key, true):post()
+--     hs.eventtap.event.newSystemKeyEvent(key, false):post()
+-- end
+
+-- local volume = {
+--     up   = function() sendSystemKey("SOUND_UP") end,
+--     down = function() sendSystemKey("SOUND_DOWN") end,
+--     mute = function() sendSystemKey("MUTE") end,
+-- }
+
+
+function setVolumeOfCurrent(diff)
+  current = hs.audiodevice.current()
+  volume = current.volume + diff
+
+  if volume > 100.0 then
+    volume = 100.0
+  elseif volume < 0.0 then
+    volume = 0.0
+  end
+
+  current.device:setVolume(volume)
+  hs.alert(math.floor(current.volume))
+end
+
