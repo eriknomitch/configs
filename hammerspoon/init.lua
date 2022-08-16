@@ -333,26 +333,26 @@ end
 -- Application Watcher
 -- -----------------------------------------------
 local function appWatcherCallback(name, event, app)
+  log:d(name)
   log:d(event)
+  log:d(app)
   if event == hs.application.watcher.activated then
     log:d("App activated: " .. name)
 
     if hasValue(appsToCenter, name) then
       log:d("Centering: " .. name)
 
-      local win = hs.window.focusedWindow()
-      if win then
-        win:centerOnScreen(nil, true)
-      end
+      hs.application.get(name):focusedWindow():centerOnScreen(nil, true)
+
+--       hs.window.frontmostWindow():centerOnScreen(nil, true)
     end
   end
 end
 
 local globalAppWatcher = application.watcher.new(appWatcherCallback)
 
-if globalAppWatcher.isRunning then
-  globalAppWatcher:stop()
-end
+log:d("appWatcher:")
+log:d(globalAppWatcher)
 
 globalAppWatcher:start()
 
