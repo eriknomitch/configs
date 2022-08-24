@@ -385,6 +385,14 @@ function bindApplicationFocus(key, title)
   hs.hotkey.bind(movementAppplicationLaunchOrFocus, key, function() hs.application.launchOrFocus(title) end)
 end
 
+function bindApplicationFocusWithConfirmation(key, title)
+  hs.hotkey.bind(movementAppplicationLaunchOrFocus, key, function() confirmOnEnter(title) end)
+end
+
+function bindApplicationFocusSecondaryWithConfirmation(key, title)
+  hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, key, function() confirmOnEnter(title) end)
+end
+
 function bindApplicationFocusSecondary(key, title)
   hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, key, function() hs.application.launchOrFocus(title) end)
 end
@@ -492,8 +500,8 @@ bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("P", "Preview")
 hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "P", function() confirmOnEnter("Adobe Photoshop 2022") end)
 bindApplicationFocus("F", "Finder")
-bindApplicationFocusSecondary("F", "FaceTime")
-bindApplicationFocus("Z", "zoom.us")
+bindApplicationFocusSecondaryWithConfirmation("F", "FaceTime")
+bindApplicationFocusWithConfirmation("Z", "zoom.us")
 hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "D", function() confirmOnEnter("Discord") end)
 bindApplicationFocus("E", "Obsidian")
 bindApplicationFocusSecondary("E", "Element")
@@ -514,6 +522,7 @@ hs.hotkey.bind({"cmd", "ctrl"}, "'", function()switcher:next()end)
 hs.hotkey.bind({"cmd", "ctrl", "shift"}, "'", function()switcher:previous()end)
 
 -- }}}
+--
 
 -- -----------------------------------------------
 -- HOTKEYS->VOLUME -------------------------------
