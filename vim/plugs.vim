@@ -173,7 +173,7 @@ Plug 'ntpeters/vim-better-whitespace'
 " mini.test
 " mini.trailspace
 " REPO: https://github.com/echasnovski/mini.nvim
-Plug 'echasnovski/mini.nvim'
+" Plug 'echasnovski/mini.nvim'
 "Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
 
 " Interface
