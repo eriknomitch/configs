@@ -439,6 +439,7 @@ end
 
 hs.hotkey.bind(movementAppplicationLaunchOrFocus, "M", function() confirmOnEnter("Messages") end)
 hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "S", function() confirmOnEnter("Slack") end)
+hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "W", function() confirmOnEnter("WhatsApp") end)
 
 -- Center window
 hs.hotkey.bind({"ctrl", "cmd"}, "0", function()
