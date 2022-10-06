@@ -1,16 +1,18 @@
 -- ===============================================
 -- CONFIGS->TELESCOPE-NVIM =======================
 -- ===============================================
-nnoremap({"<Leader>t"}, ":Telescope<Cr>", "silent")
+local mapx = require'mapx'
 
-nnoremap({"<Leader>b", "<C-p>" }, ":lua require('telescope.builtin').buffers()<Cr>", "silent")
-nnoremap({"<Leader>f" }, ":lua require('telescope.builtin').find_files()<Cr>", "silent")
--- nnoremap({"<Leader>fg", "<Leader>g"}, ":lua require('telescope.builtin').live_grep()<Cr>", "silent")
-nnoremap({"<Leader>gd", "<Leader>gs"}, ":lua require('telescope.builtin').git_status()<Cr>", "silent")
-nnoremap({"<Leader>s"}, ":lua require('telescope.builtin').live_grep({grep_open_files=true})<Cr>", "silent")
--- nnoremap({"<Leader>fh", "<Leader>th"}, ":lua require('telescope.builtin').help_tags()<Cr>", "silent")
+mapx.nnoremap({"<Leader>t"}, ":Telescope<Cr>", "silent")
 
-nnoremap({"<Leader>/"}, ":lua require('telescope.builtin').current_buffer_fuzzy_find()<Cr>", "silent")
+mapx.nnoremap({"<Leader>b", "<C-p>" }, ":lua require('telescope.builtin').buffers()<Cr>", "silent")
+mapx.nnoremap({"<Leader>f" }, ":lua require('telescope.builtin').find_files()<Cr>", "silent")
+-- mapx.nnoremap({"<Leader>fg", "<Leader>g"}, ":lua require('telescope.builtin').live_grep()<Cr>", "silent")
+mapx.nnoremap({"<Leader>gd", "<Leader>gs"}, ":lua require('telescope.builtin').git_status()<Cr>", "silent")
+mapx.nnoremap({"<Leader>s"}, ":lua require('telescope.builtin').live_grep({grep_open_files=true})<Cr>", "silent")
+-- mapx.nnoremap({"<Leader>fh", "<Leader>th"}, ":lua require('telescope.builtin').help_tags()<Cr>", "silent")
+
+mapx.nnoremap({"<Leader>/"}, ":lua require('telescope.builtin').current_buffer_fuzzy_find()<Cr>", "silent")
 
 local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
