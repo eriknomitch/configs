@@ -226,7 +226,7 @@ Plug 'tpope/vim-abolish'
 " tmux
 " ------------------------------------------------
 " Plug 'tmux-plugins/vim-tmux-focus-events'
-" Plug 'christoomey/vim-tmux-navigator'
+ Plug 'christoomey/vim-tmux-navigator'
 
 " notify
 " ------------------------------------------------
@@ -256,7 +256,7 @@ Plug 'tjdevries/colorbuddy.nvim'
 Plug 'Iron-E/nvim-highlite'
 
 " REPO: https://github.com/ziontee113/color-picker.nvim
-Plug 'ziontee113/color-picker.nvim'
+" Plug 'ziontee113/color-picker.nvim'
 
 " ================================================
 " END ============================================

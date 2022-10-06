@@ -24,18 +24,18 @@ require('telescope').setup({
       horizontal = { width = 0.9, height = 0.9 },
       -- SEE: :help resolver.resolve_anchor_pos()
       -- anchor = 'W',
-    },
-    mappings = {
-      -- FROM: https://github.com/folke/trouble.nvim#telescope
-      i = {
-        ["<C-t>"] = trouble.open_with_trouble,
-        -- FROM: https://github.com/nvim-telescope/telescope.nvim/issues/919#issue-923575521
-        ["<C-j>"]   = actions.move_selection_next,
-        ["<C-k>"]   = actions.move_selection_previous,
-        ["<ESC>"]   = actions.close
-      },
-      n = { ["<C-t>"] = trouble.open_with_trouble },
-    },
+    }
+    -- mappings = {
+    --   i = {
+    --     ["<C-t>"] = trouble.open_with_trouble,
+    --     -- FROM: https://github.com/nvim-telescope/telescope.nvim/issues/919#issue-923575521
+    --     ["<C-j>"]   = actions.move_selection_next,
+    --     ["<C-k>"]   = actions.move_selection_previous,
+    --     ["<ESC>"]   = actions.close
+    --   },
+    --   -- FROM: https://github.com/folke/trouble.nvim#telescope
+    --   n = { ["<C-t>"] = trouble.open_with_trouble },
+    -- },
     -- other defaults configuration here
   },
   -- pickers = {
