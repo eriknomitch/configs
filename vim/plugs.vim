@@ -225,8 +225,8 @@ Plug 'tpope/vim-abolish'
 
 " tmux
 " ------------------------------------------------
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'christoomey/vim-tmux-navigator'
+" Plug 'tmux-plugins/vim-tmux-focus-events'
+" Plug 'christoomey/vim-tmux-navigator'
 
 " notify
 " ------------------------------------------------
