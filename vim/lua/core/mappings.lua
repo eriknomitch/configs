@@ -1,6 +1,7 @@
 -- ===============================================
 -- MAPPINGS ======================================
 -- ===============================================
+local mapx = require'mapx'
 
 -- vim
 -- nnoremap("<Leader>sv", ":source $MYVIMRC | echon '\"'$MYVIMRC'\" sourced'<CR>")
@@ -16,12 +17,12 @@
 
 -- " Allow quit via single keypress (Q)
 -- " FROM: https://unix.stackexchange.com/a/93239
-map("Q", ":qall<CR>", "silent")
-map("W", ":wqall<CR>", "silent")
-map("!", ":wqall!<CR>", "silent")
+mapx.map("Q", ":qall<CR>", "silent")
+mapx.map("W", ":wqall<CR>", "silent")
+mapx.map("!", ":wqall!<CR>", "silent")
 
 -- StripWhitespace
-nnoremap("<Leader>sw", ":StripWhitespace<CR>", "silent")
+mapx.nnoremap("<Leader>sw", ":StripWhitespace<CR>", "silent")
 
 -- No Highlight
-nnoremap("<Leader>h", ":nohlsearch<CR>", "silent")
+mapx.nnoremap("<Leader>h", ":nohlsearch<CR>", "silent")
