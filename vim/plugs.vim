@@ -42,20 +42,25 @@ Plug 'neovim/nvim-lspconfig'
 " https://github.com/williamboman/nvim-lsp-installer
 Plug 'williamboman/nvim-lsp-installer'
 
-" A completion plugin for neovim coded in Lua
-" https://github.com/hrsh7th/nvim-cmp
+" FROM: https://github.com/hrsh7th/nvim-cmp#recommended-configuration
+Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+
+" For vsnip users.
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+
 "}}}
 
 " ------------------------------------------------
 " SNIPPETS ---------------------------------------
 " ------------------------------------------------
 
-Plug 'L3MON4D3/LuaSnip'
+" Plug 'L3MON4D3/LuaSnip'
 
 " https://github.com/hrsh7th/vim-vsnip
 " Plug 'hrsh7th/vim-vsnip'
@@ -64,7 +69,7 @@ Plug 'L3MON4D3/LuaSnip'
 " ------------------------------------------------
 " GITHUB-COPILOT ---------------------------------
 " ------------------------------------------------
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 
 " ------------------------------------------------
 " COC.NVIM ---------------------------------------
