@@ -60,16 +60,10 @@ Plug 'hrsh7th/vim-vsnip'
 " SNIPPETS ---------------------------------------
 " ------------------------------------------------
 
-" Plug 'L3MON4D3/LuaSnip'
-
-" https://github.com/hrsh7th/vim-vsnip
-" Plug 'hrsh7th/vim-vsnip'
-" Plug 'hrsh7th/vim-vsnip-integ'
-
 " ------------------------------------------------
 " GITHUB-COPILOT ---------------------------------
 " ------------------------------------------------
-" Plug 'github/copilot.vim'
+Plug 'github/copilot.vim'
 
 " ------------------------------------------------
 " COC.NVIM ---------------------------------------
