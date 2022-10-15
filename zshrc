@@ -15,6 +15,11 @@ test -n $INITIAL_CWD && cd $INITIAL_CWD
 source /etc/zsh/shared.zsh
 
 # ------------------------------------------------
+# ------------------------------------------------
+# ------------------------------------------------
+export PATH="$PATH:$HOME/.local/bin"
+
+# ------------------------------------------------
 # ALIASES ----------------------------------------
 # ------------------------------------------------
 # FIX: Add export -f to some of these for script use
@@ -406,6 +411,15 @@ if ( command-exists zoxide ) ; then
   export _ZO_EXCLUDE_DIRS="$HOME:$HOME/.enct-*"
 
   alias cd="z"
+fi
+
+# ------------------------------------------------
+# POETRY -----------------------------------------
+# ------------------------------------------------
+if ( command-exists poetry ) ; then
+  # poetry completions zsh > ~/.zfunc/_poetry
+  # fpath+=~/.zfunc
+  # autoload -Uz compinit && compinit
 fi
 
 # ------------------------------------------------
