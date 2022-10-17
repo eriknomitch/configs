@@ -151,6 +151,10 @@ Host unraid-pc unraid-pc.local
   HostName pc.local
   User root
 
+Host pc pc.local
+  HostName pc.local
+  User erik
+
 Host volumio volumio.local
   HostName volumio.local
   User volumio
@@ -205,6 +209,12 @@ Host blackarch blackarch.local
 Host docker-proxy
     HostName 45.63.69.132
     User development
+
+# Vultr
+Host serve
+    HostName serve.erik.is
+    User erik
+#    Port 4444
 
 # ------------------------------------------------
 # DEVICES ----------------------------------------

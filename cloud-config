@@ -1,0 +1,13 @@
+#cloud-config
+users:
+  - name: erik
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCjxOnRWlcNz4f4gE0IHwM6820Rd8FPAtmgd9TZv4FIxG9h3K7yu20Yia5hZvG0296TrBZmCBd5dYFymHt9bIYxCZhWKm70XKGH9QIXPq3DtW2SSiCtw3vtqwM3kr6c80Qek2myTvHQziSJgZc+NwObku3n16MeoXLwTiBARN/DW1EComu9wolR8NqZgGUlIDn/4Fn8bLE3bbw/c8JrWFWE91tMDWvmNMMC5WTDZq795vJu+a0Sd2SH7nySjqLCKThTSh7vIbt5EQPP6R9g/47xBokr0wEUCmctyh4KO3CIZgA39U55zK36jonRWDVRnRrzuPCfhKZpEl+eGnIn5C/JcURx8hgBR1wVBa3C19YOqWVtCg6OxHKi18hIQm6tvJWtvDKnS3tLo1t3kIi++o3jcWc2JRlUQo2vIGifoHFdrW9Bb5cKNezPRIyFycbPDmhM2xRXDt0VeNSuGyhkzlyCB5yVWu8u2E1e1kcK143qRfHDhYKPJ+nCsLXd0/ITDjLTTSaybJCl5WNIJvEgnTRZwqpBtKMIE7urphi8W+FvVdenOZRzmJn2mspt6ps7BU22LhGkCj3UCC71N32iheerrRpnbaxvURfl6xiFyFBJmSOiSvqFMh2P+h74iWr0MZJSe2W7pjdNDTEFfcLz9taAQmcrbp/rSILwDwektNtN6w== enomitch@gmail.com
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    groups: sudo
+    shell: /bin/bash
+runcmd:
+  - sed -i -e '/^Port/s/^.*$/Port 4444/' /etc/ssh/sshd_config
+  - sed -i -e '/^PermitRootLogin/s/^.*$/PermitRootLogin no/' /etc/ssh/sshd_config
+  - sed -i -e '$aAllowUsers erik' /etc/ssh/sshd_config
+  - restart ssh"
