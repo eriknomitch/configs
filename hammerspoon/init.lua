@@ -512,6 +512,7 @@ bindApplicationFocus("G", "Gmail")
 bindApplicationFocus("U", "Unraid")
 bindApplicationFocus("H", "Home Assistant")
 bindApplicationFocusSecondary("H", "Home Assistant")
+bindApplicationFocusSecondary("S", "Stable Diffusion")
 
 -- Special
 -- -----------------------------------------------
