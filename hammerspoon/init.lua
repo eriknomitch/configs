@@ -503,6 +503,7 @@ hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "P", function() confi
 bindApplicationFocus("F", "Finder")
 bindApplicationFocusSecondaryWithConfirmation("F", "FaceTime")
 bindApplicationFocusWithConfirmation("Z", "zoom.us")
+bindApplicationFocus("D", "Drive")
 hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "D", function() confirmOnEnter("Discord") end)
 bindApplicationFocus("E", "Obsidian")
 bindApplicationFocusSecondary("E", "Element")
@@ -513,7 +514,8 @@ bindApplicationFocus("U", "Unraid")
 bindApplicationFocus("H", "Home Assistant")
 bindApplicationFocusSecondary("H", "Home Assistant")
 -- bindApplicationFocusSecondary("S", "Stable Diffusion")
-bindApplicationFocus("D", "Stable Diffusion")
+-- bindApplicationFocus("D", "Stable Diffusion")
+bindApplicationFocus("S", function() confirmOnEnter("Spotify") end)
 
 -- Special
 -- -----------------------------------------------
