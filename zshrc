@@ -437,3 +437,5 @@ complete -o nospace -C /usr/local/bin/bit bit
 # ------------------------------------------------
 # Fig post block. Keep at the bottom of this file.
 # [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+eval 
+AI_AC_ZSH_SETUP_PATH=/Users/erik/Library/Caches/ai/autocomplete/zsh_setup && test -f $AI_AC_ZSH_SETUP_PATH && source $AI_AC_ZSH_SETUP_PATH; # ai autocomplete setup
