@@ -142,6 +142,10 @@ _define_buffer_dump ssh '^[s' "ssh "
 # ------------------------------------------------
 _define_buffer_dump g_cmp '^[g' "g cmp \"" "\""
 
+# 'ai ask "<cursor>"'
+# ------------------------------------------------
+_define_buffer_dump ai_ask '^[a' "ai ask \"" "\""
+
 # 'micro'
 # ------------------------------------------------
 #_define_buffer_dump micro '^[m' "micro "
