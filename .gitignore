@@ -12,3 +12,4 @@ node_modules/
 *.zwc
 scratch
 hammerspoon/Spoons/
+.jukit/
