@@ -218,5 +218,3 @@ vnoremap <C-G> c<C-O>:!whisper.nvim<CR><C-O>:let @a = system("cat /tmp/whisper.n
 " LUA->INIT ======================================
 " ================================================
 lua require("init")
-
-
