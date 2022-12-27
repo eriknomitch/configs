@@ -18,6 +18,9 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- -----------------------------------------------
+  use 'NvChad/nvim-colorizer.lua'
+
+  -- -----------------------------------------------
   -- use({
   --   "aserowy/tmux.nvim",
   --   config = function() require("tmux").setup() end
