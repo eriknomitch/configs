@@ -505,6 +505,7 @@ bindApplicationFocus("C", "ChatGPT")
 bindApplicationFocusSecondaryWithConfirmation("F", "FaceTime")
 bindApplicationFocusWithConfirmation("Z", "zoom.us")
 bindApplicationFocus("D", "Drive")
+-- bindApplicationFocus("A", "Audio MIDI Setup")
 hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "D", function() confirmOnEnter("Discord") end)
 bindApplicationFocus("E", "Obsidian")
 bindApplicationFocusSecondary("E", "Element")
@@ -528,7 +529,6 @@ hs.hotkey.bind({"cmd", "ctrl"}, "'", function()switcher:next()end)
 hs.hotkey.bind({"cmd", "ctrl", "shift"}, "'", function()switcher:previous()end)
 
 -- }}}
---
 
 -- -----------------------------------------------
 -- HOTKEYS->VOLUME -------------------------------
