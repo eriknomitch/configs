@@ -19,6 +19,7 @@ return require('packer').startup(function(use)
 
   -- -----------------------------------------------
   use 'NvChad/nvim-colorizer.lua'
+  use 'mfussenegger/nvim-dap'
 
   -- -----------------------------------------------
   -- use({
