@@ -4,7 +4,9 @@
     "typescript",
     "typescriptreact",
     "markdown",
-    "json"
+    "json",
+    "yaml",
+    "python"
   ],
   "eslint.autoFixOnSave": true
 }
