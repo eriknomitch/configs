@@ -263,6 +263,8 @@ Plug 'Iron-E/nvim-highlite'
 " REPO: https://github.com/luk400/vim-jukit
 Plug 'luk400/vim-jukit'
 
+Plug 'puremourning/vimspector'
+
 " ================================================
 " END ============================================
 " ================================================
