@@ -34,7 +34,7 @@ local wm = {}
 -- Apps
 -- -----------------------------------------------
 local appsToCenter = { "Finder", "Home Assistant", "Messages", "Gmail", "Unraid", "Unraid NAS", "Unraid PC" }
-local defaultBrowserName = "Google Chrome Beta"
+local defaultBrowserName = "Google Chrome"
 local secondaryBrowserName = "Firefox Developer Edition"
 
 -- Adjustments
