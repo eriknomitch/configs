@@ -529,6 +529,22 @@ hs.hotkey.bind({"ctrl"}, "Space", function() hs.application.launchOrFocus("iTerm
 hs.hotkey.bind({"cmd", "ctrl"}, "'", function()switcher:next()end)
 hs.hotkey.bind({"cmd", "ctrl", "shift"}, "'", function()switcher:previous()end)
 
+-- Displays
+-- -----------------------------------------------
+local hyperShift = {'ctrl', 'alt', 'cmd', 'shift'}
+hs.hotkey.bind(hyperShift, '`', function()
+  local screen = hs.mouse.getCurrentScreen()
+  local nextScreen = screen:next()
+  local rect = nextScreen:fullFrame()
+  local center = hs.geometry.rectMidPoint(rect)
+  hs.mouse.setAbsolutePosition(center)
+
+
+  -- Display alerts on both screens
+  hs.alert.show("Moved Mouse To Other Screen", {textSize=24}, screen)
+  hs.alert.show("Moved Mouse HERE: " .. nextScreen:name(), {textSize=24}, nextScreen)
+end)
+
 -- }}}
 
 -- -----------------------------------------------
