@@ -35,7 +35,7 @@ alias dsp="docker system prune --force"
 
 
 function jl() {
-  jupyter lab --directory "${HOME}/.jupyter-notebooks"
+  jupyter lab --notebook-dir "${HOME}/.jupyter-notebooks"
 }
 
 # Kubernetes
