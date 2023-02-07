@@ -33,6 +33,11 @@ alias ncdu="ncdu --color dark-bg -e --exclude .git --exclude node_modules"
 alias ping="prettyping --nolegend"
 alias dsp="docker system prune --force"
 
+
+function jl() {
+  jupyter lab --directory "${HOME}/.jupyter-notebooks"
+}
+
 # Kubernetes
 # ------------------------------------------------
 alias kc="kubectl"
