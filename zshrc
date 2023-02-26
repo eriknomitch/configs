@@ -2,7 +2,6 @@
 # ZSHRC ==========================================
 # ================================================
 
-zmodload zsh/zprof
 # ------------------------------------------------
 # INITIAL-CWD ------------------------------------
 # ------------------------------------------------
@@ -449,5 +448,3 @@ AI_AC_ZSH_SETUP_PATH=$HOME/Library/Caches/ai/autocomplete/zsh_setup && test -f $
 # WHISPER/WHISPER.NVIM ---------------------------
 # ------------------------------------------------
 export WHISPER_CPP_HOME=$HOME/.repositories/whisper.cpp
-
-zprof | moar
