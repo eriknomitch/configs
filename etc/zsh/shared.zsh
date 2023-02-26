@@ -6,10 +6,17 @@
 test -d "/usr/local/share/zsh/functions" && \
   export FPATH="/usr/local/share/zsh/functions:$FPATH"
 
-autoload -Uz compinit; compinit
 autoload -Uz zsh/terminfo
 autoload -Uz colors; colors
 autoload -Uz add-zsh-hook
+autoload -Uz compinit
+
+# Restrict compinit to only run once every 24 hours
+if [ $(date +'%j') != $(/usr/bin/stat -f '%Sm' -t '%j' ${ZDOTDIR:-$HOME}/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
 
 source /etc/zsh/colors.zsh
 
@@ -301,6 +308,13 @@ function rm-history() {
   if test -d $_directory_history_path; then
     echo "Removing '$_directory_history_path'"
     rm -rf $_directory_history_path
+  fi
+
+  _session_path="$HOME/.zsh_sessions"
+
+  if test -d $_session_path; then
+    echo "Removing '$_session_path'"
+    rm -rf $_session_path
   fi
 
   _z_history="$HOME/.z"
