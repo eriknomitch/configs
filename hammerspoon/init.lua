@@ -300,9 +300,9 @@ function handleAudioDeviceChange(data)
       -- level = 100
     end
 
-    device:setMuted(false)
-    device:setOutputVolume(level)
-    device:setBalance(0.5)
+    -- device:setMuted(false)
+    -- device:setOutputVolume(level)
+    -- device:setBalance(0.5)
 
     hs.inspect.inspect(device)
 
