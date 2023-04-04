@@ -213,6 +213,16 @@ set completeopt=menu,menuone,noselect
 inoremap <C-G>  <C-O>:!whisper.nvim<CR><C-O>:let @a = system("cat /tmp/whisper.nvim \| tail -n 1 \| xargs -0 \| tr -d '\\n' \| sed -e 's/^[[:space:]]*//'")<CR><C-R>a
 nnoremap <C-G>       :!whisper.nvim<CR>:let @a = system("cat /tmp/whisper.nvim \| tail -n 1 \| xargs -0 \| tr -d '\\n' \| sed -e 's/^[[:space:]]*//'")<CR>"ap
 vnoremap <C-G> c<C-O>:!whisper.nvim<CR><C-O>:let @a = system("cat /tmp/whisper.nvim \| tail -n 1 \| xargs -0 \| tr -d '\\n' \| sed -e 's/^[[:space:]]*//'")<CR><C-R>a
+" ------------------------------------------------
+" ------------------------------------------------
+" ------------------------------------------------
+function! E(path)
+    execute 'edit ' . a:path
+    execute 'badd ' . a:path
+endfunction
+
+" Map this to <leader>nf but wait for an argument
+command! -nargs=1 E call E(<f-args>)
 
 " ================================================
 " LUA->INIT ======================================
