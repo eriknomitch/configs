@@ -1,15 +1,15 @@
-session_name: sm-api
+session_name: sm-web
 windows:
   - window_name: edit
     shell_command_before:
-      - cd ~/.repositories/sm-api
+      - cd ~/.repositories/story-magic-web
       - sw
     panes:
       - ofe
   - window_name: git/run
     layout: even-horizontal
     shell_command_before:
-      - cd ~/.repositories/sm-api
+      - cd ~/.repositories/story-magic-web
     panes:
       - null
       - null
