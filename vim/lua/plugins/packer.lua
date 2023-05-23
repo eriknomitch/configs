@@ -21,6 +21,11 @@ return require('packer').startup(function(use)
   use 'NvChad/nvim-colorizer.lua'
   use 'mfussenegger/nvim-dap'
 
+  use {
+    "williamboman/mason.nvim",
+    run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+  }
+
   -- -----------------------------------------------
   -- use({
   --   "aserowy/tmux.nvim",
