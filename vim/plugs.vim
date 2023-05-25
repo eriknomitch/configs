@@ -264,6 +264,7 @@ Plug 'Iron-E/nvim-highlite'
 " Plug 'luk400/vim-jukit'
 
 Plug 'puremourning/vimspector'
+Plug 'prisma/vim-prisma'
 
 " ================================================
 " END ============================================

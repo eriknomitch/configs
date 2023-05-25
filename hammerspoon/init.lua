@@ -47,8 +47,9 @@ local movement  = {"cmd", "ctrl"}
 local movementSecondary = {"cmd", "ctrl", "shift"}
 local movementWindowAdjustment = {"cmd", "ctrl", "alt"}
 
-local movementAppplicationLaunchOrFocus = {"cmd", "ctrl"}
-local movementAppplicationLaunchOrFocusSecondary = {"cmd", "ctrl", "shift"}
+local movementApplicationLaunchOrFocus = {"cmd", "ctrl"}
+local movementApplicationLaunchOrFocusSecondary = {"cmd", "ctrl", "shift"}
+local movementApplicationLaunchOrFocusTertiary = {"ctrl", "alt", "shift"}
 
 -- Spoons
 -- -----------------------------------------------
@@ -114,8 +115,8 @@ setConfigForUtility({
   movement = movement,
   movementSecondary = movementSecondary,
   movementWindowAdjustment = movementWindowAdjustment,
-  movementAppplicationLaunchOrFocus = movementAppplicationLaunchOrFocus,
-  movementAppplicationLaunchOrFocusSecondary = movementAppplicationLaunchOrFocusSecondary,
+  movementApplicationLaunchOrFocus = movementApplicationLaunchOrFocus,
+  movementApplicationLaunchOrFocusSecondary = movementApplicationLaunchOrFocusSecondary,
   spoonNames = spoonNames
 })
 
@@ -214,11 +215,11 @@ hs.hints.style = "vimperator"
 -- hs.hints.titleMaxSize = -1
 -- hs.hints.iconAlpha = 0.8
 
-hs.hotkey.bind(movementAppplicationLaunchOrFocus, ";", function()
+hs.hotkey.bind(movementApplicationLaunchOrFocus, ";", function()
   hs.hints.windowHints()
 end)
 
-hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary,"'", function()
+hs.hotkey.bind(movementApplicationLaunchOrFocusSecondary,"'", function()
   local options = {
     showThumbnails = true,
     showTitles = false,
@@ -382,19 +383,19 @@ spoon.ReloadConfiguration:start()
 --{{{
 
 function bindApplicationFocus(key, title)
-  hs.hotkey.bind(movementAppplicationLaunchOrFocus, key, function() hs.application.launchOrFocus(title) end)
+  hs.hotkey.bind(movementApplicationLaunchOrFocus, key, function() hs.application.launchOrFocus(title) end)
 end
 
 function bindApplicationFocusWithConfirmation(key, title)
-  hs.hotkey.bind(movementAppplicationLaunchOrFocus, key, function() confirmOnEnter(title) end)
+  hs.hotkey.bind(movementApplicationLaunchOrFocus, key, function() confirmOnEnter(title) end)
 end
 
 function bindApplicationFocusSecondaryWithConfirmation(key, title)
-  hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, key, function() confirmOnEnter(title) end)
+  hs.hotkey.bind(movementApplicationLaunchOrFocusSecondary, key, function() confirmOnEnter(title) end)
 end
 
 function bindApplicationFocusSecondary(key, title)
-  hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, key, function() hs.application.launchOrFocus(title) end)
+  hs.hotkey.bind(movementApplicationLaunchOrFocusSecondary, key, function() hs.application.launchOrFocus(title) end)
 end
 
 function triggerAfterConfirmation(question, action)
@@ -437,9 +438,11 @@ end
 -- -----------------------------------------------
 --{{{
 
-hs.hotkey.bind(movementAppplicationLaunchOrFocus, "M", function() confirmOnEnter("Messages") end)
-hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "S", function() confirmOnEnter("Slack") end)
-hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "W", function() confirmOnEnter("WhatsApp") end)
+hs.hotkey.bind(movementApplicationLaunchOrFocus, "M", function() confirmOnEnter("Messages") end)
+hs.hotkey.bind(movementApplicationLaunchOrFocusSecondary, "S", function() confirmOnEnter("Slack") end)
+hs.hotkey.bind(movementApplicationLaunchOrFocusSecondary, "W", function() confirmOnEnter("WhatsApp") end)
+
+hs.hotkey.bind(movementApplicationLaunchOrFocusTertiary, "S", function() confirmOnEnter("Stable Diffusion") end)
 
 -- Center window
 hs.hotkey.bind({"ctrl", "cmd"}, "0", function()
@@ -499,7 +502,7 @@ bindApplicationFocus("I", defaultBrowserName)
 bindApplicationFocusSecondary("I", secondaryBrowserName)
 bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("P", "Preview")
-hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "P", function() confirmOnEnter("Adobe Photoshop 2023") end)
+hs.hotkey.bind(movementApplicationLaunchOrFocusSecondary, "P", function() confirmOnEnter("Adobe Photoshop 2023") end)
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("C", "ChatGPT")
 bindApplicationFocusSecondaryWithConfirmation("F", "FaceTime")
@@ -507,7 +510,7 @@ bindApplicationFocusWithConfirmation("Z", "zoom.us")
 bindApplicationFocus("D", "Drive")
 bindApplicationFocus("A", "Audio MIDI Setup")
 bindApplicationFocus("W", "WLED")
-hs.hotkey.bind(movementAppplicationLaunchOrFocusSecondary, "D", function() confirmOnEnter("Discord") end)
+hs.hotkey.bind(movementApplicationLaunchOrFocusSecondary, "D", function() confirmOnEnter("Discord") end)
 bindApplicationFocus("E", "Obsidian")
 bindApplicationFocusSecondary("E", "Element")
 bindApplicationFocusSecondary("V", "Visual Studio Code")
