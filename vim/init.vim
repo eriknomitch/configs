@@ -125,6 +125,12 @@ nnoremap zC zM
 " https://stackoverflow.com/questions/4781070/how-to-insert-tab-character-when-expandtab-option-is-on-in-vim
 inoremap <S-Tab> <C-V><Tab>
 
+" Window/pane resizing
+noremap <silent> <C-S-Left> :vertical resize +5<CR>
+noremap <silent> <C-S-Right> :vertical resize -5<CR>
+noremap <silent> <C-S-Up> :resize +5<CR>
+noremap <silent> <C-S-Down> :resize -5<CR>
+
 " ------------------------------------------------
 " FIXES ------------------------------------------
 " ------------------------------------------------

@@ -183,7 +183,8 @@ Plug 'ntpeters/vim-better-whitespace'
 " Extended fuzzy finder UI
 " REPO: https://github.com/nvim-telescope/telescope.nvim
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+" or                                , { 'branch': '0.1.x' }
 
 " REPO: https://github.com/nvim-telescope/telescope-github.nvim
 Plug 'nvim-telescope/telescope-github.nvim'
