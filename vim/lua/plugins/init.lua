@@ -29,9 +29,9 @@ require("plugins.configs.telescope-nvim")
 require("plugins.configs.telescope-command-palette")
 
 -- Extensions
-require('telescope').load_extension('gh')
-require('telescope').load_extension('command_palette')
-require('telescope').load_extension('notify')
+-- require('telescope').load_extension('gh')
+-- require('telescope').load_extension('command_palette')
+-- require('telescope').load_extension('notify')
 
 -- -----------------------------------------------
 -- -----------------------------------------------

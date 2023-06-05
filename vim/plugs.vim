@@ -89,7 +89,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " ------------------------------------------------
 
 " REPO: https://github.com/nvim-treesitter/nvim-treesitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " REPO: https://github.com/nvim-treesitter/playground
 " Plug 'nvim-treesitter/playground'
@@ -183,14 +183,14 @@ Plug 'ntpeters/vim-better-whitespace'
 " Extended fuzzy finder UI
 " REPO: https://github.com/nvim-telescope/telescope.nvim
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+"Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 " or                                , { 'branch': '0.1.x' }
 
 " REPO: https://github.com/nvim-telescope/telescope-github.nvim
-Plug 'nvim-telescope/telescope-github.nvim'
+" Plug 'nvim-telescope/telescope-github.nvim'
 
 " REPO: https://github.com/LinArcX/telescope-command-palette.nvim
-Plug 'LinArcX/telescope-command-palette.nvim'
+" Plug 'LinArcX/telescope-command-palette.nvim'
 
 " ------------------------------------------------
 
@@ -200,7 +200,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 " REPO: https://github.com/folke/trouble.nvim
 " > A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
-Plug 'folke/trouble.nvim'
+" Plug 'folke/trouble.nvim'
 
 " Status Bars
 " -----------------------------------------------
