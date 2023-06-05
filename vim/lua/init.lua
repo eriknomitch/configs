@@ -12,20 +12,20 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Example using a list of specs with the default options
-vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
+vim.g.mapleader = "\\" -- Make sure to set `mapleader` before lazy so your mappings are correct
 
 require("lazy").setup({
-  'nvim-treesitter/nvim-treesitter',
+
+  "nvim-treesitter/nvim-treesitter",
   dependencies = {
-    'JoosepAlviste/nvim-ts-context-commentstring',
+    "JoosepAlviste/nvim-ts-context-commentstring",
   },
   { "neovim/nvim-lspconfig" },
-  { "hrsh7th/nvim-cmp" },
   { "b0o/mapx.nvim" },
   { "folke/which-key.nvim" },
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
-    dependencies = { 'nvim-lua/plenary.nvim' }
+    "nvim-telescope/telescope.nvim", tag = "0.1.1",
+    dependencies = { "nvim-lua/plenary.nvim" }
   },
   { "folke/neoconf.nvim", cmd = "Neoconf" },
   { "folke/neodev.nvim" },
@@ -39,9 +39,78 @@ require("lazy").setup({
   },
   { "aserowy/tmux.nvim" },
   { "JoosepAlviste/nvim-ts-context-commentstring" },
-  { "numToStr/Comment.nvim" }
-
+  { "numToStr/Comment.nvim" },
+  { "williamboman/nvim-lsp-installer" },
+  { "hrsh7th/cmp-nvim-lsp" },
+  { "saadparwaiz1/cmp_luasnip" },
+  { "L3MON4D3/LuaSnip" },
+  { "hrsh7th/cmp-buffer" },
+  { "hrsh7th/cmp-path" },
+  { "hrsh7th/cmp-cmdline" },
+  { "hrsh7th/nvim-cmp" },
+  { "hrsh7th/cmp-vsnip" },
+  { "hrsh7th/vim-vsnip" },
+  { "github/copilot.vim" },
+  { "junegunn/vim-easy-align" },
+  { "nathanaelkane/vim-indent-guides" },
+  { "leafgarland/typescript-vim" },
+  { "peitalin/vim-jsx-typescript" },
+  { "pangloss/vim-javascript" },
+  { "tpope/vim-commentary" },
+  { "preservim/nerdcommenter" },
+  { "suy/vim-context-commentstring" },
+  { "MaxMEllon/vim-jsx-pretty" },
+  { "b0o/mapx.nvim" },
+  { "mbbill/undotree" },
+  { "ntpeters/vim-better-whitespace" },
+  { "kyazdani42/nvim-web-devicons" },
+  { "vim-airline/vim-airline" },
+  { "vim-airline/vim-airline-themes" },
+  { "tpope/vim-repeat" },
+  { "svermeulen/vim-easyclip" },
+  { "keith/swift.vim" },
+  { "tpope/vim-abolish" },
+  { "rcarriga/nvim-notify" },
+  { "samoshkin/vim-mergetool" },
+  { "skywind3000/asyncrun.vim" },
+  { "chipsenkbeil/distant.nvim" },
+  { "folke/lsp-colors.nvim" },
+  { "tjdevries/colorbuddy.nvim" },
+  { "Iron-E/nvim-highlite" },
+  { "puremourning/vimspector" },
+  { "prisma/vim-prisma" }
 })
+  
+-- { "neoclide/coc.nvim" },
+
+-- require("lazy").setup({
+--   'nvim-treesitter/nvim-treesitter',
+--   dependencies = {
+--     'JoosepAlviste/nvim-ts-context-commentstring',
+--   },
+--   { "neovim/nvim-lspconfig" },
+--   { "hrsh7th/nvim-cmp" },
+--   { "b0o/mapx.nvim" },
+--   { "folke/which-key.nvim" },
+--   {
+--     'nvim-telescope/telescope.nvim', tag = '0.1.1',
+--     dependencies = { 'nvim-lua/plenary.nvim' }
+--   },
+--   { "folke/neoconf.nvim", cmd = "Neoconf" },
+--   { "folke/neodev.nvim" },
+--   { "folke/trouble.nvim" },
+--   { "rcarriga/nvim-notify" },
+--   { "NvChad/nvim-colorizer.lua" },
+--   { "mfussenegger/nvim-dap" },
+--   {
+--     "williamboman/mason.nvim",
+--     build = ":MasonUpdate" -- :MasonUpdate updates registry contents
+--   },
+--   { "aserowy/tmux.nvim" },
+--   { "JoosepAlviste/nvim-ts-context-commentstring" },
+--   { "numToStr/Comment.nvim" }
+--
+-- })
 
 require('plugins')
 require('core')

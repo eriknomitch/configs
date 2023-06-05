@@ -36,23 +36,23 @@ call plug#begin()
 
 " Quickstart configurations for the Nvim LSP client
 " https://github.com/neovim/nvim-lspconfig
-Plug 'neovim/nvim-lspconfig'
+"" ------------ Plug 'neovim/nvim-lspconfig'
 
 " Companion plugin to install language servers automatically
 " https://github.com/williamboman/nvim-lsp-installer
-Plug 'williamboman/nvim-lsp-installer'
+"" ------------ Plug 'williamboman/nvim-lsp-installer'
 
 " FROM: https://github.com/hrsh7th/nvim-cmp#recommended-configuration
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
+"" ------------ Plug 'neovim/nvim-lspconfig'
+"" ------------ Plug 'hrsh7th/cmp-nvim-lsp'
+"" ------------ Plug 'hrsh7th/cmp-buffer'
+"" ------------ Plug 'hrsh7th/cmp-path'
+"" ------------ Plug 'hrsh7th/cmp-cmdline'
+"" ------------ Plug 'hrsh7th/nvim-cmp'
 
 " For vsnip users.
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
+"" ------------ Plug 'hrsh7th/cmp-vsnip'
+"" ------------ Plug 'hrsh7th/vim-vsnip'
 
 "}}}
 
@@ -63,7 +63,7 @@ Plug 'hrsh7th/vim-vsnip'
 " ------------------------------------------------
 " GITHUB-COPILOT ---------------------------------
 " ------------------------------------------------
-Plug 'github/copilot.vim'
+"" ------------ Plug 'github/copilot.vim'
 
 " ------------------------------------------------
 " COC.NVIM ---------------------------------------
@@ -77,7 +77,7 @@ Plug 'github/copilot.vim'
 " - coc-react-refactor
 
 " https://github.com/neoclide/coc.nvim
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"" ------------ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "}}}
 
 " ------------------------------------------------
@@ -100,17 +100,17 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Utility
 " ------------------------------------------------
-Plug 'junegunn/vim-easy-align'
-Plug 'nathanaelkane/vim-indent-guides'
+"" ------------ Plug 'junegunn/vim-easy-align'
+"" ------------ Plug 'nathanaelkane/vim-indent-guides'
 
 " Language-Specific
 " ------------------------------------------------
 " REPO: https://github.com/peitalin/vim-jsx-typescript
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
+"" ------------ Plug 'leafgarland/typescript-vim'
+"" ------------ Plug 'peitalin/vim-jsx-typescript'
 
 " REPO: https://github.com/pangloss/vim-javascript
-Plug 'pangloss/vim-javascript'
+"" ------------ Plug 'pangloss/vim-javascript'
 
 "}}}
 
@@ -120,16 +120,16 @@ Plug 'pangloss/vim-javascript'
 
 " Comment Line(s)
 " REPO: https://github.com/tpope/vim-commentary
-Plug 'tpope/vim-commentary'
+"" ------------ Plug 'tpope/vim-commentary'
 
 " REPO: https://github.com/preservim/nerdcommenter
-Plug 'preservim/nerdcommenter'
+"" ------------ Plug 'preservim/nerdcommenter'
 
 " REPO: https://github.com/suy/vim-context-commentstring
-Plug 'suy/vim-context-commentstring'
+"" ------------ Plug 'suy/vim-context-commentstring'
 
 " REPO: https://github.com/MaxMEllon/vim-jsx-pretty
-Plug 'MaxMEllon/vim-jsx-pretty'
+"" ------------ Plug 'MaxMEllon/vim-jsx-pretty'
 
 " ------------------------------------------------
 " UTILITY ----------------------------------------
@@ -137,15 +137,19 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 
 " A better way to create key mappings in Neovim
 " REPO: https://github.com/b0o/mapx.nvim
-Plug 'b0o/mapx.nvim'
+"" ------------ Plug 'b0o/mapx.nvim'
+
+" REPO: https://github.com/folke/which-key.nvim
+" > Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
+"" ------------ Plug 'folke/which-key.nvim'
 
 " Visualize undo history
 " https://github.com/mbbill/undotree
-Plug 'mbbill/undotree'
+"" ------------ Plug 'mbbill/undotree'
 
 " Whitespace tools
 " https://github.com/ntpeters/vim-better-whitespace
-Plug 'ntpeters/vim-better-whitespace'
+"" ------------ Plug 'ntpeters/vim-better-whitespace'
 
 " Neovim plugin with collection of minimal, independent, and fast Lua modules dedicated to improve Neovim (version 0.5 and higher) experience
 " mini.base16
@@ -192,7 +196,7 @@ Plug 'ntpeters/vim-better-whitespace'
 
 " REPO: https://github.com/kyazdani42/nvim-web-devicons
 " > A lua fork of vim-devicons. This plugin provides the same icons as well as colors for each icon.
-Plug 'kyazdani42/nvim-web-devicons'
+"" ------------ Plug 'kyazdani42/nvim-web-devicons'
 
 " REPO: https://github.com/folke/trouble.nvim
 " > A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
@@ -202,40 +206,40 @@ Plug 'kyazdani42/nvim-web-devicons'
 " -----------------------------------------------
 
 " https://github.com/vim-airline/vim-airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"" ------------ Plug 'vim-airline/vim-airline'
+"" ------------ Plug 'vim-airline/vim-airline-themes'
 
 " Vim Interaction
 " ------------------------------------------------
-Plug 'tpope/vim-repeat' " Dependency of vim-easyclip
-Plug 'svermeulen/vim-easyclip'
+"" ------------ Plug 'tpope/vim-repeat' " Dependency of vim-easyclip
+"" ------------ Plug 'svermeulen/vim-easyclip'
 
 " ------------------------------------------------
-Plug 'keith/swift.vim'
+"" ------------ Plug 'keith/swift.vim'
 
-Plug 'bfredl/nvim-luadev'
+"" ------------ Plug 'bfredl/nvim-luadev'
 
 " Searching/Replacing
 " ------------------------------------------------
-Plug 'tpope/vim-abolish'
+"" ------------ Plug 'tpope/vim-abolish'
 
 " tmux
 " ------------------------------------------------
 " Plug 'tmux-plugins/vim-tmux-focus-events'
- Plug 'christoomey/vim-tmux-navigator'
+"" ------------ Plug 'christoomey/vim-tmux-navigator'
 
 " notify
 " ------------------------------------------------
 " Notifier
 " REPO: https://github.com/rcarriga/nvim-notify
-Plug 'rcarriga/nvim-notify'
+"" ------------ Plug 'rcarriga/nvim-notify'
 
 " Other
 " ------------------------------------------------
-Plug 'samoshkin/vim-mergetool'
-Plug 'skywind3000/asyncrun.vim'
+"" ------------ Plug 'samoshkin/vim-mergetool'
+"" ------------ Plug 'skywind3000/asyncrun.vim'
 
-Plug 'chipsenkbeil/distant.nvim'
+"" ------------ Plug 'chipsenkbeil/distant.nvim'
 
 " ------------------------------------------------
 " COLORS/COLORSCHEMES ----------------------------
@@ -243,13 +247,13 @@ Plug 'chipsenkbeil/distant.nvim'
 
 " REPO: https://github.com/folke/lsp-colors.nvim-lua
 " > 🌈 Plugin that creates missing LSP diagnostics highlight groups for color schemes that don't yet support the Neovim 0.5 builtin LSP client.
-Plug 'folke/lsp-colors.nvim'
+"" ------------ Plug 'folke/lsp-colors.nvim'
 
 " REPO: https://github.com/tjdevries/colorbuddy.nvim
-Plug 'tjdevries/colorbuddy.nvim'
+"" ------------ Plug 'tjdevries/colorbuddy.nvim'
 
 " REPO: https://github.com/Iron-E/nvim-highlite
-Plug 'Iron-E/nvim-highlite'
+"" ------------ Plug 'Iron-E/nvim-highlite'
 
 " REPO: https://github.com/ziontee113/color-picker.nvim
 " Plug 'ziontee113/color-picker.nvim'
@@ -260,8 +264,8 @@ Plug 'Iron-E/nvim-highlite'
 " REPO: https://github.com/luk400/vim-jukit
 " Plug 'luk400/vim-jukit'
 
-Plug 'puremourning/vimspector'
-Plug 'prisma/vim-prisma'
+"" ------------ Plug 'puremourning/vimspector'
+"" ------------ Plug 'prisma/vim-prisma'
 
 " ================================================
 " END ============================================
