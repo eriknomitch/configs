@@ -7,6 +7,7 @@ local mapx = require'mapx'
 -- nnoremap("<Leader>sv", ":source $MYVIMRC | echon '\"'$MYVIMRC'\" sourced'<CR>")
 -- nnoremap("<Leader>so", ":source % | echon '\"'expand('%')'\" sourced'<CR>")
 -- nnoremap("<Leader>M", ":messages<CR>")
+mapx.nnoremap("<Leader>M", ":Mason<CR>")
 
 -- nnoremap("<Leader>vs", ":vsplit<Cr>", "silent")
 -- nnoremap("<Leader>sp", ":split<Cr>", "silent")
@@ -22,7 +23,7 @@ mapx.map("W", ":wqall<CR>", "silent")
 mapx.map("!", ":wqall!<CR>", "silent")
 
 -- StripWhitespace
-mapx.nnoremap("<Leader>sw", ":StripWhitespace<CR>", "silent")
+-- mapx.nnoremap("<Leader>sw", ":StripWhitespace<CR>", "silent")
 
 -- No Highlight
 mapx.nnoremap("<Leader>h", ":nohlsearch<CR>", "silent")
