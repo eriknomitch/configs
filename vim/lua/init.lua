@@ -23,7 +23,6 @@ require("lazy").setup({
   { "hrsh7th/nvim-cmp" },
   { "b0o/mapx.nvim" },
   { "folke/which-key.nvim" },
-  { "nvim-lua/plenary.nvim" },
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
     dependencies = { 'nvim-lua/plenary.nvim' }
@@ -38,7 +37,8 @@ require("lazy").setup({
     "williamboman/mason.nvim",
     build = ":MasonUpdate" -- :MasonUpdate updates registry contents
   },
-  { "aserowy/tmux.nvim" }
+  { "aserowy/tmux.nvim" },
+  { "JoosepAlviste/nvim-ts-context-commentstring" }
 
 })
 

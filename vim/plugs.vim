@@ -96,7 +96,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " REPO: https://github.com/sheerun/vim-polyglot
 " A collection of language packs for Vim.
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 
 " Utility
 " ------------------------------------------------
@@ -182,7 +182,7 @@ Plug 'ntpeters/vim-better-whitespace'
 " ------------------------------------------------
 " Extended fuzzy finder UI
 " REPO: https://github.com/nvim-telescope/telescope.nvim
-Plug 'nvim-lua/plenary.nvim'
+" Plug 'nvim-lua/plenary.nvim'
 "Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 " or                                , { 'branch': '0.1.x' }
 

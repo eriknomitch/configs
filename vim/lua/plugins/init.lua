@@ -26,7 +26,7 @@ require("plugins.configs.mason")
 -- TELESCOPE -------------------------------------
 -- -----------------------------------------------
 require("plugins.configs.telescope-nvim")
-require("plugins.configs.telescope-command-palette")
+-- require("plugins.configs.telescope-command-palette")
 
 -- Extensions
 -- require('telescope').load_extension('gh')
