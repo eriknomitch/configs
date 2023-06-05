@@ -38,7 +38,8 @@ require("lazy").setup({
     build = ":MasonUpdate" -- :MasonUpdate updates registry contents
   },
   { "aserowy/tmux.nvim" },
-  { "JoosepAlviste/nvim-ts-context-commentstring" }
+  { "JoosepAlviste/nvim-ts-context-commentstring" },
+  { "numToStr/Comment.nvim" }
 
 })
 

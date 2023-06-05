@@ -16,6 +16,7 @@ mapx.nnoremap("<Leader>L", ":Lazy<CR>")
 -- Plugins
 -- FIX: Move?
 -- nmap("gc", ":Commentary<Cr>", "silent")
+-- mapx.nmap("gc", ":Commentary<CR>", "silent")
 
 -- " Allow quit via single keypress (Q)
 -- " FROM: https://unix.stackexchange.com/a/93239
