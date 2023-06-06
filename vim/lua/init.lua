@@ -46,6 +46,8 @@ require("lazy").setup({
   { "JoosepAlviste/nvim-ts-context-commentstring" },
   { "numToStr/Comment.nvim" },
   { "williamboman/nvim-lsp-installer" },
+  { "jose-elias-alvarez/null-ls.nvim" },
+  { "lukas-reineke/lsp-format.nvim" },
   { "hrsh7th/cmp-nvim-lsp" },
   { "saadparwaiz1/cmp_luasnip" },
   { "L3MON4D3/LuaSnip" },
@@ -83,23 +85,70 @@ require("lazy").setup({
   { "tjdevries/colorbuddy.nvim" },
   { "Iron-E/nvim-highlite" },
   { "puremourning/vimspector" },
-  { "prisma/vim-prisma" }
+  { "prisma/vim-prisma" },
+  { "rafcamlet/nvim-luapad" }
+  -- { "ray-x/lsp_signature.nvim" }
 })
+
+require("tmux").setup()
 
 require('Comment').setup {
   pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
 }
 
 require("mason").setup()
+
 require("mason-lspconfig").setup {
   ensure_installed = { "lua_ls", "tsserver", "cssls", "eslint", "html", "vimls", "bashls", "dockerls", "yamlls", "pyright", "rust_analyzer", "gopls", "clangd", "jdtls", "solargraph", "svelte", "tailwindcss", "terraformls", "graphql", "clojure_lsp", "elixirls", "zls" },
   automatic_installation = true
 }
 
--- After setting up mason-lspconfig you may set up servers via lspconfig
--- require("lspconfig").lua_ls.setup {}
--- require("lspconfig").rust_analyzer.setup {}
--- ...
+local null_ls = require("null-ls")
+
+null_ls.setup({
+    sources = {
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.eslint,
+        null_ls.builtins.diagnostics.eslint,
+        null_ls.builtins.completion.spell,
+    },
+})
+
+require("lsp-format").setup {}
+require("lspconfig").gopls.setup { on_attach = require("lsp-format").on_attach }
+
+require("luapad").setup()
+
+-- require("lsp_signature").setup()
+
+-- local lsp_formatting = function(bufnr)
+--     vim.lsp.buf.format({
+--         filter = function(client)
+--             -- apply whatever logic you want (in this example, we'll only use null-ls)
+--             return client.name == "null-ls"
+--         end,
+--         bufnr = bufnr,
+--     })
+-- end
+--
+-- -- if you want to set up formatting on save, you can use this as a callback
+-- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+--
+-- -- add to your shared on_attach callback
+-- local on_attach = function(client, bufnr)
+--     if client.supports_method("textDocument/formatting") then
+--         vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+--         vim.api.nvim_create_autocmd("BufWritePre", {
+--             group = augroup,
+--             buffer = bufnr,
+--             callback = function()
+--                 lsp_formatting(bufnr)
+--             end,
+--         })
+--     end
+-- end
+
 
 require('plugins')
 require('core')
