@@ -46,6 +46,7 @@ require('telescope').setup({
   -- other configuration values here
 })
 
+require("telescope").load_extension "file_browser"
 -- require('telescope').load_extension('gh')
 
 

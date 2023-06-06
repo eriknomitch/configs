@@ -26,5 +26,3 @@ require("plugins.configs.mason")
 -- TELESCOPE -------------------------------------
 -- -----------------------------------------------
 require("plugins.configs.telescope-nvim")
-
-require('Comment').setup()require('Comment').setup()

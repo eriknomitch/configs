@@ -20,12 +20,15 @@ require("lazy").setup({
   dependencies = {
     "JoosepAlviste/nvim-ts-context-commentstring",
   },
-  { "neovim/nvim-lspconfig" },
   { "b0o/mapx.nvim" },
   { "folke/which-key.nvim" },
   {
     "nvim-telescope/telescope.nvim", tag = "0.1.1",
     dependencies = { "nvim-lua/plenary.nvim" }
+  },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   },
   { "folke/neoconf.nvim", cmd = "Neoconf" },
   { "folke/neodev.nvim" },
@@ -37,6 +40,8 @@ require("lazy").setup({
     "williamboman/mason.nvim",
     build = ":MasonUpdate" -- :MasonUpdate updates registry contents
   },
+  { "williamboman/mason-lspconfig.nvim" },
+  { "neovim/nvim-lspconfig" },
   { "aserowy/tmux.nvim" },
   { "JoosepAlviste/nvim-ts-context-commentstring" },
   { "numToStr/Comment.nvim" },
@@ -56,8 +61,8 @@ require("lazy").setup({
   { "leafgarland/typescript-vim" },
   { "peitalin/vim-jsx-typescript" },
   { "pangloss/vim-javascript" },
-  { "tpope/vim-commentary" },
-  { "preservim/nerdcommenter" },
+  -- { "tpope/vim-commentary" },
+  -- { "preservim/nerdcommenter" },
   { "suy/vim-context-commentstring" },
   { "MaxMEllon/vim-jsx-pretty" },
   { "b0o/mapx.nvim" },
@@ -80,37 +85,21 @@ require("lazy").setup({
   { "puremourning/vimspector" },
   { "prisma/vim-prisma" }
 })
-  
--- { "neoclide/coc.nvim" },
 
--- require("lazy").setup({
---   'nvim-treesitter/nvim-treesitter',
---   dependencies = {
---     'JoosepAlviste/nvim-ts-context-commentstring',
---   },
---   { "neovim/nvim-lspconfig" },
---   { "hrsh7th/nvim-cmp" },
---   { "b0o/mapx.nvim" },
---   { "folke/which-key.nvim" },
---   {
---     'nvim-telescope/telescope.nvim', tag = '0.1.1',
---     dependencies = { 'nvim-lua/plenary.nvim' }
---   },
---   { "folke/neoconf.nvim", cmd = "Neoconf" },
---   { "folke/neodev.nvim" },
---   { "folke/trouble.nvim" },
---   { "rcarriga/nvim-notify" },
---   { "NvChad/nvim-colorizer.lua" },
---   { "mfussenegger/nvim-dap" },
---   {
---     "williamboman/mason.nvim",
---     build = ":MasonUpdate" -- :MasonUpdate updates registry contents
---   },
---   { "aserowy/tmux.nvim" },
---   { "JoosepAlviste/nvim-ts-context-commentstring" },
---   { "numToStr/Comment.nvim" }
---
--- })
+require('Comment').setup {
+  pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+}
+
+require("mason").setup()
+require("mason-lspconfig").setup {
+  ensure_installed = { "lua_ls", "tsserver", "cssls", "eslint", "html", "vimls", "bashls", "dockerls", "yamlls", "pyright", "rust_analyzer", "gopls", "clangd", "jdtls", "solargraph", "svelte", "tailwindcss", "terraformls", "graphql", "clojure_lsp", "elixirls", "zls" },
+  automatic_installation = true
+}
+
+-- After setting up mason-lspconfig you may set up servers via lspconfig
+-- require("lspconfig").lua_ls.setup {}
+-- require("lspconfig").rust_analyzer.setup {}
+-- ...
 
 require('plugins')
 require('core')
