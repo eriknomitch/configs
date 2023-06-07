@@ -29,3 +29,6 @@ mapx.map("!", ":wqall!<CR>", "silent")
 
 -- No Highlight
 mapx.nnoremap("<Leader>h", ":nohlsearch<CR>", "silent")
+
+-- Format
+mapx.nnoremap("<Leader>F", ":lua vim.lsp.buf.format()<CR>", "silent")
