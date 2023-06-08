@@ -31,4 +31,4 @@ mapx.map("!", ":wqall!<CR>", "silent")
 mapx.nnoremap("<Leader>h", ":nohlsearch<CR>", "silent")
 
 -- Format
-mapx.nnoremap("<Leader>F", ":lua vim.lsp.buf.format()<CR>", "silent")
+mapx.nnoremap("<Leader>F", ":lua vim.lsp.buf.format {async = true}<CR>", "silent")
