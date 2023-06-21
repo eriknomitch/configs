@@ -23,7 +23,6 @@ export PATH="$PATH:$HOME/.local/bin"
 # ALIASES ----------------------------------------
 # ------------------------------------------------
 # FIX: Add export -f to some of these for script use
-alias T="tree"
 alias e="edit-common"
 alias arp="sudo arp"
 alias route="sudo route"
@@ -46,6 +45,17 @@ alias mk="minikube"
 
 function gitignore-io() {
   curl -L -s https://www.gitignore.io/api/$@;
+}
+
+function T() {
+  # If we're not in a git repo, just execute tree
+  if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1 ; then
+    tree $@
+    return
+  fi
+
+  # If we're in a git repo, execute tree with the git ls-tree output
+  git ls-tree -r --name-only HEAD . | tree --fromfile
 }
 
 # ------------------------------------------------
