@@ -58,7 +58,17 @@ require("lazy").setup({
 	},
 	{ "neovim/nvim-lspconfig" },
 	{ "aserowy/tmux.nvim" },
-	{ "numToStr/Comment.nvim" },
+	{
+		"numToStr/Comment.nvim",
+		dependencies = {
+			"JoosepAlviste/nvim-ts-context-commentstring",
+		},
+		opts = function()
+			return {
+				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+			}
+		end,
+	},
 	{ "williamboman/nvim-lsp-installer" },
 	{ "jose-elias-alvarez/null-ls.nvim" },
 	{ "lukas-reineke/lsp-format.nvim" },
@@ -107,10 +117,6 @@ require("lazy").setup({
 -- --------------------------------------
 
 require("tmux").setup()
-
-require("Comment").setup({
-	pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-})
 
 require("mason").setup()
 
