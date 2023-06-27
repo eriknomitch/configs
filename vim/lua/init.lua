@@ -93,7 +93,6 @@ require("lazy").setup({
 	{ "b0o/mapx.nvim" },
 	{ "mbbill/undotree" },
 	{ "ntpeters/vim-better-whitespace" },
-	{ "kyazdani42/nvim-web-devicons" },
 	{ "vim-airline/vim-airline" },
 	{ "vim-airline/vim-airline-themes" },
 	{ "tpope/vim-repeat" },
@@ -110,6 +109,16 @@ require("lazy").setup({
 	{ "puremourning/vimspector" },
 	{ "prisma/vim-prisma" },
 	{ "rafcamlet/nvim-luapad" },
+	{
+		"nvim-tree/nvim-tree.lua",
+		version = "*",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("nvim-tree").setup({})
+		end,
+	},
 })
 
 -- --------------------------------------
