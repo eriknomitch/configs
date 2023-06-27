@@ -108,6 +108,7 @@ require("lazy").setup({
 	{ "Iron-E/nvim-highlite" },
 	{ "puremourning/vimspector" },
 	{ "prisma/vim-prisma" },
+	{ "lewis6991/gitsigns.nvim" },
 	{ "rafcamlet/nvim-luapad" },
 	{
 		"nvim-tree/nvim-tree.lua",

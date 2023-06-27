@@ -42,6 +42,7 @@ set foldmethod=marker
 
 " Tab over settings (2 spaces)
 set softtabstop=2
+set tabstop=2
 set expandtab
 set shiftwidth=2
 set laststatus=2
