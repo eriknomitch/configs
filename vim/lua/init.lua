@@ -58,7 +58,6 @@ require("lazy").setup({
 	},
 	{ "neovim/nvim-lspconfig" },
 	{ "aserowy/tmux.nvim" },
-	{ "JoosepAlviste/nvim-ts-context-commentstring" },
 	{ "numToStr/Comment.nvim" },
 	{ "williamboman/nvim-lsp-installer" },
 	{ "jose-elias-alvarez/null-ls.nvim" },
@@ -75,11 +74,10 @@ require("lazy").setup({
 	{ "github/copilot.vim" },
 	{ "junegunn/vim-easy-align" },
 	{ "nathanaelkane/vim-indent-guides" },
+	{ "lukas-reineke/indent-blankline.nvim" },
 	{ "leafgarland/typescript-vim" },
 	{ "peitalin/vim-jsx-typescript" },
 	{ "pangloss/vim-javascript" },
-	-- { "tpope/vim-commentary" },
-	-- { "preservim/nerdcommenter" },
 	{ "suy/vim-context-commentstring" },
 	{ "MaxMEllon/vim-jsx-pretty" },
 	{ "b0o/mapx.nvim" },
@@ -102,8 +100,11 @@ require("lazy").setup({
 	{ "puremourning/vimspector" },
 	{ "prisma/vim-prisma" },
 	{ "rafcamlet/nvim-luapad" },
-	-- { "ray-x/lsp_signature.nvim" }
 })
+
+-- --------------------------------------
+-- --------------------------------------
+-- --------------------------------------
 
 require("tmux").setup()
 
@@ -173,6 +174,11 @@ require("lsp-format").setup({})
 require("lspconfig").gopls.setup({ on_attach = require("lsp-format").on_attach })
 
 require("luapad").setup()
+
+-- --------------------------------------
+-- --------------------------------------
+-- --------------------------------------
+vim.g.indent_guides_enable_on_vim_startup = 1
 
 -- FIX:
 require("plugins")
