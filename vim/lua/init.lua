@@ -120,12 +120,16 @@ require("lazy").setup({
 			require("nvim-tree").setup({})
 		end,
 	},
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		opts = {}, -- this is equalent to setup({}) function
+	},
 })
 
 -- --------------------------------------
 -- --------------------------------------
 -- --------------------------------------
-
 require("tmux").setup()
 
 require("mason").setup()
@@ -190,6 +194,10 @@ require("lsp-format").setup({})
 require("lspconfig").gopls.setup({ on_attach = require("lsp-format").on_attach })
 
 require("luapad").setup()
+
+require("nvim-autopairs").setup()
+
+require("gitsigns").setup()
 
 -- --------------------------------------
 -- --------------------------------------
