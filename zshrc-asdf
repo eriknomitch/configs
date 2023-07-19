@@ -1,4 +1,8 @@
 if [[ -d $HOME/.asdf ]] ; then
-  . $HOME/.asdf/asdf.sh
+  test -f $HOME/.asdf/asdf.sh && . $HOME/.asdf/asdf.sh
+
+  test -f /opt/homebrew/opt/asdf/libexec/asdf.sh && . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+  #echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
   # . $HOME/.asdf/completions/asdf.bash
 fi

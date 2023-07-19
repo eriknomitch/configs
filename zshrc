@@ -488,10 +488,3 @@ ulimit -n 4096
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # JINA_CLI_END
-
-
-
-
-
-
-
