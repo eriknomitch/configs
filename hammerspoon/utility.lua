@@ -146,8 +146,7 @@ end
 function createProgressBar(percentage)
 	local barLength = 20
 	local completedLength = math.floor(barLength * percentage)
-	-- local progressBar = string.rep("▋", completedLength) .. string.rep("░", barLength - completedLength)
-	local progressBar = string.rep("▮", completedLength) .. string.rep("▁", barLength - completedLength)
+	local progressBar = string.rep("┃", completedLength) .. string.rep(" ", barLength - completedLength)
 
 	return progressBar
 
@@ -168,6 +167,12 @@ function changeVolume(diff)
 		hs.alert.closeAll(0.0)
 		hs.alert.show(message)
 		hs.audiodevice.defaultOutputDevice():setVolume(new)
+
+		-- Play the volume change sound
+		local volumeSound = os.getenv("HOME") .. "/.hammerspoon/audio/volume.wav"
+
+		-- Execute the command
+		hs.execute("afplay " .. volumeSound .. " &> /dev/null &")
 	end
 end
 

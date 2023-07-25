@@ -170,19 +170,14 @@ end
 -- -----------------------------------------------
 --{{{
 -- Make the alerts look nicer.
-hs.alert.defaultStyle.strokeColor = { white = 1, alpha = 0 }
-hs.alert.defaultStyle.fillColor = { white = 0.05, alpha = 0.7 }
+hs.alert.defaultStyle.strokeColor = { white = 1, alpha = 0.2 }
+hs.alert.defaultStyle.fillColor = { white = 0.05, alpha = 0.75 }
 hs.alert.defaultStyle.radius = 10
 hs.alert.defaultStyle.textSize = 24
 hs.alert.defaultStyle.textFont = "Hack Nerd Font Mono"
--- set padding to 0
-hs.alert.defaultStyle.textInset = 0
-hs.alert.defaultStyle.textStyle = {
-	-- paragraphStyle = { alignment = "center" },
-	color = { white = 1, alpha = 1 },
-	shadow = { offset = { h = 2, w = 2 }, blurRadius = 5 },
-}
--- hs.alert.defaultStyle.atScreenEdge = 20
+
+hs.alert.defaultStyle.textColor = { white = 1, alpha = 1 }
+
 hs.alert.defaultStyle.fadeInDuration = 0.0
 hs.alert.defaultStyle.fadeOutDuration = 0.0
 
