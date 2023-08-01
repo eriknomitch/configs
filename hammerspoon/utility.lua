@@ -162,7 +162,7 @@ function changeVolume(diff)
 		end
 
 		local progressBar = createProgressBar(new / 100)
-		local message = progressBar
+		local message = "󰗅" .. progressBar
 
 		hs.alert.closeAll(0.0)
 		hs.alert.show(message)
