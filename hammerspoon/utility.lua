@@ -169,7 +169,7 @@ function changeVolume(diff)
 		hs.audiodevice.defaultOutputDevice():setVolume(new)
 
 		-- Play the volume change sound
-		local volumeSound = os.getenv("HOME") .. "/.hammerspoon/audio/volume.wav"
+		local volumeSound = os.getenv("HOME") .. "/.hammerspoon/audio/volume.aiff"
 
 		-- Execute the command
 		hs.execute("afplay " .. volumeSound .. " &> /dev/null &")
