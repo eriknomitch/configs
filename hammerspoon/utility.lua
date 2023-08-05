@@ -146,7 +146,7 @@ end
 function createProgressBar(percentage)
 	local barLength = 20
 	local completedLength = math.floor(barLength * percentage)
-	local progressBar = string.rep("┃", completedLength) .. string.rep(" ", barLength - completedLength)
+	local progressBar = string.rep("", completedLength) .. string.rep("", barLength - completedLength)
 
 	return progressBar
 
@@ -162,7 +162,9 @@ function changeVolume(diff)
 		end
 
 		local progressBar = createProgressBar(new / 100)
-		local message = "󰗅" .. progressBar
+		local prefix = new <= (0.1 / 2) and " " or ""
+		local suffix = new >= 0.8 and "" or ""
+		local message = prefix .. progressBar .. suffix
 
 		hs.alert.closeAll(0.0)
 		hs.alert.show(message)

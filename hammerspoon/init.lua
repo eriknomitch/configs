@@ -170,13 +170,14 @@ end
 -- -----------------------------------------------
 --{{{
 -- Make the alerts look nicer.
-hs.alert.defaultStyle.strokeColor = { white = 1, alpha = 0.2 }
-hs.alert.defaultStyle.fillColor = { white = 0.05, alpha = 0.75 }
+hs.alert.defaultStyle.strokeColor = { white = 0, alpha = 0 }
+-- fill is #202020 with 1 alpha
+hs.alert.defaultStyle.fillColor = { white = 0.1, alpha = 1 }
 hs.alert.defaultStyle.radius = 10
-hs.alert.defaultStyle.textSize = 24
-hs.alert.defaultStyle.textFont = "Hack Nerd Font Mono"
+hs.alert.defaultStyle.textSize = 20
+hs.alert.defaultStyle.textFont = "FiraCode Nerd Font"
 
-hs.alert.defaultStyle.textColor = { white = 1, alpha = 1 }
+hs.alert.defaultStyle.textColor = { white = 0.9, alpha = 1 }
 
 hs.alert.defaultStyle.fadeInDuration = 0.0
 hs.alert.defaultStyle.fadeOutDuration = 0.0
@@ -184,6 +185,15 @@ hs.alert.defaultStyle.fadeOutDuration = 0.0
 -- Disable the slow default window animations.
 hs.window.animationDuration = 0
 hs.window.setShadows(false)
+
+-- Put them near the bottom of the screen but not too far.
+hs.alert.defaultStyle.atScreenEdge = 2
+hs.alert.defaultStyle.textInset = 20
+hs.alert.defaultStyle.padding = 5
+hs.alert.defaultStyle.radius = 10
+
+-- Add a margin to the bottom of the screen.
+-- hs.alert.defaultStyle.textInset = 20
 
 --}}}
 
@@ -195,15 +205,16 @@ hs.window.setShadows(false)
 local filter = hs.window.filter.new(false):setAppFilter("iTerm2", false)
 local switcher = hs.window.switcher.new() -- default windowfilter: only visible windows, all Spaces
 
-switcher.ui.highlightColor = { 0, 0, 0, 0.5 }
+switcher.ui.highlightColor = { 0, 0, 0, 1 }
 -- switcher.ui.thumbnailSize = 128
 switcher.ui.thumbnailSize = 400
 -- switcher.ui.selectedThumbnailSize = 384
 switcher.ui.selectedThumbnailSize = 500
-switcher.ui.backgroundColor = { 0.125, 0.125, 0.125, 0.8 }
+-- (32,32,32) is the default background color
+switcher.ui.backgroundColor = { 1, 0, 0, 1 }
 -- switcher.ui.textSize = 12
 -- switcher.ui.fontName = "SF Pro"
-switcher.ui.titleBackgroundColor = { 0, 0, 0, 0.2 }
+-- switcher.ui.titleBackgroundColor = { 0, 0, 0, 0.2 }
 switcher.ui.showTitles = false
 switcher.ui.showSelectedTitle = false
 switcher.ui.showSelectedThumbnail = false
