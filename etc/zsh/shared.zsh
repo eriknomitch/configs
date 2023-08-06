@@ -603,13 +603,23 @@ function cd-skip-chpwd() {
   SKIP_CHPWD=false
 }
 
-function chpwd() {
+function _ls_home_dir_macos_clean() {
+  ls -l --color=always $HOME | grep --color=always -Ev 'Applications|Clean|Creative Cloud Files|Desktop|Documents|Downloads|Google Drive|Library|Movies|Music|Pictures|Postman|Public|Remotes|Repositories|Shared' | grep --color=always -v 'total '
+}
 
+function chpwd() {
   if (( $SKIP_CHPWD )) ; then; return; fi
 
   test -f .ls-ignore && return
 
   test $PWD == $HOME && clear
+
+  if [[ $PWD == $HOME ]]; then
+    if [[ $ON_DARWIN ]] ; then
+      _ls_home_dir_macos_clean
+      return
+    fi
+  fi
 
   command-exists _g_chpwd && _g_chpwd
   command-exists _virtualenv_chpwd && _virtualenv_chpwd

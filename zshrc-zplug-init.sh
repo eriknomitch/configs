@@ -5,6 +5,7 @@ source ~/.zplug/init.zsh
 zplug "plugins/zsh-navigation-tools", from:oh-my-zsh
 # zplug "plugins/jump", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
+zplug "kutsan/zsh-system-clipboard"
 
 # ------------------------------------------------
 zplug "zsh-users/zsh-history-substring-search"
