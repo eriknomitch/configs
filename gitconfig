@@ -17,7 +17,7 @@
 [alias]
 	changes = "!f() { git diff $1^ $1;  }; f"
 [core]
-	pager = delta
+	pager = nvim -R
 [interactive]
 	diffFilter = delta --color-only
 [delta]
@@ -31,6 +31,7 @@
 	autoupdate = true
 [color]
 	ui = true
+	pager = no
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
