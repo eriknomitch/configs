@@ -442,17 +442,21 @@ function launchOrFocusIfRunning(hint)
 end
 
 function confirmOnEnter(appName)
-	message = "Launch?"
-	informativeText = "info"
-
-	if not hs.application.find(appName) then
-		triggerAfterConfirmation(appName, function()
-			hs.application.launchOrFocus(appName)
-		end)
-	else
-		hs.application.launchOrFocus(appName)
-	end
-
+	hs.application.launchOrFocus(appName)
+	-- message = "Launch?"
+	-- informativeText = "info"
+	--
+	-- if not hs.application.find(appName) then
+	-- 	triggerAfterConfirmation(appName, function()
+	-- 		hs.application.launchOrFocus(appName)
+	-- 	end)
+	-- else
+	-- 	hs.application.launchOrFocus(appName)
+	-- end
+	--
+	--
+	--
+	--
 	-- hs.dialog.blockAlert(message, informativeText)
 	-- hs.alert.show("Messages")
 	-- hs.timer.doAfter(0, function() hs.focus(); hs.dialog.textPrompt("Main message.", "Please enter something:") end)
