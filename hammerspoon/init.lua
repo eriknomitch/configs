@@ -586,6 +586,7 @@ end)
 -- Displays
 -- -----------------------------------------------
 local hyperShift = { "ctrl", "cmd", "shift" }
+
 hs.hotkey.bind(hyperShift, "m", function()
 	local screen = hs.mouse.getCurrentScreen()
 	local nextScreen = screen:next()
@@ -596,6 +597,18 @@ hs.hotkey.bind(hyperShift, "m", function()
 	-- Display alerts on both screens
 	hs.alert.show("Moved Mouse To Other Screen", { textSize = 24 }, screen)
 	hs.alert.show("Moved Mouse HERE: " .. nextScreen:name(), { textSize = 24 }, nextScreen)
+end)
+
+-- Bindings for moving windows between spaces
+-- -----------------------------------------------
+hs.hotkey.bind({ "ctrl", "cmd", "shift" }, "Left", function()
+	local win = hs.window.focusedWindow()
+	moveWindowOneSpace(win, "left")
+end)
+
+hs.hotkey.bind({ "ctrl", "cmd", "shift" }, "Right", function()
+	local win = hs.window.focusedWindow()
+	moveWindowOneSpace(win, "right")
 end)
 
 -- }}}

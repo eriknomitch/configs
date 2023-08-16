@@ -4,12 +4,14 @@ windows:
     shell_command_before:
       - cd ~/.repositories/sm-api
       - sw
+      - clear
     panes:
       - ofe
   - window_name: git/run
     layout: even-horizontal
     shell_command_before:
       - cd ~/.repositories/sm-api
+      - clear
     panes:
       - null
-      - null
+      - ./run

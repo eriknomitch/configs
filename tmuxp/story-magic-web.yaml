@@ -4,12 +4,23 @@ windows:
     shell_command_before:
       - cd ~/.repositories/story-magic-web
       - sw
+      - clear
     panes:
       - ofe
   - window_name: git/run
     layout: even-horizontal
     shell_command_before:
       - cd ~/.repositories/story-magic-web
+      - clear
     panes:
       - null
       - null
+  - window_name: services
+    layout: even-horizontal
+    shell_command_before:
+      - cd ~/.repositories/story-magic-web
+      - clear
+    panes:
+      - ./run
+      - ./run ps
+      - ./run ig

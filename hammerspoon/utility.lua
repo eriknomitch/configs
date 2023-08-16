@@ -2,9 +2,8 @@
 -- HAMMERSPOON->UTILITY =========================
 -- ==============================================
 
-local logger = hs.logger.new("utility")
-
-logger.i("Loading utility.lua")
+log = hs.logger.new("Hammerspoon")
+log.setLogLevel("debug")
 
 -- ------------------------------------------------
 -- CONFIG -----------------------------------------
@@ -55,31 +54,56 @@ end
 -----------------------------------------------
 -- WINDOW->MOVEMENT ---------------------------
 -----------------------------------------------
-function moveWindowOneSpace(direction)
-	local mouseOrigin = mouse.getAbsolutePosition()
-	local win = hs.window.focusedWindow()
-	local clickPoint = win:zoomButtonRect()
+function moveWindowOneSpace(win, direction)
+	local activeSpace = hs.spaces.activeSpaceOnScreen(win:screen())
 
-	clickPoint.x = clickPoint.x + clickPoint.w + 5
-	clickPoint.y = clickPoint.y + (clickPoint.h / 2)
+	local spaces = hs.spaces.windowSpaces(win)
 
-	local mouseClickEvent = hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftmousedown, clickPoint)
-	mouseClickEvent:post()
-	hs.timer.usleep(150000)
+	local allSpaces = hs.spaces.allSpaces()
 
-	local nextSpaceDownEvent = hs.eventtap.event.newKeyEvent({ "ctrl" }, direction, true)
-	nextSpaceDownEvent:post()
-	hs.timer.usleep(150000)
+	-- log.i("win screen: " .. hs.inspect(win:screen():id))
 
-	local nextSpaceUpEvent = hs.eventtap.event.newKeyEvent({ "ctrl" }, direction, false)
-	nextSpaceUpEvent:post()
-	hs.timer.usleep(150000)
+	-- Log the spaces
+	log.i("Spaces: " .. hs.inspect(spaces))
+	log.i("Active Space: " .. hs.inspect(activeSpace))
+	log.i("All Spaces: " .. hs.inspect(allSpaces))
 
-	local mouseReleaseEvent = hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftmouseup, clickPoint)
-	mouseReleaseEvent:post()
-	hs.timer.usleep(150000)
+	local nextSpace = nil
 
-	mouse.setAbsolutePosition(mouseOrigin)
+	if direction == "left" then
+		-- nextSpace = hs.fnutils.find(spaces, function(space)
+		-- 	return space.x < activeSpace.x
+		-- end)
+	elseif direction == "right" then
+		-- nextSpace = hs.fnutils.find(spaces, function(space)
+		-- 	return space.x > activeSpace.x
+		-- end)
+	end
+
+	-- local mouseOrigin = hs.mouse.getAbsolutePosition()
+	-- local win = hs.window.focusedWindow()
+	-- local clickPoint = win:zoomButtonRect()
+	--
+	-- clickPoint.x = clickPoint.x + clickPoint.w + 5
+	-- clickPoint.y = clickPoint.y + (clickPoint.h / 2)
+	--
+	-- local mouseClickEvent = hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftmousedown, clickPoint)
+	-- mouseClickEvent:post()
+	-- hs.timer.usleep(150000)
+	--
+	-- local nextSpaceDownEvent = hs.eventtap.event.newKeyEvent({ "ctrl" }, direction, true)
+	-- nextSpaceDownEvent:post()
+	-- hs.timer.usleep(150000)
+	--
+	-- local nextSpaceUpEvent = hs.eventtap.event.newKeyEvent({ "ctrl" }, direction, false)
+	-- nextSpaceUpEvent:post()
+	-- hs.timer.usleep(150000)
+	--
+	-- local mouseReleaseEvent = hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftmouseup, clickPoint)
+	-- mouseReleaseEvent:post()
+	-- hs.timer.usleep(150000)
+	--
+	-- mouse.setAbsolutePosition(mouseOrigin)
 end
 
 function moveWindowLeft() end
