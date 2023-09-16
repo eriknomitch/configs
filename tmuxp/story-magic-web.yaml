@@ -14,7 +14,7 @@ windows:
       - clear
     panes:
       - null
-      - null
+      - ./run aider
   - window_name: services
     layout: even-horizontal
     shell_command_before:
@@ -24,3 +24,4 @@ windows:
       - ./run
       - ./run ps
       - ./run ig
+      - ./run stripe
