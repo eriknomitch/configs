@@ -22,6 +22,14 @@ export PATH="$PATH:$HOME/.local/bin"
 # ------------------------------------------------
 # ALIASES ----------------------------------------
 # ------------------------------------------------
+function preferred-ls() {
+  if command-exists exa; then
+    eza --icons --classify --oneline --long --no-permissions --no-user --time-style relative --git --level 1 --tree
+  else
+    ls $*
+  fi
+}
+
 # FIX: Add export -f to some of these for script use
 alias e="edit-common"
 alias arp="sudo arp"
@@ -31,7 +39,6 @@ alias lg="lazygit"
 alias ncdu="ncdu --color dark-bg -e --exclude .git --exclude node_modules"
 alias ping="prettyping --nolegend"
 alias dsp="docker system prune --force"
-
 
 function jl() {
   jupyter lab --notebook-dir "${HOME}/.jupyter-notebooks"
