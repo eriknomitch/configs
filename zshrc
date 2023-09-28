@@ -493,12 +493,12 @@ function br() {
         brew bundle dump --force --file="$temp_brewfile"
 
         # Check for differences
-        if ! diff -q "$temp_brewfile" ~/.config/Brewfile > /dev/null; then
+        if ! diff -q "$temp_brewfile" ~/.configs/Brewfile > /dev/null; then
             echo "Differences detected between your Brewfile and the current setup."
             echo -n "Update the Brewfile to match current setup? (y/n) "
             read -r answer
             if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
-                mv "$temp_brewfile" ~/.config/Brewfile
+                mv "$temp_brewfile" ~/.configs/Brewfile
                 echo "Brewfile updated!"
             else
                 echo "Brewfile not updated."
