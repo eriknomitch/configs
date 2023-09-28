@@ -474,6 +474,44 @@ complete -o nospace -C /usr/local/bin/bit bit
 AI_AC_ZSH_SETUP_PATH=$HOME/Library/Caches/ai/autocomplete/zsh_setup && test -f $AI_AC_ZSH_SETUP_PATH && source $AI_AC_ZSH_SETUP_PATH; # ai autocomplete setup
 
 # ------------------------------------------------
+# BREW -------------------------------------------
+# ------------------------------------------------
+function br() {
+    # Check if brew command exists
+    if ! command -v brew > /dev/null; then
+        echo "Error: brew command not found."
+        return 1
+    fi
+
+    brew "$@"
+
+    # Only proceed if the command was 'install' or 'upgrade'
+    if [[ "$1" == "install" || "$1" == "upgrade" ]]; then
+
+        # Create a temporary Brewfile
+        local temp_brewfile=$(mktemp)
+        brew bundle dump --force --file="$temp_brewfile"
+
+        # Check for differences
+        if ! diff -q "$temp_brewfile" ~/.config/Brewfile > /dev/null; then
+            echo "Differences detected between your Brewfile and the current setup."
+            echo -n "Update the Brewfile to match current setup? (y/n) "
+            read -r answer
+            if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
+                mv "$temp_brewfile" ~/.config/Brewfile
+                echo "Brewfile updated!"
+            else
+                echo "Brewfile not updated."
+                rm -f "$temp_brewfile"
+            fi
+        else
+            # Cleanup if no differences are found
+            rm -f "$temp_brewfile"
+        fi
+    fi
+}
+
+# ------------------------------------------------
 # WHISPER/WHISPER.NVIM ---------------------------
 # ------------------------------------------------
 export WHISPER_CPP_HOME=$HOME/.repositories/whisper.cpp
