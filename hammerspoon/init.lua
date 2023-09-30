@@ -517,6 +517,9 @@ end)
 
 function fullscreen()
 	local win = hs.window.focusedWindow()
+	if win == nil then
+		return
+	end
 	local f = win:frame()
 	local screen = win:screen()
 	local max = screen:frame()
@@ -601,16 +604,17 @@ hs.hotkey.bind(hyperShift, "m", function()
 end)
 
 -- Bindings for moving windows between spaces
+-- NOTE: This is taken care of with BetterTouchTool
 -- -----------------------------------------------
-hs.hotkey.bind({ "ctrl", "cmd", "shift" }, "Left", function()
-	local win = hs.window.focusedWindow()
-	moveWindowOneSpace(win, "left")
-end)
-
-hs.hotkey.bind({ "ctrl", "cmd", "shift" }, "Right", function()
-	local win = hs.window.focusedWindow()
-	moveWindowOneSpace(win, "right")
-end)
+-- hs.hotkey.bind({ "ctrl", "cmd", "shift" }, "Up", function()
+-- 	local win = hs.window.focusedWindow()
+-- 	moveWindowOneSpace(win, "left")
+-- end)
+--
+-- hs.hotkey.bind({ "ctrl", "cmd", "shift" }, "Down", function()
+-- 	local win = hs.window.focusedWindow()
+-- 	moveWindowOneSpace(win, "right")
+-- end)
 
 -- }}}
 
