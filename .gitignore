@@ -13,3 +13,4 @@ node_modules/
 scratch
 hammerspoon/Spoons/
 .jukit/
+.aider*
