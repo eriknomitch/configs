@@ -40,6 +40,13 @@ alias ncdu="ncdu --color dark-bg -e --exclude .git --exclude node_modules"
 alias ping="prettyping --nolegend"
 alias dsp="docker system prune --force"
 
+function a() {
+  clear
+  aider \
+    --dark-mode \
+    --no-auto-commits
+}
+
 function jl() {
   jupyter lab --notebook-dir "${HOME}/.jupyter-notebooks"
 }
