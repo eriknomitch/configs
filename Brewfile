@@ -1,6 +1,7 @@
 tap "felixkratz/formulae"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
+tap "homebrew/services"
 tap "lencx/chatgpt", "https://github.com/lencx/ChatGPT.git"
 tap "stripe/stripe-cli"
 brew "asdf"
@@ -32,6 +33,7 @@ brew "moar"
 brew "neovim"
 brew "ninja"
 brew "node"
+brew "ollama"
 brew "pillow"
 brew "portaudio"
 brew "postgresql@15"
@@ -105,7 +107,11 @@ cask "whatsapp"
 cask "xbar"
 cask "zoom"
 mas "ColorSlurp", id: 1287239339
+mas "Dark Noise", id: 1465439395
+mas "Darkroom", id: 953286746
 mas "Developer", id: 640199958
+mas "Home Assistant", id: 1099568401
+mas "Hue Menu Bar", id: 1500678169
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "MyWallpaper", id: 1552826194
