@@ -177,28 +177,87 @@ function createProgressBar(percentage)
 	-- return progressBar .. " " .. math.floor(percentage * 100) .. "%"
 end
 
+-- function createProgressBar(percentage)
+-- 	local barLength = 20
+-- 	local completedLength = math.floor(barLength * percentage)
+-- 	local progressBar = string.rep("#", completedLength) .. string.rep("-", barLength - completedLength)
+--
+-- 	return progressBar .. " " .. math.floor(percentage * 100) .. "%"
+-- end
+
+function padInteger(num, width, paddingChar)
+	-- Convert the integer to a string
+	local numStr = tostring(num)
+
+	-- Calculate the number of padding characters needed
+	local paddingLength = width - #numStr
+
+	-- Ensure the padding length is non-negative
+	if paddingLength < 0 then
+		paddingLength = 0
+	end
+
+	-- Create the padding string
+	local paddingStr = string.rep(paddingChar, paddingLength)
+
+	-- Concatenate the padding string with the integer string
+	local paddedStr = paddingStr .. numStr
+
+	return paddedStr
+end
+
 function changeVolume(diff)
 	return function()
 		local current = hs.audiodevice.defaultOutputDevice():volume()
 		local new = math.min(100, math.max(0, math.floor(current + diff)))
-		if new > 0 then
-			hs.audiodevice.defaultOutputDevice():setMuted(false)
-		end
+
+		-- Mute the audio if the new volume is 0
+		hs.audiodevice.defaultOutputDevice():setMuted(new == 0)
 
 		local progressBar = createProgressBar(new / 100)
-		local prefix = new <= (0.1 / 2) and " " or ""
-		local suffix = new >= 0.8 and "" or ""
+
+		local endChar = ""
+
+		-- Adjust prefix and suffix based on volume levels
+		local prefix = new == 0 and "" or ""
+		local suffix = new == 100 and "" or ""
+
+		local displayPercentage = false
+
 		local message = prefix .. progressBar .. suffix
 
+		local percentageSuffix = " " .. padInteger(new, 3, " ") .. "%"
+
+		if displayPercentage then
+			message = message .. percentageSuffix
+		end
+
 		hs.alert.closeAll(0.0)
-		hs.alert.show(message)
+
+		-- Adjust the text color based on the volume level
+		local textColor = { alpha = 1, red = 1 - (100 - new) / 100, green = (100 - new) / 100, blue = 0 }
+		local fillColor = { alpha = 1, red = 1 - (100 - new) / 100, green = (100 - new) / 100, blue = 0, alpha = 0.5 }
+
+		-- strokeAlpha should be 0 until the volume is high
+		local strokeAlpha = new >= 90 and 0.5 or 0
+
+		hs.alert.show(message, {
+			textSize = 24,
+			height = 50,
+			-- textColor = { white = 1, alpha = (100 - new) / 100 },
+			-- textColor = { white = 0, alpha = 1 },
+			textColor = textColor,
+			-- strokeWidth = new >= 80 and 5 or 0,
+			strokeWidth = 5,
+			strokeColor = { red = 1, alpha = strokeAlpha },
+			fillColor = fillColor,
+			radius = 10,
+			-- atScreenEdge = 1,
+			padding = 10,
+			margins = { top = 20, bottom = 20, left = 0, right = 0 },
+		}, 2.0)
+
 		hs.audiodevice.defaultOutputDevice():setVolume(new)
-
-		-- Play the volume change sound
-		-- local volumeSound = os.getenv("HOME") .. "/.hammerspoon/audio/volume.aiff"
-
-		-- Execute the command
-		-- hs.execute("afplay " .. volumeSound .. " &> /dev/null &")
 	end
 end
 
