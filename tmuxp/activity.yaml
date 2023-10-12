@@ -1,0 +1,8 @@
+session_name: activity
+windows:
+  - window_name: main
+    shell_command_before:
+      - cd
+      - clear
+    panes:
+      - bpytop
