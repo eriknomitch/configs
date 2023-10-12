@@ -170,6 +170,7 @@ end
 function createProgressBar(percentage)
 	local barLength = 20
 	local completedLength = math.floor(barLength * percentage)
+
 	local progressBar = string.rep("", completedLength) .. string.rep("", barLength - completedLength)
 
 	return progressBar
@@ -236,7 +237,7 @@ function changeVolume(diff)
 
 		-- Adjust the text color based on the volume level
 		local textColor = { alpha = 1, red = 1 - (100 - new) / 100, green = (100 - new) / 100, blue = 0 }
-		local fillColor = { alpha = 1, red = 1 - (100 - new) / 100, green = (100 - new) / 100, blue = 0, alpha = 0.5 }
+		local fillColor = { alpha = 1, red = 1 - (100 - new) / 100, green = (100 - new) / 100, blue = 0, alpha = 0.9 }
 
 		-- strokeAlpha should be 0 until the volume is high
 		local strokeAlpha = new >= 90 and 0.5 or 0
@@ -245,16 +246,18 @@ function changeVolume(diff)
 			textSize = 24,
 			height = 50,
 			-- textColor = { white = 1, alpha = (100 - new) / 100 },
-			-- textColor = { white = 0, alpha = 1 },
-			textColor = textColor,
+			textColor = { white = 0, alpha = 1 },
+			-- textColor = { white = 1, alpha = 1 },
+			-- textColor = textColor,
 			-- strokeWidth = new >= 80 and 5 or 0,
-			strokeWidth = 5,
-			strokeColor = { red = 1, alpha = strokeAlpha },
+			strokeWidth = 6,
+			strokeColor = textColor,
+			-- strokeColor = { red = 1, alpha = strokeAlpha },
 			fillColor = fillColor,
 			radius = 10,
-			-- atScreenEdge = 1,
+			atScreenEdge = 0,
 			padding = 10,
-			margins = { top = 20, bottom = 20, left = 0, right = 0 },
+			-- margins = { top = 20, bottom = 20, left = 0, right = 0 },
 		}, 2.0)
 
 		hs.audiodevice.defaultOutputDevice():setVolume(new)
@@ -262,5 +265,7 @@ function changeVolume(diff)
 end
 
 -- Binding the key combination
-hs.hotkey.bind({ "cmd", "shift" }, "Up", changeVolume(5))
-hs.hotkey.bind({ "cmd", "shift" }, "Down", changeVolume(-5))
+hs.hotkey.bind({ "cmd", "shift" }, "Up", changeVolume(10))
+hs.hotkey.bind({ "cmd", "shift" }, "Down", changeVolume(-10))
+hs.hotkey.bind({ "cmd", "shift" }, "Left", changeVolume(-5))
+hs.hotkey.bind({ "cmd", "shift" }, "Right", changeVolume(5))
