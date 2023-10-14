@@ -246,7 +246,7 @@ function changeVolume(diff)
 			textSize = 24,
 			height = 50,
 			-- textColor = { white = 1, alpha = (100 - new) / 100 },
-			textColor = { white = 0, alpha = 1 },
+			textColor = { white = 1, alpha = 1 },
 			-- textColor = { white = 1, alpha = 1 },
 			-- textColor = textColor,
 			-- strokeWidth = new >= 80 and 5 or 0,
@@ -255,7 +255,7 @@ function changeVolume(diff)
 			-- strokeColor = { red = 1, alpha = strokeAlpha },
 			fillColor = fillColor,
 			radius = 10,
-			atScreenEdge = 0,
+			atScreenEdge = 1,
 			padding = 10,
 			-- margins = { top = 20, bottom = 20, left = 0, right = 0 },
 		}, 2.0)
