@@ -21,6 +21,7 @@ brew "ffmpeg"
 brew "gh"
 brew "git"
 brew "go"
+brew "homeassistant-cli"
 brew "htop"
 brew "imagemagick"
 brew "jq"
@@ -30,6 +31,10 @@ brew "luarocks"
 brew "mas"
 brew "mkcert"
 brew "moar"
+brew "mplayer"
+brew "mplayershell"
+brew "yt-dlp"
+brew "mpv"
 brew "neovim"
 brew "ninja"
 brew "node"
@@ -50,16 +55,15 @@ brew "tig"
 brew "tmux"
 brew "tmuxp"
 brew "tree"
+brew "wakeonlan"
 brew "wget"
 brew "youtube-dl"
-brew "yt-dlp"
 brew "zellij"
 brew "zsh"
 brew "felixkratz/formulae/sketchybar"
 brew "stripe/stripe-cli/stripe"
 cask "adobe-creative-cloud"
 cask "alfred"
-cask "audacity"
 cask "bitwarden"
 cask "chatgpt"
 cask "diffusionbee"
@@ -102,19 +106,9 @@ cask "stats"
 cask "stremio"
 cask "swiftbar"
 cask "topnotch"
+cask "vidcutter"
+cask "vlc"
 cask "vscodium"
 cask "whatsapp"
 cask "xbar"
 cask "zoom"
-mas "ColorSlurp", id: 1287239339
-mas "Dark Noise", id: 1465439395
-mas "Darkroom", id: 953286746
-mas "Developer", id: 640199958
-mas "Home Assistant", id: 1099568401
-mas "Hue Menu Bar", id: 1500678169
-mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
-mas "MyWallpaper", id: 1552826194
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Xcode", id: 497799835
