@@ -1,7 +1,7 @@
 -- ===============================================
 -- MAPPINGS ======================================
 -- ===============================================
-local mapx = require'mapx'
+local mapx = require("mapx")
 
 -- vim
 -- nnoremap("<Leader>sv", ":source $MYVIMRC | echon '\"'$MYVIMRC'\" sourced'<CR>")
@@ -23,9 +23,6 @@ mapx.nnoremap("<Leader>L", ":Lazy<CR>")
 mapx.map("Q", ":qall<CR>", "silent")
 mapx.map("W", ":wqall<CR>", "silent")
 mapx.map("!", ":wqall!<CR>", "silent")
-
--- StripWhitespace
--- mapx.nnoremap("<Leader>sw", ":StripWhitespace<CR>", "silent")
 
 -- No Highlight
 mapx.nnoremap("<Leader>h", ":nohlsearch<CR>", "silent")

@@ -248,16 +248,23 @@ require("nvim-tree").setup({
 })
 
 -- Set bindings for nvim-tree:
--- - NvimTreeToggle: <C-n>
+-- - NvimTreeToggle: <C-t> and <leader>t
 vim.api.nvim_set_keymap("n", "<C-t>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>t", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
 require("nvim-tree.api").tree.toggle({
 	path = nil,
 	current_window = false,
 	find_file = false,
 	update_root = false,
-	focus = true,
+	focus = false,
 })
+
+-- highlight NvimTreeNormal guibg=#333333
+vim.cmd([[highlight NvimTreeNormal guibg=#111111 gui=nocombine guifg=#777777]])
+
+-- Hide the end of buffer tilde
+vim.cmd([[highlight EndOfBuffer guibg=#111111 gui=nocombine guifg=#111111]])
 
 -- FIX:
 require("plugins")
