@@ -116,9 +116,6 @@ require("lazy").setup({
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
-		config = function()
-			require("nvim-tree").setup({})
-		end,
 	},
 	{
 		"windwp/nvim-autopairs",
@@ -225,6 +222,42 @@ require("gitsigns").setup()
 -- --------------------------------------
 -- --------------------------------------
 vim.g.indent_guides_enable_on_vim_startup = 1
+
+-- --------------------------------------
+-- --------------------------------------
+-- --------------------------------------
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
+
+-- OR setup with some options
+require("nvim-tree").setup({
+	sort_by = "case_sensitive",
+	view = {
+		width = 30,
+	},
+	renderer = {
+		group_empty = true,
+	},
+	filters = {
+		dotfiles = true,
+	},
+})
+
+-- Set bindings for nvim-tree:
+-- - NvimTreeToggle: <C-n>
+vim.api.nvim_set_keymap("n", "<C-t>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+
+require("nvim-tree.api").tree.toggle({
+	path = nil,
+	current_window = false,
+	find_file = false,
+	update_root = false,
+	focus = true,
+})
 
 -- FIX:
 require("plugins")
