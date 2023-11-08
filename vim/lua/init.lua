@@ -92,7 +92,7 @@ require("lazy").setup({
 	{ "MaxMEllon/vim-jsx-pretty" },
 	{ "b0o/mapx.nvim" },
 	{ "mbbill/undotree" },
-	{ "ntpeters/vim-better-whitespace" },
+	-- { "ntpeters/vim-better-whitespace" },
 	{ "vim-airline/vim-airline" },
 	{ "vim-airline/vim-airline-themes" },
 	{ "tpope/vim-repeat" },
@@ -264,7 +264,7 @@ require("nvim-tree.api").tree.toggle({
 vim.cmd([[highlight NvimTreeNormal guibg=#111111 gui=nocombine guifg=#777777]])
 
 -- Hide the end of buffer tilde
-vim.cmd([[highlight EndOfBuffer guibg=#111111 gui=nocombine guifg=#111111]])
+vim.cmd([[highlight EndOfBuffer guibg=#090909 gui=nocombine guifg=#090909]])
 
 -- FIX:
 require("plugins")
