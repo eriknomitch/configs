@@ -44,10 +44,14 @@ function a() {
   clear
   source $HOME/.zshrc-asdf
   pip install --upgrade aider-chat
+  AIDER_MODEL="gpt-4-1106-preview"
   clear
+  echo "AIDER_MODEL: $AIDER_MODEL"
+  echo
   aider \
     --dark-mode \
-    --no-auto-commits
+    --no-auto-commits \
+    --model $AIDER_MODEL
 }
 
 function jl() {
