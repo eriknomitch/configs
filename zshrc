@@ -42,6 +42,9 @@ alias dsp="docker system prune --force"
 
 function a() {
   clear
+  source $HOME/.zshrc-asdf
+  pip install --upgrade aider-chat
+  clear
   aider \
     --dark-mode \
     --no-auto-commits
