@@ -252,13 +252,13 @@ require("nvim-tree").setup({
 vim.api.nvim_set_keymap("n", "<C-t>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>t", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
-require("nvim-tree.api").tree.toggle({
-	path = nil,
-	current_window = false,
-	find_file = false,
-	update_root = false,
-	focus = false,
-})
+-- require("nvim-tree.api").tree.toggle({
+-- 	path = nil,
+-- 	current_window = false,
+-- 	find_file = false,
+-- 	update_root = false,
+-- 	focus = false,
+-- })
 
 -- highlight NvimTreeNormal guibg=#333333
 vim.cmd([[highlight NvimTreeNormal guibg=#111111 gui=nocombine guifg=#777777]])
