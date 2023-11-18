@@ -41,9 +41,15 @@ alias ping="prettyping --nolegend"
 alias dsp="docker system prune --force"
 
 function a() {
-  clear
-  source $HOME/.zshrc-asdf
-  pip install --upgrade aider-chat
+
+  if [[ $1 == "u" ]] ; then
+    shift
+    pip install --upgrade aider-chat
+    clear
+  fi
+
+  test -f $HOME/.configs/zshrc-asdf && source $HOME/.configs/zshrc-asdf
+
   AIDER_MODEL="gpt-4-1106-preview"
   clear
   echo "AIDER_MODEL: $AIDER_MODEL"
