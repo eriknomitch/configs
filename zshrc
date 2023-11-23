@@ -48,16 +48,23 @@ function a() {
     clear
   fi
 
+
   test -f $HOME/.configs/zshrc-asdf && source $HOME/.configs/zshrc-asdf
 
   AIDER_MODEL="gpt-4-1106-preview"
   clear
   echo "AIDER_MODEL: $AIDER_MODEL"
   echo
+  # If there are more arguments, pass them to aider
+  if [[ $# -gt 0 ]] ; then
+    echo "AIDER: $*"
+    echo
+  fi
   aider \
     --dark-mode \
     --no-auto-commits \
-    --model $AIDER_MODEL
+    --model $AIDER_MODEL \
+    $*
 }
 
 function jl() {
