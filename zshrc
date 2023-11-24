@@ -442,9 +442,10 @@ if [[ -f /usr/local/share-/zsh-completions ]] ; then
 fi
 
 # ------------------------------------------------
-# ANACONDA ---------------------------------------
+# CONDA ------------------------------------------
 # ------------------------------------------------
 _anaconda_path="$HOME/.anaconda3"
+_mini_conda_path="$HOME/.miniconda3"
 
 if [ -f "$_anaconda_path/etc/profile.d/conda.sh" ]; then
   . "$_anaconda_path/etc/profile.d/conda.sh"
@@ -452,7 +453,14 @@ elif [ -d $_anaconda_path ] ; then
   export PATH="$_anaconda_path/bin:$PATH"
 fi
 
+if [ -f "$_miniconda_path/etc/profile.d/conda.sh" ]; then
+  . "$_miniconda_path/etc/profile.d/conda.sh"
+elif [ -d $_miniconda_path ] ; then
+  export PATH="$_miniconda_path/bin:$PATH"
+fi
+
 unset _anaconda_path
+unset _mini_conda_path
 
 # ------------------------------------------------
 # GCLOUD -----------------------------------------
