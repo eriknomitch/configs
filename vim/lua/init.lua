@@ -138,6 +138,15 @@ require("lazy").setup({
 			"rcarriga/nvim-notify",
 		},
 	},
+	{
+		"echasnovski/mini.animate",
+		event = "VeryLazy",
+		opts = function(_, opts)
+			opts.scroll = {
+				enable = false,
+			}
+		end,
+	},
 })
 
 require("noice").setup({
