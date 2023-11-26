@@ -8,6 +8,7 @@
 --{{{
 
 require("utility")
+require("external_display_handler")
 
 --}}}
 
