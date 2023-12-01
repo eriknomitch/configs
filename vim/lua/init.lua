@@ -191,7 +191,7 @@ require("lazy").setup({
 	},
 	{
 		"nvimdev/dashboard-nvim",
-		event = "VimEnter",
+		event = "BufWinEnter",
 		opts = function(_, opts)
 			local logo = [[
         ░█▀▀▄░█▀▀░▄▀▀▄░▄░░░▄░░▀░░█▀▄▀█
