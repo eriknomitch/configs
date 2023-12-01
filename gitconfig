@@ -17,7 +17,7 @@
 [alias]
 	changes = "!f() { git diff $1^ $1;  }; f"
 [core]
-	pager = nvim -R
+	pager = delta --dark
 [interactive]
 	diffFilter = delta --color-only
 [delta]
