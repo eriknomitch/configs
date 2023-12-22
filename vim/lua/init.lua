@@ -178,32 +178,6 @@ require("lazy").setup({
 		-- end,
 	},
 	{
-		"folke/zen-mode.nvim",
-		cmd = "ZenMode",
-		opts = {
-			plugins = {
-				gitsigns = true,
-				tmux = true,
-				kitty = { enabled = false, font = "+2" },
-			},
-		},
-		keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
-	},
-	{
-		"nvimdev/dashboard-nvim",
-		event = "BufWinEnter",
-		opts = function(_, opts)
-			local logo = [[
-        ░█▀▀▄░█▀▀░▄▀▀▄░▄░░░▄░░▀░░█▀▄▀█
-        ░█░▒█░█▀▀░█░░█░░█▄█░░░█▀░█░▀░█
-        ░▀░░▀░▀▀▀░░▀▀░░░░▀░░░▀▀▀░▀░░▒▀
-      ]]
-
-			logo = string.rep("\n", 8) .. logo .. "\n\n"
-			-- opts.config.header = vim.split(logo, "\n")
-		end,
-	},
-	{
 		"akinsho/bufferline.nvim",
 		event = "VeryLazy",
 		keys = {
@@ -225,7 +199,34 @@ require("lazy").setup({
 		cmd = "IncRename",
 		config = true,
 	},
+	{
+		"piersolenski/wtf.nvim",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
+		opts = {},
+		keys = {
+			{
+				"gw",
+				mode = { "n", "x" },
+				function()
+					require("wtf").ai()
+				end,
+				desc = "Debug diagnostic with AI",
+			},
+			{
+				mode = { "n" },
+				"gW",
+				function()
+					require("wtf").search()
+				end,
+				desc = "Search diagnostic with Google",
+			},
+		},
+	},
 })
+
+require("wtf").setup({})
 
 require("noice").setup({
 	lsp = {
