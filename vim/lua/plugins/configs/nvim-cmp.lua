@@ -67,9 +67,9 @@ require("lspconfig")["tsserver"].setup({
 	capabilities = capabilities,
 })
 
-require("lspconfig")["pyright"].setup({
-	capabilities = capabilities,
-})
+-- require("lspconfig")["pyright"].setup({
+-- 	capabilities = capabilities,
+-- })
 
 -- Setup language servers.
 -- local lspconfig = require('lspconfig')
