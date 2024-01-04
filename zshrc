@@ -39,15 +39,20 @@ alias lg="lazygit"
 alias ncdu="ncdu --color dark-bg -e --exclude .git --exclude node_modules"
 alias ping="prettyping --nolegend"
 alias dsp="docker system prune --force"
+alias jl='jupyter lab --notebook-dir "${HOME}/.jupyter-notebooks"'
 
 # ------------------------------------------------
 # FUNCTIONS --------------------------------------
+# ------------------------------------------------
+
+# UTILITY
 # ------------------------------------------------
 function hr() {
   printf '%*s\n' "$(tput cols)" '' | tr ' ' '─'
 }
 
-# SEE: aider
+# AIDER->COMMIT
+# ------------------------------------------------
 function aider-commit() {
 
   # If this isn't a git repo, just exit
@@ -63,7 +68,9 @@ function aider-commit() {
   fi
 
   # Perform the commit, and push if the user says so
+  clear
   aider --commit && \
+    hr && \
     git show -1 --color | autopage && \
     hr && \
     echo -n "Push to default? (Y/n): " && \
@@ -73,7 +80,8 @@ function aider-commit() {
     fi
 }
 
-# SEE: aider
+# AIDER->MAIN
+# ------------------------------------------------
 function a() {
   test -f $HOME/.configs/zshrc-asdf && source $HOME/.configs/zshrc-asdf
 
@@ -106,6 +114,7 @@ function a() {
     $*
 }
 
+# ------------------------------------------------
 function autopage() {
     # Get the height of the terminal
     local terminal_height=$(tput lines)
@@ -136,9 +145,6 @@ function autopage() {
     fi
 }
 
-function jl() {
-  jupyter lab --notebook-dir "${HOME}/.jupyter-notebooks"
-}
 
 # Kubernetes
 # ------------------------------------------------
