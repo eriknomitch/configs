@@ -47,9 +47,9 @@ function aider-commit() {
     aider --commit && \
       git show -1 --color --format="" | condpipe 30 && \
       git log -1 && \
-      echo "Push? (y/n)" && \
+      echo -n "git push? (Y/n): " && \
       read -r answer && \
-      if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
+      if [[ "$answer" == "y" || "$answer" == "Y" || "$answer" == "" ]]; then
         git push
       fi
   else
