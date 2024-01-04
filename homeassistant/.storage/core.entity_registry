@@ -1,0 +1,824 @@
+{
+  "version": 1,
+  "minor_version": 12,
+  "key": "core.entity_registry",
+  "data": {
+    "entities": [
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "2eed03700d2f787859c151d55f3778d1",
+        "device_class": null,
+        "device_id": "7862336441eb79653ee98ff7a96a215e",
+        "disabled_by": null,
+        "entity_category": "diagnostic",
+        "entity_id": "sensor.sun_next_dawn",
+        "hidden_by": null,
+        "icon": null,
+        "id": "9a3ab6d8f668b159e43fd8115eb7930d",
+        "has_entity_name": true,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": "timestamp",
+        "original_icon": "mdi:sun-clock",
+        "original_name": "Next dawn",
+        "platform": "sun",
+        "supported_features": 0,
+        "translation_key": "next_dawn",
+        "unique_id": "2eed03700d2f787859c151d55f3778d1-next_dawn",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "2eed03700d2f787859c151d55f3778d1",
+        "device_class": null,
+        "device_id": "7862336441eb79653ee98ff7a96a215e",
+        "disabled_by": null,
+        "entity_category": "diagnostic",
+        "entity_id": "sensor.sun_next_dusk",
+        "hidden_by": null,
+        "icon": null,
+        "id": "466e5fd9b905223518e73fa7f4e3333e",
+        "has_entity_name": true,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": "timestamp",
+        "original_icon": "mdi:sun-clock",
+        "original_name": "Next dusk",
+        "platform": "sun",
+        "supported_features": 0,
+        "translation_key": "next_dusk",
+        "unique_id": "2eed03700d2f787859c151d55f3778d1-next_dusk",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "2eed03700d2f787859c151d55f3778d1",
+        "device_class": null,
+        "device_id": "7862336441eb79653ee98ff7a96a215e",
+        "disabled_by": null,
+        "entity_category": "diagnostic",
+        "entity_id": "sensor.sun_next_midnight",
+        "hidden_by": null,
+        "icon": null,
+        "id": "6e4f210aa74dadb3b590e58431db3d09",
+        "has_entity_name": true,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": "timestamp",
+        "original_icon": "mdi:sun-clock",
+        "original_name": "Next midnight",
+        "platform": "sun",
+        "supported_features": 0,
+        "translation_key": "next_midnight",
+        "unique_id": "2eed03700d2f787859c151d55f3778d1-next_midnight",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "2eed03700d2f787859c151d55f3778d1",
+        "device_class": null,
+        "device_id": "7862336441eb79653ee98ff7a96a215e",
+        "disabled_by": null,
+        "entity_category": "diagnostic",
+        "entity_id": "sensor.sun_next_noon",
+        "hidden_by": null,
+        "icon": null,
+        "id": "a1753541926881dd34d0e3f29d03a083",
+        "has_entity_name": true,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": "timestamp",
+        "original_icon": "mdi:sun-clock",
+        "original_name": "Next noon",
+        "platform": "sun",
+        "supported_features": 0,
+        "translation_key": "next_noon",
+        "unique_id": "2eed03700d2f787859c151d55f3778d1-next_noon",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "2eed03700d2f787859c151d55f3778d1",
+        "device_class": null,
+        "device_id": "7862336441eb79653ee98ff7a96a215e",
+        "disabled_by": null,
+        "entity_category": "diagnostic",
+        "entity_id": "sensor.sun_next_rising",
+        "hidden_by": null,
+        "icon": null,
+        "id": "588e8fc22450d1ac455ceb4bf0d5fcb1",
+        "has_entity_name": true,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": "timestamp",
+        "original_icon": "mdi:sun-clock",
+        "original_name": "Next rising",
+        "platform": "sun",
+        "supported_features": 0,
+        "translation_key": "next_rising",
+        "unique_id": "2eed03700d2f787859c151d55f3778d1-next_rising",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "2eed03700d2f787859c151d55f3778d1",
+        "device_class": null,
+        "device_id": "7862336441eb79653ee98ff7a96a215e",
+        "disabled_by": null,
+        "entity_category": "diagnostic",
+        "entity_id": "sensor.sun_next_setting",
+        "hidden_by": null,
+        "icon": null,
+        "id": "b7572378df950633e030c51e749216ef",
+        "has_entity_name": true,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": "timestamp",
+        "original_icon": "mdi:sun-clock",
+        "original_name": "Next setting",
+        "platform": "sun",
+        "supported_features": 0,
+        "translation_key": "next_setting",
+        "unique_id": "2eed03700d2f787859c151d55f3778d1-next_setting",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": {
+          "state_class": "measurement"
+        },
+        "config_entry_id": "2eed03700d2f787859c151d55f3778d1",
+        "device_class": null,
+        "device_id": "7862336441eb79653ee98ff7a96a215e",
+        "disabled_by": "integration",
+        "entity_category": "diagnostic",
+        "entity_id": "sensor.sun_solar_elevation",
+        "hidden_by": null,
+        "icon": null,
+        "id": "f800255f37f56e1880323ebe26497cd8",
+        "has_entity_name": true,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": "mdi:theme-light-dark",
+        "original_name": "Solar elevation",
+        "platform": "sun",
+        "supported_features": 0,
+        "translation_key": "solar_elevation",
+        "unique_id": "2eed03700d2f787859c151d55f3778d1-solar_elevation",
+        "previous_unique_id": null,
+        "unit_of_measurement": "°"
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": {
+          "state_class": "measurement"
+        },
+        "config_entry_id": "2eed03700d2f787859c151d55f3778d1",
+        "device_class": null,
+        "device_id": "7862336441eb79653ee98ff7a96a215e",
+        "disabled_by": "integration",
+        "entity_category": "diagnostic",
+        "entity_id": "sensor.sun_solar_azimuth",
+        "hidden_by": null,
+        "icon": null,
+        "id": "f2070a971d11a1190e4a16855e2205d3",
+        "has_entity_name": true,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": "mdi:sun-angle",
+        "original_name": "Solar azimuth",
+        "platform": "sun",
+        "supported_features": 0,
+        "translation_key": "solar_azimuth",
+        "unique_id": "2eed03700d2f787859c151d55f3778d1-solar_azimuth",
+        "previous_unique_id": null,
+        "unit_of_measurement": "°"
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "2eed03700d2f787859c151d55f3778d1",
+        "device_class": null,
+        "device_id": "7862336441eb79653ee98ff7a96a215e",
+        "disabled_by": "integration",
+        "entity_category": "diagnostic",
+        "entity_id": "sensor.sun_solar_rising",
+        "hidden_by": null,
+        "icon": null,
+        "id": "2aceb12fefb00e4ea6c713dbac74e2f3",
+        "has_entity_name": true,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": "mdi:sun-clock",
+        "original_name": "Solar rising",
+        "platform": "sun",
+        "supported_features": 0,
+        "translation_key": "solar_rising",
+        "unique_id": "2eed03700d2f787859c151d55f3778d1-solar_rising",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": null,
+        "device_class": null,
+        "device_id": null,
+        "disabled_by": null,
+        "entity_category": null,
+        "entity_id": "person.erik_nomitch",
+        "hidden_by": null,
+        "icon": null,
+        "id": "58a82dbf2677fd4986e6c7912e5f132c",
+        "has_entity_name": false,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": null,
+        "original_name": "Erik Nomitch",
+        "platform": "person",
+        "supported_features": 0,
+        "translation_key": null,
+        "unique_id": "erik_nomitch",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "0bde88fb2b8a9bc30b3c734a0b4c10bf",
+        "device_class": null,
+        "device_id": null,
+        "disabled_by": null,
+        "entity_category": null,
+        "entity_id": "tts.google_en_com",
+        "hidden_by": null,
+        "icon": null,
+        "id": "207c72824e3bc92217634591115aa870",
+        "has_entity_name": false,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": null,
+        "original_name": "Google en com",
+        "platform": "google_translate",
+        "supported_features": 0,
+        "translation_key": null,
+        "unique_id": "0bde88fb2b8a9bc30b3c734a0b4c10bf",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "c8a43d6175d1047a212d6f9f2867410f",
+        "device_class": null,
+        "device_id": null,
+        "disabled_by": null,
+        "entity_category": null,
+        "entity_id": "todo.shopping_list",
+        "hidden_by": null,
+        "icon": null,
+        "id": "9e3f03b6f292a09633dadd77bbd7cc0b",
+        "has_entity_name": true,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": true
+          }
+        },
+        "original_device_class": null,
+        "original_icon": "mdi:cart",
+        "original_name": "Shopping List",
+        "platform": "shopping_list",
+        "supported_features": 15,
+        "translation_key": "shopping_list",
+        "unique_id": "c8a43d6175d1047a212d6f9f2867410f",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "37b4e02d404800c01360b32e4b997f8e",
+        "device_class": null,
+        "device_id": "d4912263b821e192962cd07d67340ec3",
+        "disabled_by": null,
+        "entity_category": null,
+        "entity_id": "weather.forecast_home",
+        "hidden_by": null,
+        "icon": null,
+        "id": "9bd5012299c846b20f6b2068905f7078",
+        "has_entity_name": true,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": null,
+        "original_name": "Home",
+        "platform": "met",
+        "supported_features": 3,
+        "translation_key": null,
+        "unique_id": "home",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "6c5ee86b4dfa2e6a4c07ab2abe054595",
+        "device_class": null,
+        "device_id": "7c44e194d290729495126c699eeddd44",
+        "disabled_by": null,
+        "entity_category": "config",
+        "entity_id": "update.hacs_update",
+        "hidden_by": null,
+        "icon": null,
+        "id": "a786d580632253ec1e2715670d3dea0d",
+        "has_entity_name": false,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": null,
+        "original_name": "HACS update",
+        "platform": "hacs",
+        "supported_features": 21,
+        "translation_key": null,
+        "unique_id": "172733314",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "6c5ee86b4dfa2e6a4c07ab2abe054595",
+        "device_class": null,
+        "device_id": "4105e771f6d3435c06d13b204f74dd3f",
+        "disabled_by": null,
+        "entity_category": "config",
+        "entity_id": "update.mini_graph_card_update",
+        "hidden_by": null,
+        "icon": null,
+        "id": "bb20461df7d17345f7d74abd7111714a",
+        "has_entity_name": false,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": null,
+        "original_name": "mini-graph-card update",
+        "platform": "hacs",
+        "supported_features": 21,
+        "translation_key": null,
+        "unique_id": "151280062",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "6c5ee86b4dfa2e6a4c07ab2abe054595",
+        "device_class": null,
+        "device_id": "b976ca7c0d21e26bef72f99b63bd63ca",
+        "disabled_by": null,
+        "entity_category": "config",
+        "entity_id": "update.mushroom_update",
+        "hidden_by": null,
+        "icon": null,
+        "id": "4a8b452ade6a53e4ec1d5ed696b762bc",
+        "has_entity_name": false,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": null,
+        "original_name": "Mushroom update",
+        "platform": "hacs",
+        "supported_features": 21,
+        "translation_key": null,
+        "unique_id": "444350375",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "6c5ee86b4dfa2e6a4c07ab2abe054595",
+        "device_class": null,
+        "device_id": "b2fa1584fbe8629db85b105f6affa75b",
+        "disabled_by": null,
+        "entity_category": "config",
+        "entity_id": "update.auto_generating_mushroom_dashboard_strategy_update",
+        "hidden_by": null,
+        "icon": null,
+        "id": "e712f75b788d14db0796b6f3246c54a6",
+        "has_entity_name": false,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": null,
+        "original_name": "Auto generating Mushroom dashboard strategy update",
+        "platform": "hacs",
+        "supported_features": 21,
+        "translation_key": null,
+        "unique_id": "619284862",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "6c5ee86b4dfa2e6a4c07ab2abe054595",
+        "device_class": null,
+        "device_id": "f99aa05167615f82b1678ca4c9c4734c",
+        "disabled_by": null,
+        "entity_category": "config",
+        "entity_id": "update.mushroom_themes_update",
+        "hidden_by": null,
+        "icon": null,
+        "id": "74a992a8eb81fb040e6316d5853dbc4e",
+        "has_entity_name": false,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": null,
+        "original_name": "Mushroom Themes update",
+        "platform": "hacs",
+        "supported_features": 21,
+        "translation_key": null,
+        "unique_id": "456201687",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "6c5ee86b4dfa2e6a4c07ab2abe054595",
+        "device_class": null,
+        "device_id": "c3008716e8bcb06ccdd9476bc4273803",
+        "disabled_by": null,
+        "entity_category": "config",
+        "entity_id": "update.mushroom_better_sliders_update",
+        "hidden_by": null,
+        "icon": null,
+        "id": "095a93d0d7a96cb90e395c47482c5496",
+        "has_entity_name": false,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": null,
+        "original_name": "Mushroom - Better Sliders update",
+        "platform": "hacs",
+        "supported_features": 21,
+        "translation_key": null,
+        "unique_id": "586363416",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "6c5ee86b4dfa2e6a4c07ab2abe054595",
+        "device_class": null,
+        "device_id": "052ab5aed70040ca582601543d9eed42",
+        "disabled_by": null,
+        "entity_category": "config",
+        "entity_id": "update.ui_lovelace_minimalist_update",
+        "hidden_by": null,
+        "icon": null,
+        "id": "debcab1b9bd8895aa61b899935bad7af",
+        "has_entity_name": false,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": null,
+        "original_name": "UI Lovelace Minimalist update",
+        "platform": "hacs",
+        "supported_features": 21,
+        "translation_key": null,
+        "unique_id": "413798425",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "6c5ee86b4dfa2e6a4c07ab2abe054595",
+        "device_class": null,
+        "device_id": "e16d4f13b80ae7786ef25c824cff4dd4",
+        "disabled_by": null,
+        "entity_category": "config",
+        "entity_id": "update.google_theme_based_on_the_android_light_and_dark_interface_update",
+        "hidden_by": null,
+        "icon": null,
+        "id": "4660cd5f28b09cf059a78c676e8cba7d",
+        "has_entity_name": false,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": null,
+        "original_name": "Google Theme - Based on the Android light and dark interface update",
+        "platform": "hacs",
+        "supported_features": 21,
+        "translation_key": null,
+        "unique_id": "458664750",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "6c5ee86b4dfa2e6a4c07ab2abe054595",
+        "device_class": null,
+        "device_id": "ceb44476effce0c9acdcf765bb592b6d",
+        "disabled_by": null,
+        "entity_category": "config",
+        "entity_id": "update.graphite_theme_update",
+        "hidden_by": null,
+        "icon": null,
+        "id": "f70a5ccdacf20b9fcbb5dff2ef59b4b3",
+        "has_entity_name": false,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": null,
+        "original_name": "Graphite Theme update",
+        "platform": "hacs",
+        "supported_features": 21,
+        "translation_key": null,
+        "unique_id": "574163721",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "6c5ee86b4dfa2e6a4c07ab2abe054595",
+        "device_class": null,
+        "device_id": "06627f2b65e656b17980a0d39cf70d58",
+        "disabled_by": null,
+        "entity_category": "config",
+        "entity_id": "update.layout_card_update",
+        "hidden_by": null,
+        "icon": null,
+        "id": "4deb8078047aeee3446375813c0d9594",
+        "has_entity_name": false,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": null,
+        "original_name": "layout-card update",
+        "platform": "hacs",
+        "supported_features": 21,
+        "translation_key": null,
+        "unique_id": "156434866",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "6c5ee86b4dfa2e6a4c07ab2abe054595",
+        "device_class": null,
+        "device_id": "2467e672ae4cbd4f898cd462fd98e430",
+        "disabled_by": null,
+        "entity_category": "config",
+        "entity_id": "update.state_switch_update",
+        "hidden_by": null,
+        "icon": null,
+        "id": "449154b992f730a1b95951e9bda662a8",
+        "has_entity_name": false,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": null,
+        "original_name": "state-switch update",
+        "platform": "hacs",
+        "supported_features": 21,
+        "translation_key": null,
+        "unique_id": "158756598",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "6c5ee86b4dfa2e6a4c07ab2abe054595",
+        "device_class": null,
+        "device_id": "53414369108c29364aa4f08438fe79d4",
+        "disabled_by": null,
+        "entity_category": "config",
+        "entity_id": "update.simple_weather_card_update",
+        "hidden_by": null,
+        "icon": null,
+        "id": "f26fff4931ba69de28c20ddd13fe7849",
+        "has_entity_name": false,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": null,
+        "original_name": "Simple Weather Card update",
+        "platform": "hacs",
+        "supported_features": 21,
+        "translation_key": null,
+        "unique_id": "172998062",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "6c5ee86b4dfa2e6a4c07ab2abe054595",
+        "device_class": null,
+        "device_id": "29c86a23564ac72404e52f75b1977710",
+        "disabled_by": null,
+        "entity_category": "config",
+        "entity_id": "update.browser_mod_update",
+        "hidden_by": null,
+        "icon": null,
+        "id": "7deb3d3719de598da1a4e8a643c59a6d",
+        "has_entity_name": false,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": null,
+        "original_name": "browser_mod update",
+        "platform": "hacs",
+        "supported_features": 21,
+        "translation_key": null,
+        "unique_id": "194140521",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "6c5ee86b4dfa2e6a4c07ab2abe054595",
+        "device_class": null,
+        "device_id": "9be4d274d2f5c42ddcdca6f0c9751a08",
+        "disabled_by": null,
+        "entity_category": "config",
+        "entity_id": "update.button_card_update",
+        "hidden_by": null,
+        "icon": null,
+        "id": "af1497cbba648761ebf4506b464fb4ba",
+        "has_entity_name": false,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": null,
+        "original_name": "button-card update",
+        "platform": "hacs",
+        "supported_features": 21,
+        "translation_key": null,
+        "unique_id": "146194325",
+        "previous_unique_id": null,
+        "unit_of_measurement": null
+      }
+    ],
+    "deleted_entities": []
+  }
+}

@@ -1,0 +1,410 @@
+{
+  "version": 1,
+  "minor_version": 4,
+  "key": "core.device_registry",
+  "data": {
+    "devices": [
+      {
+        "area_id": null,
+        "config_entries": [
+          "2eed03700d2f787859c151d55f3778d1"
+        ],
+        "configuration_url": null,
+        "connections": [],
+        "disabled_by": null,
+        "entry_type": "service",
+        "hw_version": null,
+        "id": "7862336441eb79653ee98ff7a96a215e",
+        "identifiers": [
+          [
+            "sun",
+            "2eed03700d2f787859c151d55f3778d1"
+          ]
+        ],
+        "manufacturer": null,
+        "model": null,
+        "name_by_user": null,
+        "name": "Sun",
+        "serial_number": null,
+        "sw_version": null,
+        "via_device_id": null
+      },
+      {
+        "area_id": null,
+        "config_entries": [
+          "37b4e02d404800c01360b32e4b997f8e"
+        ],
+        "configuration_url": "https://www.met.no/en",
+        "connections": [],
+        "disabled_by": null,
+        "entry_type": "service",
+        "hw_version": null,
+        "id": "d4912263b821e192962cd07d67340ec3",
+        "identifiers": [
+          [
+            "met",
+            "37b4e02d404800c01360b32e4b997f8e"
+          ]
+        ],
+        "manufacturer": "Met.no",
+        "model": "Forecast",
+        "name_by_user": null,
+        "name": "Forecast",
+        "serial_number": null,
+        "sw_version": null,
+        "via_device_id": null
+      },
+      {
+        "area_id": null,
+        "config_entries": [
+          "6c5ee86b4dfa2e6a4c07ab2abe054595"
+        ],
+        "configuration_url": "homeassistant://hacs",
+        "connections": [],
+        "disabled_by": null,
+        "entry_type": "service",
+        "hw_version": null,
+        "id": "7c44e194d290729495126c699eeddd44",
+        "identifiers": [
+          [
+            "hacs",
+            "0717a0cd-745c-48fd-9b16-c8534c9704f9-bc944b0f-fd42-4a58-a072-ade38d1444cd"
+          ]
+        ],
+        "manufacturer": "hacs.xyz",
+        "model": "",
+        "name_by_user": null,
+        "name": "HACS",
+        "serial_number": null,
+        "sw_version": "1.33.0",
+        "via_device_id": null
+      },
+      {
+        "area_id": null,
+        "config_entries": [
+          "6c5ee86b4dfa2e6a4c07ab2abe054595"
+        ],
+        "configuration_url": "homeassistant://hacs",
+        "connections": [],
+        "disabled_by": null,
+        "entry_type": "service",
+        "hw_version": null,
+        "id": "4105e771f6d3435c06d13b204f74dd3f",
+        "identifiers": [
+          [
+            "hacs",
+            "151280062"
+          ]
+        ],
+        "manufacturer": "",
+        "model": "plugin",
+        "name_by_user": null,
+        "name": "mini-graph-card",
+        "serial_number": null,
+        "sw_version": null,
+        "via_device_id": null
+      },
+      {
+        "area_id": null,
+        "config_entries": [
+          "6c5ee86b4dfa2e6a4c07ab2abe054595"
+        ],
+        "configuration_url": "homeassistant://hacs",
+        "connections": [],
+        "disabled_by": null,
+        "entry_type": "service",
+        "hw_version": null,
+        "id": "b976ca7c0d21e26bef72f99b63bd63ca",
+        "identifiers": [
+          [
+            "hacs",
+            "444350375"
+          ]
+        ],
+        "manufacturer": "",
+        "model": "plugin",
+        "name_by_user": null,
+        "name": "Mushroom",
+        "serial_number": null,
+        "sw_version": null,
+        "via_device_id": null
+      },
+      {
+        "area_id": null,
+        "config_entries": [
+          "6c5ee86b4dfa2e6a4c07ab2abe054595"
+        ],
+        "configuration_url": "homeassistant://hacs",
+        "connections": [],
+        "disabled_by": null,
+        "entry_type": "service",
+        "hw_version": null,
+        "id": "b2fa1584fbe8629db85b105f6affa75b",
+        "identifiers": [
+          [
+            "hacs",
+            "619284862"
+          ]
+        ],
+        "manufacturer": "",
+        "model": "plugin",
+        "name_by_user": null,
+        "name": "Auto generating Mushroom dashboard strategy",
+        "serial_number": null,
+        "sw_version": null,
+        "via_device_id": null
+      },
+      {
+        "area_id": null,
+        "config_entries": [
+          "6c5ee86b4dfa2e6a4c07ab2abe054595"
+        ],
+        "configuration_url": "homeassistant://hacs",
+        "connections": [],
+        "disabled_by": null,
+        "entry_type": "service",
+        "hw_version": null,
+        "id": "f99aa05167615f82b1678ca4c9c4734c",
+        "identifiers": [
+          [
+            "hacs",
+            "456201687"
+          ]
+        ],
+        "manufacturer": "",
+        "model": "theme",
+        "name_by_user": null,
+        "name": "Mushroom Themes",
+        "serial_number": null,
+        "sw_version": null,
+        "via_device_id": null
+      },
+      {
+        "area_id": null,
+        "config_entries": [
+          "6c5ee86b4dfa2e6a4c07ab2abe054595"
+        ],
+        "configuration_url": "homeassistant://hacs",
+        "connections": [],
+        "disabled_by": null,
+        "entry_type": "service",
+        "hw_version": null,
+        "id": "c3008716e8bcb06ccdd9476bc4273803",
+        "identifiers": [
+          [
+            "hacs",
+            "586363416"
+          ]
+        ],
+        "manufacturer": "",
+        "model": "plugin",
+        "name_by_user": null,
+        "name": "Mushroom - Better Sliders",
+        "serial_number": null,
+        "sw_version": null,
+        "via_device_id": null
+      },
+      {
+        "area_id": null,
+        "config_entries": [
+          "6c5ee86b4dfa2e6a4c07ab2abe054595"
+        ],
+        "configuration_url": "homeassistant://hacs",
+        "connections": [],
+        "disabled_by": null,
+        "entry_type": "service",
+        "hw_version": null,
+        "id": "052ab5aed70040ca582601543d9eed42",
+        "identifiers": [
+          [
+            "hacs",
+            "413798425"
+          ]
+        ],
+        "manufacturer": "stokkie90",
+        "model": "integration",
+        "name_by_user": null,
+        "name": "UI Lovelace Minimalist",
+        "serial_number": null,
+        "sw_version": null,
+        "via_device_id": null
+      },
+      {
+        "area_id": null,
+        "config_entries": [
+          "6c5ee86b4dfa2e6a4c07ab2abe054595"
+        ],
+        "configuration_url": "homeassistant://hacs",
+        "connections": [],
+        "disabled_by": null,
+        "entry_type": "service",
+        "hw_version": null,
+        "id": "e16d4f13b80ae7786ef25c824cff4dd4",
+        "identifiers": [
+          [
+            "hacs",
+            "458664750"
+          ]
+        ],
+        "manufacturer": "",
+        "model": "theme",
+        "name_by_user": null,
+        "name": "Google Theme - Based on the Android light and dark interface",
+        "serial_number": null,
+        "sw_version": null,
+        "via_device_id": null
+      },
+      {
+        "area_id": null,
+        "config_entries": [
+          "6c5ee86b4dfa2e6a4c07ab2abe054595"
+        ],
+        "configuration_url": "homeassistant://hacs",
+        "connections": [],
+        "disabled_by": null,
+        "entry_type": "service",
+        "hw_version": null,
+        "id": "ceb44476effce0c9acdcf765bb592b6d",
+        "identifiers": [
+          [
+            "hacs",
+            "574163721"
+          ]
+        ],
+        "manufacturer": "",
+        "model": "theme",
+        "name_by_user": null,
+        "name": "Graphite Theme",
+        "serial_number": null,
+        "sw_version": null,
+        "via_device_id": null
+      },
+      {
+        "area_id": null,
+        "config_entries": [
+          "6c5ee86b4dfa2e6a4c07ab2abe054595"
+        ],
+        "configuration_url": "homeassistant://hacs",
+        "connections": [],
+        "disabled_by": null,
+        "entry_type": "service",
+        "hw_version": null,
+        "id": "06627f2b65e656b17980a0d39cf70d58",
+        "identifiers": [
+          [
+            "hacs",
+            "156434866"
+          ]
+        ],
+        "manufacturer": "",
+        "model": "plugin",
+        "name_by_user": null,
+        "name": "layout-card",
+        "serial_number": null,
+        "sw_version": null,
+        "via_device_id": null
+      },
+      {
+        "area_id": null,
+        "config_entries": [
+          "6c5ee86b4dfa2e6a4c07ab2abe054595"
+        ],
+        "configuration_url": "homeassistant://hacs",
+        "connections": [],
+        "disabled_by": null,
+        "entry_type": "service",
+        "hw_version": null,
+        "id": "2467e672ae4cbd4f898cd462fd98e430",
+        "identifiers": [
+          [
+            "hacs",
+            "158756598"
+          ]
+        ],
+        "manufacturer": "",
+        "model": "plugin",
+        "name_by_user": null,
+        "name": "state-switch",
+        "serial_number": null,
+        "sw_version": null,
+        "via_device_id": null
+      },
+      {
+        "area_id": null,
+        "config_entries": [
+          "6c5ee86b4dfa2e6a4c07ab2abe054595"
+        ],
+        "configuration_url": "homeassistant://hacs",
+        "connections": [],
+        "disabled_by": null,
+        "entry_type": "service",
+        "hw_version": null,
+        "id": "53414369108c29364aa4f08438fe79d4",
+        "identifiers": [
+          [
+            "hacs",
+            "172998062"
+          ]
+        ],
+        "manufacturer": "",
+        "model": "plugin",
+        "name_by_user": null,
+        "name": "Simple Weather Card",
+        "serial_number": null,
+        "sw_version": null,
+        "via_device_id": null
+      },
+      {
+        "area_id": null,
+        "config_entries": [
+          "6c5ee86b4dfa2e6a4c07ab2abe054595"
+        ],
+        "configuration_url": "homeassistant://hacs",
+        "connections": [],
+        "disabled_by": null,
+        "entry_type": "service",
+        "hw_version": null,
+        "id": "29c86a23564ac72404e52f75b1977710",
+        "identifiers": [
+          [
+            "hacs",
+            "194140521"
+          ]
+        ],
+        "manufacturer": "",
+        "model": "integration",
+        "name_by_user": null,
+        "name": "browser_mod",
+        "serial_number": null,
+        "sw_version": null,
+        "via_device_id": null
+      },
+      {
+        "area_id": null,
+        "config_entries": [
+          "6c5ee86b4dfa2e6a4c07ab2abe054595"
+        ],
+        "configuration_url": "homeassistant://hacs",
+        "connections": [],
+        "disabled_by": null,
+        "entry_type": "service",
+        "hw_version": null,
+        "id": "9be4d274d2f5c42ddcdca6f0c9751a08",
+        "identifiers": [
+          [
+            "hacs",
+            "146194325"
+          ]
+        ],
+        "manufacturer": "",
+        "model": "plugin",
+        "name_by_user": null,
+        "name": "button-card",
+        "serial_number": null,
+        "sw_version": null,
+        "via_device_id": null
+      }
+    ],
+    "deleted_devices": []
+  }
+}

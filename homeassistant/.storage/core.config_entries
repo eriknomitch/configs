@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "core.config_entries",
+  "data": {
+    "entries": [
+      {
+        "entry_id": "2eed03700d2f787859c151d55f3778d1",
+        "version": 1,
+        "domain": "sun",
+        "title": "Sun",
+        "data": {},
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "import",
+        "unique_id": null,
+        "disabled_by": null
+      },
+      {
+        "entry_id": "c8a43d6175d1047a212d6f9f2867410f",
+        "version": 1,
+        "domain": "shopping_list",
+        "title": "Shopping list",
+        "data": {},
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "onboarding",
+        "unique_id": "shopping_list",
+        "disabled_by": null
+      },
+      {
+        "entry_id": "0bde88fb2b8a9bc30b3c734a0b4c10bf",
+        "version": 1,
+        "domain": "google_translate",
+        "title": "Google Translate text-to-speech",
+        "data": {
+          "language": "en",
+          "tld": "com"
+        },
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "onboarding",
+        "unique_id": null,
+        "disabled_by": null
+      },
+      {
+        "entry_id": "37b4e02d404800c01360b32e4b997f8e",
+        "version": 1,
+        "domain": "met",
+        "title": "Home",
+        "data": {
+          "track_home": true
+        },
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "onboarding",
+        "unique_id": null,
+        "disabled_by": null
+      },
+      {
+        "entry_id": "e058056e35525ad8d4e9b0d57447524f",
+        "version": 1,
+        "domain": "radio_browser",
+        "title": "Radio Browser",
+        "data": {},
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "onboarding",
+        "unique_id": null,
+        "disabled_by": null
+      },
+      {
+        "entry_id": "6c5ee86b4dfa2e6a4c07ab2abe054595",
+        "version": 1,
+        "domain": "hacs",
+        "title": "",
+        "data": {
+          "token": "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"
+        },
+        "options": {
+          "experimental": true
+        },
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "user",
+        "unique_id": null,
+        "disabled_by": null
+      },
+      {
+        "entry_id": "0e9292b286e967a93d9aac88707be8be",
+        "version": 1,
+        "domain": "ui_lovelace_minimalist",
+        "title": "UI Lovelace Minimalist",
+        "data": {
+          "token": "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"
+        },
+        "options": {
+          "language": "English (GB)",
+          "sidepanel_enabled": true,
+          "sidepanel_title": "UI Lovelace Minimalist",
+          "sidepanel_icon": "mdi:flower",
+          "adaptive_ui_enabled": true,
+          "adaptive_ui_title": "UI Lovelace Minimalist",
+          "adaptive_ui_icon": "mdi:flower",
+          "theme": "minimalist-desktop",
+          "theme_path": "themes/",
+          "include_other_cards": true,
+          "community_cards_enabled": true
+        },
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "user",
+        "unique_id": null,
+        "disabled_by": null
+      }
+    ]
+  }
+}

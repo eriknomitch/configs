@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace_resources",
+  "data": {
+    "items": [
+      {
+        "id": "a75b93b8b69749eabba64a5f6c980328",
+        "url": "/hacsfiles/lovelace-mushroom/mushroom.js?hacstag=444350375322",
+        "type": "module"
+      },
+      {
+        "id": "ba930bbc16814f4f8595e07cdc414a19",
+        "url": "/hacsfiles/mushroom-strategy/mushroom-strategy.js?hacstag=619284862101",
+        "type": "module"
+      },
+      {
+        "id": "2a14dfc4a5f94abba28b1ca25528d29b",
+        "url": "/hacsfiles/lovelace-mushroom-better-sliders/mushroom.js?hacstag=586363416302",
+        "type": "module"
+      },
+      {
+        "id": "82f09748ce644324b6692802d09e7482",
+        "url": "/hacsfiles/lovelace-layout-card/layout-card.js?hacstag=156434866244",
+        "type": "module"
+      },
+      {
+        "id": "271c128f41b54cb1baddb11bba92e3af",
+        "url": "/hacsfiles/lovelace-state-switch/state-switch.js?hacstag=158756598195",
+        "type": "module"
+      },
+      {
+        "id": "6b9a6bf8b3f244929aaa591eef40221b",
+        "url": "/hacsfiles/simple-weather-card/simple-weather-card-bundle.js?hacstag=172998062085",
+        "type": "module"
+      },
+      {
+        "id": "26e635817a9e478da83b339032b4bda7",
+        "url": "/hacsfiles/button-card/button-card.js?hacstag=146194325411",
+        "type": "module"
+      }
+    ]
+  }
+}

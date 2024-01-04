@@ -1,0 +1,428 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "core.restore_state",
+  "data": [
+    {
+      "state": {
+        "entity_id": "person.erik_nomitch",
+        "state": "unknown",
+        "attributes": {
+          "editable": true,
+          "id": "erik_nomitch",
+          "user_id": "fedc5538e2964f4685028caf967283f9",
+          "device_trackers": [],
+          "friendly_name": "Erik Nomitch"
+        },
+        "last_changed": "2023-12-26T13:45:15.611918+00:00",
+        "last_updated": "2023-12-26T13:45:22.093312+00:00",
+        "context": {
+          "id": "01HJK5YWDDEZYMXKHBGFAQQA72",
+          "parent_id": null,
+          "user_id": null
+        }
+      },
+      "extra_data": null,
+      "last_seen": "2023-12-26T14:27:43.626130+00:00"
+    },
+    {
+      "state": {
+        "entity_id": "tts.google_en_com",
+        "state": "unknown",
+        "attributes": {
+          "friendly_name": "Google en com"
+        },
+        "last_changed": "2023-12-26T13:45:16.822617+00:00",
+        "last_updated": "2023-12-26T13:45:16.822617+00:00",
+        "context": {
+          "id": "01HJK5YQ8PGWYEMND056P3VYKB",
+          "parent_id": null,
+          "user_id": null
+        }
+      },
+      "extra_data": null,
+      "last_seen": "2023-12-26T14:27:43.626130+00:00"
+    },
+    {
+      "state": {
+        "entity_id": "update.mushroom_themes_update",
+        "state": "off",
+        "attributes": {
+          "auto_update": false,
+          "installed_version": "v0.0.9",
+          "in_progress": false,
+          "latest_version": "v0.0.9",
+          "release_summary": null,
+          "release_url": "https://github.com/piitaya/lovelace-mushroom-themes/releases/v0.0.9",
+          "skipped_version": null,
+          "title": null,
+          "friendly_name": "Mushroom Themes update",
+          "supported_features": 21
+        },
+        "last_changed": "2023-12-26T13:45:16.827842+00:00",
+        "last_updated": "2023-12-26T13:45:16.827842+00:00",
+        "context": {
+          "id": "01HJK5YQ8VYPRNM5TTA1WQ2J1M",
+          "parent_id": null,
+          "user_id": null
+        }
+      },
+      "extra_data": null,
+      "last_seen": "2023-12-26T14:27:43.626130+00:00"
+    },
+    {
+      "state": {
+        "entity_id": "update.mini_graph_card_update",
+        "state": "off",
+        "attributes": {
+          "auto_update": false,
+          "installed_version": "v0.11.0",
+          "in_progress": false,
+          "latest_version": "v0.11.0",
+          "release_summary": null,
+          "release_url": "https://github.com/kalkih/mini-graph-card/releases/v0.11.0",
+          "skipped_version": null,
+          "title": null,
+          "friendly_name": "mini-graph-card update",
+          "supported_features": 21
+        },
+        "last_changed": "2023-12-26T13:45:16.827912+00:00",
+        "last_updated": "2023-12-26T13:45:16.827912+00:00",
+        "context": {
+          "id": "01HJK5YQ8V3CY0R6GY1KKJ1A3S",
+          "parent_id": null,
+          "user_id": null
+        }
+      },
+      "extra_data": null,
+      "last_seen": "2023-12-26T14:27:43.626130+00:00"
+    },
+    {
+      "state": {
+        "entity_id": "update.mushroom_better_sliders_update",
+        "state": "off",
+        "attributes": {
+          "auto_update": false,
+          "installed_version": "v3.0.2",
+          "in_progress": false,
+          "latest_version": "v3.0.2",
+          "release_summary": null,
+          "release_url": "https://github.com/phischdev/lovelace-mushroom-better-sliders/releases/v3.0.2",
+          "skipped_version": null,
+          "title": null,
+          "friendly_name": "Mushroom - Better Sliders update",
+          "supported_features": 21
+        },
+        "last_changed": "2023-12-26T13:45:16.828061+00:00",
+        "last_updated": "2023-12-26T13:45:16.828061+00:00",
+        "context": {
+          "id": "01HJK5YQ8WYJJFR3D9AJJAQXJH",
+          "parent_id": null,
+          "user_id": null
+        }
+      },
+      "extra_data": null,
+      "last_seen": "2023-12-26T14:27:43.626130+00:00"
+    },
+    {
+      "state": {
+        "entity_id": "update.hacs_update",
+        "state": "off",
+        "attributes": {
+          "auto_update": false,
+          "installed_version": "1.33.0",
+          "in_progress": false,
+          "latest_version": "1.33.0",
+          "release_summary": null,
+          "release_url": "https://github.com/hacs/integration/releases/1.33.0",
+          "skipped_version": null,
+          "title": null,
+          "entity_picture": "https://brands.home-assistant.io/_/hacs/icon.png",
+          "friendly_name": "HACS update",
+          "supported_features": 21
+        },
+        "last_changed": "2023-12-26T13:45:16.828125+00:00",
+        "last_updated": "2023-12-26T13:45:16.828125+00:00",
+        "context": {
+          "id": "01HJK5YQ8WNVGG2FGTF5AVGM57",
+          "parent_id": null,
+          "user_id": null
+        }
+      },
+      "extra_data": null,
+      "last_seen": "2023-12-26T14:27:43.626130+00:00"
+    },
+    {
+      "state": {
+        "entity_id": "update.graphite_theme_update",
+        "state": "off",
+        "attributes": {
+          "auto_update": false,
+          "installed_version": "2.1",
+          "in_progress": false,
+          "latest_version": "2.1",
+          "release_summary": null,
+          "release_url": "https://github.com/TilmanGriesel/graphite/releases/2.1",
+          "skipped_version": null,
+          "title": null,
+          "friendly_name": "Graphite Theme update",
+          "supported_features": 21
+        },
+        "last_changed": "2023-12-26T13:45:16.828169+00:00",
+        "last_updated": "2023-12-26T13:45:16.828169+00:00",
+        "context": {
+          "id": "01HJK5YQ8WF3BDJ4C529Y50Z8K",
+          "parent_id": null,
+          "user_id": null
+        }
+      },
+      "extra_data": null,
+      "last_seen": "2023-12-26T14:27:43.626130+00:00"
+    },
+    {
+      "state": {
+        "entity_id": "update.button_card_update",
+        "state": "off",
+        "attributes": {
+          "auto_update": false,
+          "installed_version": "v4.1.1",
+          "in_progress": false,
+          "latest_version": "v4.1.1",
+          "release_summary": null,
+          "release_url": "https://github.com/custom-cards/button-card/releases/v4.1.1",
+          "skipped_version": null,
+          "title": null,
+          "friendly_name": "button-card update",
+          "supported_features": 21
+        },
+        "last_changed": "2023-12-26T13:45:16.828215+00:00",
+        "last_updated": "2023-12-26T13:45:16.828215+00:00",
+        "context": {
+          "id": "01HJK5YQ8WN01XESP3SFVXM1KW",
+          "parent_id": null,
+          "user_id": null
+        }
+      },
+      "extra_data": null,
+      "last_seen": "2023-12-26T14:27:43.626130+00:00"
+    },
+    {
+      "state": {
+        "entity_id": "update.google_theme_based_on_the_android_light_and_dark_interface_update",
+        "state": "off",
+        "attributes": {
+          "auto_update": false,
+          "installed_version": "v1.4",
+          "in_progress": false,
+          "latest_version": "v1.4",
+          "release_summary": null,
+          "release_url": "https://github.com/JuanMTech/google-theme/releases/v1.4",
+          "skipped_version": null,
+          "title": null,
+          "friendly_name": "Google Theme - Based on the Android light and dark interface update",
+          "supported_features": 21
+        },
+        "last_changed": "2023-12-26T13:45:16.828256+00:00",
+        "last_updated": "2023-12-26T13:45:16.828256+00:00",
+        "context": {
+          "id": "01HJK5YQ8W0CZJDADQ6D6K07DB",
+          "parent_id": null,
+          "user_id": null
+        }
+      },
+      "extra_data": null,
+      "last_seen": "2023-12-26T14:27:43.626130+00:00"
+    },
+    {
+      "state": {
+        "entity_id": "update.layout_card_update",
+        "state": "off",
+        "attributes": {
+          "auto_update": false,
+          "installed_version": "2.4.4",
+          "in_progress": false,
+          "latest_version": "2.4.4",
+          "release_summary": null,
+          "release_url": "https://github.com/thomasloven/lovelace-layout-card/releases/2.4.4",
+          "skipped_version": null,
+          "title": null,
+          "friendly_name": "layout-card update",
+          "supported_features": 21
+        },
+        "last_changed": "2023-12-26T13:45:16.828400+00:00",
+        "last_updated": "2023-12-26T13:45:16.828400+00:00",
+        "context": {
+          "id": "01HJK5YQ8WBB7QQC1CSM6PAR36",
+          "parent_id": null,
+          "user_id": null
+        }
+      },
+      "extra_data": null,
+      "last_seen": "2023-12-26T14:27:43.626130+00:00"
+    },
+    {
+      "state": {
+        "entity_id": "update.ui_lovelace_minimalist_update",
+        "state": "off",
+        "attributes": {
+          "auto_update": false,
+          "installed_version": "v1.3.9",
+          "in_progress": false,
+          "latest_version": "v1.3.9",
+          "release_summary": null,
+          "release_url": "https://github.com/UI-Lovelace-Minimalist/UI/releases/v1.3.9",
+          "skipped_version": null,
+          "title": null,
+          "entity_picture": "https://brands.home-assistant.io/_/ui_lovelace_minimalist/icon.png",
+          "friendly_name": "UI Lovelace Minimalist update",
+          "supported_features": 21
+        },
+        "last_changed": "2023-12-26T13:45:16.828538+00:00",
+        "last_updated": "2023-12-26T13:45:16.828538+00:00",
+        "context": {
+          "id": "01HJK5YQ8WR25TZVWV1K2R5JYP",
+          "parent_id": null,
+          "user_id": null
+        }
+      },
+      "extra_data": null,
+      "last_seen": "2023-12-26T14:27:43.626130+00:00"
+    },
+    {
+      "state": {
+        "entity_id": "update.simple_weather_card_update",
+        "state": "off",
+        "attributes": {
+          "auto_update": false,
+          "installed_version": "v0.8.5",
+          "in_progress": false,
+          "latest_version": "v0.8.5",
+          "release_summary": null,
+          "release_url": "https://github.com/kalkih/simple-weather-card/releases/v0.8.5",
+          "skipped_version": null,
+          "title": null,
+          "friendly_name": "Simple Weather Card update",
+          "supported_features": 21
+        },
+        "last_changed": "2023-12-26T13:45:16.828582+00:00",
+        "last_updated": "2023-12-26T13:45:16.828582+00:00",
+        "context": {
+          "id": "01HJK5YQ8WGZ44XSSKV71S5G00",
+          "parent_id": null,
+          "user_id": null
+        }
+      },
+      "extra_data": null,
+      "last_seen": "2023-12-26T14:27:43.626130+00:00"
+    },
+    {
+      "state": {
+        "entity_id": "update.mushroom_update",
+        "state": "off",
+        "attributes": {
+          "auto_update": false,
+          "installed_version": "v3.2.2",
+          "in_progress": false,
+          "latest_version": "v3.2.2",
+          "release_summary": null,
+          "release_url": "https://github.com/piitaya/lovelace-mushroom/releases/v3.2.2",
+          "skipped_version": null,
+          "title": null,
+          "friendly_name": "Mushroom update",
+          "supported_features": 21
+        },
+        "last_changed": "2023-12-26T13:45:16.828624+00:00",
+        "last_updated": "2023-12-26T13:45:16.828624+00:00",
+        "context": {
+          "id": "01HJK5YQ8W7D14QE96K8JP81YB",
+          "parent_id": null,
+          "user_id": null
+        }
+      },
+      "extra_data": null,
+      "last_seen": "2023-12-26T14:27:43.626130+00:00"
+    },
+    {
+      "state": {
+        "entity_id": "update.browser_mod_update",
+        "state": "off",
+        "attributes": {
+          "auto_update": false,
+          "installed_version": "2.3.0",
+          "in_progress": false,
+          "latest_version": "2.3.0",
+          "release_summary": null,
+          "release_url": "https://github.com/thomasloven/hass-browser_mod/releases/2.3.0",
+          "skipped_version": null,
+          "title": null,
+          "entity_picture": "https://brands.home-assistant.io/_/browser_mod/icon.png",
+          "friendly_name": "browser_mod update",
+          "supported_features": 21
+        },
+        "last_changed": "2023-12-26T13:45:16.828763+00:00",
+        "last_updated": "2023-12-26T13:45:16.828763+00:00",
+        "context": {
+          "id": "01HJK5YQ8W06277HRES2VDQCJY",
+          "parent_id": null,
+          "user_id": null
+        }
+      },
+      "extra_data": null,
+      "last_seen": "2023-12-26T14:27:43.626130+00:00"
+    },
+    {
+      "state": {
+        "entity_id": "update.state_switch_update",
+        "state": "off",
+        "attributes": {
+          "auto_update": false,
+          "installed_version": "1.9.5",
+          "in_progress": false,
+          "latest_version": "1.9.5",
+          "release_summary": null,
+          "release_url": "https://github.com/thomasloven/lovelace-state-switch/releases/1.9.5",
+          "skipped_version": null,
+          "title": null,
+          "friendly_name": "state-switch update",
+          "supported_features": 21
+        },
+        "last_changed": "2023-12-26T13:45:16.828802+00:00",
+        "last_updated": "2023-12-26T13:45:16.828802+00:00",
+        "context": {
+          "id": "01HJK5YQ8W76D0PA0G28CXS7G5",
+          "parent_id": null,
+          "user_id": null
+        }
+      },
+      "extra_data": null,
+      "last_seen": "2023-12-26T14:27:43.626130+00:00"
+    },
+    {
+      "state": {
+        "entity_id": "update.auto_generating_mushroom_dashboard_strategy_update",
+        "state": "off",
+        "attributes": {
+          "auto_update": false,
+          "installed_version": "v1.0.1",
+          "in_progress": false,
+          "latest_version": "v1.0.1",
+          "release_summary": null,
+          "release_url": "https://github.com/AalianKhan/mushroom-strategy/releases/v1.0.1",
+          "skipped_version": null,
+          "title": null,
+          "friendly_name": "Auto generating Mushroom dashboard strategy update",
+          "supported_features": 21
+        },
+        "last_changed": "2023-12-26T13:45:16.828838+00:00",
+        "last_updated": "2023-12-26T13:45:16.828838+00:00",
+        "context": {
+          "id": "01HJK5YQ8WR3H3Y6D9BC60JEJX",
+          "parent_id": null,
+          "user_id": null
+        }
+      },
+      "extra_data": null,
+      "last_seen": "2023-12-26T14:27:43.626130+00:00"
+    }
+  ]
+}

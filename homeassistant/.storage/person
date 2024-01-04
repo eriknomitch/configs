@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "minor_version": 1,
+  "key": "person",
+  "data": {
+    "items": [
+      {
+        "id": "erik_nomitch",
+        "name": "Erik Nomitch",
+        "user_id": "fedc5538e2964f4685028caf967283f9",
+        "device_trackers": []
+      }
+    ]
+  }
+}
