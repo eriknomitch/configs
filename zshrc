@@ -109,15 +109,17 @@ function condpipe() {
     # Set default line count to the number of columns in the current terminal
     local n=${1:-$(tput cols)}
 
-    # Capture the command output
-    local output=$(cat)
-    local lines=$(echo "$output" | wc -l | tr -d ' ')
+    # Count the number of lines without consuming stdin
+    local lines=$(cat | tee >(wc -l > /tmp/condpipe_line_count) | moar)
+    lines=$(cat /tmp/condpipe_line_count | tr -d ' ')
+    rm /tmp/condpipe_line_count
 
     # Decide whether to pipe to moar based on line count
     if (( lines > n )); then
-        echo "$output" | moar
+        # If already piped to moar, no need to do anything here
     else
-        echo "$output"; tput sgr0
+        # Reset terminal state if not piped to moar
+        tput sgr0
     fi
 }
 
