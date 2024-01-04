@@ -51,13 +51,13 @@ function a() {
     clear
   fi
 
-  # If the first argument is 'c', commit with aider
+  # If the first argument is 'c', commit with aider and exit
   if [[ $1 == "c" ]] ; then
     shift
     aider --commit
+    git show --color | condpipe 30
     return
   fi
-
 
   AIDER_MODEL="gpt-4-1106-preview"
   clear
@@ -74,6 +74,28 @@ function a() {
     --model $AIDER_MODEL \
     $*
 }
+
+function condpipe() {
+    # Set default line count to 20
+    local n=${1:-20}
+
+    # Capture the command output
+    local output=$(cat)
+    local lines=$(echo "$output" | wc -l | tr -d ' ')
+
+    # Decide whether to pipe to moar based on line count
+    if (( lines > n )); then
+        echo "$output" | moar
+    else
+        echo "$output"
+    fi
+}
+
+# Usage:
+# your_command | condpipe [line_count]
+# Example:
+# git show --color | condpipe 30
+
 
 function jl() {
   jupyter lab --notebook-dir "${HOME}/.jupyter-notebooks"
