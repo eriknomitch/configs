@@ -40,22 +40,30 @@ alias ncdu="ncdu --color dark-bg -e --exclude .git --exclude node_modules"
 alias ping="prettyping --nolegend"
 alias dsp="docker system prune --force"
 
+# SEE: aider
 function aider-commit() {
 
-  # If repo is clean, just exit
-  if ! git diff-index --quiet HEAD --; then
-    aider --commit && \
-      git show -1 --color --format="" | condpipe 30 && \
-      git log -1 && \
-      echo -n "git push? (Y/n): " && \
-      read -r answer && \
-      if [[ "$answer" == "y" || "$answer" == "Y" || "$answer" == "" ]]; then
-        git push
-      fi
-  else
-    echo "Repo is clean. Exiting..."
-    return
+  # If this isn't a git repo, just exit
+  if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1 ; then
+    echo "Not a git repo. Exiting."
+    exit
   fi
+
+  # If repo is clean, just exit
+  if git diff-index --quiet HEAD --; then
+    echo "Repo is clean. Nothing to commit. Exiting."
+    exit
+  fi
+
+  # Perform the commit, and push if the user says so
+  aider --commit && \
+    git show -1 --color --format="" | condpipe 30 && \
+    git log -1 && \
+    echo -n "git push? (Y/n): " && \
+    read -r answer && \
+    if [[ "$answer" == "y" || "$answer" == "Y" || "$answer" == "" ]]; then
+      git push
+    fi
 }
 
 # SEE: aider
