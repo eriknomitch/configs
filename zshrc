@@ -40,6 +40,24 @@ alias ncdu="ncdu --color dark-bg -e --exclude .git --exclude node_modules"
 alias ping="prettyping --nolegend"
 alias dsp="docker system prune --force"
 
+function aider-commit() {
+
+  # If repo is clean, just exit
+  if ! git diff-index --quiet HEAD --; then
+    aider --commit && \
+      git show -1 --color --format="" | condpipe 30 && \
+      git log -1 && \
+      echo "Push? (y/n)" && \
+      read -r answer && \
+      if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
+        git push
+      fi
+  else
+    echo "Repo is clean. Exiting..."
+    return
+  fi
+}
+
 # SEE: aider
 function a() {
   test -f $HOME/.configs/zshrc-asdf && source $HOME/.configs/zshrc-asdf
@@ -53,10 +71,7 @@ function a() {
 
   # If the first argument is 'c', commit with aider and exit
   if [[ $1 == "c" ]] ; then
-    shift
-    aider --commit && \
-      git push && \
-      git show --color | condpipe 30
+    aider-commit
     return
   fi
 
@@ -90,6 +105,17 @@ function condpipe() {
     else
         echo "$output"
     fi
+}
+
+function hr() {
+    # Switch to line drawing character set
+    printf '\e(0'
+
+    # Repeat the 'q' character across the width of the terminal
+    printf 'q%.0s' $(seq $(tput cols))
+
+    # Switch back to the regular character set
+    printf '\e(B'
 }
 
 # Usage:
