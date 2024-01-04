@@ -44,22 +44,8 @@ alias dsp="docker system prune --force"
 # FUNCTIONS --------------------------------------
 # ------------------------------------------------
 function hr() {
-
-    printf '%*s\n' "$(tput cols)" '' | tr ' ' '─'
-
-
-    # printf '\n'
-    #
-    # # Switch to line drawing character set
-    # printf '\e(0'
-    #
-    # # Repeat the 'q' character across the width of the terminal
-    # printf 'q%.0s' $(seq $(tput cols))
-    #
-    # # Switch back to the regular character set
-    # printf '\e(B'
+  printf '%*s\n' "$(tput cols)" '' | tr ' ' '─'
 }
-
 
 # SEE: aider
 function aider-commit() {
