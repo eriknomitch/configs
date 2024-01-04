@@ -64,7 +64,7 @@ function aider-commit() {
 
   # Perform the commit, and push if the user says so
   aider --commit && \
-    git show -1 | condpipe && \
+    git show -1 | autopage && \
     echo -n "Push to default? (Y/n): " && \
     read -r answer && \
     if [[ "$answer" == "y" || "$answer" == "Y" || "$answer" == "" ]]; then
@@ -105,29 +105,35 @@ function a() {
     $*
 }
 
-function condpipe() {
-    # Set default line count to the number of columns in the current terminal
-    local n=${1:-$(tput cols)}
+function autopage() {
+    # Get the height of the terminal
+    local terminal_height=$(tput lines)
 
-    # Count the number of lines without consuming stdin
-    local lines=$(cat | tee >(wc -l > /tmp/condpipe_line_count) | moar)
-    lines=$(cat /tmp/condpipe_line_count | tr -d ' ')
-    rm /tmp/condpipe_line_count
+    # Use a buffer to count lines without consuming them
+    local buffer
+    local line_count=0
 
-    # Decide whether to pipe to moar based on line count
-    if (( lines > n )); then
-        # If already piped to moar, no need to do anything here
+    # Read from stdin line by line
+    while IFS= read -r line; do
+        # Increment line count and append to buffer
+        ((line_count++))
+        buffer+="$line"$'\n'
+        
+        # Break the loop if line count exceeds terminal height
+        if (( line_count > terminal_height )); then
+            break
+        fi
+    done
+
+    # Check if we need to use a pager
+    if (( line_count > terminal_height )); then
+        # Output the buffer and continue reading from stdin
+        { echo -n "$buffer"; cat; } | less
     else
-        # Reset terminal state if not piped to moar
-        tput sgr0
+        # Just output the buffer
+        echo -n "$buffer"
     fi
 }
-
-# Usage:
-# your_command | condpipe [line_count]
-# Example:
-# git show --color | condpipe 30
-
 
 function jl() {
   jupyter lab --notebook-dir "${HOME}/.jupyter-notebooks"
