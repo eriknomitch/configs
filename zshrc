@@ -54,8 +54,9 @@ function a() {
   # If the first argument is 'c', commit with aider and exit
   if [[ $1 == "c" ]] ; then
     shift
-    aider --commit
-    git show --color | condpipe 30
+    aider --commit && \
+      git push && \
+      git show --color | condpipe 30
     return
   fi
 
