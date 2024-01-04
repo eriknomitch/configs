@@ -604,6 +604,9 @@ function br() {
 export WHISPER_CPP_HOME=$HOME/.repositories/whisper.cpp
 
 
+# ------------------------------------------------
+# JINA -------------------------------------------
+# ------------------------------------------------
 # JINA_CLI_BEGIN
 
 ## autocomplete
@@ -634,4 +637,7 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 # JINA_CLI_END
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
+# ------------------------------------------------
+# TEA --------------------------------------------
+# ------------------------------------------------
 test -d "$HOME/.tea" && source <("$HOME/.tea/tea.xyz/v*/bin/tea" --magic=zsh --silent)
