@@ -79,6 +79,10 @@ function aider-commit() {
     fi
 }
 
+# Make `git aider-commit` available as `git ac`
+alias git-ac=aider-commit
+alias ac=aider-commit
+
 # AIDER->MAIN
 # ------------------------------------------------
 function a() {
@@ -144,6 +148,7 @@ function autopage() {
     fi
 }
 
+alias ap=autopage
 
 # Kubernetes
 # ------------------------------------------------
