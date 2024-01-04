@@ -44,6 +44,9 @@ alias dsp="docker system prune --force"
 # FUNCTIONS --------------------------------------
 # ------------------------------------------------
 function hr() {
+
+    printf '\n'
+
     # Switch to line drawing character set
     printf '\e(0'
 
@@ -72,11 +75,8 @@ function aider-commit() {
 
   # Perform the commit, and push if the user says so
   aider --commit && \
-    git show -1 --color --format="" | condpipe 30 && \
-    hr && \
-    git log -1 && \
-    hr && \
-    echo -n "git push? (Y/n): " && \
+    git show -1 | condpipe && \
+    echo -n "Push to default? (Y/n): " && \
     read -r answer && \
     if [[ "$answer" == "y" || "$answer" == "Y" || "$answer" == "" ]]; then
       git push
