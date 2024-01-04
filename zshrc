@@ -64,7 +64,7 @@ function aider-commit() {
 
   # Perform the commit, and push if the user says so
   aider --commit && \
-    git show -1 | autopage && \
+    git show -1 --color | autopage && \
     echo -n "Push to default? (Y/n): " && \
     read -r answer && \
     if [[ "$answer" == "y" || "$answer" == "Y" || "$answer" == "" ]]; then
