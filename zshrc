@@ -45,16 +45,19 @@ alias dsp="docker system prune --force"
 # ------------------------------------------------
 function hr() {
 
-    printf '\n'
+    printf '%*s\n' "$(tput cols)" '' | tr ' ' '─'
 
-    # Switch to line drawing character set
-    printf '\e(0'
 
-    # Repeat the 'q' character across the width of the terminal
-    printf 'q%.0s' $(seq $(tput cols))
-
-    # Switch back to the regular character set
-    printf '\e(B'
+    # printf '\n'
+    #
+    # # Switch to line drawing character set
+    # printf '\e(0'
+    #
+    # # Repeat the 'q' character across the width of the terminal
+    # printf 'q%.0s' $(seq $(tput cols))
+    #
+    # # Switch back to the regular character set
+    # printf '\e(B'
 }
 
 
@@ -89,7 +92,7 @@ function a() {
 
   # If the first argument is 'u', upgrade aider
   if [[ $1 == "u" ]] ; then
-    shift
+    shif/hr.nt
     pip install --upgrade aider-chat
     clear
   fi
