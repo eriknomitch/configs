@@ -92,8 +92,8 @@ function a() {
 }
 
 function condpipe() {
-    # Set default line count to 20
-    local n=${1:-20}
+    # Set default line count to the number of columns in the current terminal
+    local n=${1:-$(tput cols)}
 
     # Capture the command output
     local output=$(cat)
