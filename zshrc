@@ -40,6 +40,21 @@ alias ncdu="ncdu --color dark-bg -e --exclude .git --exclude node_modules"
 alias ping="prettyping --nolegend"
 alias dsp="docker system prune --force"
 
+# ------------------------------------------------
+# FUNCTIONS --------------------------------------
+# ------------------------------------------------
+function hr() {
+    # Switch to line drawing character set
+    printf '\e(0'
+
+    # Repeat the 'q' character across the width of the terminal
+    printf 'q%.0s' $(seq $(tput cols))
+
+    # Switch back to the regular character set
+    printf '\e(B'
+}
+
+
 # SEE: aider
 function aider-commit() {
 
@@ -58,7 +73,9 @@ function aider-commit() {
   # Perform the commit, and push if the user says so
   aider --commit && \
     git show -1 --color --format="" | condpipe 30 && \
+    hr && \
     git log -1 && \
+    hr && \
     echo -n "git push? (Y/n): " && \
     read -r answer && \
     if [[ "$answer" == "y" || "$answer" == "Y" || "$answer" == "" ]]; then
@@ -113,17 +130,6 @@ function condpipe() {
     else
         echo "$output"
     fi
-}
-
-function hr() {
-    # Switch to line drawing character set
-    printf '\e(0'
-
-    # Repeat the 'q' character across the width of the terminal
-    printf 'q%.0s' $(seq $(tput cols))
-
-    # Switch back to the regular character set
-    printf '\e(B'
 }
 
 # Usage:
