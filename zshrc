@@ -40,16 +40,24 @@ alias ncdu="ncdu --color dark-bg -e --exclude .git --exclude node_modules"
 alias ping="prettyping --nolegend"
 alias dsp="docker system prune --force"
 
+# SEE: aider
 function a() {
+  test -f $HOME/.configs/zshrc-asdf && source $HOME/.configs/zshrc-asdf
 
+  # If the first argument is 'u', upgrade aider
   if [[ $1 == "u" ]] ; then
     shift
     pip install --upgrade aider-chat
     clear
   fi
 
+  # If the first argument is 'c', commit with aider
+  if [[ $1 == "c" ]] ; then
+    shift
+    aider --commit
+    return
+  fi
 
-  test -f $HOME/.configs/zshrc-asdf && source $HOME/.configs/zshrc-asdf
 
   AIDER_MODEL="gpt-4-1106-preview"
   clear
