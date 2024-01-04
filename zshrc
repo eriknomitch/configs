@@ -117,7 +117,7 @@ function condpipe() {
     if (( lines > n )); then
         echo "$output" | moar
     else
-        echo "$output"
+        echo "$output"; tput sgr0
     fi
 }
 
