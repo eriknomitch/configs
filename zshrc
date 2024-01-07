@@ -74,9 +74,7 @@ function aider-commit() {
     hr && \
     echo -n "Push to default? (Y/n): " && \
     read -r answer && \
-    if [[ "$answer" == "y" || "$answer" == "Y" || "$answer" == "" ]]; then
-      git push
-    fi
+    git push
 }
 
 # Make `git aider-commit` available as `git ac`
