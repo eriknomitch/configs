@@ -438,6 +438,9 @@ vim.cmd([[highlight NvimTreeNormal guibg=#111111 gui=nocombine guifg=#777777]])
 -- Hide the end of buffer tilde
 vim.cmd([[highlight EndOfBuffer guibg=#090909 gui=nocombine guifg=#090909]])
 
+-- This speeds somethings up
+vim.g.skip_ts_context_commentstring_module = true
+
 -- FIX:
 require("plugins")
 require("core")
