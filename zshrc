@@ -72,8 +72,6 @@ function aider-commit() {
     hr && \
     git show -1 --color | autopage && \
     hr && \
-    echo -n "Push to default? (Y/n): " && \
-    read -r answer && \
     git push
 }
 
