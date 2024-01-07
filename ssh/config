@@ -6,7 +6,7 @@
 # IDENTITY ---------------------------------------
 # ------------------------------------------------
 # Set the default identity because sometimes we have mutliple keys
-IdentityFile ~/.ssh/id_rsa
+# IdentityFile ~/.ssh/id_rsa
 
 # ------------------------------------------------
 # CONTROL ----------------------------------------
