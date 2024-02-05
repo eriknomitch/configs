@@ -238,6 +238,8 @@ command! -nargs=1 E call E(<f-args>)
 " set filetypes as typescriptreact
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
+let loaded_netrwPlugin = 1
+
 " ================================================
 " LUA->INIT ======================================
 " ================================================
