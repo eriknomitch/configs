@@ -57,10 +57,11 @@ Host odroid, odroid.local
   Port 22
 
 # ------------------------------------------------
-# LORA -------------------------------------------
 # ------------------------------------------------
-Host lora-*
-  User pi
+# ------------------------------------------------
+Host raspberrypi, raspberrypi.local
+  User erik
+  HostName raspberrypi.local
   StrictHostKeyChecking no
 
 # ------------------------------------------------
