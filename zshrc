@@ -627,3 +627,6 @@ export WHISPER_CPP_HOME=$HOME/.repositories/whisper.cpp
 # TEA --------------------------------------------
 # ------------------------------------------------
 test -d "$HOME/.tea" && source <("$HOME/.tea/tea.xyz/v*/bin/tea" --magic=zsh --silent)
+
+source-if-exists $HOME/.cargo/env
+
