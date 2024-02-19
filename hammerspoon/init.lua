@@ -37,7 +37,7 @@ local wm = {}
 local appsToCenter = { "Finder", "Home Assistant", "Messages", "Gmail", "Unraid", "Unraid NAS", "Unraid PC" }
 -- local defaultBrowserName = "Google Chrome"
 local defaultBrowserName = "Arc"
-local defaultTerminalName = "Kitty"
+local defaultTerminalName = "Tabby"
 local secondaryBrowserName = "Firefox Developer Edition"
 
 -- Adjustments
@@ -204,7 +204,7 @@ hs.alert.defaultStyle.radius = 10
 -- -----------------------------------------------
 --{{{
 
-local filter = hs.window.filter.new(false):setAppFilter("iTerm2", false)
+local filter = hs.window.filter.new(false):setAppFilter(defaultTerminalName, false)
 local switcher = hs.window.switcher.new() -- default windowfilter: only visible windows, all Spaces
 
 switcher.ui.highlightColor = { 0, 0, 0, 1 }
@@ -251,10 +251,10 @@ hs.hotkey.bind(movementApplicationLaunchOrFocusSecondary, "'", function()
 		backgroundColor = { 0, 0, 0, 0.8 },
 	}
 
-	local filter = hs.window.filter.new(false):setAppFilter("iTerm2", false)
+	local filter = hs.window.filter.new(false):setAppFilter(defaultTerminalName, false)
 
-	-- filter.ignoreAlways['iTerm'] = true
-	-- filter:rejectApp('iTerm')
+	-- filter.ignoreAlways[defaultTerminalName] = true
+	-- filter:rejectApp(defaultTerminalName)
 
 	local expose = hs.expose.new(filter, options)
 
@@ -575,9 +575,9 @@ end)
 
 -- Special
 -- -----------------------------------------------
--- hs.hotkey.bind({ "ctrl" }, "Space", function()
--- 	hs.application.launchOrFocus("iTerm")
--- end)
+hs.hotkey.bind({ "ctrl" }, "Space", function()
+	hs.application.launchOrFocus(defaultTerminalName)
+end)
 
 -- Switcher
 -- -----------------------------------------------
