@@ -6,7 +6,7 @@
 " CONFIGURE->GENERAL -----------------------------
 " ------------------------------------------------
 "  NOTE: Also see CONFIG->COC configuration since some are general
-syntax enable
+" syntax enable
 
 " Automatically write buffers when required
 " Spellcheck

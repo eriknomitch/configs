@@ -575,9 +575,9 @@ end)
 
 -- Special
 -- -----------------------------------------------
-hs.hotkey.bind({ "ctrl" }, "Space", function()
-	hs.application.launchOrFocus("iTerm")
-end)
+-- hs.hotkey.bind({ "ctrl" }, "Space", function()
+-- 	hs.application.launchOrFocus("iTerm")
+-- end)
 
 -- Switcher
 -- -----------------------------------------------
