@@ -98,7 +98,6 @@ require("lazy").setup({
 	{ "tpope/vim-repeat" },
 	{ "svermeulen/vim-easyclip" },
 	{ "keith/swift.vim" },
-	{ "tpope/vim-abolish" },
 	{ "rcarriga/nvim-notify" },
 	{ "samoshkin/vim-mergetool" },
 	{ "skywind3000/asyncrun.vim" },
@@ -115,7 +114,6 @@ require("lazy").setup({
 	{ "puremourning/vimspector" },
 	{ "prisma/vim-prisma" },
 	{ "lewis6991/gitsigns.nvim" },
-	{ "rafcamlet/nvim-luapad" },
 	{
 		"nvim-tree/nvim-tree.lua",
 		version = "*",
@@ -175,37 +173,6 @@ require("lazy").setup({
 			},
 		},
 	},
-	-- Incremental rename
-	{
-		"smjonas/inc-rename.nvim",
-		cmd = "IncRename",
-		config = true,
-	},
-	{
-		"piersolenski/wtf.nvim",
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-		},
-		opts = {},
-		keys = {
-			{
-				"gw",
-				mode = { "n", "x" },
-				function()
-					require("wtf").ai()
-				end,
-				desc = "Debug diagnostic with AI",
-			},
-			{
-				mode = { "n" },
-				"gW",
-				function()
-					require("wtf").search()
-				end,
-				desc = "Search diagnostic with Google",
-			},
-		},
-	},
 	{
 		"karb94/neoscroll.nvim",
 		config = function()
@@ -225,15 +192,13 @@ require("lazy").setup({
 	},
 })
 
-require("wtf").setup({})
-
 require("noice").setup({
 	lsp = {
 		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 		override = {
 			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 			["vim.lsp.util.stylize_markdown"] = true,
-			["cmp.entry.get_documentation"] = true,
+			["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
 		},
 	},
 	-- you can enable a preset for easier configuration
@@ -311,8 +276,6 @@ null_ls.setup({
 require("lsp-format").setup({})
 require("lspconfig").gopls.setup({ on_attach = require("lsp-format").on_attach })
 
-require("luapad").setup()
-
 require("nvim-autopairs").setup()
 
 require("gitsigns").setup()
@@ -386,21 +349,7 @@ local function get_diagnostic_label(props)
 	return label
 end
 
-require("incline").setup({
-	render = function(props)
-		local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-		local ft_icon, ft_color = require("nvim-web-devicons").get_icon_color(filename)
-		local modified = vim.api.nvim_buf_get_option(props.buf, "modified") and "bold,italic" or "bold"
-
-		local buffer = {
-			{ get_diagnostic_label(props) },
-			{ ft_icon, guifg = ft_color },
-			{ " " },
-			{ filename, gui = modified },
-		}
-		return buffer
-	end,
-})
+require("incline").setup()
 
 -- Set bindings for nvim-tree:
 -- - NvimTreeToggle: <C-t> and <leader>t
