@@ -14,12 +14,12 @@ vim.opt.rtp:prepend(lazypath)
 -- Example using a list of specs with the default options
 vim.g.mapleader = "\\" -- Make sure to set `mapleader` before lazy so your mappings are correct
 
-require("lazy").setup({
+-- vim.opt.relativenumber = true
+-- vim.opt.number = true
 
-	"nvim-treesitter/nvim-treesitter",
-	dependencies = {
-		"JoosepAlviste/nvim-ts-context-commentstring",
-	},
+require("lazy").setup({
+	{ "nvim-treesitter/nvim-treesitter" },
+	-- { "JoosepAlviste/nvim-ts-context-commentstring" },
 	{ "b0o/mapx.nvim" },
 	{ "folke/which-key.nvim" },
 	{
@@ -34,7 +34,6 @@ require("lazy").setup({
 	{ "folke/neoconf.nvim", cmd = "Neoconf" },
 	{ "folke/neodev.nvim" },
 	{ "folke/trouble.nvim" },
-	{ "rcarriga/nvim-notify" },
 	{ "NvChad/nvim-colorizer.lua" },
 	{ "mfussenegger/nvim-dap" },
 	{
@@ -60,14 +59,18 @@ require("lazy").setup({
 	{ "aserowy/tmux.nvim" },
 	{
 		"numToStr/Comment.nvim",
-		dependencies = {
-			"JoosepAlviste/nvim-ts-context-commentstring",
+		opts = {
+			-- add any options here
 		},
-		opts = function()
-			return {
-				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-			}
-		end,
+		lazy = false,
+		-- dependencies = {
+		-- 	"JoosepAlviste/nvim-ts-context-commentstring",
+		-- },
+		-- opts = function()
+		-- 	return {
+		-- 		pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+		-- 	}
+		-- end,
 	},
 	{ "williamboman/nvim-lsp-installer" },
 	{ "jose-elias-alvarez/null-ls.nvim" },
@@ -97,8 +100,35 @@ require("lazy").setup({
 	{ "vim-airline/vim-airline-themes" },
 	{ "tpope/vim-repeat" },
 	{ "svermeulen/vim-easyclip" },
-	{ "keith/swift.vim" },
-	{ "rcarriga/nvim-notify" },
+	-- SEE: :h notify.Config
+	--   {
+	--   background_colour = "NotifyBackground",
+	--   fps = 30,
+	--   icons = {
+	--     DEBUG = "",
+	--     ERROR = "",
+	--     INFO = "",
+	--     TRACE = "✎",
+	--     WARN = ""
+	--   },
+	--   level = 2,
+	--   minimum_width = 50,
+	--   render = "default",
+	--   stages = "fade_in_slide_out",
+	--   time_formats = {
+	--     notification = "%T",
+	--     notification_history = "%FT%T"
+	--   },
+	--   timeout = 5000,
+	--   top_down = true
+	-- }
+	--
+	{
+		"rcarriga/nvim-notify",
+		config = function()
+			vim.notify = require("notify")
+		end,
+	},
 	{ "samoshkin/vim-mergetool" },
 	{ "skywind3000/asyncrun.vim" },
 	{
