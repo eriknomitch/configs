@@ -123,12 +123,7 @@ require("lazy").setup({
 	--   top_down = true
 	-- }
 	--
-	{
-		"rcarriga/nvim-notify",
-		config = function()
-			vim.notify = require("notify")
-		end,
-	},
+	{ "rcarriga/nvim-notify" },
 	{ "samoshkin/vim-mergetool" },
 	{ "skywind3000/asyncrun.vim" },
 	{
