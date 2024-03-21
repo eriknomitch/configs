@@ -239,7 +239,11 @@ require("noice").setup({
 -- --------------------------------------
 -- --------------------------------------
 -- --------------------------------------
-require("tmux").setup()
+require("tmux").setup({
+	copy_sync = {
+		redirect_to_clipboard = true,
+	},
+})
 
 require("mason").setup()
 
