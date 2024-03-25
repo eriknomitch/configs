@@ -38,6 +38,9 @@
   "fluxbox": {
     "files": ["fluxbox/**/**"]
   },
+  "alacritty": {
+    "files": ["alacritty/*"]
+  },
   "diff": {
     "command": "git diff --name-only"
   },
