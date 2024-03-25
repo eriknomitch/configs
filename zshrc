@@ -97,10 +97,10 @@ function a() {
     return
   fi
 
-  AIDER_MODEL="gpt-4-1106-preview"
-  clear
-  echo "AIDER_MODEL: $AIDER_MODEL"
-  echo
+  # AIDER_MODEL="gpt-4-1106-preview"
+  # clear
+  # echo "AIDER_MODEL: $AIDER_MODEL"
+  # echo
   # If there are more arguments, pass them to aider
   if [[ $# -gt 0 ]] ; then
     echo "AIDER: $*"
@@ -109,8 +109,8 @@ function a() {
   aider \
     --dark-mode \
     --no-auto-commits \
-    --model $AIDER_MODEL \
     $*
+    # --model $AIDER_MODEL \
 }
 
 # ------------------------------------------------
