@@ -1,0 +1,11 @@
+import = [
+    "~/.config/alacritty/themes/themes/hyper.toml"
+]
+
+[font]
+size = 15.0
+
+[font.normal]
+family = "JetBrainsMono"
+style = "Regular"
+
