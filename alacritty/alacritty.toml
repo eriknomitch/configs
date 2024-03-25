@@ -4,8 +4,13 @@ import = [
 
 live_config_reload = true
 
+[colors]
+draw_bold_text_with_bright_colors = true
+
 [font]
 size = 15.0
+
+# NOTE: For thin fonts on macOS: defaults write -g AppleFontSmoothing -int 0
 
 [font.normal]
 family = "JetBrainsMono Nerd Font Mono"
