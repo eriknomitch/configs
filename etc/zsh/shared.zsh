@@ -604,7 +604,7 @@ function cd-skip-chpwd() {
 }
 
 function _ls_home_dir_macos_clean() {
-  ls -l --color=always $HOME | grep --color=always -Ev 'Applications|Clean|Creative Cloud Files|Desktop|Documents|Downloads|Google Drive|Library|Movies|Music|Pictures|Postman|Public|Remotes|Repositories|Shared' | grep --color=always -v 'total '
+  ls -l --color=always $HOME | grep --color=always -Ev 'Applications|Clean|Creative Cloud Files|Desktop|Documents|Downloads|Google Drive|Library|Movies|Music|Pictures|Postman|Public|Remotes|Repositories|Shared|tmp|insta360' | grep --color=always -v 'total '
 }
 
 function chpwd() {
