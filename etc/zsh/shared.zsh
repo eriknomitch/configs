@@ -625,6 +625,23 @@ function chpwd() {
   command-exists _virtualenv_chpwd && _virtualenv_chpwd
 }
 
+function eza_tree() {
+  local options=(--icons --classify --oneline --long --no-permissions --no-user --time-style relative --git --level 1 --tree)
+  [[ $1 == 't' ]] && options+=(--sort time --reverse)
+  eza "${options[@]}"
+}
+
+function short-uuidgen() {
+  uuidgen | cut -c1-8 | tr '[:upper:]' '[:lower:]'
+}
+
+# ------------------------------------------------
+
+# Load the development tmuxp in a new session
+function tdev() {
+  tmuxp load -s `short-uuidgen` development
+}
+
 # ------------------------------------------------
 # ENV->EDITOR/NVIM -------------------------------
 # ------------------------------------------------
