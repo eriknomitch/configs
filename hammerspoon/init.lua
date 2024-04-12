@@ -3,6 +3,13 @@
 -- ==============================================
 
 -- ------------------------------------------------
+-- CONFIG -----------------------------------------
+-- ------------------------------------------------
+--{{{
+local enableWindowResizeKeybindings = true
+--}}}
+
+-- ------------------------------------------------
 -- REQUIRE->LOCAL ---------------------------------
 -- ------------------------------------------------
 --{{{
@@ -486,36 +493,38 @@ hs.hotkey.bind(movementApplicationLaunchOrFocusTertiary, "S", function()
 	confirmOnEnter("Stable Diffusion")
 end)
 
--- Center window
-hs.hotkey.bind({ "ctrl", "cmd" }, "0", function()
-	hs.window.focusedWindow():centerOnScreen(nil, true)
-end)
+if enableWindowResizeKeybindings then
+	-- Center window
+	hs.hotkey.bind({ "ctrl", "cmd" }, "0", function()
+		hs.window.focusedWindow():centerOnScreen(nil, true)
+	end)
 
-hs.hotkey.bind(movement, "Left", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
+	hs.hotkey.bind(movement, "Left", function()
+		local win = hs.window.focusedWindow()
+		local f = win:frame()
+		local screen = win:screen()
+		local max = screen:frame()
 
-	f.x = max.x
-	f.y = max.y
-	f.w = max.w / 2
-	f.h = max.h
-	win:setFrame(f)
-end)
+		f.x = max.x
+		f.y = max.y
+		f.w = max.w / 2
+		f.h = max.h
+		win:setFrame(f)
+	end)
 
-hs.hotkey.bind(movement, "Right", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
+	hs.hotkey.bind(movement, "Right", function()
+		local win = hs.window.focusedWindow()
+		local f = win:frame()
+		local screen = win:screen()
+		local max = screen:frame()
 
-	f.x = max.x + (max.w / 2)
-	f.y = max.y
-	f.w = max.w / 2
-	f.h = max.h
-	win:setFrame(f)
-end)
+		f.x = max.x + (max.w / 2)
+		f.y = max.y
+		f.w = max.w / 2
+		f.h = max.h
+		win:setFrame(f)
+	end)
+end
 
 function fullscreen()
 	local win = hs.window.focusedWindow()
@@ -695,79 +704,81 @@ end
 
 -- -----------------------------------------------
 
-hs.hotkey.bind(movement, "Up", fullscreen)
-hs.hotkey.bind(movement, "Down", middle)
+if enableWindowResizeKeybindings then
+	hs.hotkey.bind(movement, "Up", fullscreen)
+	hs.hotkey.bind(movement, "Down", middle)
 
-hs.hotkey.bind({ "ctrl", "cmd" }, "0", function()
-	hs.window.focusedWindow():centerOnScreen(nil, true)
-end)
+	hs.hotkey.bind({ "ctrl", "cmd" }, "0", function()
+		hs.window.focusedWindow():centerOnScreen(nil, true)
+	end)
 
-hs.hotkey.bind({ "ctrl", "cmd", "alt" }, "0", function()
-	hs.window.focusedWindow():centerOnScreen(nil, true)
-end)
+	hs.hotkey.bind({ "ctrl", "cmd", "alt" }, "0", function()
+		hs.window.focusedWindow():centerOnScreen(nil, true)
+	end)
 
-hs.hotkey.bind(movementWindowAdjustment, "Left", function()
-	modifyWindowWidth(sizeDelta, "shrink")
-end)
+	hs.hotkey.bind(movementWindowAdjustment, "Left", function()
+		modifyWindowWidth(sizeDelta, "shrink")
+	end)
 
-hs.hotkey.bind(movementWindowAdjustment, "Right", function()
-	modifyWindowWidth(sizeDelta, "expand")
-end)
+	hs.hotkey.bind(movementWindowAdjustment, "Right", function()
+		modifyWindowWidth(sizeDelta, "expand")
+	end)
 
-hs.hotkey.bind(movementWindowAdjustment, "Up", function()
-	modifyWindowHeight(sizeDelta, "expand")
-end)
+	hs.hotkey.bind(movementWindowAdjustment, "Up", function()
+		modifyWindowHeight(sizeDelta, "expand")
+	end)
 
-hs.hotkey.bind(movementWindowAdjustment, "Down", function()
-	modifyWindowHeight(sizeDelta, "shrink")
-end)
+	hs.hotkey.bind(movementWindowAdjustment, "Down", function()
+		modifyWindowHeight(sizeDelta, "shrink")
+	end)
 
--- Shrink Window
-hs.hotkey.bind(movementWindowAdjustment, "-", function()
-	-- Shrink the current window by a percentage of the original size
-	-- in proportion to the screen size
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
+	-- Shrink Window
+	hs.hotkey.bind(movementWindowAdjustment, "-", function()
+		-- Shrink the current window by a percentage of the original size
+		-- in proportion to the screen size
+		local win = hs.window.focusedWindow()
+		local f = win:frame()
+		local screen = win:screen()
+		local max = screen:frame()
 
-	f.w = f.w - max.w * sizeDelta
-	f.h = f.h - max.h * sizeDelta
+		f.w = f.w - max.w * sizeDelta
+		f.h = f.h - max.h * sizeDelta
 
-	f.x = max.x + (max.w - f.w) / 2
-	f.y = max.y + (max.h - f.h) / 2
+		f.x = max.x + (max.w - f.w) / 2
+		f.y = max.y + (max.h - f.h) / 2
 
-	win:setFrame(f)
-end)
+		win:setFrame(f)
+	end)
 
--- Expand Window
-hs.hotkey.bind(movementWindowAdjustment, "=", function()
-	-- Expand the current window by a percentage of the original size
-	-- in proportion to the screen size
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
+	-- Expand Window
+	hs.hotkey.bind(movementWindowAdjustment, "=", function()
+		-- Expand the current window by a percentage of the original size
+		-- in proportion to the screen size
+		local win = hs.window.focusedWindow()
+		local f = win:frame()
+		local screen = win:screen()
+		local max = screen:frame()
 
-	f.w = f.w + max.w * sizeDelta
-	f.h = f.h + max.h * sizeDelta
+		f.w = f.w + max.w * sizeDelta
+		f.h = f.h + max.h * sizeDelta
 
-	f.x = max.x + (max.w - f.w) / 2
-	f.y = max.y + (max.h - f.h) / 2
+		f.x = max.x + (max.w - f.w) / 2
+		f.y = max.y + (max.h - f.h) / 2
 
-	-- If the new window size exceeds the screen size, fit it to the screen
-	if f.w > max.w then
-		f.w = max.w
-		f.x = 0
-	end
+		-- If the new window size exceeds the screen size, fit it to the screen
+		if f.w > max.w then
+			f.w = max.w
+			f.x = 0
+		end
 
-	if f.h > max.h then
-		f.h = max.h
-		f.y = 0
-	end
+		if f.h > max.h then
+			f.h = max.h
+			f.y = 0
+		end
 
-	win:setFrame(f)
-end)
+		win:setFrame(f)
+	end)
+end
 
 --}}}
 
