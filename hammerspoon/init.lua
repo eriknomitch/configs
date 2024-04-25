@@ -45,7 +45,8 @@ local appsToCenter = { "Finder", "Home Assistant", "Messages", "Gmail", "Unraid"
 -- local defaultBrowserName = "Google Chrome"
 local defaultBrowserName = "Arc"
 -- local defaultTerminalName = "Tabby"
-local defaultTerminalName = "Alacritty"
+-- local defaultTerminalName = "Alacritty"
+local defaultTerminalName = "iTerm"
 local secondaryBrowserName = "Firefox Developer Edition"
 
 -- Adjustments
