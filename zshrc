@@ -70,8 +70,6 @@ function aider-commit() {
   # Perform the commit, and push if the user says so
   aider --commit && \
     hr && \
-    git show -1 --color | autopage && \
-    hr && \
     git push
 }
 
