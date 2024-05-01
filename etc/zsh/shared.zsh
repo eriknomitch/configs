@@ -642,6 +642,8 @@ function tdev() {
   tmuxp load -s `short-uuidgen` development
 }
 
+alias dev="tdev"
+
 # ------------------------------------------------
 # ENV->EDITOR/NVIM -------------------------------
 # ------------------------------------------------
@@ -651,6 +653,32 @@ if command-exists nvim; then
 else
   export EDITOR="vim"
 fi
+
+# ------------------------------------------------
+# COLORED-BANNER ---------------------------------
+# ------------------------------------------------
+function colored_banner() {
+    local title="$1"
+    local color="${2:-$Cya}"  # Default to cyan if no color argument is provided
+    local reset_code="$RCol"
+    local line_length=50
+    local padded_title="${title} "
+    local padding_length=$((line_length - ${#title} - 1))  # Adjusted to -1 for correct alignment
+    local border_line=""
+
+    # Generate border line dynamically based on line_length
+    for (( i=0; i<line_length; i++ )); do
+        border_line+="="
+    done
+
+    for (( i=0; i<padding_length; i++ )); do
+        padded_title+="="
+    done
+
+    echo -e "${color}${border_line}"
+    echo -e "${padded_title}"
+    echo -e "${border_line}${reset_code}"
+}
 
 # ------------------------------------------------
 # ASDF -------------------------------------------

@@ -30,3 +30,23 @@ Blu='\e[0;34m';     BBlu='\e[1;34m';    UBlu='\e[4;34m';    IBlu='\e[0;94m';    
 Pur='\e[0;35m';     BPur='\e[1;35m';    UPur='\e[4;35m';    IPur='\e[0;95m';    BIPur='\e[1;95m';   On_Pur='\e[45m';    On_IPur='\e[0;105m';
 Cya='\e[0;36m';     BCya='\e[1;36m';    UCya='\e[4;36m';    ICya='\e[0;96m';    BICya='\e[1;96m';   On_Cya='\e[46m';    On_ICya='\e[0;106m';
 Whi='\e[0;37m';     BWhi='\e[1;37m';    UWhi='\e[4;37m';    IWhi='\e[0;97m';    BIWhi='\e[1;97m';   On_Whi='\e[47m';    On_IWhi='\e[0;107m';
+
+function show_defined_colors() {
+  local color_vars=("Bla" "Red" "Gre" "Yel" "Blu" "Pur" "Cya" "Whi" "BBla" "BRed" "BGre" "BYel" "BBlu" "BPur" "BCya" "BWhi" "UBla" "URed" "UGre" "UYel" "UBlu" "UPur" "UCya" "UWhi" "IBla" "IRed" "IGre" "IYel" "IBlu" "IPur" "ICya" "IWhi" "BIBla" "BIRed" "BIGre" "BIYel" "BIBlu" "BIPur" "BICya" "BIWhi" "On_Bla" "On_Red" "On_Gre" "On_Yel" "On_Blu" "On_Pur" "On_Cya" "On_Whi" "On_IBla" "On_IRed" "On_IGre" "On_IYel" "On_IBlu" "On_IPur" "On_ICya" "On_IWhi")
+  local reset_code="$RCol"
+
+  echo "Defined colors and their appearance:"
+  for var in "${color_vars[@]}"; do
+    local color_code="${(P)var}"  # Dereference the variable name to get its value
+    echo -e "\$${color_code}${var}${reset_code}"
+  done
+
+   # Example usage (escaped)
+   echo -e "\nExample of usage (escaped):"
+   echo -e "\${Gre}This is green text.\${RCol} And this is reset to default."
+
+   # Example usage
+   echo -e "\nExample of usage:"
+   echo -e "${Gre}This is green text.${RCol} And this is reset to default."
+}
+
