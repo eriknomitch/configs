@@ -70,13 +70,18 @@ function aider-commit() {
   # Perform the commit
   aider --commit && \
     hr && \
-    git log -n 1 --color=always
+    git log -n 1 --color=always && \
+    hr
 
-  # If the commit was successful, push
-  if [[ $? -eq 0 ]] ; then
+  # If the commit was successful, push (unless --no-push is specified)
+  if [[ $? -eq 0 ]]; then
     echo
-    echo "Pushing..."
-    git push
+    if [[ $@ != *--no-push* ]]; then
+      echo "Pushing..."
+      git push
+    else
+      echo "Skipping push due to --no-push option."
+    fi
   fi
 }
 
