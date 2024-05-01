@@ -70,7 +70,8 @@ function aider-commit() {
   # Perform the commit, and push if the user says so
   aider --commit && \
     hr && \
-    git push
+    git push \
+    git log -n 1 --color &&
 }
 
 # Make `git aider-commit` available as `git ac`
