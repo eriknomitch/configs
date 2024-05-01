@@ -55,16 +55,16 @@ function hr() {
 # ------------------------------------------------
 function aider-commit() {
 
-  # If this isn't a git repo, just exit
+  # If this isn't a git repo, just return
   if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1 ; then
     echo "Not a git repo. Exiting."
-    exit
+    return
   fi
 
-  # If repo is clean, just exit
+  # If repo is clean, just return
   if git diff-index --quiet HEAD --; then
     echo "Repo is clean. Nothing to commit. Exiting."
-    exit
+    return
   fi
 
   # Perform the commit
