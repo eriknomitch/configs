@@ -70,7 +70,7 @@ function aider-commit() {
   # Perform the commit
   aider --commit && \
     hr && \
-    git log -n 1
+    git log -n 1 --color=always
 
   # If the commit was successful, push
   if [[ $? -eq 0 ]] ; then
