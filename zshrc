@@ -67,17 +67,17 @@ function aider-commit() {
     exit
   fi
 
-  # Perform the commit, and push if the user says so
+  # Perform the commit
   aider --commit && \
     hr && \
-    git log -n 1 --color=always && \
-    hr && \
-    echo && \
-    echo "Push changes to remote? (y/n)" && \
-    read -r answer && \
-    if [[ $answer == "y" ]] ; then
-      git push
-    fi
+    git log -n 1
+
+  # If the commit was successful, push
+  if [[ $? -eq 0 ]] ; then
+    echo
+    echo "Pushing..."
+    git push
+  fi
 }
 
 # Make `git aider-commit` available as `git ac`
