@@ -5,18 +5,18 @@ windows:
       - cd
     panes:
       # Echo the purpose of the pane
-      - echo "Edit"
+      - colored_banner "EDITOR" $BGre
   - window_name: git/run
     layout: even-horizontal
     shell_command_before:
       - cd
     panes:
-      - null
-      - null
-  - window_name: aux
+      - colored_banner "GIT-INTERACTION" $BGre
+      - colored_banner "AUXILIARY" $BBla
+  - window_name: git/run
+    layout: even-horizontal
     shell_command_before:
       - cd
     panes:
-      - null
-      - null
-      - null
+      - colored_banner "AUXILIARY" $BBla
+      - colored_banner "AUXILIARY" $BBla
