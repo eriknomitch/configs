@@ -49,6 +49,9 @@ local defaultBrowserName = "Arc"
 local defaultTerminalName = "iTerm"
 local secondaryBrowserName = "Firefox Developer Edition"
 
+local defaultAiChatName = "BoltAl"
+local secondaryAiChatName = "ChatGPT"
+
 -- Adjustments
 -- -----------------------------------------------
 local sizeDelta = 0.07
@@ -560,8 +563,8 @@ bindApplicationFocus("P", "Preview")
 bindApplicationFocusSecondary("P", "Adobe Photoshop (Beta)")
 -- hs.hotkey.bind(launchOrFocus, "P", function() confirmOnEnter("Adobe Photoshop (Beta)") end)
 bindApplicationFocus("F", "Finder")
-bindApplicationFocus("C", "ChatGPT")
-bindApplicationFocus("B", "BoltAI")
+bindApplicationFocus("C", defaultAiChatName)
+bindApplicationFocus("B", secondaryAiChatName)
 bindApplicationFocusSecondaryWithConfirmation("F", "FaceTime")
 bindApplicationFocusWithConfirmation("Z", "zoom.us")
 bindApplicationFocus("D", "Drive")
