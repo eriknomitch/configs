@@ -640,3 +640,5 @@ test -d "$HOME/.tea" && source <("$HOME/.tea/tea.xyz/v*/bin/tea" --magic=zsh --s
 
 source-if-exists $HOME/.cargo/env
 
+# Added by LM Studio CLI tool (lms)
+export PATH="$PATH:/Users/erik/.cache/lm-studio/bin"
