@@ -57,7 +57,12 @@ function source-secrets() {
   local secrets_file="$HOME/.configs/env.sh"
   if [[ -f $secrets_file ]]; then
     echo "Sourcing secrets from $secrets_file"
-    source $secrets_file
+    while IFS='=' read -r key value; do
+      if [[ $key != \#* && -n $key ]]; then
+        eval "export $key='$value'"
+        echo "Exported: $key"
+      fi
+    done < $secrets_file
     echo "Secrets sourced successfully."
   else
     echo "Secrets file $secrets_file not found."
