@@ -51,6 +51,19 @@ function hr() {
   printf '%*s\n' "$(tput cols)" '' | tr ' ' '─'
 }
 
+# Source secrets
+# ------------------------------------------------
+function source-secrets() {
+  local secrets_file="$HOME/.configs/env.sh"
+  if [[ -f $secrets_file ]]; then
+    echo "Sourcing secrets from $secrets_file"
+    source $secrets_file
+    echo "Secrets sourced successfully."
+  else
+    echo "Secrets file $secrets_file not found."
+  fi
+}
+
 # AIDER->COMMIT
 # ------------------------------------------------
 function aider-commit() {
