@@ -55,15 +55,26 @@ function hr() {
 # ------------------------------------------------
 function source-secrets() {
   local secrets_file="$HOME/.configs/env.sh"
+  local quiet=false
+
+  for arg in "$@"; do
+    case $arg in
+      --quiet)
+        quiet=true
+        shift
+        ;;
+    esac
+  done
+
   if [[ -f $secrets_file ]]; then
-    echo "Sourcing secrets from $secrets_file"
+    $quiet || echo "Sourcing secrets from $secrets_file"
     while IFS='=' read -r key value; do
       if [[ $key != \#* && -n $key ]]; then
         eval "export $key='$value'"
-        echo "Exported: $key"
+        $quiet || echo "Exported: $key"
       fi
     done < $secrets_file
-    echo "Secrets sourced successfully."
+    $quiet || echo "Secrets sourced successfully."
   else
     echo "Secrets file $secrets_file not found."
   fi
