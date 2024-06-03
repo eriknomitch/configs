@@ -49,8 +49,8 @@ local defaultBrowserName = "Arc"
 local defaultTerminalName = "iTerm"
 local secondaryBrowserName = "Firefox Developer Edition"
 
-local defaultAiChatName = "BoltAl"
-local secondaryAiChatName = "ChatGPT"
+local defaultAiChatName = "ChatGPT"
+local secondaryAiChatName = "BoltAl"
 
 -- Adjustments
 -- -----------------------------------------------
