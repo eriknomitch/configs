@@ -216,6 +216,8 @@ require("lazy").setup({
 			})
 		end,
 	},
+	-- https://github.com/akinsho/git-conflict.nvim
+	{ "akinsho/git-conflict.nvim", version = "*", config = true },
 })
 
 require("noice").setup({
