@@ -402,6 +402,55 @@ globalAppWatcher:start()
 -- -----------------------------------------------
 spoon.ReloadConfiguration:start()
 
+-- Audio Volume Checker with AnyBar Integration
+-- -----------------------------------------------
+local lastVolume = -1
+local lastMuted = false
+
+local function setAnyBarColor(color)
+	os.execute(string.format("bash -c 'echo -n \"%s\" > /dev/udp/localhost/1738'", color))
+end
+
+local function getColorForVolume(volume, isMuted)
+	if isMuted or volume == 0 then
+		return "black"
+	elseif volume <= 25 then
+		return "green"
+	elseif volume <= 50 then
+		return "yellow"
+	elseif volume <= 75 then
+		return "orange"
+	else
+		return "red"
+	end
+end
+
+local function checkAudioVolume()
+	local device = hs.audiodevice.defaultOutputDevice()
+	if device then
+		local volume = device:outputVolume()
+		local isMuted = device:muted()
+
+		if volume and (volume ~= lastVolume or isMuted ~= lastMuted) then
+			local roundedVolume = math.floor(volume)
+			hs.alert.closeAll()
+
+			local statusText = isMuted and "Muted" or (roundedVolume .. "%")
+			hs.alert.show("Volume: " .. statusText, { textSize = 16 }, 1)
+
+			local color = getColorForVolume(roundedVolume, isMuted)
+			setAnyBarColor(color)
+
+			lastVolume = volume
+			lastMuted = isMuted
+		end
+	end
+end
+
+-- Create and start the timer
+local volumeChecker = hs.timer.new(1, checkAudioVolume)
+volumeChecker:start()
+
 --}}}
 
 -- -----------------------------------------------
