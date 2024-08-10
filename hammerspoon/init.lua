@@ -324,10 +324,11 @@ function handleAudioDeviceChange(data)
 		device = hs.audiodevice.defaultOutputDevice()
 		level = 0
 
-		if device:name() == "FiiO BTR5" then
-			hs.alert("Skipping: FiiO BTR5")
+		skip_devices = { "FiiO K7", "FiiO K7 (eqMac)", "FiiO K7 (eqMac2)" }
+
+		-- If the device is in the skip list, then skip it
+		if hasValue(skip_devices, device:name()) then
 			return
-			-- level = 100
 		end
 
 		-- device:setMuted(false)
