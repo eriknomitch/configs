@@ -265,7 +265,7 @@ function changeVolume(diff)
 end
 
 -- Binding the key combination
-hs.hotkey.bind({ "cmd", "shift" }, "Up", changeVolume(10))
-hs.hotkey.bind({ "cmd", "shift" }, "Down", changeVolume(-10))
-hs.hotkey.bind({ "cmd", "shift" }, "Left", changeVolume(-5))
-hs.hotkey.bind({ "cmd", "shift" }, "Right", changeVolume(5))
+-- hs.hotkey.bind({ "cmd", "shift" }, "Up", changeVolume(10))
+-- hs.hotkey.bind({ "cmd", "shift" }, "Down", changeVolume(-10))
+-- hs.hotkey.bind({ "cmd", "shift" }, "Left", changeVolume(-5))
+-- hs.hotkey.bind({ "cmd", "shift" }, "Right", changeVolume(5))
