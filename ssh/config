@@ -184,13 +184,8 @@ Host micro-case micro-case.local
   HostName micro-case.local
   User pi
 
-Host thinkpad thinkpad.local
-  HostName 192.168.50.32
-  User kali
-
 Host kali kali.local
   HostName kali.local
-  User kali
 
 Host blackarch blackarch.local
   HostName 192.168.50.22
