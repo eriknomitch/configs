@@ -216,9 +216,21 @@ require("lazy").setup({
 			})
 		end,
 	},
-	-- https://github.com/akinsho/git-conflict.nvim
-	{ "akinsho/git-conflict.nvim", version = "*", config = true },
+	{
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"sindrets/diffview.nvim", -- optional - Diff integration
+
+			-- Only one of these is needed, not both.
+			"nvim-telescope/telescope.nvim", -- optional
+		},
+		config = true,
+	},
 })
+
+local neogit = require("neogit")
+neogit.setup({})
 
 require("noice").setup({
 	lsp = {

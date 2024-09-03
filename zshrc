@@ -127,7 +127,8 @@ function a() {
   if [[ $1 == "u" ]] ; then
     shif/hr.nt
     pip install --upgrade aider-chat
-    clear
+    echo "AIDER upgraded."
+    return
   fi
 
   # If the first argument is 'c', commit with aider and exit
@@ -671,3 +672,6 @@ source-if-exists $HOME/.cargo/env
 
 # Added by LM Studio CLI tool (lms)
 export PATH="$PATH:/Users/erik/.cache/lm-studio/bin"
+
+# bun completions
+[ -s "/Users/erik/.bun/_bun" ] && source "/Users/erik/.bun/_bun"
