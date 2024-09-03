@@ -197,6 +197,9 @@ require("incline").setup()
 vim.api.nvim_set_keymap("n", "<C-t>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>t", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
+-- Open Neogit with <leader>g
+vim.api.nvim_set_keymap("n", "<leader>g", ":Neogit<CR>", { noremap = true, silent = true })
+
 -- Vim options and commands
 vim.g.indent_guides_enable_on_vim_startup = 1
 vim.g.loaded_netrw = 1
