@@ -675,3 +675,5 @@ export PATH="$PATH:/Users/erik/.cache/lm-studio/bin"
 
 # bun completions
 [ -s "/Users/erik/.bun/_bun" ] && source "/Users/erik/.bun/_bun"
+
+. "$HOME/.cargo/env"
