@@ -69,8 +69,8 @@ require("lazy").setup({
 	{ "lewis6991/gitsigns.nvim" },
 	{ "akinsho/bufferline.nvim" },
 	{ "lukas-reineke/indent-blankline.nvim" },
-	{ "karb94/neoscroll.nvim" },
-	{ "echasnovski/mini.animate" },
+	-- { "karb94/neoscroll.nvim" },
+	-- { "echasnovski/mini.animate" },
 	{ "b0o/incline.nvim" },
 
 	-- Editing support
