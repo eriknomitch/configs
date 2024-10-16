@@ -698,6 +698,63 @@ end)
 -- -----------------------------------------------
 -- {{{
 
+function generateCheatSheetContent()
+    return [[
+Window Management Cheat Sheet:
+
+Center window:         ctrl + cmd + 0
+Fullscreen:            cmd + ctrl + Up
+Middle (3/4 width):    cmd + ctrl + Down
+Left half:             cmd + ctrl + Left
+Right half:            cmd + ctrl + Right
+
+Centered windows:
+  Small:               cmd + ctrl + 1
+  Medium:              cmd + ctrl + 2
+  Large:               cmd + ctrl + 3
+  Full:                cmd + ctrl + 4
+
+Resize:
+  Shrink width:        cmd + ctrl + alt + Left
+  Expand width:        cmd + ctrl + alt + Right
+  Expand height:       cmd + ctrl + alt + Up
+  Shrink height:       cmd + ctrl + alt + Down
+  Shrink both:         cmd + ctrl + alt + -
+  Expand both:         cmd + ctrl + alt + =
+    ]]
+end
+
+local cheatSheet = nil
+
+function toggleCheatSheet()
+    if cheatSheet then
+        cheatSheet:delete()
+        cheatSheet = nil
+    else
+        local mainScreen = hs.screen.mainScreen()
+        local mainRes = mainScreen:fullFrame()
+        local rect = hs.geometry.rect(mainRes.w/4, mainRes.h/4, mainRes.w/2, mainRes.h/2)
+        
+        cheatSheet = hs.canvas.new(rect)
+        cheatSheet:appendElements({
+            type = "rectangle",
+            action = "fill",
+            fillColor = {alpha = 0.95, white = 0},
+            roundedRectRadii = {xRadius = 10, yRadius = 10},
+        }, {
+            type = "text",
+            text = generateCheatSheetContent(),
+            textFont = "Courier",
+            textSize = 16,
+            textColor = {white = 1},
+            textLineBreak = "truncateMiddle",
+        })
+        cheatSheet:show()
+    end
+end
+
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "/", toggleCheatSheet)
+
 -- New hotkeys for centered window positions
 hs.hotkey.bind(movement, "1", function()
     local win = hs.window.focusedWindow()
