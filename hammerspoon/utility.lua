@@ -264,6 +264,30 @@ function changeVolume(diff)
 	end
 end
 
+-- Function to get the current screen resolution and aspect ratio
+function getScreenInfo()
+	local screen = hs.screen.mainScreen()
+	local frame = screen:fullFrame()
+	local width = frame.w
+	local height = frame.h
+
+	-- Calculate aspect ratio
+	local gcd = function(a, b)
+		while b ~= 0 do
+			a, b = b, a % b
+		end
+		return a
+	end
+	local divisor = gcd(width, height)
+	local aspectRatio = string.format("%d:%d", width / divisor, height / divisor)
+
+	return {
+		width = width,
+		height = height,
+		aspectRatio = aspectRatio,
+	}
+end
+
 -- Binding the key combination
 -- hs.hotkey.bind({ "cmd", "shift" }, "Up", changeVolume(10))
 -- hs.hotkey.bind({ "cmd", "shift" }, "Down", changeVolume(-10))
