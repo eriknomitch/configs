@@ -41,7 +41,7 @@ local wm = {}
 
 -- Apps
 -- -----------------------------------------------
-local appsToCenter = { "Finder", "Home Assistant", "Messages", "Gmail", "Unraid", "Unraid NAS", "Unraid PC" }
+local appsToCenter = { "Finder", "Home Assistant", "Messages" }
 -- local defaultBrowserName = "Google Chrome"
 local defaultBrowserName = "Arc"
 -- local defaultTerminalName = "Tabby"
@@ -362,21 +362,21 @@ end
 -- Window Watcher for Centering Apps
 -- -----------------------------------------------
 local function centerWindow(win)
-    if win and hasValue(appsToCenter, win:application():name()) then
-        win:centerOnScreen(nil, true)
-    end
+	if win and hasValue(appsToCenter, win:application():name()) then
+		win:centerOnScreen(nil, true)
+	end
 end
 
 local windowWatchers = {}
 
 for _, appName in ipairs(appsToCenter) do
-    windowWatchers[appName] = hs.window.filter.new(appName)
-    windowWatchers[appName]:subscribe(hs.window.filter.windowCreated, function(win)
-        centerWindow(win)
-    end)
-    windowWatchers[appName]:subscribe(hs.window.filter.windowFocused, function(win)
-        centerWindow(win)
-    end)
+	windowWatchers[appName] = hs.window.filter.new(appName)
+	windowWatchers[appName]:subscribe(hs.window.filter.windowCreated, function(win)
+		centerWindow(win)
+	end)
+	windowWatchers[appName]:subscribe(hs.window.filter.windowFocused, function(win)
+		centerWindow(win)
+	end)
 end
 
 log:d("Window watchers created for apps to center")
@@ -623,7 +623,7 @@ bindApplicationFocus("E", "Obsidian")
 bindApplicationFocusSecondary("E", "Element")
 bindApplicationFocusSecondary("V", "Visual Studio Code")
 bindApplicationFocus("V", "IINA")
-bindApplicationFocus("G", "Gmail")
+-- bindApplicationFocus("G", "Gmail")
 bindApplicationFocus("U", "Unraid")
 bindApplicationFocus("N", "Notion")
 bindApplicationFocus("H", "Home Assistant")
