@@ -359,31 +359,27 @@ if not hs.audiodevice.watcher.isRunning() then
 	hs.audiodevice.watcher.start()
 end
 
--- Application Watcher
+-- Window Watcher for Centering Apps
 -- -----------------------------------------------
-local function appWatcherCallback(name, event, app)
-	log:d(name)
-	log:d(event)
-	log:d(app)
-	if event == hs.application.watcher.activated then
-		log:d("App activated: " .. name)
-
-		if hasValue(appsToCenter, name) then
-			log:d("Centering: " .. name)
-
-			hs.application.get(name):focusedWindow():centerOnScreen(nil, true)
-
-			--       hs.window.frontmostWindow():centerOnScreen(nil, true)
-		end
-	end
+local function centerWindow(win)
+    if win and hasValue(appsToCenter, win:application():name()) then
+        win:centerOnScreen(nil, true)
+    end
 end
 
-local globalAppWatcher = application.watcher.new(appWatcherCallback)
+local windowWatchers = {}
 
-log:d("appWatcher:")
-log:d(globalAppWatcher)
+for _, appName in ipairs(appsToCenter) do
+    windowWatchers[appName] = hs.window.filter.new(appName)
+    windowWatchers[appName]:subscribe(hs.window.filter.windowCreated, function(win)
+        centerWindow(win)
+    end)
+    windowWatchers[appName]:subscribe(hs.window.filter.windowFocused, function(win)
+        centerWindow(win)
+    end)
+end
 
-globalAppWatcher:start()
+log:d("Window watchers created for apps to center")
 
 --
 -- -----------------------------------------------
