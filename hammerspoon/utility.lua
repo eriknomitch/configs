@@ -288,6 +288,30 @@ function getScreenInfo()
 	}
 end
 
+function getCommonWindowPositions()
+    local screen = hs.screen.mainScreen()
+    local frame = screen:frame()
+    local w, h = frame.w, frame.h
+
+    return {
+        fullScreen = {x = 0, y = 0, w = w, h = h},
+        leftHalf = {x = 0, y = 0, w = w/2, h = h},
+        rightHalf = {x = w/2, y = 0, w = w/2, h = h},
+        topHalf = {x = 0, y = 0, w = w, h = h/2},
+        bottomHalf = {x = 0, y = h/2, w = w, h = h/2},
+        topLeft = {x = 0, y = 0, w = w/2, h = h/2},
+        topRight = {x = w/2, y = 0, w = w/2, h = h/2},
+        bottomLeft = {x = 0, y = h/2, w = w/2, h = h/2},
+        bottomRight = {x = w/2, y = h/2, w = w/2, h = h/2},
+        center = {x = w/4, y = h/4, w = w/2, h = h/2},
+        -- New centered positions with different sizes
+        centerSmall = {x = w * 3/8, y = h * 3/8, w = w/4, h = h/4},
+        centerMedium = {x = w * 5/16, y = h * 5/16, w = w * 3/8, h = h * 3/8},
+        centerLarge = {x = w/8, y = h/8, w = w * 3/4, h = h * 3/4},
+        centerFull = {x = 0, y = 0, w = w, h = h}
+    }
+end
+
 -- Binding the key combination
 -- hs.hotkey.bind({ "cmd", "shift" }, "Up", changeVolume(10))
 -- hs.hotkey.bind({ "cmd", "shift" }, "Down", changeVolume(-10))

@@ -698,6 +698,31 @@ end)
 -- -----------------------------------------------
 -- {{{
 
+-- New hotkeys for centered window positions
+hs.hotkey.bind(movement, "1", function()
+    local win = hs.window.focusedWindow()
+    local positions = getCommonWindowPositions()
+    win:setFrame(positions.centerSmall)
+end)
+
+hs.hotkey.bind(movement, "2", function()
+    local win = hs.window.focusedWindow()
+    local positions = getCommonWindowPositions()
+    win:setFrame(positions.centerMedium)
+end)
+
+hs.hotkey.bind(movement, "3", function()
+    local win = hs.window.focusedWindow()
+    local positions = getCommonWindowPositions()
+    win:setFrame(positions.centerLarge)
+end)
+
+hs.hotkey.bind(movement, "4", function()
+    local win = hs.window.focusedWindow()
+    local positions = getCommonWindowPositions()
+    win:setFrame(positions.centerFull)
+end)
+
 function getAdjustmentSizes()
 	local win = hs.window.focusedWindow()
 	local f = win:frame()
