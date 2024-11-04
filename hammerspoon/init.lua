@@ -721,6 +721,46 @@ Resize:
   Shrink height:       cmd + ctrl + alt + Down
   Shrink both:         cmd + ctrl + alt + -
   Expand both:         cmd + ctrl + alt + =
+
+Application Shortcuts:
+  Browser:             cmd + ctrl + I
+  Secondary Browser:   cmd + ctrl + shift + I
+  Todoist:             cmd + ctrl + T
+  Preview:             cmd + ctrl + P
+  Photoshop:           cmd + ctrl + shift + P
+  Finder:              cmd + ctrl + F
+  ChatGPT:             cmd + ctrl + C
+  BoltAI:              cmd + ctrl + B
+  FaceTime:            cmd + ctrl + shift + F
+  Zoom:                cmd + ctrl + Z
+  Drive:               cmd + ctrl + D
+  Audio MIDI Setup:    cmd + ctrl + A
+  WLED:                cmd + ctrl + W
+  Discord:             cmd + ctrl + shift + D
+  Obsidian:            cmd + ctrl + E
+  Element:             cmd + ctrl + shift + E
+  VS Code:             cmd + ctrl + shift + V
+  IINA:                cmd + ctrl + V
+  Unraid:              cmd + ctrl + U
+  Notion:              cmd + ctrl + N
+  Home Assistant:      cmd + ctrl + H
+  Spotify:             cmd + ctrl + S
+
+Special:
+  Terminal:            ctrl + Space
+  Window Switcher:     cmd + ctrl + '
+  Reverse Switcher:    cmd + ctrl + shift + '
+  Move Mouse to Screen:cmd + ctrl + shift + M
+
+Audio:
+  Volume Up:           shift + cmd + ctrl + Up
+  Volume Down:         shift + cmd + ctrl + Down
+
+Utilities:
+  Reload Hammerspoon:  cmd + alt + ctrl + R
+  Toggle Cheat Sheet:  cmd + alt + ctrl + /
+  Window Hints:        cmd + ctrl + ;
+  Window Expose:       cmd + ctrl + shift + '
     ]]
 end
 
