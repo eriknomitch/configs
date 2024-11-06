@@ -65,7 +65,7 @@ require("lazy").setup({
 	{ "vim-airline/vim-airline" },
 	{ "vim-airline/vim-airline-themes" },
 	{ "rcarriga/nvim-notify" },
-	{ "folke/noice.nvim", dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" } },
+	-- { "folke/noice.nvim", dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" } },
 	{ "lewis6991/gitsigns.nvim" },
 	{ "akinsho/bufferline.nvim" },
 	{ "lukas-reineke/indent-blankline.nvim" },
@@ -209,28 +209,28 @@ require("nvim-autopairs").setup()
 require("gitsigns").setup()
 require("neogit").setup({})
 
-require("noice").setup({
-	lsp = {
-		override = {
-			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-			["vim.lsp.util.stylize_markdown"] = true,
-			["cmp.entry.get_documentation"] = true,
-		},
-	},
-	presets = {
-		bottom_search = true,
-		command_palette = true,
-		long_message_to_split = true,
-		inc_rename = false,
-		lsp_doc_border = false,
-	},
-})
-
-require("tmux").setup({
-	copy_sync = {
-		redirect_to_clipboard = true,
-	},
-})
+-- require("noice").setup({
+-- 	lsp = {
+-- 		override = {
+-- 			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+-- 			["vim.lsp.util.stylize_markdown"] = true,
+-- 			["cmp.entry.get_documentation"] = true,
+-- 		},
+-- 	},
+-- 	presets = {
+-- 		bottom_search = true,
+-- 		command_palette = true,
+-- 		long_message_to_split = true,
+-- 		inc_rename = false,
+-- 		lsp_doc_border = false,
+-- 	},
+-- })
+--
+-- require("tmux").setup({
+-- 	copy_sync = {
+-- 		redirect_to_clipboard = true,
+-- 	},
+-- })
 
 require("nvim-tree").setup({
 	sort_by = "case_sensitive",
