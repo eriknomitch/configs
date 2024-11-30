@@ -606,7 +606,8 @@ bindApplicationFocus("I", defaultBrowserName)
 bindApplicationFocusSecondary("I", secondaryBrowserName)
 bindApplicationFocus("T", "Todoist")
 bindApplicationFocus("P", "Preview")
-bindApplicationFocusSecondary("P", "Adobe Photoshop (Beta)")
+bindApplicationFocusSecondary("P", "Adobe Photoshop 2025")
+-- bindApplicationFocusSecondary("P", "Adobe Photoshop (Beta)")
 -- hs.hotkey.bind(launchOrFocus, "P", function() confirmOnEnter("Adobe Photoshop (Beta)") end)
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("C", defaultAiChatName)
@@ -699,7 +700,7 @@ end)
 -- {{{
 
 function generateCheatSheetContent()
-    return [[
+	return [[
 Window Management Cheat Sheet:
 
 Center window:         ctrl + cmd + 0
@@ -767,57 +768,57 @@ end
 local cheatSheet = nil
 
 function toggleCheatSheet()
-    if cheatSheet then
-        cheatSheet:delete()
-        cheatSheet = nil
-    else
-        local mainScreen = hs.screen.mainScreen()
-        local mainRes = mainScreen:fullFrame()
-        local rect = hs.geometry.rect(mainRes.w/4, mainRes.h/4, mainRes.w/2, mainRes.h/2)
-        
-        cheatSheet = hs.canvas.new(rect)
-        cheatSheet:appendElements({
-            type = "rectangle",
-            action = "fill",
-            fillColor = {alpha = 0.95, white = 0},
-            roundedRectRadii = {xRadius = 10, yRadius = 10},
-        }, {
-            type = "text",
-            text = generateCheatSheetContent(),
-            textFont = "Courier",
-            textSize = 16,
-            textColor = {white = 1},
-            textLineBreak = "truncateMiddle",
-        })
-        cheatSheet:show()
-    end
+	if cheatSheet then
+		cheatSheet:delete()
+		cheatSheet = nil
+	else
+		local mainScreen = hs.screen.mainScreen()
+		local mainRes = mainScreen:fullFrame()
+		local rect = hs.geometry.rect(mainRes.w / 4, mainRes.h / 4, mainRes.w / 2, mainRes.h / 2)
+
+		cheatSheet = hs.canvas.new(rect)
+		cheatSheet:appendElements({
+			type = "rectangle",
+			action = "fill",
+			fillColor = { alpha = 0.95, white = 0 },
+			roundedRectRadii = { xRadius = 10, yRadius = 10 },
+		}, {
+			type = "text",
+			text = generateCheatSheetContent(),
+			textFont = "Courier",
+			textSize = 16,
+			textColor = { white = 1 },
+			textLineBreak = "truncateMiddle",
+		})
+		cheatSheet:show()
+	end
 end
 
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "/", toggleCheatSheet)
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "/", toggleCheatSheet)
 
 -- New hotkeys for centered window positions
 hs.hotkey.bind(movement, "1", function()
-    local win = hs.window.focusedWindow()
-    local positions = getCommonWindowPositions()
-    win:setFrame(positions.centerSmall)
+	local win = hs.window.focusedWindow()
+	local positions = getCommonWindowPositions()
+	win:setFrame(positions.centerSmall)
 end)
 
 hs.hotkey.bind(movement, "2", function()
-    local win = hs.window.focusedWindow()
-    local positions = getCommonWindowPositions()
-    win:setFrame(positions.centerMedium)
+	local win = hs.window.focusedWindow()
+	local positions = getCommonWindowPositions()
+	win:setFrame(positions.centerMedium)
 end)
 
 hs.hotkey.bind(movement, "3", function()
-    local win = hs.window.focusedWindow()
-    local positions = getCommonWindowPositions()
-    win:setFrame(positions.centerLarge)
+	local win = hs.window.focusedWindow()
+	local positions = getCommonWindowPositions()
+	win:setFrame(positions.centerLarge)
 end)
 
 hs.hotkey.bind(movement, "4", function()
-    local win = hs.window.focusedWindow()
-    local positions = getCommonWindowPositions()
-    win:setFrame(positions.centerFull)
+	local win = hs.window.focusedWindow()
+	local positions = getCommonWindowPositions()
+	win:setFrame(positions.centerFull)
 end)
 
 function getAdjustmentSizes()
