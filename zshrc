@@ -677,3 +677,6 @@ export PATH="$PATH:/Users/erik/.cache/lm-studio/bin"
 [ -s "/Users/erik/.bun/_bun" ] && source "/Users/erik/.bun/_bun"
 
 . "$HOME/.cargo/env"
+
+# Added by Windsurf
+export PATH="/Users/erik/.codeium/windsurf/bin:$PATH"
