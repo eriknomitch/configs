@@ -5,6 +5,7 @@
 	user = eriknomitch
 [push]
 	default = current
+	autoSetupRemote = true
 ; [mergetool "fugitive"]
 ; 	cmd = nvim -f -c \"Gvdiff\" \"$MERGED\"
 ; [merge]

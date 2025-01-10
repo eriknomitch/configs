@@ -51,7 +51,7 @@ local secondaryBrowserName = "Firefox Developer Edition"
 
 -- local defaultAiChatName = "ChatGPT"
 local defaultAiChatName = "Claude"
-local secondaryAiChatName = "BoltAl"
+local secondaryAiChatName = "ChatGPT"
 
 -- Adjustments
 -- -----------------------------------------------
@@ -612,9 +612,10 @@ bindApplicationFocusSecondary("P", "Adobe Photoshop 2025")
 -- hs.hotkey.bind(launchOrFocus, "P", function() confirmOnEnter("Adobe Photoshop (Beta)") end)
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("C", defaultAiChatName)
-bindApplicationFocus("B", secondaryAiChatName)
+bindApplicationFocusSecondary("C", secondaryAiChatName)
+bindApplicationFocus("B", "BoltAI")
 bindApplicationFocusSecondaryWithConfirmation("F", "FaceTime")
-bindApplicationFocusWithConfirmation("Z", "zoom.us")
+-- bindApplicationFocusWithConfirmation("Z", "zoom.us")
 bindApplicationFocus("D", "Drive")
 bindApplicationFocus("A", "Audio MIDI Setup")
 bindApplicationFocus("W", "WLED")
