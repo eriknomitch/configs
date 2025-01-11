@@ -243,7 +243,7 @@ Host mapblocks-paperspace-fastai
   HostName 65.49.54.240
   User paperspace
 
-Host axle axle-thinkpad axle-thinkpad.local
+Host axle axle-thinkpad axle-thinkpad.local axle.dev
   HostName axle-thinkpad.local
   User erik
   Port 22
