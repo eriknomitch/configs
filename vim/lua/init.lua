@@ -207,7 +207,13 @@ require("lazy").setup({
 	{ "aserowy/tmux.nvim" },
 	{ "mbbill/undotree" },
 	{ "skywind3000/asyncrun.vim" },
-	{ "chipsenkbeil/distant.nvim", branch = "v0.3" },
+	{
+		"chipsenkbeil/distant.nvim",
+		branch = "v0.3",
+		config = function()
+			require("distant"):setup()
+		end,
+	},
 	{ "folke/lsp-colors.nvim" },
 	{ "tjdevries/colorbuddy.nvim" },
 	{ "Iron-E/nvim-highlite" },
