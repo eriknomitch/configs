@@ -605,7 +605,7 @@ end
 -- -----------------------------------------------
 bindApplicationFocus("I", defaultBrowserName)
 bindApplicationFocusSecondary("I", secondaryBrowserName)
-bindApplicationFocus("T", "Todoist")
+bindApplicationFocus("L", "Linear")
 bindApplicationFocus("P", "Preview")
 bindApplicationFocusSecondary("P", "Adobe Photoshop 2025")
 -- bindApplicationFocusSecondary("P", "Adobe Photoshop (Beta)")
