@@ -27,16 +27,7 @@ function _axle_mount() {
 
     # Attempt to mount the remote directory using sshfs with performance-enhancing options
     echo "Mounting axle:/home/erik/.axle to ~/.axle with sshfs..."
-    sshfs axle:/home/erik/.axle ~/.axle \
-      -o cache=yes \
-      -o kernel_cache \
-      -o compression=no \
-      -o large_read \
-      -o auto_cache \
-      -o reconnect \
-      -o Ciphers=arcfour \
-      -o ServerAliveInterval=15 \
-      -o ServerAliveCountMax=3
+    sshfs axle:/home/erik/.axle ~/.axle
     if [[ $? -eq 0 ]]; then
       # Check the exit status to confirm if the mount was successful
       echo "Mount successful."
