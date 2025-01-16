@@ -250,21 +250,21 @@ Host axle axle-thinkpad axle-thinkpad.local axle.dev
   # IdentityFile ~/.ssh/id_rsa
   
   # Enable persistent connections
-  ControlMaster auto
-  ControlPath ~/.ssh/control-%r@%h:%p
-  ControlPersist yes
+  # ControlMaster auto
+  # ControlPath ~/.ssh/control-%r@%h:%p
+  # ControlPersist yes
   
   # Enable compression
-  Compression yes
+  # Compression yes
   
   # Disable DNS lookups
   # UseDNS no
   
   # Keep the connection alive
-  ServerAliveInterval 60
-  ServerAliveCountMax 3
-  TCPKeepAlive yes
-  
+  # ServerAliveInterval 60
+  # ServerAliveCountMax 3
+  # TCPKeepAlive yes
+  # 
   # Use faster ciphers
   Ciphers aes128-ctr,aes192-ctr,aes256-ctr
   

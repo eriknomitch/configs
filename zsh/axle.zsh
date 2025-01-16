@@ -16,18 +16,9 @@ function _axle_mount() {
       echo "Creating local directory ~/.axle..."
       mkdir -p ~/.axle
     fi
-    # Attempt to mount the remote directory using sshfs with performance-enhancing options
+    # Attempt to mount the remote directory using sshfs
     echo "Mounting axle:/home/erik/.axle to ~/.axle with sshfs..."
-    sshfs axle:/home/erik/.axle ~/.axle \
-      -o cache=yes \
-      -o kernel_cache \
-      -o compression=no \
-      -o large_read \
-      -o auto_cache \
-      -o reconnect \
-      -o Ciphers=arcfour \
-      -o ServerAliveInterval=15 \
-      -o ServerAliveCountMax=3
+    sshfs axle:/home/erik/.axle ~/.axle
     if [[ $? -eq 0 ]]; then
       # Check the exit status to confirm if the mount was successful
       echo "Mount successful."
@@ -38,7 +29,7 @@ function _axle_mount() {
 }
 
 function _axle_unmount() {
-  # Function to unmount the ~/.axle directory if it is currently mounted
+  # Function to unmount the ~/.axle directory if it is currently mountedSt
 
   # Check if the directory is mounted by inspecting the output of the mount command
   if mount | grep -E "axle:/home/erik/.axle on /Users/erik/.axle"; then
@@ -129,3 +120,4 @@ function axle() {
       ;;
   esac
 }
+
