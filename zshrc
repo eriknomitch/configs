@@ -680,3 +680,8 @@ export PATH="$PATH:/Users/erik/.cache/lm-studio/bin"
 
 # Added by Windsurf
 export PATH="/Users/erik/.codeium/windsurf/bin:$PATH"
+
+# ------------------------------------------------
+# AXLE -------------------------------------------
+# ------------------------------------------------
+source-if-exists $HOME/.configs/zsh/axle.zsh
