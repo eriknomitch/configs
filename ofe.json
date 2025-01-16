@@ -5,7 +5,7 @@
     "exclusions": ["*.ogg"]
   },
   "zsh": {
-    "files": ["zsh*", "zshrc-specific-to-*", "etc/zsh/*"],
+    "files": ["zsh*", "zshrc-specific-to-*", "etc/zsh/*", "zsh/*"],
     "first_file": "zshrc"
   },
   "tmux": {
