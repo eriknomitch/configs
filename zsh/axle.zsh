@@ -16,9 +16,18 @@ function _axle_mount() {
       echo "Creating local directory ~/.axle..."
       mkdir -p ~/.axle
     fi
-    # Attempt to mount the remote directory using sshfs
+    # Attempt to mount the remote directory using sshfs with performance-enhancing options
     echo "Mounting axle:/home/erik/.axle to ~/.axle with sshfs..."
-    sshfs axle:/home/erik/.axle ~/.axle
+    sshfs axle:/home/erik/.axle ~/.axle \
+      -o cache=yes \
+      -o kernel_cache \
+      -o compression=no \
+      -o large_read \
+      -o auto_cache \
+      -o reconnect \
+      -o Ciphers=arcfour \
+      -o ServerAliveInterval=15 \
+      -o ServerAliveCountMax=3
     if [[ $? -eq 0 ]]; then
       # Check the exit status to confirm if the mount was successful
       echo "Mount successful."
@@ -34,7 +43,7 @@ function _axle_unmount() {
   # Check if the directory is mounted by inspecting the output of the mount command
   if mount | grep -E "axle:/home/erik/.axle on /Users/erik/.axle"; then
     echo "Unmounting ~/.axle..."
-    fusermount -u ~/.axle  # Use fusermount to unmount the directory
+    umount ~/.axle  # Use umount to unmount the directory on macOS
     if [[ $? -eq 0 ]]; then
       # Check the exit status to confirm if the unmount was successful
       echo "Unmount successful."
@@ -47,6 +56,26 @@ function _axle_unmount() {
   fi
 }
 
+function _axle_remount() {
+  # Function to remount the ~/.axle directory
+
+  # Check if the directory is currently mounted
+  if mount | grep -E "axle:/home/erik/.axle on /Users/erik/.axle"; then
+    echo "Remounting ~/.axle..."
+    umount ~/.axle
+    if [[ $? -eq 0 ]]; then
+      # Unmount succeeded, attempt to remount
+      _axle_mount
+    else
+      echo "Failed to unmount ~/.axle. Remount aborted."
+    fi
+  else
+    # If not mounted, simply mount the directory
+    echo "~/.axle is not currently mounted. Mounting now..."
+    _axle_mount
+  fi
+}
+
 function _axle_usage() {
   # Function to display usage instructions for the axle command
   echo "Usage: axle <command>"
@@ -54,6 +83,7 @@ function _axle_usage() {
   echo "  ssh      Connect to axle via SSH"
   echo "  mount    Mount axle:/home/erik/.axle to ~/.axle with sshfs"
   echo "  unmount  Unmount ~/.axle if mounted"
+  echo "  remount  Unmount and remount ~/.axle"
   echo "  help     Show this usage information"
 }
 
@@ -77,6 +107,11 @@ function axle() {
       _axle_unmount
       ;;
 
+    remount)
+      # Delegate to the remount function
+      _axle_remount
+      ;;
+
     help|--help|-h)
       # Delegate to the usage function to display help information
       _axle_usage
@@ -94,4 +129,3 @@ function axle() {
       ;;
   esac
 }
-
