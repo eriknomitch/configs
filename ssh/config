@@ -276,4 +276,18 @@ Host axle axle-thinkpad axle-thinkpad.local axle.dev
   LocalForward 8788 localhost:8788
   LocalForward 8789 localhost:8789
   LocalForward 8800 localhost:8800
+  LocalForward 9102 localhost:9102
   LocalForward 50505 localhost:50505
+
+# tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN
+# tcp        0      0 127.0.0.1:42279         0.0.0.0:*               LISTEN
+# tcp        0      0 127.0.0.1:9102          0.0.0.0:*               LISTEN
+# tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+# tcp        0      0 127.0.0.1:8001          0.0.0.0:*               LISTEN
+# tcp        0      0 127.0.0.1:8000          0.0.0.0:*               LISTEN
+# tcp        0      0 127.0.0.1:6060          0.0.0.0:*               LISTEN
+# tcp        0      0 0.0.0.0:5432            0.0.0.0:*               LISTEN
+# tcp        0      0 127.0.0.1:1065          0.0.0.0:*               LISTEN
+# tcp        0      0 0.0.0.0:6379            0.0.0.0:*               LISTEN
+# tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN
+# tcp        0      0 0.0.0.0:8081            0.0.0.0:*               LISTEN
