@@ -270,8 +270,10 @@ Host axle axle-thinkpad axle-thinkpad.local axle.dev
   
   # Forward local ports for convenience
   LocalForward 3000 localhost:3000
+  LocalForward 3012 localhost:3012
   LocalForward 8000 localhost:8000
   LocalForward 8001 localhost:8001
+  LocalForward 8081 localhost:8081
   LocalForward 8787 localhost:8787
   LocalForward 8788 localhost:8788
   LocalForward 8789 localhost:8789
