@@ -143,44 +143,44 @@ require("lazy").setup({
 	{ "tpope/vim-repeat" },
 	{ "svermeulen/vim-easyclip" },
 	{
-		'echasnovski/mini.nvim',
+		"echasnovski/mini.nvim",
 		version = false,
 		config = function()
 			-- Configure mini.pairs for auto-pairing
-			require('mini.pairs').setup({})
-			
+			require("mini.pairs").setup({})
+
 			-- Configure mini.surround for surrounding text
-			require('mini.surround').setup({})
-			
+			require("mini.surround").setup({})
+
 			-- Configure mini.comment for commenting
-			require('mini.comment').setup({})
-			
+			require("mini.comment").setup({})
+
 			-- Configure mini.ai for improved text objects
-			require('mini.ai').setup({})
-			
+			require("mini.ai").setup({})
+
 			-- Configure mini.indentscope for indent guides
-			require('mini.indentscope').setup({
+			require("mini.indentscope").setup({
 				symbol = "│",
-				options = { try_as_border = true }
+				options = { try_as_border = true },
 			})
-			
+
 			-- Configure mini.move for moving lines/blocks
-			require('mini.move').setup({
+			require("mini.move").setup({
 				mappings = {
 					-- Move visual selection in Visual mode
-					left = '<M-h>',
-					right = '<M-l>',
-					down = '<M-j>',
-					up = '<M-k>',
-					
+					left = "<M-h>",
+					right = "<M-l>",
+					down = "<M-j>",
+					up = "<M-k>",
+
 					-- Move current line in Normal mode
-					line_left = '<M-h>',
-					line_right = '<M-l>',
-					line_down = '<M-j>',
-					line_up = '<M-k>',
-				}
+					line_left = "<M-h>",
+					line_right = "<M-l>",
+					line_down = "<M-j>",
+					line_up = "<M-k>",
+				},
 			})
-		end
+		end,
 	},
 
 	-- Git integration
@@ -324,9 +324,11 @@ vim.g.skip_ts_context_commentstring_module = true
 vim.cmd([[highlight NvimTreeNormal guibg=#111111 gui=nocombine guifg=#777777]])
 vim.cmd([[highlight EndOfBuffer guibg=#090909 gui=nocombine guifg=#090909]])
 
--- Load additional configuration files
-require("plugins")
+-- Initialize core configuration
 require("core")
+
+-- Initialize plugins
+require("plugins")
 
 -- Configuration Load Message
 -- -----------------------------------------------------------------------------

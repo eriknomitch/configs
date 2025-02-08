@@ -5,3 +5,8 @@ local core_modules = {
 
 require("core.utilities")
 require("core.mappings")
+
+-- Initialize core modules
+require("core.options")
+require("core.keymaps")
+require("core.autocmds")
