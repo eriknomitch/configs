@@ -94,7 +94,6 @@ require("lazy").setup({
 	{ "neovim/nvim-lspconfig" },
 	{ "williamboman/mason.nvim", build = ":MasonUpdate" },
 	{ "williamboman/mason-lspconfig.nvim" },
-	{ "williamboman/nvim-lsp-installer" },
 	{ "jose-elias-alvarez/null-ls.nvim" },
 	{ "lukas-reineke/lsp-format.nvim" },
 	{ "hrsh7th/cmp-nvim-lsp" },
@@ -129,7 +128,6 @@ require("lazy").setup({
 	{ "vim-airline/vim-airline-themes" },
 	{ "rcarriga/nvim-notify" },
 	-- { "folke/noice.nvim", dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" } },
-	{ "lewis6991/gitsigns.nvim" },
 	{ "akinsho/bufferline.nvim" },
 	{ "lukas-reineke/indent-blankline.nvim" },
 	-- { "karb94/neoscroll.nvim" },
@@ -138,7 +136,6 @@ require("lazy").setup({
 
 	-- Editing support
 	{ "numToStr/Comment.nvim", opts = {} },
-	{ "windwp/nvim-autopairs", event = "InsertEnter", opts = {} },
 	{ "junegunn/vim-easy-align" },
 	{ "tpope/vim-repeat" },
 	{ "svermeulen/vim-easyclip" },
@@ -183,13 +180,6 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Git integration
-	{
-		"NeogitOrg/neogit",
-		dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim", "nvim-telescope/telescope.nvim" },
-	},
-	{ "samoshkin/vim-mergetool" },
-
 	-- AI
 	{ "github/copilot.vim" },
 
@@ -197,7 +187,6 @@ require("lazy").setup({
 	{ "b0o/mapx.nvim" },
 	{ "folke/neoconf.nvim", cmd = "Neoconf" },
 	{ "folke/neodev.nvim" },
-	{ "mfussenegger/nvim-dap" },
 	{ "aserowy/tmux.nvim" },
 	{ "mbbill/undotree" },
 	{ "skywind3000/asyncrun.vim" },
@@ -211,7 +200,6 @@ require("lazy").setup({
 	{ "folke/lsp-colors.nvim" },
 	{ "tjdevries/colorbuddy.nvim" },
 	{ "Iron-E/nvim-highlite" },
-	{ "puremourning/vimspector" },
 })
 
 -- -----------------------------------------------
@@ -269,33 +257,6 @@ null_ls.setup({
 
 require("lsp-format").setup({})
 require("lspconfig").gopls.setup({ on_attach = require("lsp-format").on_attach })
-
-require("nvim-autopairs").setup()
-require("gitsigns").setup()
-require("neogit").setup({})
-
--- require("noice").setup({
--- 	lsp = {
--- 		override = {
--- 			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
--- 			["vim.lsp.util.stylize_markdown"] = true,
--- 			["cmp.entry.get_documentation"] = true,
--- 		},
--- 	},
--- 	presets = {
--- 		bottom_search = true,
--- 		command_palette = true,
--- 		long_message_to_split = true,
--- 		inc_rename = false,
--- 		lsp_doc_border = false,
--- 	},
--- })
---
--- require("tmux").setup({
--- 	copy_sync = {
--- 		redirect_to_clipboard = true,
--- 	},
--- })
 
 require("nvim-tree").setup({
 	sort_by = "case_sensitive",

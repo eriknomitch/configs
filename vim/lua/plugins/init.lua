@@ -58,11 +58,11 @@ return require("lazy").setup({
   -- },
 
   -- Fuzzy finding
-  -- {
-  --   "nvim-telescope/telescope.nvim",
-  --   dependencies = { "nvim-lua/plenary.nvim" },
-  --   cmd = "Telescope",
-  -- },
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = "Telescope",
+  },
 
   -- File explorer
   {
