@@ -84,10 +84,6 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{ "leafgarland/typescript-vim" },
-	{ "peitalin/vim-jsx-typescript" },
-	{ "pangloss/vim-javascript" },
-	{ "MaxMEllon/vim-jsx-pretty" },
 	{ "prisma/vim-prisma" },
 
 	-- LSP and completion
@@ -124,8 +120,6 @@ require("lazy").setup({
 	{ "folke/which-key.nvim" },
 	{ "folke/trouble.nvim" },
 	{ "NvChad/nvim-colorizer.lua" },
-	{ "vim-airline/vim-airline" },
-	{ "vim-airline/vim-airline-themes" },
 	{ "rcarriga/nvim-notify" },
 	-- { "folke/noice.nvim", dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" } },
 	{ "akinsho/bufferline.nvim" },
@@ -135,10 +129,8 @@ require("lazy").setup({
 	{ "b0o/incline.nvim" },
 
 	-- Editing support
-	{ "numToStr/Comment.nvim", opts = {} },
 	{ "junegunn/vim-easy-align" },
 	{ "tpope/vim-repeat" },
-	{ "svermeulen/vim-easyclip" },
 	{
 		"echasnovski/mini.nvim",
 		version = false,
@@ -148,9 +140,6 @@ require("lazy").setup({
 
 			-- Configure mini.surround for surrounding text
 			require("mini.surround").setup({})
-
-			-- Configure mini.comment for commenting
-			require("mini.comment").setup({})
 
 			-- Configure mini.ai for improved text objects
 			require("mini.ai").setup({})
@@ -197,9 +186,32 @@ require("lazy").setup({
 			require("distant"):setup()
 		end,
 	},
-	{ "folke/lsp-colors.nvim" },
-	{ "tjdevries/colorbuddy.nvim" },
-	{ "Iron-E/nvim-highlite" },
+
+	-- Git integration
+	{
+		"lewis6991/gitsigns.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			require("gitsigns").setup({
+				signs = {
+					add          = { text = '│' },
+					change       = { text = '│' },
+					delete       = { text = '_' },
+					topdelete    = { text = '‾' },
+					changedelete = { text = '~' },
+					untracked    = { text = '┆' },
+				},
+				signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
+				numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
+				linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
+				word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+				watch_gitdir = {
+					interval = 1000,
+					follow_files = true
+				},
+			})
+		end
+	},
 })
 
 -- -----------------------------------------------

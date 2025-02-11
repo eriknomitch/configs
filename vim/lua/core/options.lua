@@ -5,7 +5,7 @@ local g = vim.g
 g.mapleader = "\\"
 
 -- Line numbers
-opt.number = true
+opt.number = false
 opt.relativenumber = true
 
 -- Tabs & Indentation
