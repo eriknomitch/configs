@@ -10,7 +10,6 @@ require("mapx").setup{ global = false }
 -- -----------------------------------------------
 -- -----------------------------------------------
 -- -----------------------------------------------
-require("plugins.configs.nvim-lspconfig")
 require("plugins.configs.nvim-treesitter")
 require("plugins.configs.nvim-cmp")
 require("plugins.configs.trouble")
