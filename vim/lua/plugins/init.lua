@@ -41,28 +41,28 @@ vim.opt.rtp:prepend(lazypath)
 -- Plugin specifications
 return require("lazy").setup({
   -- Load plugin configurations from separate modules
-  { import = "plugins.ui" },     -- UI-related plugins
-  { import = "plugins.lsp" },    -- LSP configurations
-  { import = "plugins.coding" }, -- Coding-related plugins
+  -- { import = "plugins.ui" },     -- UI-related plugins
+  -- { import = "plugins.lsp" },    -- LSP configurations
+  -- { import = "plugins.coding" }, -- Coding-related plugins
 
   -- Core plugins that don't need separate configuration files
-  { "nvim-lua/plenary.nvim" },  -- Lua functions library
-  { "tpope/vim-repeat" },       -- Enable repeating supported plugin maps
-  { "tpope/vim-surround" },     -- Surround text objects
+  -- { "nvim-lua/plenary.nvim" },  -- Lua functions library
+  -- { "tpope/vim-repeat" },       -- Enable repeating supported plugin maps
+  -- { "tpope/vim-surround" },     -- Surround text objects
   
   -- Git integration
-  {
-    "lewis6991/gitsigns.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    config = true,
-  },
+  -- {
+  --   "lewis6991/gitsigns.nvim",
+  --   event = { "BufReadPre", "BufNewFile" },
+  --   config = true,
+  -- },
 
   -- Fuzzy finding
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    cmd = "Telescope",
-  },
+  -- {
+  --   "nvim-telescope/telescope.nvim",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   cmd = "Telescope",
+  -- },
 
   -- File explorer
   {
