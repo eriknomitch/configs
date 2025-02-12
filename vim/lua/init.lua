@@ -186,32 +186,6 @@ require("lazy").setup({
 			require("distant"):setup()
 		end,
 	},
-
-	-- Git integration
-	{
-		"lewis6991/gitsigns.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			require("gitsigns").setup({
-				signs = {
-					add          = { text = '│' },
-					change       = { text = '│' },
-					delete       = { text = '_' },
-					topdelete    = { text = '‾' },
-					changedelete = { text = '~' },
-					untracked    = { text = '┆' },
-				},
-				signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
-				numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
-				linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
-				word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
-				watch_gitdir = {
-					interval = 1000,
-					follow_files = true
-				},
-			})
-		end
-	},
 })
 
 -- -----------------------------------------------
@@ -288,8 +262,8 @@ vim.api.nvim_set_keymap("n", "<leader>g", ":Neogit<CR>", { noremap = true, silen
 
 -- Vim options and commands
 vim.g.indent_guides_enable_on_vim_startup = 1
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 0
+-- vim.g.loaded_netrwPlugin = 0
 vim.opt.termguicolors = true
 vim.g.skip_ts_context_commentstring_module = true
 
@@ -309,3 +283,6 @@ require("plugins")
 -- vim.api.nvim_command("echohl WarningMsg")
 -- vim.api.nvim_command("echomsg 'Neovim configuration loaded successfully!'")
 -- vim.api.nvim_command("echohl None")
+-- Disable line number column
+vim.opt.number = false
+vim.opt.relativenumber = false
