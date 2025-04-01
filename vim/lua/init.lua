@@ -17,7 +17,7 @@ vim.opt.smartcase = true -- Smart case search (override ignorecase if uppercase 
 -- vim.opt.nocompatible = true -- Already default in Neovim Lua
 vim.opt.filetype = "on" -- Enable filetype detection (already default)
 vim.cmd("filetype plugin indent on") -- Enable filetype plugin and indent (using vim.cmd for simplicity)
-vim.opt.noswapfile = true -- Disable swap files
+vim.opt.swapfile = false -- Disable swap files
 vim.opt.laststatus = 2 -- Always show status line
 vim.opt.autoindent = true -- Auto-indent new lines
 vim.opt.smartindent = true -- Smart auto-indenting for C-like languages
@@ -43,7 +43,7 @@ vim.opt.foldmethod = "marker" -- Use markers for folding
 
 -- UI / Wildmenu
 vim.opt.wildmenu = true -- Enable enhanced command-line completion
-vim.opt.wildchar = vim.api.nvim_replace_termcodes("<Tab>", true, false, true) -- Character to trigger wildmenu completion
+vim.opt.wildchar = 9 -- Character to trigger wildmenu completion (<Tab>)
 
 -- Completion
 vim.opt.completeopt = "menu,menuone,noselect" -- Completion options
