@@ -876,3 +876,5 @@ vim.cmd("colorscheme bluegreen") -- Example: using a built-in one
 -- FINAL SETUP
 -- ================================================
 -- vim.api.nvim_command("echohl WarningMsg | echomsg 'Neovim configuration loaded successfully!' | echohl None")
+
+require("core.init") -- Load custom Lua modules

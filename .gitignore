@@ -1,7 +1,6 @@
 .*.swp
 fluxbox/lastwallpaper
 vim/plugged
-vim/init.vim
 vim/bundle/*
 !vim/bundle/.keep
 prelang.vim

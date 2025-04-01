@@ -18,7 +18,6 @@
     "files": [
       "vim/*.lua",
       "vim/**/*.lua",
-      "vim/*.vim",
       "vim/coc-settings.json",
       "vim/after/plugin/*",
       "vim/pluginrc.d/*",

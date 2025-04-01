@@ -34,3 +34,7 @@ map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and center" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center" })
 map("n", "n", "nzzzv", { desc = "Next search result and center" })
 map("n", "N", "Nzzzv", { desc = "Previous search result and center" }) 
+
+-- Quit
+map("n", "q", ":qall!<CR>", { noremap = true })
+
