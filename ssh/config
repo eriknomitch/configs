@@ -29,7 +29,9 @@ ControlPath /tmp/%r@%h:%p
 # ------------------------------------------------
 # router.asus.com
 Host lan-router router router.asus.com
-  HostName router.asus.com
+  # HostName router.asus.com
+  HostName 192.168.50.1
+  Port 3333
   User admin
 
 # ------------------------------------------------
@@ -248,26 +250,26 @@ Host axle axle-thinkpad axle-thinkpad.local axle.dev
   User erik
   Port 22
   # IdentityFile ~/.ssh/id_rsa
-  
+
   # Enable persistent connections
   # ControlMaster auto
   # ControlPath ~/.ssh/control-%r@%h:%p
   # ControlPersist yes
-  
+
   # Enable compression
   # Compression yes
-  
+
   # Disable DNS lookups
   # UseDNS no
-  
+
   # Keep the connection alive
   # ServerAliveInterval 60
   # ServerAliveCountMax 3
   # TCPKeepAlive yes
-  # 
+  #
   # Use faster ciphers
   Ciphers aes128-ctr,aes192-ctr,aes256-ctr
-  
+
   # Forward local ports for convenience
   LocalForward 3000 localhost:3000
   LocalForward 3012 localhost:3012
