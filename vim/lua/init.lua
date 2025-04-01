@@ -1,4 +1,217 @@
-print("Loading init.lua")
+-- vim:foldmethod=marker
+
+-- ================================================
+-- OPTIONS (Converted from init.vim) {{{
+-- ================================================
+vim.opt.encoding = "utf-8" -- Set encoding to UTF-8
+vim.opt.number = true -- Show line numbers
+vim.opt.relativenumber = true -- Show relative line numbers
+vim.opt.termguicolors = true -- Enable true color support
+
+-- Search
+vim.opt.incsearch = true -- Instant search
+vim.opt.ignorecase = true -- Ignore case in search
+vim.opt.smartcase = true -- Smart case search (override ignorecase if uppercase letters are used)
+
+-- Behavior
+-- vim.opt.nocompatible = true -- Already default in Neovim Lua
+vim.opt.filetype = "on" -- Enable filetype detection (already default)
+vim.cmd("filetype plugin indent on") -- Enable filetype plugin and indent (using vim.cmd for simplicity)
+vim.opt.noswapfile = true -- Disable swap files
+vim.opt.laststatus = 2 -- Always show status line
+vim.opt.autoindent = true -- Auto-indent new lines
+vim.opt.smartindent = true -- Smart auto-indenting for C-like languages
+vim.opt.smarttab = true -- Use tabs for indentation based on shiftwidth
+vim.opt.magic = true -- Enable magic characters in regex
+vim.opt.maxmempattern = 1000 -- Max memory for pattern matching
+vim.opt.showmode = true -- Show current mode
+vim.opt.ruler = true -- Show cursor position
+vim.opt.hlsearch = true -- Highlight search results
+vim.opt.mouse = "" -- Disable mouse support
+vim.opt.backspace = "indent,eol,start" -- Allow backspace over everything in insert mode
+vim.opt.clipboard = "unnamedplus" -- Use system clipboard (prefer unnamedplus for Linux/Wayland/X11)
+-- If on macOS and 'unnamedplus' causes issues, try: vim.opt.clipboard = 'unnamed'
+
+-- Tabs and Indentation
+vim.opt.softtabstop = 2 -- Number of spaces that a <Tab> counts for
+vim.opt.tabstop = 2 -- Number of spaces that a <Tab> represents
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.shiftwidth = 2 -- Number of spaces to use for each step of (auto)indent
+
+-- Folding
+vim.opt.foldmethod = "marker" -- Use markers for folding
+
+-- UI / Wildmenu
+vim.opt.wildmenu = true -- Enable enhanced command-line completion
+vim.opt.wildchar = vim.api.nvim_replace_termcodes("<Tab>", true, false, true) -- Character to trigger wildmenu completion
+
+-- Completion
+vim.opt.completeopt = "menu,menuone,noselect" -- Completion options
+
+-- Netrw (Attempt to disable in favor of nvim-tree)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- }}}
+-- ================================================
+-- KEYMAPS (Converted from init.vim) {{{
+-- ================================================
+vim.g.mapleader = "\\" -- Set leader key (already set, but confirming)
+
+-- Faster navigation with Shift
+vim.keymap.set("n", "<S-j>", "4j", { noremap = true, silent = true })
+vim.keymap.set("n", "<S-k>", "4k", { noremap = true, silent = true })
+vim.keymap.set("n", "<S-h>", "4h", { noremap = true, silent = true })
+vim.keymap.set("n", "<S-l>", "4l", { noremap = true, silent = true })
+
+-- Buffer navigation
+vim.keymap.set({"n", "i", "v"}, "<C-S-Right>", "<cmd>next<CR>", { noremap = true, silent = true })
+vim.keymap.set({"n", "i", "v"}, "<C-S-Left>", "<cmd>prev<CR>", { noremap = true, silent = true })
+
+-- Page navigation
+vim.keymap.set({"n", "v", "o"}, "<Space>", "<PageDown>", { noremap = true })
+vim.keymap.set({"n", "v", "o"}, "-", "<PageUp>", { noremap = true })
+
+-- Virtual lines navigation (use gj/gk instead of j/k)
+vim.keymap.set("n", "j", "gj", { noremap = true })
+vim.keymap.set("n", "k", "gk", { noremap = true })
+vim.keymap.set({"n", "v", "o"}, "<Up>", "gk", { noremap = true })
+vim.keymap.set({"n", "v", "o"}, "<Down>", "gj", { noremap = true })
+
+-- Folding remaps
+vim.keymap.set("n", "zO", "zR", { noremap = true }) -- Open folds recursively
+vim.keymap.set("n", "zC", "zM", { noremap = true }) -- Close folds recursively
+
+-- Insert literal tab with Shift+Tab
+vim.keymap.set("i", "<S-Tab>", "<C-V><Tab>", { noremap = true })
+
+-- Window resizing
+vim.keymap.set({"n", "i", "v"}, "<C-S-Left>", "<cmd>vertical resize +5<CR>", { noremap = true, silent = true })
+vim.keymap.set({"n", "i", "v"}, "<C-S-Right>", "<cmd>vertical resize -5<CR>", { noremap = true, silent = true })
+vim.keymap.set({"n", "i", "v"}, "<C-S-Up>", "<cmd>resize +5<CR>", { noremap = true, silent = true })
+vim.keymap.set({"n", "i", "v"}, "<C-S-Down>", "<cmd>resize -5<CR>", { noremap = true, silent = true })
+
+-- Paste toggle (using F3 as defined in options)
+-- nnoremap <F3> :set invpaste paste?<CR> -- Handled by pastetoggle option
+-- map <F1> :set paste<CR>
+-- map <F2> :set nopaste<CR>
+-- imap <F1> <C-O>:set paste<CR>
+-- imap <F2> <nop>
+-- Note: F1/F2 mappings are less common now, consider removing if not used.
+vim.keymap.set({"n", "i"}, "<F1>", "<cmd>set paste<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<F2>", "<cmd>set nopaste<CR>", { noremap = true, silent = true })
+-- For insert mode F2, <nop> means do nothing, effectively disabling it if it had a default.
+vim.keymap.set("i", "<F2>", "<nop>", { noremap = true, silent = true })
+
+
+-- Quick quit mapping
+vim.keymap.set("n", "q", "<cmd>wqall<CR>", { noremap = true, silent = true })
+
+-- Whisper Mappings (Translated)
+-- NOTE: These rely on external scripts and temporary files. Ensure `whisper.nvim` script exists and works.
+local whisper_cmd = "!whisper.nvim"
+local process_whisper_output_cmd =
+	"let @a = system(\"cat /tmp/whisper.nvim | tail -n 1 | xargs -0 | tr -d '\\n' | sed -e 's/^[[:space:]]*//'\")"
+
+vim.keymap.set("i", "<C-G>", "<C-O>:" .. whisper_cmd .. "<CR><C-O>:" .. process_whisper_output_cmd .. "<CR><C-R>a", { noremap = true, silent = true, desc = "Whisper: Insert transcription" })
+vim.keymap.set("n", "<C-G>", ":" .. whisper_cmd .. "<CR>:" .. process_whisper_output_cmd .. "<CR>\"ap", { noremap = true, silent = true, desc = "Whisper: Put transcription" })
+vim.keymap.set("v", "<C-G>", "c<C-O>:" .. whisper_cmd .. "<CR><C-O>:" .. process_whisper_output_cmd .. "<CR><C-R>a", { noremap = true, silent = true, desc = "Whisper: Replace selection with transcription" })
+
+
+-- }}}
+-- ================================================
+-- AUTOCMDS (Converted from init.vim) {{{
+-- ================================================
+local augroup = vim.api.nvim_create_augroup("UserSettings", { clear = true })
+
+-- Spellcheck for markdown and text files
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = {"*.md", "*.txt"},
+  command = "setlocal spell",
+  group = augroup,
+})
+
+-- Disable spellcheck for specific file pattern
+vim.api.nvim_create_autocmd("BufRead", {
+  pattern = ".del.txt",
+  command = "setlocal nospell",
+  group = augroup,
+})
+
+-- Set textwidth for markdown
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "*.md",
+  command = "setlocal textwidth=300",
+  group = augroup,
+})
+
+-- Fix crontab editing issue
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "crontab",
+  command = "setlocal backupcopy=yes",
+  group = augroup,
+})
+
+-- Set filetype for TSX/JSX
+vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+  pattern = {"*.tsx", "*.jsx"},
+  command = "set filetype=typescriptreact",
+  group = augroup,
+})
+
+-- Tmux integration (Consider using tmux.nvim plugin features instead)
+if vim.env.TMUX then
+  vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "*",
+    callback = function()
+      local filename = vim.fn.expand("%:t")
+      if filename ~= "" then
+        vim.fn.system("tmux rename-window '" .. filename .. "'")
+      end
+    end,
+    group = augroup,
+  })
+  vim.api.nvim_create_autocmd("VimLeave", {
+    pattern = "*",
+    command = "!tmux setw automatic-rename",
+    group = augroup,
+  })
+end
+
+-- }}}
+-- ================================================
+-- COMMANDS (Converted from init.vim) {{{
+-- ================================================
+-- Write buffer with sudo
+-- Note: cmap is tricky to translate directly to Lua. Using vim.cmd for simplicity.
+vim.cmd([[cmap w!! w !sudo tee > /dev/null %]])
+
+-- Write/edit all windows
+vim.api.nvim_create_user_command('W', 'windo w', {})
+vim.api.nvim_create_user_command('E', 'windo e', {})
+
+-- Custom Edit command
+local function custom_edit(args)
+  local path = args.fargs[1]
+  if path then
+    vim.cmd('edit ' .. path)
+    vim.cmd('badd ' .. path)
+  else
+    print("Error: No path provided for E command")
+  end
+end
+vim.api.nvim_create_user_command('E', custom_edit, { nargs = 1 })
+
+
+-- }}}
+-- ================================================
+-- COLORSCHEME {{{
+-- ================================================
+-- Set colorscheme (ensure it's installed or a default one)
+-- Consider managing colorschemes with lazy.nvim for better results
+vim.cmd("colorscheme bluegreen")
+
+-- }}}
 
 -- Set up lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -265,14 +478,14 @@ vim.g.indent_guides_enable_on_vim_startup = 1
 -- vim.g.loaded_netrw = 0
 -- vim.g.loaded_netrwPlugin = 0
 vim.opt.termguicolors = true
-vim.g.skip_ts_context_commentstring_module = true
+-- vim.g.skip_ts_context_commentstring_module = true -- This might be needed depending on Treesitter/commentstring setup
 
--- Custom highlights
-vim.cmd([[highlight NvimTreeNormal guibg=#111111 gui=nocombine guifg=#777777]])
-vim.cmd([[highlight EndOfBuffer guibg=#090909 gui=nocombine guifg=#090909]])
+-- Custom highlights (Example - adjust as needed)
+-- vim.cmd([[highlight NvimTreeNormal guibg=#111111 gui=nocombine guifg=#777777]]) -- NvimTree might have its own config for this
+-- vim.cmd([[highlight EndOfBuffer guibg=#090909 gui=nocombine guifg=#090909]]) -- Adjust colors as desired
 
--- Initialize core configuration
-require("core")
+-- Initialize core configuration (If you have a core.lua)
+-- require("core")
 
 -- Initialize plugins
 require("plugins")
