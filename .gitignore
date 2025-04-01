@@ -1,6 +1,5 @@
 .*.swp
 fluxbox/lastwallpaper
-vim/.*
 vim/plugged
 vim/init.vim
 vim/bundle/*
