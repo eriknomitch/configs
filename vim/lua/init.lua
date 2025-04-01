@@ -845,15 +845,6 @@ require("lazy").setup({
 		end,
 	},
 	{ "skywind3000/asyncrun.vim" }, -- Run async commands
-	{ -- Remote development plugin (alternative to built-in netrw/scp)
-		"chipsenkbeil/distant.nvim",
-		branch = "v0.3", -- Check for latest tag/branch
-		config = function()
-			require("distant"):setup({
-				-- Optional configuration
-			})
-		end,
-	},
 }, {
 	-- Lazy.nvim options
 	ui = {
