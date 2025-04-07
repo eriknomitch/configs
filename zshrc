@@ -118,6 +118,8 @@ function aider-commit() {
 alias git-ac=aider-commit
 alias ac=aider-commit
 
+alias edit-claude-desktop-config="${EDITOR} \"${HOME/}Library/Application Support/Claude/claude_desktop_config.json\""
+
 # AIDER->MAIN
 # ------------------------------------------------
 function a() {
@@ -167,7 +169,7 @@ function autopage() {
         # Increment line count and append to buffer
         ((line_count++))
         buffer+="$line"$'\n'
-        
+
         # Break the loop if line count exceeds terminal height
         if (( line_count > terminal_height )); then
             break
@@ -657,11 +659,6 @@ function ya() {
 	fi
 	rm -f -- "$tmp"
 }
-
-# ------------------------------------------------
-# WHISPER/WHISPER.NVIM ---------------------------
-# ------------------------------------------------
-export WHISPER_CPP_HOME=$HOME/.repositories/whisper.cpp
 
 # ------------------------------------------------
 # TEA --------------------------------------------
