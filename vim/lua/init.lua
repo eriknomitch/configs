@@ -21,8 +21,8 @@ vim.opt.filetype = "on" -- Enable filetype detection (default in Neovim)
 vim.cmd("filetype plugin indent on") -- Enable filetype plugins and indentation
 
 -- UI / Appearance
-vim.opt.number = true -- Show line numbers
-vim.opt.relativenumber = true -- Show relative line numbers
+vim.opt.number = false -- Show line numbers
+vim.opt.relativenumber = false-- Show relative line numbers
 vim.opt.termguicolors = true -- Enable true color support in the terminal
 vim.opt.laststatus = 2 -- Always show the status line
 vim.opt.showmode = false -- Don't show mode in command line (handled by statusline usually)
