@@ -255,7 +255,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = augroup,
 	pattern = "*",
 	callback = function()
-		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
+		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 100 })
 	end,
 	desc = "Highlight yanked region",
 })
@@ -869,7 +869,7 @@ require("lazy").setup({
 	    config = function()
 	        require("telescope").load_extension("file_browser")
 	        -- Add keymap for file browser
-	        map("n", "<leader>fb", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>", { noremap = true, silent = true, desc = "File Browser" })
+	        -- map("n", "<leader>fb", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>", { noremap = true, silent = true, desc = "File Browser" })
 	    end,
 	},
 

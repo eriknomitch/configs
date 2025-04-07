@@ -2,10 +2,14 @@
 -- CONFIGS->TELESCOPE-NVIM =======================
 -- ===============================================
 local mapx = require("mapx")
+local map = vim.keymap.set
 
 mapx.nnoremap({ "<Leader>T" }, ":Telescope<Cr>", "silent")
 
-mapx.nnoremap({ "<Leader>b", "<C-p>" }, ":lua require('telescope.builtin').buffers()<Cr>", "silent")
+-- Use standard map for instant trigger, add description
+map("n", "<Leader>b", "<cmd>lua require('telescope.builtin').buffers()<CR>", { noremap = true, silent = true, desc = "Find Buffers" })
+map("n", "<C-p>", "<cmd>lua require('telescope.builtin').buffers()<CR>", { noremap = true, silent = true, desc = "Find Buffers (Ctrl+P)" }) -- Keep Ctrl+P mapping separate if desired
+
 mapx.nnoremap({ "<Leader>f" }, ":lua require('telescope.builtin').find_files()<Cr>", "silent")
 mapx.nnoremap({ "<Leader>s" }, ":lua require('telescope.builtin').live_grep({grep_open_files=true})<Cr>", "silent")
 -- mapx.nnoremap({"<Leader>fg", "<Leader>g"}, ":lua require('telescope.builtin').live_grep()<Cr>", "silent")
