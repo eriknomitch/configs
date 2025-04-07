@@ -693,6 +693,6 @@ pcall(require, "core.keymaps")
 pcall(require, "plugins.init")
 
 -- Add a final message to confirm loading
-print("Neovim configuration loaded!")
+-- print("Neovim configuration loaded!")
 
 
