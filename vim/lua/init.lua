@@ -1,155 +1,99 @@
--- Cleaned Neovim init.lua
-
 -- ================================================
 -- LEADER KEY
 -- ================================================
 -- Set leader key *before* plugins and keymaps
+-- NOTE: Both vim.g.mapleader and g.mapleader were set to "\\". Keeping one.
 vim.g.mapleader = "\\"
-vim.g.localleader = "\\" -- Optional: Set localleader as well
+-- vim.g.localleader = "\\" -- Optional: Set localleader as well (Commented out as it wasn't in the second block)
 
 -- ================================================
 -- OPTIONS
 -- ================================================
--- File Handling & Encoding
-vim.opt.encoding = "utf-8"                             -- Use UTF-8 encoding
-vim.opt.fileencoding = "utf-8"                         -- Set file encoding to UTF-8
-vim.opt.swapfile = false                               -- Disable swap files
-vim.opt.backup = false                                 -- Disable backup files
-vim.opt.undofile = true                                -- Enable persistent undo
-vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir" -- Set undo directory
-vim.opt.filetype = "on"                                -- Enable filetype detection (default in Neovim)
-vim.cmd("filetype plugin indent on")                   -- Enable filetype plugins and indentation
-
--- UI / Appearance
-vim.opt.number = false -- Show line numbers
-vim.opt.relativenumber = false -- Show relative line numbers
-vim.opt.termguicolors = true -- Enable true color support in the terminal
-vim.opt.laststatus = 2 -- Always show the status line
-vim.opt.showmode = false -- Don't show mode in command line (handled by statusline usually)
-vim.opt.ruler = false -- Don't show ruler (often redundant with statusline)
-vim.opt.signcolumn = "yes" -- Always show the sign column to prevent layout shifts
-vim.opt.scrolloff = 8 -- Keep 8 lines visible above/below cursor when scrolling
-vim.opt.sidescrolloff = 8 -- Keep 8 columns visible left/right of cursor when scrolling
-vim.opt.wrap = false -- Disable line wrapping
-vim.opt.linebreak = true -- Wrap lines at convenient places if wrap is enabled
-vim.opt.list = true -- Show invisible characters
-vim.opt.listchars = { tab = "▸ ", trail = "·", nbsp = "␣" } -- Define how invisible characters are shown
-
--- Search
-vim.opt.incsearch = true  -- Show search results incrementally
-vim.opt.hlsearch = true   -- Highlight search results
-vim.opt.ignorecase = true -- Ignore case when searching
-vim.opt.smartcase = true  -- Override ignorecase if search pattern contains uppercase letters
-
--- Behavior
-vim.opt.mouse = ""                            -- Disable mouse support
-vim.opt.clipboard = "unnamedplus"             -- Use system clipboard (use 'unnamed' on macOS if needed)
-vim.opt.backspace = "indent,eol,start"        -- Allow backspace over everything in insert mode
-vim.opt.autoindent = true                     -- Auto-indent new lines
-vim.opt.smartindent = true                    -- Smart auto-indenting for C-like languages
-vim.opt.completeopt = "menu,menuone,noselect" -- Completion options
-vim.opt.hidden = true                         -- Allow hidden buffers (required for buffer switching without saving)
--- vim.opt.updatetime = 300 -- Faster update time for CursorHold events (LSP, etc.)
--- vim.opt.timeoutlen = 100 -- Shorter timeout for key sequences
--- vim.opt.ttimeoutlen = 10 -- Shorter timeout for terminal key codes
-
--- Tabs and Indentation
-vim.opt.expandtab = true -- Use spaces instead of tabs
-vim.opt.tabstop = 2      -- Number of spaces a <Tab> represents
-vim.opt.softtabstop = 2  -- Number of spaces <Tab> counts for in editing operations
-vim.opt.shiftwidth = 2   -- Number of spaces to use for (auto)indentation
-
--- Folding
-vim.opt.foldmethod = "marker" -- Use markers for folding (e.g., {{{ }}} )
-vim.opt.foldlevel = 99        -- Start with all folds open
-vim.opt.foldlevelstart = 99   -- Start editing with folds open
-vim.opt.foldenable = true     -- Enable folding
-
--- Wildmenu / Command Line
-vim.opt.wildmenu = true                -- Enable enhanced command-line completion
-vim.opt.wildmode = "longest:full,full" -- Completion mode for wildmenu
-vim.opt.wildchar = 9                   -- Character to trigger wildmenu completion (<Tab>)
-
--- Performance
-vim.opt.lazyredraw = true    -- Don't redraw while executing macros or other commands
-vim.opt.maxmempattern = 1000 -- Max memory for pattern matching
-
--- Disable built-in Netrw in favor of nvim-tree
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
-
+-- Using local variables for brevity and potential performance benefits
 local opt = vim.opt
 local g = vim.g
+local map = vim.keymap.set -- Assuming this is used later, keeping it here
 
-local map = vim.keymap.set
+-- File Handling & Encoding
+opt.encoding = "utf-8"         -- Use UTF-8 encoding (Duplicate removed: vim.opt.encoding)
+opt.fileencoding = "utf-8"     -- Set file encoding to UTF-8 (Duplicate removed: vim.opt.fileencoding)
+opt.swapfile = false           -- Disable swap files (Duplicate removed: vim.opt.swapfile)
+opt.backup = false             -- Disable backup files (Duplicate removed: vim.opt.backup)
+opt.writebackup = false        -- Ensure write backup is also off (Added from second block)
+opt.undofile = true            -- Enable persistent undo (Duplicate removed: vim.opt.undofile)
+opt.undodir = vim.fn.stdpath("data") .. "/undodir" -- Set undo directory (Kept from first block)
+opt.filetype = "on"            -- Enable filetype detection (default in Neovim) (Kept from first block)
+vim.cmd("filetype plugin indent on") -- Enable filetype plugins and indentation (Duplicate removed)
 
--- Leader key
-g.mapleader = "\\"
+-- UI / Appearance
+opt.number = false             -- Show line numbers (Duplicate removed: vim.opt.number)
+opt.relativenumber = false     -- Show relative line numbers (Duplicate removed: vim.opt.relativenumber)
+opt.termguicolors = true       -- Enable true color support (Duplicate removed: vim.opt.termguicolors)
+opt.background = "dark"        -- Set background (Added from second block)
+opt.laststatus = 2             -- Always show the status line (Kept from first block)
+opt.showmode = false           -- Don't show mode (Kept from first block)
+opt.ruler = false              -- Don't show ruler (Kept from first block)
+opt.signcolumn = "yes"         -- Always show sign column (Duplicate removed: vim.opt.signcolumn)
+opt.scrolloff = 8              -- Keep 8 lines visible (Duplicate removed: vim.opt.scrolloff)
+opt.sidescrolloff = 8          -- Keep 8 columns visible (Kept from first block)
+opt.wrap = false               -- Disable line wrapping (Duplicate removed: vim.opt.wrap)
+opt.linebreak = true           -- Wrap lines nicely if wrap is enabled (Kept from first block)
+opt.list = true                -- Show invisible characters (Kept from first block)
+opt.listchars = { tab = "▸ ", trail = "·", nbsp = "␣" } -- Define invisible chars (Kept from first block)
+opt.cursorline = true          -- Highlight the current line (Added from second block)
 
--- Line numbers
-opt.number = false
-opt.relativenumber = false
+-- Search
+opt.incsearch = true           -- Incremental search (Duplicate removed: vim.opt.incsearch)
+opt.hlsearch = true            -- Highlight search results (Duplicate removed: vim.opt.hlsearch)
+opt.ignorecase = true          -- Ignore case (Duplicate removed: vim.opt.ignorecase)
+opt.smartcase = true           -- Smart case (Duplicate removed: vim.opt.smartcase)
 
--- Tabs & Indentation
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.expandtab = true
-opt.autoindent = true
-opt.smartindent = true
-
--- Line wrapping
-opt.wrap = false
-
--- Search settings
-opt.ignorecase = true
-opt.smartcase = true
-opt.hlsearch = true
-opt.incsearch = true
-
--- Cursor line
-opt.cursorline = true
-
--- Appearance
-opt.termguicolors = true
-opt.background = "dark"
-opt.signcolumn = "yes"
-
--- Backspace
-opt.backspace = "indent,eol,start"
-
--- Clipboard
-opt.clipboard:append("unnamedplus")
-
--- Split windows
-opt.splitright = true
-opt.splitbelow = true
-
--- Consider - as part of word
-opt.iskeyword:append("-")
-
--- Disable swapfile and backup
-opt.swapfile = false
-opt.backup = false
-opt.writebackup = false
-
--- Persistent undo
-opt.undofile = true
-
--- Update time
--- opt.updatetime = 50
-
--- Scroll offset
-opt.scrolloff = 8
-
--- Enable mouse
+-- Behavior
+-- CONFLICT: vim.opt.mouse = "" (disabled) vs opt.mouse = "a" (enabled). Choosing "a" (enabled) from the second block.
 opt.mouse = "a"
+opt.clipboard = "unnamedplus"  -- Use system clipboard (Duplicate handled: vim.opt.clipboard vs opt.clipboard:append)
+opt.backspace = "indent,eol,start" -- Backspace behavior (Duplicate removed: vim.opt.backspace)
+opt.autoindent = true          -- Auto-indent (Duplicate removed: vim.opt.autoindent)
+opt.smartindent = true         -- Smart indent (Duplicate removed: vim.opt.smartindent)
+opt.completeopt = "menu,menuone,noselect" -- Completion options (Kept from first block)
+opt.hidden = true              -- Allow hidden buffers (Kept from first block)
+-- opt.updatetime = 300        -- Faster update time (Commented out in first block)
+-- opt.updatetime = 50         -- Faster update time (Commented out in second block) - Keeping commented
+-- opt.timeoutlen = 100        -- Shorter timeout (Commented out in first block) - Keeping commented
+-- opt.ttimeoutlen = 10        -- Shorter ttimeout (Commented out in first block) - Keeping commented
+opt.splitright = true          -- Split new windows right (Added from second block)
+opt.splitbelow = true          -- Split new windows below (Added from second block)
+opt.iskeyword:append("-")      -- Consider - as part of word (Added from second block)
 
--- Enable filetype plugins
-vim.cmd("filetype plugin indent on")
+-- Tabs and Indentation
+opt.expandtab = true           -- Use spaces instead of tabs (Duplicate removed: vim.opt.expandtab)
+opt.tabstop = 2                -- Tab width (Duplicate removed: vim.opt.tabstop)
+opt.softtabstop = 2            -- Soft tab width (Kept from first block)
+opt.shiftwidth = 2             -- Indentation width (Duplicate removed: vim.opt.shiftwidth)
+
+-- Folding
+opt.foldmethod = "marker"      -- Use markers for folding (Kept from first block)
+opt.foldlevel = 99             -- Start with folds open (Kept from first block)
+opt.foldlevelstart = 99        -- Start editing with folds open (Kept from first block)
+opt.foldenable = true          -- Enable folding (Kept from first block)
+
+-- Wildmenu / Command Line
+opt.wildmenu = true            -- Enable enhanced command-line completion (Kept from first block)
+opt.wildmode = "longest:full,full" -- Completion mode (Kept from first block)
+opt.wildchar = 9               -- Trigger char (<Tab>) (Kept from first block)
+
+-- Performance
+opt.lazyredraw = true          -- Don't redraw during macros (Kept from first block)
+opt.maxmempattern = 1000       -- Max memory for pattern matching (Kept from first block)
+
+-- Disable built-in Netrw (if using nvim-tree)
+-- g.loaded_netrw = 1          -- (Commented out in first block) - Keeping commented
+-- g.loaded_netrwPlugin = 1    -- (Commented out in first block) - Keeping commented
 
 -- ================================================
 -- AUTOCMDS
 -- ================================================
+-- NOTE: This section appears only once, keeping as is.
 local augroup = vim.api.nvim_create_augroup("UserSettings", { clear = true })
 
 -- Highlight yanked text briefly
@@ -195,8 +139,8 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Set filetype for specific extensions (Treesitter often handles this, but explicit can be useful)
 -- vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
 --   group = augroup,
---   pattern = {"*.tsx", "*.jsx"},
---   command = "set filetype=typescriptreact", -- Or javascriptreact
+--   pattern = {"*.tsx", "*.jsx"},
+--   command = "set filetype=typescriptreact", -- Or javascriptreact
 --   desc = "Set filetype for TSX/JSX",
 -- })
 
@@ -218,6 +162,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 -- ================================================
 -- COMMANDS
 -- ================================================
+-- NOTE: This section appears only once, keeping as is.
 -- Write buffer with sudo (uses Vimscript in vim.cmd)
 vim.cmd([[cmap w!! %!sudo tee > /dev/null %]])
 vim.cmd([[ca w!! w!!]]) -- Alias for command mode
@@ -229,6 +174,7 @@ vim.api.nvim_create_user_command("E", "windo edit", { desc = "Edit all windows (
 -- ================================================
 -- LAZY.NVIM PLUGIN MANAGER
 -- ================================================
+-- NOTE: This section appears only once, keeping as is.
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -354,7 +300,7 @@ require("lazy").setup({
   -- },
   { "tpope/vim-repeat" },       -- Repeat plugin actions with '.'
   { "junegunn/vim-easy-align" }, -- Easy alignment command (e.g., gaip=)
-  { "mbbill/undotree" },        -- Visualize undo history
+  { "mbbill/undotree" },       -- Visualize undo history
 
   -- ================= Syntax & Treesitter =================
   {
@@ -453,17 +399,52 @@ require("lazy").setup({
   },
   {
     "neovim/nvim-lspconfig", -- Core LSP configuration
-    dependencies = { "mason-lspconfig.nvim" },
+    dependencies = { "mason-lspconfig.nvim", "hrsh7th/cmp-nvim-lsp" }, -- Added cmp-nvim-lsp dependency
     config = function()
       local lspconfig = require("lspconfig")
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      -- Ensure cmp_nvim_lsp capabilities are loaded correctly
+      local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+      -- Define the on_attach function for LSP keymaps and settings
+      -- Moved definition before usage in setup_handlers
+      local on_attach = function(client, bufnr)
+        -- map is defined at the top
+        local bufopts = { noremap = true, silent = true, buffer = bufnr }
+        map("n", "gD", vim.lsp.buf.declaration, { noremap = true, silent = true, buffer = bufnr, desc = "Go to Declaration" })
+        map("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true, buffer = bufnr, desc = "Go to Definition" })
+        map("n", "K", vim.lsp.buf.hover, { noremap = true, silent = true, buffer = bufnr, desc = "Hover Documentation" })
+        map("n", "gi", vim.lsp.buf.implementation, { noremap = true, silent = true, buffer = bufnr, desc = "Go to Implementation" })
+        map("n", "<C-k>", vim.lsp.buf.signature_help, { noremap = true, silent = true, buffer = bufnr, desc = "Signature Help" })
+        map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, { noremap = true, silent = true, buffer = bufnr, desc = "Add Workspace Folder" })
+        map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, { noremap = true, silent = true, buffer = bufnr, desc = "Remove Workspace Folder" })
+        map("n", "<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, { noremap = true, silent = true, buffer = bufnr, desc = "List Workspace Folders" })
+        map("n", "<leader>D", vim.lsp.buf.type_definition, { noremap = true, silent = true, buffer = bufnr, desc = "Type Definition" })
+        map("n", "<leader>rn", vim.lsp.buf.rename, { noremap = true, silent = true, buffer = bufnr, desc = "Rename" })
+        map("n", "<leader>ca", vim.lsp.buf.code_action, { noremap = true, silent = true, buffer = bufnr, desc = "Code Action" })
+        map("n", "gr", vim.lsp.buf.references, { noremap = true, silent = true, buffer = bufnr, desc = "Go to References" })
+        map("n", "<leader>e", vim.diagnostic.open_float, { noremap = true, silent = true, buffer = bufnr, desc = "Show Line Diagnostics" })
+        map("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true, buffer = bufnr, desc = "Previous Diagnostic" })
+        map("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true, buffer = bufnr, desc = "Next Diagnostic" })
+        map("n", "<leader>q", vim.diagnostic.setloclist, { noremap = true, silent = true, buffer = bufnr, desc = "Diagnostic SetLocList" })
+
+        -- Enable formatting if the server supports it
+        if client.supports_method("textDocument/formatting") then
+          map("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, { noremap = true, silent = true, buffer = bufnr, desc = "Format Code" })
+          -- Optional: Format on save
+          -- vim.api.nvim_create_autocmd("BufWritePre", {
+          --     group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true }),
+          --     buffer = bufnr,
+          --     callback = function() vim.lsp.buf.format({ async = false }) end,
+          -- })
+        end
+      end
 
       -- Setup servers managed by mason-lspconfig
       require("mason-lspconfig").setup_handlers({
         function(server_name) -- Default handler
           lspconfig[server_name].setup({
             capabilities = capabilities,
-            on_attach = on_attach, -- Define on_attach function below
+            on_attach = on_attach, -- Use the defined on_attach function
           })
         end,
         -- Custom setup for specific servers if needed
@@ -508,117 +489,6 @@ require("lazy").setup({
         -- Add other custom setups here...
       })
 
-      -- Define the on_attach function for LSP keymaps and settings
-      function on_attach(client, bufnr)
-        local bufopts = { noremap = true, silent = true, buffer = bufnr }
-        map(
-          "n",
-          "gD",
-          vim.lsp.buf.declaration,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Go to Declaration" }
-        )
-        map(
-          "n",
-          "gd",
-          vim.lsp.buf.definition,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Go to Definition" }
-        )
-        map(
-          "n",
-          "K",
-          vim.lsp.buf.hover,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Hover Documentation" }
-        )
-        map(
-          "n",
-          "gi",
-          vim.lsp.buf.implementation,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Go to Implementation" }
-        )
-        map(
-          "n",
-          "<C-k>",
-          vim.lsp.buf.signature_help,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Signature Help" }
-        )
-        map(
-          "n",
-          "<leader>wa",
-          vim.lsp.buf.add_workspace_folder,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Add Workspace Folder" }
-        )
-        map(
-          "n",
-          "<leader>wr",
-          vim.lsp.buf.remove_workspace_folder,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Remove Workspace Folder" }
-        )
-        map("n", "<leader>wl", function()
-          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        end, { noremap = true, silent = true, buffer = bufnr, desc = "List Workspace Folders" })
-        map(
-          "n",
-          "<leader>D",
-          vim.lsp.buf.type_definition,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Type Definition" }
-        )
-        map(
-          "n",
-          "<leader>rn",
-          vim.lsp.buf.rename,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Rename" }
-        )
-        map(
-          "n",
-          "<leader>ca",
-          vim.lsp.buf.code_action,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Code Action" }
-        )
-        map(
-          "n",
-          "gr",
-          vim.lsp.buf.references,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Go to References" }
-        )
-        map(
-          "n",
-          "<leader>e",
-          vim.diagnostic.open_float,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Show Line Diagnostics" }
-        )
-        map(
-          "n",
-          "[d",
-          vim.diagnostic.goto_prev,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Previous Diagnostic" }
-        )
-        map(
-          "n",
-          "]d",
-          vim.diagnostic.goto_next,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Next Diagnostic" }
-        )
-        map(
-          "n",
-          "<leader>q",
-          vim.diagnostic.setloclist,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Diagnostic SetLocList" }
-        )
-
-        -- Enable formatting if the server supports it
-        if client.supports_method("textDocument/formatting") then
-          map("n", "<leader>f", function()
-            vim.lsp.buf.format({ async = true })
-          end, { noremap = true, silent = true, buffer = bufnr, desc = "Format Code" })
-          -- Optional: Format on save
-          -- vim.api.nvim_create_autocmd("BufWritePre", {
-          --     group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true }),
-          --     buffer = bufnr,
-          --     callback = function() vim.lsp.buf.format({ async = false }) end,
-          -- })
-        end
-      end
-
       -- Configure diagnostic signs (requires nvim-web-devicons)
       local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
       for type, icon in pairs(signs) do
@@ -635,7 +505,7 @@ require("lazy").setup({
     end,
   },
   {
-    "hrsh7th/nvim-cmp",        -- Autocompletion engine
+    "hrsh7th/nvim-cmp",       -- Autocompletion engine
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",  -- LSP source
       "hrsh7th/cmp-buffer",    -- Buffer source
@@ -661,7 +531,7 @@ require("lazy").setup({
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
           ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Confirm with Enter
-          ["<Tab>"] = cmp.mapping(function(fallback)    -- Tab completion / snippet navigation
+          ["<Tab>"] = cmp.mapping(function(fallback)   -- Tab completion / snippet navigation
             if cmp.visible() then
               cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
@@ -769,8 +639,8 @@ require("lazy").setup({
     "nvim-telescope/telescope-file-browser.nvim",
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
     config = function()
-      require("telescope").load_extension("file_browser")
-      -- Add keymap for file browser
+      pcall(require("telescope").load_extension, "file_browser") -- Use pcall for safety
+      -- Add keymap for file browser (ensure map is defined)
       map("n", "<leader>fb", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
         { noremap = true, silent = true, desc = "File Browser" })
     end,
@@ -782,7 +652,7 @@ require("lazy").setup({
   -- ================= Miscellaneous =================
   { "b0o/mapx.nvim",     lazy = true }, -- Advanced keymapping utility (if needed)
   {
-    "aserowy/tmux.nvim",           -- Tmux integration
+    "aserowy/tmux.nvim",         -- Tmux integration
     config = function()
       require("tmux").setup({
         -- copy_sync = { enable = true }, -- Sync vim clipboard with tmux
@@ -804,20 +674,25 @@ require("lazy").setup({
 -- ================================================
 -- Set colorscheme *after* plugins are potentially loaded
 -- Ensure the colorscheme is installed (e.g., via Lazy) or built-in
-vim.cmd("colorscheme bluegreen") -- Example: using a built-in one
+-- NOTE: This section appears only once, keeping as is.
+pcall(vim.cmd, "colorscheme bluegreen") -- Use pcall for safety if colorscheme doesn't exist
 
 -- Apply custom highlights if needed (might be better in colorscheme file or plugin config)
 -- vim.cmd([[highlight NvimTreeNormal guibg=#111111 gui=nocombine guifg=#777777]])
 -- vim.cmd([[highlight EndOfBuffer guibg=#090909 gui=nocombine guifg=#090909]])
 
 -- ================================================
--- FINAL SETUP
+-- FINAL SETUP / CUSTOM MODULES
 -- ================================================
+-- NOTE: This section appears only once, keeping as is.
 -- vim.api.nvim_command("echohl WarningMsg | echomsg 'Neovim configuration loaded successfully!' | echohl None")
 
-require("core.init") -- Load custom Lua modules
+-- Load custom Lua modules if they exist (use pcall for safety)
+pcall(require, "core.init")
+pcall(require, "core.keymaps")
+pcall(require, "plugins.init")
 
--- require("core.keymaps") -- Load custom keymaps
--- require("core.mappings") -- Load custom mappings"
+-- Add a final message to confirm loading
+print("Neovim configuration loaded!")
 
-require("plugins.init") -- Load custom plugin configurations
+

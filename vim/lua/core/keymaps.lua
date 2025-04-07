@@ -1,3 +1,36 @@
+-- ===============================================
+-- MAPPINGS ======================================
+-- ===============================================
+local mapx = require("mapx")
+
+-- vim
+-- nnoremap("<Leader>sv", ":source $MYVIMRC | echon '\"'$MYVIMRC'\" sourced'<CR>")
+-- nnoremap("<Leader>so", ":source % | echon '\"'expand('%')'\" sourced'<CR>")
+-- nnoremap("<Leader>M", ":messages<CR>")
+mapx.nnoremap("<Leader>M", ":Mason<CR>")
+mapx.nnoremap("<Leader>L", ":Lazy<CR>")
+
+-- nnoremap("<Leader>vs", ":vsplit<Cr>", "silent")
+-- nnoremap("<Leader>sp", ":split<Cr>", "silent")
+
+-- Plugins
+-- FIX: Move?
+-- nmap("gc", ":Commentary<Cr>", "silent")
+-- mapx.nmap("gc", ":Commentary<CR>", "silent")
+
+-- " Allow quit via single keypress (Q)
+-- " FROM: https://unix.stackexchange.com/a/93239
+mapx.map("Q", ":qall<CR>", "silent")
+mapx.map("W", ":wqall<CR>", "silent")
+mapx.map("!", ":wqall!<CR>", "silent")
+
+-- No Highlight
+mapx.nnoremap("<Leader>h", ":nohlsearch<CR>", "silent")
+
+-- Format
+mapx.nnoremap("<Leader>F", ":lua vim.lsp.buf.format {async = true}<CR>", "silent")
+
+
 local map = vim.keymap.set
 
 -- General
@@ -75,25 +108,6 @@ map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { noremap = true, silent = 
 map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { noremap = true, silent = true, desc = "Help Tags" })
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>", { noremap = true, silent = true, desc = "Find Old Files" })
 map("n", "<leader>fc", "<cmd>Telescope commands<cr>", { noremap = true, silent = true, desc = "Commands" })
-
--- Trouble diagnostics
-map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true, desc = "Toggle Trouble" })
-map(
-	"n",
-	"<leader>xw",
-	"<cmd>TroubleToggle workspace_diagnostics<cr>",
-	{ silent = true, noremap = true, desc = "Workspace Diagnostics" }
-)
-map(
-	"n",
-	"<leader>xd",
-	"<cmd>TroubleToggle document_diagnostics<cr>",
-	{ silent = true, noremap = true, desc = "Document Diagnostics" }
-)
-map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { silent = true, noremap = true, desc = "Quickfix List" })
-map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { silent = true, noremap = true, desc = "Location List" })
-map("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", { silent = true, noremap = true, desc = "LSP References" })
-
 
 -- General keymaps
 map("i", "jk", "<ESC>", { desc = "Exit insert mode" })

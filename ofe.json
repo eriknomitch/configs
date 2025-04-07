@@ -15,12 +15,12 @@
     "files": ["hyper.js"]
   },
   "vim": {
+    "extensions": [".lua"],
     "files": [
-      "vim/lua/init.lua",
-      "vim/lua/**/*.lua"
+      "vim/**/**"
     ],
-    "first_file": "vim/lua/init.lua",
-    "exclusions": ["vim/plugged"]
+    "exclusions": ["hammerspoon"],
+    "first_file": "vim/lua/init.lua"
   },
   "ssh": {
     "files": ["ssh/*"]
