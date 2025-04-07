@@ -4,6 +4,10 @@ local map = vim.keymap.set
 map("i", "jk", "<ESC>", { desc = "Exit insert mode" })
 map("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
+-- Make 'x' and 'X' delete without copying to clipboard
+map("n", "x", '"_x', { desc = "Delete character without copying" })
+map("n", "X", '"_X', { desc = "Delete character backwards without copying" })
+
 -- Window navigation
 map("n", "<C-h>", "<C-w>h", { desc = "Navigate to left window" })
 map("n", "<C-j>", "<C-w>j", { desc = "Navigate to bottom window" })
