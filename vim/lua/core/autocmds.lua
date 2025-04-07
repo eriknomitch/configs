@@ -52,4 +52,5 @@ autocmd("FileType", {
 autocmd("FileType", {
   pattern = { "python", "rust", "go" },
   command = "setlocal shiftwidth=4 tabstop=4",
-}) 
+})
+
