@@ -118,7 +118,7 @@ function aider-commit() {
 alias git-ac=aider-commit
 alias ac=aider-commit
 
-alias edit-claude-desktop-config="${EDITOR} \"${HOME/}Library/Application Support/Claude/claude_desktop_config.json\""
+alias edit-claude-desktop-config="${EDITOR} \"${HOME}/Library/Application Support/Claude/claude_desktop_config.json\""
 
 # AIDER->MAIN
 # ------------------------------------------------
