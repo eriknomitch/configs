@@ -6,7 +6,7 @@ g.mapleader = "\\"
 
 -- Line numbers
 opt.number = false
-opt.relativenumber = true
+opt.relativenumber = false
 
 -- Tabs & Indentation
 opt.tabstop = 2
@@ -63,4 +63,4 @@ opt.scrolloff = 8
 opt.mouse = "a"
 
 -- Enable filetype plugins
-vim.cmd("filetype plugin indent on") 
+vim.cmd("filetype plugin indent on")

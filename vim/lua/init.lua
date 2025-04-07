@@ -78,6 +78,73 @@ vim.opt.maxmempattern = 1000 -- Max memory for pattern matching
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+local opt = vim.opt
+local g = vim.g
+
+-- Leader key
+g.mapleader = "\\"
+
+-- Line numbers
+opt.number = false
+opt.relativenumber = false
+
+-- Tabs & Indentation
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
+opt.autoindent = true
+opt.smartindent = true
+
+-- Line wrapping
+opt.wrap = false
+
+-- Search settings
+opt.ignorecase = true
+opt.smartcase = true
+opt.hlsearch = true
+opt.incsearch = true
+
+-- Cursor line
+opt.cursorline = true
+
+-- Appearance
+opt.termguicolors = true
+opt.background = "dark"
+opt.signcolumn = "yes"
+
+-- Backspace
+opt.backspace = "indent,eol,start"
+
+-- Clipboard
+opt.clipboard:append("unnamedplus")
+
+-- Split windows
+opt.splitright = true
+opt.splitbelow = true
+
+-- Consider - as part of word
+opt.iskeyword:append("-")
+
+-- Disable swapfile and backup
+opt.swapfile = false
+opt.backup = false
+opt.writebackup = false
+
+-- Persistent undo
+opt.undofile = true
+
+-- Update time
+opt.updatetime = 50
+
+-- Scroll offset
+opt.scrolloff = 8
+
+-- Enable mouse
+opt.mouse = "a"
+
+-- Enable filetype plugins
+vim.cmd("filetype plugin indent on")
+
 -- ================================================
 -- KEYMAPS
 -- ================================================
@@ -144,29 +211,6 @@ map("i", "<S-Tab>", "<C-V><Tab>", { noremap = true, desc = "Insert literal tab" 
 -- map({"n", "i"}, "<F1>", "<cmd>set paste<CR>", { noremap = true, silent = true, desc = "Set paste mode" })
 -- map("n", "<F2>", "<cmd>set nopaste<CR>", { noremap = true, silent = true, desc = "Unset paste mode" })
 -- map("i", "<F2>", "<nop>", { noremap = true, silent = true }) -- Disable F2 in insert mode
-
--- Whisper Mappings (Requires external `whisper.nvim` script)
-local whisper_cmd = "!whisper.nvim"
-local process_whisper_output_cmd =
-	"let @a = system(\"cat /tmp/whisper.nvim | tail -n 1 | xargs -0 | tr -d '\\n' | sed -e 's/^[[:space:]]*//'\")"
-map(
-	"i",
-	"<C-G>",
-	"<C-O>:" .. whisper_cmd .. "<CR><C-O>:" .. process_whisper_output_cmd .. "<CR><C-R>a",
-	{ noremap = true, silent = true, desc = "Whisper: Insert transcription" }
-)
-map(
-	"n",
-	"<C-G>",
-	":" .. whisper_cmd .. "<CR>:" .. process_whisper_output_cmd .. '<CR>"ap',
-	{ noremap = true, silent = true, desc = "Whisper: Put transcription" }
-)
-map(
-	"v",
-	"<C-G>",
-	"c<C-O>:" .. whisper_cmd .. "<CR><C-O>:" .. process_whisper_output_cmd .. "<CR><C-R>a",
-	{ noremap = true, silent = true, desc = "Whisper: Replace selection with transcription" }
-)
 
 -- UndoTree Toggle
 map("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { noremap = true, silent = true, desc = "Toggle UndoTree" })
@@ -819,15 +863,15 @@ require("lazy").setup({
 			-- pcall(require("telescope").load_extension, "file_browser")
 		end,
 	},
-	-- { -- Optional: Telescope file browser extension
-	--     "nvim-telescope/telescope-file-browser.nvim",
-	--     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-	--     config = function()
-	--         require("telescope").load_extension("file_browser")
-	--         -- Add keymap for file browser
-	--         map("n", "<leader>fb", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>", { noremap = true, silent = true, desc = "File Browser" })
-	--     end,
-	-- },
+	{ -- Optional: Telescope file browser extension
+	    "nvim-telescope/telescope-file-browser.nvim",
+	    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+	    config = function()
+	        require("telescope").load_extension("file_browser")
+	        -- Add keymap for file browser
+	        map("n", "<leader>fb", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>", { noremap = true, silent = true, desc = "File Browser" })
+	    end,
+	},
 
 	-- ================= AI / Copilot =================
 	{ "github/copilot.vim" }, -- Requires Node.js
@@ -869,3 +913,4 @@ vim.cmd("colorscheme bluegreen") -- Example: using a built-in one
 -- vim.api.nvim_command("echohl WarningMsg | echomsg 'Neovim configuration loaded successfully!' | echohl None")
 
 require("core.init") -- Load custom Lua modules
+require("plugins.init") -- Load custom plugin configurations

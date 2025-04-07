@@ -16,15 +16,10 @@
   },
   "vim": {
     "files": [
-      "vim/*.lua",
-      "vim/**/*.lua",
-      "vim/coc-settings.json",
-      "vim/after/plugin/*",
-      "vim/pluginrc.d/*",
-      "vim/colors/*",
-      "vim/**/*.lua"
+      "vim/lua/init.lua",
+      "vim/lua/**/*.lua"
     ],
-    "first_file": "vim/init.lua",
+    "first_file": "vim/lua/init.lua",
     "exclusions": ["vim/plugged"]
   },
   "ssh": {
