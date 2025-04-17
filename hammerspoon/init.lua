@@ -50,8 +50,8 @@ local defaultTerminalName = "iTerm"
 local secondaryBrowserName = "Firefox Developer Edition"
 
 -- local defaultAiChatName = "ChatGPT"
-local defaultAiChatName = "Claude"
-local secondaryAiChatName = "ChatGPT"
+local defaultAiChatName = "ChatGPT"
+local secondaryAiChatName = "Claude"
 
 -- Adjustments
 -- -----------------------------------------------
