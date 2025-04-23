@@ -11,6 +11,9 @@ autoload -Uz colors; colors
 autoload -Uz add-zsh-hook
 autoload -Uz compinit
 
+# Ignore comments in interactive mode
+setopt interactivecomments
+
 # Restrict compinit to only run once every 24 hours
 if [ $(date +'%j') != $(/usr/bin/stat -f '%Sm' -t '%j' ${ZDOTDIR:-$HOME}/.zcompdump) ]; then
   compinit
