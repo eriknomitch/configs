@@ -122,6 +122,7 @@ map("n", "X", '"_X', { noremap = true, desc = "Delete character backwards withou
 map("v", "x", '"_d', { noremap = true, silent = true, desc = "Delete selection without copying" })
 map("n", "dd", '"_dd', { noremap = true, desc = "Delete line without copying" })
 map("n", "D", '"_D', { noremap = true, desc = "Delete to end of line without copying" })
+map("n", "<leader>m", "d", { desc = "Delete and Yank to Clipboard (Move)" })
 
 -- Indent and stay in visual mode
 map("v", "<", "<gv", { noremap = true, desc = "Indent left and stay in visual mode" })
