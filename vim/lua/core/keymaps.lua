@@ -152,7 +152,7 @@ map("n", "<Leader>M", "<cmd>Mason<CR>", { noremap = true, silent = true, desc = 
 map("n", "<Leader>L", "<cmd>Lazy<CR>", { noremap = true, silent = true, desc = "Open Lazy" }) -- Converted from mapx
 
 -- LSP Formatting
-map("n", "<Leader>=", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { noremap = true, silent = true, desc = "Format code" }) -- Converted from mapx
+map("n", "<Leader>-", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { noremap = true, silent = true, desc = "Format code" }) -- Converted from mapx
 
 -- UndoTree
 map("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { noremap = true, silent = true, desc = "Toggle UndoTree" })
