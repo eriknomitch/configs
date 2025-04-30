@@ -254,22 +254,21 @@ require("lazy").setup({
   -- 		})
   -- 	end,
   -- },
-  -- {
-  -- 	"rcarriga/nvim-notify", -- Notification manager
-  -- 	config = function()
-  -- 		vim.notify = require("notify")
-  -- 		require("notify").setup({
-  -- 			background_colour = "#000000", -- Dark background for notifications
-  -- 			timeout = 3000, -- Notifications disappear after 3 seconds
-  -- 		})
-  -- 	end,
-  -- },
-  -- {
-  -- 	"folke/trouble.nvim", -- Pretty diagnostics list
-  -- 	dependencies = { "nvim-tree/nvim-web-devicons" },
-  -- 	opts = {}, -- Use default configuration
-  -- },
   { "NvChad/nvim-colorizer.lua", opts = {} }, -- Display colors for hex codes, etc.
+  {
+    "rcarriga/nvim-notify", -- Notification manager
+    config = function()
+      vim.notify = require("notify")
+      require("notify").setup({
+        background_colour = "#000000", -- Dark background for notifications
+        timeout = 3000,                -- Notifications disappear after 3 seconds
+        stages = "static",               -- Static notifications (no fade-in/out)
+        render = "compact",              -- Compact rendering
+        fps = 60,
+        -- Add other nvim-notify config options here if needed
+      })
+    end,
+  },
 
   -- ================= Editing Enhancements =================
   -- {
@@ -706,7 +705,7 @@ pcall(require, "core.init")
 pcall(require, "core.keymaps")
 pcall(require, "plugins.init")
 
-notify_async("Neovim configuration loaded successfully!", "info", { title = "Configuration" })
+vim.notify("Configuration loaded.", vim.log.levels.INFO, { title = "Neovim" })
 
 -- Add a final message to confirm loading
 -- print("Neovim configuration loaded!")

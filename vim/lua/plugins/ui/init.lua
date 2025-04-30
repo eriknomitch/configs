@@ -51,15 +51,6 @@ return {
     end,
   },
 
-  -- Notifications
-  {
-    "rcarriga/nvim-notify",
-    event = "VeryLazy",
-    config = function()
-      vim.notify = require("notify")
-    end,
-  },
-
   -- Git signs
   --{
   --  "lewis6991/gitsigns.nvim",

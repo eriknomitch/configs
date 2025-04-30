@@ -191,4 +191,4 @@ map("n", "<Leader>f", "<cmd>Telescope find_files<cr>", { noremap = true, silent 
 -- local mapx = require("mapx") -- Remove this line if mapx is fully replaced
 
 -- print("Key mappings loaded!") -- Optional confirmation message
-notify_async("Key mappings loaded.") -- Notify asynchronously
+-- vim.notify("Key mappings loaded.", vim.log.levels.INFO, { title = "Neovim", render = "minimal" })
