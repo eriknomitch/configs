@@ -119,7 +119,7 @@ map("i", "<S-Tab>", "<C-V><Tab>", { noremap = true, desc = "Insert literal tab" 
 -- Delete without copying to clipboard register ("_ black hole register)
 map("n", "x", '"_x', { noremap = true, desc = "Delete character without copying" })
 map("n", "X", '"_X', { noremap = true, desc = "Delete character backwards without copying" })
-map("v", "x", '"_d', { noremap = true, silent = true, desc = "Delete selection without copying" })
+map("v", "x", "d", { noremap = true, silent = true, desc = "Delete selection and save for pasting" })
 map("n", "dd", '"_dd', { noremap = true, desc = "Delete line without copying" })
 map("n", "D", '"_D', { noremap = true, desc = "Delete to end of line without copying" })
 map("n", "<leader>m", "d", { desc = "Delete and Yank to Clipboard (Move)" })
@@ -176,4 +176,3 @@ map("n", "<Leader>f", "<cmd>Telescope find_files<cr>", { noremap = true, silent 
 -- local mapx = require("mapx") -- Remove this line if mapx is fully replaced
 
 print("Key mappings loaded!") -- Optional confirmation message
-
