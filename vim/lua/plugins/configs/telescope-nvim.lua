@@ -12,11 +12,11 @@ map("n", "<Leader>b", "<cmd>lua require('telescope.builtin').buffers()<CR>",
 map("n", "<C-p>", "<cmd>lua require('telescope.builtin').buffers()<CR>",
   { noremap = true, silent = true, desc = "Find Buffers (Ctrl+P)" })                                                                        -- Keep Ctrl+P mapping separate if desired
 
-mapx.nnoremap({ "<Leader>f" }, ":lua require('telescope.builtin').find_files()<Cr>", "silent")
+-- mapx.nnoremap({ "<Leader>f" }, ":lua require('telescope.builtin').find_files()<Cr>", "silent")
 mapx.nnoremap({ "<Leader>s" }, ":lua require('telescope.builtin').live_grep({grep_open_files=true})<Cr>", "silent")
-mapx.nnoremap({ "<Leader>fg", "<Leader>g" }, ":lua require('telescope.builtin').live_grep()<Cr>", "silent")
+-- mapx.nnoremap({ "<Leader>fg", "<Leader>g" }, ":lua require('telescope.builtin').live_grep()<Cr>", "silent")
 mapx.nnoremap({ "<Leader>gd", "<Leader>gs" }, ":lua require('telescope.builtin').git_status()<Cr>", "silent")
-mapx.nnoremap({ "<Leader>fh", "<Leader>th" }, ":lua require('telescope.builtin').help_tags()<Cr>", "silent")
+-- mapx.nnoremap({ "<Leader>fh", "<Leader>th" }, ":lua require('telescope.builtin').help_tags()<Cr>", "silent")
 -- vim.api.nvim_set_keymap(
 -- 	"n",
 -- 	"<Leader>s",

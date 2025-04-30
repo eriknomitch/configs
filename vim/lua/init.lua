@@ -428,15 +428,15 @@ require("lazy").setup({
         map("n", "<leader>q", vim.diagnostic.setloclist, { noremap = true, silent = true, buffer = bufnr, desc = "Diagnostic SetLocList" })
 
         -- Enable formatting if the server supports it
-        if client.supports_method("textDocument/formatting") then
-          map("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, { noremap = true, silent = true, buffer = bufnr, desc = "Format Code" })
-          -- Optional: Format on save
-          -- vim.api.nvim_create_autocmd("BufWritePre", {
-          --     group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true }),
-          --     buffer = bufnr,
-          --     callback = function() vim.lsp.buf.format({ async = false }) end,
-          -- })
-        end
+        -- if client.supports_method("textDocument/formatting") then
+        --   map("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, { noremap = true, silent = true, buffer = bufnr, desc = "Format Code" })
+        --   -- Optional: Format on save
+        --   -- vim.api.nvim_create_autocmd("BufWritePre", {
+        --   --     group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true }),
+        --   --     buffer = bufnr,
+        --   --     callback = function() vim.lsp.buf.format({ async = false }) end,
+        --   -- })
+        -- end
       end
 
       -- Setup servers managed by mason-lspconfig
@@ -641,8 +641,8 @@ require("lazy").setup({
     config = function()
       pcall(require("telescope").load_extension, "file_browser") -- Use pcall for safety
       -- Add keymap for file browser (ensure map is defined)
-      map("n", "<leader>fb", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
-        { noremap = true, silent = true, desc = "File Browser" })
+      -- map("n", "<leader>fb", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
+      --   { noremap = true, silent = true, desc = "File Browser" })
     end,
   },
 

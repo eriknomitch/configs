@@ -152,7 +152,7 @@ map("n", "<Leader>M", "<cmd>Mason<CR>", { noremap = true, silent = true, desc = 
 map("n", "<Leader>L", "<cmd>Lazy<CR>", { noremap = true, silent = true, desc = "Open Lazy" }) -- Converted from mapx
 
 -- LSP Formatting
-map("n", "<Leader>F", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { noremap = true, silent = true, desc = "Format code" }) -- Converted from mapx
+map("n", "<Leader>=", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { noremap = true, silent = true, desc = "Format code" }) -- Converted from mapx
 
 -- UndoTree
 map("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { noremap = true, silent = true, desc = "Toggle UndoTree" })
@@ -162,12 +162,12 @@ map("n", "<C-t>", "<cmd>NvimTreeToggle<CR>", { noremap = true, silent = true, de
 map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { noremap = true, silent = true, desc = "Toggle NvimTree (Explorer)" })
 
 -- Telescope
-map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { noremap = true, silent = true, desc = "Find Files" })
-map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { noremap = true, silent = true, desc = "Live Grep" })
-map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { noremap = true, silent = true, desc = "Find Buffers" })
-map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { noremap = true, silent = true, desc = "Help Tags" })
-map("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>", { noremap = true, silent = true, desc = "Find Old Files" })
-map("n", "<leader>fc", "<cmd>Telescope commands<cr>", { noremap = true, silent = true, desc = "Commands" })
+map("n", "<Leader>f", "<cmd>Telescope find_files<cr>", { noremap = true, silent = true, desc = "Find Files" })
+-- map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { noremap = true, silent = true, desc = "Live Grep" })
+-- map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { noremap = true, silent = true, desc = "Find Buffers" })
+-- map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { noremap = true, silent = true, desc = "Help Tags" })
+-- map("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>", { noremap = true, silent = true, desc = "Find Old Files" })
+-- map("n", "<leader>fc", "<cmd>Telescope commands<cr>", { noremap = true, silent = true, desc = "Commands" })
 
 -- Commentary (Commented out from original)
 -- map("n", "gc", ":Commentary<CR>", { silent = true, desc = "Toggle comment" }) -- Converted from mapx
