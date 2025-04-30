@@ -54,3 +54,4 @@ autocmd("FileType", {
   command = "setlocal shiftwidth=4 tabstop=4",
 })
 
+vim.notify("Loaded: autocmds.lua", vim.log.levels.INFO, { title = "Neovim" })

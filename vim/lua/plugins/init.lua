@@ -80,3 +80,4 @@ require("plugins.configs.telescope-nvim")
 --     notify = false,
 --   },
 -- })
+vim.notify("Loaded: plugins/", vim.log.levels.INFO, { title = "Neovim" })

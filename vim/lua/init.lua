@@ -13,6 +13,7 @@ vim.g.mapleader = "\\"
 local opt = vim.opt
 local g = vim.g
 local map = vim.keymap.set -- Assuming this is used later, keeping it here
+-- ================================================
 
 -- File Handling & Encoding
 opt.encoding = "utf-8"                             -- Use UTF-8 encoding (Duplicate removed: vim.opt.encoding)
@@ -658,10 +659,16 @@ require("lazy").setup({
       --   { noremap = true, silent = true, desc = "File Browser" })
     end,
   },
-
   -- ================= AI / Copilot =================
-  { "github/copilot.vim" }, -- Requires Node.js
-
+  {
+    "github/copilot.vim",
+     config = function()
+      -- Optional: Configure Copilot settings
+      vim.g.copilot_no_tab_map = true -- Disable default tab mapping
+      vim.g.copilot_assume_mapped = true -- Assume mappings are set
+      -- Done
+    end,
+  },
   -- ================= Miscellaneous =================
   { "b0o/mapx.nvim",     lazy = true }, -- Advanced keymapping utility (if needed)
   {
@@ -705,7 +712,7 @@ pcall(require, "core.init")
 pcall(require, "core.keymaps")
 pcall(require, "plugins.init")
 
-vim.notify("Configuration loaded.", vim.log.levels.INFO, { title = "Neovim" })
+vim.notify("Loaded.", vim.log.levels.INFO, { title = "Neovim" })
 
 -- Add a final message to confirm loading
 -- print("Neovim configuration loaded!")

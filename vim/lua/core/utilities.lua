@@ -12,3 +12,4 @@
 --     pfile:close()
 --     return t
 -- end
+vim.notify("Loaded: core/utilities.lua", vim.log.levels.INFO, { title = "Neovim" })
