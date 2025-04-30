@@ -152,7 +152,22 @@ map("n", "<Leader>M", "<cmd>Mason<CR>", { noremap = true, silent = true, desc = 
 map("n", "<Leader>L", "<cmd>Lazy<CR>", { noremap = true, silent = true, desc = "Open Lazy" }) -- Converted from mapx
 
 -- LSP Formatting
-map("n", "<Leader>-", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { noremap = true, silent = true, desc = "Format code" }) -- Converted from mapx
+-- Define a Lua function that formats and then notifies
+local function format_and_notify()
+  vim.lsp.buf.format({
+    async = true,
+    callback = function()
+      -- This function is executed after formatting is done
+      vim.notify("Formatted File", vim.log.levels.INFO)
+    end
+  })
+end
+
+-- Map the key to call the new function
+vim.keymap.set("n", "<Leader>-", format_and_notify, {
+  silent = true,
+  desc = "Format code and notify"
+})
 
 -- UndoTree
 map("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { noremap = true, silent = true, desc = "Toggle UndoTree" })
@@ -175,4 +190,5 @@ map("n", "<Leader>f", "<cmd>Telescope find_files<cr>", { noremap = true, silent 
 -- Remove mapx require if no longer needed
 -- local mapx = require("mapx") -- Remove this line if mapx is fully replaced
 
-print("Key mappings loaded!") -- Optional confirmation message
+-- print("Key mappings loaded!") -- Optional confirmation message
+notify_async("Key mappings loaded.") -- Notify asynchronously

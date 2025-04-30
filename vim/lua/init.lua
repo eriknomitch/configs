@@ -15,76 +15,76 @@ local g = vim.g
 local map = vim.keymap.set -- Assuming this is used later, keeping it here
 
 -- File Handling & Encoding
-opt.encoding = "utf-8"         -- Use UTF-8 encoding (Duplicate removed: vim.opt.encoding)
-opt.fileencoding = "utf-8"     -- Set file encoding to UTF-8 (Duplicate removed: vim.opt.fileencoding)
-opt.swapfile = false           -- Disable swap files (Duplicate removed: vim.opt.swapfile)
-opt.backup = false             -- Disable backup files (Duplicate removed: vim.opt.backup)
-opt.writebackup = false        -- Ensure write backup is also off (Added from second block)
-opt.undofile = true            -- Enable persistent undo (Duplicate removed: vim.opt.undofile)
+opt.encoding = "utf-8"                             -- Use UTF-8 encoding (Duplicate removed: vim.opt.encoding)
+opt.fileencoding = "utf-8"                         -- Set file encoding to UTF-8 (Duplicate removed: vim.opt.fileencoding)
+opt.swapfile = false                               -- Disable swap files (Duplicate removed: vim.opt.swapfile)
+opt.backup = false                                 -- Disable backup files (Duplicate removed: vim.opt.backup)
+opt.writebackup = false                            -- Ensure write backup is also off (Added from second block)
+opt.undofile = true                                -- Enable persistent undo (Duplicate removed: vim.opt.undofile)
 opt.undodir = vim.fn.stdpath("data") .. "/undodir" -- Set undo directory (Kept from first block)
-opt.filetype = "on"            -- Enable filetype detection (default in Neovim) (Kept from first block)
-vim.cmd("filetype plugin indent on") -- Enable filetype plugins and indentation (Duplicate removed)
+opt.filetype = "on"                                -- Enable filetype detection (default in Neovim) (Kept from first block)
+vim.cmd("filetype plugin indent on")               -- Enable filetype plugins and indentation (Duplicate removed)
 
 -- UI / Appearance
-opt.number = false             -- Show line numbers (Duplicate removed: vim.opt.number)
-opt.relativenumber = false     -- Show relative line numbers (Duplicate removed: vim.opt.relativenumber)
-opt.termguicolors = true       -- Enable true color support (Duplicate removed: vim.opt.termguicolors)
-opt.background = "dark"        -- Set background (Added from second block)
-opt.laststatus = 2             -- Always show the status line (Kept from first block)
-opt.showmode = false           -- Don't show mode (Kept from first block)
-opt.ruler = false              -- Don't show ruler (Kept from first block)
-opt.signcolumn = "yes"         -- Always show sign column (Duplicate removed: vim.opt.signcolumn)
-opt.scrolloff = 8              -- Keep 8 lines visible (Duplicate removed: vim.opt.scrolloff)
-opt.sidescrolloff = 8          -- Keep 8 columns visible (Kept from first block)
-opt.wrap = true               -- Disable line wrapping (Duplicate removed: vim.opt.wrap)
-opt.linebreak = true           -- Wrap lines nicely if wrap is enabled (Kept from first block)
-opt.list = true                -- Show invisible characters (Kept from first block)
+opt.number = false -- Show line numbers (Duplicate removed: vim.opt.number)
+opt.relativenumber = false -- Show relative line numbers (Duplicate removed: vim.opt.relativenumber)
+opt.termguicolors = true -- Enable true color support (Duplicate removed: vim.opt.termguicolors)
+opt.background = "dark" -- Set background (Added from second block)
+opt.laststatus = 2 -- Always show the status line (Kept from first block)
+opt.showmode = false -- Don't show mode (Kept from first block)
+opt.ruler = false -- Don't show ruler (Kept from first block)
+opt.signcolumn = "yes" -- Always show sign column (Duplicate removed: vim.opt.signcolumn)
+opt.scrolloff = 8 -- Keep 8 lines visible (Duplicate removed: vim.opt.scrolloff)
+opt.sidescrolloff = 8 -- Keep 8 columns visible (Kept from first block)
+opt.wrap = true -- Disable line wrapping (Duplicate removed: vim.opt.wrap)
+opt.linebreak = true -- Wrap lines nicely if wrap is enabled (Kept from first block)
+opt.list = true -- Show invisible characters (Kept from first block)
 opt.listchars = { tab = "▸ ", trail = "·", nbsp = "␣" } -- Define invisible chars (Kept from first block)
-opt.cursorline = true          -- Highlight the current line (Added from second block)
+opt.cursorline = true -- Highlight the current line (Added from second block)
 
 -- Search
-opt.incsearch = true           -- Incremental search (Duplicate removed: vim.opt.incsearch)
-opt.hlsearch = true            -- Highlight search results (Duplicate removed: vim.opt.hlsearch)
-opt.ignorecase = true          -- Ignore case (Duplicate removed: vim.opt.ignorecase)
-opt.smartcase = true           -- Smart case (Duplicate removed: vim.opt.smartcase)
+opt.incsearch = true  -- Incremental search (Duplicate removed: vim.opt.incsearch)
+opt.hlsearch = true   -- Highlight search results (Duplicate removed: vim.opt.hlsearch)
+opt.ignorecase = true -- Ignore case (Duplicate removed: vim.opt.ignorecase)
+opt.smartcase = true  -- Smart case (Duplicate removed: vim.opt.smartcase)
 
 -- Behavior
 -- CONFLICT: vim.opt.mouse = "" (disabled) vs opt.mouse = "a" (enabled). Choosing "a" (enabled) from the second block.
 opt.mouse = "a"
-opt.clipboard = "unnamedplus"  -- Use system clipboard (Duplicate handled: vim.opt.clipboard vs opt.clipboard:append)
-opt.backspace = "indent,eol,start" -- Backspace behavior (Duplicate removed: vim.opt.backspace)
-opt.autoindent = true          -- Auto-indent (Duplicate removed: vim.opt.autoindent)
-opt.smartindent = true         -- Smart indent (Duplicate removed: vim.opt.smartindent)
+opt.clipboard = "unnamedplus"             -- Use system clipboard (Duplicate handled: vim.opt.clipboard vs opt.clipboard:append)
+opt.backspace = "indent,eol,start"        -- Backspace behavior (Duplicate removed: vim.opt.backspace)
+opt.autoindent = true                     -- Auto-indent (Duplicate removed: vim.opt.autoindent)
+opt.smartindent = true                    -- Smart indent (Duplicate removed: vim.opt.smartindent)
 opt.completeopt = "menu,menuone,noselect" -- Completion options (Kept from first block)
-opt.hidden = true              -- Allow hidden buffers (Kept from first block)
+opt.hidden = true                         -- Allow hidden buffers (Kept from first block)
 -- opt.updatetime = 300        -- Faster update time (Commented out in first block)
 -- opt.updatetime = 50         -- Faster update time (Commented out in second block) - Keeping commented
 -- opt.timeoutlen = 100        -- Shorter timeout (Commented out in first block) - Keeping commented
 -- opt.ttimeoutlen = 10        -- Shorter ttimeout (Commented out in first block) - Keeping commented
-opt.splitright = true          -- Split new windows right (Added from second block)
-opt.splitbelow = true          -- Split new windows below (Added from second block)
-opt.iskeyword:append("-")      -- Consider - as part of word (Added from second block)
+opt.splitright = true     -- Split new windows right (Added from second block)
+opt.splitbelow = true     -- Split new windows below (Added from second block)
+opt.iskeyword:append("-") -- Consider - as part of word (Added from second block)
 
 -- Tabs and Indentation
-opt.expandtab = true           -- Use spaces instead of tabs (Duplicate removed: vim.opt.expandtab)
-opt.tabstop = 2                -- Tab width (Duplicate removed: vim.opt.tabstop)
-opt.softtabstop = 2            -- Soft tab width (Kept from first block)
-opt.shiftwidth = 2             -- Indentation width (Duplicate removed: vim.opt.shiftwidth)
+opt.expandtab = true -- Use spaces instead of tabs (Duplicate removed: vim.opt.expandtab)
+opt.tabstop = 2      -- Tab width (Duplicate removed: vim.opt.tabstop)
+opt.softtabstop = 2  -- Soft tab width (Kept from first block)
+opt.shiftwidth = 2   -- Indentation width (Duplicate removed: vim.opt.shiftwidth)
 
 -- Folding
-opt.foldmethod = "marker"      -- Use markers for folding (Kept from first block)
-opt.foldlevel = 99             -- Start with folds open (Kept from first block)
-opt.foldlevelstart = 99        -- Start editing with folds open (Kept from first block)
-opt.foldenable = true          -- Enable folding (Kept from first block)
+opt.foldmethod = "marker" -- Use markers for folding (Kept from first block)
+opt.foldlevel = 99        -- Start with folds open (Kept from first block)
+opt.foldlevelstart = 99   -- Start editing with folds open (Kept from first block)
+opt.foldenable = true     -- Enable folding (Kept from first block)
 
 -- Wildmenu / Command Line
-opt.wildmenu = true            -- Enable enhanced command-line completion (Kept from first block)
+opt.wildmenu = true                -- Enable enhanced command-line completion (Kept from first block)
 opt.wildmode = "longest:full,full" -- Completion mode (Kept from first block)
-opt.wildchar = 9               -- Trigger char (<Tab>) (Kept from first block)
+opt.wildchar = 9                   -- Trigger char (<Tab>) (Kept from first block)
 
 -- Performance
-opt.lazyredraw = true          -- Don't redraw during macros (Kept from first block)
-opt.maxmempattern = 1000       -- Max memory for pattern matching (Kept from first block)
+opt.lazyredraw = true    -- Don't redraw during macros (Kept from first block)
+opt.maxmempattern = 1000 -- Max memory for pattern matching (Kept from first block)
 
 -- Disable built-in Netrw (if using nvim-tree)
 -- g.loaded_netrw = 1          -- (Commented out in first block) - Keeping commented
@@ -190,7 +190,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   -- ================= Core Plugins =================
-  { "nvim-lua/plenary.nvim", lazy = true }, -- Utility functions used by many plugins
+  { "nvim-lua/plenary.nvim", lazy = true },   -- Utility functions used by many plugins
   -- { "folke/neoconf.nvim", cmd = "Neoconf", config = true }, -- Manage global/local settings
   { "folke/neodev.nvim",     config = true }, -- Neovim Lua development helper
 
@@ -298,9 +298,9 @@ require("lazy").setup({
   -- 		-- require('mini.comment').setup({}) -- Uncomment if you want mini.comment instead of others
   -- 	end,
   -- },
-  { "tpope/vim-repeat" },       -- Repeat plugin actions with '.'
+  { "tpope/vim-repeat" },        -- Repeat plugin actions with '.'
   { "junegunn/vim-easy-align" }, -- Easy alignment command (e.g., gaip=)
-  { "mbbill/undotree" },       -- Visualize undo history
+  { "mbbill/undotree" },         -- Visualize undo history
 
   -- ================= Syntax & Treesitter =================
   {
@@ -337,7 +337,7 @@ require("lazy").setup({
           "zig",
         },
         sync_install = false, -- Install parsers asynchronously
-        auto_install = true, -- Automatically install missing parsers
+        auto_install = true,  -- Automatically install missing parsers
         highlight = {
           enable = true,
           additional_vim_regex_highlighting = false, -- Use Treesitter primarily
@@ -398,7 +398,7 @@ require("lazy").setup({
     end,
   },
   {
-    "neovim/nvim-lspconfig", -- Core LSP configuration
+    "neovim/nvim-lspconfig",                                           -- Core LSP configuration
     dependencies = { "mason-lspconfig.nvim", "hrsh7th/cmp-nvim-lsp" }, -- Added cmp-nvim-lsp dependency
     config = function()
       local lspconfig = require("lspconfig")
@@ -410,22 +410,36 @@ require("lazy").setup({
       local on_attach = function(client, bufnr)
         -- map is defined at the top
         local bufopts = { noremap = true, silent = true, buffer = bufnr }
-        map("n", "gD", vim.lsp.buf.declaration, { noremap = true, silent = true, buffer = bufnr, desc = "Go to Declaration" })
-        map("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true, buffer = bufnr, desc = "Go to Definition" })
+        map("n", "gD", vim.lsp.buf.declaration,
+          { noremap = true, silent = true, buffer = bufnr, desc = "Go to Declaration" })
+        map("n", "gd", vim.lsp.buf.definition,
+          { noremap = true, silent = true, buffer = bufnr, desc = "Go to Definition" })
         map("n", "K", vim.lsp.buf.hover, { noremap = true, silent = true, buffer = bufnr, desc = "Hover Documentation" })
-        map("n", "gi", vim.lsp.buf.implementation, { noremap = true, silent = true, buffer = bufnr, desc = "Go to Implementation" })
-        map("n", "<C-k>", vim.lsp.buf.signature_help, { noremap = true, silent = true, buffer = bufnr, desc = "Signature Help" })
-        map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, { noremap = true, silent = true, buffer = bufnr, desc = "Add Workspace Folder" })
-        map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, { noremap = true, silent = true, buffer = bufnr, desc = "Remove Workspace Folder" })
-        map("n", "<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, { noremap = true, silent = true, buffer = bufnr, desc = "List Workspace Folders" })
-        map("n", "<leader>D", vim.lsp.buf.type_definition, { noremap = true, silent = true, buffer = bufnr, desc = "Type Definition" })
+        map("n", "gi", vim.lsp.buf.implementation,
+          { noremap = true, silent = true, buffer = bufnr, desc = "Go to Implementation" })
+        map("n", "<C-k>", vim.lsp.buf.signature_help,
+          { noremap = true, silent = true, buffer = bufnr, desc = "Signature Help" })
+        map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder,
+          { noremap = true, silent = true, buffer = bufnr, desc = "Add Workspace Folder" })
+        map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder,
+          { noremap = true, silent = true, buffer = bufnr, desc = "Remove Workspace Folder" })
+        map("n", "<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+          { noremap = true, silent = true, buffer = bufnr, desc = "List Workspace Folders" })
+        map("n", "<leader>D", vim.lsp.buf.type_definition,
+          { noremap = true, silent = true, buffer = bufnr, desc = "Type Definition" })
         map("n", "<leader>rn", vim.lsp.buf.rename, { noremap = true, silent = true, buffer = bufnr, desc = "Rename" })
-        map("n", "<leader>ca", vim.lsp.buf.code_action, { noremap = true, silent = true, buffer = bufnr, desc = "Code Action" })
-        map("n", "gr", vim.lsp.buf.references, { noremap = true, silent = true, buffer = bufnr, desc = "Go to References" })
-        map("n", "<leader>e", vim.diagnostic.open_float, { noremap = true, silent = true, buffer = bufnr, desc = "Show Line Diagnostics" })
-        map("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true, buffer = bufnr, desc = "Previous Diagnostic" })
-        map("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true, buffer = bufnr, desc = "Next Diagnostic" })
-        map("n", "<leader>q", vim.diagnostic.setloclist, { noremap = true, silent = true, buffer = bufnr, desc = "Diagnostic SetLocList" })
+        map("n", "<leader>ca", vim.lsp.buf.code_action,
+          { noremap = true, silent = true, buffer = bufnr, desc = "Code Action" })
+        map("n", "gr", vim.lsp.buf.references,
+          { noremap = true, silent = true, buffer = bufnr, desc = "Go to References" })
+        map("n", "<leader>e", vim.diagnostic.open_float,
+          { noremap = true, silent = true, buffer = bufnr, desc = "Show Line Diagnostics" })
+        map("n", "[d", vim.diagnostic.goto_prev,
+          { noremap = true, silent = true, buffer = bufnr, desc = "Previous Diagnostic" })
+        map("n", "]d", vim.diagnostic.goto_next,
+          { noremap = true, silent = true, buffer = bufnr, desc = "Next Diagnostic" })
+        map("n", "<leader>q", vim.diagnostic.setloclist,
+          { noremap = true, silent = true, buffer = bufnr, desc = "Diagnostic SetLocList" })
 
         -- Enable formatting if the server supports it
         -- if client.supports_method("textDocument/formatting") then
@@ -505,13 +519,13 @@ require("lazy").setup({
     end,
   },
   {
-    "hrsh7th/nvim-cmp",       -- Autocompletion engine
+    "hrsh7th/nvim-cmp",           -- Autocompletion engine
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",  -- LSP source
-      "hrsh7th/cmp-buffer",    -- Buffer source
-      "hrsh7th/cmp-path",      -- Path source
-      "hrsh7th/cmp-cmdline",   -- Command line source
-      "L3MON4D3/LuaSnip",      -- Snippet engine
+      "hrsh7th/cmp-nvim-lsp",     -- LSP source
+      "hrsh7th/cmp-buffer",       -- Buffer source
+      "hrsh7th/cmp-path",         -- Path source
+      "hrsh7th/cmp-cmdline",      -- Command line source
+      "L3MON4D3/LuaSnip",         -- Snippet engine
       "saadparwaiz1/cmp_luasnip", -- Snippet source for nvim-cmp
       -- Optional: Add other sources like cmp-nvim-lua, cmp-calc, etc.
     },
@@ -531,7 +545,7 @@ require("lazy").setup({
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
           ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Confirm with Enter
-          ["<Tab>"] = cmp.mapping(function(fallback)   -- Tab completion / snippet navigation
+          ["<Tab>"] = cmp.mapping(function(fallback)         -- Tab completion / snippet navigation
             if cmp.visible() then
               cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
@@ -652,12 +666,12 @@ require("lazy").setup({
   -- ================= Miscellaneous =================
   { "b0o/mapx.nvim",     lazy = true }, -- Advanced keymapping utility (if needed)
   {
-    "aserowy/tmux.nvim",         -- Tmux integration
+    "aserowy/tmux.nvim",                -- Tmux integration
     config = function()
       require("tmux").setup({
         -- copy_sync = { enable = true }, -- Sync vim clipboard with tmux
         navigation = { enable_default_keybindings = true }, -- Use C-h/j/k/l to navigate tmux panes
-        resize = { enable_default_keybindings = true }, -- Use M-h/j/k/l to resize tmux panes
+        resize = { enable_default_keybindings = true },     -- Use M-h/j/k/l to resize tmux panes
       })
     end,
   },
@@ -692,7 +706,7 @@ pcall(require, "core.init")
 pcall(require, "core.keymaps")
 pcall(require, "plugins.init")
 
+notify_async("Neovim configuration loaded successfully!", "info", { title = "Configuration" })
+
 -- Add a final message to confirm loading
 -- print("Neovim configuration loaded!")
-
-
