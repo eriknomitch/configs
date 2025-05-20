@@ -685,3 +685,5 @@ source-if-exists $HOME/.configs/zsh/axle.zsh
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/erik/.lmstudio/bin"
+
+. "$HOME/.langflow/uv/env"
