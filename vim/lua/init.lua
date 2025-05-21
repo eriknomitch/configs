@@ -668,26 +668,21 @@ require("lazy").setup({
       --   { noremap = true, silent = true, desc = "File Browser" })
     end,
   },
-   {
-      'zbirenbaum/copilot.lua',
-      config = function()
-        require('copilot').setup({})
-      end,
-   },
+
   -- ================= AI / Copilot =================
-  -- {
-  --   "github/copilot.vim",
-  --    config = function()
-  --     -- Optional: Configure Copilot settings
-  --     vim.g.copilot_no_tab_map = true -- Disable default tab mapping
-  --     vim.g.copilot_assume_mapped = true -- Assume mappings are set
-  --
-  --     -- Set custom keymap for Copilot
-  --
-  --
-  --     -- Done
-  --   end,
-  -- },
+  {
+    "github/copilot.vim",
+    config = function()
+      -- Optional: Configure Copilot settings
+      vim.g.copilot_no_tab_map = true -- Disable default tab mapping
+      vim.g.copilot_assume_mapped = true -- Assume mappings are set
+
+      vim.keymap.set("i", "<C-j>", 'copilot#Accept("\\<CR>")', {
+        expr = true,
+        replace_keycodes = false,
+      })
+    end,
+  },
   -- ================= Miscellaneous =================
   { "b0o/mapx.nvim",     lazy = true }, -- Advanced keymapping utility (if needed)
   {
