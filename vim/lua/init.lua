@@ -397,85 +397,94 @@ require("lazy").setup({
       })
     end,
   },
+  -- {
+  --   "neovim/nvim-lspconfig",                                           -- Core LSP configuration
+  --   dependencies = { "mason-lspconfig.nvim", "hrsh7th/cmp-nvim-lsp" }, -- Added cmp-nvim-lsp dependency
+  --   config = function()
+  --     local lspconfig = require("lspconfig")
+  --     -- Ensure cmp_nvim_lsp capabilities are loaded correctly
+  --     local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+  --
+  --     -- Define the on_attach function for LSP keymaps and settings
+  --     -- Moved definition before usage in setup_handlers
+  --     local on_attach = function(client, bufnr)
+  --       -- map is defined at the top
+  --       local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  --       map("n", "gD", vim.lsp.buf.declaration,
+  --         { noremap = true, silent = true, buffer = bufnr, desc = "Go to Declaration" })
+  --       map("n", "gd", vim.lsp.buf.definition,
+  --         { noremap = true, silent = true, buffer = bufnr, desc = "Go to Definition" })
+  --       map("n", "K", vim.lsp.buf.hover, { noremap = true, silent = true, buffer = bufnr, desc = "Hover Documentation" })
+  --       map("n", "gi", vim.lsp.buf.implementation,
+  --         { noremap = true, silent = true, buffer = bufnr, desc = "Go to Implementation" })
+  --       map("n", "<C-k>", vim.lsp.buf.signature_help,
+  --         { noremap = true, silent = true, buffer = bufnr, desc = "Signature Help" })
+  --       map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder,
+  --         { noremap = true, silent = true, buffer = bufnr, desc = "Add Workspace Folder" })
+  --       map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder,
+  --         { noremap = true, silent = true, buffer = bufnr, desc = "Remove Workspace Folder" })
+  --       map("n", "<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+  --         { noremap = true, silent = true, buffer = bufnr, desc = "List Workspace Folders" })
+  --       map("n", "<leader>D", vim.lsp.buf.type_definition,
+  --         { noremap = true, silent = true, buffer = bufnr, desc = "Type Definition" })
+  --       map("n", "<leader>rn", vim.lsp.buf.rename, { noremap = true, silent = true, buffer = bufnr, desc = "Rename" })
+  --       map("n", "<leader>ca", vim.lsp.buf.code_action,
+  --         { noremap = true, silent = true, buffer = bufnr, desc = "Code Action" })
+  --       map("n", "gr", vim.lsp.buf.references,
+  --         { noremap = true, silent = true, buffer = bufnr, desc = "Go to References" })
+  --       map("n", "<leader>e", vim.diagnostic.open_float,
+  --         { noremap = true, silent = true, buffer = bufnr, desc = "Show Line Diagnostics" })
+  --       map("n", "[d", vim.diagnostic.goto_prev,
+  --         { noremap = true, silent = true, buffer = bufnr, desc = "Previous Diagnostic" })
+  --       map("n", "]d", vim.diagnostic.goto_next,
+  --         { noremap = true, silent = true, buffer = bufnr, desc = "Next Diagnostic" })
+  --       map("n", "<leader>q", vim.diagnostic.setloclist,
+  --         { noremap = true, silent = true, buffer = bufnr, desc = "Diagnostic SetLocList" })
+  --
+  --       -- Enable formatting if the server supports it
+  --       -- if client.supports_method("textDocument/formatting") then
+  --       --   map("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, { noremap = true, silent = true, buffer = bufnr, desc = "Format Code" })
+  --       --   -- Optional: Format on save
+  --       --   -- vim.api.nvim_create_autocmd("BufWritePre", {
+  --       --   --     group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true }),
+  --       --   --     buffer = bufnr,
+  --       --   --     callback = function() vim.lsp.buf.format({ async = false }) end,
+  --       --   -- })
+  --       -- end
+  --     end
+
   {
-    "neovim/nvim-lspconfig",                                           -- Core LSP configuration
-    dependencies = { "mason-lspconfig.nvim", "hrsh7th/cmp-nvim-lsp" }, -- Added cmp-nvim-lsp dependency
-    config = function()
-      local lspconfig = require("lspconfig")
-      -- Ensure cmp_nvim_lsp capabilities are loaded correctly
-      local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-      -- Define the on_attach function for LSP keymaps and settings
-      -- Moved definition before usage in setup_handlers
-      local on_attach = function(client, bufnr)
-        -- map is defined at the top
-        local bufopts = { noremap = true, silent = true, buffer = bufnr }
-        map("n", "gD", vim.lsp.buf.declaration,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Go to Declaration" })
-        map("n", "gd", vim.lsp.buf.definition,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Go to Definition" })
-        map("n", "K", vim.lsp.buf.hover, { noremap = true, silent = true, buffer = bufnr, desc = "Hover Documentation" })
-        map("n", "gi", vim.lsp.buf.implementation,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Go to Implementation" })
-        map("n", "<C-k>", vim.lsp.buf.signature_help,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Signature Help" })
-        map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Add Workspace Folder" })
-        map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Remove Workspace Folder" })
-        map("n", "<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
-          { noremap = true, silent = true, buffer = bufnr, desc = "List Workspace Folders" })
-        map("n", "<leader>D", vim.lsp.buf.type_definition,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Type Definition" })
-        map("n", "<leader>rn", vim.lsp.buf.rename, { noremap = true, silent = true, buffer = bufnr, desc = "Rename" })
-        map("n", "<leader>ca", vim.lsp.buf.code_action,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Code Action" })
-        map("n", "gr", vim.lsp.buf.references,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Go to References" })
-        map("n", "<leader>e", vim.diagnostic.open_float,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Show Line Diagnostics" })
-        map("n", "[d", vim.diagnostic.goto_prev,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Previous Diagnostic" })
-        map("n", "]d", vim.diagnostic.goto_next,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Next Diagnostic" })
-        map("n", "<leader>q", vim.diagnostic.setloclist,
-          { noremap = true, silent = true, buffer = bufnr, desc = "Diagnostic SetLocList" })
-
-        -- Enable formatting if the server supports it
-        -- if client.supports_method("textDocument/formatting") then
-        --   map("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, { noremap = true, silent = true, buffer = bufnr, desc = "Format Code" })
-        --   -- Optional: Format on save
-        --   -- vim.api.nvim_create_autocmd("BufWritePre", {
-        --   --     group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true }),
-        --   --     buffer = bufnr,
-        --   --     callback = function() vim.lsp.buf.format({ async = false }) end,
-        --   -- })
-        -- end
-      end
+    "mason-org/mason-lspconfig.nvim",
+    opts = {},
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
+    },
+  },
 
       -- Setup servers managed by mason-lspconfig
-      require("mason-lspconfig").setup_handlers({
-        function(server_name) -- Default handler
-          lspconfig[server_name].setup({
-            capabilities = capabilities,
-            on_attach = on_attach, -- Use the defined on_attach function
-          })
-        end,
-        -- Custom setup for specific servers if needed
-        ["lua_ls"] = function()
-          lspconfig.lua_ls.setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-            settings = {
-              Lua = {
-                runtime = { version = "LuaJIT" },
-                diagnostics = { globals = { "vim" } },
-                workspace = { library = vim.api.nvim_get_runtime_file("", true) },
-                telemetry = { enable = false },
-              },
-            },
-          })
-        end
+      -- require("mason-lspconfig").setup_handlers({
+      --   function(server_name) -- Default handler
+      --     lspconfig[server_name].setup({
+      --       capabilities = capabilities,
+      --       on_attach = on_attach, -- Use the defined on_attach function
+      --     })
+      --   end,
+      --   -- Custom setup for specific servers if needed
+      --   ["lua_ls"] = function()
+      --     lspconfig.lua_ls.setup({
+      --       capabilities = capabilities,
+      --       on_attach = on_attach,
+      --       settings = {
+      --         Lua = {
+      --           runtime = { version = "LuaJIT" },
+      --           diagnostics = { globals = { "vim" } },
+      --           workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+      --           telemetry = { enable = false },
+      --         },
+      --       },
+      --     })
+      --   end
         -- ["tsserver"] = function()
         -- 	lspconfig.tsserver.setup({
         -- 		capabilities = capabilities,
@@ -501,23 +510,23 @@ require("lazy").setup({
         -- 	})
         -- end,
         -- Add other custom setups here...
-      })
-
-      -- Configure diagnostic signs (requires nvim-web-devicons)
-      local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-      end
-      vim.diagnostic.config({
-        virtual_text = false, -- Disable virtual text diagnostics
-        signs = true,
-        underline = true,
-        update_in_insert = false,
-        severity_sort = true,
-      })
-    end,
-  },
+  --     })
+  --
+  --     -- Configure diagnostic signs (requires nvim-web-devicons)
+  --     local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+  --     for type, icon in pairs(signs) do
+  --       local hl = "DiagnosticSign" .. type
+  --       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+  --     end
+  --     vim.diagnostic.config({
+  --       virtual_text = false, -- Disable virtual text diagnostics
+  --       signs = true,
+  --       underline = true,
+  --       update_in_insert = false,
+  --       severity_sort = true,
+  --     })
+  --   end,
+  -- },
   {
     "hrsh7th/nvim-cmp",           -- Autocompletion engine
     dependencies = {
@@ -659,16 +668,26 @@ require("lazy").setup({
       --   { noremap = true, silent = true, desc = "File Browser" })
     end,
   },
+   {
+      'zbirenbaum/copilot.lua',
+      config = function()
+        require('copilot').setup({})
+      end,
+   },
   -- ================= AI / Copilot =================
-  {
-    "github/copilot.vim",
-     config = function()
-      -- Optional: Configure Copilot settings
-      vim.g.copilot_no_tab_map = true -- Disable default tab mapping
-      vim.g.copilot_assume_mapped = true -- Assume mappings are set
-      -- Done
-    end,
-  },
+  -- {
+  --   "github/copilot.vim",
+  --    config = function()
+  --     -- Optional: Configure Copilot settings
+  --     vim.g.copilot_no_tab_map = true -- Disable default tab mapping
+  --     vim.g.copilot_assume_mapped = true -- Assume mappings are set
+  --
+  --     -- Set custom keymap for Copilot
+  --
+  --
+  --     -- Done
+  --   end,
+  -- },
   -- ================= Miscellaneous =================
   { "b0o/mapx.nvim",     lazy = true }, -- Advanced keymapping utility (if needed)
   {
