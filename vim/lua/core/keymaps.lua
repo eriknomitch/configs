@@ -163,21 +163,26 @@ map("n", "<Leader>L", "<cmd>Lazy<CR>", { noremap = true, silent = true, desc = "
 
 -- Conform (Formatter)
 function format_and_notify()
-  if not require("conform").format({ async = true }) then
-    vim.lsp.buf.format({ async = false })
-    if vim.v.errormsg ~= "" then
-      vim.notify("No external formatter found, using LSP", vim.log.levels.WARN, { title = "Neovim" })
-    end
-  else
-    -- If Conform successfully formats, it will notify automatically
-    vim.notify("Formatted Code", vim.log.levels.INFO, { title = "Conform" })
-  end
+	if not require("conform").format({ async = true }) then
+		vim.lsp.buf.format({ async = false })
+		if vim.v.errormsg ~= "" then
+			vim.notify("No external formatter found, using LSP", vim.log.levels.WARN, { title = "Neovim" })
+		end
+	else
+		-- If Conform successfully formats, it will notify automatically
+		vim.notify("Formatted Code", vim.log.levels.INFO, { title = "Conform" })
+	end
 end
 
 -- uses Conform first, falls back to LSP if no external formatter
 map({ "n", "v" }, "<C-F>", function()
 	format_and_notify()
 end, { noremap = true, silent = true, desc = "Format buffer/selection" })
+
+-- Map <Leader> shift F to format the entire buffer
+map("n", "<Leader>F", function()
+	format_and_notify()
+end, { noremap = true, silent = true, desc = "Format entire buffer" })
 
 -- UndoTree
 map("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { noremap = true, silent = true, desc = "Toggle UndoTree" })
