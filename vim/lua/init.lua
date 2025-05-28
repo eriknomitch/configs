@@ -23,12 +23,11 @@ opt.backup = false                                 -- Disable backup files (Dupl
 opt.writebackup = false                            -- Ensure write backup is also off (Added from second block)
 opt.undofile = true                                -- Enable persistent undo (Duplicate removed: vim.opt.undofile)
 opt.undodir = vim.fn.stdpath("data") .. "/undodir" -- Set undo directory (Kept from first block)
-opt.filetype = "on"                                -- Enable filetype detection (default in Neovim) (Kept from first block)
 vim.cmd("filetype plugin indent on")               -- Enable filetype plugins and indentation (Duplicate removed)
 
 -- UI / Appearance
-opt.number = false -- Show line numbers (Duplicate removed: vim.opt.number)
-opt.relativenumber = false -- Show relative line numbers (Duplicate removed: vim.opt.relativenumber)
+opt.number = false -- Disable line numbers (Duplicate removed: vim.opt.number)
+opt.relativenumber = false -- Disable relative line numbers (Duplicate removed: vim.opt.relativenumber)
 opt.termguicolors = true -- Enable true color support (Duplicate removed: vim.opt.termguicolors)
 opt.background = "dark" -- Set background (Added from second block)
 opt.laststatus = 2 -- Always show the status line (Kept from first block)
