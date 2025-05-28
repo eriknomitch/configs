@@ -61,8 +61,18 @@ map("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "Window righ
 -- NOTE: <C-S-Left/Right> commented out in original, potentially conflicted with buffer navigation below
 -- map({"n", "i", "v"}, "<C-S-Left>", "<cmd>vertical resize +5<CR>", { noremap = true, silent = true, desc = "Resize vertical +5" })
 -- map({"n", "i", "v"}, "<C-S-Right>", "<cmd>vertical resize -5<CR>", { noremap = true, silent = true, desc = "Resize vertical -5" })
-map( { "n", "i", "v" }, "<C-S-Up>", "<cmd>resize +2<CR>", { noremap = true, silent = true, desc = "Resize horizontal +2" })
-map( { "n", "i", "v" }, "<C-S-Down>", "<cmd>resize -2<CR>", { noremap = true, silent = true, desc = "Resize horizontal -2" })
+map(
+	{ "n", "i", "v" },
+	"<C-S-Up>",
+	"<cmd>resize +2<CR>",
+	{ noremap = true, silent = true, desc = "Resize horizontal +2" }
+)
+map(
+	{ "n", "i", "v" },
+	"<C-S-Down>",
+	"<cmd>resize -2<CR>",
+	{ noremap = true, silent = true, desc = "Resize horizontal -2" }
+)
 
 -- ===============================================
 -- Buffer Management
@@ -151,23 +161,23 @@ map("n", "<Leader>M", "<cmd>Mason<CR>", { noremap = true, silent = true, desc = 
 -- Lazy
 map("n", "<Leader>L", "<cmd>Lazy<CR>", { noremap = true, silent = true, desc = "Open Lazy" }) -- Converted from mapx
 
--- LSP Formatting
--- Define a Lua function that formats and then notifies
-local function format_and_notify()
-  vim.lsp.buf.format({
-    async = true,
-    callback = function()
-      -- This function is executed after formatting is done
-      vim.notify("Formatted File", vim.log.levels.INFO)
+-- Conform (Formatter)
+function format_and_notify()
+  if not require("conform").format({ async = true }) then
+    vim.lsp.buf.format({ async = false })
+    if vim.v.errormsg ~= "" then
+      vim.notify("No external formatter found, using LSP", vim.log.levels.WARN, { title = "Neovim" })
     end
-  })
+  else
+    -- If Conform successfully formats, it will notify automatically
+    vim.notify("Formatted Code", vim.log.levels.INFO, { title = "Conform" })
+  end
 end
 
--- Map the key to call the new function
-vim.keymap.set("n", "<Leader>-", format_and_notify, {
-  silent = true,
-  desc = "Format code and notify"
-})
+-- uses Conform first, falls back to LSP if no external formatter
+map({ "n", "v" }, "<C-F>", function()
+	format_and_notify()
+end, { noremap = true, silent = true, desc = "Format buffer/selection" })
 
 -- UndoTree
 map("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { noremap = true, silent = true, desc = "Toggle UndoTree" })
