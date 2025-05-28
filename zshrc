@@ -125,9 +125,38 @@ alias edit-claude-desktop-config="${EDITOR} \"${HOME}/Library/Application Suppor
 function a() {
   test -f $HOME/.configs/zshrc-asdf && source $HOME/.configs/zshrc-asdf
 
+  # If the first argument is 'h' or '--help', show help
+  if [[ $1 == "h" || $1 == "--help" ]] ; then
+    cat << 'EOF'
+Usage: a [OPTION] [AIDER_ARGS...]
+
+A wrapper function for aider with convenient shortcuts.
+
+OPTIONS:
+  h, --help    Show this help message
+  u            Upgrade aider to the latest version
+  c            Run aider-commit and exit
+
+EXAMPLES:
+  a                    Start aider with default settings
+  a u                  Upgrade aider
+  a c                  Commit changes with aider
+  a --model gpt-4      Start aider with specific model
+  a file1.py file2.py  Edit specific files with aider
+
+DEFAULT SETTINGS:
+  • Dark mode enabled
+  • Auto-commits disabled
+  • All other aider arguments passed through
+
+For full aider documentation, see: https://aider.chat/docs/
+EOF
+    return
+  fi
+
   # If the first argument is 'u', upgrade aider
   if [[ $1 == "u" ]] ; then
-    shif/hr.nt
+    shift
     pip install --upgrade aider-chat
     echo "AIDER upgraded."
     return
@@ -143,11 +172,13 @@ function a() {
   # clear
   # echo "AIDER_MODEL: $AIDER_MODEL"
   # echo
+
   # If there are more arguments, pass them to aider
   if [[ $# -gt 0 ]] ; then
     echo "AIDER: $*"
     echo
   fi
+
   aider \
     --dark-mode \
     --no-auto-commits \
