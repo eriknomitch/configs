@@ -718,3 +718,8 @@ source-if-exists $HOME/.configs/zsh/axle.zsh
 export PATH="$PATH:/Users/erik/.lmstudio/bin"
 
 . "$HOME/.langflow/uv/env"
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/erik/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
