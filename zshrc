@@ -219,6 +219,46 @@ function autopage() {
 
 alias ap=autopage
 
+# Codebase Analysis
+# ------------------------------------------------
+function codebase-analysis() {
+    local exclude_dirs="node_modules|.git|dist|build|__pycache__|.next|target|vendor|coverage|.pytest_cache"
+
+    # Add any additional directories you want to exclude from the arguments
+    for dir in "$@"; do
+        exclude_dirs="$exclude_dirs|$dir"
+    done
+
+    # Print summary header
+    echo -e "\n🔍 CODEBASE ANALYSIS"
+    echo "====================="
+    echo "Analyzing codebase in: $(pwd)"
+    echo "Excluding directories: $exclude_dirs"
+    echo
+
+    echo "📁 FILE STRUCTURE"
+    echo "=================="
+    tree -I "$exclude_dirs" --dirsfirst --noreport
+
+    echo -e "\n📊 CODE ANALYSIS"
+    echo "================"
+    scc --exclude-dir node_modules --exclude-dir .git --exclude-dir dist --exclude-dir build --exclude-dir __pycache__ .
+
+    echo -e "\n🧑‍💻 GIT REPO ANALYSIS"
+    echo "==================="
+    git log --pretty=format:"%h %ad | %s%d [%an]" --date=short | head -20
+
+
+    echo -e "\n📈 GIT STATISTICS"
+    echo "==================="
+    git shortlog -sne | head -20
+
+
+    echo -e "\n📦 DEPENDENCIES & FRAMEWORKS"
+    echo "============================="
+    syft . --exclude "**/node_modules/**" --exclude "**/.git/**" --exclude "**/dist/**" --exclude "**/build/**" -o table 2>/dev/null | head -20
+}
+
 # Kubernetes
 # ------------------------------------------------
 alias kc="kubectl"
