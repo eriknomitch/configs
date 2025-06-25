@@ -1,0 +1,24 @@
+session_name: qumis-web
+environment:
+  TMUX_DIR: "${HOME}/.repositories/qumis-web"
+  TMUX_TITLE: "qumis-web"
+windows:
+  - window_name: edit
+    shell_command_before:
+      - cd "$TMUX_DIR" && sw && clear && colored_banner "$TMUX_TITLE" $BGre && chpwd
+    panes:
+      - null
+  - window_name: aux-0
+    layout: even-horizontal
+    shell_command_before:
+      - cd "$TMUX_DIR"
+    panes:
+      - clear && chpwd
+      - clear && chpwd
+  - window_name: aux-1
+    layout: even-horizontal
+    shell_command_before:
+      - cd "$TMUX_DIR"
+    panes:
+      - clear && chpwd
+      - clear && chpwd
