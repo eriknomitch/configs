@@ -286,11 +286,13 @@ end)
 -- When the Wi-Fi network changes, display the name of the new one
 function wifiListener(watcher, message, interface)
 	local currentNetwork = hs.wifi.currentNetwork(interface)
-	log:d("Wi-Fi network changed to " .. currentNetwork)
-
+	
 	if not currentNetwork then
+		log:d("Wi-Fi network changed to <none>")
 		return
 	end
+	
+	log:d("Wi-Fi network changed to " .. currentNetwork)
 
 	notify("Wi-Fi", currentNetwork, icons.network, true)
 
@@ -310,7 +312,7 @@ local screens = hs.screen.allScreens()
 
 local screenwatcher = hs.screen.watcher.new(function()
 	screens = hs.screen.allScreens()
-	log:d("screens: " .. screens)
+	log:d("screens: " .. #screens .. " connected")
 end)
 
 screenwatcher:start()
