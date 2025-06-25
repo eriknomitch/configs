@@ -51,7 +51,7 @@ opt.smartcase = true -- Smart case (Duplicate removed: vim.opt.smartcase)
 -- Behavior
 -- CONFLICT: vim.opt.mouse = "" (disabled) vs opt.mouse = "a" (enabled). Choosing "a" (enabled) from the second block.
 opt.mouse = "a"
-opt.clipboard = "unnamedplus" -- Use system clipboard (Duplicate handled: vim.opt.clipboard vs opt.clipboard:append)
+-- opt.clipboard = "unnamedplus" -- Use system clipboard (commented out to allow black hole register mappings)
 opt.backspace = "indent,eol,start" -- Backspace behavior (Duplicate removed: vim.opt.backspace)
 opt.autoindent = true -- Auto-indent (Duplicate removed: vim.opt.autoindent)
 opt.smartindent = true -- Smart indent (Duplicate removed: vim.opt.smartindent)

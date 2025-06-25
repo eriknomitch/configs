@@ -126,6 +126,10 @@ map("i", "jk", "<ESC>", { noremap = true, silent = true, desc = "Exit insert mod
 -- Insert literal tab
 map("i", "<S-Tab>", "<C-V><Tab>", { noremap = true, desc = "Insert literal tab" })
 
+-- Yank to system clipboard
+map("n", "y", '"+y', { noremap = true, desc = "Yank to system clipboard" })
+map("v", "y", '"+y', { noremap = true, desc = "Yank to system clipboard" })
+
 -- Delete without copying to clipboard register ("_ black hole register)
 map("n", "x", '"_x', { noremap = true, desc = "Delete character without copying" })
 map("n", "X", '"_X', { noremap = true, desc = "Delete character backwards without copying" })
