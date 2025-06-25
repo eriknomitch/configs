@@ -6,7 +6,14 @@ windows:
     - sw
   panes:
     - null
-- window_name: git/run
+- window_name: aux-0
+  layout: even-horizontal
+  shell_command_before:
+    - cd ~/.configs
+  panes:
+    - null
+    - null
+- window_name: aux-1
   layout: even-horizontal
   shell_command_before:
     - cd ~/.configs
