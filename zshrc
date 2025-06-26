@@ -15,6 +15,20 @@ test -n $INITIAL_CWD && cd $INITIAL_CWD
 source /etc/zsh/shared.zsh
 
 # ------------------------------------------------
+# HISTORY ----------------------------------------
+# ------------------------------------------------
+export HISTSIZE=100000
+export SAVEHIST=100000
+setopt HIST_IGNORE_DUPS # Ignore duplicate commands in history
+setopt HIST_IGNORE_ALL_DUPS # If a new command is a duplicate, remove the older one
+setopt HIST_FIND_NO_DUPS # When searching history, don't show duplicates
+setopt HIST_SAVE_NO_DUPS # When saving history, don't save duplicates
+setopt EXTENDED_HISTORY # Write the history file in the ":start:elapsed;command" format.
+setopt SHARE_HISTORY # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_SPACE  # Commands starting with a space are not saved to history
+
+# ------------------------------------------------
 # ------------------------------------------------
 # ------------------------------------------------
 export PATH="$PATH:$HOME/.local/bin"
