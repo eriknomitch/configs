@@ -750,14 +750,13 @@ export PATH="$PATH:/Users/erik/.cache/lm-studio/bin"
 export PATH="/Users/erik/.codeium/windsurf/bin:$PATH"
 
 # ------------------------------------------------
-# AXLE -------------------------------------------
+# QUMIS ------------------------------------------
 # ------------------------------------------------
-source-if-exists $HOME/.configs/zsh/axle.zsh
+source-if-exists $HOME/.configs/zsh/qumis.zsh
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/erik/.lmstudio/bin"
 
-. "$HOME/.langflow/uv/env"
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/erik/.docker/completions $fpath)
 autoload -Uz compinit
