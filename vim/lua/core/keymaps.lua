@@ -201,6 +201,12 @@ map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { noremap = true, silent = true
 
 -- Telescope
 map("n", "<Leader>f", "<cmd>Telescope find_files<cr>", { noremap = true, silent = true, desc = "Find Files" })
+map(
+	"n",
+	"<leader>fb",
+	"<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
+	{ noremap = true, silent = true, desc = "File Browser" }
+)
 -- map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { noremap = true, silent = true, desc = "Live Grep" })
 -- map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { noremap = true, silent = true, desc = "Find Buffers" })
 -- map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { noremap = true, silent = true, desc = "Help Tags" })
