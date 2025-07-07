@@ -776,3 +776,5 @@ fpath=(/Users/erik/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
+
+alias claude="/Users/erik/.claude/local/claude"
