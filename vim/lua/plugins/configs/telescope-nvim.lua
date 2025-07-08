@@ -40,8 +40,25 @@ local telescope = require("telescope")
 
 require("telescope").setup({
 	defaults = {
+		-- Performance improvements with ripgrep
+		vimgrep_arguments = {
+			"rg",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+			"--hidden",
+			"--glob=!.git/",
+		},
+		-- Better UX
+		sorting_strategy = "ascending",
+		file_sorter = require("telescope.sorters").get_fuzzy_file,
+		generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 		layout_config = {
 			horizontal = { width = 0.9, height = 0.9 },
+			prompt_position = "top",
 			-- SEE: :help resolver.resolve_anchor_pos()
 			-- anchor = 'W',
 		},
@@ -58,11 +75,12 @@ require("telescope").setup({
 		-- },
 		-- other defaults configuration here
 	},
-	-- pickers = {
-	--   find_files = {
-	--     theme = "dropdown",
-	--   }
-	-- },
+	pickers = {
+		find_files = {
+			hidden = true,
+			find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
+		},
+	},
 	-- other configuration values here
 })
 
