@@ -20,7 +20,7 @@ map(
 	{ noremap = true, silent = true, desc = "Find Buffers (Ctrl+P)" }
 ) -- Keep Ctrl+P mapping separate if desired
 
--- mapx.nnoremap({ "<Leader>f" }, ":lua require('telescope.builtin').find_files()<Cr>", "silent")
+-- mapx.nnoremap({ "<Leader>f" }, ":lua require('telescope.builtin').find_files()<Cr>", "silent") -- Moved to keymaps.lua
 mapx.nnoremap({ "<Leader>s" }, ":lua require('telescope.builtin').live_grep({grep_open_files=true})<Cr>", "silent")
 -- mapx.nnoremap({ "<Leader>fg", "<Leader>g" }, ":lua require('telescope.builtin').live_grep()<Cr>", "silent")
 mapx.nnoremap({ "<Leader>gd", "<Leader>gs" }, ":lua require('telescope.builtin').git_status()<Cr>", "silent")
@@ -50,13 +50,12 @@ require("telescope").setup({
 			"--column",
 			"--smart-case",
 			"--hidden",
-			"--binary=false",
 			"--glob=!.git/",
 		},
 		-- Better UX
 		sorting_strategy = "ascending",
-		file_sorter = require("telescope.sorters").get_fuzzy_file,
-		generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+		file_sorter = require("telescope.sorters").get_fzy_sorter,
+		generic_sorter = require("telescope.sorters").get_fzy_sorter,
 		layout_config = {
 			horizontal = { width = 0.9, height = 0.9 },
 			prompt_position = "top",
@@ -79,7 +78,7 @@ require("telescope").setup({
 	pickers = {
 		find_files = {
 			hidden = true,
-			find_command = { "rg", "--files", "--hidden", "--binary=false", "--glob", "!.git/*" },
+			find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
 		},
 	},
 	-- other configuration values here

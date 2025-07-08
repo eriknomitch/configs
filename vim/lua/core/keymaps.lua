@@ -207,8 +207,18 @@ map(
 	"<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
 	{ noremap = true, silent = true, desc = "File Browser" }
 )
-map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { noremap = true, silent = true, desc = "Live Grep (all files)" })
-map("n", "<leader>fw", "<cmd>Telescope grep_string<cr>", { noremap = true, silent = true, desc = "Search word under cursor" })
+map(
+	"n",
+	"<leader>fg",
+	"<cmd>Telescope live_grep<cr>",
+	{ noremap = true, silent = true, desc = "Live Grep (all files)" }
+)
+map(
+	"n",
+	"<leader>fw",
+	"<cmd>Telescope grep_string<cr>",
+	{ noremap = true, silent = true, desc = "Search word under cursor" }
+)
 -- map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { noremap = true, silent = true, desc = "Find Buffers" })
 -- map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { noremap = true, silent = true, desc = "Help Tags" })
 -- map("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>", { noremap = true, silent = true, desc = "Find Old Files" })
