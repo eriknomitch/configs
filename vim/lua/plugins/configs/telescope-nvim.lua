@@ -50,6 +50,7 @@ require("telescope").setup({
 			"--column",
 			"--smart-case",
 			"--hidden",
+			"--binary=false",
 			"--glob=!.git/",
 		},
 		-- Better UX
@@ -78,7 +79,7 @@ require("telescope").setup({
 	pickers = {
 		find_files = {
 			hidden = true,
-			find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
+			find_command = { "rg", "--files", "--hidden", "--binary=false", "--glob", "!.git/*" },
 		},
 	},
 	-- other configuration values here
