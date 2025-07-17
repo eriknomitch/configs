@@ -777,4 +777,6 @@ autoload -Uz compinit
 compinit
 # End of Docker CLI completions
 
-alias claude="/Users/erik/.claude/local/claude"
+export PATH="$PATH:/Users/erik/.local/bin"
+
+# alias claude="/Users/erik/.claude/local/claude"
