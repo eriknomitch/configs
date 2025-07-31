@@ -621,10 +621,8 @@ end
 -- -----------------------------------------------
 bindApplicationFocus("I", defaultBrowserName)
 bindApplicationFocusSecondary("I", secondaryBrowserName)
-bindApplicationFocus("L", function()
-	launchOrFocusWithConfirmation("Linear")
-end)
-bindApplicationFocusSecondary("L", "Linear")
+bindApplicationFocus("L", "Linear")
+
 bindApplicationFocus("P", "Preview")
 bindApplicationFocusSecondaryWithConfirmation("P", "Adobe Photoshop 2025")
 -- bindApplicationFocusSecondary("P", "Adobe Photoshop (Beta)")
