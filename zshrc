@@ -65,32 +65,33 @@ function hr() {
   printf '%*s\n' "$(tput cols)" '' | tr ' ' '─'
 }
 
-# Source secrets
+# Load secrets
 # ------------------------------------------------
-function source-secrets() {
-  local secrets_file="$HOME/.configs/env.sh"
+function load-secrets() {
+  local secrets_files=("$HOME/.env" "$HOME/.secrets")
+  local loaded_count=0
   local quiet=false
-
+  
+  # Parse arguments
   for arg in "$@"; do
     case $arg in
-      --quiet)
-        quiet=true
-        shift
-        ;;
+      --quiet|-q) quiet=true ;;
     esac
   done
-
-  if [[ -f $secrets_file ]]; then
-    $quiet || echo "Sourcing secrets from $secrets_file"
-    while IFS='=' read -r key value; do
-      if [[ $key != \#* && -n $key ]]; then
-        eval "export $key='$value'"
-        $quiet || echo "Exported: $key"
-      fi
-    done < $secrets_file
-    $quiet || echo "Secrets sourced successfully."
-  else
-    echo "Secrets file $secrets_file not found."
+  
+  for secrets_file in $secrets_files; do
+    if [[ -f $secrets_file ]]; then
+      source $secrets_file
+      ((loaded_count++))
+      $quiet || echo "✓ Loaded secrets from $secrets_file"
+      
+      # Ensure proper permissions
+      chmod 600 "$secrets_file" 2>/dev/null
+    fi
+  done
+  
+  if [[ $loaded_count -eq 0 ]] && ! $quiet; then
+    echo "⚠️  No secrets files found (checked: ${secrets_files[*]})"
   fi
 }
 
@@ -345,8 +346,8 @@ fi
 # SOURCE->USER -----------------------------------
 # ------------------------------------------------
 
-# Source sensitive ENV vars (~/.env)
-source-if-exists $HOME/.env
+# Load secrets from multiple locations
+load-secrets --quiet
 
 # Source various scripts embedded in repos
 _repos=(
