@@ -9,7 +9,7 @@ function qumis_load() {
   echo "All tmuxp sessions are being loaded in the background (detached)."
 }
 
-function qumis() {
+function qumis-tmux() {
 
   case "$1" in
     "start")
