@@ -72,6 +72,10 @@ function load-secrets() {
   local loaded_count=0
   local quiet=false
   
+  # Initialize/clear the loaded secrets tracking
+  export LOADED_SECRETS_FILES=()
+  export LOADED_SECRETS_VARS=()
+  
   # Parse arguments
   for arg in "$@"; do
     case $arg in
@@ -81,9 +85,24 @@ function load-secrets() {
   
   for secrets_file in $secrets_files; do
     if [[ -f $secrets_file ]]; then
+      # Store variables before sourcing
+      local vars_before=($(env | cut -d= -f1 | sort))
+      
       source $secrets_file
       ((loaded_count++))
       $quiet || echo "✓ Loaded secrets from $secrets_file"
+      
+      # Track which file was loaded
+      LOADED_SECRETS_FILES+=("$secrets_file")
+      
+      # Find newly added variables
+      local vars_after=($(env | cut -d= -f1 | sort))
+      local new_vars=($(comm -13 <(printf '%s\n' "${vars_before[@]}") <(printf '%s\n' "${vars_after[@]}")))
+      
+      # Add new variables to tracking
+      for var in $new_vars; do
+        LOADED_SECRETS_VARS+=("$var")
+      done
       
       # Ensure proper permissions
       chmod 600 "$secrets_file" 2>/dev/null
@@ -92,6 +111,80 @@ function load-secrets() {
   
   if [[ $loaded_count -eq 0 ]] && ! $quiet; then
     echo "⚠️  No secrets files found (checked: ${secrets_files[*]})"
+  fi
+}
+
+# List loaded secrets
+# ------------------------------------------------
+function list-secrets() {
+  local show_values=false
+  
+  # Parse arguments
+  for arg in "$@"; do
+    case $arg in
+      --values|-v) show_values=true ;;
+      --help|-h)
+        echo "Usage: list-secrets [--values|-v] [--help|-h]"
+        echo ""
+        echo "  --values, -v    Show variable values (masked for security)"
+        echo "  --help, -h      Show this help message"
+        return 0
+        ;;
+    esac
+  done
+  
+  if [[ ${#LOADED_SECRETS_FILES[@]} -eq 0 ]]; then
+    echo "⚠️  No secrets files have been loaded yet"
+    echo "💡 Run 'load-secrets' to load secrets first"
+    return 1
+  fi
+  
+  echo "🔐 LOADED SECRETS"
+  echo "================="
+  
+  # Show loaded files
+  echo "📁 Files loaded:"
+  for file in "${LOADED_SECRETS_FILES[@]}"; do
+    if [[ -f "$file" ]]; then
+      local file_size=$(wc -c < "$file" | tr -d ' ')
+      local file_lines=$(wc -l < "$file" | tr -d ' ')
+      echo "   ✓ $file (${file_lines} lines, ${file_size} bytes)"
+    else
+      echo "   ❌ $file (no longer exists)"
+    fi
+  done
+  
+  echo ""
+  
+  # Show loaded variables
+  if [[ ${#LOADED_SECRETS_VARS[@]} -eq 0 ]]; then
+    echo "📝 No environment variables were added"
+  else
+    echo "📝 Environment variables loaded (${#LOADED_SECRETS_VARS[@]}):"
+    for var in "${LOADED_SECRETS_VARS[@]}"; do
+      if [[ -n "${(P)var}" ]]; then
+        if $show_values; then
+          # Mask the value for security (show first 4 chars + ***)
+          local value="${(P)var}"
+          local masked_value
+          if [[ ${#value} -le 4 ]]; then
+            masked_value="***"
+          else
+            masked_value="${value:0:4}***"
+          fi
+          echo "   ✓ $var = $masked_value"
+        else
+          echo "   ✓ $var"
+        fi
+      else
+        echo "   ⚠️  $var (empty or unset)"
+      fi
+    done
+    
+    if ! $show_values; then
+      echo ""
+      echo "💡 Use 'list-secrets --values' to see masked values"
+    fi
   fi
 }
 
