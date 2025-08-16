@@ -1,3 +1,5 @@
+source-if-exists $HOME/.repositories/qumis-cli/shell/qumis.sh
+
 function qumis_load() {
   local projects=("qumis-api" "qumis-web" "qumis-llm-service")
 
