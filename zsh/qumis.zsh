@@ -64,24 +64,20 @@ function qumis-open-pr() {
   fi
 }
 
-# --------------------------------------------------
 ########################################################################
-# AWS + ECS Zsh Toolkit (long names)
+# AWS + ECS Zsh Toolkit (long names, array-safe)
 # Save as: ~/.zsh/aws-ecs-tools.zsh
-# Then add to ~/.zshrc:  [[ -f "$HOME/.zsh/aws-ecs-tools.zsh" ]] && source "$HOME/.zsh/aws-ecs-tools.zsh"
+# Add to ~/.zshrc:
+#   [[ -f "$HOME/.zsh/aws-ecs-tools.zsh" ]] && source "$HOME/.zsh/aws-ecs-tools.zsh"
 ########################################################################
 
 # ------------------------------- Config -------------------------------
 
 # Profiles that require extra caution (confirmed on use; red prompt badge)
 typeset -ga ECSR_PROTECTED_PROFILES
-ECSR_PROTECTED_PROFILES=(
-  qumis_prod
-)
+ECSR_PROTECTED_PROFILES=( qumis_prod )
 
-# Optional: profile aliases (short -> real). Keep or leave empty.
-# We keep them here for future use, but nothing auto-uses them unless you call
-# _aws_profile_resolve yourself.
+# Optional: profile aliases (short -> real). Not auto-used unless you call _aws_profile_resolve.
 typeset -gA ECSR_PROFILE_ALIAS
 ECSR_PROFILE_ALIAS=(
   [dev]=qumis_dev
@@ -108,94 +104,74 @@ typeset -g ECSR_ACTIVE_PROFILE=""
 # ------------------------------- Utils --------------------------------
 
 _ecs_require_bins() {
-  local missing=()
-  local bin
-  for bin in "$@"; do
-    command -v "$bin" >/dev/null 2>&1 || missing+=("$bin")
-  done
-  if (( ${#missing[@]} )); then
-    echo "❌ Missing dependencies: ${missing[*]}" >&2
-    return 127
-  fi
+  local missing=() bin
+  for bin in "$@"; do command -v "$bin" >/dev/null 2>&1 || missing+=("$bin"); done
+  (( ${#missing[@]} )) && { print -ru2 -- "❌ Missing dependencies: ${missing[*]}"; return 127; }
 }
 
 _aws_profile_resolve() {
-  local p="$1"
-  echo "${ECSR_PROFILE_ALIAS[$p]:-$p}"
+  local p="$1"; print -r -- "${ECSR_PROFILE_ALIAS[$p]:-$p}"
 }
 
 _ecs_in_array() {
   local needle="$1"; shift
-  local x
-  for x in "$@"; do [[ "$x" == "$needle" ]] && return 0; done
+  local x; for x in "$@"; do [[ "$x" == "$needle" ]] && return 0; done
   return 1
 }
 
-# Parse -c/--cluster and -p/--profile flags; prints remaining args.
-# Sets globals ECS_FLAG_CLUSTER / ECS_FLAG_PROFILE.
+# Parse -c/--cluster and -p/--profile into globals:
+#   ECS_FLAG_CLUSTER, ECS_FLAG_PROFILE, ECS_FLAG_REST (array of remaining args)
+typeset -ga ECS_FLAG_REST
 _ecs_parse_flags() {
   typeset -g ECS_FLAG_CLUSTER=""
   typeset -g ECS_FLAG_PROFILE=""
-  local rest=()
-  while [[ $# -gt 0 ]]; do
+  ECS_FLAG_REST=()
+
+  while (( $# > 0 )); do
     case "$1" in
-      -c|--cluster) ECS_FLAG_CLUSTER="$2"; shift 2 ;;
-      -p|--profile) ECS_FLAG_PROFILE="$2"; shift 2 ;;
-      --) shift; rest+=("$@"); break ;;
-      -*) echo "❌ Unknown flag: $1" >&2; return 2 ;;
-      *)  rest+=("$1"); shift ;;
+      -c|--cluster)
+        [[ -z "$2" ]] && { print -ru2 -- "❌ -c/--cluster requires a value"; return 2; }
+        ECS_FLAG_CLUSTER="$2"; shift 2 ;;
+      -p|--profile)
+        [[ -z "$2" ]] && { print -ru2 -- "❌ -p/--profile requires a value"; return 2; }
+        ECS_FLAG_PROFILE="$2"; shift 2 ;;
+      --)
+        shift; ECS_FLAG_REST+=("$@"); return 0 ;;
+      -*)
+        print -ru2 -- "❌ Unknown flag: $1"; return 2 ;;
+      *)
+        ECS_FLAG_REST+=("$1"); shift ;;
     esac
   done
-  print -r -- "${rest[@]}"
+  return 0
 }
 
 _ecs_whoami_banner() {
-  local prof="$1"
-  local acct arn
+  local prof="$1" acct arn
   acct=$(AWS_PROFILE="$prof" aws sts get-caller-identity --query Account --output text 2>/dev/null)
   arn=$(AWS_PROFILE="$prof" aws sts get-caller-identity --query Arn --output text 2>/dev/null)
   if [[ -n "$acct" && "$acct" != "None" ]]; then
-    echo "🔑 AWS profile: $prof   Account: $acct"
-    echo "   ARN: $arn"
+    print -r -- "🔑 AWS profile: $prof   Account: $acct"
+    print -r -- "   ARN: $arn"
   else
-    echo "🔑 AWS profile: $prof   (unable to resolve account — are you logged in?)"
+    print -r -- "🔑 AWS profile: $prof   (unable to resolve account — are you logged in?)"
   fi
 }
 
 # Resolve cluster: explicit -> env var -> per-profile map -> discover by service
 _ecs_resolve_cluster() {
-  local cluster_in="$1"
-  local service="$2"
-
-  if [[ -n "$cluster_in" ]]; then
-    echo "$cluster_in"
-    return 0
-  fi
-
-  if [[ -n "$ECSR_DEFAULT_CLUSTER" ]]; then
-    echo "$ECSR_DEFAULT_CLUSTER"
-    return 0
-  fi
-
+  local cluster_in="$1" service="$2"
+  if [[ -n "$cluster_in" ]]; then print -r -- "$cluster_in"; return 0; fi
+  if [[ -n "$ECSR_DEFAULT_CLUSTER" ]]; then print -r -- "$ECSR_DEFAULT_CLUSTER"; return 0; fi
   if [[ -n "$ECSR_ACTIVE_PROFILE" ]]; then
     local mapped="${ECSR_DEFAULT_CLUSTER_BY_PROFILE[$ECSR_ACTIVE_PROFILE]}"
-    if [[ -n "$mapped" ]]; then
-      echo "$mapped"
-      return 0
-    fi
+    [[ -n "$mapped" ]] && { print -r -- "$mapped"; return 0; }
   fi
-
-  if [[ -z "$service" ]]; then
-    echo "❌ No cluster specified and no service provided for discovery." >&2
-    return 1
-  fi
+  [[ -z "$service" ]] && { print -ru2 -- "❌ No cluster specified and no service provided for discovery."; return 1; }
 
   local clusters ds svc_stat running_count found=""
   clusters="$(_aws ecs list-clusters --output json | jq -r '.clusterArns[]?' 2>/dev/null)"
-  if [[ -z "$clusters" ]]; then
-    echo "❌ No ECS clusters found." >&2
-    return 1
-  fi
+  [[ -z "$clusters" ]] && { print -ru2 -- "❌ No ECS clusters found."; return 1; }
 
   local c
   for c in $clusters; do
@@ -204,26 +180,18 @@ _ecs_resolve_cluster() {
     svc_stat="$(jq -r '.services[0].status // empty' <<<"$ds")"
     running_count="$(jq -r '.services[0].runningCount // 0' <<<"$ds")"
     if [[ "$svc_stat" == "ACTIVE" ]]; then
-      found="$c"
-      (( running_count > 0 )) && { echo "$found"; return 0; }
+      found="$c"; (( running_count > 0 )) && { print -r -- "$found"; return 0; }
     fi
   done
-
-  if [[ -z "$found" ]]; then
-    echo "❌ Could not find an ACTIVE ECS service named '${service}' in any cluster." >&2
-    return 1
-  fi
-
-  echo "$found"
+  [[ -z "$found" ]] && { print -ru2 -- "❌ Could not find an ACTIVE ECS service named '${service}' in any cluster."; return 1; }
+  print -r -- "$found"
 }
 
 # AWS CLI wrapper: prefers ECSR_ACTIVE_PROFILE, then command flag
 _aws() {
   local prof="${ECSR_ACTIVE_PROFILE:-$ECS_FLAG_PROFILE}"
   if [[ -n "$prof" ]]; then
-    if _ecs_in_array "$prof" "${ECSR_PROTECTED_PROFILES[@]}"; then
-      print -r -- "🔒 [protected:${prof}] aws $*" >&2
-    fi
+    _ecs_in_array "$prof" "${ECSR_PROTECTED_PROFILES[@]}" && print -ru2 -- "🔒 [protected:${prof}] aws $*"
     AWS_PROFILE="$prof" aws "$@"
   else
     aws "$@"
@@ -232,10 +200,8 @@ _aws() {
 
 # --------------------------- Prompt Badge -----------------------------
 
-# Right-side prompt badge showing active profile (safe; no glob patterns)
 _ecs_update_rprompt() {
-  local p="$ECSR_ACTIVE_PROFILE"
-  local badge=""
+  local p="$ECSR_ACTIVE_PROFILE" badge=""
   if [[ -n "$p" ]]; then
     if _ecs_in_array "$p" "${ECSR_PROTECTED_PROFILES[@]}"; then
       badge="%F{red}[AWS:${p}]%f"
@@ -245,8 +211,6 @@ _ecs_update_rprompt() {
   fi
   RPROMPT="$badge"
 }
-
-# Install the hook once
 if ! typeset -f _ecs_precmd_hook_installed >/dev/null; then
   _ecs_precmd_hook_installed() { :; }
   autoload -Uz add-zsh-hook 2>/dev/null || true
@@ -255,37 +219,26 @@ fi
 
 # ------------------------- SSO + Sessions -----------------------------
 
-# Login with SSO and export env creds into current shell (optionally pass profile)
 aws-sso-and-export() {
   local profile="${1:-$QUMIS_INFRA_AWS_PROFILE}"
-  if [[ -z "$profile" ]]; then
-    echo "Usage: aws-sso-and-export <profile>"
-    return 2
-  fi
+  [[ -z "$profile" ]] && { print -ru2 -- "Usage: aws-sso-and-export <profile>"; return 2; }
   _ecs_require_bins aws || return $?
 
-  echo "🔐 aws sso login --profile ${profile}"
-  if ! aws sso login --profile "$profile"; then
-    echo "❌ SSO login failed for profile: ${profile}"
-    return 1
-  fi
+  print -r -- "🔐 aws sso login --profile ${profile}"
+  aws sso login --profile "$profile" || { print -ru2 -- "❌ SSO login failed for profile: ${profile}"; return 1; }
 
-  echo "📤 Exporting temporary credentials into this shell..."
+  print -r -- "📤 Exporting temporary credentials into this shell..."
   local exports
-  if ! exports="$(aws configure export-credentials --profile "$profile" --format env)"; then
-    echo "❌ Failed to obtain credentials for profile: ${profile}"
-    return 1
-  fi
-
+  exports="$(aws configure export-credentials --profile "$profile" --format env)" || { print -ru2 -- "❌ Failed to obtain credentials for profile: ${profile}"; return 1; }
   eval "$exports"
   export AWS_PROFILE="$profile"
-  echo "✅ Exported creds for '${profile}'. Expiration: ${AWS_CREDENTIAL_EXPIRATION:-unknown}"
+  print -r -- "✅ Exported creds for '${profile}'. Expiration: ${AWS_CREDENTIAL_EXPIRATION:-unknown}"
 }
 
 # Session-aware wrapper:
-#   aws-session use  <profile>          # SSO login, set session profile (badge)
-#   aws-session shell <profile>         # SSO login, subshell with profile
-#   aws-session run  <profile> -- CMD   # SSO login, run one command with profile
+#   aws-session use  <profile>
+#   aws-session shell <profile>
+#   aws-session run  <profile> -- CMD
 aws-session() {
   _ecs_require_bins aws || return $?
 
@@ -297,127 +250,106 @@ aws-session() {
 Usage:
   aws-session use  <profile>              # SSO login, set session profile (current shell)
   aws-session shell <profile>             # SSO login, open subshell with profile
-  aws-session run  <profile> -- <cmd...>  # SSO login, run one command with profile
+  aws-session run  <profile> -- <command...>  # SSO login, run one command with profile
 USAGE
-      return 2
-      ;;
+      return 2 ;;
   esac
 
-  local prof="$1"
-  if [[ -z "$prof" ]]; then
-    echo "❌ Missing <profile>"
-    return 2
-  fi
+  local prof="$1"; [[ -z "$prof" ]] && { print -ru2 -- "❌ Missing <profile>"; return 2; }
   shift || true
 
-  # Confirm if protected
   if _ecs_in_array "$prof" "${ECSR_PROTECTED_PROFILES[@]}"; then
-    echo "⚠️  You're targeting PROTECTED profile: '$prof'."
+    print -r -- "⚠️  You're targeting PROTECTED profile: '$prof'."
     local _ecs_confirm
     vared -p "Type the profile name to confirm: " -c _ecs_confirm 2>/dev/null || read "?Type the profile name to confirm: " _ecs_confirm
-    [[ "$_ecs_confirm" != "$prof" ]] && { echo "❌ Not switching."; return 1; }
+    [[ "$_ecs_confirm" != "$prof" ]] && { print -r -- "❌ Not switching."; return 1; }
   fi
 
-  echo "🔐 aws sso login --profile ${prof}"
-  if ! aws sso login --profile "$prof"; then
-    echo "❌ SSO login failed for profile: ${prof}"
-    return 1
-  fi
+  print -r -- "🔐 aws sso login --profile ${prof}"
+  aws sso login --profile "$prof" || { print -ru2 -- "❌ SSO login failed for profile: ${prof}"; return 1; }
 
   case "$mode" in
     use)
       ECSR_ACTIVE_PROFILE="$prof"
       _ecs_whoami_banner "$prof"
       _ecs_update_rprompt
-      echo "✅ Session profile set: $prof (prompt badge updated)"
-      ;;
+      print -r -- "✅ Session profile set: $prof (prompt badge updated)" ;;
     shell)
-      echo "🧭 Starting subshell with AWS_PROFILE=$prof"
+      print -r -- "🧭 Starting subshell with AWS_PROFILE=$prof"
       _ecs_whoami_banner "$prof"
       ECSR_ACTIVE_PROFILE="$prof" AWS_PROFILE="$prof" zsh
-      echo "🔚 Left subshell for profile: $prof"
-      ;;
+      print -r -- "🔚 Left subshell for profile: $prof" ;;
     run)
       [[ "$1" == "--" ]] && shift
-      if [[ $# -eq 0 ]]; then
-        echo "❌ Usage: aws-session run <profile> -- <command...>"
-        return 2
-      fi
+      (( $# == 0 )) && { print -ru2 -- "❌ Usage: aws-session run <profile> -- <command...>"; return 2; }
       _ecs_whoami_banner "$prof"
-      ECSR_ACTIVE_PROFILE="$prof" AWS_PROFILE="$prof" "$@"
-      ;;
+      ECSR_ACTIVE_PROFILE="$prof" AWS_PROFILE="$prof" "$@" ;;
   esac
 }
 
 # --------------------------- ECS Commands -----------------------------
 
 # Run a command in the newest running task for a service (ECS Exec)
-# Usage: ecs-run [-c <cluster>] [-p <profile>] <service> <command...>
+# Usage:
+#   ecs-run [-c <cluster>] [-p <profile>] <service> -- <command...>
+#   ecs-run [-c <cluster>] [-p <profile>] <service> <command...>
 ecs-run() {
   _ecs_require_bins aws jq || return $?
-  local parsed; parsed="$(_ecs_parse_flags "$@")" || return $?
-  set -- $parsed
-  if [[ $# -lt 2 ]]; then
-    echo "Usage: ecs-run [-c <cluster>] [-p <profile>] <service> <command...>"
+
+  _ecs_parse_flags "$@" || return $?
+  set -- "${ECS_FLAG_REST[@]}"
+
+  if (( $# < 2 )); then
+    print -ru2 -- "Usage: ecs-run [-c <cluster>] [-p <profile>] <service> [--] <command...>"
     return 1
   fi
 
   local service="$1"; shift
-  local cmd="$*"
+  [[ "$1" == "--" ]] && shift
+  (( $# == 0 )) && { print -ru2 -- "Usage: ecs-run [-c <cluster>] [-p <profile>] <service> [--] <command...>"; return 1; }
 
-  echo "🔎 Discovering cluster for service '${service}'..."
+  local -a cmd_argv; cmd_argv=("$@")
+  local cmd_str="${(j: :)cmd_argv}"
+
+  print -r -- "🔎 Discovering cluster for service '${service}'..."
   local cluster; cluster="$(_ecs_resolve_cluster "$ECS_FLAG_CLUSTER" "$service")" || return $?
-  echo "📍 Cluster: $cluster"
+  print -r -- "📍 Cluster: $cluster"
 
   local who_prof="${ECSR_ACTIVE_PROFILE:-$ECS_FLAG_PROFILE:-${AWS_PROFILE:-}}"
-  if [[ -n "$who_prof" ]]; then
-    _ecs_whoami_banner "$who_prof"
-  fi
+  [[ -n "$who_prof" ]] && _ecs_whoami_banner "$who_prof"
 
-  echo "📦 Locating running task for '${service}'..."
+  print -r -- "📦 Locating running task for '${service}'..."
   local task_arns desc selected_task_arn container_name
   task_arns="$(_aws ecs list-tasks --cluster "$cluster" --service-name "$service" --desired-status RUNNING --output json | jq -r '.taskArns[]?' 2>/dev/null)"
-  if [[ -z "$task_arns" ]]; then
-    echo "❌ No RUNNING tasks found for service '${service}' in '${cluster}'." >&2
-    return 1
-  fi
+  [[ -z "$task_arns" ]] && { print -ru2 -- "❌ No RUNNING tasks found for service '${service}' in '${cluster}'."; return 1; }
 
-  desc="$(_aws ecs describe-tasks --cluster "$cluster" --tasks $task_arns --output json 2>/dev/null)" || {
-    echo "❌ Failed to describe tasks." >&2
-    return 1
-  }
+  desc="$(_aws ecs describe-tasks --cluster "$cluster" --tasks $task_arns --output json 2>/dev/null)" || { print -ru2 -- "❌ Failed to describe tasks."; return 1; }
   selected_task_arn="$(jq -r '.tasks | sort_by(.startedAt) | last | .taskArn // empty' <<<"$desc")"
-  if [[ -z "$selected_task_arn" ]]; then
-    echo "❌ Could not select a task." >&2
-    return 1
-  fi
-  echo "🆕 Task: $selected_task_arn"
+  [[ -z "$selected_task_arn" ]] && { print -ru2 -- "❌ Could not select a task."; return 1; }
+  print -r -- "🆕 Task: $selected_task_arn"
 
   container_name="$(jq -r --arg svc "$service" '
     ( .tasks | sort_by(.startedAt) | last ) as $t
     | ([$t.containers[] | select(.name==$svc) | .name] + [$t.containers[0].name])[0]
   ' <<<"$desc")"
-  if [[ -z "$container_name" || "$container_name" == "null" ]]; then
-    echo "❌ Could not determine container name for task." >&2
-    return 1
-  fi
-  echo "🧱 Container: $container_name"
+  [[ -z "$container_name" || "$container_name" == "null" ]] && { print -ru2 -- "❌ Could not determine container name for task."; return 1; }
+  print -r -- "🧱 Container: $container_name"
 
-  echo "🚀 Executing: $cmd"
+  print -r -- "🚀 Executing: $cmd_str"
   _aws ecs execute-command \
     --cluster "$cluster" \
     --task "$selected_task_arn" \
     --container "$container_name" \
     --interactive \
-    --command "$cmd"
+    --command "$cmd_str"
 }
 
 # List service names in a cluster
 # Usage: ecs-services [-c <cluster>] [-p <profile>]
 ecs-services() {
   _ecs_require_bins aws jq || return $?
-  local parsed; parsed="$(_ecs_parse_flags "$@")" || return $?
-  set -- $parsed
+  _ecs_parse_flags "$@" || return $?
+  set -- "${ECS_FLAG_REST[@]}"
   local cluster; cluster="$(_ecs_resolve_cluster "$ECS_FLAG_CLUSTER")" || return $?
   _aws ecs list-services --cluster "$cluster" | jq -r '.serviceArns[]? | split("/")[-1]'
 }
@@ -426,8 +358,8 @@ ecs-services() {
 # Usage: ecs-clusters [-p <profile>]
 ecs-clusters() {
   _ecs_require_bins aws jq || return $?
-  local parsed; parsed="$(_ecs_parse_flags "$@")" || return $?
-  set -- $parsed
+  _ecs_parse_flags "$@" || return $?
+  set -- "${ECS_FLAG_REST[@]}"
   _aws ecs list-clusters | jq -r '.clusterArns[]?'
 }
 
@@ -435,17 +367,14 @@ ecs-clusters() {
 ecs-clusters-all() {
   _ecs_require_bins aws jq || return $?
   local profiles=("$@")
-  if [[ ${#profiles[@]} -eq 0 ]]; then
-    # default list from aliases if none provided
-    profiles=( "${(@k)ECSR_PROFILE_ALIAS}" )
-  fi
+  (( ${#profiles[@]} == 0 )) && profiles=( "${(@k)ECSR_PROFILE_ALIAS}" )
   local p real acct
   for p in "${profiles[@]}"; do
     real="$(_aws_profile_resolve "$p")"
-    echo "=== $p ($real) ==="
+    print -r -- "=== $p ($real) ==="
     acct=$(AWS_PROFILE="$real" aws sts get-caller-identity --query Account --output text 2>/dev/null)
-    echo "Account: ${acct:-unknown}"
+    print -r -- "Account: ${acct:-unknown}"
     AWS_PROFILE="$real" aws ecs list-clusters | jq -r '.clusterArns[]?'
-    echo
+    print -r -- ""
   done
 }
