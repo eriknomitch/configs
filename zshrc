@@ -54,7 +54,13 @@ alias ncdu="ncdu --color dark-bg -e --exclude .git --exclude node_modules"
 alias ping="prettyping --nolegend"
 alias dsp="docker system prune --force"
 alias jl='jupyter lab --notebook-dir "${HOME}/.jupyter-notebooks"'
-alias cld="claude"
+function cld() {
+  if [[ -f ~/.claude/local/claude ]]; then
+    ~/.claude/local/claude "$@"
+  else
+    claude "$@"
+  fi
+}
 
 # ------------------------------------------------
 # FUNCTIONS --------------------------------------
@@ -1206,3 +1212,5 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 eval "$(git machete completion zsh)"  # or, if it doesn't work:
 source <(git machete completion zsh)
 
+
+alias claude="/Users/erik/.claude/local/claude"
