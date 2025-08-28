@@ -54,6 +54,7 @@ alias ncdu="ncdu --color dark-bg -e --exclude .git --exclude node_modules"
 alias ping="prettyping --nolegend"
 alias dsp="docker system prune --force"
 alias jl='jupyter lab --notebook-dir "${HOME}/.jupyter-notebooks"'
+alias cld="claude"
 
 # ------------------------------------------------
 # FUNCTIONS --------------------------------------
@@ -1196,10 +1197,6 @@ compinit
 export PATH="$PATH:/Users/erik/.local/bin"
 
 # alias claude="/Users/erik/.claude/local/claude"
-
-
-
-
 
 # opencode
 export PATH=/Users/erik/.opencode/bin:$PATH
