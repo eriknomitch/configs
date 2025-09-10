@@ -55,12 +55,10 @@ alias ping="prettyping --nolegend"
 alias dsp="docker system prune --force"
 alias jl='jupyter lab --notebook-dir "${HOME}/.jupyter-notebooks"'
 function cld() {
-  export SHELL=/opt/homebrew/bin/bash
-
   if [[ -f ~/.claude/local/claude ]]; then
-    ~/.claude/local/claude "$@"
+    SHELL=/opt/homebrew/bin/bash ~/.claude/local/claude "$@"
   else
-    claude "$@"
+    SHELL=/opt/homebrew/bin/bash claude "$@"
   fi
 }
 
