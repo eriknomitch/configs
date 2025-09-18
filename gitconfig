@@ -29,7 +29,7 @@
 	colorMoved = default
 [rerere]
 	enabled = true
-	autoupdate = true
+	autoUpdate = true
 [color]
 	ui = true
 	pager = no
@@ -54,3 +54,6 @@
 	clean = git-lfs clean -- %f
 [credential]
 	helper = store
+[rebase]
+	autoStash = true
+	autosquash = true
