@@ -1214,3 +1214,6 @@ source <(git machete completion zsh)
 
 
 alias claude="/Users/erik/.claude/local/claude"
+
+source-if-exists $HOMEBREW_PREFIX/opt/git-extras/share/git-extras/git-extras-completion.zsh
+
