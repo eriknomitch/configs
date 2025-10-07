@@ -560,56 +560,6 @@ hs.hotkey.bind(movementApplicationLaunchOrFocusTertiary, "S", function()
 	launchOrFocusWithConfirmation("Stable Diffusion")
 end)
 
-if enableWindowResizeKeybindings then
-	-- Center window
-	hs.hotkey.bind({ "ctrl", "cmd" }, "0", function()
-		hs.window.focusedWindow():centerOnScreen(nil, true)
-	end)
-
-	hs.hotkey.bind(movement, "Left", function()
-		local win = hs.window.focusedWindow()
-		local f = win:frame()
-		local screen = win:screen()
-		local max = screen:frame()
-
-		f.x = max.x
-		f.y = max.y
-		f.w = max.w / 2
-		f.h = max.h
-		win:setFrame(f)
-	end)
-
-	hs.hotkey.bind(movement, "Right", function()
-		local win = hs.window.focusedWindow()
-		local f = win:frame()
-		local screen = win:screen()
-		local max = screen:frame()
-
-		f.x = max.x + (max.w / 2)
-		f.y = max.y
-		f.w = max.w / 2
-		f.h = max.h
-		win:setFrame(f)
-	end)
-end
-
-function fullscreen()
-	local win = hs.window.focusedWindow()
-	if win == nil then
-		return
-	end
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	f.x = max.x
-	f.y = max.y
-	f.w = max.w
-	f.h = max.h
-
-	win:setFrame(f)
-end
-
 --}}}
 
 -- -----------------------------------------------
@@ -625,8 +575,6 @@ bindApplicationFocus("L", "Linear")
 
 bindApplicationFocus("P", "Preview")
 bindApplicationFocusSecondaryWithConfirmation("P", "Adobe Photoshop 2025")
--- bindApplicationFocusSecondary("P", "Adobe Photoshop (Beta)")
--- hs.hotkey.bind(launchOrFocus, "P", function() launchOrFocusWithConfirmation("Adobe Photoshop (Beta)") end)
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("C", defaultAiChatName)
 bindApplicationFocusSecondary("C", secondaryAiChatName)
@@ -636,18 +584,14 @@ bindApplicationFocusWithConfirmation("Z", "zoom.us")
 bindApplicationFocus("D", "Drive")
 bindApplicationFocus("A", "Audio MIDI Setup")
 bindApplicationFocus("W", "WLED")
-hs.hotkey.bind(movementApplicationLaunchOrFocusSecondary, "D", function()
-	launchOrFocusWithConfirmation("Discord")
-end)
+bindApplicationFocusSecondaryWithConfirmation("D", "Discord")
 bindApplicationFocus("E", "Obsidian")
 bindApplicationFocusSecondary("E", "Element")
 bindApplicationFocusSecondary("V", "Visual Studio Code")
 bindApplicationFocus("V", "IINA")
--- bindApplicationFocus("G", "Gmail")
 bindApplicationFocus("U", "Unraid")
 bindApplicationFocus("N", "Notion")
 bindApplicationFocus("H", "Home Assistant")
-bindApplicationFocusSecondary("H", "Home Assistant")
 
 -- Special
 -- -----------------------------------------------
@@ -679,19 +623,6 @@ hs.hotkey.bind(hyperShift, "m", function()
 	hs.alert.show("Moved Mouse To Other Screen", { textSize = 24 }, screen)
 	hs.alert.show("Moved Mouse HERE: " .. nextScreen:name(), { textSize = 24 }, nextScreen)
 end)
-
--- Bindings for moving windows between spaces
--- NOTE: This is taken care of with BetterTouchTool
--- -----------------------------------------------
--- hs.hotkey.bind({ "ctrl", "cmd", "shift" }, "Up", function()
--- 	local win = hs.window.focusedWindow()
--- 	moveWindowOneSpace(win, "left")
--- end)
---
--- hs.hotkey.bind({ "ctrl", "cmd", "shift" }, "Down", function()
--- 	local win = hs.window.focusedWindow()
--- 	moveWindowOneSpace(win, "right")
--- end)
 
 -- }}}
 
@@ -738,13 +669,14 @@ Resize:
   Expand both:         cmd + ctrl + alt + =
 
 Application Shortcuts:
-  Browser:             cmd + ctrl + I
-  Secondary Browser:   cmd + ctrl + shift + I
-  Todoist:             cmd + ctrl + T
+  Browser (Arc):       cmd + ctrl + I
+  Firefox Dev:         cmd + ctrl + shift + I
+  Linear:              cmd + ctrl + L
   Preview:             cmd + ctrl + P
   Photoshop:           cmd + ctrl + shift + P
   Finder:              cmd + ctrl + F
   ChatGPT:             cmd + ctrl + C
+  Claude:              cmd + ctrl + shift + C
   BoltAI:              cmd + ctrl + B
   FaceTime:            cmd + ctrl + shift + F
   Zoom:                cmd + ctrl + Z
@@ -759,7 +691,10 @@ Application Shortcuts:
   Unraid:              cmd + ctrl + U
   Notion:              cmd + ctrl + N
   Home Assistant:      cmd + ctrl + H
-  Spotify:             cmd + ctrl + S
+  Messages:            cmd + ctrl + M
+  Slack:               cmd + ctrl + shift + S
+  WhatsApp:            cmd + ctrl + shift + W
+  Stable Diffusion:    ctrl + alt + shift + S
 
 Special:
   Terminal:            ctrl + Space
@@ -890,17 +825,58 @@ function modifyWindowSize(delta, direction)
 	modifyWindowWidth(delta, direction)
 end
 
+function fullscreen()
+	local win = hs.window.focusedWindow()
+	if win == nil then
+		return
+	end
+	local f = win:frame()
+	local screen = win:screen()
+	local max = screen:frame()
+
+	f.x = max.x
+	f.y = max.y
+	f.w = max.w
+	f.h = max.h
+
+	win:setFrame(f)
+end
+
 -- -----------------------------------------------
 
 if enableWindowResizeKeybindings then
+	-- Window halves
+	hs.hotkey.bind(movement, "Left", function()
+		local win = hs.window.focusedWindow()
+		local f = win:frame()
+		local screen = win:screen()
+		local max = screen:frame()
+
+		f.x = max.x
+		f.y = max.y
+		f.w = max.w / 2
+		f.h = max.h
+		win:setFrame(f)
+	end)
+
+	hs.hotkey.bind(movement, "Right", function()
+		local win = hs.window.focusedWindow()
+		local f = win:frame()
+		local screen = win:screen()
+		local max = screen:frame()
+
+		f.x = max.x + (max.w / 2)
+		f.y = max.y
+		f.w = max.w / 2
+		f.h = max.h
+		win:setFrame(f)
+	end)
+
+	-- Fullscreen and middle
 	hs.hotkey.bind(movement, "Up", fullscreen)
 	hs.hotkey.bind(movement, "Down", middle)
 
 	hs.hotkey.bind({ "ctrl", "cmd" }, "0", function()
-		hs.window.focusedWindow():centerOnScreen(nil, true)
-	end)
-
-	hs.hotkey.bind({ "ctrl", "cmd", "alt" }, "0", function()
 		hs.window.focusedWindow():centerOnScreen(nil, true)
 	end)
 
