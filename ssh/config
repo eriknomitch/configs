@@ -161,7 +161,7 @@ Host unraid-pc unraid-pc.local
 
 Host pc pc.local
   HostName pc.local
-  User erik
+  User Erik
 
 Host volumio volumio.local
   HostName volumio.local
