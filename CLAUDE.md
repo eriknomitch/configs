@@ -4,87 +4,159 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-This is a personal configuration repository containing dotfiles and configuration files for various tools and applications. The repository includes configuration for:
-
-- **Shell environment**: zsh configuration with custom functions, aliases, and host-specific settings
-- **Development tools**: Neovim (Lua-based), Hammerspoon, tmux, git, and other CLI tools
-- **GUI applications**: Alacritty terminal, Karabiner Elements, various themes
-- **Home automation**: Home Assistant configuration with custom components
-- **System management**: Ansible playbooks, system scripts, and bootstrap utilities
+Personal dotfiles and configuration repository for development tools, shell environment, window management, and home automation. Core philosophy: modular, environment-specific, symlink-based configuration management.
 
 ## Commands
 
-### Initial Setup
+### Bootstrap and Setup
 ```bash
-# Clone and bootstrap the configuration
-git clone git@github.com:eriknomitch/configs.git ~/.configs
-cd ~/.configs
+# Initial setup (creates symlinks from ~/.configs to ~/)
 ./bootstrap-host
+
+# Manually recreate symlinks if needed
+.bin/ensure-symbolic-links
+
+# Reload shell configuration
+resource  # or: src
 ```
 
-### Development Workflow
+### Key Shell Functions
+Available globally via `/etc/zsh/shared.zsh`:
+- `resource` / `src` - Reload zsh configuration
+- `command-exists <cmd>` - Check if command is available
+- `source-if-exists <file>` - Safely source files
+- `extend-path <dir>` - Add directory to PATH
+
+### Neovim
 ```bash
-# The bootstrap script handles:
-# - Creating symbolic links for dotfiles
-# - Setting up repositories in ~/.repositories
-# - Configuring SSH permissions
-# - Installing additional repositories (g, prwd)
+# Plugin management (inside Neovim)
+:Lazy          # Open plugin manager
+:Lazy sync     # Update plugins
+```
+
+Leader key: `\` (backslash)
+
+### Git Workflow
+```bash
+# Custom aliases (from gitconfig)
+git log-tree              # Pretty graph log with dates
+git changed-files <hash>  # List files changed in commit
+git changes <hash>        # Show diff for specific commit
 ```
 
 ## Architecture
 
-### Configuration Structure
-- **Main dotfiles**: Located in repository root (zshrc, gitconfig, tmux.conf, etc.)
-- **Host-specific configs**: `zshrc-specific-to-host/` directory contains per-machine customizations
-- **OS-specific configs**: `zshrc-specific-to-os/` directory contains platform-specific settings
-- **Application configs**: Organized in subdirectories by application name
+### Bootstrap System
+The `bootstrap-host` script orchestrates initial setup:
+1. Runs `.bin/ensure-symbolic-links` to create symlinks
+2. Creates `~/.repositories` directory structure
+3. Clones helper repositories (`g`, `prwd`)
+4. Sets SSH permissions (700 for ~/.ssh, 600 for config)
 
-### Key Components
+**Critical:** The `_ensure_symbolic_link` function in `.bin/ensure-symbolic-links`:
+- Links from `~/.configs/<file>` → `~/<file>` or system locations
+- Handles both user and sudo links (e.g., `/etc/zsh/shared`)
+- Creates symlinks for: zshrc, vimrc, gitconfig, tmux.conf, and application configs
+- Neovim gets dual symlinks: `~/.vim` and `~/.config/nvim` both point to `vim/`
 
-#### Shell Environment (zsh)
-- **Main config**: `zshrc` sources shared configuration and host-specific files
-- **Shared utilities**: `/etc/zsh/shared.zsh` contains common functions
-- **Host customization**: Machine-specific configurations in `zshrc-specific-to-host/`
-- **OS customization**: Platform-specific settings in `zshrc-specific-to-os/`
+### Shell Environment (zsh)
 
-#### Neovim Configuration
-- **Modern Lua setup**: `vim/init.lua` is the main entry point
-- **Modular structure**: Configuration split into `lua/core/`, `lua/plugins/` modules
-- **Plugin management**: Uses lazy.nvim for plugin management
-- **Leader key**: Set to backslash (`\`)
+**Loading hierarchy:**
+1. `zshrc` (main entry point)
+2. `/etc/zsh/shared.zsh` (cross-system utilities and aliases)
+3. `zshrc-specific-to-os/Darwin.zsh` or `Linux.zsh` (platform-specific)
+4. `zshrc-specific-to-host/<hostname>.zsh` (machine-specific)
 
-#### Hammerspoon (macOS automation)
-- **Main config**: `hammerspoon/init.lua` with modular requires
-- **Spoons**: Custom and third-party Spoons in `hammerspoon/Spoons/`
-- **Window management**: Configurable window resize keybindings
-- **External display handling**: Automatic configuration for external monitors
+**Key patterns:**
+- Host-specific configs are optional; use for machine-dependent settings
+- OS-specific configs handle platform differences (macOS vs Linux)
+- The `INITIAL_CWD` environment variable forces initial working directory if set
+- History is shared across sessions with deduplication
 
-#### Home Assistant
-- **Full configuration**: Complete Home Assistant setup in `homeassistant/`
-- **Custom components**: HACS, browser_mod, UI Lovelace Minimalist
-- **Themes**: Multiple UI themes in `homeassistant/themes/`
-- **Automation**: Blueprints and custom automations
+### Neovim Structure
 
-### Configuration Patterns
-- **Symbolic linking**: The bootstrap script creates symlinks from home directory to repository files
-- **Modular organization**: Large configurations are split into logical modules
-- **Environment-specific**: Host and OS-specific configurations are isolated
-- **Version controlled**: All configurations are tracked in git for easy synchronization
+**Architecture:**
+- Entry: `vim/init.lua` (NOT init.vim - fully Lua-based)
+- Configuration: `vim/lua/core/` (options, keymaps, autocommands)
+- Plugins: `vim/lua/plugins/` organized by category:
+  - `configs/` - General configuration plugins
+  - `ui/` - Interface and appearance
+  - `lsp/` - Language server protocol
+  - `git/` - Git integration
+  - `coding/` - Code editing enhancements
+  - `completion/` - Autocompletion
+- Plugin manager: lazy.nvim (`vim/lua/plugins/init.lua`)
 
-## Development Notes
+**Key settings (from init.lua:1-50):**
+- Leader: `\` (set before plugin loads)
+- No swap/backup files, persistent undo enabled
+- Line numbers disabled by default
+- Smart search with case sensitivity
 
-### File Modifications
-When modifying configurations:
-- Test changes on a single host before committing
-- Use host-specific files for machine-dependent settings
-- Maintain backwards compatibility when possible
+### Hammerspoon (macOS)
 
-### Adding New Configurations
-- Place new dotfiles in repository root
-- Add symbolic link creation to bootstrap script if needed
-- Consider if host-specific variants are needed
+**Structure (from init.lua):**
+- Entry: `hammerspoon/init.lua`
+- Local modules: `utility.lua`, `external_display_handler.lua`
+- Third-party: `hammerspoon/Spoons/` directory
 
-### Neovim Plugin Development
-- Add new plugins to appropriate module in `lua/plugins/`
-- Follow existing patterns for plugin configuration
-- Test with `:Lazy` command for plugin management
+**Configuration variables (customizable per-host):**
+- `enableWindowResizeKeybindings` - Toggle window management hotkeys
+- `appsToCenter` - Apps that auto-center on launch (Finder, Messages, etc.)
+- `defaultBrowserName` - Primary browser (currently "Arc")
+- `defaultTerminalName` - Primary terminal (currently "iTerm")
+- `secondaryBrowserName` - Fallback browser
+
+**External display handling:**
+- Automatically triggered on display connection/disconnection
+- Custom layout configurations per display
+
+### Git Configuration
+
+**Notable settings (gitconfig:1-60):**
+- Default branch: `main`
+- Auto-setup remote on first push
+- Pager: Delta (dark theme) with navigation
+- Merge: diff3 conflict style, rerere enabled
+- Rebase: auto-stash and auto-squash enabled
+- LFS filter configured
+
+### tmux
+
+**Key bindings:**
+- Prefix: `Ctrl-n` (not the default Ctrl-b)
+- `Prefix-r` - Reload configuration
+- Mouse mode enabled
+- Default shell: zsh via `reattach-to-user-namespace`
+
+### SSH Configuration
+
+Structure: `ssh/config` (single file, no includes)
+**Important:** Bootstrap sets permissions automatically (700/600)
+
+## Modification Patterns
+
+### Adding a New Dotfile
+1. Place file in repository root (e.g., `newconfig`)
+2. Add symlink creation to `.bin/ensure-symbolic-links`:
+   ```bash
+   _ensure_symbolic_link newconfig ~/.newconfig
+   ```
+3. Run `./bootstrap-host` or `.bin/ensure-symbolic-links`
+
+### Host-Specific Configuration
+Create `zshrc-specific-to-host/<hostname>.zsh` with machine-specific settings. This file is automatically sourced if it exists.
+
+### OS-Specific Configuration
+Edit `zshrc-specific-to-os/Darwin.zsh` (macOS) or `Linux.zsh`. These are automatically sourced based on platform.
+
+### Neovim Plugin Configuration
+Add plugin specifications to appropriate module in `vim/lua/plugins/`:
+- LSP configs → `lsp/`
+- UI/themes → `ui/`
+- Code editing → `coding/`
+
+Follow lazy.nvim spec format. Changes are auto-detected on save.
+
+### Hammerspoon Modifications
+For per-host changes, modify the configuration variables at the top of `hammerspoon/init.lua` (lines 9-49). For cross-host changes, edit the main logic or create new module files and require them.
