@@ -1224,3 +1224,6 @@ alias claude="/Users/erik/.claude/local/claude"
 
 source-if-exists $HOMEBREW_PREFIX/opt/git-extras/share/git-extras/git-extras-completion.zsh
 
+
+# Added by Antigravity
+export PATH="/Users/erik/.antigravity/antigravity/bin:$PATH"
