@@ -59,13 +59,6 @@ alias ncdu="ncdu --color dark-bg -e --exclude .git --exclude node_modules"
 alias ping="prettyping --nolegend"
 alias dsp="docker system prune --force"
 alias jl='jupyter lab --notebook-dir "${HOME}/.jupyter-notebooks"'
-function cld() {
-  if [[ -f ~/.claude/local/claude ]]; then
-    SHELL=/opt/homebrew/bin/bash ~/.claude/local/claude "$@"
-  else
-    SHELL=/opt/homebrew/bin/bash claude "$@"
-  fi
-}
 
 # ------------------------------------------------
 # FUNCTIONS --------------------------------------
@@ -1220,7 +1213,35 @@ compinit
 
 export PATH="$PATH:/Users/erik/.local/bin"
 
-# alias claude="/Users/erik/.claude/local/claude"
+function cld() {
+
+  CLAUDE_PATH=~/.local/bin/claude
+
+  if [[ -f $CLAUDE_PATH ]] ; then
+    SHELL=/opt/homebrew/bin/bash $CLAUDE_PATH "$@"
+    return
+  fi
+
+  echo "Warning: Using system claude command. Consider installing local version at: $CLAUDE_PATH"
+  echo
+
+  which claude
+  claude -v
+  echo
+  sleep 5
+
+  SHELL=/opt/homebrew/bin/bash claude "$@"
+
+  # SHELL=/opt/homebrew/bin/bash claude "$@"
+  #
+  # $HOME/.claude/local/claude "$@"
+
+  # if [[ -f ~/.claude/local/claude ]]; then
+  #   SHELL=/opt/homebrew/bin/bash ~/.claude/local/claude "$@"
+  # else
+  #   SHELL=/opt/homebrew/bin/bash claude "$@"
+  # fi
+}
 
 # opencode
 export PATH=/Users/erik/.opencode/bin:$PATH
@@ -1231,7 +1252,6 @@ eval "$(git machete completion zsh)"  # or, if it doesn't work:
 source <(git machete completion zsh)
 
 
-alias claude="/Users/erik/.claude/local/claude"
 
 source-if-exists $HOMEBREW_PREFIX/opt/git-extras/share/git-extras/git-extras-completion.zsh
 
