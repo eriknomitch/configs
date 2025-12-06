@@ -46,7 +46,7 @@ local appsToCenter = { "Finder", "Home Assistant", "Messages" }
 local defaultBrowserName = "Arc"
 -- local defaultTerminalName = "Tabby"
 -- local defaultTerminalName = "Alacritty"
-local defaultTerminalName = "iTerm"
+local defaultTerminalName = "Ghostty"
 local secondaryBrowserName = "Firefox Developer Edition"
 
 -- local defaultAiChatName = "ChatGPT"
