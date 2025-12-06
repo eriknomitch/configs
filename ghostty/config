@@ -1,3 +1,5 @@
+auto-update-channel = tip
+
 # ================================================
 # FONT CONFIGURATION
 # ================================================
@@ -71,6 +73,11 @@ bell-features = no-system,no-audio,no-attention,no-title,no-border
 
 # Mouse reporting (iTerm2: enabled)
 mouse-hide-while-typing = true
+
+# Link handling (command+click to open URLs)
+link-url = true
+# For tmux compatibility: disable shift capture to fix link clicking
+mouse-shift-capture = false
 
 # ================================================
 # WINDOW & APPEARANCE
