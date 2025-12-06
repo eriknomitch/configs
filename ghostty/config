@@ -1,0 +1,107 @@
+# ================================================
+# FONT CONFIGURATION
+# ================================================
+font-family = JetBrainsMono Nerd Font Mono
+font-style = Light
+font-size = 14
+adjust-cell-width = 0%
+adjust-cell-height = 0%
+
+# ================================================
+# COLOR SCHEME (from iTerm2 profile)
+# ================================================
+# Remove theme to use custom colors
+# theme = Builtin Dark
+
+# Basic colors
+background = #000000
+foreground = #cfcfcf
+
+# Cursor colors
+cursor-color = #bbbbbb
+cursor-text = #ffffff
+
+# Selection colors
+selection-background = #b5d5ff
+selection-foreground = #000000
+
+# Minimum contrast (iTerm2: 0.3)
+minimum-contrast = 1.3
+
+# ANSI colors (black, red, green, yellow, blue, magenta, cyan, white)
+palette = 0=#000000
+palette = 1=#e60000
+palette = 2=#00e600
+palette = 3=#d3d100
+palette = 4=#2020ff
+palette = 5=#bb00bb
+palette = 6=#00bbbb
+palette = 7=#bbbbbb
+
+# Bright ANSI colors
+palette = 8=#555555
+palette = 9=#ff5555
+palette = 10=#55ff55
+palette = 11=#ffff55
+palette = 12=#5555ff
+palette = 13=#ff55ff
+palette = 14=#55ffff
+palette = 15=#ffffff
+
+# ================================================
+# CURSOR & VISUAL SETTINGS
+# ================================================
+cursor-style = block
+cursor-style-blink = false
+
+# Cursor guide (vertical line)
+# Note: Ghostty doesn't have exact equivalent to iTerm2's cursor guide
+# but you can use cursor-invert-fg-bg for better visibility
+
+# ================================================
+# TERMINAL BEHAVIOR
+# ================================================
+# Scrollback (iTerm2: unlimited, Ghostty: 10MB default, max ~100MB)
+# Setting to a very large value for near-unlimited scrollback
+scrollback-limit = 100000000
+
+# Bell settings (iTerm2: silent)
+# Disable all bell features for silent operation
+bell-features = no-system,no-audio,no-attention,no-title,no-border
+
+# Mouse reporting (iTerm2: enabled)
+mouse-hide-while-typing = true
+
+# ================================================
+# WINDOW & APPEARANCE
+# ================================================
+window-theme = auto
+macos-titlebar-style = transparent
+macos-titlebar-proxy-icon = hidden
+
+# Transparency (iTerm2: 0 = opaque)
+background-opacity = 1
+
+# Terminal type
+term = xterm-256color
+
+# Window size (iTerm2: 80x25)
+window-width = 80
+window-height = 25
+
+# ================================================
+# ADVANCED SETTINGS
+# ================================================
+# Allow OSC sequences to change colors dynamically
+osc-color-report-format = 16-bit
+
+# Ligatures (iTerm2: ASCII Ligatures enabled)
+font-feature = +calt
+
+# Use bold/italic fonts (iTerm2: enabled)
+font-synthetic-style = true
+
+# ================================================
+# KEYBINDINGS
+# ================================================
+keybind = cmd+f=toggle_command_palette
