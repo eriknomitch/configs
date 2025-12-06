@@ -1204,6 +1204,11 @@ export PATH="/Users/erik/.codeium/windsurf/bin:$PATH"
 # ------------------------------------------------
 source-if-exists $HOME/.configs/zsh/qumis.zsh
 
+# ------------------------------------------------
+# GHOSTTY ----------------------------------------
+# ------------------------------------------------
+source-if-exists $HOME/.config/ghostty/ghostty-colors.zsh
+
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/erik/.lmstudio/bin"
 
