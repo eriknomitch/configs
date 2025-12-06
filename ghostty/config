@@ -83,8 +83,10 @@ mouse-shift-capture = false
 # WINDOW & APPEARANCE
 # ================================================
 window-theme = auto
+maximize = true
 macos-titlebar-style = transparent
 macos-titlebar-proxy-icon = hidden
+window-decoration = true
 
 # Transparency (iTerm2: 0 = opaque)
 background-opacity = 1
@@ -92,9 +94,7 @@ background-opacity = 1
 # Terminal type
 term = xterm-256color
 
-# Window size (iTerm2: 80x25)
-window-width = 80
-window-height = 25
+# macos-icon = microchip
 
 # ================================================
 # ADVANCED SETTINGS
