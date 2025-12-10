@@ -1,3 +1,47 @@
+# Ghostty shell integration
+# ================================================
+
+# ------------------------------------------------
+# TAB TITLE CONFIGURATION
+# ------------------------------------------------
+# Sets tab title to: "directory_name" or "directory_name — command"
+# Format: Current directory name first, then optional running command
+
+# Function to update the tab title
+_ghostty_set_title() {
+    local title="$1"
+    # OSC 0 sets both window and tab title
+    printf '\e]0;%s\a' "$title"
+}
+
+# Called before each prompt - set title to current directory
+_ghostty_precmd() {
+    local dir_name="${PWD##*/}"
+    # Handle home directory
+    [[ "$PWD" == "$HOME" ]] && dir_name="~"
+    _ghostty_set_title "$dir_name"
+}
+
+# Called before each command execution - set title to directory + command
+_ghostty_preexec() {
+    local dir_name="${PWD##*/}"
+    [[ "$PWD" == "$HOME" ]] && dir_name="~"
+    local cmd="$1"
+    # Truncate long commands
+    [[ ${#cmd} -gt 30 ]] && cmd="${cmd:0:27}..."
+    _ghostty_set_title "$dir_name — $cmd"
+}
+
+# Register hooks (only in Ghostty terminal)
+if [[ -n "$GHOSTTY_RESOURCES_DIR" ]]; then
+    autoload -Uz add-zsh-hook
+    add-zsh-hook precmd _ghostty_precmd
+    add-zsh-hook preexec _ghostty_preexec
+fi
+
+# ------------------------------------------------
+# COLOR FUNCTIONS
+# ------------------------------------------------
 # Ghostty color functions
 # Similar to iTerm2 tab colors, but uses OSC 11 (background color)
 # Note: This changes the entire window background, not just the tab

@@ -99,6 +99,9 @@ term = xterm-256color
 # ================================================
 # ADVANCED SETTINGS
 # ================================================
+# Disable built-in title feature to use custom shell title (ghostty-colors.zsh)
+shell-integration-features = no-title
+
 # Allow OSC sequences to change colors dynamically
 osc-color-report-format = 16-bit
 
