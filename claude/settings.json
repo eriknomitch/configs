@@ -1,7 +1,6 @@
 {
   "env": {},
   "includeCoAuthoredBy": false,
-  "enableAllProjectMcpServers": false,
   "permissions": {
     "allow": [
       "Bash(mkdir:*)",
@@ -83,6 +82,7 @@
       "Bash(cargo uninstall:*)"
     ]
   },
+  "enableAllProjectMcpServers": false,
   "hooks": {
     "Notification": [
       {
@@ -129,11 +129,16 @@
       }
     ]
   },
-  "outputStyle": "engineer-professional",
-  "alwaysThinkingEnabled": true,
   "statusLine": {
     "type": "command",
     "command": "bunx -y ccstatusline@latest",
     "padding": 0
-  }
+  },
+  "enabledPlugins": {
+    "git-workflow@claude-code-templates": true,
+    "commit-commands@claude-code-plugins": true,
+    "feature-dev@claude-code-plugins": true
+  },
+  "outputStyle": "engineer-professional",
+  "alwaysThinkingEnabled": true
 }
