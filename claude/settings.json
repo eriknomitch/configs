@@ -38,6 +38,13 @@
       "mcp__linear__list_users",
       "mcp__linear__search_documentation"
     ],
+    "deny": [
+      "Bash(rm:*)",
+      "Bash(sudo:*)",
+      "Bash(su:*)",
+      "Bash(dd:*)",
+      "Bash(mv /dev/null:*)"
+    ],
     "ask": [
       "Bash(curl:*)",
       "Bash(wget:*)",
@@ -74,13 +81,6 @@
       "Bash(yarn global remove:*)",
       "Bash(pip uninstall:*)",
       "Bash(cargo uninstall:*)"
-    ],
-    "deny": [
-      "Bash(rm:*)",
-      "Bash(sudo:*)",
-      "Bash(su:*)",
-      "Bash(dd:*)",
-      "Bash(mv /dev/null:*)"
     ]
   },
   "enableAllProjectMcpServers": false,
