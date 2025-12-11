@@ -1216,9 +1216,17 @@ export PATH="$PATH:/Users/erik/.local/bin"
 function cld() {
 
   CLAUDE_PATH=~/.local/bin/claude
+  local extra_args=()
+
+  # Handle --yes flag for skipping permissions
+  if [[ "$1" == "--yes" ]]; then
+    echo "⚠️  Warning: Running with --dangerously-skip-permissions - all tool calls will be auto-approved!"
+    extra_args+=(--dangerously-skip-permissions)
+    shift
+  fi
 
   if [[ -f $CLAUDE_PATH ]] ; then
-    SHELL=/opt/homebrew/bin/bash $CLAUDE_PATH "$@"
+    SHELL=/opt/homebrew/bin/bash $CLAUDE_PATH "${extra_args[@]}" "$@"
     return
   fi
 
@@ -1230,13 +1238,13 @@ function cld() {
   echo
   sleep 5
 
-  SHELL=/opt/homebrew/bin/bash claude "$@"
+  SHELL=/opt/homebrew/bin/bash claude "${extra_args[@]}" "$@"
 
   # SHELL=/opt/homebrew/bin/bash claude "$@"
   #
   # $HOME/.claude/local/claude "$@"
 
-  # if [[ -f ~/.claude/local/claude ]]; then
+  # if [[ -f ~/.claude/local/claude]]; then
   #   SHELL=/opt/homebrew/bin/bash ~/.claude/local/claude "$@"
   # else
   #   SHELL=/opt/homebrew/bin/bash claude "$@"

@@ -3,6 +3,7 @@
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
+      "Read(*)",
       "Bash(mkdir:*)",
       "Bash(find:*)",
       "Bash(grep:*)",
