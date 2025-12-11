@@ -34,23 +34,9 @@
       "Bash(make:*)",
       "Bash(node:*)",
       "Bash(python:*)",
-      "Bash(jq:*)",
-      "Bash(sed:*)",
-      "Bash(awk:*)",
-      "Bash(zip:*)",
-      "Bash(unzip:*)",
-      "Bash(tar:*)",
-      "Bash(wc:*)",
       "mcp__linear__list_project_labels",
       "mcp__linear__list_users",
       "mcp__linear__search_documentation"
-    ],
-    "deny": [
-      "Bash(rm:*)",
-      "Bash(sudo:*)",
-      "Bash(su:*)",
-      "Bash(dd:*)",
-      "Bash(mv /dev/null:*)"
     ],
     "ask": [
       "Bash(curl:*)",
@@ -88,236 +74,152 @@
       "Bash(yarn global remove:*)",
       "Bash(pip uninstall:*)",
       "Bash(cargo uninstall:*)"
+    ],
+    "deny": [
+      "Bash(rm:*)",
+      "Bash(sudo:*)",
+      "Bash(su:*)",
+      "Bash(dd:*)",
+      "Bash(mv /dev/null:*)"
     ]
   },
   "enableAllProjectMcpServers": false,
-  I'll update all command paths to be under ~/.claude/commands/hooks/:
-json{
-    "env": {},
-    "includeCoAuthoredBy": false,
-    "permissions": {
-      "allow": [
-        "Bash(mkdir:*)",
-        "Bash(find:*)",
-        "Bash(grep:*)",
-        "Bash(ls:*)",
-        "Bash(cp:*)",
-        "Bash(mv:*)",
-        "Bash(tree:*)",
-        "Bash(rg:*)",
-        "Bash(fd:*)",
-        "Bash(chmod:*)",
-        "Bash(touch:*)",
-        "Bash(cat:*)",
-        "Bash(head:*)",
-        "Bash(tail:*)",
-        "Bash(wc:*)",
-        "Bash(diff:*)",
-        "Bash(pwd:*)",
-        "Bash(echo:*)",
-        "Bash(which:*)",
-        "Bash(git:*)",
-        "Bash(gh:*)",
-        "Bash(aws:*)",
-        "Bash(yarn:*)",
-        "Bash(npm:*)",
-        "Bash(pnpm:*)",
-        "Bash(pip:*)",
-        "Bash(cargo:*)",
-        "Bash(go:*)",
-        "Bash(make:*)",
-        "Bash(node:*)",
-        "Bash(python:*)",
-        "mcp__linear__list_project_labels",
-        "mcp__linear__list_users",
-        "mcp__linear__search_documentation"
-      ],
-      "ask": [
-        "Bash(curl:*)",
-        "Bash(wget:*)",
-        "Bash(chmod 777:*)",
-        "Bash(chmod -R 777:*)",
-        "Bash(git push --force:*)",
-        "Bash(git push -f:*)",
-        "Bash(git push --force-with-lease:*)",
-        "Bash(git reset --hard:*)",
-        "Bash(git clean -d:*)",
-        "Bash(git clean -f:*)",
-        "Bash(git:filter-branch:*)",
-        "Bash(git push --delete:*)",
-        "Bash(git branch -D:*)",
-        "Bash(git remote rm:*)",
-        "Bash(git remote remove:*)",
-        "Bash(gh repo delete:*)",
-        "Bash(gh release delete:*)",
-        "Bash(gh secret delete:*)",
-        "Bash(gh repo archive:*)",
-        "Bash(gh api:*)",
-        "Bash(gh gpg-key delete:*)",
-        "Bash(gh ssh-key delete:*)",
-        "Bash(aws s3 rb:*)",
-        "Bash(aws s3 rm:*)",
-        "Bash(aws ec2 terminate-instances:*)",
-        "Bash(aws rds delete-:*)",
-        "Bash(aws dynamodb delete-:*)",
-        "Bash(aws cloudformation delete-:*)",
-        "Bash(aws iam delete-:*)",
-        "Bash(aws lambda delete-:*)",
-        "Bash(npm uninstall -g:*)",
-        "Bash(npm uninstall --global:*)",
-        "Bash(yarn global remove:*)",
-        "Bash(pip uninstall:*)",
-        "Bash(cargo uninstall:*)"
-      ],
-      "deny": [
-        "Bash(rm:*)",
-        "Bash(sudo:*)",
-        "Bash(su:*)",
-        "Bash(dd:*)",
-        "Bash(mv /dev/null:*)"
-      ]
-    },
-    "enableAllProjectMcpServers": false,
-    "hooks": {
-      "SessionStart": [
-        {
-          "matcher": "*",
-          "hooks": [
-            {
-              "type": "command",
-              "command": "[ -x ~/.claude/commands/hooks/session-start.sh ] && ~/.claude/commands/hooks/session-start.sh || true"
-            }
-          ]
-        }
-      ],
-      "UserPromptSubmit": [
-        {
-          "matcher": "*",
-          "hooks": [
-            {
-              "type": "command",
-              "command": "[ -x ~/.claude/commands/hooks/user-prompt-submit.sh ] && ~/.claude/commands/hooks/user-prompt-submit.sh || true"
-            }
-          ]
-        }
-      ],
-      "PreToolUse": [
-        {
-          "matcher": "Write|Edit",
-          "hooks": [
-            {
-              "type": "command",
-              "command": "[ -x ~/.claude/commands/hooks/pre-tool-file-modify.sh ] && ~/.claude/commands/hooks/pre-tool-file-modify.sh || true"
-            }
-          ]
-        },
-        {
-          "matcher": "Bash",
-          "hooks": [
-            {
-              "type": "command",
-              "command": "[ -x ~/.claude/commands/hooks/pre-tool-bash.sh ] && ~/.claude/commands/hooks/pre-tool-bash.sh || true"
-            }
-          ]
-        }
-      ],
-      "PostToolUse": [
-        {
-          "matcher": "Write|Edit",
-          "hooks": [
-            {
-              "type": "command",
-              "command": "[ -x ~/.claude/commands/hooks/post-tool-file-modify.sh ] && ~/.claude/commands/hooks/post-tool-file-modify.sh || true"
-            }
-          ]
-        },
-        {
-          "matcher": "Bash",
-          "hooks": [
-            {
-              "type": "command",
-              "command": "[ -x ~/.claude/commands/hooks/post-tool-bash.sh ] && ~/.claude/commands/hooks/post-tool-bash.sh || true"
-            }
-          ]
-        }
-      ],
-      "Notification": [
-        {
-          "matcher": "permission_prompt|idle_prompt|elicitation_dialog",
-          "hooks": [
-            {
-              "type": "command",
-              "command": "[ -x ~/.claude/commands/hooks/needs-input.sh ] && ~/.claude/commands/hooks/needs-input.sh || true"
-            }
-          ]
-        },
-        {
-          "matcher": "permission_prompt",
-          "hooks": [
-            {
-              "type": "command",
-              "command": "[ -x ~/.claude/commands/hooks/notification-permission.sh ] && ~/.claude/commands/hooks/notification-permission.sh || true"
-            }
-          ]
-        },
-        {
-          "matcher": "",
-          "hooks": [
-            {
-              "type": "command",
-              "command": "[ -x ~/.claude/commands/hooks/notification-general.sh ] && ~/.claude/commands/hooks/notification-general.sh || true"
-            }
-          ]
-        }
-      ],
-      "Stop": [
-        {
-          "matcher": "*",
-          "hooks": [
-            {
-              "type": "command",
-              "command": "[ -x ~/.claude/commands/hooks/finished.sh ] && ~/.claude/commands/hooks/finished.sh || true"
-            },
-            {
-              "type": "command",
-              "command": "[ -x ~/.claude/commands/hooks/stop.sh ] && ~/.claude/commands/hooks/stop.sh || true"
-            }
-          ]
-        }
-      ],
-      "SubagentStop": [
-        {
-          "matcher": "*",
-          "hooks": [
-            {
-              "type": "command",
-              "command": "[ -x ~/.claude/commands/hooks/subagent-stop.sh ] && ~/.claude/commands/hooks/subagent-stop.sh || true"
-            }
-          ]
-        }
-      ],
-      "PreCompact": [
-        {
-          "matcher": "*",
-          "hooks": [
-            {
-              "type": "command",
-              "command": "[ -x ~/.claude/commands/hooks/pre-compact.sh ] && ~/.claude/commands/hooks/pre-compact.sh || true"
-            }
-          ]
-        }
-      ]
-    },
-    "statusLine": {
-      "type": "command",
-      "command": "bunx -y ccstatusline@latest",
-      "padding": 0
-    },
-    "enabledPlugins": {
-      "git-workflow@claude-code-templates": true,
-      "commit-commands@claude-code-plugins": true,
-      "feature-dev@claude-code-plugins": true
-    },
-    "outputStyle": "engineer-professional",
-    "alwaysThinkingEnabled": true
-  }
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/hooks/session-start.sh ] && ~/.claude/commands/hooks/session-start.sh || true"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/hooks/user-prompt-submit.sh ] && ~/.claude/commands/hooks/user-prompt-submit.sh || true"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/hooks/pre-tool-file-modify.sh ] && ~/.claude/commands/hooks/pre-tool-file-modify.sh || true"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/hooks/pre-tool-bash.sh ] && ~/.claude/commands/hooks/pre-tool-bash.sh || true"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/hooks/post-tool-file-modify.sh ] && ~/.claude/commands/hooks/post-tool-file-modify.sh || true"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/hooks/post-tool-bash.sh ] && ~/.claude/commands/hooks/post-tool-bash.sh || true"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "idle_prompt|elicitation_dialog",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/hooks/needs-input.sh ] && ~/.claude/commands/hooks/needs-input.sh || true"
+          }
+        ]
+      },
+      {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/hooks/notification-permission.sh ] && ~/.claude/commands/hooks/notification-permission.sh || true"
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/hooks/notification-general.sh ] && ~/.claude/commands/hooks/notification-general.sh || true"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/hooks/stop.sh ] && ~/.claude/commands/hooks/stop.sh || true"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/hooks/subagent-stop.sh ] && ~/.claude/commands/hooks/subagent-stop.sh || true"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/hooks/pre-compact.sh ] && ~/.claude/commands/hooks/pre-compact.sh || true"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bunx -y ccstatusline@latest",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "git-workflow@claude-code-templates": true,
+    "commit-commands@claude-code-plugins": true,
+    "feature-dev@claude-code-plugins": true
+  },
+  "outputStyle": "engineer-professional",
+  "alwaysThinkingEnabled": true
+}
