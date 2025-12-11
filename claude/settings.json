@@ -34,6 +34,13 @@
       "Bash(make:*)",
       "Bash(node:*)",
       "Bash(python:*)",
+      "Bash(jq:*)",
+      "Bash(sed:*)",
+      "Bash(awk:*)",
+      "Bash(zip:*)",
+      "Bash(unzip:*)",
+      "Bash(tar:*)",
+      "Bash(wc:*)",
       "mcp__linear__list_project_labels",
       "mcp__linear__list_users",
       "mcp__linear__search_documentation"
@@ -85,13 +92,84 @@
   },
   "enableAllProjectMcpServers": false,
   "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/session-start.sh ] && ~/.claude/commands/session-start.sh || true"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/user-prompt-submit.sh ] && ~/.claude/commands/user-prompt-submit.sh || true"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/pre-tool-file-modify.sh ] && ~/.claude/commands/pre-tool-file-modify.sh || true"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/pre-tool-bash.sh ] && ~/.claude/commands/pre-tool-bash.sh || true"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/post-tool-file-modify.sh ] && ~/.claude/commands/post-tool-file-modify.sh || true"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/post-tool-bash.sh ] && ~/.claude/commands/post-tool-bash.sh || true"
+          }
+        ]
+      }
+    ],
     "Notification": [
+      {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/notification-permission.sh ] && ~/.claude/commands/notification-permission.sh || true"
+          }
+        ]
+      },
       {
         "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "notify-send 'Claude Code' 'Awaiting your input'"
+            "command": "[ -x ~/.claude/commands/notification-general.sh ] && ~/.claude/commands/notification-general.sh || true"
           }
         ]
       }
@@ -102,7 +180,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "curl -s -X POST http://localhost:3456/hook -H 'Content-Type: application/json' -d '{\"event\":\"Stop\"}' >> /tmp/claudecode-hooks.log 2>&1 &"
+            "command": "[ -x ~/.claude/commands/stop.sh ] && ~/.claude/commands/stop.sh || true"
           }
         ]
       }
@@ -113,18 +191,18 @@
         "hooks": [
           {
             "type": "command",
-            "command": "curl -s -X POST http://localhost:3456/hook -H 'Content-Type: application/json' -d '{\"event\":\"SubagentStop\"}' >> /tmp/claudecode-hooks.log 2>&1 &"
+            "command": "[ -x ~/.claude/commands/subagent-stop.sh ] && ~/.claude/commands/subagent-stop.sh || true"
           }
         ]
       }
     ],
-    "PostToolUse": [
+    "PreCompact": [
       {
-        "matcher": "Bash",
+        "matcher": "*",
         "hooks": [
           {
             "type": "command",
-            "command": "curl -s -X POST http://localhost:3456/hook -H 'Content-Type: application/json' -d '{\"event\":\"PostToolUse\",\"tool\":\"Bash\"}' >> /tmp/claudecode-hooks.log 2>&1 &"
+            "command": "[ -x ~/.claude/commands/pre-compact.sh ] && ~/.claude/commands/pre-compact.sh || true"
           }
         ]
       }
