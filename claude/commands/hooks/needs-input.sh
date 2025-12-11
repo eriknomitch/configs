@@ -11,4 +11,4 @@ fi
 [[ -z "$message" ]] && message="Input needed"
 
 "$SCRIPT_DIR/util/play-sound.sh" needs-input
-"$SCRIPT_DIR/util/notify.sh" -t "Input Needed" -m "$message"
+"$SCRIPT_DIR/util/notify.sh" -t "Input Needed" -m "$message" -g "claude-input"
