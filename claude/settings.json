@@ -97,5 +97,5 @@
     "feature-dev@claude-code-plugins": true
   },
   "outputStyle": "default",
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": false
 }

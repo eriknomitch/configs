@@ -1,7 +1,7 @@
 source-if-exists $HOME/.repositories/qumis-cli/shell/qumis.sh
 
 function qumis_load() {
-  local projects=("qumis-api" "qumis-web" "qumis-llm-service")
+  local projects=("qumis-api" "qumis-web" "qumis-llm-service" "qumis-platform" "qumis-copilot-api" "qumis-cli" "qumis-docs")
 
   for project in "${projects[@]}"; do
     echo "Loading $project in detached mode..."
