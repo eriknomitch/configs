@@ -38,14 +38,9 @@
       "mcp__linear__list_users",
       "mcp__linear__search_documentation"
     ],
-    "deny": [
-      "Bash(rm:*)",
-      "Bash(sudo:*)",
-      "Bash(su:*)",
+    "ask": [
       "Bash(curl:*)",
       "Bash(wget:*)",
-      "Bash(dd:*)",
-      "Bash(mv /dev/null:*)",
       "Bash(chmod 777:*)",
       "Bash(chmod -R 777:*)",
       "Bash(git push --force:*)",
@@ -66,7 +61,6 @@
       "Bash(gh api:*)",
       "Bash(gh gpg-key delete:*)",
       "Bash(gh ssh-key delete:*)",
-      "Bash(aws:*)",
       "Bash(aws s3 rb:*)",
       "Bash(aws s3 rm:*)",
       "Bash(aws ec2 terminate-instances:*)",
@@ -80,6 +74,13 @@
       "Bash(yarn global remove:*)",
       "Bash(pip uninstall:*)",
       "Bash(cargo uninstall:*)"
+    ],
+    "deny": [
+      "Bash(rm:*)",
+      "Bash(sudo:*)",
+      "Bash(su:*)",
+      "Bash(dd:*)",
+      "Bash(mv /dev/null:*)"
     ]
   },
   "enableAllProjectMcpServers": false,
