@@ -6,12 +6,14 @@
 #   -m, --message    Notification message
 #   -S, --sound      Sound name (e.g., "default", "Ping")
 #   -g, --group      Group ID for notification management
+#   -T, --timeout    Timeout in seconds (default: 5)
 
 title="Claude Code"
 subtitle=""
 message=""
 sound=""
 group=""
+timeout="5"
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -35,6 +37,10 @@ while [[ $# -gt 0 ]]; do
             group="$2"
             shift 2
             ;;
+        -T|--timeout)
+            timeout="$2"
+            shift 2
+            ;;
         -*)
             shift
             ;;
@@ -55,6 +61,7 @@ cmd=(terminal-notifier -title "$title" -message "$message")
 [[ -n "$subtitle" ]] && cmd+=(-subtitle "$subtitle")
 [[ -n "$sound" ]] && cmd+=(-sound "$sound")
 [[ -n "$group" ]] && cmd+=(-group "$group")
+[[ -n "$timeout" ]] && cmd+=(-timeout "$timeout")
 
 # Run in background for non-blocking behavior
 "${cmd[@]}" &>/dev/null &
