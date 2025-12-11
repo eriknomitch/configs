@@ -45,6 +45,13 @@
       "mcp__linear__list_users",
       "mcp__linear__search_documentation"
     ],
+    "deny": [
+      "Bash(rm:*)",
+      "Bash(sudo:*)",
+      "Bash(su:*)",
+      "Bash(dd:*)",
+      "Bash(mv /dev/null:*)"
+    ],
     "ask": [
       "Bash(curl:*)",
       "Bash(wget:*)",
@@ -81,13 +88,6 @@
       "Bash(yarn global remove:*)",
       "Bash(pip uninstall:*)",
       "Bash(cargo uninstall:*)"
-    ],
-    "deny": [
-      "Bash(rm:*)",
-      "Bash(sudo:*)",
-      "Bash(su:*)",
-      "Bash(dd:*)",
-      "Bash(mv /dev/null:*)"
     ]
   },
   "enableAllProjectMcpServers": false,
@@ -98,7 +98,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ -x ~/.claude/commands/session-start.sh ] && ~/.claude/commands/session-start.sh || true"
+            "command": "[ -x ~/.claude/commands/hooks/session-start.sh ] && ~/.claude/commands/hooks/session-start.sh || true"
           }
         ]
       }
@@ -109,7 +109,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ -x ~/.claude/commands/user-prompt-submit.sh ] && ~/.claude/commands/user-prompt-submit.sh || true"
+            "command": "[ -x ~/.claude/commands/hooks/user-prompt-submit.sh ] && ~/.claude/commands/hooks/user-prompt-submit.sh || true"
           }
         ]
       }
@@ -120,7 +120,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ -x ~/.claude/commands/pre-tool-file-modify.sh ] && ~/.claude/commands/pre-tool-file-modify.sh || true"
+            "command": "[ -x ~/.claude/commands/hooks/pre-tool-file-modify.sh ] && ~/.claude/commands/hooks/pre-tool-file-modify.sh || true"
           }
         ]
       },
@@ -129,7 +129,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ -x ~/.claude/commands/pre-tool-bash.sh ] && ~/.claude/commands/pre-tool-bash.sh || true"
+            "command": "[ -x ~/.claude/commands/hooks/pre-tool-bash.sh ] && ~/.claude/commands/hooks/pre-tool-bash.sh || true"
           }
         ]
       }
@@ -140,7 +140,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ -x ~/.claude/commands/post-tool-file-modify.sh ] && ~/.claude/commands/post-tool-file-modify.sh || true"
+            "command": "[ -x ~/.claude/commands/hooks/post-tool-file-modify.sh ] && ~/.claude/commands/hooks/post-tool-file-modify.sh || true"
           }
         ]
       },
@@ -149,7 +149,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ -x ~/.claude/commands/post-tool-bash.sh ] && ~/.claude/commands/post-tool-bash.sh || true"
+            "command": "[ -x ~/.claude/commands/hooks/post-tool-bash.sh ] && ~/.claude/commands/hooks/post-tool-bash.sh || true"
           }
         ]
       }
@@ -160,7 +160,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ -x ~/.claude/commands/notification-permission.sh ] && ~/.claude/commands/notification-permission.sh || true"
+            "command": "[ -x ~/.claude/commands/hooks/notification-permission.sh ] && ~/.claude/commands/hooks/notification-permission.sh || true"
           }
         ]
       },
@@ -169,7 +169,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ -x ~/.claude/commands/notification-general.sh ] && ~/.claude/commands/notification-general.sh || true"
+            "command": "[ -x ~/.claude/commands/hooks/notification-general.sh ] && ~/.claude/commands/hooks/notification-general.sh || true"
           }
         ]
       }
@@ -180,7 +180,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ -x ~/.claude/commands/stop.sh ] && ~/.claude/commands/stop.sh || true"
+            "command": "[ -x ~/.claude/commands/hooks/stop.sh ] && ~/.claude/commands/hooks/stop.sh || true"
           }
         ]
       }
@@ -191,7 +191,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ -x ~/.claude/commands/subagent-stop.sh ] && ~/.claude/commands/subagent-stop.sh || true"
+            "command": "[ -x ~/.claude/commands/hooks/subagent-stop.sh ] && ~/.claude/commands/hooks/subagent-stop.sh || true"
           }
         ]
       }
@@ -202,7 +202,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ -x ~/.claude/commands/pre-compact.sh ] && ~/.claude/commands/pre-compact.sh || true"
+            "command": "[ -x ~/.claude/commands/hooks/pre-compact.sh ] && ~/.claude/commands/hooks/pre-compact.sh || true"
           }
         ]
       }
