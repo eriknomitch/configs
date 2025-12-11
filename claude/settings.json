@@ -96,6 +96,6 @@
     "commit-commands@claude-code-plugins": true,
     "feature-dev@claude-code-plugins": true
   },
-  "outputStyle": "engineer-professional",
+  "outputStyle": "default",
   "alwaysThinkingEnabled": true
 }
