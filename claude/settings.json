@@ -125,6 +125,15 @@
             "command": "[ -x ~/.claude/commands/hooks/pre-tool-bash.sh ] && ~/.claude/commands/hooks/pre-tool-bash.sh || true"
           }
         ]
+      },
+      {
+        "matcher": "AskUserQuestion",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x ~/.claude/commands/hooks/needs-input.sh ] && ~/.claude/commands/hooks/needs-input.sh || true"
+          }
+        ]
       }
     ],
     "PostToolUse": [
