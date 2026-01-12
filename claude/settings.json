@@ -7,8 +7,6 @@
       "Edit(*)",
       "Glob(*)",
       "Grep(*)",
-      "WebFetch(*)",
-      "WebSearch(*)",
       "Write(*)",
       "Bash(mkdir:*)",
       "Bash(find:*)",
@@ -30,6 +28,12 @@
       "Bash(echo:*)",
       "Bash(which:*)",
       "Bash(git:*)",
+      "Bash(git log:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git-log:*)",
+      "Bash(git-status:*)",
+      "Bash(git-diff:*)",
       "Bash(gh:*)",
       "Bash(aws:*)",
       "Bash(yarn:*)",
@@ -118,8 +122,11 @@
   "enabledPlugins": {
     "git-workflow@claude-code-templates": true,
     "commit-commands@claude-code-plugins": true,
-    "feature-dev@claude-code-plugins": true
+    "feature-dev@claude-code-plugins": true,
+    "claude-mem@thedotmack": false,
+    "canvas@claude-canvas": true
   },
   "outputStyle": "default",
-  "alwaysThinkingEnabled": false
+  "alwaysThinkingEnabled": true,
+  "model": "opus"
 }
