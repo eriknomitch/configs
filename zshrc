@@ -1266,3 +1266,79 @@ source-if-exists $HOMEBREW_PREFIX/opt/git-extras/share/git-extras/git-extras-com
 
 # Added by Antigravity
 export PATH="/Users/erik/.antigravity/antigravity/bin:$PATH"
+
+
+# FROM: https://tonydehnke.com/blog/claude-code-iphone-ssh-zellij/
+# rc = Run Claude: Start new session with auto-generated name
+# Note: Must use -n (--new-session-with-layout) to CREATE a new session.
+# Using --layout with --session tries to ADD to an existing session.
+rc() {
+    zellij -n claude
+}
+
+# rq = Run Qumis: Attach to existing qumis session or start new one
+rq() {
+    # Try to attach - if session is alive this works
+    if ! zellij attach qumis 2>/dev/null; then
+        # Attach failed - delete any dead session and create fresh
+        zellij delete-session qumis 2>/dev/null
+        zellij -s qumis -n qumis
+    fi
+}
+
+# rj = Run Join: Quick attach to session
+rj() {
+    local session="${1:-$(zellij list-sessions | head -1 | awk '{print $1}')}"
+    zellij attach "$session"
+}
+
+# rl = Run List: Interactive session picker with cleanup
+rl() {
+    local sessions=()
+    while IFS= read -r line; do
+        sessions+=("$line")
+    done < <(zellij list-sessions 2>/dev/null)
+
+    if [[ ${#sessions[@]} -eq 0 ]]; then
+        echo "No sessions. Use 'rc' to start one."
+        return 1
+    fi
+
+    echo "Sessions:"
+    local i=1
+    for session in "${sessions[@]}"; do
+        echo "  $i) $session"
+        ((i++))
+    done
+    echo "  c) Clean EXITED sessions"
+    echo "  d) Delete sessions >24h old"
+
+    read -r "choice?Select: "
+
+    case "$choice" in
+        c)
+            local deleted=0
+            for line in "${sessions[@]}"; do
+                if [[ "$line" == *"EXITED"* ]]; then
+                    local name=$(echo "$line" | awk '{print $1}')
+                    zellij delete-session "$name" 2>/dev/null && ((deleted++))
+                fi
+            done
+            echo "Deleted $deleted exited session(s)"
+            ;;
+        d)
+            local deleted=0
+            for line in "${sessions[@]}"; do
+                if [[ "$line" == *"day"* ]]; then
+                    local name=$(echo "$line" | awk '{print $1}')
+                    zellij delete-session --force "$name" 2>/dev/null && ((deleted++))
+                fi
+            done
+            echo "Deleted $deleted session(s) older than 24h"
+            ;;
+        [0-9]*)
+            local name=$(echo "${sessions[$choice]}" | awk '{print $1}')
+            zellij attach "$name"
+            ;;
+    esac
+}

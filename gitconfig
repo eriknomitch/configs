@@ -57,3 +57,7 @@
 [rebase]
 	autoStash = true
 	autosquash = true
+[lfs "customtransfer.xet"]
+	path = git-xet
+	args = transfer
+	concurrent = true

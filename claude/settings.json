@@ -8,6 +8,9 @@
       "Glob(*)",
       "Grep(*)",
       "Write(*)",
+      "Fetch(*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:*.github.com)",
       "Bash(mkdir:*)",
       "Bash(find:*)",
       "Bash(grep:*)",
@@ -45,9 +48,9 @@
       "Bash(make:*)",
       "Bash(node:*)",
       "Bash(python:*)",
-      "mcp__linear__list_project_labels",
-      "mcp__linear__list_users",
-      "mcp__linear__search_documentation"
+      "mcp__linear__*",
+      "mcp__linear-server__*",
+      "mcp__context7__*"
     ],
     "deny": [
       "Read(.env)",
@@ -113,18 +116,29 @@
     ]
   },
   "enableAllProjectMcpServers": false,
-  "hooks": {},
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/claudeception-activator.sh"
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "bunx -y ccstatusline@latest",
     "padding": 0
   },
   "enabledPlugins": {
-    "git-workflow@claude-code-templates": true,
-    "commit-commands@claude-code-plugins": true,
-    "feature-dev@claude-code-plugins": true,
+    "git-workflow@claude-code-templates": false,
+    "commit-commands@claude-code-plugins": false,
+    "feature-dev@claude-code-plugins": false,
     "claude-mem@thedotmack": false,
-    "canvas@claude-canvas": true
+    "canvas@claude-canvas": false
   },
   "outputStyle": "default",
   "alwaysThinkingEnabled": true,
