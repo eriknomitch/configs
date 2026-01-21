@@ -1,9 +1,9 @@
 -- ==============================================
--- ACTIVE SCREEN BORDER ===========================
+-- INACTIVE SCREEN BORDER =========================
 -- ==============================================
--- Draws a colored border around the screen with
--- keyboard focus, helping identify the active
--- display on multi-monitor setups.
+-- Draws subtle colored borders around inactive
+-- screens, helping identify displays that don't
+-- have keyboard focus on multi-monitor setups.
 
 local M = {}
 
@@ -13,15 +13,15 @@ local M = {}
 
 M.config = {
 	enabled = false,
-	borderColor = { red = 0.3, green = 0.6, blue = 1.0, alpha = 0.7 },
-	borderWidth = 4,
+	borderColor = { red = 0.3, green = 0.6, blue = 1.0, alpha = 0.5 },
+	borderWidth = 3,
 }
 
 -- ------------------------------------------------
 -- STATE ------------------------------------------
 -- ------------------------------------------------
 
-local borderCanvas = nil
+local borders = {} -- screen UUID -> canvas
 local windowFilter = nil
 local screenWatcher = nil
 local log = hs.logger.new("ScreenBorder", "debug")
@@ -76,16 +76,26 @@ local function createBorder(screen)
 	return canvas
 end
 
-local function clearBorder()
-	if borderCanvas then
-		borderCanvas:delete()
-		borderCanvas = nil
+local function clearBorders()
+	for uuid, canvas in pairs(borders) do
+		if canvas then
+			canvas:delete()
+		end
 	end
+	borders = {}
 end
 
-local function updateBorder()
+local function updateBorders()
 	if not M.config.enabled then
-		clearBorder()
+		clearBorders()
+		return
+	end
+
+	local screens = hs.screen.allScreens()
+
+	-- Only show borders when there are multiple screens
+	if #screens <= 1 then
+		clearBorders()
 		return
 	end
 
@@ -99,29 +109,46 @@ local function updateBorder()
 		activeScreen = hs.screen.mainScreen()
 	end
 
-	if not activeScreen then
-		clearBorder()
-		return
+	local activeScreenUUID = activeScreen and activeScreen:getUUID() or nil
+
+	-- Build set of current screen UUIDs
+	local currentScreenUUIDs = {}
+	for _, screen in ipairs(screens) do
+		currentScreenUUIDs[screen:getUUID()] = screen
 	end
 
-	-- Check if border needs to move to a different screen
-	if borderCanvas then
-		local currentFrame = borderCanvas:frame()
-		local activeFrame = activeScreen:fullFrame()
-
-		if currentFrame.x == activeFrame.x and currentFrame.y == activeFrame.y
-			and currentFrame.w == activeFrame.w and currentFrame.h == activeFrame.h then
-			-- Border is already on the correct screen
-			return
+	-- Remove borders for screens that no longer exist
+	for uuid, canvas in pairs(borders) do
+		if not currentScreenUUIDs[uuid] then
+			canvas:delete()
+			borders[uuid] = nil
 		end
 	end
 
-	-- Recreate border on the active screen
-	clearBorder()
-	borderCanvas = createBorder(activeScreen)
-	borderCanvas:show()
+	-- Update borders for each screen
+	for _, screen in ipairs(screens) do
+		local uuid = screen:getUUID()
+		local isActive = (uuid == activeScreenUUID)
 
-	log:d("Border moved to screen: " .. activeScreen:name())
+		if isActive then
+			-- Remove border from active screen
+			if borders[uuid] then
+				borders[uuid]:hide()
+			end
+		else
+			-- Create or show border on inactive screens
+			if not borders[uuid] then
+				borders[uuid] = createBorder(screen)
+			else
+				-- Update frame in case screen resolution changed
+				local frame = screen:fullFrame()
+				borders[uuid]:frame(frame)
+			end
+			borders[uuid]:show()
+		end
+	end
+
+	log:d("Borders updated, active screen: " .. (activeScreen and activeScreen:name() or "none"))
 end
 
 -- ------------------------------------------------
@@ -138,7 +165,7 @@ function M.toggle()
 	end
 
 	local status = M.config.enabled and "ON" or "OFF"
-	hs.alert.show("Screen Border: " .. status)
+	hs.alert.show("Inactive Screen Border: " .. status)
 	log:d("Screen border toggled: " .. status)
 end
 
@@ -157,8 +184,8 @@ end
 function M.setColor(color)
 	M.config.borderColor = color
 	if M.config.enabled then
-		clearBorder()
-		updateBorder()
+		clearBorders()
+		updateBorders()
 	end
 	log:d("Screen border color updated")
 end
@@ -166,8 +193,8 @@ end
 function M.setWidth(width)
 	M.config.borderWidth = width
 	if M.config.enabled then
-		clearBorder()
-		updateBorder()
+		clearBorders()
+		updateBorders()
 	end
 	log:d("Screen border width set to: " .. width)
 end
@@ -184,14 +211,14 @@ local function startWatchers()
 	-- Window focus watcher
 	windowFilter = hs.window.filter.new():setDefaultFilter()
 	windowFilter:subscribe(hs.window.filter.windowFocused, function(window, appName, event)
-		updateBorder()
+		updateBorders()
 	end)
 
 	-- Screen configuration watcher
 	screenWatcher = hs.screen.watcher.new(function()
 		log:d("Screen configuration changed")
 		hs.timer.doAfter(0.5, function()
-			updateBorder()
+			updateBorders()
 		end)
 	end)
 	screenWatcher:start()
@@ -223,13 +250,13 @@ function M.start()
 	end
 
 	startWatchers()
-	updateBorder()
+	updateBorders()
 	log:d("Screen border started")
 end
 
 function M.stop()
 	stopWatchers()
-	clearBorder()
+	clearBorders()
 	log:d("Screen border stopped")
 end
 

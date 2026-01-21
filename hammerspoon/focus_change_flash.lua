@@ -1,9 +1,9 @@
 -- ==============================================
--- FOCUS CHANGE FLASH =============================
+-- FOCUS CHANGE HANDLER ===========================
 -- ==============================================
--- Shows a brief flash overlay when keyboard focus
--- moves to a window on a different screen, helping
--- track focus changes on multi-display setups.
+-- Handles focus changes between screens:
+-- - Optional flash overlay when focus moves screens
+-- - Optional mouse warp to follow focus between screens
 
 local M = {}
 
@@ -12,9 +12,13 @@ local M = {}
 -- ------------------------------------------------
 
 M.config = {
-	enabled = false,
+	-- Flash overlay on screen change
+	flashEnabled = false,
 	flashColor = { white = 1, alpha = 0.15 },
 	flashDuration = 0.15, -- seconds
+
+	-- Warp mouse to window on screen change
+	warpEnabled = true,
 }
 
 -- ------------------------------------------------
@@ -25,7 +29,7 @@ local flashCanvas = nil
 local fadeTimer = nil
 local windowFilter = nil
 local lastFocusedScreenUUID = nil
-local log = hs.logger.new("FocusFlash", "debug")
+local log = hs.logger.new("FocusChange", "debug")
 
 -- ------------------------------------------------
 -- FLASH MANAGEMENT -------------------------------
@@ -96,8 +100,28 @@ local function flash(screen)
 	log:d("Flash triggered on screen: " .. screen:name())
 end
 
+-- ------------------------------------------------
+-- WARP MANAGEMENT --------------------------------
+-- ------------------------------------------------
+
+local function warpMouseToWindow(window)
+	if not window then
+		return
+	end
+
+	local frame = window:frame()
+	local center = hs.geometry.point(frame.x + frame.w / 2, frame.y + frame.h / 2)
+	hs.mouse.absolutePosition(center)
+
+	log:d("Mouse warped to window: " .. (window:title() or "untitled"))
+end
+
+-- ------------------------------------------------
+-- FOCUS HANDLER ----------------------------------
+-- ------------------------------------------------
+
 local function onWindowFocused(window, appName, event)
-	if not M.config.enabled or not window then
+	if not window then
 		return
 	end
 
@@ -107,10 +131,19 @@ local function onWindowFocused(window, appName, event)
 	end
 
 	local currentScreenUUID = screen:getUUID()
+	local screenChanged = lastFocusedScreenUUID and lastFocusedScreenUUID ~= currentScreenUUID
 
-	-- Only flash if focus moved to a different screen
-	if lastFocusedScreenUUID and lastFocusedScreenUUID ~= currentScreenUUID then
-		flash(screen)
+	-- Handle screen change
+	if screenChanged then
+		-- Flash if enabled
+		if M.config.flashEnabled then
+			flash(screen)
+		end
+
+		-- Warp mouse if enabled
+		if M.config.warpEnabled then
+			warpMouseToWindow(window)
+		end
 	end
 
 	lastFocusedScreenUUID = currentScreenUUID
@@ -120,30 +153,53 @@ end
 -- PUBLIC API -------------------------------------
 -- ------------------------------------------------
 
-function M.toggle()
-	M.config.enabled = not M.config.enabled
+-- Flash toggle
+function M.toggleFlash()
+	M.config.flashEnabled = not M.config.flashEnabled
+	M.ensureWatchers()
 
-	if M.config.enabled then
-		M.start()
-	else
-		M.stop()
-	end
-
-	local status = M.config.enabled and "ON" or "OFF"
+	local status = M.config.flashEnabled and "ON" or "OFF"
 	hs.alert.show("Focus Flash: " .. status)
 	log:d("Focus flash toggled: " .. status)
 end
 
-function M.enable()
-	M.config.enabled = true
-	M.start()
+-- Warp toggle
+function M.toggleWarp()
+	M.config.warpEnabled = not M.config.warpEnabled
+	M.ensureWatchers()
+
+	local status = M.config.warpEnabled and "ON" or "OFF"
+	hs.alert.show("Focus Warp: " .. status)
+	log:d("Focus warp toggled: " .. status)
+end
+
+-- Legacy toggle (for backwards compatibility) - toggles flash
+function M.toggle()
+	M.toggleFlash()
+end
+
+function M.enableFlash()
+	M.config.flashEnabled = true
+	M.ensureWatchers()
 	log:d("Focus flash enabled")
 end
 
-function M.disable()
-	M.config.enabled = false
-	M.stop()
+function M.disableFlash()
+	M.config.flashEnabled = false
+	M.ensureWatchers()
 	log:d("Focus flash disabled")
+end
+
+function M.enableWarp()
+	M.config.warpEnabled = true
+	M.ensureWatchers()
+	log:d("Focus warp enabled")
+end
+
+function M.disableWarp()
+	M.config.warpEnabled = false
+	M.ensureWatchers()
+	log:d("Focus warp disabled")
 end
 
 function M.setColor(color)
@@ -156,8 +212,17 @@ function M.setDuration(duration)
 	log:d("Focus flash duration set to: " .. duration)
 end
 
+function M.isFlashEnabled()
+	return M.config.flashEnabled
+end
+
+function M.isWarpEnabled()
+	return M.config.warpEnabled
+end
+
+-- Legacy compatibility
 function M.isEnabled()
-	return M.config.enabled
+	return M.config.flashEnabled
 end
 
 -- ------------------------------------------------
@@ -165,6 +230,10 @@ end
 -- ------------------------------------------------
 
 local function startWatchers()
+	if windowFilter then
+		return -- Already running
+	end
+
 	-- Initialize last focused screen
 	local focusedWindow = hs.window.focusedWindow()
 	if focusedWindow then
@@ -178,7 +247,7 @@ local function startWatchers()
 	windowFilter = hs.window.filter.new():setDefaultFilter()
 	windowFilter:subscribe(hs.window.filter.windowFocused, onWindowFocused)
 
-	log:d("Focus flash watchers started")
+	log:d("Focus change watchers started")
 end
 
 local function stopWatchers()
@@ -187,7 +256,18 @@ local function stopWatchers()
 		windowFilter = nil
 	end
 
-	log:d("Focus flash watchers stopped")
+	log:d("Focus change watchers stopped")
+end
+
+-- Ensure watchers are running if any feature is enabled
+function M.ensureWatchers()
+	local needWatchers = M.config.flashEnabled or M.config.warpEnabled
+
+	if needWatchers and not windowFilter then
+		startWatchers()
+	elseif not needWatchers and windowFilter then
+		stopWatchers()
+	end
 end
 
 -- ------------------------------------------------
@@ -195,12 +275,8 @@ end
 -- ------------------------------------------------
 
 function M.start()
-	if not M.config.enabled then
-		return
-	end
-
-	startWatchers()
-	log:d("Focus flash started")
+	M.ensureWatchers()
+	log:d("Focus change handler started")
 end
 
 function M.stop()
@@ -215,7 +291,12 @@ function M.stop()
 		fadeTimer = nil
 	end
 
-	log:d("Focus flash stopped")
+	log:d("Focus change handler stopped")
+end
+
+-- Auto-start if warp is enabled by default
+if M.config.warpEnabled or M.config.flashEnabled then
+	M.start()
 end
 
 return M

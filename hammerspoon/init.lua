@@ -7,7 +7,6 @@
 -- ------------------------------------------------
 --{{{
 local enableWindowResizeKeybindings = true
-local autoWarpMouse = true -- Warp mouse to window center on app focus
 --}}}
 
 -- ------------------------------------------------
@@ -463,21 +462,14 @@ volumeChecker:start()
 -- -----------------------------------------------
 --{{{
 
--- Auto-warp mouse to focused window center
+-- Warp mouse to window center (used by app launch hotkeys)
 function warpMouseToWindow(win)
-	if not autoWarpMouse or not win then
+	if not win then
 		return
 	end
 	local frame = win:frame()
 	local center = hs.geometry.point(frame.x + frame.w / 2, frame.y + frame.h / 2)
 	hs.mouse.absolutePosition(center)
-end
-
-function toggleAutoWarpMouse()
-	autoWarpMouse = not autoWarpMouse
-	local status = autoWarpMouse and "ON" or "OFF"
-	hs.alert.show("Auto-Warp Mouse: " .. status)
-	log:d("Auto-warp mouse toggled: " .. status)
 end
 
 function launchOrFocusWithWarp(appName)
@@ -672,12 +664,12 @@ end)
 
 -- Toggle focus change flash
 hs.hotkey.bind(movementWindowAdjustment, "F", function()
-	focusFlash.toggle()
+	focusFlash.toggleFlash()
 end)
 
--- Toggle auto-warp mouse
+-- Toggle focus warp (warp mouse when focus changes screens)
 hs.hotkey.bind(movementWindowAdjustment, "W", function()
-	toggleAutoWarpMouse()
+	focusFlash.toggleWarp()
 end)
 
 -- }}}
@@ -765,9 +757,9 @@ Audio:
 Display:
   Toggle Dim Inactive: cmd + ctrl + alt + D
   Cursor Locator:      cmd + ctrl + alt + C
-  Screen Border:       cmd + ctrl + alt + B
+  Inactive Border:     cmd + ctrl + alt + B
   Focus Flash:         cmd + ctrl + alt + F
-  Auto-Warp Mouse:     cmd + ctrl + alt + W
+  Focus Warp Mouse:    cmd + ctrl + alt + W
 
 Utilities:
   Reload Hammerspoon:  cmd + alt + ctrl + R
