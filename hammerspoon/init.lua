@@ -16,6 +16,7 @@ local enableWindowResizeKeybindings = true
 
 require("utility")
 require("external_display_handler")
+local displayDimmer = require("inactive_display_dimmer")
 
 --}}}
 
@@ -624,6 +625,11 @@ hs.hotkey.bind(hyperShift, "m", function()
 	hs.alert.show("Moved Mouse HERE: " .. nextScreen:name(), { textSize = 24 }, nextScreen)
 end)
 
+-- Toggle display dimmer (dims inactive screens)
+hs.hotkey.bind(movementWindowAdjustment, "D", function()
+	displayDimmer.toggle()
+end)
+
 -- }}}
 
 -- -----------------------------------------------
@@ -705,6 +711,9 @@ Special:
 Audio:
   Volume Up:           shift + cmd + ctrl + Up
   Volume Down:         shift + cmd + ctrl + Down
+
+Display:
+  Toggle Dim Inactive: cmd + ctrl + alt + D
 
 Utilities:
   Reload Hammerspoon:  cmd + alt + ctrl + R
