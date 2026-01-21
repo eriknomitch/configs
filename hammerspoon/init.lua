@@ -7,6 +7,7 @@
 -- ------------------------------------------------
 --{{{
 local enableWindowResizeKeybindings = true
+local autoWarpMouse = true -- Warp mouse to window center on app focus
 --}}}
 
 -- ------------------------------------------------
@@ -17,6 +18,9 @@ local enableWindowResizeKeybindings = true
 require("utility")
 require("external_display_handler")
 local displayDimmer = require("inactive_display_dimmer")
+local cursorLocator = require("cursor_locator")
+local screenBorder = require("active_screen_border")
+local focusFlash = require("focus_change_flash")
 
 --}}}
 
@@ -459,9 +463,35 @@ volumeChecker:start()
 -- -----------------------------------------------
 --{{{
 
+-- Auto-warp mouse to focused window center
+function warpMouseToWindow(win)
+	if not autoWarpMouse or not win then
+		return
+	end
+	local frame = win:frame()
+	local center = hs.geometry.point(frame.x + frame.w / 2, frame.y + frame.h / 2)
+	hs.mouse.absolutePosition(center)
+end
+
+function toggleAutoWarpMouse()
+	autoWarpMouse = not autoWarpMouse
+	local status = autoWarpMouse and "ON" or "OFF"
+	hs.alert.show("Auto-Warp Mouse: " .. status)
+	log:d("Auto-warp mouse toggled: " .. status)
+end
+
+function launchOrFocusWithWarp(appName)
+	hs.application.launchOrFocus(appName)
+	-- Small delay to let the window become focused
+	hs.timer.doAfter(0.1, function()
+		local win = hs.window.focusedWindow()
+		warpMouseToWindow(win)
+	end)
+end
+
 function bindApplicationFocus(key, title)
 	hs.hotkey.bind(movementApplicationLaunchOrFocus, key, function()
-		hs.application.launchOrFocus(title)
+		launchOrFocusWithWarp(title)
 	end)
 end
 
@@ -479,7 +509,7 @@ end
 
 function bindApplicationFocusSecondary(key, title)
 	hs.hotkey.bind(movementApplicationLaunchOrFocusSecondary, key, function()
-		hs.application.launchOrFocus(title)
+		launchOrFocusWithWarp(title)
 	end)
 end
 
@@ -508,14 +538,14 @@ end
 function launchOrFocusWithConfirmation(appName)
 	-- If the application is already running, focus it
 	if hs.application.find(appName) then
-		hs.application.launchOrFocus(appName)
+		launchOrFocusWithWarp(appName)
 	else
 		message = "Open"
 		fullMessage = message .. " " .. appName .. "?"
 
 		-- If the application is not running, ask for confirmation
 		triggerAfterConfirmation(fullMessage, function()
-			hs.application.launchOrFocus(appName)
+			launchOrFocusWithWarp(appName)
 		end)
 	end
 end
@@ -597,7 +627,7 @@ bindApplicationFocus("H", "Home Assistant")
 -- Special
 -- -----------------------------------------------
 hs.hotkey.bind({ "ctrl" }, "Space", function()
-	hs.application.launchOrFocus(defaultTerminalName)
+	launchOrFocusWithWarp(defaultTerminalName)
 end)
 
 -- Switcher
@@ -628,6 +658,26 @@ end)
 -- Toggle display dimmer (dims inactive screens)
 hs.hotkey.bind(movementWindowAdjustment, "D", function()
 	displayDimmer.toggle()
+end)
+
+-- Cursor locator (show pulse at cursor position)
+hs.hotkey.bind(movementWindowAdjustment, "C", function()
+	cursorLocator.show()
+end)
+
+-- Toggle active screen border
+hs.hotkey.bind(movementWindowAdjustment, "B", function()
+	screenBorder.toggle()
+end)
+
+-- Toggle focus change flash
+hs.hotkey.bind(movementWindowAdjustment, "F", function()
+	focusFlash.toggle()
+end)
+
+-- Toggle auto-warp mouse
+hs.hotkey.bind(movementWindowAdjustment, "W", function()
+	toggleAutoWarpMouse()
 end)
 
 -- }}}
@@ -714,6 +764,10 @@ Audio:
 
 Display:
   Toggle Dim Inactive: cmd + ctrl + alt + D
+  Cursor Locator:      cmd + ctrl + alt + C
+  Screen Border:       cmd + ctrl + alt + B
+  Focus Flash:         cmd + ctrl + alt + F
+  Auto-Warp Mouse:     cmd + ctrl + alt + W
 
 Utilities:
   Reload Hammerspoon:  cmd + alt + ctrl + R
