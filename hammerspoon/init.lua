@@ -464,6 +464,62 @@ volumeChecker:start()
 --}}}
 
 -- -----------------------------------------------
+-- APP RESOLUTION ---------------------------------
+-- -----------------------------------------------
+--{{{
+
+-- Exact-match app lookup (no pattern matching, faster than hs.application.find)
+function findRunningApp(appName)
+	for _, app in ipairs(hs.application.runningApplications()) do
+		if app:name() == appName then
+			return app
+		end
+	end
+	return nil
+end
+
+-- Resolve app name to bundle ID by checking common .app locations
+local function resolveBundleID(appName)
+	local home = os.getenv("HOME")
+	local paths = {
+		"/Applications/" .. appName .. ".app",
+		"/System/Applications/" .. appName .. ".app",
+		"/System/Applications/Utilities/" .. appName .. ".app",
+		home .. "/Applications/" .. appName .. ".app",
+	}
+	for _, path in ipairs(paths) do
+		local info = hs.application.infoForBundlePath(path)
+		if info and info.CFBundleIdentifier then
+			return info.CFBundleIdentifier
+		end
+	end
+	return nil
+end
+
+-- Build bundle ID cache at startup for all configured apps
+local bundleIDCache = {}
+local configuredApps = {
+	defaultBrowserName, secondaryBrowserName, defaultTerminalName,
+	defaultAiChatName, secondaryAiChatName,
+	"Messages", "Slack", "WhatsApp", "Stable Diffusion",
+	"Linear", "Preview", "Adobe Photoshop 2025", "Finder",
+	"BoltAI", "FaceTime", "zoom.us", "Drive",
+	"Audio MIDI Setup", "WLED", "Discord", "Obsidian",
+	"Element", "Visual Studio Code", "IINA", "Unraid",
+	"Notion", "Home Assistant",
+}
+
+for _, appName in ipairs(configuredApps) do
+	local id = resolveBundleID(appName)
+	if id then
+		bundleIDCache[appName] = id
+		log:d("Cached bundle ID: " .. appName .. " -> " .. id)
+	end
+end
+
+--}}}
+
+-- -----------------------------------------------
 -- SHORTCUTS -------------------------------------
 -- -----------------------------------------------
 --{{{
@@ -479,7 +535,7 @@ function warpMouseToWindow(win)
 end
 
 function launchOrFocusWithWarp(appName)
-	local app = hs.application.find(appName)
+	local app = findRunningApp(appName)
 	if app then
 		-- Already running: activate directly, skip redundant lookup
 		app:activate()
@@ -488,8 +544,13 @@ function launchOrFocusWithWarp(appName)
 			warpMouseToWindow(win)
 		end
 	else
-		-- Not running: launch and wait for window
-		hs.application.launchOrFocus(appName)
+		-- Not running: launch by bundle ID if available, else by name
+		local bundleID = bundleIDCache[appName]
+		if bundleID then
+			hs.application.launchOrFocusByBundleID(bundleID)
+		else
+			hs.application.launchOrFocus(appName)
+		end
 		hs.timer.doAfter(0.1, function()
 			local win = hs.window.focusedWindow()
 			warpMouseToWindow(win)
@@ -534,17 +595,14 @@ function triggerAfterConfirmation(question, action)
 end
 
 function launchOrFocusIfRunning(hint)
-	local app = hs.application.find(hint)
-
-	if not app then
-		return
+	local app = findRunningApp(hint)
+	if app then
+		app:activate()
 	end
-
-	hs.application.launchOrFocus(app)
 end
 
 function launchOrFocusWithConfirmation(appName)
-	local app = hs.application.find(appName)
+	local app = findRunningApp(appName)
 	if app then
 		-- Already running: activate directly, skip redundant lookup
 		app:activate()
