@@ -166,7 +166,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/hooks/claudeception-activator.sh"
+            "command": "echo 'UserPromptSubmit hook triggered!'"
           }
         ]
       }

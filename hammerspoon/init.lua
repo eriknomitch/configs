@@ -534,15 +534,17 @@ function launchOrFocusIfRunning(hint)
 end
 
 function launchOrFocusWithConfirmation(appName)
-	-- If the application is already running, focus it
-	if hs.application.find(appName) then
-		launchOrFocusWithWarp(appName)
+	local app = hs.application.find(appName)
+	if app then
+		-- Already running: activate directly, skip redundant lookup
+		app:activate()
+		local win = app:mainWindow()
+		if win then
+			warpMouseToWindow(win)
+		end
 	else
-		message = "Open"
-		fullMessage = message .. " " .. appName .. "?"
-
-		-- If the application is not running, ask for confirmation
-		triggerAfterConfirmation(fullMessage, function()
+		-- Not running: ask for confirmation before launching
+		triggerAfterConfirmation("Open " .. appName .. "?", function()
 			launchOrFocusWithWarp(appName)
 		end)
 	end
