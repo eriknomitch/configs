@@ -76,7 +76,6 @@ local movementApplicationLaunchOrFocusTertiary = { "ctrl", "alt", "shift" }
 local spoonNames = {
 	"SpoonInstall",
 	"ReloadConfiguration",
-	"Emojis",
 }
 
 -- FROM: https://github.com/stephlm2dev/wildcard.conf/blob/71c17a660d25cfad6a5a4664065c62938db77d26/configuration/hammerspoon/init.lua#L8-L16
@@ -97,6 +96,7 @@ local hostname = hs.host.localizedName()
 -- Hammerspoon
 -- -----------------------------------------------
 hs.application.enableSpotlightForNameSearches(true)
+hs.window.filter.ignoreAlways["Activity Monitor"] = true
 
 -- log
 -- -----------------------------------------------
@@ -171,7 +171,6 @@ hs.loadSpoon("SpoonInstall")
 spoon.SpoonInstall.use_syncinstall = true
 local Install = spoon.SpoonInstall
 
-hs.loadSpoon("Emojis")
 hs.loadSpoon("ReloadConfiguration")
 
 function installSpoons(spoonNames)
@@ -678,12 +677,14 @@ end)
 -- HOTKEYS->VOLUME -------------------------------
 -- -----------------------------------------------
 --{{{
-hs.hotkey.bind({ "shift", "cmd", "ctrl" }, "Up", function()
-	setVolumeOfCurrent(10.0)
+hs.hotkey.bind({ "shift", "cmd" }, "Up", function()
+	hs.eventtap.event.newSystemKeyEvent("SOUND_UP", true):post()
+	hs.eventtap.event.newSystemKeyEvent("SOUND_UP", false):post()
 end)
 
-hs.hotkey.bind({ "shift", "cmd", "ctrl" }, "Down", function()
-	setVolumeOfCurrent(-10.0)
+hs.hotkey.bind({ "shift", "cmd" }, "Down", function()
+	hs.eventtap.event.newSystemKeyEvent("SOUND_DOWN", true):post()
+	hs.eventtap.event.newSystemKeyEvent("SOUND_DOWN", false):post()
 end)
 --}}}
 
