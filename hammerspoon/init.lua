@@ -95,7 +95,7 @@ local hostname = hs.host.localizedName()
 
 -- Hammerspoon
 -- -----------------------------------------------
-hs.application.enableSpotlightForNameSearches(true)
+hs.application.enableSpotlightForNameSearches(false)
 hs.window.filter.ignoreAlways["Activity Monitor"] = true
 
 -- log
@@ -479,12 +479,22 @@ function warpMouseToWindow(win)
 end
 
 function launchOrFocusWithWarp(appName)
-	hs.application.launchOrFocus(appName)
-	-- Small delay to let the window become focused
-	hs.timer.doAfter(0.1, function()
-		local win = hs.window.focusedWindow()
-		warpMouseToWindow(win)
-	end)
+	local app = hs.application.find(appName)
+	if app then
+		-- Already running: activate directly, skip redundant lookup
+		app:activate()
+		local win = app:mainWindow()
+		if win then
+			warpMouseToWindow(win)
+		end
+	else
+		-- Not running: launch and wait for window
+		hs.application.launchOrFocus(appName)
+		hs.timer.doAfter(0.1, function()
+			local win = hs.window.focusedWindow()
+			warpMouseToWindow(win)
+		end)
+	end
 end
 
 function bindApplicationFocus(key, title)
