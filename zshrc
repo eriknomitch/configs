@@ -1259,86 +1259,255 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 eval "$(git machete completion zsh)"  # or, if it doesn't work:
 source <(git machete completion zsh)
 
-
-
 source-if-exists $HOMEBREW_PREFIX/opt/git-extras/share/git-extras/git-extras-completion.zsh
 
-
 # Added by Antigravity
-export PATH="/Users/erik/.antigravity/antigravity/bin:$PATH"
+# export PATH="/Users/erik/.antigravity/antigravity/bin:$PATH"
+#
+#
+# # FROM: https://tonydehnke.com/blog/claude-code-iphone-ssh-zellij/
+# # rc = Run Claude: Start new session with auto-generated name
+# # Note: Must use -n (--new-session-with-layout) to CREATE a new session.
+# # Using --layout with --session tries to ADD to an existing session.
+# rc() {
+#     zellij -n claude
+# }
+#
+# # rq = Run Qumis: Attach to existing qumis session or start new one
+# rq() {
+#     # Try to attach - if session is alive this works
+#     if ! zellij attach qumis 2>/dev/null; then
+#         # Attach failed - delete any dead session and create fresh
+#         zellij delete-session qumis 2>/dev/null
+#         zellij -s qumis -n qumis
+#     fi
+# }
+#
+# # rj = Run Join: Quick attach to session
+# rj() {
+#     local session="${1:-$(zellij list-sessions | head -1 | awk '{print $1}')}"
+#     zellij attach "$session"
+# }
+#
+# # rl = Run List: Interactive session picker with cleanup
+# rl() {
+#     local sessions=()
+#     while IFS= read -r line; do
+#         sessions+=("$line")
+#     done < <(zellij list-sessions 2>/dev/null)
+#
+#     if [[ ${#sessions[@]} -eq 0 ]]; then
+#         echo "No sessions. Use 'rc' to start one."
+#         return 1
+#     fi
+#
+#     echo "Sessions:"
+#     local i=1
+#     for session in "${sessions[@]}"; do
+#         echo "  $i) $session"
+#         ((i++))
+#     done
+#     echo "  c) Clean EXITED sessions"
+#     echo "  d) Delete sessions >24h old"
+#
+#     read -r "choice?Select: "
+#
+#     case "$choice" in
+#         c)
+#             local deleted=0
+#             for line in "${sessions[@]}"; do
+#                 if [[ "$line" == *"EXITED"* ]]; then
+#                     local name=$(echo "$line" | awk '{print $1}')
+#                     zellij delete-session "$name" 2>/dev/null && ((deleted++))
+#                 fi
+#             done
+#             echo "Deleted $deleted exited session(s)"
+#             ;;
+#         d)
+#             local deleted=0
+#             for line in "${sessions[@]}"; do
+#                 if [[ "$line" == *"day"* ]]; then
+#                     local name=$(echo "$line" | awk '{print $1}')
+#                     zellij delete-session --force "$name" 2>/dev/null && ((deleted++))
+#                 fi
+#             done
+#             echo "Deleted $deleted session(s) older than 24h"
+#             ;;
+#         [0-9]*)
+#             local name=$(echo "${sessions[$choice]}" | awk '{print $1}')
+#             zellij attach "$name"
+#             ;;
+#     esac
+# }
 
 
-# FROM: https://tonydehnke.com/blog/claude-code-iphone-ssh-zellij/
-# rc = Run Claude: Start new session with auto-generated name
-# Note: Must use -n (--new-session-with-layout) to CREATE a new session.
-# Using --layout with --session tries to ADD to an existing session.
-rc() {
-    zellij -n claude
+# --- Private mode / history controls (zsh) -----------------------------------
+
+# Internal state
+typeset -g __PRIVATE_MODE=0
+typeset -g __PRIVATE_HISTFILE_SAVED=""
+typeset -g __PRIVATE_HISTSIZE_SAVED=""
+typeset -g __PRIVATE_SAVEHIST_SAVED=""
+typeset -g __PRIVATE_EVENTNO_START=0
+typeset -g __PRIVATE_TIMER_PID=""
+
+# Enable a prompt indicator (customizable)
+typeset -g __PRIVATE_PROMPT_TAG='[%F{red}PRIVATE%f] '
+
+# Hook: prepend tag to prompt when private mode is on
+__private_prompt_precmd() {
+  if (( __PRIVATE_MODE )); then
+    PROMPT="${__PRIVATE_PROMPT_TAG}${PROMPT#${__PRIVATE_PROMPT_TAG}}"
+  else
+    PROMPT="${PROMPT#${__PRIVATE_PROMPT_TAG}}"
+  fi
 }
 
-# rq = Run Qumis: Attach to existing qumis session or start new one
-rq() {
-    # Try to attach - if session is alive this works
-    if ! zellij attach qumis 2>/dev/null; then
-        # Attach failed - delete any dead session and create fresh
-        zellij delete-session qumis 2>/dev/null
-        zellij -s qumis -n qumis
-    fi
-}
+# Ensure the hook is installed once
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd __private_prompt_precmd
 
-# rj = Run Join: Quick attach to session
-rj() {
-    local session="${1:-$(zellij list-sessions | head -1 | awk '{print $1}')}"
-    zellij attach "$session"
-}
+# Wipe any commands entered since private mode started (session memory)
+__private_wipe_session_history() {
+  # Delete history lines added since we entered private mode.
+  # event numbers are 1-based and monotonically increase.
+  local start=$__PRIVATE_EVENTNO_START
+  local now=$HISTCMD
 
-# rl = Run List: Interactive session picker with cleanup
-rl() {
-    local sessions=()
-    while IFS= read -r line; do
-        sessions+=("$line")
-    done < <(zellij list-sessions 2>/dev/null)
-
-    if [[ ${#sessions[@]} -eq 0 ]]; then
-        echo "No sessions. Use 'rc' to start one."
-        return 1
-    fi
-
-    echo "Sessions:"
-    local i=1
-    for session in "${sessions[@]}"; do
-        echo "  $i) $session"
-        ((i++))
+  # If history isn't active, HISTCMD still advances; try best-effort.
+  if (( start > 0 && now >= start )); then
+    local i
+    for (( i = now; i >= start; i-- )); do
+      fc -p >/dev/null 2>&1 || true   # no-op safeguard
+      fc -d $i >/dev/null 2>&1 || true
     done
-    echo "  c) Clean EXITED sessions"
-    echo "  d) Delete sessions >24h old"
-
-    read -r "choice?Select: "
-
-    case "$choice" in
-        c)
-            local deleted=0
-            for line in "${sessions[@]}"; do
-                if [[ "$line" == *"EXITED"* ]]; then
-                    local name=$(echo "$line" | awk '{print $1}')
-                    zellij delete-session "$name" 2>/dev/null && ((deleted++))
-                fi
-            done
-            echo "Deleted $deleted exited session(s)"
-            ;;
-        d)
-            local deleted=0
-            for line in "${sessions[@]}"; do
-                if [[ "$line" == *"day"* ]]; then
-                    local name=$(echo "$line" | awk '{print $1}')
-                    zellij delete-session --force "$name" 2>/dev/null && ((deleted++))
-                fi
-            done
-            echo "Deleted $deleted session(s) older than 24h"
-            ;;
-        [0-9]*)
-            local name=$(echo "${sessions[$choice]}" | awk '{print $1}')
-            zellij attach "$name"
-            ;;
-    esac
+  fi
 }
+
+private_on() {
+  if (( __PRIVATE_MODE )); then
+    echo "private mode: already ON"
+    return 0
+  fi
+
+  __PRIVATE_MODE=1
+
+  # Save current history settings
+  __PRIVATE_HISTFILE_SAVED="${HISTFILE:-}"
+  __PRIVATE_HISTSIZE_SAVED="${HISTSIZE:-}"
+  __PRIVATE_SAVEHIST_SAVED="${SAVEHIST:-}"
+
+  # Mark where we started so we can wipe later
+  __PRIVATE_EVENTNO_START=$HISTCMD
+
+  # Turn off history in memory + file
+  setopt HIST_NO_STORE            # don't store in history list
+  unsetopt INC_APPEND_HISTORY     # don't append incrementally
+  unsetopt SHARE_HISTORY          # don't share between sessions
+  unset HISTFILE                  # don't write to a file
+  HISTSIZE=0
+  SAVEHIST=0
+
+  echo "private mode: ON (history disabled)"
+}
+
+private_off() {
+  if (( ! __PRIVATE_MODE )); then
+    echo "private mode: already OFF"
+    return 0
+  fi
+
+  # Stop any pending timer
+  if [[ -n "$__PRIVATE_TIMER_PID" ]]; then
+    kill "$__PRIVATE_TIMER_PID" >/dev/null 2>&1 || true
+    __PRIVATE_TIMER_PID=""
+  fi
+
+  # Wipe what was typed during private mode from session memory (best effort)
+  __private_wipe_session_history
+
+  __PRIVATE_MODE=0
+
+  # Restore history settings
+  unsetopt HIST_NO_STORE
+  setopt INC_APPEND_HISTORY SHARE_HISTORY
+
+  if [[ -n "$__PRIVATE_HISTFILE_SAVED" ]]; then
+    export HISTFILE="$__PRIVATE_HISTFILE_SAVED"
+  else
+    export HISTFILE=~/.zsh_history
+  fi
+
+  HISTSIZE="${__PRIVATE_HISTSIZE_SAVED:-50000}"
+  SAVEHIST="${__PRIVATE_SAVEHIST_SAVED:-50000}"
+
+  # Reload persisted history file
+  fc -R "$HISTFILE" 2>/dev/null
+
+  echo "private mode: OFF (history enabled)"
+}
+
+toggle_history() {
+  if (( __PRIVATE_MODE )); then
+    private_off
+  else
+    private_on
+  fi
+}
+
+# Run a single command with history disabled (even if currently enabled)
+private() {
+  # Usage: private <command...>
+  if (( $# == 0 )); then
+    echo "usage: private <command...>"
+    return 2
+  fi
+
+  local was_private=$__PRIVATE_MODE
+  if (( ! was_private )); then
+    private_on
+  fi
+
+  # Run the command without adding to history
+  command "$@"
+  local rc=$?
+
+  if (( ! was_private )); then
+    private_off
+  fi
+
+  return $rc
+}
+
+# Auto-enable private mode for N minutes, then restore
+private_for() {
+  # Usage: private_for 10   (minutes)
+  local mins="$1"
+  if [[ -z "$mins" || "$mins" -le 0 ]]; then
+    echo "usage: private_for <minutes>"
+    return 2
+  fi
+
+  private_on
+
+  # Cancel existing timer if any
+  if [[ -n "$__PRIVATE_TIMER_PID" ]]; then
+    kill "$__PRIVATE_TIMER_PID" >/dev/null 2>&1 || true
+    __PRIVATE_TIMER_PID=""
+  fi
+
+  # Background timer (disowned) to switch off later
+  (
+    sleep "$(( mins * 60 ))"
+    # Only turn off if still in private mode
+    if (( __PRIVATE_MODE )); then
+      private_off
+    fi
+  ) &!
+
+  __PRIVATE_TIMER_PID=$!
+  echo "private mode: will turn OFF in ${mins} minute(s)"
+}
+
+# ---------------------------------------------------------------------------
+# End private mode / history controls
