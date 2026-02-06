@@ -28,6 +28,8 @@ M.config = {
 local flashCanvas = nil
 local fadeTimer = nil
 local windowFilter = nil
+local sharedFilter = nil
+local isSubscribed = false
 local lastFocusedScreenUUID = nil
 local log = hs.logger.new("FocusChange", "debug")
 
@@ -225,12 +227,16 @@ function M.isEnabled()
 	return M.config.flashEnabled
 end
 
+function M.setSharedFilter(filter)
+	sharedFilter = filter
+end
+
 -- ------------------------------------------------
 -- WATCHERS ---------------------------------------
 -- ------------------------------------------------
 
 local function startWatchers()
-	if windowFilter then
+	if isSubscribed then
 		return -- Already running
 	end
 
@@ -243,16 +249,27 @@ local function startWatchers()
 		end
 	end
 
-	-- Window focus watcher
-	windowFilter = hs.window.filter.new():setDefaultFilter()
-	windowFilter:subscribe(hs.window.filter.windowFocused, onWindowFocused)
+	-- Window focus watcher (use shared filter if available)
+	if sharedFilter then
+		sharedFilter:subscribe(hs.window.filter.windowFocused, onWindowFocused)
+	else
+		windowFilter = hs.window.filter.new():setDefaultFilter()
+		windowFilter:subscribe(hs.window.filter.windowFocused, onWindowFocused)
+	end
+	isSubscribed = true
 
 	log:d("Focus change watchers started")
 end
 
 local function stopWatchers()
+	if isSubscribed then
+		local filter = sharedFilter or windowFilter
+		if filter then
+			filter:unsubscribe(onWindowFocused)
+		end
+		isSubscribed = false
+	end
 	if windowFilter then
-		windowFilter:unsubscribeAll()
 		windowFilter = nil
 	end
 
@@ -263,9 +280,9 @@ end
 function M.ensureWatchers()
 	local needWatchers = M.config.flashEnabled or M.config.warpEnabled
 
-	if needWatchers and not windowFilter then
+	if needWatchers and not isSubscribed then
 		startWatchers()
-	elseif not needWatchers and windowFilter then
+	elseif not needWatchers and isSubscribed then
 		stopWatchers()
 	end
 end
@@ -294,9 +311,6 @@ function M.stop()
 	log:d("Focus change handler stopped")
 end
 
--- Auto-start if warp is enabled by default
-if M.config.warpEnabled or M.config.flashEnabled then
-	M.start()
-end
+-- Started from init.lua with shared window filter
 
 return M

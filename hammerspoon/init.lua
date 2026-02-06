@@ -105,6 +105,18 @@ log.setLogLevel("debug")
 
 --}}}
 
+-- ------------------------------------------------
+-- SHARED WINDOW FILTER ---------------------------
+-- ------------------------------------------------
+--{{{
+local sharedWindowFilter = hs.window.filter.new():setDefaultFilter()
+displayDimmer.setSharedFilter(sharedWindowFilter)
+screenBorder.setSharedFilter(sharedWindowFilter)
+focusFlash.setSharedFilter(sharedWindowFilter)
+displayDimmer.start()
+focusFlash.start()
+--}}}
+
 -- -----------------------------------------------
 -- WINDOW-TRACKER --------------------------------
 -- -----------------------------------------------
@@ -255,26 +267,21 @@ hs.hotkey.bind(movementApplicationLaunchOrFocus, ";", function()
 	hs.hints.windowHints()
 end)
 
+local exposeOptions = {
+	showThumbnails = true,
+	showTitles = false,
+	includeOtherSpaces = false,
+	includeNonVisible = false,
+	highlightThumbnailAlpha = 1,
+	highlightThumbnailStrokeWidth = 4,
+	highlightColor = { 0.9, 0.9, 0.9, 0.5 },
+	backgroundColor = { 0, 0, 0, 0.8 },
+}
+local exposeFilter = hs.window.filter.new(false):setAppFilter(defaultTerminalName, false)
+local exposeInstance = hs.expose.new(exposeFilter, exposeOptions)
+
 hs.hotkey.bind(movementApplicationLaunchOrFocusSecondary, "'", function()
-	local options = {
-		showThumbnails = true,
-		showTitles = false,
-		includeOtherSpaces = false,
-		includeNonVisible = false,
-		highlightThumbnailAlpha = 1,
-		highlightThumbnailStrokeWidth = 4,
-		highlightColor = { 0.9, 0.9, 0.9, 0.5 },
-		backgroundColor = { 0, 0, 0, 0.8 },
-	}
-
-	local filter = hs.window.filter.new(false):setAppFilter(defaultTerminalName, false)
-
-	-- filter.ignoreAlways[defaultTerminalName] = true
-	-- filter:rejectApp(defaultTerminalName)
-
-	local expose = hs.expose.new(filter, options)
-
-	expose:toggleShow()
+	exposeInstance:toggleShow()
 end)
 
 --}}}

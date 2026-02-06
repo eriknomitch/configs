@@ -23,6 +23,8 @@ M.config = {
 
 local borders = {} -- screen UUID -> canvas
 local windowFilter = nil
+local sharedFilter = nil
+local focusCallback = nil
 local screenWatcher = nil
 local log = hs.logger.new("ScreenBorder", "debug")
 
@@ -203,16 +205,26 @@ function M.isEnabled()
 	return M.config.enabled
 end
 
+function M.setSharedFilter(filter)
+	sharedFilter = filter
+end
+
 -- ------------------------------------------------
 -- WATCHERS ---------------------------------------
 -- ------------------------------------------------
 
 local function startWatchers()
-	-- Window focus watcher
-	windowFilter = hs.window.filter.new():setDefaultFilter()
-	windowFilter:subscribe(hs.window.filter.windowFocused, function(window, appName, event)
+	-- Window focus watcher (use shared filter if available)
+	focusCallback = function(window, appName, event)
 		updateBorders()
-	end)
+	end
+
+	if sharedFilter then
+		sharedFilter:subscribe(hs.window.filter.windowFocused, focusCallback)
+	else
+		windowFilter = hs.window.filter.new():setDefaultFilter()
+		windowFilter:subscribe(hs.window.filter.windowFocused, focusCallback)
+	end
 
 	-- Screen configuration watcher
 	screenWatcher = hs.screen.watcher.new(function()
@@ -227,8 +239,14 @@ local function startWatchers()
 end
 
 local function stopWatchers()
+	if focusCallback then
+		local filter = sharedFilter or windowFilter
+		if filter then
+			filter:unsubscribe(focusCallback)
+		end
+		focusCallback = nil
+	end
 	if windowFilter then
-		windowFilter:unsubscribeAll()
 		windowFilter = nil
 	end
 
