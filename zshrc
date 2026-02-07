@@ -70,6 +70,69 @@ function hr() {
   printf '%*s\n' "$(tput cols)" '' | tr ' ' '─'
 }
 
+# Not Responding Apps
+# ------------------------------------------------
+function not-responding() {
+  local name="" pid="" rows=()
+  while IFS= read -r line; do
+    if [[ "$line" =~ ^[[:space:]]*[0-9]+\) ]]; then
+      name=$(echo "$line" | sed -n 's/.*"\([^"]*\)".*/\1/p')
+    fi
+    if [[ "$line" == *'!signalled'* ]]; then
+      pid=$(echo "$line" | sed -n 's/.*pid = \([0-9]*\).*/\1/p')
+      if [[ "$line" == *'type="BackgroundOnly"'* ]]; then
+        rows+=("$name|$pid|Background")
+      else
+        rows+=("$name|$pid|Foreground")
+      fi
+    fi
+  done < <(/usr/bin/lsappinfo list)
+
+  if (( ! ${#rows[@]} )); then
+    echo "No unresponsive apps."
+    return
+  fi
+
+  # Find max name length for alignment
+  local max_name=4 max_pid=3
+  for row in "${rows[@]}"; do
+    local n="${row%%|*}" p="${row#*|}"; p="${p%%|*}"
+    (( ${#n} > max_name )) && max_name=${#n}
+    (( ${#p} > max_pid )) && max_pid=${#p}
+  done
+
+  # Print header
+  printf "%-${max_name}s  %-${max_pid}s  %s\n" "Name" "PID" "Type"
+  printf "%-${max_name}s  %-${max_pid}s  %s\n" \
+    "$(printf '%*s' $max_name '' | tr ' ' '-')" \
+    "$(printf '%*s' $max_pid '' | tr ' ' '-')" \
+    "----------"
+
+  # Print foreground first, then background
+  for row in "${rows[@]}"; do
+    [[ "$row" == *"|Foreground" ]] || continue
+    local n="${row%%|*}" rest="${row#*|}" p="${rest%%|*}" t="${rest#*|}"
+    printf "%-${max_name}s  %-${max_pid}s  %s\n" "$n" "$p" "$t"
+  done
+  for row in "${rows[@]}"; do
+    [[ "$row" == *"|Background" ]] || continue
+    local n="${row%%|*}" rest="${row#*|}" p="${rest%%|*}" t="${rest#*|}"
+    printf "%-${max_name}s  %-${max_pid}s  %s\n" "$n" "$p" "$t"
+  done
+
+  # Kill subcommand
+  if [[ "$1" == "kill" ]]; then
+    local killed=0
+    for row in "${rows[@]}"; do
+      [[ "$row" == *"|Foreground" ]] || continue
+      local n="${row%%|*}" rest="${row#*|}" p="${rest%%|*}"
+      echo "Killing $n (PID $p)..."
+      kill -9 "$p" 2>/dev/null && ((killed++))
+    done
+    echo "Killed $killed foreground app(s)."
+  fi
+}
+
 # Load secrets
 # ------------------------------------------------
 function load-secrets() {
