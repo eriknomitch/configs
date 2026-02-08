@@ -158,7 +158,6 @@
       "Bash(qumis secrets:*)"
     ]
   },
-  "model": "opus",
   "enableAllProjectMcpServers": false,
   "hooks": {
     "UserPromptSubmit": [
@@ -186,5 +185,6 @@
     "frontend-design@claude-code-plugins": true
   },
   "outputStyle": "default",
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "model": "sonnet"
 }
