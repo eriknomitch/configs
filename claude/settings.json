@@ -199,7 +199,6 @@
       "Bash(gh release delete:*)",
       "Bash(gh secret delete:*)",
       "Bash(gh repo archive:*)",
-      "Bash(gh api:*)",
       "Bash(gh gpg-key delete:*)",
       "Bash(gh ssh-key delete:*)",
       "Bash(gh workflow run:*)",
