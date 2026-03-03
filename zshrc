@@ -1303,12 +1303,21 @@ function cld() {
   CLAUDE_PATH=~/.local/bin/claude
   local extra_args=()
 
-  # Handle --yes flag for skipping permissions
-  if [[ "$1" == "--yes" ]]; then
-    echo "⚠️  Warning: Running with --dangerously-skip-permissions - all tool calls will be auto-approved!"
-    extra_args+=(--dangerously-skip-permissions)
-    shift
-  fi
+  # Handle shorthand flags
+  while [[ "$1" == -* ]]; do
+    case "$1" in
+      --yes|-y)
+        echo "⚠️  Warning: Running with --dangerously-skip-permissions - all tool calls will be auto-approved!"
+        extra_args+=(--dangerously-skip-permissions)
+        shift
+        ;;
+      --resume|-r)
+        extra_args+=(--resume)
+        shift
+        ;;
+      *) break ;;
+    esac
+  done
 
   if [[ -f $CLAUDE_PATH ]] ; then
     SHELL=/opt/homebrew/bin/bash $CLAUDE_PATH "${extra_args[@]}" "$@"
