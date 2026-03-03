@@ -198,6 +198,10 @@ Host blackarch blackarch.local
   HostName 192.168.50.22
   User arch
 
+Host eriks-qumis-macbook-pro, eriks-qumis-macbook-pro.local, qmb, atom, atomic-bot, openclawd
+  HostName eriks-qumis-macbook-pro.local
+  User erik
+
 # ------------------------------------------------
 # LAN->MICROS ------------------------------------
 # ------------------------------------------------

@@ -66,6 +66,28 @@ alias jl='jupyter lab --notebook-dir "${HOME}/.jupyter-notebooks"'
 
 # UTILITY
 # ------------------------------------------------
+function snip() {
+  # Usage check
+  if [[ $# -lt 3 ]]; then
+    echo "Usage: snip <start_line> <end_line> <file_path>"
+    return 1
+  fi
+
+  local start=$1
+  local end=$2
+  local file=$3
+
+  # File existence check
+  if [[ ! -f "$file" ]]; then
+    echo "Error: File '$file' not found."
+    return 1
+  fi
+
+  # The Universal Awk Command
+  # NR = Number of Record (Line Number)
+  awk "NR >= $start && NR <= $end" "$file"
+}
+
 function hr() {
   printf '%*s\n' "$(tput cols)" '' | tr ' ' '─'
 }
