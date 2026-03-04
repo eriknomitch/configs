@@ -1605,3 +1605,9 @@ private_for() {
 
 # ---------------------------------------------------------------------------
 # End private mode / history controls
+
+
+export PATH="/Users/erik/.bun/bin:$PATH"
+
+# qumis-platform shell integration
+[ -f "/Users/erik/.repositories/qumis-platform/qumis-lib.sh" ] && source "/Users/erik/.repositories/qumis-platform/qumis-lib.sh"

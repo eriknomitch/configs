@@ -499,14 +499,33 @@ end
 -- Build bundle ID cache at startup for all configured apps
 local bundleIDCache = {}
 local configuredApps = {
-	defaultBrowserName, secondaryBrowserName, defaultTerminalName,
-	defaultAiChatName, secondaryAiChatName,
-	"Messages", "Slack", "WhatsApp", "Stable Diffusion",
-	"Linear", "Preview", "Adobe Photoshop 2025", "Finder",
-	"BoltAI", "FaceTime", "zoom.us", "Drive",
-	"Audio MIDI Setup", "WLED", "Discord", "Obsidian",
-	"Element", "Visual Studio Code", "IINA", "Unraid",
-	"Notion", "Home Assistant",
+	defaultBrowserName,
+	secondaryBrowserName,
+	defaultTerminalName,
+	defaultAiChatName,
+	secondaryAiChatName,
+	"Messages",
+	"Slack",
+	"WhatsApp",
+	"Stable Diffusion",
+	"Linear",
+	"Preview",
+	"Adobe Photoshop 2026",
+	"Finder",
+	"BoltAI",
+	"FaceTime",
+	"zoom.us",
+	"Drive",
+	"Audio MIDI Setup",
+	"WLED",
+	"Discord",
+	"Obsidian",
+	"Element",
+	"Visual Studio Code",
+	"IINA",
+	"Unraid",
+	"Notion",
+	"Home Assistant",
 }
 
 for _, appName in ipairs(configuredApps) do
@@ -673,7 +692,7 @@ bindApplicationFocusSecondary("I", secondaryBrowserName)
 bindApplicationFocus("L", "Linear")
 
 bindApplicationFocus("P", "Preview")
-bindApplicationFocusSecondaryWithConfirmation("P", "Adobe Photoshop 2025")
+bindApplicationFocusSecondaryWithConfirmation("P", "Adobe Photoshop 2026")
 bindApplicationFocus("F", "Finder")
 bindApplicationFocus("C", defaultAiChatName)
 bindApplicationFocusSecondary("C", secondaryAiChatName)
