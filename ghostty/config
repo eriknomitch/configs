@@ -115,3 +115,5 @@ font-synthetic-style = true
 # KEYBINDINGS
 # ================================================
 keybind = cmd+f=toggle_command_palette
+
+desktop-notifications = true

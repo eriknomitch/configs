@@ -239,6 +239,27 @@
           }
         ]
       }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "nohup terminal-notifier -title 'Claude Code' -subtitle 'Needs attention' -message 'Waiting for your input' -sound Ping -group claude-notification -activate com.mitchellh.ghostty -ignoreDnD >/dev/null 2>&1 &"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "nohup terminal-notifier -title 'Claude Code' -subtitle 'Task complete' -message 'Finished processing' -sound Pop -group claude-stop -activate com.mitchellh.ghostty -ignoreDnD >/dev/null 2>&1 &"
+          }
+        ]
+      }
     ]
   },
   "statusLine": {
@@ -254,7 +275,16 @@
     "canvas@claude-canvas": false,
     "frontend-design@claude-code-plugins": true,
     "dev-browser@dev-browser-marketplace": true,
-    "ralph-wiggum@claude-code-plugins": true
+    "ralph-wiggum@claude-code-plugins": true,
+    "claude-notifications-go@claude-notifications-go": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-notifications-go": {
+      "source": {
+        "source": "github",
+        "repo": "777genius/claude-notifications-go"
+      }
+    }
   },
   "outputStyle": "default",
   "alwaysThinkingEnabled": true,
