@@ -61,3 +61,5 @@
 	path = git-xet
 	args = transfer
 	concurrent = true
+[coderabbit]
+	machineId = cli/782de9e44a9441b1ba4ef087dab4aaff

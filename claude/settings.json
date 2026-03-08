@@ -162,30 +162,6 @@
   },
   "model": "opus",
   "enableAllProjectMcpServers": false,
-  "statusLine": {
-    "type": "command",
-    "command": "bunx -y ccstatusline@latest",
-    "padding": 0
-  },
-  "enabledPlugins": {
-    "git-workflow@claude-code-templates": false,
-    "commit-commands@claude-code-plugins": false,
-    "feature-dev@claude-code-plugins": false,
-    "claude-mem@thedotmack": false,
-    "canvas@claude-canvas": false,
-    "frontend-design@claude-code-plugins": true,
-    "dev-browser@dev-browser-marketplace": true,
-    "ralph-wiggum@claude-code-plugins": true,
-    "claude-notifications-go@claude-notifications-go": false
-  },
-  "extraKnownMarketplaces": {
-    "claude-notifications-go": {
-      "source": {
-        "source": "github",
-        "repo": "777genius/claude-notifications-go"
-      }
-    }
-  },
   "hooks": {
     "Notification": [
       {
@@ -211,6 +187,45 @@
         ]
       }
     ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bunx -y ccstatusline@latest",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "git-workflow@claude-code-templates": false,
+    "commit-commands@claude-code-plugins": false,
+    "feature-dev@claude-code-plugins": false,
+    "claude-mem@thedotmack": false,
+    "canvas@claude-canvas": false,
+    "frontend-design@claude-code-plugins": true,
+    "dev-browser@dev-browser-marketplace": true,
+    "ralph-wiggum@claude-code-plugins": true,
+    "claude-notifications-go@claude-notifications-go": false,
+    "everything-claude-code@everything-claude-code": true,
+    "claude-api@anthropic-agent-skills": true,
+    "claude-hud@claude-hud": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-notifications-go": {
+      "source": {
+        "source": "github",
+        "repo": "777genius/claude-notifications-go"
+      }
+    },
+    "everything-claude-code": {
+      "source": {
+        "source": "github",
+        "repo": "affaan-m/everything-claude-code"
+      }
+    },
+    "claude-hud": {
+      "source": {
+        "source": "github",
+        "repo": "jarrodwatts/claude-hud"
+      }
+    }
   },
   "outputStyle": "default",
   "alwaysThinkingEnabled": true,
