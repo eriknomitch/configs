@@ -1613,3 +1613,4 @@ export PATH="/Users/erik/.bun/bin:$PATH"
 [ -f "/Users/erik/.repositories/qumis-platform/qumis-lib.sh" ] && source "/Users/erik/.repositories/qumis-platform/qumis-lib.sh"
 
 unalias br 2>/dev/null  # br installer - remove conflicting alias
+export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"

@@ -1,233 +1,84 @@
 {
-  "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
-  },
-  "includeCoAuthoredBy": false,
-  "permissions": {
-    "allow": [
-      "Read(*)",
-      "Edit(*)",
-      "Glob(*)",
-      "Grep(*)",
-      "Write(*)",
-      "Fetch(*)",
-      "WebFetch(domain:github.com)",
-      "WebFetch(domain:*.github.com)",
-      "Bash(mkdir:*)",
-      "Bash(find:*)",
-      "Bash(grep:*)",
-      "Bash(ls:*)",
-      "Bash(cp:*)",
-      "Bash(mv:*)",
-      "Bash(tree:*)",
-      "Bash(rg:*)",
-      "Bash(fd:*)",
-      "Bash(du:*)",
-      "Bash(touch:*)",
-      "Bash(cat:*)",
-      "Bash(head:*)",
-      "Bash(tail:*)",
-      "Bash(wc:*)",
-      "Bash(diff:*)",
-      "Bash(pwd:*)",
-      "Bash(echo:*)",
-      "Bash(which:*)",
-      "Bash(sed:*)",
-      "Bash(awk:*)",
-      "Bash(sort:*)",
-      "Bash(uniq:*)",
-      "Bash(cut:*)",
-      "Bash(tr:*)",
-      "Bash(xargs:*)",
-      "Bash(tee:*)",
-      "Bash(date:*)",
-      "Bash(realpath:*)",
-      "Bash(dirname:*)",
-      "Bash(basename:*)",
-      "Bash(jq:*)",
-      "Bash(git:*)",
-      "Bash(gh:*)",
-      "Bash(aws:*)",
-      "Bash(yarn:*)",
-      "Bash(npm:*)",
-      "Bash(npx:*)",
-      "Bash(pnpm:*)",
-      "Bash(pip:*)",
-      "Bash(cargo:*)",
-      "Bash(go:*)",
-      "Bash(make:*)",
-      "Bash(node:*)",
-      "Bash(python:*)",
-      "Bash(prettier:*)",
-      "Bash(yes:*)",
-      "Bash(qumis:*)",
-      "mcp__linear__*",
-      "mcp__linear-server__*",
-      "mcp__context7__*",
-      "WebSearch",
-      "WebFetch(domain:uploads.linear.app)",
-      "Skill(qumis-playwright)",
-      "mcp__shadcn__getComponent",
-      "mcp__shadcn__getComponents",
-      "mcp__browsermcp__browser_navigate",
-      "mcp__browsermcp__browser_screenshot",
-      "mcp__browsermcp__browser_wait",
-      "mcp__browsermcp__browser_snapshot",
-      "mcp__browsermcp__browser_click",
-      "mcp__playwright__*",
-      "mcp__chrome-devtools-npx__*",
-      "mcp__MCP_DOCKER__*"
-    ],
-    "deny": [
-      "Read(.env)",
-      "Read(.env.*)",
-      "Read(**/.env)",
-      "Read(**/.env.*)",
-      "Read(**/secrets/**)",
-      "Read(secrets/**)",
-      "Edit(.env)",
-      "Edit(.env.*)",
-      "Edit(**/.env)",
-      "Edit(**/.env.*)",
-      "Edit(**/secrets/**)",
-      "Edit(secrets/**)",
-      "Write(.env)",
-      "Write(.env.*)",
-      "Write(**/.env)",
-      "Write(**/.env.*)",
-      "Write(**/secrets/**)",
-      "Write(secrets/**)",
-      "Bash(rm:*)",
-      "Bash(sudo:*)",
-      "Bash(su:*)",
-      "Bash(dd:*)",
-      "Bash(mkfs:*)",
-      "Bash(mv /dev/null:*)",
-      "Bash(chmod +s:*)",
-      "Bash(chmod u+s:*)",
-      "Bash(chmod g+s:*)",
-      "Bash(git push --force:*)",
-      "Bash(git push -f:*)"
-    ],
-    "ask": [
-      "Bash(curl:*)",
-      "Bash(wget:*)",
-      "Bash(chown:*)",
-      "Bash(chmod 777:*)",
-      "Bash(chmod 0777:*)",
-      "Bash(chmod a+rwx:*)",
-      "Bash(chmod -R 777:*)",
-      "Bash(chmod -R 0777:*)",
-      "Bash(chmod -R a+rwx:*)",
-      "Bash(git push --force-with-lease:*)",
-      "Bash(git reset --hard:*)",
-      "Bash(git clean -d:*)",
-      "Bash(git clean -f:*)",
-      "Bash(git filter-branch:*)",
-      "Bash(git push --delete:*)",
-      "Bash(git branch -D:*)",
-      "Bash(git remote rm:*)",
-      "Bash(git remote remove:*)",
-      "Bash(gh repo delete:*)",
-      "Bash(gh release delete:*)",
-      "Bash(gh secret delete:*)",
-      "Bash(gh repo archive:*)",
-      "Bash(gh gpg-key delete:*)",
-      "Bash(gh ssh-key delete:*)",
-      "Bash(gh workflow run:*)",
-      "Bash(aws s3 rb:*)",
-      "Bash(aws s3 rm:*)",
-      "Bash(aws ec2 terminate-instances:*)",
-      "Bash(aws rds delete-:*)",
-      "Bash(aws dynamodb delete-:*)",
-      "Bash(aws cloudformation delete-:*)",
-      "Bash(aws iam delete-:*)",
-      "Bash(aws lambda delete-:*)",
-      "Bash(npm publish:*)",
-      "Bash(npm uninstall -g:*)",
-      "Bash(npm uninstall --global:*)",
-      "Bash(yarn publish:*)",
-      "Bash(yarn global remove:*)",
-      "Bash(pip uninstall:*)",
-      "Bash(cargo uninstall:*)",
-      "Bash(cargo publish:*)",
-      "Bash(qumis deploy:*)",
-      "Bash(qumis ecs:*)",
-      "Bash(qumis lambda:*)",
-      "Bash(qumis aws:*)",
-      "Bash(qumis infra:*)",
-      "Bash(qumis secrets:*)"
-    ],
-    "defaultMode": "default"
-  },
-  "model": "opus",
-  "enableAllProjectMcpServers": false,
+  "permissions": {},
   "hooks": {
-    "Notification": [
+    "Stop": [
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/erik/.claude/hooks/notify.sh",
+            "command": "~/.claude/hooks/notify.sh",
             "async": true
           }
         ]
       }
     ],
-    "Stop": [
+    "StopFailure": [
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "echo '{\"type\":\"task_complete\",\"message\":\"Response ready\"}' | /Users/erik/.claude/hooks/notify.sh",
+            "command": "~/.claude/hooks/notify.sh",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/notify.sh",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "TaskCompleted": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/notify.sh",
             "async": true
           }
         ]
       }
     ]
   },
-  "statusLine": {
-    "type": "command",
-    "command": "bunx -y ccstatusline@latest",
-    "padding": 0
-  },
   "enabledPlugins": {
-    "git-workflow@claude-code-templates": false,
-    "commit-commands@claude-code-plugins": false,
-    "feature-dev@claude-code-plugins": false,
-    "claude-mem@thedotmack": false,
-    "canvas@claude-canvas": false,
-    "frontend-design@claude-code-plugins": true,
-    "dev-browser@dev-browser-marketplace": true,
-    "ralph-wiggum@claude-code-plugins": true,
-    "claude-notifications-go@claude-notifications-go": false,
-    "everything-claude-code@everything-claude-code": true,
-    "claude-api@anthropic-agent-skills": true,
-    "claude-hud@claude-hud": true
+    "visual-explainer@visual-explainer-marketplace": true,
+    "interface-design@interface-design": true,
+    "slack@claude-plugins-official": true,
+    "cli-anything-web@cli-anything-web": true,
+    "vercel-plugin@vercel": false
   },
   "extraKnownMarketplaces": {
+    "interface-design": {
+      "source": {
+        "source": "github",
+        "repo": "Dammyjay93/interface-design"
+      }
+    },
+    "cli-anything-web": {
+      "source": {
+        "source": "github",
+        "repo": "ItamarZand88/CLI-Anything-WEB"
+      }
+    },
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    },
     "claude-notifications-go": {
       "source": {
         "source": "github",
         "repo": "777genius/claude-notifications-go"
       }
-    },
-    "everything-claude-code": {
-      "source": {
-        "source": "github",
-        "repo": "affaan-m/everything-claude-code"
-      }
-    },
-    "claude-hud": {
-      "source": {
-        "source": "github",
-        "repo": "jarrodwatts/claude-hud"
-      }
     }
   },
-  "outputStyle": "default",
-  "alwaysThinkingEnabled": true,
   "skipDangerousModePermissionPrompt": true
 }
