@@ -36,11 +36,18 @@
     ]
   },
   "enabledPlugins": {
-    "visual-explainer@visual-explainer-marketplace": true,
+    "visual-explainer@visual-explainer-marketplace": false,
     "interface-design@interface-design": true,
     "slack@claude-plugins-official": true,
-    "cli-anything-web@cli-anything-web": true,
-    "vercel-plugin@vercel": false
+    "vercel-plugin@vercel": false,
+    "cli-anything@cli-anything": false,
+    "code-review@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "explanatory-output-style@claude-plugins-official": true,
+    "firecrawl@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "interface-design": {
@@ -61,12 +68,21 @@
         "repo": "anthropics/claude-plugins-official"
       }
     },
-    "claude-notifications-go": {
+    "cli-anything": {
       "source": {
         "source": "github",
-        "repo": "777genius/claude-notifications-go"
+        "repo": "HKUDS/CLI-Anything"
+      }
+    },
+    "frontend-slides": {
+      "source": {
+        "source": "github",
+        "repo": "zarazhangrui/frontend-slides"
       }
     }
   },
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "editorMode": "vim",
+  "verbose": true,
+  "teammateMode": "auto"
 }
