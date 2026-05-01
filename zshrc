@@ -1282,6 +1282,150 @@ export PATH="/Users/erik/.codeium/windsurf/bin:$PATH"
 # ------------------------------------------------
 source-if-exists $HOME/.configs/zsh/qumis.zsh
 
+qcommit() {
+  emulate -L zsh
+  setopt pipe_fail
+
+  # Preflight: required tools
+  if ! command -v jq >/dev/null 2>&1; then
+    print -u2 "qcommit: jq not found in PATH"
+    return 127
+  fi
+
+  # Preflight: in a git repo
+  if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    print -u2 "qcommit: not inside a git repository"
+    return 1
+  fi
+
+  # Preflight: anything to commit (tracked changes or untracked files)?
+  if git diff-index --quiet HEAD -- 2>/dev/null \
+     && [[ -z "$(git ls-files --others --exclude-standard)" ]]; then
+    print -u2 "qcommit: nothing to commit (worktree clean)"
+    return 1
+  fi
+
+  # Pick the claude wrapper
+  local claude_cmd
+  if (( $+functions[cld] )) || command -v cld >/dev/null 2>&1; then
+    claude_cmd=cld
+  elif command -v claude >/dev/null 2>&1; then
+    claude_cmd=claude
+  else
+    print -u2 "qcommit: neither cld nor claude found in PATH"
+    return 127
+  fi
+
+  # Args: --dry-run, --model <m>, anything else passed through to claude
+  local model="${QCOMMIT_MODEL:-sonnet}"
+  local dry_run=0
+  local extra_args=()
+  while (( $# )); do
+    case "$1" in
+      --dry-run) dry_run=1; shift ;;
+      --model)   model="$2"; shift 2 ;;
+      *)         extra_args+=("$1"); shift ;;
+    esac
+  done
+
+  # Sub-second timing if available, fall back to integer SECONDS
+  local has_epoch=0
+  zmodload -F zsh/datetime b:EPOCHREALTIME 2>/dev/null && has_epoch=1
+
+  local start
+  if (( has_epoch )); then start=$EPOCHREALTIME; else start=$SECONDS; fi
+
+  # Decoration only on a TTY
+  local use_color=0
+  [[ -t 1 ]] && use_color=1
+
+  local rule
+  if (( $+functions[hr] )); then
+    rule=$(hr)
+  else
+    rule=$(printf '%*s' 45 '' | tr ' ' '─')
+  fi
+
+  if (( use_color )); then
+    print -P "%F{cyan}▶ Running /qumis-commit via ${claude_cmd} (${model}, streaming)…%f"
+    print -P "%F{8}${rule}%f"
+  else
+    print "▶ Running /qumis-commit via ${claude_cmd} (${model}, streaming)…"
+    print "${rule}"
+  fi
+
+  local cmd=(
+    "$claude_cmd" -p "/qumis-commit"
+    --output-format stream-json --verbose --include-partial-messages
+    --allowed-tools "Bash(git:*),Bash(npm:*),Read,Grep,Glob"
+    --model "$model"
+    "${extra_args[@]}"
+  )
+
+  if (( dry_run )); then
+    print "Would run: ${(q-)cmd[@]} | jq … (text_delta filter)"
+    return 0
+  fi
+
+  # Catch Ctrl-C so we still print a footer
+  local interrupted=0
+  TRAPINT() { interrupted=1; return 0 }
+
+  "${cmd[@]}" \
+    | jq -rj 'select(.type == "stream_event" and .event.delta.type? == "text_delta") | .event.delta.text // empty'
+
+  # Capture both in one statement: any command (including a second `local`)
+  # resets pipestatus to its own exit code, dropping the pipeline state.
+  local cmd_status=${pipestatus[1]} jq_status=${pipestatus[2]}
+
+  local elapsed
+  if (( has_epoch )); then
+    elapsed=$(printf '%.2f' "$(( EPOCHREALTIME - start ))")
+  else
+    elapsed=$(( SECONDS - start ))
+  fi
+
+  print
+  if (( use_color )); then
+    print -P "%F{8}${rule}%f"
+  else
+    print "${rule}"
+  fi
+
+  if (( interrupted )); then
+    if (( use_color )); then
+      print -P "%F{yellow}✗ Cancelled%f after ${elapsed}s"
+    else
+      print "✗ Cancelled after ${elapsed}s"
+    fi
+    return 130
+  fi
+
+  if (( cmd_status == 0 && jq_status == 0 )); then
+    if (( use_color )); then
+      print -P "%F{green}✓ Done%f in ${elapsed}s"
+    else
+      print "✓ Done in ${elapsed}s"
+    fi
+    return 0
+  fi
+
+  local fail_msg
+  if (( cmd_status != 0 )); then
+    fail_msg="${claude_cmd} exit ${cmd_status}"
+  else
+    fail_msg="jq exit ${jq_status}"
+  fi
+
+  if (( use_color )); then
+    print -P "%F{red}✗ Failed%f (${fail_msg}) after ${elapsed}s"
+  else
+    print "✗ Failed (${fail_msg}) after ${elapsed}s"
+  fi
+
+  return $(( cmd_status != 0 ? cmd_status : jq_status ))
+}
+
 # ------------------------------------------------
 # GHOSTTY ----------------------------------------
 # ------------------------------------------------
@@ -1614,3 +1758,9 @@ export PATH="/Users/erik/.bun/bin:$PATH"
 
 unalias br 2>/dev/null  # br installer - remove conflicting alias
 export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+
+# Composio CLI
+if [[ -d "$HOME/.composio" ]]; then
+  export COMPOSIO_INSTALL_DIR="$HOME/.composio"
+  export PATH="$COMPOSIO_INSTALL_DIR:$PATH"
+fi
