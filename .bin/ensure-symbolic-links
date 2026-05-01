@@ -92,4 +92,5 @@ _ensure_symbolic_link gitconfig ~/.gitconfig
 # ------------------------------------------------
 test -d ~/.claude/hooks || mkdir -p ~/.claude/hooks
 _ensure_symbolic_link claude/hooks/notify.sh ~/.claude/hooks/notify.sh
+_ensure_symbolic_link claude/CLAUDE.md ~/.claude/CLAUDE.md
 
