@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Claude Code hook → alerter notification dispatcher
 # Receives hook JSON on stdin, sends macOS desktop notifications.
-# Clicking a notification focuses Ghostty. Action buttons trigger useful commands.
+# Interactions (action buttons, body click) focus Ghostty; timeouts stay silent.
 
 show_help() {
   cat <<'EOF'
@@ -13,7 +13,6 @@ alerter. Wired up in ~/.claude/settings.json under hooks.
 EVENTS HANDLED
   Stop            Claude finished a turn (offers View Diff / Commit)
   StopFailure     Claude turn errored (offers Retry)
-  Notification    Claude is idle, awaiting input
   TaskCompleted   Background task finished
 
 INTERACTION
@@ -76,7 +75,7 @@ notify() {
           fi
           ;;
         *"Commit"*)
-          echo "/commit" | pbcopy
+          printf %s "/commit" | pbcopy
           ;;
       esac
       ;;
@@ -93,7 +92,8 @@ case "$EVENT" in
       SUMMARY=$(tail -50 "$TRANSCRIPT" \
         | jq -r 'select(.type == "assistant") | .message.content[]? | select(.type == "text") | .text' 2>/dev/null \
         | tail -1 \
-        | head -c 200)
+        | head -c 200 \
+        | iconv -c -f UTF-8 -t UTF-8 2>/dev/null)
     fi
     MSG="${SUMMARY:-Ready for your next prompt}"
 
@@ -102,7 +102,7 @@ case "$EVENT" in
       --message "$MSG" \
       --subtitle "${PROJECT:+in $PROJECT}" \
       --close-label "Dismiss" \
-      --actions '"View Diff","Commit"' \
+      --actions 'View Diff,Commit' \
       --dropdown-label "Next" \
       --app-icon "$ICON" \
       --group "claude-stop" \
@@ -111,7 +111,7 @@ case "$EVENT" in
     ;;
 
   StopFailure)
-    ERROR_TYPE=$(echo "$INPUT" | jq -r '.error_type // "unknown error"' | head -c 200)
+    ERROR_TYPE=$(echo "$INPUT" | jq -r '.error_type // "unknown error"' | head -c 200 | iconv -c -f UTF-8 -t UTF-8 2>/dev/null)
     notify "$EVENT" "$CWD" \
       --title "Claude Error" \
       --message "Turn failed: $ERROR_TYPE" \
@@ -124,20 +124,8 @@ case "$EVENT" in
       --timeout 30 &
     ;;
 
-  Notification)
-    notify "$EVENT" "$CWD" \
-      --title "Claude is Waiting" \
-      --message "Idle — waiting for your input" \
-      --subtitle "${PROJECT:+in $PROJECT}" \
-      --close-label "OK" \
-      --app-icon "$ICON" \
-      --group "claude-idle" \
-      --sound "default" \
-      --timeout 20 &
-    ;;
-
   TaskCompleted)
-    TASK=$(echo "$INPUT" | jq -r '.task_name // .tool_input.name // "A background task"' | head -c 200)
+    TASK=$(echo "$INPUT" | jq -r '.task_name // .tool_input.name // "A background task"' | head -c 200 | iconv -c -f UTF-8 -t UTF-8 2>/dev/null)
     notify "$EVENT" "$CWD" \
       --title "Task Completed" \
       --message "${TASK} finished" \
