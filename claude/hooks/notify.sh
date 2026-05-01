@@ -3,6 +3,46 @@
 # Receives hook JSON on stdin, sends macOS desktop notifications.
 # Clicking a notification focuses Ghostty. Action buttons trigger useful commands.
 
+show_help() {
+  cat <<'EOF'
+notify.sh — Claude Code hook → macOS notification dispatcher
+
+Reads hook JSON from stdin and sends a native macOS notification via
+alerter. Wired up in ~/.claude/settings.json under hooks.
+
+EVENTS HANDLED
+  Stop            Claude finished a turn (offers View Diff / Commit)
+  StopFailure     Claude turn errored (offers Retry)
+  Notification    Claude is idle, awaiting input
+  TaskCompleted   Background task finished
+
+INTERACTION
+  Action button    Focuses Ghostty; some run side-effects (clipboard)
+  Click body       Focuses Ghostty
+  Dismiss/timeout  Silent — does not steal focus
+
+USAGE
+  -h, --help      Show this help
+  (piped JSON)    Read hook payload from stdin
+
+DEPENDENCIES
+  alerter (Homebrew tap vjeantet/tap/alerter)
+  jq
+
+TEST
+  echo '{"hook_event_name":"Stop","cwd":"'"$PWD"'"}' | ~/.claude/hooks/notify.sh
+EOF
+}
+
+# Show help on explicit flag, or when run interactively (no piped stdin)
+case "${1:-}" in
+  -h|--help|help) show_help; exit 0 ;;
+esac
+if [[ -t 0 ]]; then
+  show_help
+  exit 0
+fi
+
 INPUT=$(cat)
 EVENT=$(echo "$INPUT" | jq -r '.hook_event_name // "unknown"')
 ALERTER=/opt/homebrew/bin/alerter
