@@ -3,6 +3,17 @@
 # Sourced from both zshrc (for interactive `git-ac`) and the
 # `git ac` alias in gitconfig — single source of truth.
 
+# Fallback `hr` for the alias path (zshrc isn't sourced there).
+# In interactive shells the zshrc-defined `hr` already exists and wins.
+if (( ! ${+functions[hr]} )); then
+  function hr() {
+    local cols=${COLUMNS:-0}
+    (( cols > 0 )) || cols=$(tput cols 2>/dev/null) || cols=80
+    (( cols > 0 )) || cols=80
+    printf '%*s\n' "$cols" '' | tr ' ' '─'
+  }
+fi
+
 function git-ac() {
 
   # If this isn't a git repo, just return
