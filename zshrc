@@ -1764,3 +1764,259 @@ if [[ -d "$HOME/.composio" ]]; then
   export COMPOSIO_INSTALL_DIR="$HOME/.composio"
   export PATH="$COMPOSIO_INSTALL_DIR:$PATH"
 fi
+
+# ------------------------------------------------
+# STRIPMETA --------------------------------------
+# ------------------------------------------------
+# Strip metadata from files using exiftool.
+# Supports HEIC/HEIF, JPEG, PNG, TIFF, PDF, MP4, MOV, etc.
+
+stripmeta() {
+  emulate -L zsh
+  setopt err_return no_unset pipefail
+
+  local self="stripmeta"
+
+  local usage
+  usage=$(cat <<'EOF'
+Usage: stripmeta [options] file|dir ...
+
+Options:
+  -r, --recursive          Process directories recursively
+  -f, --force              Allow recursive/bulk operation without prompt guard
+  -n, --dry-run            Show files that would be processed
+      --backup             Keep exiftool *_original backup files
+      --no-backup          Overwrite originals without backups [default]
+      --gps-only           Remove only GPS/location metadata
+      --location-only      Alias for --gps-only
+      --keep-color         Strip metadata but preserve orientation/color tags
+      --confirm            Verify metadata is gone after stripping [default]
+      --no-confirm         Skip post-strip verification
+      --secure             Use stricter in-place overwrite behavior
+      --all-files          Disable extension filtering
+      --no-skip-clean      Do not skip files that appear metadata-free
+      --follow-symlinks    Follow symlinks
+      --quiet              Suppress exiftool output [default]
+      --verbose            Show exiftool output
+  -h, --help               Show this help
+
+Environment:
+  STRIPMETA_FORCE=1        Same as --force
+
+Examples:
+  stripmeta IMG_1234.HEIC photo.jpg
+  stripmeta -r ~/Pictures
+  stripmeta --gps-only *.heic
+  stripmeta --keep-color image.jpg
+  stripmeta --backup *.jpg
+EOF
+)
+
+  if ! command -v exiftool >/dev/null 2>&1; then
+    print -u2 "$self: exiftool not found. Install with: brew install exiftool"
+    return 127
+  fi
+
+  local recursive=0 dryrun=0 gps_only=0 keep_color=0
+  local backup=0 secure=0 all_files=0 skip_clean=1
+  local follow_symlinks=0 quiet=1 force=0 confirm=1
+
+  local -a inputs args scan_args ext_args clean_if
+
+  while (( $# )); do
+    case "$1" in
+      -r|--recursive)       recursive=1 ;;
+      -f|--force)           force=1 ;;
+      -n|--dry-run)         dryrun=1 ;;
+      --backup)             backup=1 ;;
+      --no-backup)          backup=0 ;;
+      --gps-only|--location-only)
+                            gps_only=1 ;;
+      --keep-color)         keep_color=1 ;;
+      --confirm)            confirm=1 ;;
+      --no-confirm)         confirm=0 ;;
+      --secure)             secure=1 ;;
+      --all-files)          all_files=1 ;;
+      --no-skip-clean)      skip_clean=0 ;;
+      --follow-symlinks)    follow_symlinks=1 ;;
+      --quiet)              quiet=1 ;;
+      --verbose)            quiet=0 ;;
+      -h|--help)            print -ru2 -- "$usage"; return 0 ;;
+      --)
+        shift
+        inputs+=("$@")
+        break
+        ;;
+      -*)
+        print -u2 "$self: unknown option: $1"
+        print -ru2 -- "$usage"
+        return 2
+        ;;
+      *)
+        inputs+=("$1")
+        ;;
+    esac
+    shift
+  done
+
+  if (( ${#inputs} == 0 )); then
+    print -u2 "$self: no input files or directories"
+    print -ru2 -- "$usage"
+    return 2
+  fi
+
+  if (( gps_only && keep_color )); then
+    print -u2 "$self: --gps-only and --keep-color are mutually exclusive"
+    print -ru2 -- "$usage"
+    return 2
+  fi
+
+  if (( recursive && ! force )) && [[ -z "${STRIPMETA_FORCE:-}" ]]; then
+    print -u2 "$self: recursive mode can modify many files"
+    print -u2 "$self: rerun with --force or STRIPMETA_FORCE=1"
+    return 3
+  fi
+
+  # Restrict to common metadata-bearing media/doc formats unless --all-files is used.
+  if (( ! all_files )); then
+    local ext
+    for ext in jpg jpeg jpe png heic heif tif tiff webp gif avif \
+               mp4 m4v mov 3gp 3g2 pdf; do
+      ext_args+=(-ext "$ext")
+    done
+  fi
+
+  # Tag list (single source of truth) for the strict "has interesting metadata" filter.
+  # Used both to gate stripping (skip-clean) and to enumerate leftover tags on verify failure.
+  local -a strict_tags=(
+    ExifVersion XMPToolkit IPTCDigest
+    GPSLatitude GPSLongitude
+    Make Model Software
+    CreateDate ModifyDate DateTimeOriginal
+    MediaCreateDate TrackCreateDate HandlerDescription
+    Comment Description
+    Author Creator Producer
+    Title Subject Keywords
+  )
+
+  # Tag list for --gps-only mode verification.
+  local -a gps_check_tags=(
+    GPSLatitude GPSLongitude GPSAltitude GPSPosition
+    GPSImgDirection GPSDestLatitude GPSDestLongitude
+    XMP:Location XMP:City XMP:State XMP:Country XMP:CountryCode
+  )
+
+  # Build "$Tag1 or $Tag2 or ..." expression from strict_tags.
+  # printf is used because zsh's (j:DELIM:) flag does not unescape \$ inside
+  # the delimiter, which silently produces a malformed expression.
+  local strict_if_expr
+  strict_if_expr=$(printf -- '$%s or ' "${strict_tags[@]}")
+  clean_if=(-if "${strict_if_expr% or }")
+
+  # Base exiftool behavior. -m downgrades minor-spec violations to warnings so
+  # real-world camera files with slightly malformed EXIF still get stripped.
+  args=(-P -m -api largefilesupport=1)
+  (( quiet )) && args+=(-q -q)
+  (( recursive )) && args+=(-r)
+  (( follow_symlinks )) || args+=(-i SYMLINKS)
+  args+=("${ext_args[@]}")
+
+  if (( skip_clean )); then
+    args+=("${clean_if[@]}")
+  fi
+
+  if (( gps_only )); then
+    args+=(
+      -GPS:all=
+      -XMP:Geotag=
+      -XMP:GPSLatitude=
+      -XMP:GPSLongitude=
+      -XMP:GPSAltitude=
+      -XMP:GPSImgDirection=
+      -XMP:Location=
+      -XMP:City=
+      -XMP:State=
+      -XMP:Country=
+      -XMP:CountryCode=
+      -XMP:Province-State=
+    )
+  elif (( keep_color )); then
+    args+=(
+      -all=
+      -QuickTime:all=
+      -tagsfromfile @
+      -Orientation
+      -ColorSpaceTags
+      -ICC_Profile
+    )
+  else
+    args+=(
+      -all=
+      -QuickTime:all=
+    )
+  fi
+
+  if (( backup )); then
+    : # exiftool creates *_original backups by default
+  elif (( secure )); then
+    args+=(-overwrite_original_in_place)
+  else
+    args+=(-overwrite_original)
+  fi
+
+  scan_args=(-P)
+  (( recursive )) && scan_args+=(-r)
+  (( follow_symlinks )) || scan_args+=(-i SYMLINKS)
+  scan_args+=("${ext_args[@]}")
+  (( skip_clean )) && scan_args+=("${clean_if[@]}")
+  scan_args+=(-p '$FilePath')
+
+  if (( dryrun )); then
+    print -r -- "$self: dry run; files that would be processed:"
+    command exiftool "${scan_args[@]}" -- "${inputs[@]}"
+    return $?
+  fi
+
+  command exiftool "${args[@]}" -- "${inputs[@]}" || {
+    print -u2 "$self: exiftool reported errors"
+    return 4
+  }
+
+  if (( confirm )); then
+    local -a verify_args
+    verify_args=(-P -api largefilesupport=1)
+    (( recursive )) && verify_args+=(-r)
+    (( follow_symlinks )) || verify_args+=(-i SYMLINKS)
+    verify_args+=("${ext_args[@]}")
+
+    local -a verify_display
+    if (( gps_only )); then
+      local gps_if_expr
+      gps_if_expr=$(printf -- '$%s or ' "${gps_check_tags[@]}")
+      verify_args+=(-if "${gps_if_expr% or }")
+      verify_display=("${gps_check_tags[@]/#/-}")
+    else
+      verify_args+=("${clean_if[@]}")
+      verify_display=("${strict_tags[@]/#/-}")
+    fi
+    verify_args+=(-p '$FilePath')
+
+    local leftover
+    leftover=$(command exiftool "${verify_args[@]}" -- "${inputs[@]}" 2>/dev/null) || true
+
+    if [[ -n "$leftover" ]]; then
+      print -u2 "$self: verification failed; metadata still present:"
+      local f
+      while IFS= read -r f; do
+        [[ -z "$f" ]] && continue
+        print -u2 ""
+        print -u2 "  $f"
+        command exiftool -G1 -s "${verify_display[@]}" -- "$f" 2>/dev/null \
+          | sed 's/^/    /' >&2 || true
+      done <<< "$leftover"
+      return 5
+    fi
+
+    print "$self: verified; targeted metadata removed"
+  fi
+}
