@@ -17,6 +17,7 @@
 	log-tree = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
 [alias]
 	changes = "!f() { git diff $1^ $1;  }; f"
+	ac = "!zsh -c 'source ~/.configs/zsh/git-ac.zsh && git-ac \"$@\"' git-ac"
 [core]
 	pager = delta --dark
 [interactive]

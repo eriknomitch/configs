@@ -640,37 +640,7 @@ function aider-commit() {
 
 # AICOMMITS->COMMIT
 # ------------------------------------------------
-function git-ac() {
-
-  # If this isn't a git repo, just return
-  if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1 ; then
-    echo "Not a git repo. Exiting."
-    return
-  fi
-
-  # If repo is clean, just return
-  if git diff-index --quiet HEAD --; then
-    echo "Repo is clean. Nothing to commit. Exiting."
-    return
-  fi
-
-  # Perform the commit
-  aicommits --all --yes && \
-    hr && \
-    git log -n 1 --color=always && \
-    hr
-
-  # If the commit was successful, push (unless --no-push is specified)
-  if [[ $? -eq 0 ]]; then
-    echo
-    if [[ $@ != *--no-push* ]]; then
-      echo "Pushing..."
-      git push
-    else
-      echo "Skipping push due to --no-push option."
-    fi
-  fi
-}
+source-if-exists $HOME/.configs/zsh/git-ac.zsh
 
 alias edit-claude-desktop-config="${EDITOR} \"${HOME}/Library/Application Support/Claude/claude_desktop_config.json\""
 
