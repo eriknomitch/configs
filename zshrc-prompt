@@ -80,9 +80,16 @@ PROMPT_VM=$'%{$fg_bold[black]%}'"VM:"$'%{$fg[white]%}'"\$(_vm_prompt_info)"$'%{$
 
 # Pure 1.27+ exposes PROMPT as a static template using a literal
 # `${prompt_newline}` token between the preprompt and the prompt symbol.
-# Splice our TM/VM status line in at that seam — prompt_subst expands the
-# tokens at render time. Using ${prompt_newline} (= $'\n%{\r%}') as the
-# separator keeps zsh's prompt line-tracking accurate so zle .reset-prompt
-# redraws in place rather than stacking preprompts (the bug a plain \n
-# caused outside tmux).
-PROMPT="${PROMPT/'${prompt_newline}'/'${prompt_newline}${PROMPT_TMUX} ${PROMPT_VM}${prompt_newline}'}"
+# Splice our TM/VM status line in at that seam — `${prompt_newline}` is
+# kept as a literal token (so prompt_subst expands it at render time and
+# zsh's prompt line-tracking stays accurate; using a plain \n broke that
+# and caused preprompts to stack outside tmux).
+#
+# PROMPT_TMUX/PROMPT_VM are expanded inline (not as `${PROMPT_TMUX}`)
+# because prompt_subst is single-pass — `$fg_bold[black]` and friends
+# inside their values would otherwise render as literal text.
+() {
+  local sep='${prompt_newline}'
+  local splice="${sep}${PROMPT_TMUX} ${PROMPT_VM}${sep}"
+  PROMPT="${PROMPT/$sep/$splice}"
+}
