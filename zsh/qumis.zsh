@@ -214,7 +214,9 @@ _ecs_update_rprompt() {
 if ! typeset -f _ecs_precmd_hook_installed >/dev/null; then
   _ecs_precmd_hook_installed() { :; }
   autoload -Uz add-zsh-hook 2>/dev/null || true
-  add-zsh-hook precmd _ecs_update_rprompt 2>/dev/null || true
+  # Disabled: _ecs_update_rprompt overwrites RPROMPT each precmd, which
+  # conflicts with using RPROMPT for other status info.
+  # add-zsh-hook precmd _ecs_update_rprompt 2>/dev/null || true
 fi
 
 # ------------------------- SSO + Sessions -----------------------------

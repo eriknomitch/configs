@@ -75,18 +75,14 @@ _conda_prompt_info() {
 
 prompt pure
 
-# Colorize based on return status
-PROMPT_BASE='%(?.%F{green}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
-
-# Add tmux
-#PROMPT=$'%{$fg_bold[black]%}'"T: "$'%{$fg[green]%}'"\$(_tmux_prompt_info)\$(_conda_prompt_info)"$'%{$reset_color%}\n'"${PROMPT}"
 PROMPT_TMUX=$'%{$fg_bold[black]%}'"TM:"$'%{$fg[green]%}'"\$(_tmux_prompt_info)"$'%{$reset_color%}'
 PROMPT_VM=$'%{$fg_bold[black]%}'"VM:"$'%{$fg[white]%}'"\$(_vm_prompt_info)"$'%{$reset_color%}'
 
-PROMPT_STATUSES="${PROMPT_TMUX} ${PROMPT_VM}"$'\n'
-
-PROMPT=${PROMPT_STATUSES}${PROMPT_BASE}
-
-# PROMPT='$(pwd-is-wd-character) '$PROMPT
-
-# test -f /usr/local/share/zsh/site-functions/prompt_pure_setup && prompt pure
+# Pure 1.27+ exposes PROMPT as a static template using a literal
+# `${prompt_newline}` token between the preprompt and the prompt symbol.
+# Splice our TM/VM status line in at that seam — prompt_subst expands the
+# tokens at render time. Using ${prompt_newline} (= $'\n%{\r%}') as the
+# separator keeps zsh's prompt line-tracking accurate so zle .reset-prompt
+# redraws in place rather than stacking preprompts (the bug a plain \n
+# caused outside tmux).
+PROMPT="${PROMPT/'${prompt_newline}'/'${prompt_newline}${PROMPT_TMUX} ${PROMPT_VM}${prompt_newline}'}"
