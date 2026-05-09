@@ -15,6 +15,11 @@ Personal dotfiles and configuration repository for development tools, shell envi
 resource                      # Reload shell configuration (or: src)
 ```
 
+Other `.bin/` utilities:
+- `.bin/install-asdf-systems` — Install asdf plugin/version stack
+- `.bin/generate-grconfig` — Regenerate `grconfig.json`
+- `.bin/mac-perf-check` — macOS performance / health diagnostic
+
 ### Key Shell Functions
 From `/etc/zsh/shared.zsh`:
 - `resource` / `src` - Reload zsh configuration
@@ -25,7 +30,8 @@ From `/etc/zsh/shared.zsh`:
 From `zshrc`:
 - `secrets <subcommand>` - Manage environment secrets (load, list, add, edit, check)
 - `a [args]` - Aider wrapper (use `a h` for help, `a u` to upgrade, `a c` to commit)
-- `aider-commit` / `ac` - Commit with aider then push
+- `aider-commit` - Commit with aider then push (LLM-generated message)
+- `git-ac` - Interactive staged-commit helper (sourced from `zsh/git-ac.zsh`); skips large files, falls back to non-interactive shells
 - `codebase-analysis` - Analyze codebase structure (tree, scc, git stats)
 - `br <brew-cmd>` - Homebrew wrapper that auto-updates Brewfile on install/upgrade
 - `cld` - Claude Code wrapper
@@ -116,6 +122,17 @@ The `bootstrap-host` script:
 - Prefix: `Ctrl-n` (not default Ctrl-b)
 - `Prefix-r` - Reload configuration
 - Default shell: zsh via `reattach-to-user-namespace`
+
+### Claude Code Configuration (`claude/`)
+
+This repo also publishes the user's global Claude Code config to `~/.claude/` via symlinks created by `.bin/ensure-symbolic-links`:
+
+- `claude/CLAUDE.md` → `~/.claude/CLAUDE.md` — global rules loaded for every project
+- `claude/settings.json` → `~/.claude/settings.json` — hooks, permissions, status line config
+- `claude/hooks/notify.sh` → `~/.claude/hooks/notify.sh` — alerter-based macOS notifications
+- `claude/scripts/statusline.sh` → `~/.claude/scripts/statusline.sh` — terminal status line wrapper
+
+Editing files in `claude/` updates the live config (no copy step). `claude/settings.json.backup` is a manual snapshot, not symlinked.
 
 ## Modification Patterns
 
