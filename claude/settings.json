@@ -92,5 +92,10 @@
   "skipDangerousModePermissionPrompt": true,
   "editorMode": "vim",
   "verbose": true,
-  "teammateMode": "auto"
+  "teammateMode": "auto",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/scripts/statusline.sh",
+    "padding": 0
+  }
 }
