@@ -2024,3 +2024,5 @@ EOF
     print "$self: verified; targeted metadata removed"
   fi
 }
+# CF CLI completions
+[[ -f "/Users/erik/.config/cf/completions/_cf.zsh" ]] && source "/Users/erik/.config/cf/completions/_cf.zsh"

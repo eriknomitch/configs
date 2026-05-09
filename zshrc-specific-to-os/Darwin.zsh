@@ -48,6 +48,11 @@ source-if-exists ~/.configs/iterm2.zsh
 test -d /Applications/Postgres.app/Contents/Versions/latest/bin && export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 
 # ------------------------------------------------
+# CONFIGS .bin -----------------------------------
+# ------------------------------------------------
+export PATH=`extend-path "$HOME/.configs/.bin"`
+
+# ------------------------------------------------
 # GUILE ------------------------------------------
 # ------------------------------------------------
 export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"

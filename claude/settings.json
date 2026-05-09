@@ -47,7 +47,9 @@
     "code-simplifier@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
     "explanatory-output-style@claude-plugins-official": true,
-    "firecrawl@claude-plugins-official": true
+    "firecrawl@claude-plugins-official": true,
+    "browse@browserbase": true,
+    "obsidian@obsidian-skills": true
   },
   "extraKnownMarketplaces": {
     "interface-design": {
@@ -78,6 +80,12 @@
       "source": {
         "source": "github",
         "repo": "zarazhangrui/frontend-slides"
+      }
+    },
+    "browserbase": {
+      "source": {
+        "source": "github",
+        "repo": "browserbase/skills"
       }
     }
   },

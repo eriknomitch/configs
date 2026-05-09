@@ -1,0 +1,132 @@
+#!/bin/zsh
+# mac-perf-check — triage macOS performance.
+#
+# Usage:
+#   mac-perf-check                  quick triage (no sudo)
+#   mac-perf-check --full           add powermetrics thermal/throttle (sudo)
+#   mac-perf-check --watch          exec into asitop (sudo) or btop for live view
+#   mac-perf-check --log [SECS]     append compact metrics every SECS (default 30) to today's log
+#   mac-perf-check --mark "NOTE"    append a slowness marker to today's log
+#   mac-perf-check --help
+
+_full=false
+_watch=false
+_log=""
+_mark=""
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --full)  _full=true; shift ;;
+    --watch) _watch=true; shift ;;
+    --log)
+      # Optional numeric argument; default 30s.
+      if [[ -n ${2:-} && $2 == <-> ]]; then
+        _log="$2"; shift 2
+      else
+        _log=30; shift
+      fi
+      ;;
+    --mark)
+      [[ -n ${2:-} ]] || { echo "--mark requires a note" >&2; exit 1; }
+      _mark="$2"; shift 2
+      ;;
+    -h|--help)
+      sed -n '2,10p' "$0" | sed 's/^# \?//'
+      exit 0 ;;
+    *) echo "unknown flag: $1" >&2; exit 1 ;;
+  esac
+done
+
+_log_dir="$HOME/.local/state/mac-perf"
+_log_file="$_log_dir/perf-$(date +%Y-%m-%d).log"
+mkdir -p "$_log_dir"
+
+# Compact one-line snapshot writer used by --log.
+_snapshot() {
+  local ts free_pct swapin swapout top_cpu top_mem arc_mb ws_cpu
+  ts=$(date "+%Y-%m-%dT%H:%M:%S%z")
+  free_pct=$(memory_pressure 2>/dev/null | awk -F': ' '/free percentage/ {gsub("%",""); print $2; exit}')
+  read -r swapin swapout < <(vm_stat | awk '/Swapins:/ {si=$2} /Swapouts:/ {so=$2} END {gsub("\\.","",si); gsub("\\.","",so); print si, so}')
+  # Reconstruct comm — paths can contain spaces, so $2 alone truncates at the first one.
+  top_cpu=$(ps -Ao pcpu=,comm= | sort -k1 -nr | head -1 | awk '{c=$2; for(i=3;i<=NF;i++) c=c" "$i; n=split(c,p,"/"); printf "%s:%s", p[n], $1}')
+  top_mem=$(ps -Ao pmem=,comm= | sort -k1 -nr | head -1 | awk '{c=$2; for(i=3;i<=NF;i++) c=c" "$i; n=split(c,p,"/"); printf "%s:%s", p[n], $1}')
+  arc_mb=$(ps -axo rss=,comm= | awk '/\/Arc\.app\// {s+=$1} END {printf "%.0f", s/1024}')
+  ws_cpu=$(ps -Ao pcpu=,comm= | awk '/WindowServer/ {print $1; exit}')
+  printf "%s  free=%s%%  swap=%s/%s  topcpu=%s  topmem=%s  arc_mb=%s  ws_cpu=%s\n" \
+    "$ts" "${free_pct:-?}" "${swapin:-?}" "${swapout:-?}" "$top_cpu" "$top_mem" "${arc_mb:-0}" "${ws_cpu:-0}" \
+    >> "$_log_file"
+}
+
+if [[ -n $_mark ]]; then
+  _ts=$(date "+%Y-%m-%dT%H:%M:%S%z")
+  echo "$_ts  ## SLOWNESS: $_mark" >> "$_log_file"
+  echo "marked → $_log_file"
+  exit 0
+fi
+
+if [[ -n $_log ]]; then
+  echo "logging to $_log_file every ${_log}s (Ctrl-C to stop)"
+  echo "mark a slowness moment from another shell:  mac-perf-check --mark \"description\""
+  while :; do
+    _snapshot
+    sleep "$_log"
+  done
+fi
+
+if $_watch; then
+  command -v asitop >/dev/null && exec sudo asitop
+  command -v btop   >/dev/null && exec btop
+  echo "neither asitop nor btop installed" >&2
+  exit 1
+fi
+
+if [[ -t 1 ]]; then
+  bold=$(tput bold); dim=$(tput dim); reset=$(tput sgr0)
+else
+  bold=""; dim=""; reset=""
+fi
+hr() { printf "\n${bold}── %s ──${reset}\n" "$1"; }
+
+hr "memory pressure"
+memory_pressure
+
+hr "vm_stat (3 samples, 1s) — watch swapins/swapouts and compressor"
+vm_stat -c 3 1
+
+hr "top 10 by CPU%"
+ps -Ao pid,pcpu,pmem,rss,comm | sort -k2 -nr | head -11
+
+hr "top 10 by MEM%"
+ps -Ao pid,pcpu,pmem,rss,comm | sort -k3 -nr | head -11
+
+hr "Arc footprint"
+# Match by bundle path — Arc renamed its helpers to "Browser Helper", so name matching is unreliable.
+_arc_count=$(pgrep -f "/Arc\.app/" 2>/dev/null | wc -l | tr -d ' ')
+_arc_mb=$(ps -axo rss=,comm= | awk '/\/Arc\.app\// {sum+=$1} END {printf "%.0f", sum/1024}')
+echo "Arc processes:        ${_arc_count}"
+echo "Arc total RSS:        ${_arc_mb:-0} MB"
+echo "${dim}heaviest Arc processes:${reset}"
+ps -axo pid=,rss=,comm= | grep "/Arc\.app/" | sort -k2 -nr | head -10 \
+  | awk '{
+      # Reconstruct the comm column — paths contain spaces (e.g. "Browser Helper (Renderer)").
+      comm = $3
+      for (i = 4; i <= NF; i++) comm = comm " " $i
+      n = split(comm, parts, "/")
+      printf "  %6d  %7.0f MB  %s\n", $1, $2/1024, parts[n]
+    }'
+
+if $_full; then
+  hr "thermal / power state (powermetrics, sudo)"
+  # smc sampler is Intel-era; Apple Silicon uses thermal/cpu_power/gpu_power.
+  sudo powermetrics --samplers thermal,cpu_power,gpu_power -n 1 -i 500 2>/dev/null \
+    | grep -E '^(Current pressure level|CPU Power|GPU Power|ANE Power|Combined Power|E-Cluster idle|P-Cluster idle|GPU idle|GPU HW active frequency)'
+fi
+
+hr "next steps"
+cat <<EOF
+- Memory pressure "warning"/"critical" or non-zero swapins → close tabs/apps
+- One PID pegged at ~100% CPU → ${dim}sample <PID> 5${reset} for a stack summary
+- kernel_task at top of CPU → thermal throttling; rerun with ${dim}--full${reset}
+- Live view: ${dim}mac-perf-check --watch${reset} (asitop) or ${dim}btop${reset}
+- Background log: ${dim}mac-perf-check --log${reset}; mark moments with ${dim}--mark "note"${reset}
+EOF
