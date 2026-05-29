@@ -31,10 +31,22 @@ are fixed — do **not** memorize individual page slugs, they change:
    "which page covers what". Always start here.
 2. **Raw page:** append `.md` to any docs path to get clean markdown with no nav chrome,
    e.g. `https://code.claude.com/docs/en/best-practices.md`.
-3. **Everything (fallback):** `https://code.claude.com/docs/llms-full.txt` is the entire
-   docs concatenated. It is large — use only when the index doesn't resolve the topic.
+3. **Everything (last resort):** `https://code.claude.com/docs/llms-full.txt` is the entire
+   docs concatenated (~4 MB / ~1M tokens). Use only for full-text search when you know a
+   term exists but the index titles/descriptions can't locate its page. **Do not WebFetch
+   it** — that summarizes 4 MB through the small model every call. Instead `curl` + `grep`
+   it as a search index to find the page, then fetch that page's clean `.md` (step 2 below):
 
-WebFetch caches each URL for ~15 min; the docs CDN caches `llms*.txt` ~daily.
+   ```bash
+   # one-off: locate which page mentions a term (-i case-insensitive, -n line numbers)
+   curl -s https://code.claude.com/docs/llms-full.txt | grep -ni 'disable-model-invocation'
+   # searching several terms this session? fetch once (CDN caches ~daily), then grep /tmp:
+   curl -s https://code.claude.com/docs/llms-full.txt -o /tmp/cc-llms-full.txt
+   grep -ni -B2 -A8 'your-term' /tmp/cc-llms-full.txt
+   ```
+
+   Only the grep output enters context, never the 4 MB. Reach for a subagent over `grep`
+   only when you must read and synthesize many matched sections.
 
 ## Workflow
 
@@ -44,8 +56,9 @@ WebFetch caches each URL for ~15 min; the docs CDN caches `llms*.txt` ~daily.
    exact field, anchor, or section you need) so it returns the relevant slice.
 3. **Cite it.** When you apply what you found, name the page so the user can verify —
    e.g. "per `best-practices.md` → Create skills".
-4. **Fallbacks, in order:** if the index has no clear match → fetch `llms-full.txt` and
-   search it; if a `.md` URL 404s → fetch the same path without `.md` (HTML still works).
+4. **Fallbacks, in order:** if the index has no clear match → `curl` + `grep` `llms-full.txt`
+   to find the page (see the contract above), then resolve its `.md`; if a `.md` URL 404s →
+   fetch the same path without `.md` (HTML still works).
 
 ## Example
 
