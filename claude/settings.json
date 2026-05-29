@@ -1,4 +1,5 @@
 {
+  "includeCoAuthoredBy": false,
   "permissions": {},
   "hooks": {
     "Stop": [
@@ -35,6 +36,11 @@
       }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/scripts/statusline.sh",
+    "padding": 0
+  },
   "enabledPlugins": {
     "visual-explainer@visual-explainer-marketplace": false,
     "interface-design@interface-design": true,
@@ -49,7 +55,9 @@
     "explanatory-output-style@claude-plugins-official": true,
     "firecrawl@claude-plugins-official": true,
     "browse@browserbase": true,
-    "obsidian@obsidian-skills": true
+    "obsidian@obsidian-skills": true,
+    "claude-code-setup@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "interface-design": {
@@ -92,10 +100,5 @@
   "skipDangerousModePermissionPrompt": true,
   "editorMode": "vim",
   "verbose": true,
-  "teammateMode": "auto",
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/scripts/statusline.sh",
-    "padding": 0
-  }
+  "teammateMode": "auto"
 }
