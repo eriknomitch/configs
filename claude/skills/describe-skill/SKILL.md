@@ -22,9 +22,17 @@ flourish**: report what the skill actually does, not what its name implies.
 
 A skill is a directory containing `SKILL.md` and, optionally, supporting files:
 
-- `SKILL.md` — YAML frontmatter (`name`, `description`, sometimes `when_to_use`,
-  `allowed-tools`/`allowed_tools`, `license`, etc.) followed by the markdown playbook. **The
-  primary source of truth.**
+- `SKILL.md` — YAML frontmatter followed by the markdown playbook. **The primary source of
+  truth.** Fields you may encounter, grouped by what they tell you:
+  - *Identity & trigger:* `name`, `description`, sometimes `when_to_use` (appended to the
+    description; both count toward the ~1,536-char cap), `paths` (globs that scope
+    auto-activation), `license`.
+  - *Invocation control* (changes **whether and how** the skill fires — always worth
+    reporting): `disable-model-invocation: true` (manual `/slug` only; Claude never
+    auto-triggers it), `user-invocable: false` (Claude-only; hidden from the `/` menu),
+    `context: fork` + `agent` (runs in an isolated subagent instead of the main context).
+  - *Tools:* `allowed-tools`/`disallowed-tools` (note the canonical field is hyphenated).
+  - *Args & overrides:* `argument-hint`, `arguments`, `model`, `effort`, `hooks`, `shell`.
 - `scripts/` (or loose `.py`/`.sh`/`.js`) — executable helpers the skill shells out to.
 - `references/`, `docs/`, or other `.md` files — deep-dive material the body links to but
   doesn't inline.
@@ -109,6 +117,11 @@ What to extract while reading:
 - **Frontmatter** — `name`, the full `description` (this *is* the trigger logic — note the
   literal trigger phrases and any explicit "do NOT trigger / SKIP" carve-outs), `when_to_use`,
   and any `allowed-tools` restriction.
+- **How it activates** — check the invocation-control fields above. If
+  `disable-model-invocation: true`, the skill is **manual-only** (the user must type `/slug`;
+  it never auto-fires) — say so, because the trigger phrases in the description are then
+  inert. If `user-invocable: false`, it's **Claude-only**. If `context: fork`, it runs in a
+  **separate subagent context**. Any of these is a headline fact, not a footnote.
 - **Body** — the actual workflow: the steps it runs, decision trees, the default path vs.
   opt-in paths, and what output it produces.
 - **Scripts** — for each, one line on what it does and how the skill invokes it (read the
@@ -129,7 +142,9 @@ it):
 **<skill-name>** — <one sentence: what it does and for whom>
 
 **Triggers on:** <the real trigger phrases / conditions from the description>, when it should
-fire. Note any explicit "won't trigger / SKIP" carve-outs.
+fire. Note any explicit "won't trigger / SKIP" carve-outs. If the skill is **manual-only**
+(`disable-model-invocation`), **Claude-only** (`user-invocable: false`), or **forked**
+(`context: fork`), lead with that here — it overrides what the trigger phrases imply.
 
 **What it does:**
 - <step or capability 1>
