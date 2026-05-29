@@ -1,6 +1,6 @@
 ---
 name: claude-code-docs
-description: Ground any Claude Code configuration or feature work in the latest OFFICIAL docs at code.claude.com instead of relying on training knowledge. Use when building, editing, or debugging skills, hooks, subagents, slash/custom commands, MCP servers, settings.json, permissions, plugins, statusline, output styles, memory/CLAUDE.md, the CLI, or the Agent SDK — and when answering "how does Claude Code do X" or "what's the latest way to configure X". Always prefer this over guessing, because Claude Code ships frequently and training data goes stale.
+description: Ground any Claude Code configuration or feature work in the latest OFFICIAL docs at code.claude.com instead of relying on training knowledge. Use when building, editing, auditing, reviewing, or debugging skills, hooks, subagents, slash/custom commands, MCP servers, settings.json, permissions, plugins, statusline, output styles, memory/CLAUDE.md, the CLI, or the Agent SDK — and when answering "how does Claude Code do X" or "what's the latest way to configure X". Always prefer this over guessing, because Claude Code ships frequently and training data goes stale.
 ---
 
 # Claude Code Docs (live)
@@ -11,8 +11,9 @@ the product ships often and training data drifts.
 
 ## When to use
 
-- Building or editing a **skill, hook, subagent, slash command, MCP server, plugin,
-  statusline, output style, or settings.json** in this or any repo.
+- Building, editing, **auditing, or reviewing** a **skill, hook, subagent, slash
+  command, MCP server, plugin, statusline, output style, or settings.json** in this
+  or any repo.
 - Debugging Claude Code config (permissions not applying, a hook not firing, an MCP
   server not connecting, frontmatter not recognized).
 - Answering "how do I configure X", "what fields does Y take", "what's the latest way
