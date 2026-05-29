@@ -98,4 +98,5 @@ _ensure_symbolic_link claude/hooks/notify.sh ~/.claude/hooks/notify.sh
 _ensure_symbolic_link claude/scripts/statusline.sh ~/.claude/scripts/statusline.sh
 _ensure_symbolic_link claude/CLAUDE.md ~/.claude/CLAUDE.md
 _ensure_symbolic_link claude/skills/claude-docs ~/.claude/skills/claude-docs
+_ensure_symbolic_link claude/skills/describe-skill ~/.claude/skills/describe-skill
 
