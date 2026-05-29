@@ -1,0 +1,105 @@
+#!/bin/zsh
+# update-claude-plugins — refresh marketplaces, then update installed Claude Code plugins.
+#
+# There is no `claude plugin update --all`, so this enumerates installed plugins
+# (via `claude plugin list --json`, the source of truth across every scope),
+# refreshes each marketplace they came from, then updates each plugin in its own scope.
+#
+# Usage:
+#   update-claude-plugins              update every installed plugin (all scopes)
+#   update-claude-plugins --enabled    only update currently-enabled plugins
+#   update-claude-plugins --dry-run    print the commands, change nothing
+#   update-claude-plugins --help
+
+emulate -L zsh
+set -o pipefail
+
+_enabled_only=false
+_dry_run=false
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --enabled|--enabled-only) _enabled_only=true; shift ;;
+    --dry-run|-n)             _dry_run=true; shift ;;
+    --help|-h)
+      sed -n '2,13p' "$0" | sed 's/^# \{0,1\}//'
+      exit 0 ;;
+    *)
+      print -u2 "update-claude-plugins: unknown argument: $1 (try --help)"
+      exit 2 ;;
+  esac
+done
+
+for _dep in claude jq; do
+  if ! command -v "$_dep" >/dev/null 2>&1; then
+    print -u2 "update-claude-plugins: required command not found: $_dep"
+    exit 1
+  fi
+done
+
+# Pull the installed-plugin inventory once. Each line: "<plugin@marketplace>\t<scope>".
+local _jq_filter='.[]'
+$_enabled_only && _jq_filter='.[] | select(.enabled)'
+
+local -a _entries
+_entries=("${(@f)$(claude plugin list --json | jq -r "${_jq_filter} | [.id, .scope] | @tsv")}")
+# Drop a lone empty element when nothing matched.
+_entries=("${(@)_entries:#}")
+
+if (( ${#_entries} == 0 )); then
+  print "No ${_enabled_only:+enabled }installed plugins found — nothing to update."
+  exit 0
+fi
+
+# Derive the unique set of marketplaces these plugins came from (the part after '@').
+local -A _seen_marketplace
+local -a _marketplaces
+local _entry _id _scope _mp
+for _entry in "${_entries[@]}"; do
+  _id=${_entry%%$'\t'*}
+  _mp=${_id##*@}
+  if [[ -z ${_seen_marketplace[$_mp]} ]]; then
+    _seen_marketplace[$_mp]=1
+    _marketplaces+=("$_mp")
+  fi
+done
+
+# Runs a command, or just prints it under --dry-run. Returns the command's exit status.
+_run() {
+  if $_dry_run; then
+    print -r -- "  [dry-run] $*"
+    return 0
+  fi
+  "$@"
+}
+
+local -a _failures
+local _rc
+
+print "==> Refreshing ${#_marketplaces} marketplace(s)"
+for _mp in "${_marketplaces[@]}"; do
+  print "  - $_mp"
+  _run claude plugin marketplace update "$_mp"
+  _rc=$?
+  (( _rc != 0 )) && _failures+=("marketplace update $_mp (exit $_rc)")
+done
+
+print "==> Updating ${#_entries} plugin(s)"
+for _entry in "${_entries[@]}"; do
+  _id=${_entry%%$'\t'*}
+  _scope=${_entry##*$'\t'}
+  print "  - $_id (scope: $_scope)"
+  _run claude plugin update "$_id" --scope "$_scope"
+  _rc=$?
+  (( _rc != 0 )) && _failures+=("plugin update $_id (exit $_rc)")
+done
+
+if (( ${#_failures} > 0 )); then
+  print -u2 "==> Completed with ${#_failures} failure(s):"
+  for _f in "${_failures[@]}"; do
+    print -u2 "  ! $_f"
+  done
+  exit 1
+fi
+
+print "==> Done. All ${#_entries} plugin(s) up to date."

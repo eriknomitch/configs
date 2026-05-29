@@ -1,5 +1,8 @@
 {
   "includeCoAuthoredBy": false,
+  "env": {
+    "FORCE_AUTOUPDATE_PLUGINS": "1"
+  },
   "permissions": {},
   "hooks": {
     "Stop": [
