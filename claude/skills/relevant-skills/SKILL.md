@@ -10,6 +10,7 @@ description: >
   time mid-session. Returns a ranked table — skill (with slash), brief description, why it could
   help, and a color-coded confidence — or plainly says nothing clears the bar. Read-only: it
   recommends, it does not invoke the skills it surfaces.
+argument-hint: "[topic or prompt to evaluate against — omit to use the current/last turn]"
 ---
 
 # Relevant skills
@@ -70,7 +71,10 @@ evaluating.
 ## Step 4 — Score relevance and confidence
 
 For each remaining skill, judge against the context using its **description** (the description is
-the skill's own trigger logic — a strong match there is a strong signal). Assign confidence:
+the skill's own trigger logic — a strong match there is a strong signal). Some roster entries
+carry only a name with no description (e.g. `shadcn`, `review`, `qumis-code-review`) — judge
+those by their slug and namespace, and if the slug alone can't ground a specific rationale,
+leave them out rather than guess. Assign confidence:
 
 | Confidence | Meaning | Include? |
 |------------|---------|----------|
