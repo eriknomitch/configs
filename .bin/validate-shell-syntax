@@ -1,0 +1,53 @@
+#!/usr/bin/env zsh
+# validate-shell-syntax — Claude Code PostToolUse hook
+#
+# Reads hook JSON on stdin, runs a syntax-only parse (interp -n) on the file
+# that was just edited. On a syntax error it prints the parser message to
+# stderr and exits 2, which Claude Code feeds back into the session so the
+# breakage is fixed before it ever reaches a live shell. Because these files
+# self-deploy via symlinks, a bad zshrc would otherwise break every new shell.
+#
+# Non-shell files, missing files, and syntactically-clean files exit 0 silently.
+# Wired up in .claude/settings.json under hooks.PostToolUse.
+
+emulate -L zsh
+setopt no_unset pipefail
+
+command -v jq >/dev/null 2>&1 || exit 0   # no jq → can't read payload; stay silent
+
+input="$(cat)"
+file="$(printf '%s' "$input" | jq -r '.tool_input.file_path // empty')"
+[[ -n "$file" && -f "$file" ]] || exit 0
+
+# Pick the interpreter: shebang wins, then extension, then known rc basenames.
+# Anything we don't recognize as a shell script exits 0 (not our concern).
+interp=""
+read -r shebang < "$file" 2>/dev/null || shebang=""
+case "$shebang" in
+  \#\!*zsh*)  interp=zsh ;;
+  \#\!*bash*) interp=bash ;;
+  \#\!*sh*)   interp=sh ;;
+esac
+
+if [[ -z "$interp" ]]; then
+  case "${file:e}" in
+    zsh)     interp=zsh ;;
+    bash|sh) interp=bash ;;   # map bare .sh to bash to avoid bashism false-positives
+    *)
+      case "${file:t}" in
+        zshrc|zshrc-*|.zshrc|.zshenv|.zprofile) interp=zsh ;;
+        *) exit 0 ;;
+      esac
+      ;;
+  esac
+fi
+
+command -v "$interp" >/dev/null 2>&1 || exit 0   # interpreter not installed → skip
+
+if ! err="$("$interp" -n "$file" 2>&1)"; then
+  print -r -- "✗ Shell syntax error in $file (via $interp -n):" >&2
+  print -r -- "$err" >&2
+  exit 2
+fi
+
+exit 0
