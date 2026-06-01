@@ -688,7 +688,7 @@ end)
 -- Applications
 -- -----------------------------------------------
 bindApplicationFocus("I", defaultBrowserName)
-bindApplicationFocusSecondary("I", secondaryBrowserName)
+-- bindApplicationFocusSecondary("I", secondaryBrowserName)
 bindApplicationFocus("L", "Linear")
 
 bindApplicationFocus("P", "Preview")
