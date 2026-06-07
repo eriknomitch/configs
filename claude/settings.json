@@ -1,8 +1,8 @@
 {
-  "includeCoAuthoredBy": false,
   "env": {
     "FORCE_AUTOUPDATE_PLUGINS": "1"
   },
+  "includeCoAuthoredBy": false,
   "permissions": {},
   "hooks": {
     "Stop": [
@@ -60,7 +60,8 @@
     "browse@browserbase": true,
     "obsidian@obsidian-skills": true,
     "claude-code-setup@claude-plugins-official": true,
-    "security-guidance@claude-plugins-official": true
+    "security-guidance@claude-plugins-official": true,
+    "paper-desktop@paper": true
   },
   "extraKnownMarketplaces": {
     "interface-design": {
@@ -97,6 +98,12 @@
       "source": {
         "source": "github",
         "repo": "browserbase/skills"
+      }
+    },
+    "paper": {
+      "source": {
+        "source": "github",
+        "repo": "paper-design/agent-plugins"
       }
     }
   },

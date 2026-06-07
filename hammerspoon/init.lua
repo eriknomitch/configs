@@ -232,22 +232,24 @@ hs.alert.defaultStyle.radius = 10
 -- -----------------------------------------------
 --{{{
 
-local filter = hs.window.filter.new(false):setAppFilter(defaultTerminalName, false)
-local switcher = hs.window.switcher.new() -- default windowfilter: only visible windows, all Spaces
-
-switcher.ui.highlightColor = { 0, 0, 0, 1 }
--- switcher.ui.thumbnailSize = 128
-switcher.ui.thumbnailSize = 400
--- switcher.ui.selectedThumbnailSize = 384
-switcher.ui.selectedThumbnailSize = 500
--- (32,32,32) is the default background color
-switcher.ui.backgroundColor = { 1, 0, 0, 1 }
--- switcher.ui.textSize = 12
--- switcher.ui.fontName = "SF Pro"
--- switcher.ui.titleBackgroundColor = { 0, 0, 0, 0.2 }
-switcher.ui.showTitles = false
-switcher.ui.showSelectedTitle = false
-switcher.ui.showSelectedThumbnail = false
+-- Disabled: hs.window.switcher snapshots window contents, which requires the
+-- macOS Screen Recording permission. Not used, so commented out to drop it.
+-- local filter = hs.window.filter.new(false):setAppFilter(defaultTerminalName, false)
+-- local switcher = hs.window.switcher.new() -- default windowfilter: only visible windows, all Spaces
+--
+-- switcher.ui.highlightColor = { 0, 0, 0, 1 }
+-- -- switcher.ui.thumbnailSize = 128
+-- switcher.ui.thumbnailSize = 400
+-- -- switcher.ui.selectedThumbnailSize = 384
+-- switcher.ui.selectedThumbnailSize = 500
+-- -- (32,32,32) is the default background color
+-- switcher.ui.backgroundColor = { 1, 0, 0, 1 }
+-- -- switcher.ui.textSize = 12
+-- -- switcher.ui.fontName = "SF Pro"
+-- -- switcher.ui.titleBackgroundColor = { 0, 0, 0, 0.2 }
+-- switcher.ui.showTitles = false
+-- switcher.ui.showSelectedTitle = false
+-- switcher.ui.showSelectedThumbnail = false
 
 --}}}
 
@@ -267,22 +269,24 @@ hs.hotkey.bind(movementApplicationLaunchOrFocus, ";", function()
 	hs.hints.windowHints()
 end)
 
-local exposeOptions = {
-	showThumbnails = true,
-	showTitles = false,
-	includeOtherSpaces = false,
-	includeNonVisible = false,
-	highlightThumbnailAlpha = 1,
-	highlightThumbnailStrokeWidth = 4,
-	highlightColor = { 0.9, 0.9, 0.9, 0.5 },
-	backgroundColor = { 0, 0, 0, 0.8 },
-}
-local exposeFilter = hs.window.filter.new(false):setAppFilter(defaultTerminalName, false)
-local exposeInstance = hs.expose.new(exposeFilter, exposeOptions)
-
-hs.hotkey.bind(movementApplicationLaunchOrFocusSecondary, "'", function()
-	exposeInstance:toggleShow()
-end)
+-- Disabled: hs.expose snapshots window contents for thumbnails, which requires
+-- the macOS Screen Recording permission. Not used, so commented out to drop it.
+-- local exposeOptions = {
+-- 	showThumbnails = true,
+-- 	showTitles = false,
+-- 	includeOtherSpaces = false,
+-- 	includeNonVisible = false,
+-- 	highlightThumbnailAlpha = 1,
+-- 	highlightThumbnailStrokeWidth = 4,
+-- 	highlightColor = { 0.9, 0.9, 0.9, 0.5 },
+-- 	backgroundColor = { 0, 0, 0, 0.8 },
+-- }
+-- local exposeFilter = hs.window.filter.new(false):setAppFilter(defaultTerminalName, false)
+-- local exposeInstance = hs.expose.new(exposeFilter, exposeOptions)
+--
+-- hs.hotkey.bind(movementApplicationLaunchOrFocusSecondary, "'", function()
+-- 	exposeInstance:toggleShow()
+-- end)
 
 --}}}
 
@@ -719,12 +723,13 @@ end)
 
 -- Switcher
 -- -----------------------------------------------
-hs.hotkey.bind({ "cmd", "ctrl" }, "'", function()
-	switcher:next()
-end)
-hs.hotkey.bind({ "cmd", "ctrl", "shift" }, "'", function()
-	switcher:previous()
-end)
+-- Disabled: depends on hs.window.switcher (Screen Recording permission). Unused.
+-- hs.hotkey.bind({ "cmd", "ctrl" }, "'", function()
+-- 	switcher:next()
+-- end)
+-- hs.hotkey.bind({ "cmd", "ctrl", "shift" }, "'", function()
+-- 	switcher:previous()
+-- end)
 
 -- Displays
 -- -----------------------------------------------

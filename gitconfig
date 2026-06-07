@@ -64,3 +64,9 @@
 	concurrent = true
 [coderabbit]
 	machineId = cli/782de9e44a9441b1ba4ef087dab4aaff
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
