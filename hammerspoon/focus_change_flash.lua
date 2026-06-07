@@ -115,7 +115,17 @@ local function warpMouseToWindow(window)
 	local center = hs.geometry.point(frame.x + frame.w / 2, frame.y + frame.h / 2)
 	hs.mouse.absolutePosition(center)
 
-	log:d("Mouse warped to window: " .. (window:title() or "untitled"))
+	-- Avoid window:title() here: it requires the Screen Recording permission.
+	-- App name + center coords need only Accessibility.
+	local app = window:application()
+	log:d(
+		"Mouse warped to "
+			.. (app and app:name() or "window")
+			.. " at "
+			.. math.floor(center.x)
+			.. ","
+			.. math.floor(center.y)
+	)
 end
 
 -- ------------------------------------------------
