@@ -42,6 +42,10 @@ if [[ -t 0 ]]; then
   exit 0
 fi
 
+# Skip when invoked from an internal headless child (e.g. the report-judge
+# `claude -p` call), so background classification never pops a notification.
+[[ -n "${CLAUDE_HEADLESS_CHILD:-}" ]] && exit 0
+
 INPUT=$(cat)
 EVENT=$(echo "$INPUT" | jq -r '.hook_event_name // "unknown"')
 ALERTER=/opt/homebrew/bin/alerter

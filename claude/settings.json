@@ -1,6 +1,7 @@
 {
   "env": {
-    "FORCE_AUTOUPDATE_PLUGINS": "1"
+    "FORCE_AUTOUPDATE_PLUGINS": "1",
+    "REPORT_MODE": "judge"
   },
   "includeCoAuthoredBy": false,
   "permissions": {
@@ -42,7 +43,8 @@
           {
             "type": "command",
             "command": "~/.claude/hooks/save-report.sh",
-            "timeout": 10
+            "timeout": 120,
+            "async": true
           }
         ]
       }
@@ -95,7 +97,8 @@
     "paper-desktop@paper": true,
     "vanta-mcp-plugin@claude-plugins-official": true,
     "claude-hud@claude-hud": true,
-    "codex@openai-codex": true
+    "codex@openai-codex": true,
+    "cloudflare@cloudflare": true
   },
   "extraKnownMarketplaces": {
     "interface-design": {
@@ -157,9 +160,16 @@
         "source": "github",
         "repo": "antvis/chart-visualization-skills"
       }
+    },
+    "cloudflare": {
+      "source": {
+        "source": "github",
+        "repo": "cloudflare/skills"
+      }
     }
   },
   "effortLevel": "high",
+  "advisorModel": "fable",
   "voice": {
     "enabled": true,
     "mode": "hold"
@@ -170,6 +180,5 @@
   "autoCompactEnabled": true,
   "teammateMode": "auto",
   "agentPushNotifEnabled": true,
-  "voiceEnabled": true,
-  "advisorModel": "fable"
+  "voiceEnabled": true
 }
