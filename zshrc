@@ -2026,3 +2026,6 @@ EOF
 }
 # CF CLI completions
 [[ -f "/Users/erik/.config/cf/completions/_cf.zsh" ]] && source "/Users/erik/.config/cf/completions/_cf.zsh"
+
+# strix
+export PATH=/Users/erik/.strix/bin:$PATH

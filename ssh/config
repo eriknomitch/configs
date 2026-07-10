@@ -163,6 +163,11 @@ Host pc pc.local
   HostName pc.local
   User Erik
 
+# Tailscale Magic DNS for PC
+Host pc-tailscale pc-tailscale.local
+  HostName pc.tail95afa9.ts.net
+  User erik
+
 Host volumio volumio.local
   HostName volumio.local
   User volumio

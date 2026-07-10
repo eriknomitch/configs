@@ -3,8 +3,30 @@
     "FORCE_AUTOUPDATE_PLUGINS": "1"
   },
   "includeCoAuthoredBy": false,
-  "permissions": {},
+  "permissions": {
+    "defaultMode": "auto"
+  },
   "hooks": {
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/cc-activity-log.sh"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/cc-activity-log.sh"
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [
@@ -12,6 +34,15 @@
             "type": "command",
             "command": "~/.claude/hooks/notify.sh",
             "async": true
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/cc-activity-log.sh"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/save-report.sh",
+            "timeout": 10
           }
         ]
       }
@@ -41,7 +72,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "~/.claude/scripts/statusline.sh",
+    "command": "bash -c '\"/Users/erik/.bun/bin/bun\" \"$(ls -td ~/.claude/plugins/cache/claude-hud/claude-hud/*/ 2>/dev/null | head -1)src/index.ts\"'",
     "padding": 0
   },
   "enabledPlugins": {
@@ -61,7 +92,10 @@
     "obsidian@obsidian-skills": true,
     "claude-code-setup@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
-    "paper-desktop@paper": true
+    "paper-desktop@paper": true,
+    "vanta-mcp-plugin@claude-plugins-official": true,
+    "claude-hud@claude-hud": true,
+    "codex@openai-codex": true
   },
   "extraKnownMarketplaces": {
     "interface-design": {
@@ -105,10 +139,37 @@
         "source": "github",
         "repo": "paper-design/agent-plugins"
       }
+    },
+    "claude-hud": {
+      "source": {
+        "source": "github",
+        "repo": "jarrodwatts/claude-hud"
+      }
+    },
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    },
+    "visualization-skills": {
+      "source": {
+        "source": "github",
+        "repo": "antvis/chart-visualization-skills"
+      }
     }
+  },
+  "effortLevel": "high",
+  "voice": {
+    "enabled": true,
+    "mode": "hold"
   },
   "skipDangerousModePermissionPrompt": true,
   "editorMode": "vim",
   "verbose": true,
-  "teammateMode": "auto"
+  "autoCompactEnabled": true,
+  "teammateMode": "auto",
+  "agentPushNotifEnabled": true,
+  "voiceEnabled": true,
+  "advisorModel": "fable"
 }
