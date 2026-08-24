@@ -1,7 +1,8 @@
 {
   "env": {
     "FORCE_AUTOUPDATE_PLUGINS": "1",
-    "REPORT_MODE": "judge"
+    "REPORT_MODE": "judge",
+    "_ZO_DOCTOR": "0"
   },
   "includeCoAuthoredBy": false,
   "permissions": {
