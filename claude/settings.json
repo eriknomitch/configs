@@ -7,6 +7,7 @@
   "permissions": {
     "defaultMode": "auto"
   },
+  "model": "opus",
   "hooks": {
     "PostToolUse": [
       {
@@ -98,7 +99,11 @@
     "vanta-mcp-plugin@claude-plugins-official": true,
     "claude-hud@claude-hud": true,
     "codex@openai-codex": true,
-    "cloudflare@cloudflare": true
+    "cloudflare@cloudflare": true,
+    "i-have-adhd@i-have-adhd": true,
+    "composio@composio": true,
+    "agent-skills@addy-agent-skills": true,
+    "clangd-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "interface-design": {
@@ -166,9 +171,33 @@
         "source": "github",
         "repo": "cloudflare/skills"
       }
+    },
+    "i-have-adhd": {
+      "source": {
+        "source": "github",
+        "repo": "ayghri/i-have-adhd"
+      }
+    },
+    "composio": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/ComposioHQ/composio-plugin-cc.git"
+      }
+    },
+    "impeccable": {
+      "source": {
+        "source": "github",
+        "repo": "pbakaus/impeccable"
+      }
+    },
+    "addy-agent-skills": {
+      "source": {
+        "source": "github",
+        "repo": "addyosmani/agent-skills"
+      }
     }
   },
-  "effortLevel": "high",
+  "effortLevel": "low",
   "advisorModel": "fable",
   "voice": {
     "enabled": true,
