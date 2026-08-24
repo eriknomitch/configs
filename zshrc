@@ -1188,6 +1188,10 @@ if ( command-exists zoxide ) ; then
 
   export _ZO_EXCLUDE_DIRS="$HOME:$HOME/.enct-*"
 
+  # Silence zoxide's config doctor: it only misfires in replayed shell
+  # snapshots (e.g. Claude Code), which restore functions but not chpwd hooks.
+  export _ZO_DOCTOR=0
+
   alias cd="z"
 fi
 
