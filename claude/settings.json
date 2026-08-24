@@ -2,7 +2,8 @@
   "env": {
     "FORCE_AUTOUPDATE_PLUGINS": "1",
     "REPORT_MODE": "judge",
-    "_ZO_DOCTOR": "0"
+    "_ZO_DOCTOR": "0",
+    "CLAUDE_CODE_SHELL": "/opt/homebrew/bin/zsh"
   },
   "includeCoAuthoredBy": false,
   "permissions": {
