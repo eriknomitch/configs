@@ -9,7 +9,6 @@
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "opus",
   "hooks": {
     "PostToolUse": [
       {
@@ -201,6 +200,7 @@
   },
   "effortLevel": "low",
   "advisorModel": "fable",
+  "fastMode": true,
   "voice": {
     "enabled": true,
     "mode": "hold"

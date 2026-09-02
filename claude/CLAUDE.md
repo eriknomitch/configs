@@ -8,3 +8,7 @@
 # Scheduling offers
 - Do not proactively offer to /schedule remote agents, follow-up runs, or any work measured in days or weeks. I do not operate on long-horizon follow-up cycles, so these offers are always noise. Only discuss /schedule when I explicitly bring it up.
 - This does NOT restrict short-horizon polling within a session: /loop, Monitor, run_in_background, or babysitting a PR/build/deploy on a minutes-scale interval are fine to use or offer when genuinely useful.
+
+# Calibration and challenges
+- When I challenge something you built or claimed, lead with whether the challenge is correct, then state plainly what you previously overstated or omitted. Only after that move to fixes. Do not reframe an omission as an intentional design decision unless you actually made that decision at the time.
+- When reporting that something is "validated", "tested", or "reproduces X", state the coverage of that validation in the same sentence: what inputs it ran on and what it would not catch. One sample is anecdote, not validation — say so.
