@@ -9,6 +9,7 @@
   "permissions": {
     "defaultMode": "auto"
   },
+  "model": "opus",
   "hooks": {
     "PostToolUse": [
       {
@@ -199,8 +200,12 @@
     }
   },
   "effortLevel": "low",
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "high"
+    }
+  },
   "advisorModel": "fable",
-  "fastMode": true,
   "voice": {
     "enabled": true,
     "mode": "hold"
@@ -211,6 +216,5 @@
   "autoCompactEnabled": true,
   "teammateMode": "auto",
   "agentPushNotifEnabled": true,
-  "voiceEnabled": true,
-  "model": "opus"
+  "voiceEnabled": true
 }
