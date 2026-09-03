@@ -216,5 +216,6 @@
   "autoCompactEnabled": true,
   "teammateMode": "auto",
   "agentPushNotifEnabled": true,
-  "voiceEnabled": true
+  "voiceEnabled": true,
+  "fastMode": true
 }
