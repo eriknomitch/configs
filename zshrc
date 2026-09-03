@@ -67,25 +67,135 @@ alias jl='jupyter lab --notebook-dir "${HOME}/.jupyter-notebooks"'
 # UTILITY
 # ------------------------------------------------
 function snip() {
-  # Usage check
-  if [[ $# -lt 3 ]]; then
-    echo "Usage: snip <start_line> <end_line> <file_path>"
-    return 1
+  local usage="Usage:
+  snip [flags] <start_line> <end_line> <file_path>   Lines start..end (inclusive)
+  snip [flags] <start_line> +<count> <file_path>     <count> lines starting at start
+  snip [flags] <start_line> - <file_path>            From start to the end of the file
+                                                     (also accepts $, end, eof)
+  snip [flags] <chunk>/<chunks> <file_path>          Nth chunk of the file split into N
+                                                     near-equal chunks (remainder goes
+                                                     to the later chunks)
+
+Flags:
+  -n, --number, --line-numbers       Prefix each line with its real line number
+  -r, --renumber, --renumber-lines   Prefix each line with a number starting at 1"
+
+  local start end file
+  local number=0 renumber=0 eof=0
+
+  # Leading flags only, so a file named "-n" is still reachable after --
+  while [[ $1 == -* ]]; do
+    case $1 in
+      -n|--number|--numbers|--line-numbers) number=1; renumber=0; shift ;;
+      -r|--renumber|--renumber-lines) renumber=1; number=0; shift ;;
+      --) shift; break ;;
+      *) echo "Error: unknown flag '$1'."; echo "$usage"; return 1 ;;
+    esac
+  done
+
+  # Chunk mode is the only form whose first argument contains a slash.
+  if [[ $1 == */* ]]; then
+    if [[ $# -lt 2 ]]; then
+      echo "$usage"
+      return 1
+    fi
+
+    local chunk=${1%%/*}
+    local chunks=${1#*/}
+    file=$2
+
+    if [[ $chunk != <-> || $chunks != <-> ]]; then
+      echo "Error: chunk spec must be <number>/<number>."
+      return 1
+    fi
+
+    if (( chunks < 1 || chunk < 1 || chunk > chunks )); then
+      echo "Error: chunk must be between 1 and $chunks."
+      return 1
+    fi
+
+    if [[ ! -f "$file" ]]; then
+      echo "Error: File '$file' not found."
+      return 1
+    fi
+
+    # Count with awk (not wc -l) so a missing trailing newline still counts.
+    local total=$(awk 'END { print NR }' "$file")
+    start=$(( (chunk - 1) * total / chunks + 1 ))
+    end=$(( chunk * total / chunks ))
+  else
+    if [[ $# -lt 3 ]]; then
+      echo "$usage"
+      return 1
+    fi
+
+    start=$1
+    file=$3
+
+    case $2 in
+      # Open ended, run to the end of the file
+      -|'$'|end|eof) eof=1; end=$start ;;
+      # Count mode, mirroring git's -L <start>,+<count>
+      +*)
+        local count=${2#+}
+        if [[ $count != <-> ]]; then
+          echo "Error: line count must be a number."
+          return 1
+        fi
+        end=$(( start + count - 1 ))
+        ;;
+      *) end=$2 ;;
+    esac
+
+    if [[ $start != <-> || $end != <-> ]]; then
+      echo "Error: line numbers must be numbers."
+      return 1
+    fi
+
+    if (( start < 1 )); then
+      echo "Error: start line must be 1 or greater."
+      return 1
+    fi
+
+    if (( ! eof && end < start )); then
+      echo "Error: end line must not be before the start line."
+      return 1
+    fi
+
+    if [[ ! -f "$file" ]]; then
+      echo "Error: File '$file' not found."
+      return 1
+    fi
   fi
 
-  local start=$1
-  local end=$2
-  local file=$3
+  # Numbering starts at the real line number, or at 1 when renumbering.
+  local base=0 width=0
+  if (( number )); then
+    base=$start
+  elif (( renumber )); then
+    base=1
+  fi
 
-  # File existence check
-  if [[ ! -f "$file" ]]; then
-    echo "Error: File '$file' not found."
-    return 1
+  if (( base )); then
+    # Numbering needs a real end line to size the column, so an open ended
+    # snip has to learn the file length first.
+    (( eof )) && end=$(awk 'END { print NR }' "$file")
+    width=${#$(( base + end - start ))}
+  elif (( eof )); then
+    # A negative end tells the awk below not to stop early.
+    end=-1
   fi
 
   # The Universal Awk Command
   # NR = Number of Record (Line Number)
-  awk "NR >= $start && NR <= $end" "$file"
+  awk -v s="$start" -v e="$end" -v base="$base" -v w="$width" '
+    NR < s { next }
+    e >= 0 && NR > e { exit }
+    {
+      if (base) printf "%*d\t%s\n", w, base + NR - s, $0
+      else print
+    }
+  ' "$file"
 }
 
 function hr() {
