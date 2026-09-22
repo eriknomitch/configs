@@ -11,6 +11,17 @@
   },
   "model": "opus",
   "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/asdf-path.sh"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "hooks": [
@@ -105,7 +116,8 @@
     "i-have-adhd@i-have-adhd": true,
     "composio@composio": true,
     "agent-skills@addy-agent-skills": true,
-    "clangd-lsp@claude-plugins-official": true
+    "clangd-lsp@claude-plugins-official": true,
+    "ui-theme-designer@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "interface-design": {
@@ -197,15 +209,22 @@
         "source": "github",
         "repo": "addyosmani/agent-skills"
       }
+    },
+    "designer-skills": {
+      "source": {
+        "source": "github",
+        "repo": "Owl-Listener/designer-skills"
+      }
     }
   },
   "effortLevel": "low",
   "modelSettings": {
     "claude-opus-5": {
-      "effortLevel": "high"
+      "effortLevel": "low"
     }
   },
   "advisorModel": "fable",
+  "tui": "default",
   "voice": {
     "enabled": true,
     "mode": "hold"
@@ -216,6 +235,5 @@
   "autoCompactEnabled": true,
   "teammateMode": "auto",
   "agentPushNotifEnabled": true,
-  "voiceEnabled": true,
-  "fastMode": true
+  "voiceEnabled": true
 }

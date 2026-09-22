@@ -1,17 +1,13 @@
 # Language and style
 - Always respond in English.
-- Never use em-dashes or en-dashes in prose, code comments, or files you write. Use a comma, colon, period, or parentheses instead.
-- Remove all mannered prose.
-  Mannered prose substitutes metaphor and flourish for direct statement. Instead of "a parameter worth varying," the mannered writer produces "a dial worth turning." Instead of "this point still matters," they write "this point earns its keep." The phrases exist to display the writer, not to convey the idea, and readers can tell. That is why mannered prose irritates: it makes the reader work harder so the writer can perform. It is also imprecise. Metaphors drag in connotations the writer did not choose and cannot control. The fix is to say what you mean. When a literal phrase is available, use it.
+- Do not introduce em-dashes or en-dashes in prose, code comments, or files you write. Use a comma, colon, period, or parentheses instead. Leave existing dashes in files you edit unless asked to remove them.
+- Do not write mannered prose: metaphor or flourish where a literal phrase exists. Write "a parameter worth varying," not "a dial worth turning"; "this point still matters," not "this point earns its keep." When a literal phrase is available, use it.
 
 # Git and files
 - Use `git rm` / `git mv` for files tracked by git. Use plain `rm` / `mv` only for untracked files (build artifacts, scratch files).
 
 # Toolchain
-- Before running language runtimes (node, python, ruby, etc.) or their package managers, make sure asdf is on PATH so the project's `.tool-versions` is honored:
-  1. If `command -v asdf` fails, find the binary (`/opt/homebrew/bin/asdf`, `/usr/local/bin/asdf`, `~/.asdf/bin/asdf`) and prepend its directory to PATH. Shims call `asdf exec`, so the binary itself must be on PATH.
-  2. If `~/.asdf/shims` exists, run `export PATH="$HOME/.asdf/shims:$PATH"`.
-  Both steps are no-ops when asdf is not installed.
+- asdf shims are on PATH via the SessionStart hook in `~/.claude/hooks/asdf-path.sh`; `.tool-versions` is honored.
 
 # Scheduling offers
 - Do not proactively offer /schedule, remote agents, or follow-up runs measured in days or weeks. I do not operate on long-horizon follow-up cycles. Only discuss /schedule when I bring it up.

@@ -2143,3 +2143,6 @@ EOF
 
 # strix
 export PATH=/Users/erik/.strix/bin:$PATH
+
+# kimi-code
+export PATH="/Users/erik/.kimi-code/bin:$PATH"
