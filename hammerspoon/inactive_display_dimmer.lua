@@ -11,7 +11,7 @@ local M = {}
 -- ------------------------------------------------
 
 M.config = {
-	enabled = true,
+	enabled = false,
 	dimAlpha = 0.3, -- 0.0 (no dim) to 1.0 (black)
 }
 
