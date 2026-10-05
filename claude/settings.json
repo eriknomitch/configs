@@ -3,13 +3,13 @@
     "FORCE_AUTOUPDATE_PLUGINS": "1",
     "REPORT_MODE": "judge",
     "_ZO_DOCTOR": "0",
-    "CLAUDE_CODE_SHELL": "/opt/homebrew/bin/zsh"
+    "CLAUDE_CODE_SHELL": "/opt/homebrew/bin/zsh",
+    "CLAUDE_SEO_DATA_DIR": "/Users/erik/.claude/plugins/data/claude-seo-agricidaniel-claude-seo"
   },
   "includeCoAuthoredBy": false,
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "opus",
   "hooks": {
     "SessionStart": [
       {
@@ -18,6 +18,16 @@
           {
             "type": "command",
             "command": "~/.claude/hooks/asdf-path.sh"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/erik/.claude/termic-hooks/ready.sh",
+            "timeout": 5,
+            "statusMessage": "termic: reporting that this session is ready"
           }
         ]
       }
@@ -38,6 +48,16 @@
           {
             "type": "command",
             "command": "~/.claude/scripts/cc-activity-log.sh"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/erik/.claude/termic-hooks/working.sh",
+            "timeout": 5,
+            "statusMessage": "termic: reporting that this turn started"
           }
         ]
       }
@@ -61,6 +81,24 @@
             "async": true
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/env node /Users/erik/.tokentracker/bin/notify.cjs --source=claude"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/erik/.claude/termic-hooks/done.sh",
+            "timeout": 5,
+            "statusMessage": "termic: reporting that this turn finished"
+          }
+        ]
       }
     ],
     "StopFailure": [
@@ -81,6 +119,40 @@
             "type": "command",
             "command": "~/.claude/hooks/notify.sh",
             "async": true
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/env node /Users/erik/.tokentracker/bin/notify.cjs --source=claude"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/erik/.claude/termic-hooks/working.sh",
+            "timeout": 5,
+            "statusMessage": "termic: reporting that this turn started"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/erik/.claude/termic-hooks/attention.sh",
+            "timeout": 5,
+            "statusMessage": "termic: reporting that you are needed"
           }
         ]
       }
@@ -117,7 +189,10 @@
     "composio@composio": true,
     "agent-skills@addy-agent-skills": true,
     "clangd-lsp@claude-plugins-official": true,
-    "ui-theme-designer@claude-plugins-official": true
+    "ui-theme-designer@claude-plugins-official": true,
+    "typesafe@typesafe-ai": true,
+    "claude-seo@agricidaniel-claude-seo": true,
+    "posthog@posthog": true
   },
   "extraKnownMarketplaces": {
     "interface-design": {
@@ -215,15 +290,38 @@
         "source": "github",
         "repo": "Owl-Listener/designer-skills"
       }
+    },
+    "typesafe-ai": {
+      "source": {
+        "source": "github",
+        "repo": "typesafe-ai/skills"
+      }
+    },
+    "agricidaniel-claude-seo": {
+      "source": {
+        "source": "github",
+        "repo": "AgriciDaniel/claude-seo"
+      }
+    },
+    "posthog": {
+      "source": {
+        "source": "github",
+        "repo": "PostHog/ai-plugin"
+      }
     }
   },
   "effortLevel": "low",
   "modelSettings": {
     "claude-opus-5": {
       "effortLevel": "low"
+    },
+    "claude-fable-5-1": {
+      "effortLevel": "high"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "high"
     }
   },
-  "advisorModel": "fable",
   "tui": "default",
   "voice": {
     "enabled": true,
