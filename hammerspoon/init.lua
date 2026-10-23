@@ -472,8 +472,15 @@ volumeChecker:start()
 -- -----------------------------------------------
 --{{{
 
+local bundleIDCache = {}
+
 -- Exact-match app lookup (no pattern matching, faster than hs.application.find)
+-- Prefers bundle ID, since some apps run under a different name than their .app (zoom.us.app runs as "Zoom")
 function findRunningApp(appName)
+	local bundleID = bundleIDCache[appName]
+	if bundleID then
+		return hs.application.applicationsForBundleID(bundleID)[1]
+	end
 	for _, app in ipairs(hs.application.runningApplications()) do
 		if app:name() == appName then
 			return app
@@ -501,7 +508,6 @@ local function resolveBundleID(appName)
 end
 
 -- Build bundle ID cache at startup for all configured apps
-local bundleIDCache = {}
 local configuredApps = {
 	defaultBrowserName,
 	secondaryBrowserName,
