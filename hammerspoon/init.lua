@@ -45,7 +45,7 @@ local wm = {}
 
 -- Apps
 -- -----------------------------------------------
-local appsToCenter = { "Finder", "Home Assistant", "Messages" }
+local appsToCenter = { "Home Assistant", "Messages" }
 -- local defaultBrowserName = "Google Chrome"
 local defaultBrowserName = "Arc"
 -- local defaultTerminalName = "Tabby"
