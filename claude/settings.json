@@ -10,6 +10,7 @@
   "permissions": {
     "defaultMode": "auto"
   },
+  "model": "opus",
   "hooks": {
     "SessionStart": [
       {
@@ -192,7 +193,14 @@
     "ui-theme-designer@claude-plugins-official": true,
     "typesafe@typesafe-ai": true,
     "claude-seo@agricidaniel-claude-seo": true,
-    "posthog@posthog": true
+    "posthog@posthog": true,
+    "ux-strategy@designer-skills": true,
+    "design-research@designer-skills": true,
+    "ui-design@designer-skills": true,
+    "design-ops@designer-skills": true,
+    "designer-toolkit@designer-skills": true,
+    "visual-critique@designer-skills": true,
+    "interaction-design@designer-skills": true
   },
   "extraKnownMarketplaces": {
     "interface-design": {
