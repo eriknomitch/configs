@@ -12,7 +12,7 @@ alerter. Wired up in ~/.claude/settings.json under hooks.
 
 EVENTS HANDLED
   Stop            Claude finished a turn (offers View Diff / Commit)
-  StopFailure     Claude turn errored (offers Retry)
+  StopFailure     Claude turn errored
   TaskCompleted   Background task finished
 
 INTERACTION
@@ -49,7 +49,7 @@ fi
 INPUT=$(cat)
 EVENT=$(echo "$INPUT" | jq -r '.hook_event_name // "unknown"')
 ALERTER=/opt/homebrew/bin/alerter
-ICON="/Applications/Claude Code Menu.app/Contents/Resources/icon.icns"
+ICON="/Applications/Claude.app/Contents/Resources/electron.icns"
 
 # Extract project context for subtitle
 CWD=$(echo "$INPUT" | jq -r '.cwd // empty')
@@ -121,7 +121,6 @@ case "$EVENT" in
       --message "Turn failed: $ERROR_TYPE" \
       --subtitle "${PROJECT:+in $PROJECT}" \
       --close-label "Ignore" \
-      --actions "Retry" \
       --app-icon "$ICON" \
       --group "claude-error" \
       --sound "default" \
