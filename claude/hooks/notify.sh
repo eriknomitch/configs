@@ -13,6 +13,8 @@ alerter. Wired up in ~/.claude/settings.json under hooks.
 EVENTS HANDLED
   Stop            Claude finished a turn (offers View Diff / Commit)
   StopFailure     Claude turn errored
+  Notification    Claude is waiting on you (plays sounds/permission.mp3 for
+                  permission prompts, sounds/input.mp3 otherwise)
 
 INTERACTION
   Action button    Focuses Ghostty; some run side-effects (clipboard)
@@ -49,6 +51,16 @@ INPUT=$(cat)
 EVENT=$(echo "$INPUT" | jq -r '.hook_event_name // "unknown"')
 ALERTER=/opt/homebrew/bin/alerter
 ICON="/Applications/Claude.app/Contents/Resources/electron.icns"
+SOUNDS="$HOME/.claude/hooks/sounds"
+SOUND_VOLUME=0.5
+# macOS system alert sound, played via afplay because alerter has no volume flag
+ALERT_SOUND=$(defaults read -g com.apple.sound.beep.sound 2>/dev/null)
+
+# Play a sound in the background without waiting for alerter
+# Usage: play_sound <file>
+play_sound() {
+  [[ -f "$1" ]] && afplay -v "$SOUND_VOLUME" "$1" >/dev/null 2>&1 &
+}
 
 # Extract project context for subtitle
 CWD=$(echo "$INPUT" | jq -r '.cwd // empty')
@@ -100,6 +112,7 @@ case "$EVENT" in
     fi
     MSG="${SUMMARY:-Ready for your next prompt}"
 
+    play_sound "$ALERT_SOUND"
     notify "$EVENT" "$CWD" \
       --title "Claude Finished" \
       --message "$MSG" \
@@ -109,12 +122,12 @@ case "$EVENT" in
       --dropdown-label "Next" \
       --app-icon "$ICON" \
       --group "claude-stop" \
-      --sound "default" \
       --timeout 15 &
     ;;
 
   StopFailure)
     ERROR_TYPE=$(echo "$INPUT" | jq -r '.error_type // "unknown error"' | head -c 200 | iconv -c -f UTF-8 -t UTF-8 2>/dev/null)
+    play_sound "$ALERT_SOUND"
     notify "$EVENT" "$CWD" \
       --title "Claude Error" \
       --message "Turn failed: $ERROR_TYPE" \
@@ -122,7 +135,24 @@ case "$EVENT" in
       --close-label "Ignore" \
       --app-icon "$ICON" \
       --group "claude-error" \
-      --sound "default" \
+      --timeout 30 &
+    ;;
+
+  Notification)
+    case "$(echo "$INPUT" | jq -r '.notification_type // empty')" in
+      permission_prompt) play_sound "$SOUNDS/permission.mp3" ;;
+      *)                 play_sound "$SOUNDS/input.mp3" ;;
+    esac
+
+    TITLE=$(echo "$INPUT" | jq -r '.title // "Claude needs input"' | head -c 100 | iconv -c -f UTF-8 -t UTF-8 2>/dev/null)
+    MSG=$(echo "$INPUT" | jq -r '.message // "Waiting for you"' | head -c 200 | iconv -c -f UTF-8 -t UTF-8 2>/dev/null)
+    notify "$EVENT" "$CWD" \
+      --title "$TITLE" \
+      --message "$MSG" \
+      --subtitle "${PROJECT:+in $PROJECT}" \
+      --close-label "Dismiss" \
+      --app-icon "$ICON" \
+      --group "claude-input" \
       --timeout 30 &
     ;;
 esac
