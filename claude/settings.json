@@ -21,16 +21,6 @@
             "command": "~/.claude/hooks/asdf-path.sh"
           }
         ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/erik/.claude/termic-hooks/ready.sh",
-            "timeout": 5,
-            "statusMessage": "termic: reporting that this session is ready"
-          }
-        ]
       }
     ],
     "PostToolUse": [
@@ -49,16 +39,6 @@
           {
             "type": "command",
             "command": "~/.claude/scripts/cc-activity-log.sh"
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/erik/.claude/termic-hooks/working.sh",
-            "timeout": 5,
-            "statusMessage": "termic: reporting that this turn started"
           }
         ]
       }
@@ -88,16 +68,6 @@
           {
             "type": "command",
             "command": "/usr/bin/env node /Users/erik/.tokentracker/bin/notify.cjs --source=claude"
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/erik/.claude/termic-hooks/done.sh",
-            "timeout": 5,
-            "statusMessage": "termic: reporting that this turn finished"
           }
         ]
       }
@@ -130,30 +100,6 @@
           {
             "type": "command",
             "command": "/usr/bin/env node /Users/erik/.tokentracker/bin/notify.cjs --source=claude"
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/erik/.claude/termic-hooks/working.sh",
-            "timeout": 5,
-            "statusMessage": "termic: reporting that this turn started"
-          }
-        ]
-      }
-    ],
-    "PermissionRequest": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/erik/.claude/termic-hooks/attention.sh",
-            "timeout": 5,
-            "statusMessage": "termic: reporting that you are needed"
           }
         ]
       }
