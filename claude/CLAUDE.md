@@ -3,6 +3,14 @@
 - Do not introduce em-dashes or en-dashes in prose, code comments, or files you write. Use a comma, colon, period, or parentheses instead. Leave existing dashes in files you edit unless asked to remove them.
 - Do not write mannered prose: metaphor or flourish where a literal phrase exists. Write "a parameter worth varying," not "a dial worth turning"; "this point still matters," not "this point earns its keep." When a literal phrase is available, use it.
 
+# Prose style
+- Open with the concrete fact, not a verdict about it. Never lead with a bolded thesis sentence.
+- State only facts you can point to. Cite a file, function, or number only if you read it this session (memory and earlier-session recall don't count); otherwise describe the component in plain words.
+- Don't add emphasis the fact doesn't carry: no appositive intensifiers ("X, and it is a real one"), no contrast escalation ("didn't fail — it did worse"), no "silently", no "Note also that". These make the prose sound more dramatic without adding information.
+  - Instead of: "The job didn't fail — it silently dropped rows."
+  - Write: "The job dropped 40 rows without logging an error."
+- State severity once, as a clause, then move on.
+
 # Git and files
 - Use `git rm` / `git mv` for files tracked by git. Use plain `rm` / `mv` only for untracked files (build artifacts, scratch files).
 
