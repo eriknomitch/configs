@@ -83,17 +83,6 @@
         ]
       }
     ],
-    "TaskCompleted": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/hooks/notify.sh",
-            "async": true
-          }
-        ]
-      }
-    ],
     "SessionEnd": [
       {
         "hooks": [

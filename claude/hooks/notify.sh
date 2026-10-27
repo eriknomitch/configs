@@ -13,7 +13,6 @@ alerter. Wired up in ~/.claude/settings.json under hooks.
 EVENTS HANDLED
   Stop            Claude finished a turn (offers View Diff / Commit)
   StopFailure     Claude turn errored
-  TaskCompleted   Background task finished
 
 INTERACTION
   Action button    Focuses Ghostty; some run side-effects (clipboard)
@@ -125,18 +124,5 @@ case "$EVENT" in
       --group "claude-error" \
       --sound "default" \
       --timeout 30 &
-    ;;
-
-  TaskCompleted)
-    TASK=$(echo "$INPUT" | jq -r '.task_name // .tool_input.name // "A background task"' | head -c 200 | iconv -c -f UTF-8 -t UTF-8 2>/dev/null)
-    notify "$EVENT" "$CWD" \
-      --title "Task Completed" \
-      --message "${TASK} finished" \
-      --subtitle "${PROJECT:+in $PROJECT}" \
-      --close-label "Dismiss" \
-      --app-icon "$ICON" \
-      --group "claude-task" \
-      --sound "default" \
-      --timeout 15 &
     ;;
 esac
