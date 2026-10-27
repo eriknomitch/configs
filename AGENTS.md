@@ -132,6 +132,7 @@ This repo also publishes the user's global Claude Code config to `~/.claude/` vi
 - `claude/hooks/notify.sh` → `~/.claude/hooks/notify.sh` — alerter-based macOS notifications
 - `claude/hooks/sounds/` → `~/.claude/hooks/sounds/`: sounds `notify.sh` plays (`done.mp3` for Stop, `error.mp3` for StopFailure, `permission.mp3` and `input.mp3` for Notification)
 - `claude/hooks/asdf-path.sh` → `~/.claude/hooks/asdf-path.sh`: SessionStart hook that puts asdf on PATH
+- `claude/hooks/check-symlinks.sh` → `~/.claude/hooks/check-symlinks.sh`: SessionStart hook that warns when a `claude/` path listed in `.bin/ensure-symbolic-links` is no longer a symlink
 - `claude/hooks/save-report.sh` → `~/.claude/hooks/save-report.sh`: Stop hook that archives report-like responses to `~/.claude/reports/`
 - `claude/scripts/cc-activity-log.sh` → `~/.claude/scripts/cc-activity-log.sh`: per-session activity log in `~/.claude/activity/`
 - `claude/scripts/backfill-report-index.sh` → `~/.claude/scripts/backfill-report-index.sh`: rebuilds `~/.claude/reports/INDEX.jsonl`

@@ -96,6 +96,7 @@ test -d ~/.claude/skills || mkdir -p ~/.claude/skills
 _ensure_symbolic_link claude/settings.json ~/.claude/settings.json
 _ensure_symbolic_link claude/hooks/notify.sh ~/.claude/hooks/notify.sh
 _ensure_symbolic_link claude/hooks/asdf-path.sh ~/.claude/hooks/asdf-path.sh
+_ensure_symbolic_link claude/hooks/check-symlinks.sh ~/.claude/hooks/check-symlinks.sh
 _ensure_symbolic_link claude/hooks/save-report.sh ~/.claude/hooks/save-report.sh
 _ensure_symbolic_link claude/hooks/sounds ~/.claude/hooks/sounds
 _ensure_symbolic_link claude/scripts/backfill-report-index.sh ~/.claude/scripts/backfill-report-index.sh
