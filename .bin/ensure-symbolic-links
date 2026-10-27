@@ -99,7 +99,6 @@ _ensure_symbolic_link claude/hooks/asdf-path.sh ~/.claude/hooks/asdf-path.sh
 _ensure_symbolic_link claude/hooks/save-report.sh ~/.claude/hooks/save-report.sh
 _ensure_symbolic_link claude/hooks/sounds ~/.claude/hooks/sounds
 _ensure_symbolic_link claude/scripts/backfill-report-index.sh ~/.claude/scripts/backfill-report-index.sh
-_ensure_symbolic_link claude/scripts/statusline.sh ~/.claude/scripts/statusline.sh
 _ensure_symbolic_link claude/scripts/cc-activity-log.sh ~/.claude/scripts/cc-activity-log.sh
 _ensure_symbolic_link claude/CLAUDE.md ~/.claude/CLAUDE.md
 _ensure_symbolic_link claude/skills/claude-docs ~/.claude/skills/claude-docs

@@ -83,14 +83,18 @@ notify() {
     Stop)
       case "$RESULT" in
         *"View Diff"*)
-          if [[ -n "$cwd" && -d "$cwd/.git" ]]; then
-            git -C "$cwd" --no-pager diff | pbcopy
-            "$ALERTER" --title "Diff Copied" --message "git diff is in your clipboard" \
+          # rev-parse also works from subdirectories and worktrees (where .git is a file)
+          if [[ -n "$cwd" ]] && git -C "$cwd" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+            # Staged and unstaged changes; with no commits yet there is no HEAD, so diff the index and worktree separately
+            { git -C "$cwd" --no-pager diff HEAD 2>/dev/null \
+              || { git -C "$cwd" --no-pager diff --cached; git -C "$cwd" --no-pager diff; }; } | pbcopy
+            "$ALERTER" --title "Diff Copied" --message "git diff HEAD is in your clipboard" \
               --app-icon "$ICON" --group "claude-info" --timeout 5 >/dev/null 2>&1 &
           fi
           ;;
         *"Commit"*)
-          printf %s "/commit" | pbcopy
+          # Plain request; /commit needs the commit-commands plugin, which is not enabled
+          printf %s "Commit these changes" | pbcopy
           ;;
       esac
       ;;

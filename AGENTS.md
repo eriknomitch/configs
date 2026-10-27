@@ -130,7 +130,13 @@ This repo also publishes the user's global Claude Code config to `~/.claude/` vi
 - `claude/CLAUDE.md` → `~/.claude/CLAUDE.md` — global rules loaded for every project
 - `claude/settings.json` → `~/.claude/settings.json` — hooks, permissions, status line config
 - `claude/hooks/notify.sh` → `~/.claude/hooks/notify.sh` — alerter-based macOS notifications
-- `claude/scripts/statusline.sh` → `~/.claude/scripts/statusline.sh` — terminal status line wrapper
+- `claude/hooks/sounds/` → `~/.claude/hooks/sounds/`: sounds `notify.sh` plays (`done.mp3` for Stop, `permission.mp3` and `input.mp3` for Notification)
+- `claude/hooks/asdf-path.sh` → `~/.claude/hooks/asdf-path.sh`: SessionStart hook that puts asdf on PATH
+- `claude/hooks/save-report.sh` → `~/.claude/hooks/save-report.sh`: Stop hook that archives report-like responses to `~/.claude/reports/`
+- `claude/scripts/cc-activity-log.sh` → `~/.claude/scripts/cc-activity-log.sh`: per-session activity log in `~/.claude/activity/`
+- `claude/scripts/backfill-report-index.sh` → `~/.claude/scripts/backfill-report-index.sh`: rebuilds `~/.claude/reports/INDEX.jsonl`
+
+The status line comes from the claude-hud plugin (the `statusLine` command in `settings.json`), not from a script in this repo.
 
 Editing files in `claude/` updates the live config (no copy step). `claude/settings.json.backup` is a manual snapshot, not symlinked.
 
