@@ -12,7 +12,7 @@ alerter. Wired up in ~/.claude/settings.json under hooks.
 
 EVENTS HANDLED
   Stop            Claude finished a turn, plays sounds/done.mp3 (offers View Diff / Commit)
-  StopFailure     Claude turn errored
+  StopFailure     Claude turn errored, plays sounds/error.mp3
   Notification    Claude is waiting on you (plays sounds/permission.mp3 for
                   permission prompts, sounds/input.mp3 otherwise)
 
@@ -53,8 +53,6 @@ ALERTER=/opt/homebrew/bin/alerter
 ICON="/Applications/Claude.app/Contents/Resources/electron.icns"
 SOUNDS="$HOME/.claude/hooks/sounds"
 SOUND_VOLUME=0.5
-# macOS system alert sound, played via afplay because alerter has no volume flag
-ALERT_SOUND=$(defaults read -g com.apple.sound.beep.sound 2>/dev/null)
 
 # Play a sound in the background without waiting for alerter
 # Usage: play_sound <file>
@@ -131,7 +129,7 @@ case "$EVENT" in
 
   StopFailure)
     ERROR_TYPE=$(echo "$INPUT" | jq -r '.error_type // "unknown error"' | head -c 200 | iconv -c -f UTF-8 -t UTF-8 2>/dev/null)
-    play_sound "$ALERT_SOUND"
+    play_sound "$SOUNDS/error.mp3"
     notify "$EVENT" "$CWD" \
       --title "Claude Error" \
       --message "Turn failed: $ERROR_TYPE" \
