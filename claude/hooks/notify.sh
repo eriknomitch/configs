@@ -11,7 +11,7 @@ Reads hook JSON from stdin and sends a native macOS notification via
 alerter. Wired up in ~/.claude/settings.json under hooks.
 
 EVENTS HANDLED
-  Stop            Claude finished a turn (offers View Diff / Commit)
+  Stop            Claude finished a turn, plays sounds/done.mp3 (offers View Diff / Commit)
   StopFailure     Claude turn errored
   Notification    Claude is waiting on you (plays sounds/permission.mp3 for
                   permission prompts, sounds/input.mp3 otherwise)
@@ -112,7 +112,7 @@ case "$EVENT" in
     fi
     MSG="${SUMMARY:-Ready for your next prompt}"
 
-    play_sound "$ALERT_SOUND"
+    play_sound "$SOUNDS/done.mp3"
     notify "$EVENT" "$CWD" \
       --title "Claude Finished" \
       --message "$MSG" \
