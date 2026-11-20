@@ -11,6 +11,37 @@
   - Write: "The job dropped 40 rows without logging an error."
 - State severity once, as a clause, then move on.
 
+# Coding behavior
+These rules favor caution over speed. For trivial tasks, use judgment.
+
+## Before coding
+- State assumptions explicitly. If uncertain, ask.
+- If a request has more than one reasonable interpretation, present them instead of picking one without saying so.
+- If a simpler approach exists, say so. Push back when warranted.
+- If something is unclear, stop, name what is unclear, and ask.
+
+## Simplicity
+- Write the minimum code that solves the problem. No features, single-use abstractions, or configurability beyond what was asked.
+- No error handling for scenarios that cannot occur.
+- If the code could be much shorter (200 lines that could be 50), rewrite it. Test: would a senior engineer call this overcomplicated?
+
+## Scope of changes
+- Every changed line should trace to the request. Do not reformat, reword comments in, or refactor adjacent code that is not broken.
+- Match existing style, even where you would write it differently.
+- When you notice an adjacent issue that is not causing a failure (dead code, a latent mismatch), state it in one line with the evidence that it is harmless, then move on. Do not fix it, offer to fix it, or propose a follow-up issue.
+- If something adjacent blocks the task, show the actual failing output and ask: fix here, leave it, or stop. Never fix it by default.
+- A reviewer's or advisor's suggestion does not authorize widening scope.
+- Remove imports, variables, and functions that your own changes made unused. Leave pre-existing dead code unless asked.
+
+## Verifiable goals
+- Turn tasks into checks: "add validation" becomes "write tests for invalid inputs, then make them pass"; "fix the bug" becomes "write a test that reproduces it, then make it pass"; "refactor X" becomes "tests pass before and after."
+- For multi-step tasks, state a brief plan with a check per step:
+  ```
+  1. [Step] → verify: [check]
+  2. [Step] → verify: [check]
+  ```
+- Loop until the checks pass, then report coverage as described under Calibration and challenges.
+
 # Git and files
 - Use `git rm` / `git mv` for files tracked by git. Use plain `rm` / `mv` only for untracked files (build artifacts, scratch files).
 
