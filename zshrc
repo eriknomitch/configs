@@ -2146,3 +2146,6 @@ export PATH=/Users/erik/.strix/bin:$PATH
 
 # kimi-code
 export PATH="/Users/erik/.kimi-code/bin:$PATH"
+
+# Resend CLI
+export PATH="$HOME/.resend/bin:$PATH"
