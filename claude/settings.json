@@ -10,7 +10,6 @@
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "opus",
   "hooks": {
     "SessionStart": [
       {
@@ -151,7 +150,13 @@
     "design-ops@designer-skills": true,
     "designer-toolkit@designer-skills": true,
     "visual-critique@designer-skills": true,
-    "interaction-design@designer-skills": true
+    "interaction-design@designer-skills": true,
+    "mod-finder@aidojo": true,
+    "decision-ledger@my-claude-code-mods": true,
+    "assumption-tracker@my-claude-code-mods": true,
+    "cc-plugin-you-should-know@builtin": true,
+    "what-s-agent-doing@anthropic-plugin-directory": true,
+    "clean-view@clean-view": true
   },
   "extraKnownMarketplaces": {
     "interface-design": {
@@ -267,6 +272,30 @@
         "source": "github",
         "repo": "PostHog/ai-plugin"
       }
+    },
+    "aidojo": {
+      "source": {
+        "source": "github",
+        "repo": "karanb192/awesome-claude-code-mods"
+      }
+    },
+    "my-claude-code-mods": {
+      "source": {
+        "source": "github",
+        "repo": "YeonwooSung/my-claude-code-mods"
+      }
+    },
+    "last30days-skill": {
+      "source": {
+        "source": "github",
+        "repo": "mvanhorn/last30days-skill"
+      }
+    },
+    "clean-view": {
+      "source": {
+        "source": "github",
+        "repo": "skaterino/claude-clean-view"
+      }
     }
   },
   "effortLevel": "low",
@@ -278,7 +307,7 @@
       "effortLevel": "high"
     },
     "claude-opus-5-5": {
-      "effortLevel": "high"
+      "effortLevel": "medium"
     }
   },
   "tui": "default",
@@ -290,6 +319,7 @@
   "editorMode": "vim",
   "verbose": true,
   "autoCompactEnabled": true,
+  "idleCompaction": false,
   "teammateMode": "auto",
   "agentPushNotifEnabled": true,
   "voiceEnabled": true
