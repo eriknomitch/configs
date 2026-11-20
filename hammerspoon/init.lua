@@ -51,7 +51,7 @@ local defaultBrowserName = "Arc"
 -- local defaultTerminalName = "Tabby"
 -- local defaultTerminalName = "Alacritty"
 local defaultTerminalName = "Ghostty"
-local secondaryBrowserName = "Firefox Developer Edition"
+local secondaryBrowserName = "Google Chrome"
 
 -- local defaultAiChatName = "ChatGPT"
 local defaultAiChatName = "ChatGPT"
@@ -698,7 +698,7 @@ end)
 -- Applications
 -- -----------------------------------------------
 bindApplicationFocus("I", defaultBrowserName)
--- bindApplicationFocusSecondary("I", secondaryBrowserName)
+bindApplicationFocusSecondary("I", secondaryBrowserName)
 bindApplicationFocus("L", "Linear")
 
 bindApplicationFocus("P", "Preview")
@@ -826,7 +826,7 @@ Resize:
 
 Application Shortcuts:
   Browser (Arc):       cmd + ctrl + I
-  Firefox Dev:         cmd + ctrl + shift + I
+  Chrome:              cmd + ctrl + shift + I
   Linear:              cmd + ctrl + L
   Preview:             cmd + ctrl + P
   Photoshop:           cmd + ctrl + shift + P
