@@ -10,6 +10,7 @@
   "permissions": {
     "defaultMode": "auto"
   },
+  "model": "fable",
   "hooks": {
     "SessionStart": [
       {
@@ -120,7 +121,6 @@
     "slack@claude-plugins-official": true,
     "vercel-plugin@vercel": false,
     "cli-anything@cli-anything": false,
-    "code-review@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true,
@@ -138,7 +138,6 @@
     "cloudflare@cloudflare": true,
     "i-have-adhd@i-have-adhd": true,
     "composio@composio": true,
-    "agent-skills@addy-agent-skills": true,
     "clangd-lsp@claude-plugins-official": true,
     "ui-theme-designer@claude-plugins-official": true,
     "typesafe@typesafe-ai": true,
@@ -295,6 +294,12 @@
       "source": {
         "source": "github",
         "repo": "skaterino/claude-clean-view"
+      }
+    },
+    "openrouter": {
+      "source": {
+        "source": "github",
+        "repo": "OpenRouterTeam/skills"
       }
     }
   },
