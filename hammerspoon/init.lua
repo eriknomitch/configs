@@ -46,12 +46,12 @@ local wm = {}
 -- Apps
 -- -----------------------------------------------
 local appsToCenter = { "Home Assistant", "Messages" }
--- local defaultBrowserName = "Google Chrome"
-local defaultBrowserName = "Arc"
+local defaultBrowserName = "Google Chrome"
+-- local defaultBrowserName = "Arc"
 -- local defaultTerminalName = "Tabby"
 -- local defaultTerminalName = "Alacritty"
 local defaultTerminalName = "Ghostty"
-local secondaryBrowserName = "Google Chrome"
+local secondaryBrowserName = "Arc"
 
 -- local defaultAiChatName = "ChatGPT"
 local defaultAiChatName = "ChatGPT"
@@ -825,8 +825,8 @@ Resize:
   Expand both:         cmd + ctrl + alt + =
 
 Application Shortcuts:
-  Browser (Arc):       cmd + ctrl + I
-  Chrome:              cmd + ctrl + shift + I
+  Browser (Chrome):    cmd + ctrl + I
+  Arc:                 cmd + ctrl + shift + I
   Linear:              cmd + ctrl + L
   Preview:             cmd + ctrl + P
   Photoshop:           cmd + ctrl + shift + P
