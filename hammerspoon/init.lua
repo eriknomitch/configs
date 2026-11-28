@@ -718,7 +718,7 @@ bindApplicationFocusSecondary("E", "Element")
 bindApplicationFocusSecondary("V", "Visual Studio Code")
 bindApplicationFocus("V", "IINA")
 bindApplicationFocus("U", "Unraid")
-bindApplicationFocus("N", "Notion")
+bindApplicationFocusWithConfirmation("N", "Notion")
 bindApplicationFocus("H", "Home Assistant")
 
 -- Special
