@@ -10,7 +10,6 @@
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "fable",
   "hooks": {
     "SessionStart": [
       {
